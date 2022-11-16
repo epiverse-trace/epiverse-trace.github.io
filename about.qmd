@@ -1,18 +1,12 @@
 ---
 title: "About"
-image: profile.jpg
+image: Epiverse-RGB.png
 about:
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com
-    - icon: linkedin
-      text: LinkedIn
-      href: https://linkedin.com
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/epiverse-trace
 ---
 
-About this blog
+This is the technical blog of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.
