@@ -2,6 +2,7 @@ project:
   type: website
 
 website:
+  site-url: "https://epiverse-trace.github.io/blog"
   title: "Epiverse-Trace technical blog"
   navbar:
     right:
