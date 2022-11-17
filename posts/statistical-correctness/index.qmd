@@ -10,14 +10,15 @@ format:
 ---
 
 We're evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use.
+It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don't change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.
 
 {{< tweet AlexCEngler 1092123648834658305 >}}
 
-It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don't change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results. It is likely that most statistical package authors run some tests on their own during development but there doesn't seem to be guidelines on how to test statistical correctness in a solid and standard way [^1].
+It is likely that most statistical package authors run some tests on their own during development but there doesn't seem to be guidelines on how to test statistical correctness in a solid and standard way [^1].
 
 [^1]: But see the ["testing statistical software" post from Alex Hayes](https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/) where he presents his process to determine if he deems a statistical package trustworthy or not.
 
-In this blog post, we explore various methods to ensure the correctness of your statistical package. Importantly, we argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package.
+In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.
 
 The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would follow the recommendations presentation here:
 
