@@ -142,7 +142,7 @@ test_that("centroid() increases when coordinates from one point increase", {
 
 An example of this test in an actual R package can again be found [in the finalsize package](https://github.com/epiverse-trace/finalsize/blob/787de9a8fa430d63d06d2bc052c7134c43d1ca69/tests/testthat/test-newton_solver.R#L76-L102):
 
-```r
+``` r
 r0_low <- 1.3
 r0_high <- 3.3
 
@@ -162,8 +162,19 @@ test_that("Higher values of R0 result in a higher number of infectious in all gr
 })
 ```
 
-# Conclusion
+# Conclusion: automated validation vs peer-review
 
-In this post, we've presented different methods to verify the statistical correctness of your statistical software. We would like to highlight one more time that it's important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality, instead of asking users to just rely on trust:
+In this post, we've presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it's important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.
+
+[Multiple voices](https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/) [in the community](https://twitter.com/hadleywickham/status/1092129977540231168) are pushing more towards peer-review as a proxy for quality and validity:
 
 {{< tweet hadleywickham 1092129977540231168 >}}
+
+We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.
+
+On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of bad Random Number Generators when running in parallel.
+
+But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.
+
+Ideally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.
+
