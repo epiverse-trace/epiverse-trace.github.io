@@ -60,12 +60,6 @@ test_that("Results of gemma2 equal those of GEMMA v 0.97", {
 })
 ```
 
-Note that even if a **reference** implementation doesn't exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.
-
-However, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity [^2].
-
-[^2]: Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.
-
 ::: callout-tip
 ## Example with `centroid()`
 
@@ -82,9 +76,30 @@ test_that("centroid() in 1D produces the same results as mean()", {
 ```
 :::
 
+Note that even if a **reference** implementation doesn't exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.
+
+However, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity [^2].
+
+[^2]: Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.
+
 # Compare to a theoretical upper or lower bound
 
 An alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.
+
+::: callout-tip
+## Example with `mymean()`
+
+```{r}
+test_that("centroid() is inside the hypercube containing the data points", {
+  
+  x <- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))
+
+  expect_true(all(centroid(x) <= Reduce(pmax, x)))
+  expect_true(all(centroid(x) >= Reduce(pmin, x)))
+  
+})
+```
+:::
 
 You can see a [real-life example of this kind of test in the `{finalsize}` R package](https://github.com/epiverse-trace/finalsize/blob/a710767b38a9242f15ab4dcf18b02fb5b0bcf24f/tests/testthat/test-newton_solver_vary_r0.R#L1-L13). `{finalsize}` computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:
 
@@ -103,21 +118,6 @@ upper_limit <- function(r0) {
   opt
 }
 ```
-
-::: callout-tip
-## Example with `mymean()`
-
-```{r}
-test_that("centroid() is inside the hypercube containing the data points", {
-  
-  x <- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))
-
-  expect_true(all(centroid(x) <= Reduce(pmax, x)))
-  expect_true(all(centroid(x) >= Reduce(pmin, x)))
-  
-})
-```
-:::
 
 # Verify that output is changing as expected when a single parameter varies
 
@@ -139,6 +139,28 @@ test_that("centroid() increases when coordinates from one point increase", {
 })
 ```
 :::
+
+An example of this test in an actual R package can again be found [in the finalsize package](https://github.com/epiverse-trace/finalsize/blob/787de9a8fa430d63d06d2bc052c7134c43d1ca69/tests/testthat/test-newton_solver.R#L76-L102):
+
+```r
+r0_low <- 1.3
+r0_high <- 3.3
+
+epi_outcome_low <- final_size(
+  r0 = r0_low,
+  <...>
+)
+epi_outcome_high <- final_size(
+  r0 = r0_high,
+  <...>
+)
+
+test_that("Higher values of R0 result in a higher number of infectious in all groups", {
+  expect_true(
+    all(epi_outcome_high$p_infected > epi_outcome_low$p_infected)
+  )
+})
+```
 
 # Conclusion
 
