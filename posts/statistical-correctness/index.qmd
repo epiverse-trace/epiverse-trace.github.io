@@ -172,7 +172,7 @@ In this post, we've presented different methods to automatically verify the stat
 
 We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.
 
-On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of bad Random Number Generators when running in parallel.
+On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of [bad Random Number Generators when running in parallel](https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/).
 
 But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.
 
