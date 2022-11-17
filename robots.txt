@@ -1,1 +1,1 @@
-Sitemap: https://github.com/epiverse-trace/blog/sitemap.xml
+Sitemap: https://epiverse-trace.github.io/blog/sitemap.xml
