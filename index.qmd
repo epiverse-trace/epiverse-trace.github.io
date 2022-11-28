@@ -1,13 +1,13 @@
 ---
-title: ""
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-  feed: true
-page-layout: full
-title-block-banner: true
+title: "Index"
+image: Epiverse-RGB.png
+about:
+  template: jolla
+  image-shape: rectangle
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/epiverse-trace
 ---
+
+This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.
