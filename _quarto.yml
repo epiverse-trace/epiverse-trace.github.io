@@ -3,10 +3,11 @@ project:
 
 website:
   site-url: "https://epiverse-trace.github.io/blog"
-  title: "Epiverse-Trace technical blog"
+  title: "Epiverse-Trace developer space"
   navbar:
+    left:
+      - blog.qmd
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/epiverse-trace
       - icon: twitter
