@@ -6,6 +6,8 @@ website:
   title: "Epiverse-Trace developer space"
   navbar:
     left:
+      - text: Software
+        href: https://epiverse-trace.r-universe.dev/
       - blog.qmd
     right:
       - icon: github
