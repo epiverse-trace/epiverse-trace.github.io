@@ -7,7 +7,7 @@ website:
   navbar:
     left:
       - text: Software
-        href: https://epiverse-trace.r-universe.dev/
+        href: https://epiverse-trace.r-universe.dev/ui#packages
       - blog.qmd
     right:
       - icon: github
