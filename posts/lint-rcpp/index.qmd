@@ -16,6 +16,9 @@ However, these packages cannot lint or style the C++ code of [{Rcpp}](https://ww
 
 In Epiverse-TRACE, we encounter this issue with [{finalsize}](https://epiverse-trace.github.io/finalsize/), and we anticipate the same issue with further epidemic modelling packages that we seek to develop or adapt, such as [{fluEvidenceSynthesis}](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005838).
 
+Our use-case is not unique, of course, and other projects could have their own solutions.
+One such, from which we have borrowed some ideas, is the [Apache Arrow project](https://arrow.apache.org/), whose R package also uses a C++ backend (via [{cpp11}](https://cpp11.r-lib.org/) rather than {Rcpp}).
+
 ## Choice of C++ linters
 
 C++ linters such as [_clang-tidy_](https://clang.llvm.org/extra/clang-tidy/) stumble when dealing with C++ code in `src/`, as the _clang_ toolchain attempts to compile it. This does not work for Rcpp packages, as the `Rcpp.h` header cannot be found --- this linking is handled by {Rcpp}.
