@@ -12,6 +12,7 @@ website:
         href: https://github.com/epiverse-trace
       - icon: twitter
         href: https://twitter.com/DataDotOrg
+  google-analytics: "G-XZ471458FQ"
 format:
   html:
     theme: cosmo
