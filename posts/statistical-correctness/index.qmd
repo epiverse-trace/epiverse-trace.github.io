@@ -1,7 +1,7 @@
 ---
 title: "Ensuring & Showcasing the Statistical Correctness of your R Package"
 author: "Hugo Gruson"
-date: "2022-11-16"
+date: "2023-02-13"
 categories: [code quality, R package, testing]
 image: "testing_error.png"
 format:
