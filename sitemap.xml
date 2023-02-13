@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://epiverse-trace.github.io/blog/blog.html</loc>
-    <lastmod>2022-12-22T08:39:19.386Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/blog/posts/post-with-code/index.html</loc>
-    <lastmod>2022-12-22T08:39:20.362Z</lastmod>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/blog/index.html</loc>
-    <lastmod>2022-12-22T08:39:20.722Z</lastmod>
+    <lastmod>2023-02-13T13:52:38.763Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/blog/blog.html</loc>
+    <lastmod>2023-02-13T13:52:39.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/blog/posts/statistical-correctness/index.html</loc>
+    <lastmod>2023-02-13T13:52:40.695Z</lastmod>
   </url>
 </urlset>
