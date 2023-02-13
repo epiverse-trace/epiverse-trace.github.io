@@ -87,7 +87,7 @@ However, this approach cannot be used in all cases. Indeed, there may not be a r
 An alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.
 
 ::: callout-tip
-## Example with `mymean()`
+## Example with `centroid()`
 
 ```{r}
 test_that("centroid() is inside the hypercube containing the data points", {
