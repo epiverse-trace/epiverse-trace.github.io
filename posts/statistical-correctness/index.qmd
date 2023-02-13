@@ -16,7 +16,7 @@ It is now increasingly common to add continuous integration to software packages
 
 It is likely that most statistical package authors run some tests on their own during development but there doesn't seem to be guidelines on how to test statistical correctness in a solid and standard way [^1].
 
-[^1]: But see the ["testing statistical software" post from Alex Hayes](https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/) where he presents his process to determine if he deems a statistical package trustworthy or not.
+[^1]: But see the ["testing statistical software" post from Alex Hayes](https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/) where he presents his process to determine if he deems a statistical package trustworthy or not, and [rOpenSci Statistical Software Peer Review book](https://stats-devguide.ropensci.org/).
 
 In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.
 
