@@ -25,7 +25,7 @@ The approaches presented here are non-exclusive and should ideally all be added 
 ```{r}
 #' Compute the centroid of a set of points
 #'
-#' @coords Coordinates of the points as a list of vectors. Each element of the 
+#' @param coords Coordinates of the points as a list of vectors. Each element of the 
 #'   list is a point.
 #'
 #' @returns A vector of coordinates of the same length of each element of 
