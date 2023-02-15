@@ -4,6 +4,9 @@ author: "Hugo Gruson"
 date: "2022-11-18"
 categories: [R package, object-orientation, S3, interoperability]
 image: "image.jpg"
+format:
+  html: 
+    toc: true
 ---
 
 To build a tight and well-integrated data pipeline, it may be desirable to rely on object orientation (OO) to automatically pass valuable information from one step to the other. OO and data classes can also act as a compatibility layer standardising outputs from various tools under a common structure.
