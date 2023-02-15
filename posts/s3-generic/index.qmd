@@ -159,7 +159,7 @@ If you have the choice, should the method live in the package defining the gener
 
 ## Where should the generic live?
 
-The generic should always in the package implementing the actual computation in the function in the first place.
+The generic should always live in the package implementing the actual computation in the function in the first place.
 It is possible in theory to overwrite a function defined by another package with a generic ("overloading"). For example, we could overload base R `table()` function with:
 
 ```{r}
@@ -189,7 +189,7 @@ But this is generally considered bad practice, and possibly rude [^1]. As a rule
 - name collisions with functions from other packages (especially base or recommended package);
 - light wrappers around a function from another package as this may be seen as an attempt to steal citations and credit.
 
-[^1]: Every rule has its exceptions though and the [generics](https://generics.r-lib.org/) package, built by prominent members of the R developer community, which overloads base R functions such as `as.factor()` or `as.difftime()`.
+[^1]: Every rule has its exceptions though such as the [generics](https://generics.r-lib.org/) package, built by prominent members of the R developer community, which overloads base R functions such as `as.factor()` or `as.difftime()`.
 
 ## Where should the methods live?
 
