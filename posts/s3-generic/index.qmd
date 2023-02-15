@@ -257,7 +257,9 @@ S3method(generics::fit,myclass)
 
 ### Method in the generic package
 
-Alternatively, you can define the method in the package defining the generic. In theory, no `Imports` or `Suggests` is required here:
+Alternatively, you can define the method in the package defining the generic. This is the approach taken in the [report package](https://easystats.github.io/report/) from example, which defines the `report()` generic and methods for various model outputs produced by different package.
+
+In theory, no `Imports` or `Suggests` is required here:
 
 ```{r}
 #' @export
@@ -276,6 +278,7 @@ However, if you end up providing many methods for a specific class, you could pu
 > The ‘Enhances’ field lists packages “enhanced” by the package at hand, e.g., by providing methods for classes from these packages.
 
 It may be a good idea to explicitly signal the strong relationship between both packages so that the package defining the method is checked as a reverse dependency, and informed of potential breaking changes as discussed below.
+You may see an example of this in the [slam package](https://cran.r-project.org/package=slam), which provides his methods for both base matrices and sparse matrices, as defined in the Matrix and the spam packages.
 
 ### Coordination between maintainers
 
