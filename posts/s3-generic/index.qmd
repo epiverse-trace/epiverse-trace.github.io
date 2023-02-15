@@ -17,7 +17,7 @@ In this blog post, we show that it's possible to start using an S3 OO system alm
 
 # Benefits
 
-Let's reuse the example function from one of our previous posts:
+Let's reuse the example function from [one of our previous posts](../statistical-correctness/):
 
 ```{r}
 #' @export
