@@ -203,6 +203,15 @@ For methods, there is more flexibility than for generics. They could either in t
 
 This is the strategy used when you defined a new class and provide it with a `print()`, a `summary()`, or a `plot()` method. The generics for these functions are defined in R base.
 
+```{r}
+#' @export
+plot.myclass <- function(x, y, ...) {
+  
+  # code for a beautiful plot for your custom class
+  
+}
+```
+
 If you opt for this strategy, you will need to depend on the package providing the method, as `Imports`. For example, a package defining a `fit.myclass()` method for the `fit()` generic defined in the [generics](https://generics.r-lib.org/) package would have the following `DESCRIPTION` and `NAMESPACE`.
 
 ```{.yml filename="DESCRIPTION"}
