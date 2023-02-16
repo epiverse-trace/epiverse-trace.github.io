@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://epiverse-trace.github.io/index.html</loc>
-    <lastmod>2023-02-15T17:37:33.514Z</lastmod>
+    <lastmod>2023-02-16T18:18:41.756Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/blog.html</loc>
-    <lastmod>2023-02-15T17:37:34.334Z</lastmod>
+    <lastmod>2023-02-16T18:18:42.516Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
+    <lastmod>2023-02-16T18:18:43.224Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
-    <lastmod>2023-02-15T17:37:35.390Z</lastmod>
+    <lastmod>2023-02-16T18:18:44.188Z</lastmod>
   </url>
 </urlset>
