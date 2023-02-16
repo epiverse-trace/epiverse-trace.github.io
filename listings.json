@@ -2,8 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/statistical-correctness/index.html",
-      "/posts/lint-rcpp/index.html"
+      "/posts/lint-rcpp/index.html",
+      "/posts/statistical-correctness/index.html"
     ]
   }
 ]
