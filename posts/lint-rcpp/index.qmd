@@ -1,7 +1,7 @@
 ---
 title: "Improving the C++ Code Quality of an Rcpp Package"
 author: "Pratik R Gupte"
-date: "2022-12-02"
+date: "2023-02-16"
 categories: [code quality, R package, Rcpp]
 format:
   html:
