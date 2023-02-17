@@ -240,6 +240,12 @@ S3method(fit,myclass)
 importFrom(generics,fit)
 ```
 
+::: {.callout-important}
+## Importing the generic
+
+It's worth insisting that you need to import the generic in your `NAMESPACE` for the method to be recognized and exported correctly by roxygen2. In this specific situation, simply explicitly prefixing the generic call (`generic::fit()`) is not enough.
+:::
+
 But this can lead to a [rapid increase in the number of dependencies](https://www.mail-archive.com/r-package-devel@r-project.org/msg02720.html) if you provide methods for generics from various packages.
 Since R 3.6, you can also put generics in `Suggests` and [use delayed assignment](https://roxygen2.r-lib.org/articles/namespace.html#s3-methods-for-generics-in-suggested-packages):
 
