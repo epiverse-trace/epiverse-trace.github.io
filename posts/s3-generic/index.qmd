@@ -133,6 +133,10 @@ On the topic of arguments, another pitfall related to the conversion to an S3 ge
 ![Screenshot of the `centroid()` documentation after conversion to an S3 generic](after_conversion.png)
 :::
 
+The answer is that "Default S3 method" lists the arguments for `centroid.default()`, i.e., the method which is used if no other method is defined for your class.
+Arguments for all methods are usually documented together but you should only focus on those present in the call after the comment stating "S3 method for class 'XXX'" for the class you're working with.
+
+
 ## More complicated error traceback
 
 Another situation where converting to an S3 adds an extra layer of complexity is where you are trying to follow the error [traceback](https://en.wikipedia.org/wiki/Stack_trace):
