@@ -45,7 +45,7 @@ example_pointset <- structure(
 
 They may also have developed nice utilities for this class so there is a clear motivation for you to integrate with their class since it's less work you'll have to do. Plus, you immediately become compatible with any package that uses the same class.
 
-We will not spend too much time on the practical steps to operate this conversion since this is already covered in details in [the dedicated chapter of Advanced R, by Hadley Wickham](https://adv-r.hadley.nz/s3.html), as well as [this blog post from Nick Tierney](https://njtierney.github.io/r/missing%20data/rbloggers/2016/11/06/simple-s3-methods/). But the final result would be:
+We will not spend too much time on the practical steps to operate this conversion since this is already covered in details in [the dedicated chapter of Advanced R, by Hadley Wickham](https://adv-r.hadley.nz/s3.html), as well as [this blog post from Nick Tierney](https://njtierney.github.io/r/missing%20data/rbloggers/2016/11/06/simple-s3-methods/) [^S3]. But the final result would be:
 
 ```{r}
 #' Compute the centroid of a set of points
@@ -88,6 +88,8 @@ centroid.pointset <- function(coords, weights = NULL) {
 
 }
 ```
+
+[^S3]: Note that we focus here on the S3 framework but R has other object orientation frameworks, as discussed in [the relevant section of the 'Advanced R' book by Hadley Wickham](https://adv-r.hadley.nz/oo.html)
 
 # What subtle changes should you be looking out for?
 
