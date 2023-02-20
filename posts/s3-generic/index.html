@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Hugo Gruson">
+<meta name="dcterms.date" content="2023-02-20">
+
+<title>Epiverse-TRACE developer space - Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Epiverse-TRACE developer space</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://epiverse-trace.r-universe.dev/ui#packages">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/epiverse-trace"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/DataDotOrg"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R package</div>
+                <div class="quarto-category">object orientation</div>
+                <div class="quarto-category">S3</div>
+                <div class="quarto-category">interoperability</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Hugo Gruson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 20, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#benefits" id="toc-benefits" class="nav-link active" data-scroll-target="#benefits">Benefits</a></li>
+  <li><a href="#what-subtle-changes-should-you-be-looking-out-for" id="toc-what-subtle-changes-should-you-be-looking-out-for" class="nav-link" data-scroll-target="#what-subtle-changes-should-you-be-looking-out-for">What subtle changes should you be looking out for?</a>
+  <ul class="collapse">
+  <li><a href="#all-methods-must-have-the-same-arguments-as-the-generic" id="toc-all-methods-must-have-the-same-arguments-as-the-generic" class="nav-link" data-scroll-target="#all-methods-must-have-the-same-arguments-as-the-generic">All methods must have the same arguments as the generic</a></li>
+  <li><a href="#more-complex-documentation-presentation" id="toc-more-complex-documentation-presentation" class="nav-link" data-scroll-target="#more-complex-documentation-presentation">More complex documentation presentation</a></li>
+  <li><a href="#more-complicated-error-traceback" id="toc-more-complicated-error-traceback" class="nav-link" data-scroll-target="#more-complicated-error-traceback">More complicated error traceback</a></li>
+  <li><a href="#extra-source-of-bugs-during-dispatch" id="toc-extra-source-of-bugs-during-dispatch" class="nav-link" data-scroll-target="#extra-source-of-bugs-during-dispatch">Extra source of bugs during dispatch</a></li>
+  </ul></li>
+  <li><a href="#where-should-the-generic-methods-live" id="toc-where-should-the-generic-methods-live" class="nav-link" data-scroll-target="#where-should-the-generic-methods-live">Where should the generic &amp; methods live?</a>
+  <ul class="collapse">
+  <li><a href="#where-should-the-generic-live" id="toc-where-should-the-generic-live" class="nav-link" data-scroll-target="#where-should-the-generic-live">Where should the generic live?</a></li>
+  <li><a href="#where-should-the-methods-live" id="toc-where-should-the-methods-live" class="nav-link" data-scroll-target="#where-should-the-methods-live">Where should the methods live?</a>
+  <ul class="collapse">
+  <li><a href="#method-in-the-class-package" id="toc-method-in-the-class-package" class="nav-link" data-scroll-target="#method-in-the-class-package">Method in the class package</a></li>
+  <li><a href="#method-in-the-generic-package" id="toc-method-in-the-generic-package" class="nav-link" data-scroll-target="#method-in-the-generic-package">Method in the generic package</a></li>
+  <li><a href="#coordination-between-maintainers" id="toc-coordination-between-maintainers" class="nav-link" data-scroll-target="#coordination-between-maintainers">Coordination between maintainers</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>To build a tight and well-integrated data pipeline, it may be desirable to rely on <a href="https://en.wikipedia.org/wiki/Object-oriented_programming">object orientation (OO)</a> to automatically pass valuable information from one step to the other. OO and data classes can also act as a compatibility layer standardising outputs from various tools under a common structure.</p>
+<p>But many packages and software start as standalone projects, and don’t always stem from a careful consideration of the larger ecosystem. In this situation, developers often see little benefit of using an OO system in their project initially.</p>
+<p>But as the project matures, and as the position of the tool in the wider ecosystem becomes clearer, they may want to start using OO to benefit from the better integration it may provide with other tools upstream and downstream in the data pipeline. However, by then, their tool likely has an established community of users, and it is important to tread carefully with breaking changes.</p>
+<p>In this blog post, we show that it’s possible to start using an S3 OO system almost invisibly in your R package, with minimal disruption to your users. We detail some minor changes that will nonetheless occur, and which pitfalls you should be looking out for. Finally, we take a step back and reflect how you should ensure you are a good open-source citizen in this endeavour.</p>
+<section id="benefits" class="level1">
+<h1>Benefits</h1>
+<p>Let’s reuse the example function from <a href="../statistical-correctness/">one of our previous posts</a>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>centroid <span class="ot">&lt;-</span> <span class="cf">function</span>(coords, weights) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since we wrote and released this function, someone may have designed a clever data class to store coordinates of a set of points and their weights. Let’s imagine they use the following class that they call <code>pointset</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>example_pointset <span class="ot">&lt;-</span> <span class="fu">structure</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">coords =</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">7</span>)),</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">weights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">class =</span> <span class="st">"pointset"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>They may also have developed nice utilities for this class so there is a clear motivation for you to integrate with their class since it’s less work you’ll have to do. Plus, you immediately become compatible with any package that uses the same class.</p>
+<p>We will not spend too much time on the practical steps to operate this conversion since this is already covered in details in <a href="https://adv-r.hadley.nz/s3.html">the dedicated chapter of Advanced R, by Hadley Wickham</a>, as well as <a href="https://njtierney.github.io/r/missing%20data/rbloggers/2016/11/06/simple-s3-methods/">this blog post from Nick Tierney</a> <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. But the final result would be:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Compute the centroid of a set of points</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param coords Coordinates of the points as a list of vectors. Each element of</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#'   the list is a point.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param weights Vector of weights applied to each of the points</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns A vector of coordinates of the same length of each element of </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#'   `coords`</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#'   </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#' @examples</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#' centroid(</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#'   list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)),</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#'   weights = c(1, 1, 1)</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#' )</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>centroid <span class="ot">&lt;-</span> <span class="cf">function</span>(coords, weights) {</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">UseMethod</span>(<span class="st">"centroid"</span>) </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#' @rdname centroid</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>centroid.default <span class="ot">&lt;-</span> <span class="cf">function</span>(coords, weights) {</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ...</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="co">#' @rdname centroid</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>centroid.pointset <span class="ot">&lt;-</span> <span class="cf">function</span>(coords, <span class="at">weights =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">centroid</span>(coords<span class="sc">$</span>coords, coords<span class="sc">$</span>weights)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="what-subtle-changes-should-you-be-looking-out-for" class="level1">
+<h1>What subtle changes should you be looking out for?</h1>
+<p>You may already have noticed a couple of minor changes in the example above but some changes are even less evident and easy to forget, hence this blog post.</p>
+<section id="all-methods-must-have-the-same-arguments-as-the-generic" class="level2">
+<h2 class="anchored" data-anchor-id="all-methods-must-have-the-same-arguments-as-the-generic">All methods must have the same arguments as the generic</h2>
+<p>You can see that the method for <code>pointset</code> class, <code>centroid.pointset()</code> has a <code>weights</code> argument, even though it is not used because weights are already contained in the <code>coords</code> object. This seems clunky and potentially confusing for users. But this is mandatory because all methods must have the same arguments as the generic.</p>
+<p>Another option here could have been to remove <code>weights</code> from the generic, and add <code>...</code> instead, thus allowing to pass <code>weights</code> as an extra argument only in selected methods. This is more idiomatic in R, and in line with the <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Generic-functions-and-methods">recommendation from the official ‘Writing R Extensions’ document (“always keep generics simple”)</a>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>centroid <span class="ot">&lt;-</span> <span class="cf">function</span>(coords, ...) { </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">UseMethod</span>(<span class="st">"centroid"</span>) </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @rdname centroid</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>centroid.default <span class="ot">&lt;-</span> <span class="cf">function</span>(coords, weights, ...) {</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  coords_mat <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, coords)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">apply</span>(coords_mat, <span class="dv">2</span>, weighted.mean, <span class="at">w =</span> weights))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But this extra <code>...</code> argument, which is documented as “ignored”, may be confusing as well.</p>
+</section>
+<section id="more-complex-documentation-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="more-complex-documentation-presentation">More complex documentation presentation</h2>
+<p>On the topic of arguments, another pitfall related to the conversion to an S3 generic is the change in the documentation. Below is a collage of before / after the change. This is quite minor and some users may not even notice it but I remember it was very confusing to me when I started using R and I didn’t really know what S3 or OO was: “what do you mean, ‘Default S3 method’, which case applies to me?”</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-bottom">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="before_conversion.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="after_conversion.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Screenshot of the <code>centroid()</code> documentation after conversion to an S3 generic</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>The answer is that “Default S3 method” lists the arguments for <code>centroid.default()</code>, i.e., the method which is used if no other method is defined for your class. Arguments for all methods are usually documented together but you should only focus on those present in the call after the comment stating “S3 method for class ‘XXX’” for the class you’re working with.</p>
+</section>
+<section id="more-complicated-error-traceback" class="level2">
+<h2 class="anchored" data-anchor-id="more-complicated-error-traceback">More complicated error traceback</h2>
+<p>Another situation where converting to an S3 adds an extra layer of complexity is where you are trying to follow the error <a href="https://en.wikipedia.org/wiki/Stack_trace">traceback</a>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">centroid</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="error_trace.png" class="img-fluid"></p>
+<p>In this example, we see one extra line that did not exist when <code>centroid()</code> was a regular function, rather than a generic:</p>
+<blockquote class="blockquote">
+<p>centroid.default(3) at centroid.R#19</p>
+</blockquote>
+<p>This line corresponds to the dispatch operation.</p>
+<p>However, this slight difference in behaviour is likely not a big issue as we mostly expect experienced users to interact with the traceback. These users are likely to be familiar with S3 dispatch and understand the traceback in any case.</p>
+</section>
+<section id="extra-source-of-bugs-during-dispatch" class="level2">
+<h2 class="anchored" data-anchor-id="extra-source-of-bugs-during-dispatch">Extra source of bugs during dispatch</h2>
+<p>On a related note, the extra step introduced by this conversion to generic is another potential source of bugs. This doesn’t really impact your users directly but it does mean that as a developer, you will maintaining slightly more complex code and you will need to be more careful when making any changes. However, as always, a robust testing suite should help you catch any error before it makes it to production.</p>
+</section>
+</section>
+<section id="where-should-the-generic-methods-live" class="level1">
+<h1>Where should the generic &amp; methods live?</h1>
+<p>In the previous section, we mentioned that you may want to rely on existing, established S3 classes. How does it work in practice when you want to add a method for a class outside of your package? Do you need to import the package where the class is defined? On the other side of the fence, as a class developer, is it okay to provide methods for generics provided in other packages? If you have the choice, should the method live in the package defining the generic or the class?</p>
+<section id="where-should-the-generic-live" class="level2">
+<h2 class="anchored" data-anchor-id="where-should-the-generic-live">Where should the generic live?</h2>
+<p>The generic should always live in the package implementing the actual computation in the function in the first place. For example, if you defined the original <code>centroid()</code> function in a package called geometryops, the S3 generic should also be defined in that package, not in the package defining the <code>pointset</code> class.</p>
+<p>It is possible in theory to overwrite a function defined by another package with a generic (“overloading”). For example, we could overload base R <code>table()</code> function with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="cf">function</span>(...) { </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">UseMethod</span>(...)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>table.default <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  ...,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">exclude =</span> <span class="cf">if</span> (useNA <span class="sc">==</span> <span class="st">"no"</span>) <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NaN</span>),</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">useNA =</span> <span class="fu">c</span>(<span class="st">"no"</span>, <span class="st">"ifany"</span>, <span class="st">"always"</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dnn =</span> <span class="fu">list.names</span>(...), <span class="at">deparse.level =</span> <span class="dv">1</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>) {</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a> base<span class="sc">::</span><span class="fu">table</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  ...,</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">exclude =</span> exclude,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">useNA =</span> useNA,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">dnn =</span> dnn</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a> )</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>But this is generally considered bad practice, and possibly rude <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. As a rule of thumb, you should usually avoid:</p>
+<ul>
+<li>name collisions with functions from other packages (especially base or recommended package);</li>
+<li>light wrappers around a function from another package as this may be seen as an attempt to steal citations and credit.</li>
+</ul>
+</section>
+<section id="where-should-the-methods-live" class="level2">
+<h2 class="anchored" data-anchor-id="where-should-the-methods-live">Where should the methods live?</h2>
+<p>For methods, there is more flexibility than for generics. They could either in the package defining the class, or in the package defining the generic. Let’s present the practical setup in both cases, as well as each strategy pros &amp; cons.</p>
+<section id="method-in-the-class-package" class="level3">
+<h3 class="anchored" data-anchor-id="method-in-the-class-package">Method in the class package</h3>
+<p>This is the strategy used when you defined a new class and provide it with a <code>print()</code>, a <code>summary()</code>, or a <code>plot()</code> method. The generics for these functions are defined in R base.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plot.myclass <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, ...) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># code for a beautiful plot for your custom class</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you opt for this strategy, you will need to depend on the package providing the method, as <code>Imports</code>. For example, a package defining a <code>fit.myclass()</code> method for the <code>fit()</code> generic defined in the <a href="https://generics.r-lib.org/">generics</a> package would have the following <code>DESCRIPTION</code> and <code>NAMESPACE</code>.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>DESCRIPTION</strong></pre>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  generics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>fit.myclass.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' @importFrom generics fit</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>fit.myclass <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>NAMESPACE</strong></pre>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generated by roxygen2: do not edit by hand</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">S3method</span>(fit,myclass)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">importFrom</span>(generics,fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Importing the generic
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s worth insisting that you need to import the generic in your <code>NAMESPACE</code> for the method to be recognized and exported correctly by roxygen2. In this specific situation, simply explicitly prefixing the generic call (<code>generic::fit()</code>) is not enough.</p>
+</div>
+</div>
+<p>But this can lead to a <a href="https://www.mail-archive.com/r-package-devel@r-project.org/msg02720.html">rapid increase in the number of dependencies</a> if you provide methods for generics from various packages. Since R 3.6, you can also put generics in <code>Suggests</code> and <a href="https://roxygen2.r-lib.org/articles/namespace.html#s3-methods-for-generics-in-suggested-packages">use delayed assignment</a>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>DESCRIPTION</strong></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Suggests</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">  generics</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>fit.myclass.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @exportS3Method generics::fit</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fit.myclass <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>NAMESPACE</strong></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generated by roxygen2: do not edit by hand</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">S3method</span>(generics<span class="sc">::</span>fit,myclass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="method-in-the-generic-package" class="level3">
+<h3 class="anchored" data-anchor-id="method-in-the-generic-package">Method in the generic package</h3>
+<p>Alternatively, you can define the method in the package defining the generic. This is the approach taken in the <a href="https://easystats.github.io/report/">report package</a> from example, which defines the <code>report()</code> generic and methods for various model outputs produced by different package.</p>
+<p>In theory, no <code>Imports</code> or <code>Suggests</code> is required here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mygeneric <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) { </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">UseMethod</span>(x)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>mygeneric.externalclass <span class="ot">&lt;-</span> <span class="cf">function</span>(x, ...) {</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># your code here</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>However, if you end up providing many methods for a specific class, you could put the package defining it in the uncommon <code>Enhances</code> field. <code>Enhances</code> is defined in ‘<a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a>’ as:</p>
+<blockquote class="blockquote">
+<p>The ‘Enhances’ field lists packages “enhanced” by the package at hand, e.g., by providing methods for classes from these packages.</p>
+</blockquote>
+<p>It may be a good idea to explicitly signal the strong relationship between both packages so that the package defining the method is checked as a reverse dependency, and informed of potential breaking changes as discussed below. You may see an example of this in the <a href="https://cran.r-project.org/package=slam">slam package</a>, which provides his methods for both base matrices and sparse matrices, as defined in the Matrix and the spam packages.</p>
+</section>
+<section id="coordination-between-maintainers" class="level3">
+<h3 class="anchored" data-anchor-id="coordination-between-maintainers">Coordination between maintainers</h3>
+<p>No matter the strategy you end up choosing, we strongly recommend you keep an open communication channel between the class package and the generic package developer (provided they are not the same person) as breaking changes will impact both parties.</p>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>As we’ve seen here, there are clear benefits to converting your standard function to an S3 generic. This can be done <strong>almost</strong> transparently but we’ve highlighting some subtle changes you may want to consider before pulling the switch.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Spreading the S3 love
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you like S3 and find it helpful to convert your function to an S3 class, you should keep propagating the S3 love by also adding an S3 class to your function output.</p>
+<p>With this in mind, in the very first example where we converted our <code>centroid()</code> function to an S3 generic to handle <code>pointset</code> objects, we could also make our output a <code>pointset</code> object.</p>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Note that we focus here on the S3 framework but R has other object orientation frameworks, as discussed in <a href="https://adv-r.hadley.nz/oo.html">the relevant section of the ‘Advanced R’ book by Hadley Wickham</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Every rule has its exceptions though such as the <a href="https://generics.r-lib.org/">generics</a> package, built by prominent members of the R developer community, which overloads base R functions such as <code>as.factor()</code> or <code>as.difftime()</code>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

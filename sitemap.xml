@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://epiverse-trace.github.io/index.html</loc>
-    <lastmod>2023-02-16T18:31:40.908Z</lastmod>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/blog.html</loc>
-    <lastmod>2023-02-16T18:31:41.620Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
-    <lastmod>2023-02-16T18:31:42.251Z</lastmod>
+    <lastmod>2023-02-20T07:41:52.673Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
-    <lastmod>2023-02-16T18:31:43.435Z</lastmod>
+    <lastmod>2023-02-20T07:41:54.053Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
+    <lastmod>2023-02-20T07:41:54.701Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
+    <lastmod>2023-02-20T07:41:55.429Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/index.html</loc>
+    <lastmod>2023-02-20T07:41:55.697Z</lastmod>
   </url>
 </urlset>

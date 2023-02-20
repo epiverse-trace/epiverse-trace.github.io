@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
     ]
