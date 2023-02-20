@@ -3,7 +3,6 @@ title: "Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Co
 author: "Hugo Gruson"
 date: "2023-02-20"
 categories: [R package, object orientation, S3, interoperability]
-image: "image.jpg"
 format:
   html: 
     toc: true
