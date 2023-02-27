@@ -1,0 +1,61 @@
+---
+title: "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2023-02-20"
+categories: [data science, pipelines, interoperability, community, deRSE23]
+image: "diversegroup.png"
+format:
+  html: 
+    toc: true
+---
+
+This presentation was given as part of [*deRSE23 - Conference for Research Software Engineering in Germany*](https://de-rse23.sciencesconf.org/), in the *Integration vs. Modularity* session.
+
+## Abstract
+
+There is an increasing trend of packaging and sharing tools in the epidemiology
+research community. But these tools remain difficult to use and to integrate in
+a data analysis pipeline. There is a need for a more integrated approach,
+ensuring that the various tools work well with one another. For example, minimal
+data wrangling should be needed to transform the output of one tool before
+passing it to the next tool down the data analysis pipeline. Similarly, various
+alternatives for a single step of the pipeline should as much as possible use
+the same inputs and return the same outputs. In this talk, I will present the
+Epiverse-TRACE project, which collaborates with many R package developers in
+epidemiology to integrate their tools in a unified universe. Indeed, the unique
+and challenging feature of Epiverse is that it doesn’t intend to create a
+unified universe from scratch, but instead aims at updating existing external
+pieces of software to better work together. This talk will explain how we
+identify the key parts that should be updated, and how we make these updates
+with minimal disruption to the individual package developers and established
+community of users.
+
+## Slides
+
+```{=html}
+<iframe width="780" height="500" src="Gruson-Hugo-Epiverse-TRACE.pdf" title="deRSE23 slides"></iframe>
+```
+
+## Questions from the audience
+
+> How do you incentivize developers to collaborate with you?
+
+As mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.
+
+We also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.
+
+As an anecdotal piece of evidence, [Nick Tierney](https://njtierney.github.io/Bio/), the maintainer of the [conmat R package](https://njtierney.github.io/conmat/), has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.
+
+> How do you ensure the long-term sustainability of this project?
+
+This is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don't provide specific solutions, besides conforming to best practices.
+
+However, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the [lottery factor](https://en.wikipedia.org/wiki/Bus_factor).
+
+## See also
+
+- The [companion post on our blog](../../posts/s3-generic)
+
+
