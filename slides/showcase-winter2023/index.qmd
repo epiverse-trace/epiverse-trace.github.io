@@ -1,0 +1,117 @@
+---
+title: "Epiverse-TRACE Winter 2023 showcase"
+author: 
+  - name: "Anna Carnegie"
+  - name: "Pratik Gupte"
+    orcid: "0000-0001-5294-7819"
+  - name: "Joshua Lambert"
+    orcid: "0000-0001-5218-3046"
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2023-01-25"
+categories: [epiparameter, finalsize, episoap, showcase]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+This showcase is part of a regular cycle of online meetings to present tools for
+epidemiology.
+
+<details>
+<summary>Schedule</summary>
+
++----------------+-----------------------------+-----------------------------+
+| Time           | Item                        | Presenter                   |
++================+=============================+=============================+
+| 16:00 - 16:05  | Welcome                     | Anna                        |
+|                |                             |                             |
+|                | -   Intro to Epiverse-TRACE |                             |
+|                |                             |                             |
+|                | -   Purpose of the session  |                             |
+|                |                             |                             |
+|                | -   Housekeeping - 10 mins  |                             |
+|                |     per PKG, 5 min Q&A      |                             |
+|                |     after each. Room at the |                             |
+|                |     end for open discussion |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:05 - 16:06  | One line intro to Pratik &  | Anna                        |
+|                | finalsize                   |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:06 - 16:16  | finalsize demo              | Pratik                      |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKG,     |                             |
+|                |     problem it is trying to |                             |
+|                |     address)                |                             |
+|                |                             |                             |
+|                | -   Features                |                             |
+|                |                             |                             |
+|                | -   Tips and tricks         |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:16 - 16:20  | Q & A from the floor        | Pratik, attendees (Anna     |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 16:20 - 16:21  | One line intro to Josh &    | Anna                        |
+|                | epiparameter                |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:21 - 16:31  | epiparameter demo:          | Josh                        |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKG,     |                             |
+|                |     problem it is trying to |                             |
+|                |     address)                |                             |
+|                |                             |                             |
+|                | -   Features                |                             |
+|                |                             |                             |
+|                | -   Tips and tricks         |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:31 - 16:35  | Q & A from the floor        | Josh, attendees (Anna       |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 16:35 - 16:36  | One line intro to Hugo &    | Anna                        |
+|                | episoap                     |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:36 - 16:46  | episoap demo:               | Hugo                        |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKG,     |                             |
+|                |     problem it is trying to |                             |
+|                |     address)                |                             |
+|                |                             |                             |
+|                | -   Features                |                             |
+|                |                             |                             |
+|                | -   Tips and tricks         |                             |
++----------------+-----------------------------+-----------------------------+
+| 16:46 - 16:50  | Q & A from the floor        | Hugo, attendees (Anna       |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 16:50 - 16:58  | Open discussion             | Attendees, all (Anna        |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 16:58 - 17:00  | Thank you and close         | Anna                        |
++----------------+-----------------------------+-----------------------------+
+
+</details>
+
+
+## finalsize slides
+
+```{=html}
+<iframe width="780" height="500" src="finalsize.pdf" title="finalsize slides showcase winder 2023"></iframe>
+```
+
+## epiparameter slides
+
+```{=html}
+<iframe width="780" height="500" src="epiparameter.pdf" title="epiparameter slides showcase winder 2023"></iframe>
+```
+
+## episoap slides
+
+```{=html}
+<iframe width="780" height="500" src="episoap.pdf" title="episoap slides showcase winder 2023"></iframe>
+```
