@@ -107,11 +107,11 @@ epidemiology.
 ## epiparameter slides
 
 ```{=html}
-<iframe width="780" height="500" src="epiparameter.pdf" title="epiparameter slides showcase winder 2023"></iframe>
+<iframe width="780" height="438.75" src="epiparameter.pdf" title="epiparameter slides showcase winder 2023"></iframe>
 ```
 
 ## episoap slides
 
 ```{=html}
-<iframe width="780" height="500" src="episoap.pdf" title="episoap slides showcase winder 2023"></iframe>
+<iframe width="780" height="438.75" src="episoap.pdf" title="episoap slides showcase winder 2023"></iframe>
 ```
