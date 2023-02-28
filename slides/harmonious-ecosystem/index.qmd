@@ -35,7 +35,7 @@ community of users.
 ## Slides
 
 ```{=html}
-<iframe width="780" height="500" src="Gruson-Hugo-Epiverse-TRACE.pdf" title="deRSE23 slides"></iframe>
+<iframe width="780" height="438.75" src="Gruson-Hugo-Epiverse-TRACE.pdf" title="deRSE23 slides"></iframe>
 ```
 
 ## Questions from the audience
