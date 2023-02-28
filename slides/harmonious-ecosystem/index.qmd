@@ -1,5 +1,5 @@
 ---
-title: "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE"
+title: "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project"
 author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
