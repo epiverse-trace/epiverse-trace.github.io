@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Epiverse-TRACE developer space -</title>
+<title>Epiverse-TRACE developer space - Presentations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,9 +30,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -57,6 +60,35 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
 
 <script type="text/javascript">
@@ -67,11 +99,12 @@ gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-</head>
+<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="presentations.xml"></head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -96,7 +129,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html">
+    <a class="nav-link active" href="./presentations.html" aria-current="page">
  <span class="menu-text">Presentations</span></a>
   </li>  
 </ul>
@@ -118,28 +151,140 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Presentations</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="community">community <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="deRSE23">deRSE23 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="epiparameter">epiparameter <span class="quarto-category-count">(1)</span></div><div class="category" data-category="episoap">episoap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="finalsize">finalsize <span class="quarto-category-count">(1)</span></div><div class="category" data-category="interoperability">interoperability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="pipelines">pipelines <span class="quarto-category-count">(1)</span></div><div class="category" data-category="showcase">showcase <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="Epiverse-RGB.png" class="about-image
-  rectangle " style="width: 15em;">
- <main class="content" id="quarto-document-content">
-<p>This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.</p>
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://github.com/epiverse-trace" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="data science,pipelines,interoperability,community,deRSE23" data-listing-date-sort="1676851200000" data-listing-file-modified-sort="1677580941816" data-listing-reading-time-sort="2.12">
+<div class="thumbnail">
+<p><a href="./slides/harmonious-ecosystem/index.html"> <img src="./slides/harmonious-ecosystem/diversegroup.png" class="thumnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./slides/harmonious-ecosystem/index.html">
+<h3 class="no-anchor listing-title">
+From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
+data science
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('pipelines'); return false;">
+pipelines
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('interoperability'); return false;">
+interoperability
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('community'); return false;">
+community
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('deRSE23'); return false;">
+deRSE23
 </div>
 </div>
- <!-- /main -->
+<a href="./slides/harmonious-ecosystem/index.html">
+<div class="listing-description">
+This presentation was given as part of <em>deRSE23 - Conference for Research Software Engineering in Germany</em>, in the <em>Integration vs.&nbsp;Modularity</em> session.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./slides/harmonious-ecosystem/index.html">
+<div class="listing-date">
+Feb 20, 2023
+</div>
+<div class="listing-author">
+Hugo Gruson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="epiparameter,finalsize,episoap,showcase" data-listing-date-sort="1674604800000" data-listing-file-modified-sort="1677580941828" data-listing-reading-time-sort="16.43">
+<div class="thumbnail">
+<a href="./slides/showcase-winter2023/index.html">
+<div class="thumbnail-image">
+
+</div>
+</a><p><a href="./slides/showcase-winter2023/index.html"></a></p>
+</div>
+<div class="body">
+<a href="./slides/showcase-winter2023/index.html">
+<h3 class="no-anchor listing-title">
+Epiverse-TRACE Winter 2023 showcase
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('epiparameter'); return false;">
+epiparameter
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('finalsize'); return false;">
+finalsize
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('episoap'); return false;">
+episoap
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('showcase'); return false;">
+showcase
+</div>
+</div>
+<a href="./slides/showcase-winter2023/index.html">
+<div class="listing-description">
+This showcase is part of a regular cycle of online meetings to present tools for epidemiology.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./slides/showcase-winter2023/index.html">
+<div class="listing-date">
+Jan 25, 2023
+</div>
+<div class="listing-author">
+Anna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -160,6 +305,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;

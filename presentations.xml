@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Epiverse-TRACE developer space</title>
+<link>https://epiverse-trace.github.io/presentations.html</link>
+<atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
+<description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
+<generator>quarto-1.2.335</generator>
+<lastBuildDate>Mon, 20 Feb 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This presentation was given as part of <a href="https://de-rse23.sciencesconf.org/"><em>deRSE23 - Conference for Research Software Engineering in Germany</em></a>, in the <em>Integration vs.&nbsp;Modularity</em> session.</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>There is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users.</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="Gruson-Hugo-Epiverse-TRACE.pdf" title="deRSE23 slides"></iframe>
+</section>
+<section id="questions-from-the-audience" class="level2">
+<h2 class="anchored" data-anchor-id="questions-from-the-audience">Questions from the audience</h2>
+<blockquote class="blockquote">
+<p>How do you incentivize developers to collaborate with you?</p>
+</blockquote>
+<p>As mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.</p>
+<p>We also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.</p>
+<p>As an anecdotal piece of evidence, <a href="https://njtierney.github.io/Bio/">Nick Tierney</a>, the maintainer of the <a href="https://njtierney.github.io/conmat/">conmat R package</a>, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.</p>
+<blockquote class="blockquote">
+<p>How do you ensure the long-term sustainability of this project?</p>
+</blockquote>
+<p>This is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.</p>
+<p>However, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the <a href="https://en.wikipedia.org/wiki/Bus_factor">lottery factor</a>.</p>
+</section>
+<section id="see-also" class="level2">
+<h2 class="anchored" data-anchor-id="see-also">See also</h2>
+<ul>
+<li>The <a href="../../posts/s3-generic">companion post on our blog</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>data science</category>
+  <category>pipelines</category>
+  <category>interoperability</category>
+  <category>community</category>
+  <category>deRSE23</category>
+  <guid>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</guid>
+  <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://epiverse-trace.github.io/slides/harmonious-ecosystem/diversegroup.png" medium="image" type="image/png" height="122" width="144"/>
+</item>
+<item>
+  <title>Epiverse-TRACE Winter 2023 showcase</title>
+  <dc:creator>Anna Carnegie</dc:creator>
+  <dc:creator>Pratik Gupte</dc:creator>
+  <dc:creator>Joshua Lambert</dc:creator>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This showcase is part of a regular cycle of online meetings to present tools for epidemiology.</p>
+<details>
+<summary>
+Schedule
+</summary>
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Item</th>
+<th>Presenter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>16:00 - 16:05</td>
+<td><p>Welcome</p>
+<ul>
+<li><p>Intro to Epiverse-TRACE</p></li>
+<li><p>Purpose of the session</p></li>
+<li><p>Housekeeping - 10 mins per PKG, 5 min Q&amp;A after each. Room at the end for open discussion</p></li>
+</ul></td>
+<td>Anna</td>
+</tr>
+<tr class="even">
+<td>16:05 - 16:06</td>
+<td>One line intro to Pratik &amp; finalsize</td>
+<td>Anna</td>
+</tr>
+<tr class="odd">
+<td>16:06 - 16:16</td>
+<td><p>finalsize demo</p>
+<ul>
+<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
+<li><p>Features</p></li>
+<li><p>Tips and tricks</p></li>
+</ul></td>
+<td>Pratik</td>
+</tr>
+<tr class="even">
+<td>16:16 - 16:20</td>
+<td>Q &amp; A from the floor</td>
+<td>Pratik, attendees (Anna moderates)</td>
+</tr>
+<tr class="odd">
+<td>16:20 - 16:21</td>
+<td>One line intro to Josh &amp; epiparameter</td>
+<td>Anna</td>
+</tr>
+<tr class="even">
+<td>16:21 - 16:31</td>
+<td><p>epiparameter demo:</p>
+<ul>
+<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
+<li><p>Features</p></li>
+<li><p>Tips and tricks</p></li>
+</ul></td>
+<td>Josh</td>
+</tr>
+<tr class="odd">
+<td>16:31 - 16:35</td>
+<td>Q &amp; A from the floor</td>
+<td>Josh, attendees (Anna moderates)</td>
+</tr>
+<tr class="even">
+<td>16:35 - 16:36</td>
+<td>One line intro to Hugo &amp; episoap</td>
+<td>Anna</td>
+</tr>
+<tr class="odd">
+<td>16:36 - 16:46</td>
+<td><p>episoap demo:</p>
+<ul>
+<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
+<li><p>Features</p></li>
+<li><p>Tips and tricks</p></li>
+</ul></td>
+<td>Hugo</td>
+</tr>
+<tr class="even">
+<td>16:46 - 16:50</td>
+<td>Q &amp; A from the floor</td>
+<td>Hugo, attendees (Anna moderates)</td>
+</tr>
+<tr class="odd">
+<td>16:50 - 16:58</td>
+<td>Open discussion</td>
+<td>Attendees, all (Anna moderates)</td>
+</tr>
+<tr class="even">
+<td>16:58 - 17:00</td>
+<td>Thank you and close</td>
+<td>Anna</td>
+</tr>
+</tbody>
+</table>
+</details>
+<section id="finalsize-slides" class="level2">
+<h2 class="anchored" data-anchor-id="finalsize-slides">finalsize slides</h2>
+<iframe width="780" height="500" src="finalsize.pdf" title="finalsize slides showcase winder 2023"></iframe>
+</section>
+<section id="epiparameter-slides" class="level2">
+<h2 class="anchored" data-anchor-id="epiparameter-slides">epiparameter slides</h2>
+<iframe width="780" height="500" src="epiparameter.pdf" title="epiparameter slides showcase winder 2023"></iframe>
+</section>
+<section id="episoap-slides" class="level2">
+<h2 class="anchored" data-anchor-id="episoap-slides">episoap slides</h2>
+<iframe width="780" height="500" src="episoap.pdf" title="episoap slides showcase winder 2023"></iframe>
+
+
+</section>
+
+ ]]></description>
+  <category>epiparameter</category>
+  <category>finalsize</category>
+  <category>episoap</category>
+  <category>showcase</category>
+  <guid>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</guid>
+  <pubDate>Wed, 25 Jan 2023 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

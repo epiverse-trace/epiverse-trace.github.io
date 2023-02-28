@@ -117,5 +117,75 @@
     "title": "Epiverse-TRACE developer space",
     "section": "",
     "text": "This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html",
+    "href": "slides/harmonious-ecosystem/index.html",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE",
+    "section": "",
+    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
+    "href": "slides/harmonious-ecosystem/index.html#abstract",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE",
+    "section": "Abstract",
+    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#slides",
+    "href": "slides/harmonious-ecosystem/index.html#slides",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE",
+    "section": "Questions from the audience",
+    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
+    "href": "slides/harmonious-ecosystem/index.html#see-also",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE",
+    "section": "See also",
+    "text": "See also\n\nThe companion post on our blog"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html",
+    "href": "slides/showcase-winter2023/index.html",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "",
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "finalsize slides",
+    "text": "finalsize slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "epiparameter slides",
+    "text": "epiparameter slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
+    "href": "slides/showcase-winter2023/index.html#episoap-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "episoap slides",
+    "text": "episoap slides"
+  },
+  {
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE\n\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
   }
 ]

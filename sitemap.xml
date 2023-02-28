@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://epiverse-trace.github.io/blog.html</loc>
-    <lastmod>2023-02-20T07:45:26.720Z</lastmod>
+    <lastmod>2023-02-28T10:44:11.451Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
-    <lastmod>2023-02-20T07:45:28.036Z</lastmod>
+    <lastmod>2023-02-28T10:44:12.995Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
-    <lastmod>2023-02-20T07:45:28.660Z</lastmod>
+    <lastmod>2023-02-28T10:44:13.811Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
-    <lastmod>2023-02-20T07:45:29.392Z</lastmod>
+    <lastmod>2023-02-28T10:44:14.787Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/index.html</loc>
-    <lastmod>2023-02-20T07:45:29.672Z</lastmod>
+    <lastmod>2023-02-28T10:44:15.143Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</loc>
+    <lastmod>2023-02-28T10:44:15.547Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</loc>
+    <lastmod>2023-02-28T10:44:15.987Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/presentations.html</loc>
+    <lastmod>2023-02-28T10:44:16.415Z</lastmod>
   </url>
 </urlset>

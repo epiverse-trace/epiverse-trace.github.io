@@ -6,5 +6,12 @@
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
     ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-winter2023/index.html"
+    ]
   }
 ]
