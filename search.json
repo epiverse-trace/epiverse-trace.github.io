@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Blog",
     "section": "",
-    "text": "Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/statistical-correctness/index.html",
