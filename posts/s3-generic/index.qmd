@@ -1,6 +1,8 @@
 ---
 title: "Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"
-author: "Hugo Gruson"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
 date: "2023-02-20"
 categories: [R package, object orientation, S3, interoperability]
 format:
