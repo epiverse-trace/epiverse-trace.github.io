@@ -1,6 +1,8 @@
 ---
 title: "Improving the C++ Code Quality of an Rcpp Package"
-author: "Pratik R Gupte"
+author:
+  - name: "Pratik Gupte"
+    orcid: "0000-0001-5294-7819"
 date: "2023-02-16"
 categories: [code quality, R package, Rcpp]
 format:
