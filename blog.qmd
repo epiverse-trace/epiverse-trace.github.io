@@ -8,7 +8,7 @@ listing:
   sort-ui: false
   filter-ui: false
   feed:
-    categories: [R package, posts]
+    categories: [R package, R, posts]
 page-layout: full
 title-block-banner: true
 ---
