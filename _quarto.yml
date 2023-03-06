@@ -17,6 +17,15 @@ website:
       - icon: twitter
         href: https://twitter.com/DataDotOrg
   google-analytics: "G-XZ471458FQ"
+  comments:
+    giscus:
+      repo: epiverse-trace/epiverse-trace.github.io
+      repo-id: R_kgDOIcolPw
+      category: Announcements
+      category-id: DIC_kwDOIcolP84CUsCj
+      mapping: title
+      reactions-enabled: true
+      loading: lazy
 format:
   html:
     theme: cosmo
