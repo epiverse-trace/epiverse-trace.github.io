@@ -39,7 +39,7 @@ To create the contact tracing database, a random number of contacts was generate
 
 <br>
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('images/Scenario1smq.png')
+knitr::include_graphics('Scenario1smq.png')
 ```
 <br>
 
@@ -131,7 +131,7 @@ Forecasting | Underlying assumption of a given R distribution, e.g., single tren
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('images/Scenario2smq.png')
+knitr::include_graphics('Scenario2smq.png')
 ```
 <br>
 
@@ -183,7 +183,7 @@ Attack rate | Not enough information provided
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('images/Scenario3smq.png')
+knitr::include_graphics('Scenario3smq.png')
 ```
 
 <br>
@@ -256,7 +256,7 @@ Spillover events | Missing data
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('images/Scenario4smq.png')
+knitr::include_graphics('Scenario4smq.png')
 ```
 
 <br>
@@ -291,7 +291,7 @@ Severity | Missing cases <br> Need for an R package for systematic censoring ana
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('images/Scenario5smq.png')
+knitr::include_graphics('Scenario5smq.png')
 ```
 
 <br>
