@@ -1,7 +1,7 @@
 ---
 title: "What should the first 100 lines of code written during an epidemic look like?"
 author: "Carmen Tamayo"
-date: "2023-01-12"
+date: "2023-03-07"
 categories:
   - outbreak analytics
   - 100 days workshop
