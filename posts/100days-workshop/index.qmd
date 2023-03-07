@@ -1,5 +1,5 @@
 ---
-title: "What should the first 100 lines of code written during an epidemic look like?"
+title: "What Should the First 100 Lines of Code Written During an Epidemic Look Like?"
 author: 
   - name: "Carmen Tamayo"
     orcid: "0000-0003-4184-2864"
