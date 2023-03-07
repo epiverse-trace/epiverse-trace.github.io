@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = F)
 
 This vignette summarises the findings from the _100 days and 100 lines of code_ workshop, hosted in December 2022 by [Epiverse-TRACE](https://data.org/news/epiverse-trace-a-values-based-approach-to-open-source-ecosystems/).
 
-To answer this question, we invited 40 experts, including academics, field epidemiologists, and software engineers, to take part in a 3-day workshop, where they discussed the current challenges, and potential solutions, in data analytic pipelines used to analyse epidemic data.
+To discuss how the first 100 lines of code during an epidemic should look like, we invited 40 experts, including academics, field epidemiologists, and software engineers, to take part in a 3-day workshop, where they discussed the current challenges, and potential solutions, in data analytic pipelines used to analyse epidemic data. In addition to highlighting existing technical solutions and their use cases, presentations on best practices in fostering collaboration across institutions and disciplines set the scene for the subsequent workshop scenario exercises.
 
 ### What R packages and tools are available to use during an epidemic?  
 To investigate this in a similar setting to what an outbreak response team would experience, workshop participants were divided into groups, and asked to develop a plausible epidemic scenario, that included:
@@ -39,7 +39,7 @@ To create the contact tracing database, a random number of contacts was generate
 
 <br>
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario1smq.png')
+knitr::include_graphics('images/Scenario1smq.png')
 ```
 <br>
 
@@ -55,9 +55,9 @@ knitr::include_graphics('Scenario1smq.png')
   + [`fitdisrplus`](https://cran.r-project.org/web/packages/fitdistrplus/index.html) to fit parameteric distributions to scenario data
   + [`epiparameter`](https://github.com/epiverse-trace/epiparameter) to extract delay distributions from respiratory pathogens
   + [`EpiNow2`](https://github.com/epiforecasts/EpiNow2) to fit reporting delays
-  + [`EpiEstim`](https://cran.r-project.org/web/packages/EpiEstim/index.html) / [`coarsedatatools`](https://cran.r-project.org/web/packages/coarseDataTools/index.html) to estimate incubation period of disease
+  + [`EpiEstim`](https://cran.r-project.org/web/packages/EpiEstim/index.html) / [`coarseDataTools`](https://cran.r-project.org/web/packages/coarseDataTools/index.html) to estimate generation time/serial interval of disease
   + [`epicontacts`](https://cran.r-project.org/web/packages/epicontacts/index.html)
-  + [`mixdiff`](https://rdrr.io/cran/RBesT/man/mixdiff.html) 
+  + [`mixdiff`](https://github.com/MJomaba/MixDiff) to estimate delay distributions and correct erroneous dates at the same time (still under development)
   
 * Population demographics
 
@@ -65,7 +65,7 @@ knitr::include_graphics('Scenario1smq.png')
   
 * Risk factors of infection
 
-  + Used [R4epi](https://www.r4epi.com) as a guide on how to create two-way tables and perform Chi-squared tests 
+  + Used [R4epis](https://r4epis.netlify.app/training/walk-through/univariate/) as a guide on how to create two-way tables and perform Chi-squared tests 
   
 * Severity of disease
 
@@ -79,8 +79,8 @@ knitr::include_graphics('Scenario1smq.png')
   
 * Epi curve and maps
 
-  + Used [`incidence`](https://cran.r-project.org/web/packages/incidence/vignettes/overview.html) and [`incidence2`](https://cran.r-project.org/web/packages/incidence2/vignettes/Introduction.html) for incidence calculation and visualisation
-  + [`rasterR`](https://cran.r-project.org/web/packages/raster/index.html) to extract spatial information from library of shapefiles
+  + Used [`incidence`](https://cran.r-project.org/web/packages/incidence/) and [`incidence2`](https://cran.r-project.org/web/packages/incidence2/) for incidence calculation and visualisation
+  + [`raster`](https://cran.r-project.org/web/packages/raster/index.html) to extract spatial information from library of shapefiles
 
 * Reproduction number
 
@@ -94,15 +94,16 @@ knitr::include_graphics('Scenario1smq.png')
   + [`EpiEstim`](https://cran.r-project.org/web/packages/EpiEstim/index.html)
   + [`R0`](https://cran.r-project.org/web/packages/R0/index.html)
   + [`outbreaker2`](https://cran.r-project.org/web/packages/outbreaker2/index.html)
+  + Used [this comparison table](https://github.com/mrc-ide/EpiEstim/blob/master/vignettes/alternative_software.Rmd) to choose the most appropriate package.
   
-* Superspreading, by using [this](https://github.com/mrc-ide/EpiEstim/blob/master/vignettes/alternative_software.Rmd) resource
+* Superspreading, by using these resources:
 
   + [`fitdistrplus`](https://cran.r-project.org/web/packages/fitdistrplus/index.html)
   + [`epicontacts`](https://cran.r-project.org/web/packages/epicontacts/index.html)
   
 * Epidemic projections
 
-  + [`incidence`](https://github.com/mrc-ide/EpiEstim/blob/master/vignettes/alternative_software.Rmd) R estimation using a loglinear model
+  + [`incidence`](https://cran.r-project.org/web/packages/incidence/vignettes/incidence_fit_class.html) R estimation using a loglinear model
   + [`projections`](https://cran.r-project.org/web/packages/projections/index.html) using Rt estimates, SI distributions and overdispersion estimates
   
 * Transmission chains and strain characterisation
@@ -114,13 +115,13 @@ knitr::include_graphics('Scenario1smq.png')
 Data analysis step  | Challenges 
 ------------- | ---------------------------------------
 Data cleaning | Not knowing what packages are available for this purpose
-Delay distributions | Dealing with right censoring <br> Accounting for multiple infectors
+Delay distributions | Dealing with right truncation <br> Accounting for multiple infectors
 Population demographics | Lacking tools that provide information about population by age, gender, etc.
 Risk factors of infection | Distinguishing between risk factors vs detecting differences in reporting frequencies among groups
-Severity of disease | Knowing the prevalence of disease (denominator) <br> Right censoring <br> Varying severity of diffeent strains
+Severity of disease | Knowing the prevalence of disease (denominator) <br> Right truncated data <br> Varying severity of different strains
 Contact matching | Missing data <br> Misspellings
 Epicurve and maps| NA dates entries not included <br> Reporting levels varying over time
-Offspring distribution | Right censoring <br> Time varying reporting efforts <br> Assumption of a single homogeneous epidemic <br> Importation of cases
+Offspring distribution | Right truncation <br> Time varying reporting efforts <br> Assumption of a single homogeneous epidemic <br> Importation of cases
 Forecasting | Underlying assumption of a given R distribution, e.g., single trend, homogeneous mixing, no saturation
 
 <br>
@@ -130,7 +131,7 @@ Forecasting | Underlying assumption of a given R distribution, e.g., single tren
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario2smq.png')
+knitr::include_graphics('images/Scenario2smq.png')
 ```
 <br>
 
@@ -172,7 +173,7 @@ knitr::include_graphics('Scenario2smq.png')
 Data analysis step  | Challenges 
 ------------- | ---------------------------------------
 Data anonymisation | Dealing with typos and missing data when generating random unique identifiers
-Reproduction number | Right censoring <br> Underestimation of cases due to reporting delays
+Reproduction number | Right truncation <br> Underestimation of cases due to reporting delays
 Projection of hospital bed requirements | Incomplete data (missing discharge date) <br> Undocumented functionality in R packages used
 Zoonotic transmission | Poor documentation <br> Unavailability of packages in R <br> Differentiation between zoonotic transmission and risk factors- need for population data
 Attack rate | Not enough information provided
@@ -182,7 +183,7 @@ Attack rate | Not enough information provided
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario3smq.png')
+knitr::include_graphics('images/Scenario3smq.png')
 ```
 
 <br>
@@ -207,7 +208,7 @@ knitr::include_graphics('Scenario3smq.png')
   + [`ggplot2`](https://ggplot2.tidyverse.org/reference/ggplot.html) to visualise data
   
 * Outbreak description
-  + [`sitrep`](https://rdrr.io/github/R4EPI/r4epi/man/sitrep-package.html) to generate reports
+  + [`sitrep`](https://github.com/R4EPI/sitrep) to generate reports
   
 * Visualisation of geographic data
   + [`sf`](https://cran.r-project.org/web/packages/sf/index.html) for static maps
@@ -221,8 +222,8 @@ knitr::include_graphics('Scenario3smq.png')
   + [`EpiNow2`](https://epiforecasts.io/EpiNow2/) and [`survival`](https://cran.r-project.org/web/packages/survival/index.html) to calculate CFR
   
 * Attack rate
-  + [`gadm`](https://rdrr.io/github/rspatial/geodata/man/gadm.html) to get population data
-  + [`epitabulate`](https://rdrr.io/github/R4EPI/epitabulate/) to describe data
+  + [`gadm`](https://github.com/rspatial/geodata) function to get population data
+  + [`epitabulate`](https://github.com/R4EPI/epitabulate/) to describe data
   + [`sf`](https://cran.r-project.org/web/packages/sf/index.html) and [`ggplot2`](https://ggplot2.tidyverse.org/reference/ggplot.html) to plot data
   
 * Forecasting
@@ -255,7 +256,7 @@ Spillover events | Missing data
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario4smq.png')
+knitr::include_graphics('images/Scenario4smq.png')
 ```
 
 <br>
@@ -263,8 +264,10 @@ knitr::include_graphics('Scenario4smq.png')
 ### Analytic pipeline for scenario 4 (analysed by group 5)
 
 * Data cleaning
+  + [tidyverse](https://www.tidyverse.org)
   + [`readxl`](https://readxl.tidyverse.org) to import data
   + [`dplyr`](https://dplyr.tidyverse.org) to remove names
+  + [`lubridate`](https://cran.r-project.org/web/packages/lubridate/index.html) to standardise date formats
   + Manually scanning through excel to check for errors
 * Reproduction number
   + [`EpiEstim`](https://cran.r-project.org/web/packages/EpiEstim/index.html)
@@ -278,6 +281,7 @@ Data analysis step  | Challenges
 ------------- | ---------------------------------------
 Data cleaning | No available R packages specific for epidemic data
 Reproduction number | Difficulty finding parameter estimations in the literature
+Serial interval | Lack of a tool to check for parameter estimates 
 Severity | Missing cases <br> Need for an R package for systematic censoring analysis
 
 <br>
@@ -287,7 +291,7 @@ Severity | Missing cases <br> Need for an R package for systematic censoring ana
 <br>
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario5smq.png')
+knitr::include_graphics('images/Scenario5smq.png')
 ```
 
 <br>
@@ -338,6 +342,3 @@ Delay distributions | Identifying the best method to calculate, or compare funct
 Severity of disease | Censoring and truncation <br> Underestimation of mild cases <br> Need database of age/gender pyramids for comparisons
 Forecasts | Need option for fitting with range of plausible pathogen serial intervals and comparing results <br> Changing reporting delays over time <br> Matching inputs/outputs between packages
 Zoonotic transmisison | Need for specific packages with clear documentation <br> How to compare simple trend-based forecasts
-
-
-
