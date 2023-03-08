@@ -5,6 +5,7 @@ author:
     orcid: "0000-0002-4094-1476"
 date: "2023-02-20"
 categories: [R, R package, object orientation, S3, interoperability]
+license: "CC BY"
 citation: true
 format:
   html: 

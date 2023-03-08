@@ -8,6 +8,7 @@ categories: [data science, pipelines, interoperability, community, deRSE23]
 image: "diversegroup.png"
 citation: true
 doi: "10.5281/zenodo.7697961"
+license: "CC BY"
 format:
   html: 
     toc: true
