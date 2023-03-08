@@ -6,6 +6,7 @@ author:
 date: "2023-02-13"
 categories: [code quality, R, R package, testing]
 image: "testing_error.png"
+license: "CC BY"
 citation: true
 format:
   html: 

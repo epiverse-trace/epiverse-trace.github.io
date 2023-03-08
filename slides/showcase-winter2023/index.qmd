@@ -10,6 +10,7 @@ author:
     orcid: "0000-0002-4094-1476"
 date: "2023-01-25"
 categories: [epiparameter, finalsize, episoap, showcase]
+license: "CC BY"
 citation: true
 format:
   html: 
