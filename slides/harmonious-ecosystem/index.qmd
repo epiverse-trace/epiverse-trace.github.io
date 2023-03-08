@@ -6,6 +6,7 @@ author:
 date: "2023-02-20"
 categories: [data science, pipelines, interoperability, community, deRSE23]
 image: "diversegroup.png"
+citation: true
 format:
   html: 
     toc: true

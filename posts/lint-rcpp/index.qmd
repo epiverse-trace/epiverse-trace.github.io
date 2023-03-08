@@ -5,6 +5,7 @@ author:
     orcid: "0000-0001-5294-7819"
 date: "2023-02-16"
 categories: [code quality, R, R package, Rcpp]
+citation: true
 format:
   html:
     toc: true
