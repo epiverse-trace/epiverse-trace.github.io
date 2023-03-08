@@ -52,7 +52,19 @@
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+  author = {Hugo Gruson},
+  title = {From Disconnected Elements to a Harmonious Ecosystem: {The}
+    {Epiverse-TRACE} Project},
+  date = {2023-02-20},
+  url = {https://epiverse-trace.github.io//slides/harmonious-ecosystem},
+  doi = {10.5281/zenodo.7697961},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
+Hugo Gruson. 2023. <span>“From Disconnected Elements to a Harmonious
+Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="https://doi.org/10.5281/zenodo.7697961">https://doi.org/10.5281/zenodo.7697961</a>.
+</div></div></section></div> ]]></description>
   <category>data science</category>
   <category>pipelines</category>
   <category>interoperability</category>
@@ -191,7 +203,18 @@ Schedule
 
 </section>
 
- ]]></description>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
+  author = {Anna Carnegie and Pratik Gupte and Joshua Lambert and Hugo
+    Gruson},
+  title = {Epiverse-TRACE {Winter} 2023 Showcase},
+  date = {2023-01-25},
+  url = {https://epiverse-trace.github.io//slides/showcase-winter2023},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas">
+Anna Carnegie, Pratik Gupte, Joshua Lambert, and Hugo Gruson. 2023.
+<span>“Epiverse-TRACE Winter 2023 Showcase.”</span> January 25, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-winter2023">https://epiverse-trace.github.io//slides/showcase-winter2023</a>.
+</div></div></section></div> ]]></description>
   <category>epiparameter</category>
   <category>finalsize</category>
   <category>episoap</category>

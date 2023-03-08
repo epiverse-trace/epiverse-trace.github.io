@@ -1,17 +1,80 @@
 [
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
     "section": "",
-    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n  \n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/statistical-correctness/index.html",
-    "href": "posts/statistical-correctness/index.html",
-    "title": "Ensuring & Showcasing the Statistical Correctness of your R Package",
+    "objectID": "slides/showcase-winter2023/index.html",
+    "href": "slides/showcase-winter2023/index.html",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
     "section": "",
-    "text": "We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.\n\nIt is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way 1.\nIn this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.\nThe approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the {testthat} R package, often used from unit testing:\n\n#' Compute the centroid of a set of points\n#'\n#' @param coords Coordinates of the points as a list of vectors. Each element of the \n#'   list is a point.\n#'\n#' @returns A vector of coordinates of the same length of each element of \n#'   `coords`\n#'   \n#' @examples\n#' centroid(list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)))\n#' \ncentroid <- function(coords) {\n\n  # ...\n  # Skip all the necessary input checking for the purpose of this demo\n  # ...\n\n  coords_mat <- do.call(rbind, coords)\n  \n  return(colMeans(coords_mat))\n  \n}\n\n\nCompare your results to the reference implementation\nThe most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.\nFor example, the {gemma2} R package, which re-implements the methods from the GEMMA tool written in C++, verifies that values produced by both tools match:\ntest_that(\"Results of gemma2 equal those of GEMMA v 0.97\", {\n  expect_equal(Sigma_ee, diag(c(18.559, 12.3672)), tolerance = 0.0001)\n  expect_equal(Sigma_uu, diag(c(82.2973, 41.9238)), tolerance = 0.0001)\n})\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\nlibrary(testthat)\n\ntest_that(\"centroid() in 1D produces the same results as mean()\", {\n\n  x <- list(1, 5, 3, 10, 5)\n\n  expect_identical(centroid(x), mean(unlist(x)))\n  \n})\n\nTest passed 🎉\n\n\n\n\nNote that even if a reference implementation doesn’t exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.\nHowever, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity 2.\n\n\nCompare to a theoretical upper or lower bound\nAn alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() is inside the hypercube containing the data points\", {\n  \n  x <- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n\n  expect_true(all(centroid(x) <= Reduce(pmax, x)))\n  expect_true(all(centroid(x) >= Reduce(pmin, x)))\n  \n})\n\nTest passed 🥳\n\n\n\n\nYou can see a real-life example of this kind of test in the {finalsize} R package. {finalsize} computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:\n# Calculates the upper limit of final size given the r0\n# The upper limit is given by a well mixed population\nupper_limit <- function(r0) {\n  f <- function(par) {\n    abs(1 - exp(-r0 * par[1]) - par[1])\n  }\n  opt <- optim(\n    par = 0.5, fn = f,\n    lower = 0, upper = 1,\n    method = \"Brent\"\n  )\n  opt\n}\n\n\nVerify that output is changing as expected when a single parameter varies\nAn even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() increases when coordinates from one point increase\", {\n  \n  x <- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n  \n  y <- x\n  y[[1]] <- y[[1]] + 1 \n\n  expect_true(all(centroid(x) < centroid(y)))\n  \n})\n\nTest passed 🎉\n\n\n\n\nAn example of this test in an actual R package can again be found in the finalsize package:\nr0_low <- 1.3\nr0_high <- 3.3\n\nepi_outcome_low <- final_size(\n  r0 = r0_low,\n  <...>\n)\nepi_outcome_high <- final_size(\n  r0 = r0_high,\n  <...>\n)\n\ntest_that(\"Higher values of R0 result in a higher number of infectious in all groups\", {\n  expect_true(\n    all(epi_outcome_high$p_infected > epi_outcome_low$p_infected)\n  )\n})\n\n\nConclusion: automated validation vs peer-review\nIn this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.\nMultiple voices in the community are pushing more towards peer-review as a proxy for quality and validity:\n\nWe would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.\nOn the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of bad Random Number Generators when running in parallel.\nBut on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.\nIdeally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.\n\n\n\n\n\nFootnotes\n\n\nBut see the “testing statistical software” post from Alex Hayes where he presents his process to determine if he deems a statistical package trustworthy or not, and rOpenSci Statistical Software Peer Review book.↩︎\nSetting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎"
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "finalsize slides",
+    "text": "finalsize slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "epiparameter slides",
+    "text": "epiparameter slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
+    "href": "slides/showcase-winter2023/index.html#episoap-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "episoap slides",
+    "text": "episoap slides"
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html",
+    "href": "slides/harmonious-ecosystem/index.html",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "",
+    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
+    "href": "slides/harmonious-ecosystem/index.html#abstract",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Abstract",
+    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#slides",
+    "href": "slides/harmonious-ecosystem/index.html#slides",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Questions from the audience",
+    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
+    "href": "slides/harmonious-ecosystem/index.html#see-also",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "See also",
+    "text": "See also\n\nThe companion post on our blog"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Epiverse-TRACE developer space",
+    "section": "",
+    "text": "This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally."
   },
   {
     "objectID": "posts/lint-rcpp/index.html",
@@ -63,6 +126,13 @@
     "text": "Conclusion\nIt is actually somewhat surprising that there does not seem to be a canonical linter for C++ code in {Rcpp} packages. The methods laid out here are an initial implementation developed for use with the {finalsize} package, and the considerations here are a starting point. We shall be continuously evaluating how we ensure the quality of our C++ code as we encounter more use cases while developing future Epiverse-TRACE packages."
   },
   {
+    "objectID": "posts/statistical-correctness/index.html",
+    "href": "posts/statistical-correctness/index.html",
+    "title": "Ensuring & Showcasing the Statistical Correctness of your R Package",
+    "section": "",
+    "text": "We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.\n\nIt is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way 1.\nIn this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.\nThe approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the {testthat} R package, often used from unit testing:\n\n#' Compute the centroid of a set of points\n#'\n#' @param coords Coordinates of the points as a list of vectors. Each element of the \n#'   list is a point.\n#'\n#' @returns A vector of coordinates of the same length of each element of \n#'   `coords`\n#'   \n#' @examples\n#' centroid(list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)))\n#' \ncentroid <- function(coords) {\n\n  # ...\n  # Skip all the necessary input checking for the purpose of this demo\n  # ...\n\n  coords_mat <- do.call(rbind, coords)\n  \n  return(colMeans(coords_mat))\n  \n}\n\n\nCompare your results to the reference implementation\nThe most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.\nFor example, the {gemma2} R package, which re-implements the methods from the GEMMA tool written in C++, verifies that values produced by both tools match:\ntest_that(\"Results of gemma2 equal those of GEMMA v 0.97\", {\n  expect_equal(Sigma_ee, diag(c(18.559, 12.3672)), tolerance = 0.0001)\n  expect_equal(Sigma_uu, diag(c(82.2973, 41.9238)), tolerance = 0.0001)\n})\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\nlibrary(testthat)\n\ntest_that(\"centroid() in 1D produces the same results as mean()\", {\n\n  x <- list(1, 5, 3, 10, 5)\n\n  expect_identical(centroid(x), mean(unlist(x)))\n  \n})\n\nTest passed 🌈\n\n\n\n\nNote that even if a reference implementation doesn’t exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.\nHowever, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity 2.\n\n\nCompare to a theoretical upper or lower bound\nAn alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() is inside the hypercube containing the data points\", {\n  \n  x <- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n\n  expect_true(all(centroid(x) <= Reduce(pmax, x)))\n  expect_true(all(centroid(x) >= Reduce(pmin, x)))\n  \n})\n\nTest passed 🥇\n\n\n\n\nYou can see a real-life example of this kind of test in the {finalsize} R package. {finalsize} computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:\n# Calculates the upper limit of final size given the r0\n# The upper limit is given by a well mixed population\nupper_limit <- function(r0) {\n  f <- function(par) {\n    abs(1 - exp(-r0 * par[1]) - par[1])\n  }\n  opt <- optim(\n    par = 0.5, fn = f,\n    lower = 0, upper = 1,\n    method = \"Brent\"\n  )\n  opt\n}\n\n\nVerify that output is changing as expected when a single parameter varies\nAn even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() increases when coordinates from one point increase\", {\n  \n  x <- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n  \n  y <- x\n  y[[1]] <- y[[1]] + 1 \n\n  expect_true(all(centroid(x) < centroid(y)))\n  \n})\n\nTest passed 🎊\n\n\n\n\nAn example of this test in an actual R package can again be found in the finalsize package:\nr0_low <- 1.3\nr0_high <- 3.3\n\nepi_outcome_low <- final_size(\n  r0 = r0_low,\n  <...>\n)\nepi_outcome_high <- final_size(\n  r0 = r0_high,\n  <...>\n)\n\ntest_that(\"Higher values of R0 result in a higher number of infectious in all groups\", {\n  expect_true(\n    all(epi_outcome_high$p_infected > epi_outcome_low$p_infected)\n  )\n})\n\n\nConclusion: automated validation vs peer-review\nIn this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.\nMultiple voices in the community are pushing more towards peer-review as a proxy for quality and validity:\n\nWe would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.\nOn the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of bad Random Number Generators when running in parallel.\nBut on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.\nIdeally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.\n\n\n\n\n\nFootnotes\n\n\nBut see the “testing statistical software” post from Alex Hayes where he presents his process to determine if he deems a statistical package trustworthy or not, and rOpenSci Statistical Software Peer Review book.↩︎\nSetting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{gruson2023,\n  author = {Hugo Gruson},\n  title = {Ensuring \\& {Showcasing} the {Statistical} {Correctness} of\n    Your {R} {Package}},\n  date = {2023-02-13},\n  url = {https://epiverse-trace.github.io//posts/statistical-correctness},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nHugo Gruson. 2023. “Ensuring & Showcasing the Statistical\nCorrectness of Your R Package.” February 13, 2023. https://epiverse-trace.github.io//posts/statistical-correctness."
+  },
+  {
     "objectID": "posts/s3-generic/index.html",
     "href": "posts/s3-generic/index.html",
     "title": "Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations",
@@ -112,80 +182,10 @@
     "text": "Where should the methods live?\nFor methods, there is more flexibility than for generics. They could either in the package defining the class, or in the package defining the generic. Let’s present the practical setup in both cases, as well as each strategy pros & cons.\n\nMethod in the class package\nThis is the strategy used when you defined a new class and provide it with a print(), a summary(), or a plot() method. The generics for these functions are defined in R base.\n\n#' @export\nplot.myclass <- function(x, y, ...) {\n  \n  # code for a beautiful plot for your custom class\n  \n}\n\nIf you opt for this strategy, you will need to depend on the package providing the method, as Imports. For example, a package defining a fit.myclass() method for the fit() generic defined in the generics package would have the following DESCRIPTION and NAMESPACE.\n\n\nDESCRIPTION\n\nImports:\n  generics\n\n\n\nfit.myclass.R\n\n#' @export\n#' @importFrom generics fit\nfit.myclass <- function(x, ...) {\n  # your code here\n}\n\n\n\nNAMESPACE\n\n# Generated by roxygen2: do not edit by hand\n\nS3method(fit,myclass)\nimportFrom(generics,fit)\n\n\n\n\n\n\n\nImporting the generic\n\n\n\nIt’s worth insisting that you need to import the generic in your NAMESPACE for the method to be recognized and exported correctly by roxygen2. In this specific situation, simply explicitly prefixing the generic call (generic::fit()) is not enough.\n\n\nBut this can lead to a rapid increase in the number of dependencies if you provide methods for generics from various packages. Since R 3.6, you can also put generics in Suggests and use delayed assignment:\n\n\nDESCRIPTION\n\nSuggests:\n  generics\n\n\n\nfit.myclass.R\n\n#' @exportS3Method generics::fit\nfit.myclass <- function(x, ...) {\n  # your code here\n}\n\n\n\nNAMESPACE\n\n# Generated by roxygen2: do not edit by hand\n\nS3method(generics::fit,myclass)\n\n\n\nMethod in the generic package\nAlternatively, you can define the method in the package defining the generic. This is the approach taken in the report package from example, which defines the report() generic and methods for various model outputs produced by different package.\nIn theory, no Imports or Suggests is required here:\n\n#' @export\nmygeneric <- function(x, ...) { \n  UseMethod(x)\n}\n\n#' @export\nmygeneric.externalclass <- function(x, ...) {\n  # your code here\n}\n\nHowever, if you end up providing many methods for a specific class, you could put the package defining it in the uncommon Enhances field. Enhances is defined in ‘Writing R Extensions’ as:\n\nThe ‘Enhances’ field lists packages “enhanced” by the package at hand, e.g., by providing methods for classes from these packages.\n\nIt may be a good idea to explicitly signal the strong relationship between both packages so that the package defining the method is checked as a reverse dependency, and informed of potential breaking changes as discussed below. You may see an example of this in the slam package, which provides his methods for both base matrices and sparse matrices, as defined in the Matrix and the spam packages.\n\n\nCoordination between maintainers\nNo matter the strategy you end up choosing, we strongly recommend you keep an open communication channel between the class package and the generic package developer (provided they are not the same person) as breaking changes will impact both parties."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Epiverse-TRACE developer space",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html",
-    "href": "slides/harmonious-ecosystem/index.html",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "",
-    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
-    "href": "slides/harmonious-ecosystem/index.html#abstract",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Abstract",
-    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#slides",
-    "href": "slides/harmonious-ecosystem/index.html#slides",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Questions from the audience",
-    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
-    "href": "slides/harmonious-ecosystem/index.html#see-also",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "See also",
-    "text": "See also\n\nThe companion post on our blog"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html",
-    "href": "slides/showcase-winter2023/index.html",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "finalsize slides",
-    "text": "finalsize slides"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "epiparameter slides",
-    "text": "epiparameter slides"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
-    "href": "slides/showcase-winter2023/index.html#episoap-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "episoap slides",
-    "text": "episoap slides"
-  },
-  {
-    "objectID": "presentations.html",
-    "href": "presentations.html",
-    "title": "Presentations",
-    "section": "",
-    "text": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n  \n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
   }
 ]

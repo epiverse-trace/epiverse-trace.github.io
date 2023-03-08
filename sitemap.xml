@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://epiverse-trace.github.io/blog.html</loc>
-    <lastmod>2023-03-06T16:51:09.636Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
-    <lastmod>2023-03-06T16:51:10.936Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
-    <lastmod>2023-03-06T16:51:11.604Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
-    <lastmod>2023-03-06T16:51:12.360Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/index.html</loc>
-    <lastmod>2023-03-06T16:51:12.660Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</loc>
-    <lastmod>2023-03-06T16:51:13.012Z</lastmod>
+    <loc>https://epiverse-trace.github.io/presentations.html</loc>
+    <lastmod>2023-03-08T15:46:29.379Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</loc>
-    <lastmod>2023-03-06T16:51:13.420Z</lastmod>
+    <lastmod>2023-03-08T15:46:30.411Z</lastmod>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/presentations.html</loc>
-    <lastmod>2023-03-06T16:51:13.800Z</lastmod>
+    <loc>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</loc>
+    <lastmod>2023-03-08T15:46:30.947Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/index.html</loc>
+    <lastmod>2023-03-08T15:46:31.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
+    <lastmod>2023-03-08T15:46:32.011Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
+    <lastmod>2023-03-08T15:46:33.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
+    <lastmod>2023-03-08T15:46:33.911Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/blog.html</loc>
+    <lastmod>2023-03-08T15:46:34.275Z</lastmod>
   </url>
 </urlset>
