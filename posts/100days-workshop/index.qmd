@@ -12,9 +12,6 @@ categories:
   - participatory research
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F)
-```
 <br>
 
 This vignette summarises the findings from the _100 days and 100 lines of code_ workshop, hosted in December 2022 by [Epiverse-TRACE](https://data.org/news/epiverse-trace-a-values-based-approach-to-open-source-ecosystems/).
