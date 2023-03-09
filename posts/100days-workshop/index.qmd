@@ -46,11 +46,8 @@ To create the contact tracing database, a random number of contacts was generate
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario1smq.png')
 ![](Scenario1smq.png){fig-alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"}
 
-```
 <br>
 
 ### Analytic pipeline for scenario 1 (analysed by group 2)
@@ -140,10 +137,8 @@ Forecasting | Underlying assumption of a given R distribution, e.g., single tren
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario2smq.png')
 ![](Scenario2smq.png){fig-alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"}
-```
+
 <br>
 
 ### Analytic pipeline for scenario 2 (analysed by group 3)
@@ -193,10 +188,7 @@ Attack rate | Not enough information provided
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario3smq.png')
 ![](Scenario3smq.png){fig-alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"}
-```
 
 <br>
 
@@ -267,10 +259,8 @@ Spillover events | Missing data
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario4smq.png')
 ![](Scenario4smq.png){fig-alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"}
-```
+
 <br>
 
 ### Analytic pipeline for scenario 4 (analysed by group 5)
@@ -302,10 +292,7 @@ Severity | Missing cases <br> Need for an R package for systematic censoring ana
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics('Scenario5smq.png')
 ![](Scenario5smq.png){fig-alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"}
-```
 
 <br>
 
