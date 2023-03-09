@@ -3,7 +3,7 @@ title: "What Should the First 100 Lines of Code Written During an Epidemic Look 
 author: 
   - name: "Carmen Tamayo"
     orcid: "0000-0003-4184-2864"
-date: "2023-03-07"
+date: "2023-03-09"
 license: "CC BY"
 categories:
   - outbreak analytics
