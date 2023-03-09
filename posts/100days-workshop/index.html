@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Carmen Tamayo">
+<meta name="dcterms.date" content="2023-03-09">
+
+<title>Epiverse-TRACE developer space - What Should the First 100 Lines of Code Written During an Epidemic Look Like?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Epiverse-TRACE developer space</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://epiverse-trace.r-universe.dev/ui#packages">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations.html">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/epiverse-trace"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/DataDotOrg"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">What Should the First 100 Lines of Code Written During an Epidemic Look Like?</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">outbreak analytics</div>
+                <div class="quarto-category">100 days workshop</div>
+                <div class="quarto-category">participatory research</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Carmen Tamayo <a href="https://orcid.org/0000-0003-4184-2864" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 9, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><br></p>
+<p>This vignette summarises the findings from the <em>100 days and 100 lines of code</em> workshop, hosted in December 2022 by <a href="https://data.org/news/epiverse-trace-a-values-based-approach-to-open-source-ecosystems/">Epiverse-TRACE</a>.</p>
+<p>To discuss how the first 100 lines of code during an epidemic should look like, we invited 40 experts, including academics, field epidemiologists, and software engineers, to take part in a 3-day workshop, where they discussed the current challenges, and potential solutions, in data analytic pipelines used to analyse epidemic data. In addition to highlighting existing technical solutions and their use cases, presentations on best practices in fostering collaboration across institutions and disciplines set the scene for the subsequent workshop scenario exercises.</p>
+<section id="what-r-packages-and-tools-are-available-to-use-during-an-epidemic" class="level3">
+<h3 class="anchored" data-anchor-id="what-r-packages-and-tools-are-available-to-use-during-an-epidemic">What R packages and tools are available to use during an epidemic?</h3>
+<p>To investigate this in a similar setting to what an outbreak response team would experience, workshop participants were divided into groups, and asked to develop a plausible epidemic scenario, that included:</p>
+<ul>
+<li><p>A situation report, describing the characteristics of the epidemic</p></li>
+<li><p>A linelist of cases and contact tracing data, by modifying provided datasets containing simulated data</p></li>
+<li><p>A set of questions to address during the analytic process</p></li>
+</ul>
+<p>Groups then exchanged epidemic scenarios and analysed the provided data to answer the questions indicated the previous group, as if they were a response team working to solve an outbreak. Details about each of these outbreak scenarios and the analytic pipelines developed by the groups are summarised in this vignette.</p>
+</section>
+<section id="simulating-epidemic-data" class="level3">
+<h3 class="anchored" data-anchor-id="simulating-epidemic-data">Simulating epidemic data</h3>
+<p>Before the workshop, a fictitious dataset was created, which consisted of a linelist and contact tracing information.</p>
+<p>To generate linelist data, the package <a href="https://github.com/epiverse-trace/bpmodels"><code>bpmodels</code></a> was used to generate a branching process network. Cases were then transformed from the model output to a linelist format. To add plausible hospitalisations and deaths, delay distributions for SARS-CoV were extracted from <a href="https://github.com/epiverse-trace/epiparameter"><code>epiparameter</code></a>.</p>
+<p>To create the contact tracing database, a random number of contacts was generated for each of the cases included in the linelist. These contacts were then assigned a category of <em>became case</em>, <em>under follow up</em> or <em>lost to follow up</em>, at random.</p>
+<ul>
+<li>Through this workshop, we identified the need for a tool to simulate outbreak data in a linelist format, to test analysis methods and other packages while having control over the characteristics of the test data. For this purpose, an R package is currently in progress, see <a href="https://github.com/epiverse-trace/pitcher/issues/7">simulist</a>.</li>
+</ul>
+</section>
+<section id="scenario-1-novel-respiratory-disease-in-the-gambia" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-1-novel-respiratory-disease-in-the-gambia">Scenario 1: Novel respiratory disease in The Gambia</h2>
+<p><br></p>
+<p><img src="Scenario1smq.png" class="img-fluid" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-1-analysed-by-group-2" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-1-analysed-by-group-2">Analytic pipeline for scenario 1 (analysed by group 2)</h3>
+<ul>
+<li><p>Data cleaning</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/linelist/index.html"><code>linelist</code></a> to standardise date format</li>
+<li><a href="https://github.com/Hackout3/cleanr"><code>cleanr</code></a> from previous Hackathon</li>
+</ul></li>
+<li><p>Delay distributions</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdisrplus</code></a> to fit parameteric distributions to scenario data</li>
+<li><a href="https://github.com/epiverse-trace/epiparameter"><code>epiparameter</code></a> to extract delay distributions from respiratory pathogens</li>
+<li><a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a> to fit reporting delays</li>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a> / <a href="https://cran.r-project.org/web/packages/coarseDataTools/index.html"><code>coarseDataTools</code></a> to estimate generation time/serial interval of disease</li>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+<li><a href="https://github.com/MJomaba/MixDiff"><code>mixdiff</code></a> to estimate delay distributions and correct erroneous dates at the same time (still under development)</li>
+</ul></li>
+<li><p>Population demographics</p>
+<ul>
+<li>Would like to have had access to an R package similar to <a href="https://github.com/biomac-lab/TRACE_ColOpenData"><code>ColOpenData</code></a></li>
+</ul></li>
+<li><p>Risk factors of infection</p>
+<ul>
+<li>Used <a href="https://r4epis.netlify.app/training/walk-through/univariate/">R4epis</a> as a guide on how to create two-way tables and perform Chi-squared tests</li>
+</ul></li>
+<li><p>Severity of disease</p>
+<ul>
+<li><a href="https://github.com/epiverse-trace/datadelay/"><code>datadelay</code></a> for CFR calculation</li>
+<li>Implementation of method developed by <a href="https://pubmed.ncbi.nlm.nih.gov/16076827/">AC Ghani, 2005</a> to estimate CFR</li>
+</ul></li>
+<li><p>Contact matching</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/diyar/index.html"><code>diyar</code></a> to match and link records</li>
+<li><a href="https://cran.r-project.org/web/packages/fuzzyjoin/index.html"><code>fuzzyjoin</code></a> to join contact and case data despite misspellings or missing cell contents</li>
+</ul></li>
+<li><p>Epi curve and maps</p>
+<ul>
+<li>Used <a href="https://cran.r-project.org/web/packages/incidence/"><code>incidence</code></a> and <a href="https://cran.r-project.org/web/packages/incidence2/"><code>incidence2</code></a> for incidence calculation and visualisation</li>
+<li><a href="https://cran.r-project.org/web/packages/raster/index.html"><code>raster</code></a> to extract spatial information from library of shapefiles</li>
+</ul></li>
+<li><p>Reproduction number</p>
+<ul>
+<li><a href="https://github.com/kpzoo/APEestim"><code>APEestim</code></a></li>
+<li><a href="https://github.com/thlytras/bayEStim"><code>bayEStim</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/earlyR/index.html"><code>earlyR</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+<li><a href="https://github.com/ImperialCollegeLondon/epidemia"><code>epidemia</code></a></li>
+<li><a href="https://github.com/kpzoo/EpiFilter"><code>epiFilter</code></a></li>
+<li><a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/R0/index.html"><code>R0</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/outbreaker2/index.html"><code>outbreaker2</code></a></li>
+<li>Used <a href="https://github.com/mrc-ide/EpiEstim/blob/master/vignettes/alternative_software.Rmd">this comparison table</a> to choose the most appropriate package.</li>
+</ul></li>
+<li><p>Superspreading, by using these resources:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdistrplus</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+</ul></li>
+<li><p>Epidemic projections</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/incidence/vignettes/incidence_fit_class.html"><code>incidence</code></a> R estimation using a loglinear model</li>
+<li><a href="https://cran.r-project.org/web/packages/projections/index.html"><code>projections</code></a> using Rt estimates, SI distributions and overdispersion estimates</li>
+</ul></li>
+<li><p>Transmission chains and strain characterisation</p>
+<ul>
+<li><a href="http://www.iqtree.org">IQtree</a> and <a href="https://clades.nextstrain.org">nextclade</a> to build a maximum likelihood tree and mannually inspect it</li>
+<li>Advanced modelling through phylodynamic methods, using tools like <a href="https://beast.community">BEAST</a></li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data cleaning</td>
+<td>Not knowing what packages are available for this purpose</td>
+</tr>
+<tr class="even">
+<td>Delay distributions</td>
+<td>Dealing with right truncation <br> Accounting for multiple infectors</td>
+</tr>
+<tr class="odd">
+<td>Population demographics</td>
+<td>Lacking tools that provide information about population by age, gender, etc.</td>
+</tr>
+<tr class="even">
+<td>Risk factors of infection</td>
+<td>Distinguishing between risk factors vs detecting differences in reporting frequencies among groups</td>
+</tr>
+<tr class="odd">
+<td>Severity of disease</td>
+<td>Knowing the prevalence of disease (denominator) <br> Right truncated data <br> Varying severity of different strains</td>
+</tr>
+<tr class="even">
+<td>Contact matching</td>
+<td>Missing data <br> Misspellings</td>
+</tr>
+<tr class="odd">
+<td>Epicurve and maps</td>
+<td>NA dates entries not included <br> Reporting levels varying over time</td>
+</tr>
+<tr class="even">
+<td>Offspring distribution</td>
+<td>Right truncation <br> Time varying reporting efforts <br> Assumption of a single homogeneous epidemic <br> Importation of cases</td>
+</tr>
+<tr class="odd">
+<td>Forecasting</td>
+<td>Underlying assumption of a given R distribution, e.g., single trend, homogeneous mixing, no saturation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+</section>
+<section id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia">Scenario 2: Outbreak of an unidentified disease in rural Colombia</h2>
+<p><br></p>
+<p><img src="Scenario2smq.png" class="img-fluid" alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-2-analysed-by-group-3" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-2-analysed-by-group-3">Analytic pipeline for scenario 2 (analysed by group 3)</h3>
+<ul>
+<li>Data cleaning: manually, using R (no packages specified), to
+<ul>
+<li>Fix data entry issues in columns <em>onset_date</em> and <em>gender</em></li>
+<li>Check for missing data</li>
+<li>Check sequence of dates: symptom onset → hospitalisation → death</li>
+</ul></li>
+<li>Data anonymisation to share with partners
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fastLink/index.html"><code>fastlink</code></a> for probabilistic matching between cases ↔︎ contacts, based on names, dates, and ages</li>
+</ul></li>
+<li>Case demographics
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/apyramid/index.html"><code>apyramid</code></a> to stratify data by age, gender, and health status</li>
+</ul></li>
+<li>Reproductive number calculation, by using two approaches:
+<ul>
+<li>Manually, by calculating the number of cases generated by each source case, data management through <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> and <a href="https://cran.r-project.org/web/packages/data.table/index.html"><code>data.table</code></a></li>
+<li>Using serial interval of disease, through <a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a> or <a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a></li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li>Manual calculation of CFR and hospitalisation ratio</li>
+</ul></li>
+<li>Projection of hospital bed requirements
+<ul>
+<li><a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a> to calculate average hospitalisation duration and forecasting</li>
+</ul></li>
+<li>Zoonotic transmission of disease
+<ul>
+<li>Manual inspection of cases’ occupation</li>
+<li>Use of <a href="http://www.iqtree.org">IQtree</a> and <a href="https://guangchuangyu.github.io/software/ggtree/"><code>ggtree</code></a> to plot phylogenetic data</li>
+</ul></li>
+<li>Superspreading
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+</ul></li>
+<li>Calculation of attack rate
+<ul>
+<li>Unable to calculate, given the lack of seroprevalence data</li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data anonymisation</td>
+<td>Dealing with typos and missing data when generating random unique identifiers</td>
+</tr>
+<tr class="even">
+<td>Reproduction number</td>
+<td>Right truncation <br> Underestimation of cases due to reporting delays</td>
+</tr>
+<tr class="odd">
+<td>Projection of hospital bed requirements</td>
+<td>Incomplete data (missing discharge date) <br> Undocumented functionality in R packages used</td>
+</tr>
+<tr class="even">
+<td>Zoonotic transmission</td>
+<td>Poor documentation <br> Unavailability of packages in R <br> Differentiation between zoonotic transmission and risk factors- need for population data</td>
+</tr>
+<tr class="odd">
+<td>Attack rate</td>
+<td>Not enough information provided</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="scenario-3-reston-ebolavirus-in-the-philippines" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-3-reston-ebolavirus-in-the-philippines">Scenario 3: Reston Ebolavirus in the Philippines</h2>
+<p><br></p>
+<p><img src="Scenario3smq.png" class="img-fluid" alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-3-analysed-by-group-4" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-3-analysed-by-group-4">Analytic pipeline for scenario 3 (analysed by group 4)</h3>
+<ul>
+<li>Data cleaning
+<ul>
+<li>Importing data with <a href="https://cran.r-project.org/web/packages/rio/index.html"><code>rio</code></a>, <a href="https://readxl.tidyverse.org"><code>readxl</code></a>, <a href="https://cran.r-project.org/web/packages/readr/index.html"><code>readr</code></a>, or <a href="https://cran.r-project.org/web/packages/openxlsx/index.html"><code>openxlsx</code></a></li>
+<li>Rename variables with <a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a></li>
+<li>Initial data checks with <a href="https://cran.r-project.org/web/packages/pointblank/index.html"><code>pointblank</code></a>, <a href="https://cran.r-project.org/web/packages/assertr/index.html"><code>assertr</code></a>, <a href="https://cran.r-project.org/web/packages/compareDF/index.html"><code>compareDF</code></a>, or <a href="https://cran.r-project.org/web/packages/skimr/index.html"><code>skimr</code></a></li>
+<li>Vertical data checks with <a href="https://cran.rstudio.com/web/packages/matchmaker/index.html"><code>matchmaker</code></a>, <a href="https://cran.r-project.org/web/packages/lubridate/index.html"><code>lubridate</code></a>, or <a href="https://cran.r-project.org/web/packages/parsedate/index.html"><code>parsedate</code></a></li>
+<li>Horizontal data checks with <a href="https://github.com/epicentre-msf/hmatch"><code>hmatch</code></a>, <a href="https://cran.r-project.org/web/packages/assertr/index.html"><code>assertr</code></a>, or <a href="https://github.com/epicentre-msf/queryr"><code>queryR</code></a></li>
+<li>Detect duplicates with <a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a> and <a href="https://www.tidyverse.org"><code>tidyverse</code></a></li>
+<li>Checking for consistency with <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a>, or <a href="https://cran.r-project.org/web/packages/powerjoin/index.html"><code>powerjoin</code></a></li>
+<li>Translation with <a href="https://cran.rstudio.com/web/packages/matchmaker/index.html"><code>matchmaker</code></a></li>
+</ul></li>
+<li>Delay distributions
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdistrplus</code></a> to fit parameteric distributions to epidemic data</li>
+</ul></li>
+<li>Case demographics
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/apyramid/index.html"><code>apyramid</code></a> to stratify data by age, gender, and health status</li>
+<li><a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a> to visualise data</li>
+</ul></li>
+<li>Outbreak description
+<ul>
+<li><a href="https://github.com/R4EPI/sitrep"><code>sitrep</code></a> to generate reports</li>
+</ul></li>
+<li>Visualisation of geographic data
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/sf/index.html"><code>sf</code></a> for static maps</li>
+<li><a href="https://cran.r-project.org/web/packages/leaflet/index.html"><code>leaflet</code></a> for interactive maps</li>
+</ul></li>
+<li>Generation of tables
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/gtsummary/index.html"><code>gtsummary</code></a> for static tables</li>
+<li><a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a> for interactive tables</li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li><a href="https://epiforecasts.io/EpiNow2/"><code>EpiNow2</code></a> and <a href="https://cran.r-project.org/web/packages/survival/index.html"><code>survival</code></a> to calculate CFR</li>
+</ul></li>
+<li>Attack rate
+<ul>
+<li><a href="https://github.com/rspatial/geodata"><code>gadm</code></a> function to get population data</li>
+<li><a href="https://github.com/R4EPI/epitabulate/"><code>epitabulate</code></a> to describe data</li>
+<li><a href="https://cran.r-project.org/web/packages/sf/index.html"><code>sf</code></a> and <a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a> to plot data</li>
+</ul></li>
+<li>Forecasting
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a></li>
+<li><a href="https://epiforecasts.io/EpiNow2/"><code>EpiNow2</code></a></li>
+<li><a href="https://github.com/epiverse-trace/bpmodels"><code>bpmodels</code></a></li>
+</ul></li>
+<li>Spillover events
+<ul>
+<li>By cross-referencing contact data with occupations</li>
+</ul></li>
+<li>Effectiveness of contact tracing
+<ul>
+<li>By calculating the proportion of case follow-ups and comparing the delay of disease exposure to the follow-up delay</li>
+</ul></li>
+<li>Transmission trees
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+<li><a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a></li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Detection of outliers</td>
+<td>No known tools to use</td>
+</tr>
+<tr class="even">
+<td>Severity of disease</td>
+<td>Censoring</td>
+</tr>
+<tr class="odd">
+<td>Spillover events</td>
+<td>Missing data</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+</section>
+<section id="scenario-4-emerging-avian-influenza-in-cambodia" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-4-emerging-avian-influenza-in-cambodia">Scenario 4: Emerging avian influenza in Cambodia</h2>
+<p><br></p>
+<p><img src="Scenario4smq.png" class="img-fluid" alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-4-analysed-by-group-5" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-4-analysed-by-group-5">Analytic pipeline for scenario 4 (analysed by group 5)</h3>
+<ul>
+<li>Data cleaning
+<ul>
+<li><a href="https://www.tidyverse.org">tidyverse</a></li>
+<li><a href="https://readxl.tidyverse.org"><code>readxl</code></a> to import data</li>
+<li><a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> to remove names</li>
+<li><a href="https://cran.r-project.org/web/packages/lubridate/index.html"><code>lubridate</code></a> to standardise date formats</li>
+<li>Manually scanning through excel to check for errors</li>
+</ul></li>
+<li>Reproduction number
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a></li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li>Manually using R to detect missing cases</li>
+<li><a href="https://cran.r-project.org/web/packages/epiR/index.html"><code>epiR</code></a> to check for data censoring</li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data cleaning</td>
+<td>No available R packages specific for epidemic data</td>
+</tr>
+<tr class="even">
+<td>Reproduction number</td>
+<td>Difficulty finding parameter estimations in the literature</td>
+</tr>
+<tr class="odd">
+<td>Serial interval</td>
+<td>Lack of a tool to check for parameter estimates</td>
+</tr>
+<tr class="even">
+<td>Severity</td>
+<td>Missing cases <br> Need for an R package for systematic censoring analysis</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+</section>
+<section id="scenario-5-outbreak-of-respiratory-disease-in-canada" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-5-outbreak-of-respiratory-disease-in-canada">Scenario 5: Outbreak of respiratory disease in Canada</h2>
+<p><br></p>
+<p><img src="Scenario5smq.png" class="img-fluid" alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-5-analysed-by-group-1" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-5-analysed-by-group-1">Analytic pipeline for scenario 5 (analysed by group 1)</h3>
+<ul>
+<li>Define project structure
+<ul>
+<li>Defining the script’s structure with <a href="https://github.com/jacobcvt12/cookiecutter-R-package"><code>cookiecutter</code></a>, <a href="https://cran.r-project.org/web/packages/reportfactory/index.html"><code>reportfactory</code></a>, and <a href="https://cran.rstudio.com/web/packages/orderly/index.html"><code>orderly</code></a></li>
+<li>Ensuring reproducibility of the analysis with <a href="https://irods.org">iRODS</a> and <a href="https://git-scm.com">Git</a></li>
+<li>Working in a group with <a href="https://github.com">GitHub</a></li>
+</ul></li>
+<li>Data cleaning
+<ul>
+<li>Importing data with <a href="https://cran.r-project.org/web/packages/readr/index.html"><code>readr</code></a> or <a href="https://cran.r-project.org/web/packages/rio/index.html"><code>rio</code></a></li>
+<li>Checking for errors with <a href="https://cran.r-project.org/web/packages/linelist/index.html"><code>linelist</code></a>, <a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a>, <a href="https://cran.r-project.org/web/packages/parsedate/index.html"><code>parsedate</code></a>, <a href="https://cran.rstudio.com/web/packages/matchmaker/index.html"><code>matchmaker</code></a>, or <a href="https://cran.r-project.org/web/packages/lubridate/index.html"><code>lubridate</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a> to eliminate duplicates</li>
+<li><a href="https://cran.r-project.org/web/packages/naniar/index.html"><code>naniar</code></a> to check for missing data</li>
+<li><a href="https://cran.r-project.org/web/packages/epitrix/index.html"><code>epitrix</code></a> to anonymise data</li>
+</ul></li>
+<li>Delay distributions
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/epitrix/index.html"><code>epitrix</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdistrplus</code></a> to fit parameteric distributions to scenario data</li>
+</ul></li>
+<li>Case demographics
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/apyramid/index.html"><code>apyramid</code></a> to stratify data by age, gender, and health status</li>
+</ul></li>
+<li>Nowcasting
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/incidence2/vignettes/Introduction.html"><code>incidence2</code></a> to visualise incidence from linelist data</li>
+<li><a href="https://github.com/epiverse-trace/epiparameter"><code>epiparameter</code></a> to extract infectious disease parameter data</li>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a> or <a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a> for Rt calculation</li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li>Calculation of hospitalisation and mortality rates- no R package specified</li>
+</ul></li>
+<li>Zoonotic transmission
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/forecast/index.html"><code>forecast</code></a></li>
+</ul></li>
+<li>Generation of reports
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/incidence/vignettes/overview.html"><code>incidence</code></a> for static reports</li>
+<li><a href="https://quarto.org">Quarto</a> and <a href="https://rmarkdown.rstudio.com">R markdown</a> for dashboards</li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Project structure</td>
+<td>Working simultaneously on the same script and managing parallel tasks <br> Anticipating future incoming data in early pipeline design</td>
+</tr>
+<tr class="even">
+<td>Data cleaning</td>
+<td>Large amount of code lines used on (reasonably) predictable cleaning (e.g.&nbsp;data sense checks) <br> Omitting too many data entries when simply removing <em>NA</em> rows <br> Non standardised data formats <br> Implementing rapid quality check reports before analysis</td>
+</tr>
+<tr class="odd">
+<td>Delay distributions</td>
+<td>Identifying the best method to calculate, or compare functionality of tools <br> Need to fit multiple parametric distributions and return best, and store as usable objects</td>
+</tr>
+<tr class="even">
+<td>Severity of disease</td>
+<td>Censoring and truncation <br> Underestimation of mild cases <br> Need database of age/gender pyramids for comparisons</td>
+</tr>
+<tr class="odd">
+<td>Forecasts</td>
+<td>Need option for fitting with range of plausible pathogen serial intervals and comparing results <br> Changing reporting delays over time <br> Matching inputs/outputs between packages</td>
+</tr>
+<tr class="even">
+<td>Zoonotic transmisison</td>
+<td>Need for specific packages with clear documentation <br> How to compare simple trend-based forecasts</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="what-next" class="level2">
+<h2 class="anchored" data-anchor-id="what-next">What next?</h2>
+<p>Scenarios developed by the <em>100 days</em> workshop participants illustrate that there are many commonalities across proposed analytics pipelines, which could support interoperability across different epidemiological questions. However, there are also several remaining gaps and challenges, which creates an opportunity to build on existing work to tackle common outbreak scenarios, using the issues here as a starting point. This will also require consideration of wider interactions with existing software ecosystems and users of outbreak analytics insights. We are therefore planning to follow up this vignette with a more detailed perspective article discussing potential for broader progress in developing a ‘first 100 lines of code’.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="epiverse-trace/epiverse-trace.github.io" data-repo-id="R_kgDOIcolPw" data-category="Announcements" data-category-id="DIC_kwDOIcolP84CUsCj" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

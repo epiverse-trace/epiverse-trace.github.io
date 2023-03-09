@@ -10,7 +10,518 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.2.335</generator>
-<lastBuildDate>Mon, 20 Feb 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 09 Mar 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>What Should the First 100 Lines of Code Written During an Epidemic Look Like?</title>
+  <dc:creator>Carmen Tamayo</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/100days-workshop/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><br></p>
+<p>This vignette summarises the findings from the <em>100 days and 100 lines of code</em> workshop, hosted in December 2022 by <a href="https://data.org/news/epiverse-trace-a-values-based-approach-to-open-source-ecosystems/">Epiverse-TRACE</a>.</p>
+<p>To discuss how the first 100 lines of code during an epidemic should look like, we invited 40 experts, including academics, field epidemiologists, and software engineers, to take part in a 3-day workshop, where they discussed the current challenges, and potential solutions, in data analytic pipelines used to analyse epidemic data. In addition to highlighting existing technical solutions and their use cases, presentations on best practices in fostering collaboration across institutions and disciplines set the scene for the subsequent workshop scenario exercises.</p>
+<section id="what-r-packages-and-tools-are-available-to-use-during-an-epidemic" class="level3">
+<h3 class="anchored" data-anchor-id="what-r-packages-and-tools-are-available-to-use-during-an-epidemic">What R packages and tools are available to use during an epidemic?</h3>
+<p>To investigate this in a similar setting to what an outbreak response team would experience, workshop participants were divided into groups, and asked to develop a plausible epidemic scenario, that included:</p>
+<ul>
+<li><p>A situation report, describing the characteristics of the epidemic</p></li>
+<li><p>A linelist of cases and contact tracing data, by modifying provided datasets containing simulated data</p></li>
+<li><p>A set of questions to address during the analytic process</p></li>
+</ul>
+<p>Groups then exchanged epidemic scenarios and analysed the provided data to answer the questions indicated the previous group, as if they were a response team working to solve an outbreak. Details about each of these outbreak scenarios and the analytic pipelines developed by the groups are summarised in this vignette.</p>
+</section>
+<section id="simulating-epidemic-data" class="level3">
+<h3 class="anchored" data-anchor-id="simulating-epidemic-data">Simulating epidemic data</h3>
+<p>Before the workshop, a fictitious dataset was created, which consisted of a linelist and contact tracing information.</p>
+<p>To generate linelist data, the package <a href="https://github.com/epiverse-trace/bpmodels"><code>bpmodels</code></a> was used to generate a branching process network. Cases were then transformed from the model output to a linelist format. To add plausible hospitalisations and deaths, delay distributions for SARS-CoV were extracted from <a href="https://github.com/epiverse-trace/epiparameter"><code>epiparameter</code></a>.</p>
+<p>To create the contact tracing database, a random number of contacts was generated for each of the cases included in the linelist. These contacts were then assigned a category of <em>became case</em>, <em>under follow up</em> or <em>lost to follow up</em>, at random.</p>
+<ul>
+<li>Through this workshop, we identified the need for a tool to simulate outbreak data in a linelist format, to test analysis methods and other packages while having control over the characteristics of the test data. For this purpose, an R package is currently in progress, see <a href="https://github.com/epiverse-trace/pitcher/issues/7">simulist</a>.</li>
+</ul>
+</section>
+<section id="scenario-1-novel-respiratory-disease-in-the-gambia" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-1-novel-respiratory-disease-in-the-gambia">Scenario 1: Novel respiratory disease in The Gambia</h2>
+<p><br></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-1-analysed-by-group-2" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-1-analysed-by-group-2">Analytic pipeline for scenario 1 (analysed by group 2)</h3>
+<ul>
+<li><p>Data cleaning</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/linelist/index.html"><code>linelist</code></a> to standardise date format</li>
+<li><a href="https://github.com/Hackout3/cleanr"><code>cleanr</code></a> from previous Hackathon</li>
+</ul></li>
+<li><p>Delay distributions</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdisrplus</code></a> to fit parameteric distributions to scenario data</li>
+<li><a href="https://github.com/epiverse-trace/epiparameter"><code>epiparameter</code></a> to extract delay distributions from respiratory pathogens</li>
+<li><a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a> to fit reporting delays</li>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a> / <a href="https://cran.r-project.org/web/packages/coarseDataTools/index.html"><code>coarseDataTools</code></a> to estimate generation time/serial interval of disease</li>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+<li><a href="https://github.com/MJomaba/MixDiff"><code>mixdiff</code></a> to estimate delay distributions and correct erroneous dates at the same time (still under development)</li>
+</ul></li>
+<li><p>Population demographics</p>
+<ul>
+<li>Would like to have had access to an R package similar to <a href="https://github.com/biomac-lab/TRACE_ColOpenData"><code>ColOpenData</code></a></li>
+</ul></li>
+<li><p>Risk factors of infection</p>
+<ul>
+<li>Used <a href="https://r4epis.netlify.app/training/walk-through/univariate/">R4epis</a> as a guide on how to create two-way tables and perform Chi-squared tests</li>
+</ul></li>
+<li><p>Severity of disease</p>
+<ul>
+<li><a href="https://github.com/epiverse-trace/datadelay/"><code>datadelay</code></a> for CFR calculation</li>
+<li>Implementation of method developed by <a href="https://pubmed.ncbi.nlm.nih.gov/16076827/">AC Ghani, 2005</a> to estimate CFR</li>
+</ul></li>
+<li><p>Contact matching</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/diyar/index.html"><code>diyar</code></a> to match and link records</li>
+<li><a href="https://cran.r-project.org/web/packages/fuzzyjoin/index.html"><code>fuzzyjoin</code></a> to join contact and case data despite misspellings or missing cell contents</li>
+</ul></li>
+<li><p>Epi curve and maps</p>
+<ul>
+<li>Used <a href="https://cran.r-project.org/web/packages/incidence/"><code>incidence</code></a> and <a href="https://cran.r-project.org/web/packages/incidence2/"><code>incidence2</code></a> for incidence calculation and visualisation</li>
+<li><a href="https://cran.r-project.org/web/packages/raster/index.html"><code>raster</code></a> to extract spatial information from library of shapefiles</li>
+</ul></li>
+<li><p>Reproduction number</p>
+<ul>
+<li><a href="https://github.com/kpzoo/APEestim"><code>APEestim</code></a></li>
+<li><a href="https://github.com/thlytras/bayEStim"><code>bayEStim</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/earlyR/index.html"><code>earlyR</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+<li><a href="https://github.com/ImperialCollegeLondon/epidemia"><code>epidemia</code></a></li>
+<li><a href="https://github.com/kpzoo/EpiFilter"><code>epiFilter</code></a></li>
+<li><a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/R0/index.html"><code>R0</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/outbreaker2/index.html"><code>outbreaker2</code></a></li>
+<li>Used <a href="https://github.com/mrc-ide/EpiEstim/blob/master/vignettes/alternative_software.Rmd">this comparison table</a> to choose the most appropriate package.</li>
+</ul></li>
+<li><p>Superspreading, by using these resources:</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdistrplus</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+</ul></li>
+<li><p>Epidemic projections</p>
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/incidence/vignettes/incidence_fit_class.html"><code>incidence</code></a> R estimation using a loglinear model</li>
+<li><a href="https://cran.r-project.org/web/packages/projections/index.html"><code>projections</code></a> using Rt estimates, SI distributions and overdispersion estimates</li>
+</ul></li>
+<li><p>Transmission chains and strain characterisation</p>
+<ul>
+<li><a href="http://www.iqtree.org">IQtree</a> and <a href="https://clades.nextstrain.org">nextclade</a> to build a maximum likelihood tree and mannually inspect it</li>
+<li>Advanced modelling through phylodynamic methods, using tools like <a href="https://beast.community">BEAST</a></li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data cleaning</td>
+<td>Not knowing what packages are available for this purpose</td>
+</tr>
+<tr class="even">
+<td>Delay distributions</td>
+<td>Dealing with right truncation <br> Accounting for multiple infectors</td>
+</tr>
+<tr class="odd">
+<td>Population demographics</td>
+<td>Lacking tools that provide information about population by age, gender, etc.</td>
+</tr>
+<tr class="even">
+<td>Risk factors of infection</td>
+<td>Distinguishing between risk factors vs detecting differences in reporting frequencies among groups</td>
+</tr>
+<tr class="odd">
+<td>Severity of disease</td>
+<td>Knowing the prevalence of disease (denominator) <br> Right truncated data <br> Varying severity of different strains</td>
+</tr>
+<tr class="even">
+<td>Contact matching</td>
+<td>Missing data <br> Misspellings</td>
+</tr>
+<tr class="odd">
+<td>Epicurve and maps</td>
+<td>NA dates entries not included <br> Reporting levels varying over time</td>
+</tr>
+<tr class="even">
+<td>Offspring distribution</td>
+<td>Right truncation <br> Time varying reporting efforts <br> Assumption of a single homogeneous epidemic <br> Importation of cases</td>
+</tr>
+<tr class="odd">
+<td>Forecasting</td>
+<td>Underlying assumption of a given R distribution, e.g., single trend, homogeneous mixing, no saturation</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+</section>
+<section id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia">Scenario 2: Outbreak of an unidentified disease in rural Colombia</h2>
+<p><br></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario2smq.png" class="img-fluid" alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-2-analysed-by-group-3" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-2-analysed-by-group-3">Analytic pipeline for scenario 2 (analysed by group 3)</h3>
+<ul>
+<li>Data cleaning: manually, using R (no packages specified), to
+<ul>
+<li>Fix data entry issues in columns <em>onset_date</em> and <em>gender</em></li>
+<li>Check for missing data</li>
+<li>Check sequence of dates: symptom onset → hospitalisation → death</li>
+</ul></li>
+<li>Data anonymisation to share with partners
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fastLink/index.html"><code>fastlink</code></a> for probabilistic matching between cases ↔︎ contacts, based on names, dates, and ages</li>
+</ul></li>
+<li>Case demographics
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/apyramid/index.html"><code>apyramid</code></a> to stratify data by age, gender, and health status</li>
+</ul></li>
+<li>Reproductive number calculation, by using two approaches:
+<ul>
+<li>Manually, by calculating the number of cases generated by each source case, data management through <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> and <a href="https://cran.r-project.org/web/packages/data.table/index.html"><code>data.table</code></a></li>
+<li>Using serial interval of disease, through <a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a> or <a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a></li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li>Manual calculation of CFR and hospitalisation ratio</li>
+</ul></li>
+<li>Projection of hospital bed requirements
+<ul>
+<li><a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a> to calculate average hospitalisation duration and forecasting</li>
+</ul></li>
+<li>Zoonotic transmission of disease
+<ul>
+<li>Manual inspection of cases’ occupation</li>
+<li>Use of <a href="http://www.iqtree.org">IQtree</a> and <a href="https://guangchuangyu.github.io/software/ggtree/"><code>ggtree</code></a> to plot phylogenetic data</li>
+</ul></li>
+<li>Superspreading
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+</ul></li>
+<li>Calculation of attack rate
+<ul>
+<li>Unable to calculate, given the lack of seroprevalence data</li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data anonymisation</td>
+<td>Dealing with typos and missing data when generating random unique identifiers</td>
+</tr>
+<tr class="even">
+<td>Reproduction number</td>
+<td>Right truncation <br> Underestimation of cases due to reporting delays</td>
+</tr>
+<tr class="odd">
+<td>Projection of hospital bed requirements</td>
+<td>Incomplete data (missing discharge date) <br> Undocumented functionality in R packages used</td>
+</tr>
+<tr class="even">
+<td>Zoonotic transmission</td>
+<td>Poor documentation <br> Unavailability of packages in R <br> Differentiation between zoonotic transmission and risk factors- need for population data</td>
+</tr>
+<tr class="odd">
+<td>Attack rate</td>
+<td>Not enough information provided</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="scenario-3-reston-ebolavirus-in-the-philippines" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-3-reston-ebolavirus-in-the-philippines">Scenario 3: Reston Ebolavirus in the Philippines</h2>
+<p><br></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario3smq.png" class="img-fluid" alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-3-analysed-by-group-4" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-3-analysed-by-group-4">Analytic pipeline for scenario 3 (analysed by group 4)</h3>
+<ul>
+<li>Data cleaning
+<ul>
+<li>Importing data with <a href="https://cran.r-project.org/web/packages/rio/index.html"><code>rio</code></a>, <a href="https://readxl.tidyverse.org"><code>readxl</code></a>, <a href="https://cran.r-project.org/web/packages/readr/index.html"><code>readr</code></a>, or <a href="https://cran.r-project.org/web/packages/openxlsx/index.html"><code>openxlsx</code></a></li>
+<li>Rename variables with <a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a></li>
+<li>Initial data checks with <a href="https://cran.r-project.org/web/packages/pointblank/index.html"><code>pointblank</code></a>, <a href="https://cran.r-project.org/web/packages/assertr/index.html"><code>assertr</code></a>, <a href="https://cran.r-project.org/web/packages/compareDF/index.html"><code>compareDF</code></a>, or <a href="https://cran.r-project.org/web/packages/skimr/index.html"><code>skimr</code></a></li>
+<li>Vertical data checks with <a href="https://cran.rstudio.com/web/packages/matchmaker/index.html"><code>matchmaker</code></a>, <a href="https://cran.r-project.org/web/packages/lubridate/index.html"><code>lubridate</code></a>, or <a href="https://cran.r-project.org/web/packages/parsedate/index.html"><code>parsedate</code></a></li>
+<li>Horizontal data checks with <a href="https://github.com/epicentre-msf/hmatch"><code>hmatch</code></a>, <a href="https://cran.r-project.org/web/packages/assertr/index.html"><code>assertr</code></a>, or <a href="https://github.com/epicentre-msf/queryr"><code>queryR</code></a></li>
+<li>Detect duplicates with <a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a> and <a href="https://www.tidyverse.org"><code>tidyverse</code></a></li>
+<li>Checking for consistency with <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a>, or <a href="https://cran.r-project.org/web/packages/powerjoin/index.html"><code>powerjoin</code></a></li>
+<li>Translation with <a href="https://cran.rstudio.com/web/packages/matchmaker/index.html"><code>matchmaker</code></a></li>
+</ul></li>
+<li>Delay distributions
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdistrplus</code></a> to fit parameteric distributions to epidemic data</li>
+</ul></li>
+<li>Case demographics
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/apyramid/index.html"><code>apyramid</code></a> to stratify data by age, gender, and health status</li>
+<li><a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a> to visualise data</li>
+</ul></li>
+<li>Outbreak description
+<ul>
+<li><a href="https://github.com/R4EPI/sitrep"><code>sitrep</code></a> to generate reports</li>
+</ul></li>
+<li>Visualisation of geographic data
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/sf/index.html"><code>sf</code></a> for static maps</li>
+<li><a href="https://cran.r-project.org/web/packages/leaflet/index.html"><code>leaflet</code></a> for interactive maps</li>
+</ul></li>
+<li>Generation of tables
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/gtsummary/index.html"><code>gtsummary</code></a> for static tables</li>
+<li><a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a> for interactive tables</li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li><a href="https://epiforecasts.io/EpiNow2/"><code>EpiNow2</code></a> and <a href="https://cran.r-project.org/web/packages/survival/index.html"><code>survival</code></a> to calculate CFR</li>
+</ul></li>
+<li>Attack rate
+<ul>
+<li><a href="https://github.com/rspatial/geodata"><code>gadm</code></a> function to get population data</li>
+<li><a href="https://github.com/R4EPI/epitabulate/"><code>epitabulate</code></a> to describe data</li>
+<li><a href="https://cran.r-project.org/web/packages/sf/index.html"><code>sf</code></a> and <a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a> to plot data</li>
+</ul></li>
+<li>Forecasting
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a></li>
+<li><a href="https://epiforecasts.io/EpiNow2/"><code>EpiNow2</code></a></li>
+<li><a href="https://github.com/epiverse-trace/bpmodels"><code>bpmodels</code></a></li>
+</ul></li>
+<li>Spillover events
+<ul>
+<li>By cross-referencing contact data with occupations</li>
+</ul></li>
+<li>Effectiveness of contact tracing
+<ul>
+<li>By calculating the proportion of case follow-ups and comparing the delay of disease exposure to the follow-up delay</li>
+</ul></li>
+<li>Transmission trees
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/epicontacts/index.html"><code>epicontacts</code></a></li>
+<li><a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a></li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Detection of outliers</td>
+<td>No known tools to use</td>
+</tr>
+<tr class="even">
+<td>Severity of disease</td>
+<td>Censoring</td>
+</tr>
+<tr class="odd">
+<td>Spillover events</td>
+<td>Missing data</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+</section>
+<section id="scenario-4-emerging-avian-influenza-in-cambodia" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-4-emerging-avian-influenza-in-cambodia">Scenario 4: Emerging avian influenza in Cambodia</h2>
+<p><br></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario4smq.png" class="img-fluid" alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-4-analysed-by-group-5" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-4-analysed-by-group-5">Analytic pipeline for scenario 4 (analysed by group 5)</h3>
+<ul>
+<li>Data cleaning
+<ul>
+<li><a href="https://www.tidyverse.org">tidyverse</a></li>
+<li><a href="https://readxl.tidyverse.org"><code>readxl</code></a> to import data</li>
+<li><a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> to remove names</li>
+<li><a href="https://cran.r-project.org/web/packages/lubridate/index.html"><code>lubridate</code></a> to standardise date formats</li>
+<li>Manually scanning through excel to check for errors</li>
+</ul></li>
+<li>Reproduction number
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a></li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li>Manually using R to detect missing cases</li>
+<li><a href="https://cran.r-project.org/web/packages/epiR/index.html"><code>epiR</code></a> to check for data censoring</li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data cleaning</td>
+<td>No available R packages specific for epidemic data</td>
+</tr>
+<tr class="even">
+<td>Reproduction number</td>
+<td>Difficulty finding parameter estimations in the literature</td>
+</tr>
+<tr class="odd">
+<td>Serial interval</td>
+<td>Lack of a tool to check for parameter estimates</td>
+</tr>
+<tr class="even">
+<td>Severity</td>
+<td>Missing cases <br> Need for an R package for systematic censoring analysis</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+</section>
+</section>
+<section id="scenario-5-outbreak-of-respiratory-disease-in-canada" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-5-outbreak-of-respiratory-disease-in-canada">Scenario 5: Outbreak of respiratory disease in Canada</h2>
+<p><br></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario5smq.png" class="img-fluid" alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"></p>
+<p><br></p>
+<section id="analytic-pipeline-for-scenario-5-analysed-by-group-1" class="level3">
+<h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-5-analysed-by-group-1">Analytic pipeline for scenario 5 (analysed by group 1)</h3>
+<ul>
+<li>Define project structure
+<ul>
+<li>Defining the script’s structure with <a href="https://github.com/jacobcvt12/cookiecutter-R-package"><code>cookiecutter</code></a>, <a href="https://cran.r-project.org/web/packages/reportfactory/index.html"><code>reportfactory</code></a>, and <a href="https://cran.rstudio.com/web/packages/orderly/index.html"><code>orderly</code></a></li>
+<li>Ensuring reproducibility of the analysis with <a href="https://irods.org">iRODS</a> and <a href="https://git-scm.com">Git</a></li>
+<li>Working in a group with <a href="https://github.com">GitHub</a></li>
+</ul></li>
+<li>Data cleaning
+<ul>
+<li>Importing data with <a href="https://cran.r-project.org/web/packages/readr/index.html"><code>readr</code></a> or <a href="https://cran.r-project.org/web/packages/rio/index.html"><code>rio</code></a></li>
+<li>Checking for errors with <a href="https://cran.r-project.org/web/packages/linelist/index.html"><code>linelist</code></a>, <a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a>, <a href="https://cran.r-project.org/web/packages/parsedate/index.html"><code>parsedate</code></a>, <a href="https://cran.rstudio.com/web/packages/matchmaker/index.html"><code>matchmaker</code></a>, or <a href="https://cran.r-project.org/web/packages/lubridate/index.html"><code>lubridate</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/janitor/index.html"><code>janitor</code></a> to eliminate duplicates</li>
+<li><a href="https://cran.r-project.org/web/packages/naniar/index.html"><code>naniar</code></a> to check for missing data</li>
+<li><a href="https://cran.r-project.org/web/packages/epitrix/index.html"><code>epitrix</code></a> to anonymise data</li>
+</ul></li>
+<li>Delay distributions
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/epitrix/index.html"><code>epitrix</code></a></li>
+<li><a href="https://cran.r-project.org/web/packages/fitdistrplus/index.html"><code>fitdistrplus</code></a> to fit parameteric distributions to scenario data</li>
+</ul></li>
+<li>Case demographics
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/apyramid/index.html"><code>apyramid</code></a> to stratify data by age, gender, and health status</li>
+</ul></li>
+<li>Nowcasting
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/incidence2/vignettes/Introduction.html"><code>incidence2</code></a> to visualise incidence from linelist data</li>
+<li><a href="https://github.com/epiverse-trace/epiparameter"><code>epiparameter</code></a> to extract infectious disease parameter data</li>
+<li><a href="https://cran.r-project.org/web/packages/EpiEstim/index.html"><code>EpiEstim</code></a> or <a href="https://github.com/epiforecasts/EpiNow2"><code>EpiNow2</code></a> for Rt calculation</li>
+</ul></li>
+<li>Severity of disease
+<ul>
+<li>Calculation of hospitalisation and mortality rates- no R package specified</li>
+</ul></li>
+<li>Zoonotic transmission
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/forecast/index.html"><code>forecast</code></a></li>
+</ul></li>
+<li>Generation of reports
+<ul>
+<li><a href="https://cran.r-project.org/web/packages/incidence/vignettes/overview.html"><code>incidence</code></a> for static reports</li>
+<li><a href="https://quarto.org">Quarto</a> and <a href="https://rmarkdown.rstudio.com">R markdown</a> for dashboards</li>
+</ul></li>
+</ul>
+<p><br></p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 75%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data analysis step</th>
+<th>Challenges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Project structure</td>
+<td>Working simultaneously on the same script and managing parallel tasks <br> Anticipating future incoming data in early pipeline design</td>
+</tr>
+<tr class="even">
+<td>Data cleaning</td>
+<td>Large amount of code lines used on (reasonably) predictable cleaning (e.g.&nbsp;data sense checks) <br> Omitting too many data entries when simply removing <em>NA</em> rows <br> Non standardised data formats <br> Implementing rapid quality check reports before analysis</td>
+</tr>
+<tr class="odd">
+<td>Delay distributions</td>
+<td>Identifying the best method to calculate, or compare functionality of tools <br> Need to fit multiple parametric distributions and return best, and store as usable objects</td>
+</tr>
+<tr class="even">
+<td>Severity of disease</td>
+<td>Censoring and truncation <br> Underestimation of mild cases <br> Need database of age/gender pyramids for comparisons</td>
+</tr>
+<tr class="odd">
+<td>Forecasts</td>
+<td>Need option for fitting with range of plausible pathogen serial intervals and comparing results <br> Changing reporting delays over time <br> Matching inputs/outputs between packages</td>
+</tr>
+<tr class="even">
+<td>Zoonotic transmisison</td>
+<td>Need for specific packages with clear documentation <br> How to compare simple trend-based forecasts</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="what-next" class="level2">
+<h2 class="anchored" data-anchor-id="what-next">What next?</h2>
+<p>Scenarios developed by the <em>100 days</em> workshop participants illustrate that there are many commonalities across proposed analytics pipelines, which could support interoperability across different epidemiological questions. However, there are also several remaining gaps and challenges, which creates an opportunity to build on existing work to tackle common outbreak scenarios, using the issues here as a starting point. This will also require consideration of wider interactions with existing software ecosystems and users of outbreak analytics insights. We are therefore planning to follow up this vignette with a more detailed perspective article discussing potential for broader progress in developing a ‘first 100 lines of code’.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section></div> ]]></description>
+  <category>outbreak analytics</category>
+  <category>100 days workshop</category>
+  <category>participatory research</category>
+  <guid>https://epiverse-trace.github.io/posts/100days-workshop/index.html</guid>
+  <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" medium="image" type="image/png" height="46" width="144"/>
+</item>
 <item>
   <title>Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</title>
   <dc:creator>Hugo Gruson</dc:creator>
@@ -503,7 +1014,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-48237"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-48237").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-86430"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-86430").innerHTML = tweet["html"];</script><p></p>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
@@ -664,7 +1175,7 @@ Example with <code>centroid()</code>
 <h1>Conclusion: automated validation vs peer-review</h1>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-96033"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-96033").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-23251"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-23251").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
