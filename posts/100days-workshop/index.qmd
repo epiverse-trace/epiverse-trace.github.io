@@ -347,6 +347,13 @@ Scenarios developed by the _100 days_ workshop participants illustrate that ther
 However, there are also several remaining gaps and challenges, which creates an opportunity to build on existing work to tackle common outbreak scenarios, using the issues here as a starting point. This will also require consideration of wider interactions with existing software ecosystems and users of outbreak analytics insights. 
 We are therefore planning to follow up this vignette with a more detailed perspective article discussing potential for broader progress in developing a 'first 100 lines of code'.
 
+## List of contributors
+
+- Group 1: Rich Fitzjohn, Mauricio Santos Vega, Andrea Torneri, Abdoelnaser Degoot, Rolina van Gaalen, Zulma Cucunuba, Joseph Tsui, Claudine Lim, Adam Kucharski.
+- Group 2: Juan Daniel Umana, Joel Hellewell, Anne Cori, Fanck Kalala, Amrish Baidjoe, Sara Hollis, Chaoran Chen, Pratik Gupte, Andree Valle.
+- Group 3: Mutono Nyamai, Finlay Campbell, Arminder Deol, Simone Carter, Anita Shah, Neale Batra, Issa Karambal, Danil Mihailov, Sebastian Funk.
+- Group 4: Anton Camacho, Louise Dyson, Jeremy Bingham, Simon Cauchemez, Alex Spina, Esther Van Kleef, Anna Carnegie, James Azam.
+- Group 5: Olivia Keiser, Geraldine Gomez, John Lees, Don Klinkenberg, Matthew Biggerstaff, David Santiago Quevedo, Joshua Lambert, Carmen Tamayo.
 
 
 
