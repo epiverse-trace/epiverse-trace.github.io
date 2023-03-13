@@ -11,7 +11,7 @@ website:
         href: https://epiverse-trace.r-universe.dev/ui#packages
       - blog.qmd
       - presentations.qmd
-    right:
+    tools:
       - icon: github
         href: https://github.com/epiverse-trace
       - icon: twitter
