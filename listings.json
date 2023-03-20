@@ -1,18 +1,18 @@
 [
   {
-    "listing": "/presentations.html",
-    "items": [
-      "/slides/harmonious-ecosystem/index.html",
-      "/slides/showcase-winter2023/index.html"
-    ]
-  },
-  {
     "listing": "/blog.html",
     "items": [
       "/posts/100days-workshop/index.html",
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
+    ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-winter2023/index.html"
     ]
   }
 ]

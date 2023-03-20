@@ -1,38 +1,10 @@
 [
   {
-    "objectID": "presentations.html",
-    "href": "presentations.html",
-    "title": "Presentations",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html",
-    "href": "slides/showcase-winter2023/index.html",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "finalsize slides",
-    "text": "finalsize slides"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "epiparameter slides",
-    "text": "epiparameter slides"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
-    "href": "slides/showcase-winter2023/index.html#episoap-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "episoap slides",
-    "text": "episoap slides"
+    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n  \n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n  \n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/harmonious-ecosystem/index.html",
@@ -70,11 +42,32 @@
     "text": "See also\n\nThe companion post on our blog"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Epiverse-TRACE developer space",
+    "objectID": "slides/showcase-winter2023/index.html",
+    "href": "slides/showcase-winter2023/index.html",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
     "section": "",
-    "text": "This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally."
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "finalsize slides",
+    "text": "finalsize slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "epiparameter slides",
+    "text": "epiparameter slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
+    "href": "slides/showcase-winter2023/index.html#episoap-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "episoap slides",
+    "text": "episoap slides"
   },
   {
     "objectID": "posts/100days-workshop/index.html",
@@ -133,55 +126,6 @@
     "text": "List of contributors\n\nGroup 1: Rich Fitzjohn, Mauricio Santos Vega, Andrea Torneri, Abdoelnaser Degoot, Rolina van Gaalen, Zulma Cucunuba, Joseph Tsui, Claudine Lim, Adam Kucharski.\nGroup 2: Juan Daniel Umana, Joel Hellewell, Anne Cori, Fanck Kalala, Amrish Baidjoe, Sara Hollis, Chaoran Chen, Pratik Gupte, Andree Valle.\nGroup 3: Mutono Nyamai, Finlay Campbell, Arminder Deol, Simone Carter, Anita Shah, Neale Batra, Issa Karambal, Danil Mihailov, Sebastian Funk.\nGroup 4: Anton Camacho, Louise Dyson, Jeremy Bingham, Simon Cauchemez, Alex Spina, Esther Van Kleef, Anna Carnegie, James Azam.\nGroup 5: Olivia Keiser, Geraldine Gomez, John Lees, Don Klinkenberg, Matthew Biggerstaff, David Santiago Quevedo, Joshua Lambert, Carmen Tamayo."
   },
   {
-    "objectID": "posts/lint-rcpp/index.html",
-    "href": "posts/lint-rcpp/index.html",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "",
-    "text": "The R package development ecosystem includes packages such as {lintr} and {styler} that can help to check code style, and to format R code.\nHowever, these packages cannot lint or style the C++ code of {Rcpp} packages. This could leave the C++ code of an Rcpp package less clean than the R code, increasing the technical debt already associated with using two languages.\nIn Epiverse-TRACE, we encounter this issue with {finalsize}, and we anticipate the same issue with further epidemic modelling packages that we seek to develop or adapt, such as {fluEvidenceSynthesis}.\nOur use-case is not unique, of course, and other projects could have their own solutions. One such, from which we have borrowed some ideas, is the Apache Arrow project, whose R package also uses a C++ backend (via {cpp11} rather than {Rcpp})."
-  },
-  {
-    "objectID": "posts/lint-rcpp/index.html#choice-of-c-linters",
-    "href": "posts/lint-rcpp/index.html#choice-of-c-linters",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "Choice of C++ linters",
-    "text": "Choice of C++ linters\nC++ linters such as clang-tidy stumble when dealing with C++ code in src/, as the clang toolchain attempts to compile it. This does not work for Rcpp packages, as the Rcpp.h header cannot be found — this linking is handled by {Rcpp}.\nFortunately, other C++ linters and code checking tools are available and can be used safely with Rcpp packages.\nWe have chosen to use cpplint and cppcheck for {finalsize}.\n\nCpplint\ncpplint is a tool that checks whether C/C++ files follow Google’s C++ style guide. cpplint is easy to install across platforms, and does not error when it cannot find Rcpp.h.\nImportantly, cpplint can be instructed to not lint the autogenerated RcppExports.cpp file, which follows a different style.\nTo lint all other .cpp files, we simply run cpplint from the terminal.\ncpplint --exclude=\"src/RcppExports.cpp\" src/*.cpp\n\n\nCppcheck\ncppcheck is a static code analysis tool, that aims to “have very few false positives”. This is especially useful for the non-standard organisation of Rcpp projects compared to C++ projects.\ncppcheck can also be run locally and instructed to ignore the autogenerated RcppExports.cpp file, while throwing up issues with style.\ncppcheck -i src/RcppExports.cpp --enable=style --error-exitcode=1 src\nHere, the --enable=style option lets cppcheck flag issues with style, acting as a second linter. This enables the performance and portability flags as well. (We have not found any difference when using --enable=warning instead.)\nEnabling all checks (--enable=all) would flag two specific issues for {Rcpp} packages: (1) the Rcpp*.h headers not being found (of the class missingIncludeSystem), and (2) the solver functions not being used by any other C++ function (unusedFunction).\nThese extra options should be avoided in {Rcpp} packages, as the linking is handled for us, and the functions are indeed used later — just not by other C++ functions.\nThe --error-exitcode=1 argument returns the integer 1 when an error is found, which is by convention the output for an error."
-  },
-  {
-    "objectID": "posts/lint-rcpp/index.html#adding-c-linting-to-ci-workflows",
-    "href": "posts/lint-rcpp/index.html#adding-c-linting-to-ci-workflows",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "Adding C++ linting to CI workflows",
-    "text": "Adding C++ linting to CI workflows\nBoth cpplint and cppcheck can be easily added to continuous integration workflows. In Epiverse-TRACE, we use Github Actions. The C++ lint workflow we have implemented looks like this:\non:\n  push:\n    paths: \"src/**\"\n  pull_request:\n    branches:\n      - \"*\"\n\nname: Cpp-lint-check\n\njobs:\n  cpplint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-python@v2\n      - run: pip install cpplint\n      - run: cpplint --quiet --exclude=\"src/RcppExports.cpp\" src/*.cpp\n\n  cppcheck:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: sudo apt-get install cppcheck\n      - run: cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .\nThe workflow is triggered when there are changes to files in src/, and on all pull requests."
-  },
-  {
-    "objectID": "posts/lint-rcpp/index.html#formatting-c-code",
-    "href": "posts/lint-rcpp/index.html#formatting-c-code",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "Formatting C++ code",
-    "text": "Formatting C++ code\nC++ code can be automatically formatted to avoid linter errors. An especially useful tool is clang-format. Our code is styled to follow the Google C++ style guide using:\n# replace .cpp with .h to format headers\nclang-format -i -style=google src/*.cpp\nHowever, this also formats the autogenerated RcppExports.cpp file. It can be extra work to repeatedly undo this change and keep the original formatting, but clang-format does not provide an easy inline way to ignore this file.\nInstead, clang-format can be passed all files except RcppExports.cpp to style using some simple shell commands. In smaller projects, it might be worth\nfind src -name \"*.cpp\" ! -name \"RcppExports.cpp\" -exec clang-format -style=google -i {} \\;"
-  },
-  {
-    "objectID": "posts/lint-rcpp/index.html#turning-off-linting-and-formatting",
-    "href": "posts/lint-rcpp/index.html#turning-off-linting-and-formatting",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "Turning off linting and formatting",
-    "text": "Turning off linting and formatting\nThere are cases in which we might want to turn linting and formatting off. This might be when the linter does not agree with valid C++ code required in the project, or when the linters and stylers do not agree with each other. These tools are developed separately by large software projects with their own internal requirements, and solutions to issues encountered in their work: clang-format by LLVM (although specifying -style=google), and cpplint from Google’s work.\n\nLinter-enforced paradigms\nSometimes, the linter or styler developer enforces both a style and the use of certain programming paradigms. An example from cpplint is when it warns against passing function arguments by reference, and prefers for these to be passed as pointers, or as constant references (const int &value).\nint some_function(int &value) { \n  /* operations modifying value */\n  return value;\n}\nPassing the argument as a const reference would not serve the needs of this function, and passing by value is a valid strategy when we don’t want to get into the details of using pointers. (Note that this is typically an issue when large objects such as custom classes or structs are passed to a function multiple times.)\nSimilarly, cpplint will throw a warning about accessing variables using std::move, which is something we encounter in the Newton solver in {finalsize}. While not technically wrong for such a simple use case, the linter is correct to cautiously throw a warning nonetheless.\n\n\nLinter-styler disagreement\nOne example of linter-styler disagreement is the use of BOOST_FOREACH from the Boost libraries as an alternative to for loops. clang-format will insist on adding two spaces before the opening bracket: BOOST_FOREACH  (). cpplint will insist on removing one space.\ncpplint and clang-format also disagree on the order of header inclusions, especially when both local and system headers are included.\n\n\nDisabling checks on code chunks\nEither of these cases could require disabling linting or formatting on some part of the code. It is possible to turn off linting using cpplint at particular lines using the comment // NOLINT. Multiple lines can be protected from linting as well.\n// NOLINTBEGIN\n<some C++ code here>\n// NOLINTEND\nAlternatively, clang-format can be instructed to ignore chunks of code using comment messages too.\n// clang-format off\n<some C++ code here>\n// clang-format on"
-  },
-  {
-    "objectID": "posts/lint-rcpp/index.html#linter-options-for-future-packages",
-    "href": "posts/lint-rcpp/index.html#linter-options-for-future-packages",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "Linter options for future packages",
-    "text": "Linter options for future packages\n{finalsize} is a relatively simple {Rcpp} package, with no C/C++ headers, and no C++ tests. However, future Epiverse-TRACE packages could be more similar to {fluEvidenceSynthesis}, and will have header files, and could also have C++ unit tests via the catch framework.\ncpplint will demand that all local headers be prefixed with their directory (src/), but this would cause the code to break as {Rcpp} looks for a subdirectory called src/src/. This can be turned off by passing the filter option --filter=\"-build/include_subdir\" to cpplint. Alternatively, we could place headers in a subdirectory such as inst/include.\nBoth cpplint and cppcheck can be instructed to ignore C++ test files using the catch testing framework provided by {testthat}. This prevents errors due to the specialised syntax provided by {testthat} in testthat.h, such as context.\n# for cpplint, add an extra exclude statement\ncpplint <...> --exclude=\"src/test*.cpp\" src/*.cpp\n\n# for cppcheck, suppress checks on test files\ncppcheck <...> --suppress=*:src/test_*.cpp src"
-  },
-  {
-    "objectID": "posts/lint-rcpp/index.html#conclusion",
-    "href": "posts/lint-rcpp/index.html#conclusion",
-    "title": "Improving the C++ Code Quality of an Rcpp Package",
-    "section": "Conclusion",
-    "text": "Conclusion\nIt is actually somewhat surprising that there does not seem to be a canonical linter for C++ code in {Rcpp} packages. The methods laid out here are an initial implementation developed for use with the {finalsize} package, and the considerations here are a starting point. We shall be continuously evaluating how we ensure the quality of our C++ code as we encounter more use cases while developing future Epiverse-TRACE packages."
-  },
-  {
     "objectID": "posts/statistical-correctness/index.html",
     "href": "posts/statistical-correctness/index.html",
     "title": "Ensuring & Showcasing the Statistical Correctness of your R Package",
@@ -238,10 +182,66 @@
     "text": "Where should the methods live?\nFor methods, there is more flexibility than for generics. They could either in the package defining the class, or in the package defining the generic. Let’s present the practical setup in both cases, as well as each strategy pros & cons.\n\nMethod in the class package\nThis is the strategy used when you defined a new class and provide it with a print(), a summary(), or a plot() method. The generics for these functions are defined in R base.\n\n#' @export\nplot.myclass <- function(x, y, ...) {\n  \n  # code for a beautiful plot for your custom class\n  \n}\n\nIf you opt for this strategy, you will need to depend on the package providing the method, as Imports. For example, a package defining a fit.myclass() method for the fit() generic defined in the generics package would have the following DESCRIPTION and NAMESPACE.\n\n\nDESCRIPTION\n\nImports:\n  generics\n\n\n\nfit.myclass.R\n\n#' @export\n#' @importFrom generics fit\nfit.myclass <- function(x, ...) {\n  # your code here\n}\n\n\n\nNAMESPACE\n\n# Generated by roxygen2: do not edit by hand\n\nS3method(fit,myclass)\nimportFrom(generics,fit)\n\n\n\n\n\n\n\nImporting the generic\n\n\n\nIt’s worth insisting that you need to import the generic in your NAMESPACE for the method to be recognized and exported correctly by roxygen2. In this specific situation, simply explicitly prefixing the generic call (generic::fit()) is not enough.\n\n\nBut this can lead to a rapid increase in the number of dependencies if you provide methods for generics from various packages. Since R 3.6, you can also put generics in Suggests and use delayed assignment:\n\n\nDESCRIPTION\n\nSuggests:\n  generics\n\n\n\nfit.myclass.R\n\n#' @exportS3Method generics::fit\nfit.myclass <- function(x, ...) {\n  # your code here\n}\n\n\n\nNAMESPACE\n\n# Generated by roxygen2: do not edit by hand\n\nS3method(generics::fit,myclass)\n\n\n\nMethod in the generic package\nAlternatively, you can define the method in the package defining the generic. This is the approach taken in the report package from example, which defines the report() generic and methods for various model outputs produced by different package.\nIn theory, no Imports or Suggests is required here:\n\n#' @export\nmygeneric <- function(x, ...) { \n  UseMethod(x)\n}\n\n#' @export\nmygeneric.externalclass <- function(x, ...) {\n  # your code here\n}\n\nHowever, if you end up providing many methods for a specific class, you could put the package defining it in the uncommon Enhances field. Enhances is defined in ‘Writing R Extensions’ as:\n\nThe ‘Enhances’ field lists packages “enhanced” by the package at hand, e.g., by providing methods for classes from these packages.\n\nIt may be a good idea to explicitly signal the strong relationship between both packages so that the package defining the method is checked as a reverse dependency, and informed of potential breaking changes as discussed below. You may see an example of this in the slam package, which provides his methods for both base matrices and sparse matrices, as defined in the Matrix and the spam packages.\n\n\nCoordination between maintainers\nNo matter the strategy you end up choosing, we strongly recommend you keep an open communication channel between the class package and the generic package developer (provided they are not the same person) as breaking changes will impact both parties."
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "posts/lint-rcpp/index.html",
+    "href": "posts/lint-rcpp/index.html",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
     "section": "",
-    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n  \n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n  \n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "The R package development ecosystem includes packages such as {lintr} and {styler} that can help to check code style, and to format R code.\nHowever, these packages cannot lint or style the C++ code of {Rcpp} packages. This could leave the C++ code of an Rcpp package less clean than the R code, increasing the technical debt already associated with using two languages.\nIn Epiverse-TRACE, we encounter this issue with {finalsize}, and we anticipate the same issue with further epidemic modelling packages that we seek to develop or adapt, such as {fluEvidenceSynthesis}.\nOur use-case is not unique, of course, and other projects could have their own solutions. One such, from which we have borrowed some ideas, is the Apache Arrow project, whose R package also uses a C++ backend (via {cpp11} rather than {Rcpp})."
+  },
+  {
+    "objectID": "posts/lint-rcpp/index.html#choice-of-c-linters",
+    "href": "posts/lint-rcpp/index.html#choice-of-c-linters",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
+    "section": "Choice of C++ linters",
+    "text": "Choice of C++ linters\nC++ linters such as clang-tidy stumble when dealing with C++ code in src/, as the clang toolchain attempts to compile it. This does not work for Rcpp packages, as the Rcpp.h header cannot be found — this linking is handled by {Rcpp}.\nFortunately, other C++ linters and code checking tools are available and can be used safely with Rcpp packages.\nWe have chosen to use cpplint and cppcheck for {finalsize}.\n\nCpplint\ncpplint is a tool that checks whether C/C++ files follow Google’s C++ style guide. cpplint is easy to install across platforms, and does not error when it cannot find Rcpp.h.\nImportantly, cpplint can be instructed to not lint the autogenerated RcppExports.cpp file, which follows a different style.\nTo lint all other .cpp files, we simply run cpplint from the terminal.\ncpplint --exclude=\"src/RcppExports.cpp\" src/*.cpp\n\n\nCppcheck\ncppcheck is a static code analysis tool, that aims to “have very few false positives”. This is especially useful for the non-standard organisation of Rcpp projects compared to C++ projects.\ncppcheck can also be run locally and instructed to ignore the autogenerated RcppExports.cpp file, while throwing up issues with style.\ncppcheck -i src/RcppExports.cpp --enable=style --error-exitcode=1 src\nHere, the --enable=style option lets cppcheck flag issues with style, acting as a second linter. This enables the performance and portability flags as well. (We have not found any difference when using --enable=warning instead.)\nEnabling all checks (--enable=all) would flag two specific issues for {Rcpp} packages: (1) the Rcpp*.h headers not being found (of the class missingIncludeSystem), and (2) the solver functions not being used by any other C++ function (unusedFunction).\nThese extra options should be avoided in {Rcpp} packages, as the linking is handled for us, and the functions are indeed used later — just not by other C++ functions.\nThe --error-exitcode=1 argument returns the integer 1 when an error is found, which is by convention the output for an error."
+  },
+  {
+    "objectID": "posts/lint-rcpp/index.html#adding-c-linting-to-ci-workflows",
+    "href": "posts/lint-rcpp/index.html#adding-c-linting-to-ci-workflows",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
+    "section": "Adding C++ linting to CI workflows",
+    "text": "Adding C++ linting to CI workflows\nBoth cpplint and cppcheck can be easily added to continuous integration workflows. In Epiverse-TRACE, we use Github Actions. The C++ lint workflow we have implemented looks like this:\non:\n  push:\n    paths: \"src/**\"\n  pull_request:\n    branches:\n      - \"*\"\n\nname: Cpp-lint-check\n\njobs:\n  cpplint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-python@v2\n      - run: pip install cpplint\n      - run: cpplint --quiet --exclude=\"src/RcppExports.cpp\" src/*.cpp\n\n  cppcheck:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: sudo apt-get install cppcheck\n      - run: cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .\nThe workflow is triggered when there are changes to files in src/, and on all pull requests."
+  },
+  {
+    "objectID": "posts/lint-rcpp/index.html#formatting-c-code",
+    "href": "posts/lint-rcpp/index.html#formatting-c-code",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
+    "section": "Formatting C++ code",
+    "text": "Formatting C++ code\nC++ code can be automatically formatted to avoid linter errors. An especially useful tool is clang-format. Our code is styled to follow the Google C++ style guide using:\n# replace .cpp with .h to format headers\nclang-format -i -style=google src/*.cpp\nHowever, this also formats the autogenerated RcppExports.cpp file. It can be extra work to repeatedly undo this change and keep the original formatting, but clang-format does not provide an easy inline way to ignore this file.\nInstead, clang-format can be passed all files except RcppExports.cpp to style using some simple shell commands. In smaller projects, it might be worth\nfind src -name \"*.cpp\" ! -name \"RcppExports.cpp\" -exec clang-format -style=google -i {} \\;"
+  },
+  {
+    "objectID": "posts/lint-rcpp/index.html#turning-off-linting-and-formatting",
+    "href": "posts/lint-rcpp/index.html#turning-off-linting-and-formatting",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
+    "section": "Turning off linting and formatting",
+    "text": "Turning off linting and formatting\nThere are cases in which we might want to turn linting and formatting off. This might be when the linter does not agree with valid C++ code required in the project, or when the linters and stylers do not agree with each other. These tools are developed separately by large software projects with their own internal requirements, and solutions to issues encountered in their work: clang-format by LLVM (although specifying -style=google), and cpplint from Google’s work.\n\nLinter-enforced paradigms\nSometimes, the linter or styler developer enforces both a style and the use of certain programming paradigms. An example from cpplint is when it warns against passing function arguments by reference, and prefers for these to be passed as pointers, or as constant references (const int &value).\nint some_function(int &value) { \n  /* operations modifying value */\n  return value;\n}\nPassing the argument as a const reference would not serve the needs of this function, and passing by value is a valid strategy when we don’t want to get into the details of using pointers. (Note that this is typically an issue when large objects such as custom classes or structs are passed to a function multiple times.)\nSimilarly, cpplint will throw a warning about accessing variables using std::move, which is something we encounter in the Newton solver in {finalsize}. While not technically wrong for such a simple use case, the linter is correct to cautiously throw a warning nonetheless.\n\n\nLinter-styler disagreement\nOne example of linter-styler disagreement is the use of BOOST_FOREACH from the Boost libraries as an alternative to for loops. clang-format will insist on adding two spaces before the opening bracket: BOOST_FOREACH  (). cpplint will insist on removing one space.\ncpplint and clang-format also disagree on the order of header inclusions, especially when both local and system headers are included.\n\n\nDisabling checks on code chunks\nEither of these cases could require disabling linting or formatting on some part of the code. It is possible to turn off linting using cpplint at particular lines using the comment // NOLINT. Multiple lines can be protected from linting as well.\n// NOLINTBEGIN\n<some C++ code here>\n// NOLINTEND\nAlternatively, clang-format can be instructed to ignore chunks of code using comment messages too.\n// clang-format off\n<some C++ code here>\n// clang-format on"
+  },
+  {
+    "objectID": "posts/lint-rcpp/index.html#linter-options-for-future-packages",
+    "href": "posts/lint-rcpp/index.html#linter-options-for-future-packages",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
+    "section": "Linter options for future packages",
+    "text": "Linter options for future packages\n{finalsize} is a relatively simple {Rcpp} package, with no C/C++ headers, and no C++ tests. However, future Epiverse-TRACE packages could be more similar to {fluEvidenceSynthesis}, and will have header files, and could also have C++ unit tests via the catch framework.\ncpplint will demand that all local headers be prefixed with their directory (src/), but this would cause the code to break as {Rcpp} looks for a subdirectory called src/src/. This can be turned off by passing the filter option --filter=\"-build/include_subdir\" to cpplint. Alternatively, we could place headers in a subdirectory such as inst/include.\nBoth cpplint and cppcheck can be instructed to ignore C++ test files using the catch testing framework provided by {testthat}. This prevents errors due to the specialised syntax provided by {testthat} in testthat.h, such as context.\n# for cpplint, add an extra exclude statement\ncpplint <...> --exclude=\"src/test*.cpp\" src/*.cpp\n\n# for cppcheck, suppress checks on test files\ncppcheck <...> --suppress=*:src/test_*.cpp src"
+  },
+  {
+    "objectID": "posts/lint-rcpp/index.html#conclusion",
+    "href": "posts/lint-rcpp/index.html#conclusion",
+    "title": "Improving the C++ Code Quality of an Rcpp Package",
+    "section": "Conclusion",
+    "text": "Conclusion\nIt is actually somewhat surprising that there does not seem to be a canonical linter for C++ code in {Rcpp} packages. The methods laid out here are an initial implementation developed for use with the {finalsize} package, and the considerations here are a starting point. We shall be continuously evaluating how we ensure the quality of our C++ code as we encounter more use cases while developing future Epiverse-TRACE packages."
+  },
+  {
+    "objectID": "presentations.html",
+    "href": "presentations.html",
+    "title": "Presentations",
+    "section": "",
+    "text": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Epiverse-TRACE developer space",
+    "section": "",
+    "text": "This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally."
   }
 ]
