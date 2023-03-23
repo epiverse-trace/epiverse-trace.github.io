@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.2.475</generator>
+<generator>quarto-1.3.283</generator>
 <lastBuildDate>Thu, 09 Mar 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>What Should the First 100 Lines of Code Written During an Epidemic Look Like?</title>
@@ -45,7 +45,7 @@
 <section id="scenario-1-novel-respiratory-disease-in-the-gambia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-1-novel-respiratory-disease-in-the-gambia">Scenario 1: Novel respiratory disease in The Gambia</h2>
 <p><br></p>
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="quarto-discovered-preview-image img-fluid" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
 <p><br></p>
 <section id="analytic-pipeline-for-scenario-1-analysed-by-group-2" class="level3">
 <h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-1-analysed-by-group-2">Analytic pipeline for scenario 1 (analysed by group 2)</h3>
@@ -524,8 +524,8 @@
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
-  author = {Carmen Tamayo},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
+  author = {Tamayo, Carmen},
   title = {What {Should} the {First} 100 {Lines} of {Code} {Written}
     {During} an {Epidemic} {Look} {Like?}},
   date = {2023-03-09},
@@ -533,7 +533,7 @@
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tamayo2023" class="csl-entry quarto-appendix-citeas">
-Carmen Tamayo. 2023. <span>“What Should the First 100 Lines of Code
+Tamayo, Carmen. 2023. <span>“What Should the First 100 Lines of Code
 Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://epiverse-trace.github.io//posts/100days-workshop">https://epiverse-trace.github.io//posts/100days-workshop</a>.
 </div></div></section></div> ]]></description>
   <category>outbreak analytics</category>
@@ -541,7 +541,6 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
   <category>participatory research</category>
   <guid>https://epiverse-trace.github.io/posts/100days-workshop/index.html</guid>
   <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" medium="image" type="image/png" height="46" width="144"/>
 </item>
 <item>
   <title>Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</title>
@@ -560,63 +559,199 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <h1>Benefits</h1>
 <p>Let’s reuse the example function from <a href="../statistical-correctness/">one of our previous posts</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb1-2">centroid <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords, weights) {</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb1-2">centroid <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords, weights) {</span>
 <span id="cb1-3"></span>
-<span id="cb1-4">  <span class="co" style="color: #5E5E5E;"># ...</span></span>
+<span id="cb1-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
 <span id="cb1-5"></span>
 <span id="cb1-6">}</span></code></pre></div>
 </div>
 <p>Since we wrote and released this function, someone may have designed a clever data class to store coordinates of a set of points and their weights. Let’s imagine they use the following class that they call <code>pointset</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">example_pointset <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">structure</span>(</span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;">list</span>(</span>
-<span id="cb2-3">    <span class="at" style="color: #657422;">coords =</span> <span class="fu" style="color: #4758AB;">list</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">5</span>, <span class="dv" style="color: #AD0000;">3</span>), <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">8</span>, <span class="dv" style="color: #AD0000;">6</span>, <span class="dv" style="color: #AD0000;">4</span>, <span class="dv" style="color: #AD0000;">3</span>), <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>, <span class="dv" style="color: #AD0000;">7</span>)),</span>
-<span id="cb2-4">    <span class="at" style="color: #657422;">weights =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>)</span>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">example_pointset <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">structure</span>(</span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb2-3">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">coords =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)),</span>
+<span id="cb2-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">weights =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
 <span id="cb2-5">  ),</span>
-<span id="cb2-6">  <span class="at" style="color: #657422;">class =</span> <span class="st" style="color: #20794D;">"pointset"</span></span>
+<span id="cb2-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">class =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"pointset"</span></span>
 <span id="cb2-7">)</span></code></pre></div>
 </div>
 <p>They may also have developed nice utilities for this class so there is a clear motivation for you to integrate with their class since it’s less work you’ll have to do. Plus, you immediately become compatible with any package that uses the same class.</p>
 <p>We will not spend too much time on the practical steps to operate this conversion since this is already covered in details in <a href="https://adv-r.hadley.nz/s3.html">the dedicated chapter of Advanced R, by Hadley Wickham</a>, as well as <a href="https://njtierney.github.io/r/missing%20data/rbloggers/2016/11/06/simple-s3-methods/">this blog post from Nick Tierney</a> <sup>1</sup>. But the final result would be:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;">#' Compute the centroid of a set of points</span></span>
-<span id="cb3-2"><span class="co" style="color: #5E5E5E;">#'</span></span>
-<span id="cb3-3"><span class="co" style="color: #5E5E5E;">#' @param coords Coordinates of the points as a list of vectors. Each element of</span></span>
-<span id="cb3-4"><span class="co" style="color: #5E5E5E;">#'   the list is a point.</span></span>
-<span id="cb3-5"><span class="co" style="color: #5E5E5E;">#' @param weights Vector of weights applied to each of the points</span></span>
-<span id="cb3-6"><span class="co" style="color: #5E5E5E;">#'</span></span>
-<span id="cb3-7"><span class="co" style="color: #5E5E5E;">#' @returns A vector of coordinates of the same length of each element of </span></span>
-<span id="cb3-8"><span class="co" style="color: #5E5E5E;">#'   `coords`</span></span>
-<span id="cb3-9"><span class="co" style="color: #5E5E5E;">#'   </span></span>
-<span id="cb3-10"><span class="co" style="color: #5E5E5E;">#' @examples</span></span>
-<span id="cb3-11"><span class="co" style="color: #5E5E5E;">#' centroid(</span></span>
-<span id="cb3-12"><span class="co" style="color: #5E5E5E;">#'   list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)),</span></span>
-<span id="cb3-13"><span class="co" style="color: #5E5E5E;">#'   weights = c(1, 1, 1)</span></span>
-<span id="cb3-14"><span class="co" style="color: #5E5E5E;">#' )</span></span>
-<span id="cb3-15"><span class="co" style="color: #5E5E5E;">#' </span></span>
-<span id="cb3-16"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb3-17">centroid <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords, weights) {</span>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Compute the centroid of a set of points</span></span>
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'</span></span>
+<span id="cb3-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param coords Coordinates of the points as a list of vectors. Each element of</span></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   the list is a point.</span></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param weights Vector of weights applied to each of the points</span></span>
+<span id="cb3-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'</span></span>
+<span id="cb3-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @returns A vector of coordinates of the same length of each element of </span></span>
+<span id="cb3-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   `coords`</span></span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   </span></span>
+<span id="cb3-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @examples</span></span>
+<span id="cb3-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' centroid(</span></span>
+<span id="cb3-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)),</span></span>
+<span id="cb3-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   weights = c(1, 1, 1)</span></span>
+<span id="cb3-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' )</span></span>
+<span id="cb3-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' </span></span>
+<span id="cb3-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb3-17">centroid <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords, weights) {</span>
 <span id="cb3-18"></span>
-<span id="cb3-19">  <span class="fu" style="color: #4758AB;">UseMethod</span>(<span class="st" style="color: #20794D;">"centroid"</span>) </span>
+<span id="cb3-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UseMethod</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"centroid"</span>) </span>
 <span id="cb3-20"></span>
 <span id="cb3-21">}</span>
 <span id="cb3-22"></span>
-<span id="cb3-23"><span class="co" style="color: #5E5E5E;">#' @rdname centroid</span></span>
-<span id="cb3-24"><span class="co" style="color: #5E5E5E;">#' </span></span>
-<span id="cb3-25"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb3-26">centroid.default <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords, weights) {</span>
+<span id="cb3-23"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @rdname centroid</span></span>
+<span id="cb3-24"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' </span></span>
+<span id="cb3-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb3-26">centroid.default <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords, weights) {</span>
 <span id="cb3-27"></span>
-<span id="cb3-28">  <span class="co" style="color: #5E5E5E;"># ...</span></span>
+<span id="cb3-28">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
 <span id="cb3-29"></span>
 <span id="cb3-30">}</span>
 <span id="cb3-31"></span>
-<span id="cb3-32"><span class="co" style="color: #5E5E5E;">#' @rdname centroid</span></span>
-<span id="cb3-33"><span class="co" style="color: #5E5E5E;">#' </span></span>
-<span id="cb3-34"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb3-35">centroid.pointset <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords, <span class="at" style="color: #657422;">weights =</span> <span class="cn" style="color: #8f5902;">NULL</span>) {</span>
+<span id="cb3-32"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @rdname centroid</span></span>
+<span id="cb3-33"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' </span></span>
+<span id="cb3-34"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb3-35">centroid.pointset <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">weights =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>) {</span>
 <span id="cb3-36"></span>
-<span id="cb3-37">  <span class="fu" style="color: #4758AB;">centroid</span>(coords<span class="sc" style="color: #5E5E5E;">$</span>coords, coords<span class="sc" style="color: #5E5E5E;">$</span>weights)</span>
+<span id="cb3-37">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(coords<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>coords, coords<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>weights)</span>
 <span id="cb3-38"></span>
 <span id="cb3-39">}</span></code></pre></div>
 </div>
@@ -629,19 +764,51 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <p>You can see that the method for <code>pointset</code> class, <code>centroid.pointset()</code> has a <code>weights</code> argument, even though it is not used because weights are already contained in the <code>coords</code> object. This seems clunky and potentially confusing for users. But this is mandatory because all methods must have the same arguments as the generic.</p>
 <p>Another option here could have been to remove <code>weights</code> from the generic, and add <code>...</code> instead, thus allowing to pass <code>weights</code> as an extra argument only in selected methods. This is more idiomatic in R, and in line with the <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Generic-functions-and-methods">recommendation from the official ‘Writing R Extensions’ document (“always keep generics simple”)</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb4-2">centroid <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords, ...) { </span>
-<span id="cb4-3">  <span class="fu" style="color: #4758AB;">UseMethod</span>(<span class="st" style="color: #20794D;">"centroid"</span>) </span>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb4-2">centroid <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords, ...) { </span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UseMethod</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"centroid"</span>) </span>
 <span id="cb4-4">}</span>
 <span id="cb4-5"></span>
-<span id="cb4-6"><span class="co" style="color: #5E5E5E;">#' @rdname centroid</span></span>
-<span id="cb4-7"><span class="co" style="color: #5E5E5E;">#' </span></span>
-<span id="cb4-8"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb4-9">centroid.default <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords, weights, ...) {</span>
+<span id="cb4-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @rdname centroid</span></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' </span></span>
+<span id="cb4-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb4-9">centroid.default <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords, weights, ...) {</span>
 <span id="cb4-10"></span>
-<span id="cb4-11">  coords_mat <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">do.call</span>(rbind, coords)</span>
+<span id="cb4-11">  coords_mat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">do.call</span>(rbind, coords)</span>
 <span id="cb4-12">  </span>
-<span id="cb4-13">  <span class="fu" style="color: #4758AB;">return</span>(<span class="fu" style="color: #4758AB;">apply</span>(coords_mat, <span class="dv" style="color: #AD0000;">2</span>, weighted.mean, <span class="at" style="color: #657422;">w =</span> weights))</span>
+<span id="cb4-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">apply</span>(coords_mat, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, weighted.mean, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">w =</span> weights))</span>
 <span id="cb4-14">  </span>
 <span id="cb4-15">}</span></code></pre></div>
 </div>
@@ -655,7 +822,7 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="img-fluid figure-img"></p>
+<p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="quarto-discovered-preview-image img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption><p></p>
 </figure>
 </div>
@@ -676,7 +843,11 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <h2 class="anchored" data-anchor-id="more-complicated-error-traceback">More complicated error traceback</h2>
 <p>Another situation where converting to an S3 adds an extra layer of complexity is where you are trying to follow the error <a href="https://en.wikipedia.org/wiki/Stack_trace">traceback</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">centroid</span>(<span class="dv" style="color: #AD0000;">3</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
 </div>
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/error_trace.png" class="img-fluid"></p>
 <p>In this example, we see one extra line that did not exist when <code>centroid()</code> was a regular function, rather than a generic:</p>
@@ -699,22 +870,74 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <p>The generic should always live in the package implementing the actual computation in the function in the first place. For example, if you defined the original <code>centroid()</code> function in a package called geometryops, the S3 generic should also be defined in that package, not in the package defining the <code>pointset</code> class.</p>
 <p>It is possible in theory to overwrite a function defined by another package with a generic (“overloading”). For example, we could overload base R <code>table()</code> function with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">table <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(...) { </span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;">UseMethod</span>(...)</span>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">table <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(...) { </span>
+<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UseMethod</span>(...)</span>
 <span id="cb6-3">}</span>
 <span id="cb6-4"></span>
-<span id="cb6-5">table.default <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(</span>
+<span id="cb6-5">table.default <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(</span>
 <span id="cb6-6">  ...,</span>
-<span id="cb6-7">  <span class="at" style="color: #657422;">exclude =</span> <span class="cf" style="color: #003B4F;">if</span> (useNA <span class="sc" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">"no"</span>) <span class="fu" style="color: #4758AB;">c</span>(<span class="cn" style="color: #8f5902;">NA</span>, <span class="cn" style="color: #8f5902;">NaN</span>),</span>
-<span id="cb6-8">  <span class="at" style="color: #657422;">useNA =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"no"</span>, <span class="st" style="color: #20794D;">"ifany"</span>, <span class="st" style="color: #20794D;">"always"</span>),</span>
-<span id="cb6-9">  <span class="at" style="color: #657422;">dnn =</span> <span class="fu" style="color: #4758AB;">list.names</span>(...), <span class="at" style="color: #657422;">deparse.level =</span> <span class="dv" style="color: #AD0000;">1</span></span>
+<span id="cb6-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">exclude =</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (useNA <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">==</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"no"</span>) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NaN</span>),</span>
+<span id="cb6-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">useNA =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"no"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ifany"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"always"</span>),</span>
+<span id="cb6-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dnn =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list.names</span>(...), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">deparse.level =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
 <span id="cb6-10">) {</span>
 <span id="cb6-11"></span>
-<span id="cb6-12"> base<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">table</span>(</span>
+<span id="cb6-12"> base<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">table</span>(</span>
 <span id="cb6-13">  ...,</span>
-<span id="cb6-14">  <span class="at" style="color: #657422;">exclude =</span> exclude,</span>
-<span id="cb6-15">  <span class="at" style="color: #657422;">useNA =</span> useNA,</span>
-<span id="cb6-16">  <span class="at" style="color: #657422;">dnn =</span> dnn</span>
+<span id="cb6-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">exclude =</span> exclude,</span>
+<span id="cb6-15">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">useNA =</span> useNA,</span>
+<span id="cb6-16">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dnn =</span> dnn</span>
 <span id="cb6-17"> )</span>
 <span id="cb6-18"></span>
 <span id="cb6-19">}</span></code></pre></div>
@@ -732,10 +955,18 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <h3 class="anchored" data-anchor-id="method-in-the-class-package">Method in the class package</h3>
 <p>This is the strategy used when you defined a new class and provide it with a <code>print()</code>, a <code>summary()</code>, or a <code>plot()</code> method. The generics for these functions are defined in R base.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb7-2">plot.myclass <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x, y, ...) {</span>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb7-2">plot.myclass <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, y, ...) {</span>
 <span id="cb7-3">  </span>
-<span id="cb7-4">  <span class="co" style="color: #5E5E5E;"># code for a beautiful plot for your custom class</span></span>
+<span id="cb7-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># code for a beautiful plot for your custom class</span></span>
 <span id="cb7-5">  </span>
 <span id="cb7-6">}</span></code></pre></div>
 </div>
@@ -744,34 +975,56 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><span class="fu" style="color: #4758AB;">Imports</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb8-2"><span class="at" style="color: #657422;">  generics</span></span></code></pre></div>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Imports</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb8-2"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  generics</span></span></code></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb9-2"><span class="co" style="color: #5E5E5E;">#' @importFrom generics fit</span></span>
-<span id="cb9-3">fit.myclass <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x, ...) {</span>
-<span id="cb9-4">  <span class="co" style="color: #5E5E5E;"># your code here</span></span>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb9-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @importFrom generics fit</span></span>
+<span id="cb9-3">fit.myclass <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb9-4">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># your code here</span></span>
 <span id="cb9-5">}</span></code></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;"># Generated by roxygen2: do not edit by hand</span></span>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 <span id="cb10-2"></span>
-<span id="cb10-3"><span class="fu" style="color: #4758AB;">S3method</span>(fit,myclass)</span>
-<span id="cb10-4"><span class="fu" style="color: #4758AB;">importFrom</span>(generics,fit)</span></code></pre></div>
+<span id="cb10-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">S3method</span>(fit,myclass)</span>
+<span id="cb10-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">importFrom</span>(generics,fit)</span></code></pre></div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Importing the generic
 </div>
 </div>
@@ -784,25 +1037,45 @@ Importing the generic
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;">Suggests</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb11-2"><span class="at" style="color: #657422;">  generics</span></span></code></pre></div>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Suggests</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb11-2"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  generics</span></span></code></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;">#' @exportS3Method generics::fit</span></span>
-<span id="cb12-2">fit.myclass <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x, ...) {</span>
-<span id="cb12-3">  <span class="co" style="color: #5E5E5E;"># your code here</span></span>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @exportS3Method generics::fit</span></span>
+<span id="cb12-2">fit.myclass <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb12-3">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># your code here</span></span>
 <span id="cb12-4">}</span></code></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;"># Generated by roxygen2: do not edit by hand</span></span>
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 <span id="cb13-2"></span>
-<span id="cb13-3"><span class="fu" style="color: #4758AB;">S3method</span>(generics<span class="sc" style="color: #5E5E5E;">::</span>fit,myclass)</span></code></pre></div>
+<span id="cb13-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">S3method</span>(generics<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>fit,myclass)</span></code></pre></div>
 </div>
 </section>
 <section id="method-in-the-generic-package" class="level3">
@@ -810,14 +1083,30 @@ Importing the generic
 <p>Alternatively, you can define the method in the package defining the generic. This is the approach taken in the <a href="https://easystats.github.io/report/">report package</a> from example, which defines the <code>report()</code> generic and methods for various model outputs produced by different package.</p>
 <p>In theory, no <code>Imports</code> or <code>Suggests</code> is required here:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb14-2">mygeneric <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x, ...) { </span>
-<span id="cb14-3">  <span class="fu" style="color: #4758AB;">UseMethod</span>(x)</span>
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb14-2">mygeneric <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) { </span>
+<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UseMethod</span>(x)</span>
 <span id="cb14-4">}</span>
 <span id="cb14-5"></span>
-<span id="cb14-6"><span class="co" style="color: #5E5E5E;">#' @export</span></span>
-<span id="cb14-7">mygeneric.externalclass <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(x, ...) {</span>
-<span id="cb14-8">  <span class="co" style="color: #5E5E5E;"># your code here</span></span>
+<span id="cb14-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @export</span></span>
+<span id="cb14-7">mygeneric.externalclass <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb14-8">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># your code here</span></span>
 <span id="cb14-9">}</span></code></pre></div>
 </div>
 <p>However, if you end up providing many methods for a specific class, you could put the package defining it in the uncommon <code>Enhances</code> field. <code>Enhances</code> is defined in ‘<a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a>’ as:</p>
@@ -835,12 +1124,12 @@ Importing the generic
 <section id="conclusion" class="level1">
 <h1>Conclusion</h1>
 <p>As we’ve seen here, there are clear benefits to converting your standard function to an S3 generic. This can be done <strong>almost</strong> transparently but we’ve highlighting some subtle changes you may want to consider before pulling the switch.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Spreading the S3 love
 </div>
 </div>
@@ -860,8 +1149,8 @@ Spreading the S3 love
 <li id="fn1"><p>Note that we focus here on the S3 framework but R has other object orientation frameworks, as discussed in <a href="https://adv-r.hadley.nz/oo.html">the relevant section of the ‘Advanced R’ book by Hadley Wickham</a>↩︎</p></li>
 <li id="fn2"><p>Every rule has its exceptions though such as the <a href="https://generics.r-lib.org/">generics</a> package, built by prominent members of the R developer community, which overloads base R functions such as <code>as.factor()</code> or <code>as.difftime()</code>.↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
-  author = {Hugo Gruson},
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+  author = {Gruson, Hugo},
   title = {Convert {Your} {R} {Function} to an {S3} {Generic:}
     {Benefits,} {Pitfalls} \&amp; {Design} {Considerations}},
   date = {2023-02-20},
@@ -869,7 +1158,7 @@ Spreading the S3 love
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
-Hugo Gruson. 2023. <span>“Convert Your R Function to an S3 Generic:
+Gruson, Hugo. 2023. <span>“Convert Your R Function to an S3 Generic:
 Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 2023. <a href="https://epiverse-trace.github.io//posts/s3-generic">https://epiverse-trace.github.io//posts/s3-generic</a>.
 </div></div></section></div> ]]></description>
@@ -880,7 +1169,6 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
   <category>interoperability</category>
   <guid>https://epiverse-trace.github.io/posts/s3-generic/index.html</guid>
   <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" medium="image" type="image/png" height="123" width="144"/>
 </item>
 <item>
   <title>Improving the C++ Code Quality of an Rcpp Package</title>
@@ -908,13 +1196,35 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 <p><a href="https://github.com/cpplint/cpplint"><em>cpplint</em></a> is a tool that checks whether C/C++ files follow <a href="http://google.github.io/styleguide/cppguide.html">Google’s C++ style guide</a>. <em>cpplint</em> is easy to install across platforms, and does not error when it cannot find <code>Rcpp.h</code>.</p>
 <p>Importantly, <em>cpplint</em> can be instructed to not lint the autogenerated <code>RcppExports.cpp</code> file, which follows a different style.</p>
 <p>To lint all other <code>.cpp</code> files, we simply run <code>cpplint</code> from the terminal.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;">cpplint</span> <span class="at" style="color: #657422;">--exclude</span><span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">"src/RcppExports.cpp"</span> src/<span class="pp" style="color: #AD0000;">*</span>.cpp</span></code></pre></div>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cpplint</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--exclude</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"src/RcppExports.cpp"</span> src/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.cpp</span></code></pre></div>
 </section>
 <section id="cppcheck" class="level3">
 <h3 class="anchored" data-anchor-id="cppcheck">Cppcheck</h3>
 <p><a href="https://cppcheck.sourceforge.io/"><em>cppcheck</em></a> is a static code analysis tool, that aims to “have very few false positives”. This is especially useful for the non-standard organisation of Rcpp projects compared to C++ projects.</p>
 <p><em>cppcheck</em> can also be run locally and instructed to ignore the autogenerated <code>RcppExports.cpp</code> file, while throwing up issues with style.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">cppcheck</span> <span class="at" style="color: #657422;">-i</span> src/RcppExports.cpp <span class="at" style="color: #657422;">--enable</span><span class="op" style="color: #5E5E5E;">=</span>style <span class="at" style="color: #657422;">--error-exitcode</span><span class="op" style="color: #5E5E5E;">=</span>1 src</span></code></pre></div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cppcheck</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> src/RcppExports.cpp <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--enable</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>style <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--error-exitcode</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>1 src</span></code></pre></div>
 <p>Here, the <code>--enable=style</code> option lets <em>cppcheck</em> flag issues with style, acting as a second linter. This enables the <code>performance</code> and <code>portability</code> flags as well. (We have not found any difference when using <code>--enable=warning</code> instead.)</p>
 <p>Enabling all checks (<code>--enable=all</code>) would flag two specific issues for {Rcpp} packages: (1) the <code>Rcpp*.h</code> headers not being found (of the class <code>missingIncludeSystem</code>), and (2) the solver functions not being used by any other C++ function (<code>unusedFunction</code>).</p>
 <p>These extra options should be avoided in {Rcpp} packages, as the linking is handled for us, and the functions are indeed used later — just not by other C++ functions.</p>
@@ -924,40 +1234,246 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 <section id="adding-c-linting-to-ci-workflows" class="level2">
 <h2 class="anchored" data-anchor-id="adding-c-linting-to-ci-workflows">Adding C++ linting to CI workflows</h2>
 <p>Both <em>cpplint</em> and <em>cppcheck</em> can be easily added to continuous integration workflows. In Epiverse-TRACE, we use Github Actions. The C++ lint workflow we have implemented looks like this:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;">on</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-2"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">push</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-3"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">paths</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"src/**"</span></span>
-<span id="cb3-4"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">pull_request</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-5"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">branches</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-6"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="st" style="color: #20794D;">"*"</span></span>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">on</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-2"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">push</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-3"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paths</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"src/**"</span></span>
+<span id="cb3-4"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">pull_request</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-5"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">branches</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-6"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*"</span></span>
 <span id="cb3-7"></span>
-<span id="cb3-8"><span class="fu" style="color: #4758AB;">name</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> Cpp-lint-check</span></span>
+<span id="cb3-8"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> Cpp-lint-check</span></span>
 <span id="cb3-9"></span>
-<span id="cb3-10"><span class="fu" style="color: #4758AB;">jobs</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-11"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">cpplint</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-12"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">runs-on</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> ubuntu-latest</span></span>
-<span id="cb3-13"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">steps</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-14"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">uses</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> actions/checkout@v3</span></span>
-<span id="cb3-15"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">uses</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> actions/setup-python@v2</span></span>
-<span id="cb3-16"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">run</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> pip install cpplint</span></span>
-<span id="cb3-17"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">run</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> cpplint --quiet --exclude="src/RcppExports.cpp" src/*.cpp</span></span>
+<span id="cb3-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">jobs</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-11"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cpplint</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-12"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runs-on</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ubuntu-latest</span></span>
+<span id="cb3-13"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">steps</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-14"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> actions/checkout@v3</span></span>
+<span id="cb3-15"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> actions/setup-python@v2</span></span>
+<span id="cb3-16"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> pip install cpplint</span></span>
+<span id="cb3-17"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> cpplint --quiet --exclude="src/RcppExports.cpp" src/*.cpp</span></span>
 <span id="cb3-18"></span>
-<span id="cb3-19"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">cppcheck</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-20"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">runs-on</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> ubuntu-latest</span></span>
-<span id="cb3-21"><span class="at" style="color: #657422;">    </span><span class="fu" style="color: #4758AB;">steps</span><span class="kw" style="color: #003B4F;">:</span></span>
-<span id="cb3-22"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">uses</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> actions/checkout@v3</span></span>
-<span id="cb3-23"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">run</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> sudo apt-get install cppcheck</span></span>
-<span id="cb3-24"><span class="at" style="color: #657422;">      </span><span class="kw" style="color: #003B4F;">-</span><span class="at" style="color: #657422;"> </span><span class="fu" style="color: #4758AB;">run</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .</span></span></code></pre></div>
+<span id="cb3-19"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cppcheck</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-20"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runs-on</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> ubuntu-latest</span></span>
+<span id="cb3-21"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">steps</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span></span>
+<span id="cb3-22"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> actions/checkout@v3</span></span>
+<span id="cb3-23"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> sudo apt-get install cppcheck</span></span>
+<span id="cb3-24"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">-</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">:</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;"> cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .</span></span></code></pre></div>
 <p>The workflow is triggered when there are changes to files in <code>src/</code>, and on all pull requests.</p>
 </section>
 <section id="formatting-c-code" class="level2">
 <h2 class="anchored" data-anchor-id="formatting-c-code">Formatting C++ code</h2>
 <p>C++ code can be automatically formatted to avoid linter errors. An especially useful tool is <a href="https://clang.llvm.org/docs/ClangFormat.html"><em>clang-format</em></a>. Our code is styled to follow the <a href="https://google.github.io/styleguide/cppguide.html">Google C++ style guide</a> using:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;"># replace .cpp with .h to format headers</span></span>
-<span id="cb4-2"><span class="ex" style="color: null;">clang-format</span> <span class="at" style="color: #657422;">-i</span> <span class="at" style="color: #657422;">-style</span><span class="op" style="color: #5E5E5E;">=</span>google src/<span class="pp" style="color: #AD0000;">*</span>.cpp</span></code></pre></div>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># replace .cpp with .h to format headers</span></span>
+<span id="cb4-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">clang-format</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-style</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>google src/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.cpp</span></code></pre></div>
 <p>However, this also formats the autogenerated <code>RcppExports.cpp</code> file. It can be extra work to repeatedly undo this change and keep the original formatting, but <em>clang-format</em> does not provide an easy inline way to ignore this file.</p>
 <p>Instead, <em>clang-format</em> can be passed all files except <code>RcppExports.cpp</code> to style using some simple shell commands. In smaller projects, it might be worth</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;">find</span> src <span class="at" style="color: #657422;">-name</span> <span class="st" style="color: #20794D;">"*.cpp"</span> ! <span class="at" style="color: #657422;">-name</span> <span class="st" style="color: #20794D;">"RcppExports.cpp"</span> <span class="at" style="color: #657422;">-exec</span> clang-format <span class="at" style="color: #657422;">-style</span><span class="op" style="color: #5E5E5E;">=</span>google <span class="at" style="color: #657422;">-i</span> {} <span class="dt" style="color: #AD0000;">\;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">find</span> src <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-name</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"*.cpp"</span> ! <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-name</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"RcppExports.cpp"</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-exec</span> clang-format <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-style</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>google <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-i</span> {} <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">\;</span></span></code></pre></div>
 </section>
 <section id="turning-off-linting-and-formatting" class="level2">
 <h2 class="anchored" data-anchor-id="turning-off-linting-and-formatting">Turning off linting and formatting</h2>
@@ -965,10 +1481,30 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 <section id="linter-enforced-paradigms" class="level3">
 <h3 class="anchored" data-anchor-id="linter-enforced-paradigms">Linter-enforced paradigms</h3>
 <p>Sometimes, the linter or styler developer enforces both a style <em>and</em> the use of certain programming paradigms. An example from <em>cpplint</em> is when it warns against passing function arguments by reference, and prefers for these to be passed as pointers, or as constant references (<code>const int &amp;value</code>).</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;">int</span> some_function<span class="op" style="color: #5E5E5E;">(</span><span class="dt" style="color: #AD0000;">int</span> <span class="op" style="color: #5E5E5E;">&amp;</span>value<span class="op" style="color: #5E5E5E;">)</span> <span class="op" style="color: #5E5E5E;">{</span> </span>
-<span id="cb6-2">  <span class="co" style="color: #5E5E5E;">/* operations modifying value */</span></span>
-<span id="cb6-3">  <span class="cf" style="color: #003B4F;">return</span> value<span class="op" style="color: #5E5E5E;">;</span></span>
-<span id="cb6-4"><span class="op" style="color: #5E5E5E;">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> some_function<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">int</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&amp;</span>value<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span> </span>
+<span id="cb6-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/* operations modifying value */</span></span>
+<span id="cb6-3">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> value<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb6-4"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
 <p>Passing the argument as a <code>const</code> reference would not serve the needs of this function, and passing by value is a valid strategy when we don’t want to get into the details of using pointers. (Note that this is typically an issue when large objects such as custom classes or structs are passed to a function multiple times.)</p>
 <p>Similarly, <em>cpplint</em> will throw a warning about accessing variables using <code>std::move</code>, which is something we encounter in the Newton solver in {finalsize}. While not technically wrong for such a simple use case, the linter is correct to cautiously throw a warning nonetheless.</p>
 </section>
@@ -980,13 +1516,33 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 <section id="disabling-checks-on-code-chunks" class="level3">
 <h3 class="anchored" data-anchor-id="disabling-checks-on-code-chunks">Disabling checks on code chunks</h3>
 <p>Either of these cases could require disabling linting or formatting on some part of the code. It is possible to turn off linting using <em>cpplint</em> at particular lines using the comment <code>// NOLINT</code>. Multiple lines can be protected from linting as well.</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="co" style="color: #5E5E5E;">// NOLINTBEGIN</span></span>
-<span id="cb7-2"><span class="op" style="color: #5E5E5E;">&lt;</span>some C<span class="op" style="color: #5E5E5E;">++</span> code here<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb7-3"><span class="co" style="color: #5E5E5E;">// NOLINTEND</span></span></code></pre></div>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// NOLINTBEGIN</span></span>
+<span id="cb7-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>some C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">++</span> code here<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb7-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// NOLINTEND</span></span></code></pre></div>
 <p>Alternatively, <em>clang-format</em> can be instructed to ignore chunks of code using comment messages too.</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><span class="co" style="color: #5E5E5E;">// clang-format off</span></span>
-<span id="cb8-2"><span class="op" style="color: #5E5E5E;">&lt;</span>some C<span class="op" style="color: #5E5E5E;">++</span> code here<span class="op" style="color: #5E5E5E;">&gt;</span></span>
-<span id="cb8-3"><span class="co" style="color: #5E5E5E;">// clang-format on</span></span></code></pre></div>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// clang-format off</span></span>
+<span id="cb8-2"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>some C<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">++</span> code here<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// clang-format on</span></span></code></pre></div>
 </section>
 </section>
 <section id="linter-options-for-future-packages" class="level2">
@@ -994,11 +1550,35 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 <p>{finalsize} is a relatively simple {Rcpp} package, with no C/C++ headers, and no C++ tests. However, future Epiverse-TRACE packages could be more similar to {fluEvidenceSynthesis}, and will have header files, and could also have <a href="https://github.com/catchorg/Catch2">C++ unit tests via the <em>catch</em> framework</a>.</p>
 <p><em>cpplint</em> will demand that all local headers be prefixed with their directory (<code>src/</code>), but this would cause the code to break as {Rcpp} looks for a subdirectory called <code>src/src/</code>. This can be turned off by passing the filter option <code>--filter="-build/include_subdir"</code> to <em>cpplint</em>. Alternatively, we could place headers in a subdirectory such as <code>inst/include</code>.</p>
 <p>Both <em>cpplint</em> and <em>cppcheck</em> can be instructed to ignore C++ test files using the <em>catch</em> testing framework provided by {testthat}. This prevents errors due to the specialised syntax provided by {testthat} in <code>testthat.h</code>, such as <code>context</code>.</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;"># for cpplint, add an extra exclude statement</span></span>
-<span id="cb9-2"><span class="ex" style="color: null;">cpplint</span> <span class="op" style="color: #5E5E5E;">&lt;</span>...<span class="op" style="color: #5E5E5E;">&gt;</span> --exclude=<span class="st" style="color: #20794D;">"src/test*.cpp"</span> src/<span class="pp" style="color: #AD0000;">*</span>.cpp</span>
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># for cpplint, add an extra exclude statement</span></span>
+<span id="cb9-2"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cpplint</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>...<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> --exclude=<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"src/test*.cpp"</span> src/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.cpp</span>
 <span id="cb9-3"></span>
-<span id="cb9-4"><span class="co" style="color: #5E5E5E;"># for cppcheck, suppress checks on test files</span></span>
-<span id="cb9-5"><span class="ex" style="color: null;">cppcheck</span> <span class="op" style="color: #5E5E5E;">&lt;</span>...<span class="op" style="color: #5E5E5E;">&gt;</span> --suppress=<span class="pp" style="color: #AD0000;">*</span>:src/test_<span class="pp" style="color: #AD0000;">*</span>.cpp src</span></code></pre></div>
+<span id="cb9-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># for cppcheck, suppress checks on test files</span></span>
+<span id="cb9-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cppcheck</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>...<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> --suppress=<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>:src/test_<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.cpp src</span></code></pre></div>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
@@ -1007,15 +1587,15 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
-  author = {Pratik Gupte},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+  author = {Gupte, Pratik},
   title = {Improving the {C++} {Code} {Quality} of an {Rcpp} {Package}},
   date = {2023-02-16},
   url = {https://epiverse-trace.github.io//posts/lint-rcpp},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
-Pratik Gupte. 2023. <span>“Improving the C++ Code Quality of an Rcpp
+Gupte, Pratik. 2023. <span>“Improving the C++ Code Quality of an Rcpp
 Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io//posts/lint-rcpp">https://epiverse-trace.github.io//posts/lint-rcpp</a>.
 </div></div></section></div> ]]></description>
   <category>code quality</category>
@@ -1035,31 +1615,71 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-13856"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-13856").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-22083"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-22083").innerHTML = tweet["html"];</script><p></p>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;">#' Compute the centroid of a set of points</span></span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;">#'</span></span>
-<span id="cb1-3"><span class="co" style="color: #5E5E5E;">#' @param coords Coordinates of the points as a list of vectors. Each element of the </span></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;">#'   list is a point.</span></span>
-<span id="cb1-5"><span class="co" style="color: #5E5E5E;">#'</span></span>
-<span id="cb1-6"><span class="co" style="color: #5E5E5E;">#' @returns A vector of coordinates of the same length of each element of </span></span>
-<span id="cb1-7"><span class="co" style="color: #5E5E5E;">#'   `coords`</span></span>
-<span id="cb1-8"><span class="co" style="color: #5E5E5E;">#'   </span></span>
-<span id="cb1-9"><span class="co" style="color: #5E5E5E;">#' @examples</span></span>
-<span id="cb1-10"><span class="co" style="color: #5E5E5E;">#' centroid(list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)))</span></span>
-<span id="cb1-11"><span class="co" style="color: #5E5E5E;">#' </span></span>
-<span id="cb1-12">centroid <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(coords) {</span>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Compute the centroid of a set of points</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param coords Coordinates of the points as a list of vectors. Each element of the </span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   list is a point.</span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'</span></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @returns A vector of coordinates of the same length of each element of </span></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   `coords`</span></span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   </span></span>
+<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @examples</span></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' centroid(list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)))</span></span>
+<span id="cb1-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' </span></span>
+<span id="cb1-12">centroid <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(coords) {</span>
 <span id="cb1-13"></span>
-<span id="cb1-14">  <span class="co" style="color: #5E5E5E;"># ...</span></span>
-<span id="cb1-15">  <span class="co" style="color: #5E5E5E;"># Skip all the necessary input checking for the purpose of this demo</span></span>
-<span id="cb1-16">  <span class="co" style="color: #5E5E5E;"># ...</span></span>
+<span id="cb1-14">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
+<span id="cb1-15">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip all the necessary input checking for the purpose of this demo</span></span>
+<span id="cb1-16">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># ...</span></span>
 <span id="cb1-17"></span>
-<span id="cb1-18">  coords_mat <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">do.call</span>(rbind, coords)</span>
+<span id="cb1-18">  coords_mat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">do.call</span>(rbind, coords)</span>
 <span id="cb1-19">  </span>
-<span id="cb1-20">  <span class="fu" style="color: #4758AB;">return</span>(<span class="fu" style="color: #4758AB;">colMeans</span>(coords_mat))</span>
+<span id="cb1-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colMeans</span>(coords_mat))</span>
 <span id="cb1-21">  </span>
 <span id="cb1-22">}</span></code></pre></div>
 </div>
@@ -1067,28 +1687,88 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 <h1>Compare your results to the reference implementation</h1>
 <p>The most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.</p>
 <p>For example, the <a href="https://github.com/fboehm/gemma2"><code>{gemma2}</code> R package</a>, which re-implements the methods from <a href="https://github.com/genetics-statistics/GEMMA">the GEMMA tool written in C++</a>, <a href="https://github.com/fboehm/gemma2/blob/ea3052f8609622f17224fb8ec5fd83bd1bceb33e/tests/testthat/test_calc_sigma.R#L34-L37">verifies that values produced by both tools match</a>:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">test_that</span>(<span class="st" style="color: #20794D;">"Results of gemma2 equal those of GEMMA v 0.97"</span>, {</span>
-<span id="cb2-2">  <span class="fu" style="color: #4758AB;">expect_equal</span>(Sigma_ee, <span class="fu" style="color: #4758AB;">diag</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">18.559</span>, <span class="fl" style="color: #AD0000;">12.3672</span>)), <span class="at" style="color: #657422;">tolerance =</span> <span class="fl" style="color: #AD0000;">0.0001</span>)</span>
-<span id="cb2-3">  <span class="fu" style="color: #4758AB;">expect_equal</span>(Sigma_uu, <span class="fu" style="color: #4758AB;">diag</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">82.2973</span>, <span class="fl" style="color: #AD0000;">41.9238</span>)), <span class="at" style="color: #657422;">tolerance =</span> <span class="fl" style="color: #AD0000;">0.0001</span>)</span>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Results of gemma2 equal those of GEMMA v 0.97"</span>, {</span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_equal</span>(Sigma_ee, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">diag</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18.559</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12.3672</span>)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">tolerance =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0001</span>)</span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_equal</span>(Sigma_uu, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">diag</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">82.2973</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">41.9238</span>)), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">tolerance =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.0001</span>)</span>
 <span id="cb2-4">})</span></code></pre></div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example with <code>centroid()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">library</span>(testthat)</span>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(testthat)</span>
 <span id="cb3-2"></span>
-<span id="cb3-3"><span class="fu" style="color: #4758AB;">test_that</span>(<span class="st" style="color: #20794D;">"centroid() in 1D produces the same results as mean()"</span>, {</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"centroid() in 1D produces the same results as mean()"</span>, {</span>
 <span id="cb3-4"></span>
-<span id="cb3-5">  x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">5</span>, <span class="dv" style="color: #AD0000;">3</span>, <span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">5</span>)</span>
+<span id="cb3-5">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
 <span id="cb3-6"></span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;">expect_identical</span>(<span class="fu" style="color: #4758AB;">centroid</span>(x), <span class="fu" style="color: #4758AB;">mean</span>(<span class="fu" style="color: #4758AB;">unlist</span>(x)))</span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_identical</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(x), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unlist</span>(x)))</span>
 <span id="cb3-8">  </span>
 <span id="cb3-9">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1103,23 +1783,81 @@ Example with <code>centroid()</code>
 <section id="compare-to-a-theoretical-upper-or-lower-bound" class="level1">
 <h1>Compare to a theoretical upper or lower bound</h1>
 <p>An alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example with <code>centroid()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">test_that</span>(<span class="st" style="color: #20794D;">"centroid() is inside the hypercube containing the data points"</span>, {</span>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"centroid() is inside the hypercube containing the data points"</span>, {</span>
 <span id="cb5-2">  </span>
-<span id="cb5-3">  x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">5</span>, <span class="dv" style="color: #AD0000;">3</span>), <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">8</span>, <span class="dv" style="color: #AD0000;">6</span>, <span class="dv" style="color: #AD0000;">4</span>, <span class="dv" style="color: #AD0000;">3</span>), <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>, <span class="dv" style="color: #AD0000;">7</span>))</span>
+<span id="cb5-3">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>))</span>
 <span id="cb5-4"></span>
-<span id="cb5-5">  <span class="fu" style="color: #4758AB;">expect_true</span>(<span class="fu" style="color: #4758AB;">all</span>(<span class="fu" style="color: #4758AB;">centroid</span>(x) <span class="sc" style="color: #5E5E5E;">&lt;=</span> <span class="fu" style="color: #4758AB;">Reduce</span>(pmax, x)))</span>
-<span id="cb5-6">  <span class="fu" style="color: #4758AB;">expect_true</span>(<span class="fu" style="color: #4758AB;">all</span>(<span class="fu" style="color: #4758AB;">centroid</span>(x) <span class="sc" style="color: #5E5E5E;">&gt;=</span> <span class="fu" style="color: #4758AB;">Reduce</span>(pmin, x)))</span>
+<span id="cb5-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_true</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(x) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Reduce</span>(pmax, x)))</span>
+<span id="cb5-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_true</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(x) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">Reduce</span>(pmin, x)))</span>
 <span id="cb5-7">  </span>
 <span id="cb5-8">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1129,16 +1867,68 @@ Example with <code>centroid()</code>
 </div>
 </div>
 <p>You can see a <a href="https://github.com/epiverse-trace/finalsize/blob/a710767b38a9242f15ab4dcf18b02fb5b0bcf24f/tests/testthat/test-newton_solver_vary_r0.R#L1-L13">real-life example of this kind of test in the <code>{finalsize}</code> R package</a>. <code>{finalsize}</code> computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;"># Calculates the upper limit of final size given the r0</span></span>
-<span id="cb7-2"><span class="co" style="color: #5E5E5E;"># The upper limit is given by a well mixed population</span></span>
-<span id="cb7-3">upper_limit <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(r0) {</span>
-<span id="cb7-4">  f <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(par) {</span>
-<span id="cb7-5">    <span class="fu" style="color: #4758AB;">abs</span>(<span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">-</span> <span class="fu" style="color: #4758AB;">exp</span>(<span class="sc" style="color: #5E5E5E;">-</span>r0 <span class="sc" style="color: #5E5E5E;">*</span> par[<span class="dv" style="color: #AD0000;">1</span>]) <span class="sc" style="color: #5E5E5E;">-</span> par[<span class="dv" style="color: #AD0000;">1</span>])</span>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Calculates the upper limit of final size given the r0</span></span>
+<span id="cb7-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># The upper limit is given by a well mixed population</span></span>
+<span id="cb7-3">upper_limit <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(r0) {</span>
+<span id="cb7-4">  f <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(par) {</span>
+<span id="cb7-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">abs</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">exp</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>r0 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> par[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> par[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>])</span>
 <span id="cb7-6">  }</span>
-<span id="cb7-7">  opt <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">optim</span>(</span>
-<span id="cb7-8">    <span class="at" style="color: #657422;">par =</span> <span class="fl" style="color: #AD0000;">0.5</span>, <span class="at" style="color: #657422;">fn =</span> f,</span>
-<span id="cb7-9">    <span class="at" style="color: #657422;">lower =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">upper =</span> <span class="dv" style="color: #AD0000;">1</span>,</span>
-<span id="cb7-10">    <span class="at" style="color: #657422;">method =</span> <span class="st" style="color: #20794D;">"Brent"</span></span>
+<span id="cb7-7">  opt <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">optim</span>(</span>
+<span id="cb7-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">par =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fn =</span> f,</span>
+<span id="cb7-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">lower =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">upper =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb7-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">method =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Brent"</span></span>
 <span id="cb7-11">  )</span>
 <span id="cb7-12">  opt</span>
 <span id="cb7-13">}</span></code></pre></div>
@@ -1146,25 +1936,85 @@ Example with <code>centroid()</code>
 <section id="verify-that-output-is-changing-as-expected-when-a-single-parameter-varies" class="level1">
 <h1>Verify that output is changing as expected when a single parameter varies</h1>
 <p>An even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example with <code>centroid()</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">test_that</span>(<span class="st" style="color: #20794D;">"centroid() increases when coordinates from one point increase"</span>, {</span>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"centroid() increases when coordinates from one point increase"</span>, {</span>
 <span id="cb8-2">  </span>
-<span id="cb8-3">  x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">list</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">5</span>, <span class="dv" style="color: #AD0000;">3</span>), <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">8</span>, <span class="dv" style="color: #AD0000;">6</span>, <span class="dv" style="color: #AD0000;">4</span>, <span class="dv" style="color: #AD0000;">3</span>), <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>, <span class="dv" style="color: #AD0000;">7</span>))</span>
+<span id="cb8-3">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>))</span>
 <span id="cb8-4">  </span>
-<span id="cb8-5">  y <span class="ot" style="color: #003B4F;">&lt;-</span> x</span>
-<span id="cb8-6">  y[[<span class="dv" style="color: #AD0000;">1</span>]] <span class="ot" style="color: #003B4F;">&lt;-</span> y[[<span class="dv" style="color: #AD0000;">1</span>]] <span class="sc" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span> </span>
+<span id="cb8-5">  y <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> x</span>
+<span id="cb8-6">  y[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> y[[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> </span>
 <span id="cb8-7"></span>
-<span id="cb8-8">  <span class="fu" style="color: #4758AB;">expect_true</span>(<span class="fu" style="color: #4758AB;">all</span>(<span class="fu" style="color: #4758AB;">centroid</span>(x) <span class="sc" style="color: #5E5E5E;">&lt;</span> <span class="fu" style="color: #4758AB;">centroid</span>(y)))</span>
+<span id="cb8-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_true</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(x) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">centroid</span>(y)))</span>
 <span id="cb8-9">  </span>
 <span id="cb8-10">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1174,21 +2024,63 @@ Example with <code>centroid()</code>
 </div>
 </div>
 <p>An example of this test in an actual R package can again be found <a href="https://github.com/epiverse-trace/finalsize/blob/787de9a8fa430d63d06d2bc052c7134c43d1ca69/tests/testthat/test-newton_solver.R#L76-L102">in the finalsize package</a>:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">r0_low <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fl" style="color: #AD0000;">1.3</span></span>
-<span id="cb10-2">r0_high <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fl" style="color: #AD0000;">3.3</span></span>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">r0_low <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.3</span></span>
+<span id="cb10-2">r0_high <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3.3</span></span>
 <span id="cb10-3"></span>
-<span id="cb10-4">epi_outcome_low <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">final_size</span>(</span>
-<span id="cb10-5">  <span class="at" style="color: #657422;">r0 =</span> r0_low,</span>
-<span id="cb10-6">  <span class="sc" style="color: #5E5E5E;">&lt;</span>...<span class="sc" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb10-4">epi_outcome_low <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">final_size</span>(</span>
+<span id="cb10-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">r0 =</span> r0_low,</span>
+<span id="cb10-6">  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>...<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
 <span id="cb10-7">)</span>
-<span id="cb10-8">epi_outcome_high <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">final_size</span>(</span>
-<span id="cb10-9">  <span class="at" style="color: #657422;">r0 =</span> r0_high,</span>
-<span id="cb10-10">  <span class="sc" style="color: #5E5E5E;">&lt;</span>...<span class="sc" style="color: #5E5E5E;">&gt;</span></span>
+<span id="cb10-8">epi_outcome_high <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">final_size</span>(</span>
+<span id="cb10-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">r0 =</span> r0_high,</span>
+<span id="cb10-10">  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;</span>...<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span></span>
 <span id="cb10-11">)</span>
 <span id="cb10-12"></span>
-<span id="cb10-13"><span class="fu" style="color: #4758AB;">test_that</span>(<span class="st" style="color: #20794D;">"Higher values of R0 result in a higher number of infectious in all groups"</span>, {</span>
-<span id="cb10-14">  <span class="fu" style="color: #4758AB;">expect_true</span>(</span>
-<span id="cb10-15">    <span class="fu" style="color: #4758AB;">all</span>(epi_outcome_high<span class="sc" style="color: #5E5E5E;">$</span>p_infected <span class="sc" style="color: #5E5E5E;">&gt;</span> epi_outcome_low<span class="sc" style="color: #5E5E5E;">$</span>p_infected)</span>
+<span id="cb10-13"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Higher values of R0 result in a higher number of infectious in all groups"</span>, {</span>
+<span id="cb10-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">expect_true</span>(</span>
+<span id="cb10-15">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(epi_outcome_high<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>p_infected <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> epi_outcome_low<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>p_infected)</span>
 <span id="cb10-16">  )</span>
 <span id="cb10-17">})</span></code></pre></div>
 </section>
@@ -1196,7 +2088,7 @@ Example with <code>centroid()</code>
 <h1>Conclusion: automated validation vs peer-review</h1>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-86159"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-86159").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-47096"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-47096").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
@@ -1212,8 +2104,8 @@ Example with <code>centroid()</code>
 <li id="fn1"><p>But see the <a href="https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/">“testing statistical software” post from Alex Hayes</a> where he presents his process to determine if he deems a statistical package trustworthy or not, and <a href="https://stats-devguide.ropensci.org/">rOpenSci Statistical Software Peer Review book</a>.↩︎</p></li>
 <li id="fn2"><p>Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div quarto-reuse="quarto-reuse" class="quarto-appendix-contents"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
-  author = {Hugo Gruson},
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+  author = {Gruson, Hugo},
   title = {Ensuring \&amp; {Showcasing} the {Statistical} {Correctness} of
     Your {R} {Package}},
   date = {2023-02-13},
@@ -1221,7 +2113,7 @@ Example with <code>centroid()</code>
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
-Hugo Gruson. 2023. <span>“Ensuring &amp; Showcasing the Statistical
+Gruson, Hugo. 2023. <span>“Ensuring &amp; Showcasing the Statistical
 Correctness of Your R Package.”</span> February 13, 2023. <a href="https://epiverse-trace.github.io//posts/statistical-correctness">https://epiverse-trace.github.io//posts/statistical-correctness</a>.
 </div></div></section></div> ]]></description>
   <category>code quality</category>
