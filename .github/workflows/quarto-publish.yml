@@ -11,8 +11,9 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: pre-release
 
       - uses: r-lib/actions/setup-r@v2
 
