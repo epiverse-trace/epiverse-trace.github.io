@@ -1,2 +1,2 @@
-_extensions/* linguist-vendored
-_freeze/* linguist-generated
+_extensions/** linguist-vendored
+_freeze/** linguist-generated
