@@ -14,5 +14,3 @@ title-block-banner: true
 ---
 
 This blog is also available on [R-bloggers](https://www.r-bloggers.com/).
-
-

@@ -21,8 +21,7 @@ editor:
 This showcase is part of a regular cycle of online meetings to present tools for
 epidemiology.
 
-<details>
-<summary>Schedule</summary>
+::: {.callout-note appearance="minimal"}
 
 +----------------+-----------------------------+-----------------------------+
 | Time           | Item                        | Presenter                   |
@@ -95,8 +94,7 @@ epidemiology.
 | 16:58 - 17:00  | Thank you and close         | Anna                        |
 +----------------+-----------------------------+-----------------------------+
 
-</details>
-
+:::
 
 ## finalsize slides
 
