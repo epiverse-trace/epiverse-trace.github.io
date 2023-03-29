@@ -49,7 +49,7 @@ centroid <- function(coords) {
 }
 ```
 
-# Compare your results to the reference implementation
+## Compare your results to the reference implementation
 
 The most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.
 
@@ -62,8 +62,7 @@ test_that("Results of gemma2 equal those of GEMMA v 0.97", {
 })
 ```
 
-::: callout-tip
-## Example with `centroid()`
+::: {.callout-tip title="Example with `centroid()}
 
 ```{r}
 library(testthat)
@@ -76,6 +75,7 @@ test_that("centroid() in 1D produces the same results as mean()", {
   
 })
 ```
+
 :::
 
 Note that even if a **reference** implementation doesn't exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.
@@ -84,12 +84,11 @@ However, this approach cannot be used in all cases. Indeed, there may not be a r
 
 [^2]: Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.
 
-# Compare to a theoretical upper or lower bound
+## Compare to a theoretical upper or lower bound
 
 An alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.
 
-::: callout-tip
-## Example with `centroid()`
+::: {.callout-tip title="Example with `centroid()}
 
 ```{r}
 test_that("centroid() is inside the hypercube containing the data points", {
@@ -101,6 +100,7 @@ test_that("centroid() is inside the hypercube containing the data points", {
   
 })
 ```
+
 :::
 
 You can see a [real-life example of this kind of test in the `{finalsize}` R package](https://github.com/epiverse-trace/finalsize/blob/a710767b38a9242f15ab4dcf18b02fb5b0bcf24f/tests/testthat/test-newton_solver_vary_r0.R#L1-L13). `{finalsize}` computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:
@@ -121,12 +121,11 @@ upper_limit <- function(r0) {
 }
 ```
 
-# Verify that output is changing as expected when a single parameter varies
+## Verify that output is changing as expected when a single parameter varies
 
 An even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.
 
-::: callout-tip
-## Example with `centroid()`
+::: {.callout-tip title="Example with `centroid()}
 
 ```{r}
 test_that("centroid() increases when coordinates from one point increase", {
@@ -140,6 +139,7 @@ test_that("centroid() increases when coordinates from one point increase", {
   
 })
 ```
+
 :::
 
 An example of this test in an actual R package can again be found [in the finalsize package](https://github.com/epiverse-trace/finalsize/blob/787de9a8fa430d63d06d2bc052c7134c43d1ca69/tests/testthat/test-newton_solver.R#L76-L102):
@@ -164,7 +164,7 @@ test_that("Higher values of R0 result in a higher number of infectious in all gr
 })
 ```
 
-# Conclusion: automated validation vs peer-review
+## Conclusion: automated validation vs peer-review
 
 In this post, we've presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it's important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.
 
@@ -179,4 +179,3 @@ On the one hand, automated validation fails to catch more obscure bugs and edge 
 But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.
 
 Ideally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.
-
