@@ -172,7 +172,7 @@ Alternatively, _clang-format_ can be instructed to ignore chunks of code using c
 However, future Epiverse-TRACE packages could be more similar to {fluEvidenceSynthesis}, and will have header files, and could also have [C++ unit tests via the _catch_ framework](https://github.com/catchorg/Catch2).
 
 _cpplint_ will demand that all local headers be prefixed with their directory (`src/`), but this would cause the code to break as {Rcpp} looks for a subdirectory called `src/src/`.
-This can be turned off by passing the filter option `--filter="-build/include_subdir"` to _cpplint_. 
+This can be turned off by passing the filter option `--filter="-build/include_subdir"` to _cpplint_.
 Alternatively, we could place headers in a subdirectory such as `inst/include`.
 
 Both _cpplint_ and _cppcheck_ can be instructed to ignore C++ test files using the _catch_ testing framework provided by {testthat}.

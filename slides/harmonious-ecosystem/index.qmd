@@ -58,5 +58,3 @@ However, if anything, our projects should be more sustainable by construction si
 ## See also
 
 - The [companion post on our blog](../../posts/s3-generic)
-
-
