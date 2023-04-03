@@ -49,9 +49,9 @@ df[1, 1][[1]] <- list(data.frame(c = "y", d = "z"))
 df
 ```
 
-It is therefore clear why data frames are so prevalent. However, they are not without limitations. They have a relatively basic printing method which can fload the R console when the number of columns or rows is large. They have useful methods (e.g., `summary()` and `str()`), but these might not be appropriate for certain types of tabular data. In these cases it is useful to utilise R's inheritance mechanisms (specifically S3 inheritance) to write extensions for R's `data.frame` class. In this case the data frame is the superclass and the new subclass extends it and inherits its methods (see Adv R[^1] for more details on S3 inheritance).
+It is therefore clear why data frames are so prevalent. However, they are not without limitations. They have a relatively basic printing method which can fload the R console when the number of columns or rows is large. They have useful methods (e.g., `summary()` and `str()`), but these might not be appropriate for certain types of tabular data. In these cases it is useful to utilise R's inheritance mechanisms (specifically S3 inheritance) to write extensions for R's `data.frame` class. In this case the data frame is the superclass and the new subclass extends it and inherits its methods (see [Adv R](https://adv-r.hadley.nz/s3.html#s3-inheritance) for more details on S3 inheritance).
 
-One of the most common extension of the data frame is the `tibble` from the {tibble} R package. Outlined in {tibble}'s 'Tibbles' vignette[^2], `tibble`s offer improvements in printing, subsetting and recycling rules. Another commonly used data frame extension is the `data.table` class from the {data.table} R package [^3]. In addition to the improved printing, this class is designed to improve the performance (i.e. speed and efficiency of operations and storage) of working with tabular data in R and provide a terse syntax for manipulation. 
+One of the most common extension of the data frame is the `tibble` from the {tibble} R package. Outlined in [{tibble}'s vignette](https://tibble.tidyverse.org/articles/tibble.html), `tibble`s offer improvements in printing, subsetting and recycling rules. Another commonly used data frame extension is the `data.table` class from the [{data.table} R package](https://github.com/Rdatatable/data.table). In addition to the improved printing, this class is designed to improve the performance (i.e. speed and efficiency of operations and storage) of working with tabular data in R and provide a terse syntax for manipulation. 
 
 In the process of developing R software (most likely an R package), a new tabular data class that builds atop data frames can become beneficial. This blog post has two main sections: 
 
@@ -60,7 +60,7 @@ In the process of developing R software (most likely an R package), a new tabula
 
 ### Writing a custom data class
 
-It is useful to write a class constructor function that can be called to create an object of your new class. The functions define below are a redacted version (for readability) of functions available in the {ExtendDataFrames} R package[^4], which contains example functions and files discussed in this post.
+It is useful to write a class constructor function that can be called to create an object of your new class. The functions define below are a redacted version (for readability) of functions available in the [{ExtendDataFrames} R package](https://github.com/joshwlambert/ExtendDataFrames), which contains example functions and files discussed in this post.
 
 ```r
 birthdays <- function(x) {
@@ -71,7 +71,7 @@ birthdays <- function(x) {
 
 That's all that's needed to create a subclass of a data frame. However, although we've created the class we haven't given it any functionality and thus it will be identical to a data frame due to inheritance.
 
-We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic and the second that does. See Adv R[^1] and this Epiverse blog post[^5] to find out more about S3 generics.
+We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic and the second that does. See [Adv R](https://adv-r.hadley.nz/s3.html#s3-methods) and this [Epiverse blog post](https://epiverse-trace.github.io/posts/s3-generic/) to find out more about S3 generics.
 
 ```r
 print.birthdays <- function(x, ...) {
@@ -253,9 +253,9 @@ However, there is some final housekeeping to do. In cases when {dplyr} is not a 
 }
 ```
 
-The `s3_register()` function used in `.onLoad()` also needs to be added to the package and this function is kindly supplied by both {vctrs} and {rlang} unlicensed and thus can be copied into another package. See R packages[^7] for information about `.onLoad()` and attaching and loading in general.
+The `s3_register()` function used in `.onLoad()` also needs to be added to the package and this function is kindly supplied by both {vctrs} and {rlang} unlicensed and thus can be copied into another package. See the [R packages book](https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-attach-vs-load) for information about `.onLoad()` and attaching and loading in general.
 
-Since R version 3.6.0 this S3 generic registration happens automatically with `S3Method()` in the package namespace[^6] using the {roxygen2} documentation `#' @exportS3Method dplyr::dplyr_reconstruct`.
+Since R version 3.6.0 this [S3 generic registration](https://blog.r-project.org/2019/08/19/s3-method-lookup/index.html) happens automatically with `S3Method()` in the package namespace using the {roxygen2} documentation `#' @exportS3Method dplyr::dplyr_reconstruct`.
 
 There is one last option which prevents the hard dependency on a relatively recent R version. Since {roxygen2} version 6.1.0, there is the `@rawNamespace` tag which allows insertion of text into the NAMESPACE file. Using this tag the following code will check the local R version and register the S3 method if equal to or above 3.6.0.
 
@@ -265,7 +265,7 @@ There is one last option which prevents the hard dependency on a relatively rece
 #' }
 ```
 
-Each of the three options for registering S3 methods has different benefits and downsides, so the choice depends on the specific use-case. Over time it may be best to use the most up-to-date methods as packages are usually only maintained for a handful of recent R releases[^8].
+Each of the three options for registering S3 methods has different benefits and downsides, so the choice depends on the specific use-case. Over time it may be best to use the most up-to-date methods as packages are usually only maintained for a handful of recent R releases[^1].
 
 The topics discussed in this post have been implemented in the {epiparameter} R package within Epiverse-TRACE. 
 
@@ -280,11 +280,4 @@ For other use-cases and discussions of the designs and implementations discussed
 
 This blog post is a compendium of information from sources that are linked and cited throughout. Please refer to those sites for more information and as the primary source for citation in further work.
 
-[^1]: https://adv-r.hadley.nz/s3.html?q=inherita#s3-inheritance
-[^2]: https://tibble.tidyverse.org/articles/tibble.html
-[^3]: https://github.com/Rdatatable/data.table
-[^4]: https://github.com/joshwlambert/ExtendDataFrames
-[^5]: https://epiverse-trace.github.io/posts/s3-generic/
-[^6]: https://blog.r-project.org/2019/08/19/s3-method-lookup/index.html
-[^7]: https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-attach-vs-load
-[^8]: https://www.tidyverse.org/blog/2019/04/r-version-support/
+[^1]: This is the working practise of tidyverse packages: [https://www.tidyverse.org/blog/2019/04/r-version-support/](https://www.tidyverse.org/blog/2019/04/r-version-support/)
