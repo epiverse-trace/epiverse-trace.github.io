@@ -143,7 +143,7 @@ birthdays[, -1]
 The second design option is the reconstruct-on-subsetting. This checks whether the class is valid, and if not downgrade the class to the superclass, in our case a data frame. This is done by not only validating the object during subsetting but to check whether it is a valid class object, and then either ensuring all of the attributes of the subclass -- in our case `<birthdays>` -- are maintained, or attributes are stripped and only the attributes of the base superclass -- in our case `data.frame` -- are kept.
 
 ::: {.callout-note}
-Important note: this section of the post relies heavily on [https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat](https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat).
+Important note: this section of the post relies heavily on <https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat>.
 :::
   
 The four functions that are required to be added to ensure our class is correctly handled when invaliding it are:
