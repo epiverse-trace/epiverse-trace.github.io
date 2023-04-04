@@ -220,7 +220,7 @@ dplyr_reconstruct.birthdays <- function(data, template) { # nolint
 Information about the generic can be found through the {dplyr} help documentation.
 
 ```{r}
-?dplyr_extending
+?dplyr::dplyr_extending
 ?dplyr::dplyr_reconstruct
 ```
 
