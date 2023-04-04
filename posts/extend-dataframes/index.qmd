@@ -4,7 +4,7 @@ subtitle: "Creating custom classes and {dplyr} compatibility"
 author:
   - name: "Joshua W. Lambert"
     orcid: "0000-0001-5218-3046"
-date: "2023-04-03"
+date: "2023-04-12"
 categories: [data frame, R, R package, interoperability, S3 class, dplyr]
 format:
   html:
