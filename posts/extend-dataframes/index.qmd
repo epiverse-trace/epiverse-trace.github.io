@@ -54,8 +54,8 @@ One of the most common extension of the data frame is the `tibble` from the {tib
 
 In the process of developing R software (most likely an R package), a new tabular data class that builds atop data frames can become beneficial. This blog post has two main sections:
 
-1) a brief overview of  the steps required to setup a class that extends data frames
-2) guide to the technical aspects of class invariants (required data members of a class) and design and implementation decisions, and tidyverse compatibility
+1. a brief overview of  the steps required to setup a class that extends data frames
+2. guide to the technical aspects of class invariants (required data members of a class) and design and implementation decisions, and tidyverse compatibility
 
 ### Writing a custom data class
 
