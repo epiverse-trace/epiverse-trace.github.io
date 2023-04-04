@@ -264,7 +264,7 @@ There is one last option which prevents the hard dependency on a relatively rece
 
 Each of the three options for registering S3 methods has different benefits and downsides, so the choice depends on the specific use-case. Over time it may be best to use the most up-to-date methods as packages are usually only maintained for a handful of recent R releases[^1].
 
-The topics discussed in this post have been implemented in the {epiparameter} R package within Epiverse-TRACE.
+The topics discussed in this post have been implemented in the [{epiparameter} R package](https://github.com/epiverse-trace/epiparameter) within [Epiverse-TRACE](https://github.com/epiverse-trace).
 
 Compatibility with {vctrs} is also possible using the same mechanism (functions) described in this post, and if interested see [https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat](https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat) for details.
 
