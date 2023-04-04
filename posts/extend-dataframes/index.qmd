@@ -11,7 +11,7 @@ format:
     toc: true
 ---
 
-```{r setup}
+```{r setup, message = FALSE}
 library(dplyr)
 ```
 
