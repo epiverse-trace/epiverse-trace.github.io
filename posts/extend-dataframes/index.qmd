@@ -60,7 +60,7 @@ In the process of developing R software (most likely an R package), a new tabula
 
 ### Writing a custom data class
 
-It is useful to write a class constructor function that can be called to create an object of your new class. The functions define below are a redacted version (for readability) of functions available in the [{ExtendDataFrames} R package](https://github.com/joshwlambert/ExtendDataFrames), which contains example functions and files discussed in this post.
+It is useful to write a class constructor function that can be called to create an object of your new class. The functions defined below are a redacted version (for readability) of functions available in the [{ExtendDataFrames} R package](https://github.com/joshwlambert/ExtendDataFrames), which contains example functions and files discussed in this post.
 
 ```r
 birthdays <- function(x) {
