@@ -265,7 +265,7 @@ Each of the three options for registering S3 methods has different benefits and 
 
 The topics discussed in this post have been implemented in the [{epiparameter} R package](https://github.com/epiverse-trace/epiparameter) within [Epiverse-TRACE](https://github.com/epiverse-trace).
 
-Compatibility with {vctrs} is also possible using the same mechanism (functions) described in this post, and if interested see [https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat](https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat) for details.
+Compatibility with {vctrs} is also possible using the same mechanism (functions) described in this post, and if interested see <https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat> for details.
 
 For other use-cases and discussions of the designs and implementations discussed in this post see:
   
