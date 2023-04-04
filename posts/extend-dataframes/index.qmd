@@ -72,7 +72,7 @@ birthdays <- function(x) {
 
 That's all that's needed to create a subclass of a data frame. However, although we've created the class we haven't given it any functionality and thus it will be identical to a data frame due to inheritance.
 
-We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic (`print.birthdays`) and the second that does (`birthdays_per_month`). See [Adv R](https://adv-r.hadley.nz/s3.html#s3-methods) and this [Epiverse blog post](https://epiverse-trace.github.io/posts/s3-generic/) to find out more about S3 generics.
+We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic (`print.birthdays`) and the second that does (`birthdays_per_month`). The `print()` generic function is provided by R, which is why we do not need to add one ourselves. See [Adv R](https://adv-r.hadley.nz/s3.html#s3-methods) and this [Epiverse blog post](https://epiverse-trace.github.io/posts/s3-generic/) to find out more about S3 generics.
 
 ```r
 print.birthdays <- function(x, ...) {
