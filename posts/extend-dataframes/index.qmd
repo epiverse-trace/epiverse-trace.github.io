@@ -12,7 +12,6 @@ format:
 ---
 
 ```{r setup}
-library(ExtendDataFrames)
 library(dplyr)
 ```
 
