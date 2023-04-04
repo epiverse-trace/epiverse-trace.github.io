@@ -129,7 +129,7 @@ validate_birthdays <- function(x) {
 
 This will return an error if the class is not valid (defined in terms of the class' invariants).
 
-Now we can show how to error if one of the invariants are removed during subsetting.
+Now we can show how to error if one of the invariants are removed during subsetting. See `?NextMethod()` for information on method dispatch.
 
 ```{r, eval=FALSE}
 `[.birthdays` <- function(x) {
