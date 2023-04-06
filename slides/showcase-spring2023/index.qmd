@@ -1,0 +1,112 @@
+---
+title: "Epiverse-TRACE Spring 2023 showcase"
+author: 
+  - name: "Anna Carnegie"
+  - name: "Geraldine Gómez Millán"
+  - name: "Juan Daniel Umaña"
+  - name: "Nicolás Torres"
+date: "2023-04-05"
+categories: [sivirep, epiCo, serofoi, showcase]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+This showcase is part of a regular cycle of online meetings to present tools for
+epidemiology.
+
+::: {.callout-note appearance="minimal"}
+
++----------------+-----------------------------+-----------------------------+
+| Time           | Item                        | Presenter                   |
++================+=============================+=============================+
+| 00:00 - 00:05  | Welcome                     | Anna                        |
+|                |                             |                             |
+|                | -   Intro to Epiverse-TRACE |                             |
+|                |                             |                             |
+|                | -   Purpose of the session  |                             |
+|                |                             |                             |
+|                | -   Housekeeping - 10 mins  |                             |
+|                |     per PKG, 5 min Q&A      |                             |
+|                |     after each. Room at the |                             |
+|                |     end for open discussion |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:05 - 00:06  | One line intro to           | Anna                        |
+|                | Geraldine & sivirep         |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:06 - 00:16  | sivirep demo                | Geraldine                   |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKG,     |                             |
+|                |     problem it is trying to |                             |
+|                |     address)                |                             |
+|                |                             |                             |
+|                | -   Features                |                             |
+|                |                             |                             |
+|                | -   Tips and tricks         |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:16 - 00:20  | Q & A from the floor        | Geraldine, attendees (Anna  |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 00:20 - 00:21  | One line intro to Juan &    | Anna                        |
+|                | epiCo                       |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:21 - 00:31  | epiCo demo:                 | Juan                        |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKG,     |                             |
+|                |     problem it is trying to |                             |
+|                |     address)                |                             |
+|                |                             |                             |
+|                | -   Features                |                             |
+|                |                             |                             |
+|                | -   Tips and tricks         |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:31 - 00:35  | Q & A from the floor        | Juan, attendees (Anna       |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 00:35 - 00:36  | One line intro to           | Anna                        |
+|                | Nicolás & serofoi           |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:36 - 00:46  | serofoi demo:               | Nicolás                     |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKG,     |                             |
+|                |     problem it is trying to |                             |
+|                |     address)                |                             |
+|                |                             |                             |
+|                | -   Features                |                             |
+|                |                             |                             |
+|                | -   Tips and tricks         |                             |
++----------------+-----------------------------+-----------------------------+
+| 00:46 - 00:50  | Q & A from the floor        | Nicolás, attendees (Anna    |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 00:50 - 00:58  | Open discussion             | Attendees, all (Anna        |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 00:58 - 00:00  | Thank you and close         | Anna                        |
++----------------+-----------------------------+-----------------------------+
+
+:::
+
+## sivirep slides
+
+```{=html}
+<iframe width="780" height="438.75" src="sivirep.pdf" title="sivirep slides showcase spring 2023"></iframe>
+```
+
+## epiCo slides
+
+```{=html}
+<iframe width="780" height="438.75" src="epiCo.pdf" title="epiCo slides showcase spring 2023"></iframe>
+```
+
+## serofoi slides
+
+```{=html}
+<iframe width="780" height="438.75" src="serofoi.pdf" title="serofoi slides showcase spring 2023"></iframe>
+```
