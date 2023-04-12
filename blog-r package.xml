@@ -9,8 +9,779 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R%20package</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r package.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.3.294</generator>
-<lastBuildDate>Mon, 20 Feb 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.319</generator>
+<lastBuildDate>Wed, 12 Apr 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Extending Data Frames</title>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+</div>
+<section id="extending-data-frames-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="extending-data-frames-in-r">Extending Data Frames in R</h2>
+<p>R is a commonly used language for data science and statistical computing. Foundational to this is having data structures that allow manipulation of data with minimal effort and cognitive load. One of the most commonly required data structures is tabular data. This can be represented in R in a few ways, for example a matrix or a data frame. The data frame (class <code>data.frame</code>) is a flexible tabular data structure, as it can hold different data types (e.g.&nbsp;numbers, character strings, etc.) across different columns. This is in contrast to matrices – which are arrays with dimensions – and thus can only hold a single data type.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># data frame can hold heterogeneous data types across different columns</span></span>
+<span id="cb2-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"b"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"c"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  a b c
+1 1 4 a
+2 2 5 b
+3 3 6 c</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># each column must be of the same type</span></span>
+<span id="cb4-2">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"4"</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>))</span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># be careful of the silent type conversion</span></span>
+<span id="cb4-4">df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>a</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">df<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>b</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "4" "5" "6"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">mat <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">matrix</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ncol =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb8-2">mat</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">mat[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"1"</span></span>
+<span id="cb10-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># be careful of the silent type conversion</span></span>
+<span id="cb10-3">mat</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,] "1"  "4"  "7" 
+[2,] "2"  "5"  "8" 
+[3,] "3"  "6"  "9" </code></pre>
+</div>
+</div>
+<p>Data frames can even be nested, cells can be data frames or lists.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"w"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x"</span>)</span>
+<span id="cb12-2">df[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>][[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"z"</span>))</span>
+<span id="cb12-3">df</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     a b
+1 y, z x</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1">df <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">a =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"w"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"x"</span>)</span>
+<span id="cb14-2">df[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>][[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">c =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"y"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">d =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"z"</span>))</span>
+<span id="cb14-3">df</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     a b
+1 y, z x</code></pre>
+</div>
+</div>
+<p>It is therefore clear why data frames are so prevalent. However, they are not without limitations. They have a relatively basic printing method which can fload the R console when the number of columns or rows is large. They have useful methods (e.g., <code>summary()</code> and <code>str()</code>), but these might not be appropriate for certain types of tabular data. In these cases it is useful to utilise R’s inheritance mechanisms (specifically S3 inheritance) to write extensions for R’s <code>data.frame</code> class. In this case the data frame is the superclass and the new subclass extends it and inherits its methods (see <a href="https://adv-r.hadley.nz/s3.html#s3-inheritance">the <em>Advanced R</em> book</a> for more details on S3 inheritance).</p>
+<p>One of the most common extension of the data frame is the <code>tibble</code> from the {tibble} R package. Outlined in <a href="https://tibble.tidyverse.org/articles/tibble.html">{tibble}’s vignette</a>, <code>tibble</code>s offer improvements in printing, subsetting and recycling rules. Another commonly used data frame extension is the <code>data.table</code> class from the <a href="https://github.com/Rdatatable/data.table">{data.table} R package</a>. In addition to the improved printing, this class is designed to improve the performance (i.e.&nbsp;speed and efficiency of operations and storage) of working with tabular data in R and provide a terse syntax for manipulation.</p>
+<p>In the process of developing R software (most likely an R package), a new tabular data class that builds atop data frames can become beneficial. This blog post has two main sections:</p>
+<ol type="1">
+<li>a brief overview of the steps required to setup a class that extends data frames</li>
+<li>guide to the technical aspects of class invariants (required data members of a class) and design and implementation decisions, and tidyverse compatibility</li>
+</ol>
+<section id="writing-a-custom-data-class" class="level3">
+<h3 class="anchored" data-anchor-id="writing-a-custom-data-class">Writing a custom data class</h3>
+<p>It is useful to write a class constructor function that can be called to create an object of your new class. The functions defined below are a redacted version (for readability) of functions available in the <a href="https://github.com/joshwlambert/ExtendDataFrames">{ExtendDataFrames} R package</a>, which contains example functions and files discussed in this post. When assigning the class name ensure that it is a vector containing <code>"data.frame"</code> as the last element to correctly inherit properties and methods from the <code>data.frame</code> class.</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">birthdays <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb16-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># the vector of classes is required for it to inherit from `data.frame`</span></span>
+<span id="cb16-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">structure</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">class =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"birthdays"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data.frame"</span>))</span>
+<span id="cb16-4">}</span></code></pre></div>
+<p>That’s all that’s needed to create a subclass of a data frame. However, although we’ve created the class we haven’t given it any functionality and thus it will be identical to a data frame due to inheritance.</p>
+<p>We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic (<code>print.birthdays</code>) and the second that does (<code>birthdays_per_month</code>). The <code>print()</code> generic function is provided by R, which is why we do not need to add one ourselves. See <a href="https://adv-r.hadley.nz/s3.html#s3-methods">Adv R</a> and this <a href="https://epiverse-trace.github.io/posts/s3-generic/">Epiverse blog post</a> to find out more about S3 generics.</p>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">print.birthdays <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb17-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">cat</span>(</span>
+<span id="cb17-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sprintf</span>(</span>
+<span id="cb17-4">      <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"A `birthdays` object with %s rows and %s cols"</span>,</span>
+<span id="cb17-5">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dim</span>(x)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>], <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dim</span>(x)[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>]</span>
+<span id="cb17-6">    )</span>
+<span id="cb17-7">  )</span>
+<span id="cb17-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">invisible</span>(x)</span>
+<span id="cb17-9">}</span>
+<span id="cb17-10"></span>
+<span id="cb17-11">birthdays_per_month <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb17-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UseMethod</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"birthdays_per_month"</span>)</span>
+<span id="cb17-13">}</span>
+<span id="cb17-14"></span>
+<span id="cb17-15">birthdays_per_month.birthdays <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb17-16">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">table</span>(lubridate<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">month</span>(x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>birthday))</span>
+<span id="cb17-17">  months <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb17-18">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Jan"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Feb"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Mar"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Apr"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"May"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Jun"</span>,</span>
+<span id="cb17-19">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Jul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Aug"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sep"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Oct"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Nov"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Dec"</span></span>
+<span id="cb17-20">  )</span>
+<span id="cb17-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(out) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> months[<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(out))]</span>
+<span id="cb17-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(out)</span>
+<span id="cb17-23">}</span></code></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Useful resources for the “Writing custom data class” section: <a href="https://tibble.tidyverse.org/articles/extending.html">extending <code>tibbles</code> and their functionality</a></p>
+</div>
+</div>
+</section>
+<section id="design-decision-around-class-invariants" class="level3">
+<h3 class="anchored" data-anchor-id="design-decision-around-class-invariants">Design decision around class invariants</h3>
+<p>We will now move on to the second section of the post, in which we discuss the design choices when creating and using S3 classes in R. <strong><em>Class invariants</em></strong> are members of your class that define it. In other words, without these elements your class does not fulfil its basic definition. It is therefore sensible to make sure that your class contains these elements at all times (or at least after operations have been applied to your class). In cases when the class object contains all the invariants normal service can be continued. However, in the case that an invariant is missing or modified to a non-conformist type (e.g.&nbsp;a date converted to a numeric) a decision has to be made. Either the code can error, hopefully giving the user an informative message as to why their modification broke the object; alternatively, the subclass can be revoked and the superclass can be returned. In almost all cases the superclass (i.e.&nbsp;the base class being inherited from) is more general and won’t have the same class invariant restrictions.</p>
+<p>For our example class, <code>&lt;birthdays&gt;</code>, the invariants are a column called <code>name</code> which must contain characters, and a column called <code>birthday</code> which must contain dates. The order of the rows and columns is not considered an invariant property, and having extra columns with other names and data types is also allowed. The number of rows is also not an invariant as we can have as many birthdays as we like in the data object.</p>
+<p>Here we present both cases as well as considerations and technical details of both options. We’ll demonstrate both of these cases with the subset function in R (subsetting uses a single square bracket for tabular data, <code>[</code>). First the fail-on-subsetting. Before we write the subsetting function it is useful to have a function that checks that an object of our class is valid, a so-called validator function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1">validate_birthdays <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb18-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">stopifnot</span>(</span>
+<span id="cb18-3">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"input must contain 'name' and 'birthday' columns"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span></span>
+<span id="cb18-4">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">all</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"name"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"birthday"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%in%</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">colnames</span>(x)),</span>
+<span id="cb18-5">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"names must be a character"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span></span>
+<span id="cb18-6">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.character</span>(x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>name),</span>
+<span id="cb18-7">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"birthday must be a date"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span></span>
+<span id="cb18-8">      lubridate<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">is.Date</span>(x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>birthday)</span>
+<span id="cb18-9">  )</span>
+<span id="cb18-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">invisible</span>(x)</span>
+<span id="cb18-11">}</span></code></pre></div>
+</div>
+<p>This will return an error if the class is not valid (defined in terms of the class’ invariants).</p>
+<p>Now we can show how to error if one of the invariants are removed during subsetting. See <code>?NextMethod()</code> for information on method dispatch.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">[.birthdays</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb19-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">validate_birthdays</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">NextMethod</span>())</span>
+<span id="cb19-3">}</span>
+<span id="cb19-4"></span>
+<span id="cb19-5">birthdays[, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]</span>
+<span id="cb19-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#  Error in validate_birthdays(NextMethod()) :</span></span>
+<span id="cb19-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#  input must contain 'name' and 'birthday' columns</span></span></code></pre></div>
+</div>
+<p>The second design option is the reconstruct-on-subsetting. This checks whether the class is valid, and if not downgrade the class to the superclass, in our case a data frame. This is done by not only validating the object during subsetting but to check whether it is a valid class object, and then either ensuring all of the attributes of the subclass – in our case <code>&lt;birthdays&gt;</code> – are maintained, or attributes are stripped and only the attributes of the base superclass – in our case <code>data.frame</code> – are kept.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Important note: this section of the post relies heavily on <a href="https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat" class="uri">https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat</a>.</p>
+</div>
+</div>
+<p>The four functions that are required to be added to ensure our class is correctly handled when invaliding it are:</p>
+<ul>
+<li><code>birthdays_reconstruct()</code></li>
+<li><code>birthdays_can_reconstruct()</code></li>
+<li><code>df_reconstruct()</code></li>
+<li><code>dplyr_reconstruct.birthdays()</code></li>
+</ul>
+<p>We’ll tackle the first three first, and then move onto to the last one as this requires some extra steps.</p>
+<p><code>birthdays_reconstruct()</code> is a function that contains an if-else statement to determine whether the returned object is a <code>&lt;birthdays&gt;</code> or <code>data.frame</code> object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">birthdays_reconstruct <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, to) {</span>
+<span id="cb20-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> (<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">birthdays_can_reconstruct</span>(x)) {</span>
+<span id="cb20-3">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">df_reconstruct</span>(x, to)</span>
+<span id="cb20-4">  } <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">else</span> {</span>
+<span id="cb20-5">     x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.data.frame</span>(x)</span>
+<span id="cb20-6">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Removing crucial column in `&lt;birthdays&gt;` returning `&lt;data.frame&gt;`"</span>)</span>
+<span id="cb20-7">    x</span>
+<span id="cb20-8">  }</span>
+<span id="cb20-9">}</span></code></pre></div>
+</div>
+<p>The if-else evaluation is controlled by <code>birthdays_can_reconstruct()</code>. This function determines whether after subsetting the object is a valid <code>&lt;birthdays&gt;</code> class. It checks whether the validator fails, in which case it returns <code>FALSE</code>, otherwise the function will return <code>TRUE</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">birthdays_can_reconstruct <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb21-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># check whether input is valid</span></span>
+<span id="cb21-3">  valid <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tryCatch</span>(</span>
+<span id="cb21-4">    { <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">validate_birthdays</span>(x) },</span>
+<span id="cb21-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">error =</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(cnd) <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span></span>
+<span id="cb21-6">  )</span>
+<span id="cb21-7"></span>
+<span id="cb21-8">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># return boolean</span></span>
+<span id="cb21-9">  <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">isFALSE</span>(valid)</span>
+<span id="cb21-10">}</span></code></pre></div>
+</div>
+<p>The next function required is <code>df_reconstruct()</code>. This is called when the object is judged to be a valid <code>&lt;birthdays&gt;</code> object and simply copies the attributes over from the <code>&lt;birthdays&gt;</code> class to the object being subset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">df_reconstruct <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, to) {</span>
+<span id="cb22-2">  attrs <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attributes</span>(to)</span>
+<span id="cb22-3">  attrs<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>names <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">names</span>(x)</span>
+<span id="cb22-4">  attrs<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>row.names <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">.row_names_info</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> 0L)</span>
+<span id="cb22-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">attributes</span>(x) <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> attrs</span>
+<span id="cb22-6">  x</span>
+<span id="cb22-7">}</span></code></pre></div>
+</div>
+<p>The three functions defined for reconstruction can be added to a package with the subsetting function in order to subset <code>&lt;birthdays&gt;</code> objects and returning either <code>&lt;birthdays&gt;</code> objects if still valid, or data frames when invalidated. This design has the benefit that when conducting data exploration a user is not faced with an error, but can continue with a data frame, while being informed by the message printed to console in <code>birthdays_reconstruct()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">[.birthdays</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb23-2">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">NextMethod</span>()</span>
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
+<span id="cb23-4">}</span></code></pre></div>
+</div>
+</section>
+<section id="compatibility-with-dplyr" class="level3">
+<h3 class="anchored" data-anchor-id="compatibility-with-dplyr">Compatibility with {dplyr}</h3>
+<p>In order to be able to operate on our <code>&lt;birthdays&gt;</code> class using functions from the package {dplyr}, as would be common for data frames, we need to make our function compatible. This is where the function <code>dplyr_reconstruct.birthdays()</code> comes in. <code>dplyr_reconstruct()</code> is a generic function exported by {dplyr}. It is called in {dplyr} verbs to make sure that the objects are restored to the input class when not invalidated.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">dplyr_reconstruct.birthdays <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(data, template) { <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># nolint</span></span>
+<span id="cb24-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">birthdays_reconstruct</span>(data, template)</span>
+<span id="cb24-3">}</span></code></pre></div>
+</div>
+<p>Information about the generic can be found through the {dplyr} help documentation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">?dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>dplyr_extending</span>
+<span id="cb25-2">?dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>dplyr_reconstruct</span></code></pre></div>
+</div>
+<p>As explained in the help documentation, {dplyr} also uses two base R functions to perform data manipulation. <code>names&lt;-</code> (i.e the names setter function) and <code>[</code> the one-dimensional subsetting function. We therefore define these methods for our custom class in order for <code>dplyr_reconstruct()</code> to work as intended.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">[.birthdays</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, ...) {</span>
+<span id="cb26-2">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">NextMethod</span>()</span>
+<span id="cb26-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
+<span id="cb26-4">}</span>
+<span id="cb26-5"></span>
+<span id="cb26-6"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">names&lt;-.birthdays</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(x, value) {</span>
+<span id="cb26-7">  out <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">NextMethod</span>()</span>
+<span id="cb26-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
+<span id="cb26-9">}</span></code></pre></div>
+</div>
+<p>This wraps up the need for adding function to perform data manipulation using the reconstruction design outlined above.</p>
+<p>However, there is some final housekeeping to do. In cases when {dplyr} is not a package dependency (either imported or suggested), then the S3 generic <code>dplyr_reconstruct()</code> is required to be loaded. In R versions before 3.6.0 – this also works for R versions later than 3.6.0 – the generic function needs to be registered. This is done by writing an <code>.onLoad()</code> function, typically in a file called <code>zzz.R</code>. This is included in the {ExtendDataFrames} package for illustrative purposes.</p>
+<div class="cell">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>zzz.R</strong></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">.onLoad <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(libname, pkgname) {</span>
+<span id="cb27-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">s3_register</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dplyr::dplyr_reconstruct"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"birthdays"</span>)</span>
+<span id="cb27-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">invisible</span>()</span>
+<span id="cb27-4">}</span></code></pre></div>
+</div>
+</div>
+<p>The <code>s3_register()</code> function used in <code>.onLoad()</code> also needs to be added to the package and this function is kindly supplied by both {vctrs} and {rlang} unlicensed and thus can be copied into another package. See the <a href="https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-attach-vs-load">R packages book</a> for information about <code>.onLoad()</code> and attaching and loading in general.</p>
+<p>Since R version 3.6.0 this <a href="https://blog.r-project.org/2019/08/19/s3-method-lookup/index.html">S3 generic registration</a> happens automatically with <code>S3Method()</code> in the package namespace using the {roxygen2} documentation <code>#' @exportS3Method dplyr::dplyr_reconstruct</code>.</p>
+<p>There is one last option which prevents the hard dependency on a relatively recent R version. Since {roxygen2} version 6.1.0, there is the <code>@rawNamespace</code> tag which allows insertion of text into the NAMESPACE file. Using this tag the following code will check the local R version and register the S3 method if equal to or above 3.6.0.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @rawNamespace if (getRversion() &gt;= "3.6.0") {</span></span>
+<span id="cb28-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'   S3method(pkg::fun, class)</span></span>
+<span id="cb28-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' }</span></span></code></pre></div>
+</div>
+<p>Each of the three options for registering S3 methods has different benefits and downsides, so the choice depends on the specific use-case. Over time it may be best to use the most up-to-date methods as packages are usually only maintained for a handful of recent R releases<sup>1</sup>.</p>
+<p>The topics discussed in this post have been implemented in the <a href="https://github.com/epiverse-trace/epiparameter">{epiparameter} R package</a> within <a href="https://github.com/epiverse-trace">Epiverse-TRACE</a>.</p>
+<p>Compatibility with {vctrs} is also possible using the same mechanism (functions) described in this post, and if interested see <a href="https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat" class="uri">https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat</a> for details.</p>
+<p>For other use-cases and discussions of the designs and implementations discussed in this post see:</p>
+<ul>
+<li><a href="https://github.com/tidymodels/dials">{dials} R package</a></li>
+<li><a href="https://github.com/tidymodels/rsample">{rsample} R package</a></li>
+<li><a href="https://github.com/tidyverse/googledrive">{googledrive} R package</a></li>
+<li><a href="https://github.com/tidyverse/tibble/issues/890">Pull request on {tibble} R package</a></li>
+</ul>
+<p>This blog post is a compendium of information from sources that are linked and cited throughout. Please refer to those sites for more information and as the primary source for citation in further work.</p>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This is the working practise of tidyverse packages: <a href="https://www.tidyverse.org/blog/2019/04/r-version-support/">https://www.tidyverse.org/blog/2019/04/r-version-support/</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+  author = {W. Lambert, Joshua},
+  title = {Extending {Data} {Frames}},
+  date = {2023-04-12},
+  url = {https://epiverse-trace.github.io//posts/extend-dataframes},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w. lambert2023" class="csl-entry quarto-appendix-citeas">
+W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
+12, 2023. <a href="https://epiverse-trace.github.io//posts/extend-dataframes">https://epiverse-trace.github.io//posts/extend-dataframes</a>.
+</div></div></section></div> ]]></description>
+  <category>data frame</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>interoperability</category>
+  <category>S3 class</category>
+  <category>dplyr</category>
+  <guid>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</guid>
+  <pubDate>Wed, 12 Apr 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</title>
   <dc:creator>Hugo Gruson</dc:creator>
@@ -291,7 +1062,7 @@ font-style: inherit;">w =</span> weights))</span>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="quarto-discovered-preview-image img-fluid figure-img"></p>
+<p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption><p></p>
 </figure>
 </div>
@@ -1084,7 +1855,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-75854"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-75854").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-38966"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-38966").innerHTML = tweet["html"];</script><p></p>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
@@ -1557,7 +2328,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h1>Conclusion: automated validation vs peer-review</h1>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-17699"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-17699").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-99502"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-99502").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

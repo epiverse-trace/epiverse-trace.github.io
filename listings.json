@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/extend-dataframes/index.html",
       "/posts/100days-workshop/index.html",
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
