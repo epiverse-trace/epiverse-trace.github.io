@@ -1,0 +1,279 @@
+---
+title: "Extending Data Frames"
+subtitle: "Creating custom classes and {dplyr} compatibility"
+author:
+  - name: "Joshua W. Lambert"
+    orcid: "0000-0001-5218-3046"
+date: "2023-04-12"
+categories: [data frame, R, R package, interoperability, S3 class, dplyr]
+format:
+  html:
+    toc: true
+---
+
+```{r setup, message = FALSE}
+library(dplyr)
+```
+
+## Extending Data Frames in R
+
+R is a commonly used language for data science and statistical computing. Foundational to this is having data structures that allow manipulation of data with minimal effort and cognitive load. One of the most commonly required data structures is tabular data. This can be represented in R in a few ways, for example a matrix or a data frame. The data frame (class `data.frame`) is a flexible tabular data structure, as it can hold different data types (e.g. numbers, character strings, etc.) across different columns. This is in contrast to matrices -- which are arrays with dimensions -- and thus can only hold a single data type.
+
+```{r}
+# data frame can hold heterogeneous data types across different columns
+data.frame(a = c(1, 2, 3), b = c(4, 5, 6), c = c("a", "b", "c"))
+
+# each column must be of the same type
+df <- data.frame(a = c(1, 2, 3), b = c("4", 5, 6))
+# be careful of the silent type conversion
+df$a
+df$b
+
+mat <- matrix(1:9, nrow = 3, ncol = 3)
+mat
+mat[1, 1] <- "1"
+# be careful of the silent type conversion
+mat
+```
+
+Data frames can even be nested, cells can be data frames or lists.
+
+```{r}
+df <- data.frame(a = "w", b = "x")
+df[1, 1][[1]] <- list(c = c("y", "z"))
+df
+
+df <- data.frame(a = "w", b = "x")
+df[1, 1][[1]] <- list(data.frame(c = "y", d = "z"))
+df
+```
+
+It is therefore clear why data frames are so prevalent. However, they are not without limitations. They have a relatively basic printing method which can fload the R console when the number of columns or rows is large. They have useful methods (e.g., `summary()` and `str()`), but these might not be appropriate for certain types of tabular data. In these cases it is useful to utilise R's inheritance mechanisms (specifically S3 inheritance) to write extensions for R's `data.frame` class. In this case the data frame is the superclass and the new subclass extends it and inherits its methods (see [the *Advanced R* book](https://adv-r.hadley.nz/s3.html#s3-inheritance) for more details on S3 inheritance).
+
+One of the most common extension of the data frame is the `tibble` from the {tibble} R package. Outlined in [{tibble}'s vignette](https://tibble.tidyverse.org/articles/tibble.html), `tibble`s offer improvements in printing, subsetting and recycling rules. Another commonly used data frame extension is the `data.table` class from the [{data.table} R package](https://github.com/Rdatatable/data.table). In addition to the improved printing, this class is designed to improve the performance (i.e. speed and efficiency of operations and storage) of working with tabular data in R and provide a terse syntax for manipulation.
+
+In the process of developing R software (most likely an R package), a new tabular data class that builds atop data frames can become beneficial. This blog post has two main sections:
+
+1. a brief overview of  the steps required to setup a class that extends data frames
+2. guide to the technical aspects of class invariants (required data members of a class) and design and implementation decisions, and tidyverse compatibility
+
+### Writing a custom data class
+
+It is useful to write a class constructor function that can be called to create an object of your new class. The functions defined below are a redacted version (for readability) of functions available in the [{ExtendDataFrames} R package](https://github.com/joshwlambert/ExtendDataFrames), which contains example functions and files discussed in this post. When assigning the class name ensure that it is a vector containing `"data.frame"` as the last element
+to correctly inherit properties and methods from the `data.frame` class.
+
+```r
+birthdays <- function(x) {
+  # the vector of classes is required for it to inherit from `data.frame`
+  structure(x, class = c("birthdays", "data.frame"))
+}
+```
+
+That's all that's needed to create a subclass of a data frame. However, although we've created the class we haven't given it any functionality and thus it will be identical to a data frame due to inheritance.
+
+We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic (`print.birthdays`) and the second that does (`birthdays_per_month`). The `print()` generic function is provided by R, which is why we do not need to add one ourselves. See [Adv R](https://adv-r.hadley.nz/s3.html#s3-methods) and this [Epiverse blog post](https://epiverse-trace.github.io/posts/s3-generic/) to find out more about S3 generics.
+
+```r
+print.birthdays <- function(x, ...) {
+  cat(
+    sprintf(
+      "A `birthdays` object with %s rows and %s cols",
+      dim(x)[1], dim(x)[2]
+    )
+  )
+  invisible(x)
+}
+
+birthdays_per_month <- function(x, ...) {
+  UseMethod("birthdays_per_month")
+}
+
+birthdays_per_month.birthdays <- function(x, ...) {
+  out <- table(lubridate::month(x$birthday))
+  months <- c(
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  )
+  names(out) <- months[as.numeric(names(out))]
+  return(out)
+}
+```
+
+::: {.callout-tip}
+Useful resources for the "Writing custom data class" section:
+[extending `tibbles` and their functionality](https://tibble.tidyverse.org/articles/extending.html)
+:::
+
+### Design decision around class invariants
+
+We will now move on to the second section of the post, in which we discuss the design choices when creating and using S3 classes in R. ***Class invariants*** are members of your class that define it. In other words, without these elements your class does not fulfil its basic definition. It is therefore sensible to make sure that your class contains these elements at all times (or at least after operations have been applied to your class). In cases when the class object contains all the invariants normal service can be continued. However, in the case that an invariant is missing or modified to a non-conformist type (e.g. a date converted to a numeric) a decision has to be made. Either the code can error, hopefully giving the user an informative message as to why their modification broke the object; alternatively, the subclass can be revoked and the superclass can be returned. In almost all cases the superclass (i.e. the base class being inherited from) is more general and won't have the same class invariant restrictions.
+
+For our example class, `<birthdays>`, the invariants are a column called `name` which must contain characters, and a column called `birthday` which must contain dates. The order of the rows and columns is not considered an invariant property, and having extra columns with other names and data types is also allowed. The number of rows is also not an invariant as we can have as many birthdays as we like in the data object.
+
+Here we present both cases as well as considerations and technical details of both options. We'll demonstrate both of these cases with the subset function in R (subsetting uses a single square bracket for tabular data, `[`). First the fail-on-subsetting. Before we write the subsetting function it is useful to have a function that checks that an object of our class is valid, a so-called validator function.
+
+```{r}
+validate_birthdays <- function(x) {
+  stopifnot(
+    "input must contain 'name' and 'birthday' columns" =
+      all(c("name", "birthday") %in% colnames(x)),
+    "names must be a character" =
+      is.character(x$name),
+    "birthday must be a date" =
+      lubridate::is.Date(x$birthday)
+  )
+  invisible(x)
+}
+```
+
+This will return an error if the class is not valid (defined in terms of the class' invariants).
+
+Now we can show how to error if one of the invariants are removed during subsetting. See `?NextMethod()` for information on method dispatch.
+
+```{r, eval=FALSE}
+`[.birthdays` <- function(x) {
+  validate_birthdays(NextMethod())
+}
+
+birthdays[, -1]
+#  Error in validate_birthdays(NextMethod()) :
+#  input must contain 'name' and 'birthday' columns
+```
+
+The second design option is the reconstruct-on-subsetting. This checks whether the class is valid, and if not downgrade the class to the superclass, in our case a data frame. This is done by not only validating the object during subsetting but to check whether it is a valid class object, and then either ensuring all of the attributes of the subclass -- in our case `<birthdays>` -- are maintained, or attributes are stripped and only the attributes of the base superclass -- in our case `data.frame` -- are kept.
+
+::: {.callout-note}
+Important note: this section of the post relies heavily on <https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat>.
+:::
+  
+The four functions that are required to be added to ensure our class is correctly handled when invaliding it are:
+  
+- `birthdays_reconstruct()`
+- `birthdays_can_reconstruct()`
+- `df_reconstruct()`
+- `dplyr_reconstruct.birthdays()`
+
+We'll tackle the first three first, and then move onto to the last one as this requires some extra steps.
+
+`birthdays_reconstruct()` is a function that contains an if-else statement to determine whether the returned object is a `<birthdays>` or `data.frame` object.
+
+```{r}
+birthdays_reconstruct <- function(x, to) {
+  if (birthdays_can_reconstruct(x)) {
+    df_reconstruct(x, to)
+  } else {
+     x <- as.data.frame(x)
+    message("Removing crucial column in `<birthdays>` returning `<data.frame>`")
+    x
+  }
+}
+```
+
+The if-else evaluation is controlled by `birthdays_can_reconstruct()`. This function determines whether after subsetting the object is a valid `<birthdays>` class. It checks whether the validator fails, in which case it returns `FALSE`, otherwise the function will return `TRUE`.
+
+```{r}
+birthdays_can_reconstruct <- function(x) {
+  # check whether input is valid
+  valid <- tryCatch(
+    { validate_birthdays(x) },
+    error = function(cnd) FALSE
+  )
+
+  # return boolean
+  !isFALSE(valid)
+}
+```
+
+The next function required is `df_reconstruct()`. This is called when the object is judged to be a valid `<birthdays>` object and simply copies the attributes over from the `<birthdays>` class to the object being subset.
+
+```{r}
+df_reconstruct <- function(x, to) {
+  attrs <- attributes(to)
+  attrs$names <- names(x)
+  attrs$row.names <- .row_names_info(x, type = 0L)
+  attributes(x) <- attrs
+  x
+}
+```
+
+The three functions defined for reconstruction can be added to a package with the subsetting function in order to subset `<birthdays>` objects and returning either `<birthdays>` objects if still valid, or data frames when invalidated. This design has the benefit that when conducting data exploration a user is not faced with an error, but can continue with a data frame, while being informed by the message printed to console in `birthdays_reconstruct()`.
+
+```{r}
+`[.birthdays` <- function(x, ...) {
+  out <- NextMethod()
+  birthdays_reconstruct(out, x)
+}
+```
+
+### Compatibility with {dplyr}
+
+In order to be able to operate on our `<birthdays>` class using functions from the
+package {dplyr}, as would be common for data frames, we need to make our function compatible. This is where the function `dplyr_reconstruct.birthdays()` comes in. `dplyr_reconstruct()` is a generic function exported by {dplyr}. It is called in {dplyr} verbs to make sure that the objects are restored to the input class when not invalidated.
+
+```{r}
+dplyr_reconstruct.birthdays <- function(data, template) { # nolint
+  birthdays_reconstruct(data, template)
+}
+```
+
+Information about the generic can be found through the {dplyr} help documentation.
+
+```{r}
+?dplyr::dplyr_extending
+?dplyr::dplyr_reconstruct
+```
+
+As explained in the help documentation, {dplyr} also uses two base R functions to perform data manipulation.
+`names<-` (i.e the names setter function) and `[` the one-dimensional subsetting function. We therefore define these methods for our custom class in order for `dplyr_reconstruct()` to work as intended.
+
+```{r}
+`[.birthdays` <- function(x, ...) {
+  out <- NextMethod()
+  birthdays_reconstruct(out, x)
+}
+
+`names<-.birthdays` <- function(x, value) {
+  out <- NextMethod()
+  birthdays_reconstruct(out, x)
+}
+```
+
+This wraps up the need for adding function to perform data manipulation using the reconstruction design outlined above.
+
+However, there is some final housekeeping to do. In cases when {dplyr} is not a package dependency (either imported or suggested), then the S3 generic `dplyr_reconstruct()` is required to be loaded. In R versions before 3.6.0 -- this also works for R versions later than 3.6.0 -- the generic function needs to be registered. This is done by writing an `.onLoad()` function, typically in a file called `zzz.R`. This is included in the {ExtendDataFrames} package for illustrative purposes.
+
+```{r filename="zzz.R"}
+.onLoad <- function(libname, pkgname) {
+  s3_register("dplyr::dplyr_reconstruct", "birthdays")
+  invisible()
+}
+```
+
+The `s3_register()` function used in `.onLoad()` also needs to be added to the package and this function is kindly supplied by both {vctrs} and {rlang} unlicensed and thus can be copied into another package. See the [R packages book](https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-attach-vs-load) for information about `.onLoad()` and attaching and loading in general.
+
+Since R version 3.6.0 this [S3 generic registration](https://blog.r-project.org/2019/08/19/s3-method-lookup/index.html) happens automatically with `S3Method()` in the package namespace using the {roxygen2} documentation `#' @exportS3Method dplyr::dplyr_reconstruct`.
+
+There is one last option which prevents the hard dependency on a relatively recent R version. Since {roxygen2} version 6.1.0, there is the `@rawNamespace` tag which allows insertion of text into the NAMESPACE file. Using this tag the following code will check the local R version and register the S3 method if equal to or above 3.6.0.
+
+```{r}
+#' @rawNamespace if (getRversion() >= "3.6.0") {
+#'   S3method(pkg::fun, class)
+#' }
+```
+
+Each of the three options for registering S3 methods has different benefits and downsides, so the choice depends on the specific use-case. Over time it may be best to use the most up-to-date methods as packages are usually only maintained for a handful of recent R releases[^1].
+
+The topics discussed in this post have been implemented in the [{epiparameter} R package](https://github.com/epiverse-trace/epiparameter) within [Epiverse-TRACE](https://github.com/epiverse-trace).
+
+Compatibility with {vctrs} is also possible using the same mechanism (functions) described in this post, and if interested see <https://github.com/DavisVaughan/2020-06-01_dplyr-vctrs-compat> for details.
+
+For other use-cases and discussions of the designs and implementations discussed in this post see:
+  
+- [{dials} R package](https://github.com/tidymodels/dials)
+- [{rsample} R package](https://github.com/tidymodels/rsample)
+- [{googledrive} R package](https://github.com/tidyverse/googledrive)
+- [Pull request on {tibble} R package](https://github.com/tidyverse/tibble/issues/890)
+
+This blog post is a compendium of information from sources that are linked and cited throughout. Please refer to those sites for more information and as the primary source for citation in further work.
+
+[^1]: This is the working practise of tidyverse packages: [https://www.tidyverse.org/blog/2019/04/r-version-support/](https://www.tidyverse.org/blog/2019/04/r-version-support/)
