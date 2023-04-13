@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
-    <lastmod>2023-04-12T09:29:51.466Z</lastmod>
+    <lastmod>2023-04-13T20:41:31.629Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</loc>
-    <lastmod>2023-04-12T09:29:52.950Z</lastmod>
+    <lastmod>2023-04-13T20:41:33.198Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
-    <lastmod>2023-04-12T09:29:54.126Z</lastmod>
+    <lastmod>2023-04-13T20:41:34.418Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
-    <lastmod>2023-04-12T09:29:55.062Z</lastmod>
+    <lastmod>2023-04-13T20:41:35.390Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/100days-workshop/index.html</loc>
-    <lastmod>2023-04-12T09:29:56.294Z</lastmod>
+    <lastmod>2023-04-13T20:41:36.710Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/index.html</loc>
-    <lastmod>2023-04-12T09:29:56.602Z</lastmod>
+    <lastmod>2023-04-13T20:41:37.034Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</loc>
-    <lastmod>2023-04-12T09:29:57.170Z</lastmod>
+    <lastmod>2023-04-13T20:41:37.626Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/showcase-spring2023/index.html</loc>
+    <lastmod>2023-04-13T20:41:38.202Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</loc>
-    <lastmod>2023-04-12T09:29:57.682Z</lastmod>
+    <lastmod>2023-04-13T20:41:38.734Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/blog.html</loc>
-    <lastmod>2023-04-12T09:29:58.526Z</lastmod>
+    <lastmod>2023-04-13T20:41:39.622Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/presentations.html</loc>
-    <lastmod>2023-04-12T09:29:59.058Z</lastmod>
+    <lastmod>2023-04-13T20:41:40.222Z</lastmod>
   </url>
 </urlset>
