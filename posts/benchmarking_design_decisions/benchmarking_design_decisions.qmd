@@ -38,7 +38,7 @@ Here, we will demonstrate that such a decision can be driven by data generated f
 
 Let us benchmark a function that uses `cli::cli_warn()` vs `base::warning()`. Here, we choose `cli::cli_warn()` because it has well adopted in the developer community as an alternative to `base::warning()`. Moreover, `cli` helps to provide useful feedback to the user and can be easy and fun to use as a developer when they get a hang of it.
 
-### Setup with 1 arg validation and 1 warning
+### Setup 1: one arg validation and one warning
 
 We will define a function that takes an input, which is expected to be an integer, else a warning is thrown. For the purpose of this exercise, we assume that a non-integer input is not preferred but is not fatal.
 
@@ -52,7 +52,7 @@ library(cli)
 library(checkmate)
 ```
 
-#### `base::warning()`
+#### One `base::warning()` instance
 
 Let us define a function to throw a warning using base R, if an input is not an integer.
 
@@ -74,7 +74,7 @@ As we can see, it works as expected.
 
 Now, let's define a function to throw a warning using {cli_warn}, if an input is not an integer.
 
-#### `cli::cli_warn()`
+#### One `cli::cli_warn()` instance
 
 ```{r}
 cli_warn_bmrk <- function(x){
@@ -99,9 +99,9 @@ cli_warn_bmrk(x = 1.2)
 
 We will also check if the benchmark scales with the number of warnings in the function. To do this, we will modify the original functions to take two inputs, both of which are expected to be integers and follow the same logic as before.
 
-### Setup with 2 arg validation and 2 warnings
+### Setup 2: two argument validation and two warnings
 
-#### `base::warning()`
+#### Two `base::warning()` instances
 
 Let us define a function to throw a warning using base R, if an input is not an integer.
 
@@ -127,7 +127,7 @@ base_warn_bmrk2(x = 1.2, y = 1.23)
 
 `base_warn_bmrk2` works as expected.
 
-#### `cli::cli_warn()`
+#### Two `cli::cli_warn()` instances
 
 ```{r}
 cli_warn_bmrk2 <- function(x, y){
