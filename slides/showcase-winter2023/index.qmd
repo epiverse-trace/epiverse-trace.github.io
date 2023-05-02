@@ -114,6 +114,6 @@ epidemiology.
 <iframe width="780" height="438.75" src="episoap.pdf" title="episoap slides showcase winder 2023"></iframe>
 ```
 
-## recording
+## Recording
 
 Go to the "Watch the recording" button on the [event website](https://www.lshtm.ac.uk/newsevents/events/epiverse-trace-january-2023-showcase) to watch back this showcase.
