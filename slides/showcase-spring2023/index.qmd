@@ -110,3 +110,7 @@ epidemiology.
 ```{=html}
 <iframe width="780" height="438.75" src="serofoi.pdf" title="serofoi slides showcase spring 2023"></iframe>
 ```
+
+## Recording
+
+Go to the "Watch the recording" button on the [event website](https://www.lshtm.ac.uk/newsevents/events/epiverse-trace-spring-2023-showcase) to watch back this showcase.
