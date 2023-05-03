@@ -25,9 +25,9 @@ Indeed, in the Epiverse-TRACE team, {RcppEigen} underpins the [{finalsize}](http
 
 Developers searching for a way to make the C++ code of their Rcpp-based packages shareable will likely find two seemingly distinct ways of doing so.
 
-Developers reading the Rcpp Attributes documentation will find that package C++ code can be shared by generating a C++ interface for functions that also have an R interface, [using Rcpp attributes](https://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf).
+1. Developers reading the Rcpp Attributes documentation will find that package C++ code can be shared by generating a C++ interface for functions that also have an R interface, [using Rcpp attributes](https://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf).
 
-Developers instead scanning widely used Rcpp packages such as {RcppEigen} will notice that C++ code can also be shared by defining the majority of the C++ functions in a package header, to which other Rcpp packages can be linked.
+2. Developers instead scanning widely used Rcpp packages such as {RcppEigen} will notice that C++ code can also be shared by defining the majority of the C++ functions in a package header, to which other Rcpp packages can be linked.
 
 These are simply different pathways to the writing and export of an R(cpp) package header, which allows Rcpp to link the package's C++ code to other packages.
 
