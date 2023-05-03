@@ -1,0 +1,113 @@
+title: "<*project-name*>: <*project-title*> "
+labels: ["Project idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Description
+  - type: textarea
+    id: usage0
+    attributes:
+      label: Description
+      description: "Describe the project in a few sentences, using non-technical terms as much as possible:"
+      value: |
+        ...
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## Target audience
+  - type: input
+    id: has-id1
+    attributes:
+      label: Typical end-users
+      description: Who do you think this project will be useful to?
+    validations:
+      required: true
+  - type: input
+    id: has-id11
+    attributes:
+      label: Potential contributors
+      description: Do you already know people, or generic profiles of people who might contribute to developing the project?
+    validations:
+      required: true
+  - type: input
+    id: has-id12
+    attributes:
+      label: Key collaborators
+      description: Are there any key partners or institutions already identified, who will need to input on this project?
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## Interoperability
+  - type: input
+    id: has-id2
+    attributes:
+      label: Inputs
+      description: Typical data used as inputs
+    validations:
+      required: true
+  - type: input
+    id: has-id22
+    attributes:
+      label: Outputs
+      description: Typical output created by the package
+    validations:
+      required: true
+  - type: textarea
+    id: usage01
+    attributes:
+      label: Imports
+      description: "Packages it could import data from"
+      value: |
+        * <*first package it could import data from*>
+        * <*second package it could import data from*>
+        * ...
+    validations:
+      required: true
+  - type: textarea
+    id: usage02
+    attributes:
+      label: Used by
+      description: "Packages it could export data to"
+      value: |
+        * <*first package it could export data to*>
+        * <*second package it could export data to*>
+        * ...
+    validations:
+      required: true
+  - type: textarea
+    id: usage03
+    attributes:
+      label: Related projects
+      description: "Packages doing related things"
+      value: |
+        * <*a package doing related things *>
+        * <*another package doing related things *>
+        * ...
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        ## Usage
+  - type: textarea
+    id: usage
+    attributes:
+      label: Usage
+      description: "The code below illustrates a typical use of the package, using fictitious code and outputs if needed:"
+      value: |
+        ...
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: usage9
+    attributes:
+      label: Additional comments
+      description: "Describe any complementary information:"
+      value: |
+        ...
