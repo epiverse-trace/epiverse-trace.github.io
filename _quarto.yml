@@ -21,8 +21,8 @@ website:
     giscus:
       repo: epiverse-trace/epiverse-trace.github.io
       repo-id: R_kgDOIcolPw
-      category: Announcements
-      category-id: DIC_kwDOIcolP84CUsCj
+      category: "Blog post discussion"
+      category-id: "DIC_kwDOIcolP84CWOm8"
       mapping: title
       reactions-enabled: true
       loading: lazy
