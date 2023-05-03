@@ -62,7 +62,7 @@ Consider the Rcpp function below which is exposed to R and exported from the pac
 The line `// [[Rcpp::interfaces(cpp)]]` instructs Rcpp to autogenerate two header files under `inst/include`:
 
 1. A package header, called `mypackage.h`, and
-2. A helper header called `mypackage_RcppExports.h` with 'automagic' C++ bindings for the function `hello_world_rcpp()`. 
+2. A helper header called `mypackage_RcppExports.h` with 'automagic' C++ bindings for the function `hello_world_rcpp()`.
 
 ```c++
 /// A cpp source file under src/
