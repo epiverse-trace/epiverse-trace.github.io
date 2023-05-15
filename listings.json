@@ -1,13 +1,5 @@
 [
   {
-    "listing": "/presentations.html",
-    "items": [
-      "/slides/showcase-spring2023/index.html",
-      "/slides/harmonious-ecosystem/index.html",
-      "/slides/showcase-winter2023/index.html"
-    ]
-  },
-  {
     "listing": "/blog.html",
     "items": [
       "/posts/extend-dataframes/index.html",
@@ -15,6 +7,14 @@
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
+    ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/showcase-spring2023/index.html",
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-winter2023/index.html"
     ]
   }
 ]
