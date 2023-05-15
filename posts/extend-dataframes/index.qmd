@@ -11,10 +11,6 @@ format:
     toc: true
 ---
 
-```{r setup, message = FALSE}
-library(dplyr)
-```
-
 ## Extending Data Frames in R
 
 R is a commonly used language for data science and statistical computing. Foundational to this is having data structures that allow manipulation of data with minimal effort and cognitive load. One of the most commonly required data structures is tabular data. This can be represented in R in a few ways, for example a matrix or a data frame. The data frame (class `data.frame`) is a flexible tabular data structure, as it can hold different data types (e.g. numbers, character strings, etc.) across different columns. This is in contrast to matrices -- which are arrays with dimensions -- and thus can only hold a single data type.
@@ -206,6 +202,10 @@ The three functions defined for reconstruction can be added to a package with th
 ```
 
 ### Compatibility with {dplyr}
+
+```{r load-dplyr, message = FALSE}
+library(dplyr)
+```
 
 In order to be able to operate on our `<birthdays>` class using functions from the
 package {dplyr}, as would be common for data frames, we need to make our function compatible. This is where the function `dplyr_reconstruct.birthdays()` comes in. `dplyr_reconstruct()` is a generic function exported by {dplyr}. It is called in {dplyr} verbs to make sure that the objects are restored to the input class when not invalidated.
