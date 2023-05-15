@@ -19,7 +19,15 @@ Blog posts should as much as possible be self-contained. I.e., they should make 
 
 However, our blog doesn't live in isolation from the rest of the community and it is good practice to link back to other posts and other resources as much as possible. If someone else already wrote on the topic you're treating or an adjacent topic, or if there are resources to go deeper in this topic, you should most definitely link them back. Practically speaking, there is no upper limit on the number of external links you can add. The more the better.
 
-This is in line with our [community values](https://data.org/news/epiverse-trace-a-values-based-approach-to-open-source-ecosystems/), where we committed to **reciprocity**, and to lifting up other members of the community. 
+When you mention other resources and the position of your post in the existing documentation ecosystem, make sure your phrasing couldn't be taken as dismissive or disparaging. Our posts aim at building up on others' work and lifting up other members of the community. 
+
+This is in line with our [community values](https://data.org/news/epiverse-trace-a-values-based-approach-to-open-source-ecosystems/), where we committed to **reciprocity**.
+
+#### Tone and language
+
+We don't require a formal tone in posts. Feel free to adopt everyday vocabulary.
+
+You should however ensure that your posts are always respectful of everybody's work, and everybody's experience, as describe in our Code of Conduct. In particular, we are paying extra attention to avoid dismissive or demotivating language, such as "obvious", "just", "straightforward", etc. The "alex" GitHub Actions workflow can help you detect and fix such occurrences of demotivating language.
 
 ### After the post is published
 

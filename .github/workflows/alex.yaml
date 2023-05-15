@@ -1,0 +1,17 @@
+name: alex
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  alex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-alex@8ffbae4a38ecf138503f7b9ea5cd2765ddde022f
+        with:
+          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          reporter: github-pr-review
+          # Change reporter level if you need.
+          # GitHub Status Check won't become failure with warning.
+          level: warning
