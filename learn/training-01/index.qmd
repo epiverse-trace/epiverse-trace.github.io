@@ -1,0 +1,102 @@
+---
+title: "Introductory training on Git and GitHub basics using Rstudio"
+author:
+  - name: "Andree Valle-Campos"
+    orcid: "0000-0002-7779-481X"
+date: "2022-12-05"
+categories: [data science, git, github, rstudio, next trainings]
+image: "priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg"
+format:
+  html: 
+    toc: true
+---
+
+# How to participate?
+
+If you want to participate in the next version of this training, please complete this [expression of interest form](https://docs.google.com/forms/d/e/1FAIpQLSc0u9ZLSx5WyQWNOzQbU_G2lz0TKNBY-PqVU4cgQ8wP-IIWWA/viewform?usp=sf_link).
+
+<!-- The next training session will take place on [Monday 5th of December, at 2pm BST](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Introductory+training+on+Git+basics&iso=20221205T14&p1=%3A&ah=4). Fill out this form to confirm your participation. -->
+
+*All data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE.*
+
+# What will you learn?
+
+-   Explain why you need to know about Version Control if you work on an Open Science project.
+
+-   Describe the most common verb commands to track changes using Git as a Version Control software within Rstudio.
+
+-   Create a personal online profile to share my tracked changes on the web using GitHub.
+
+-   Identify good practices to describe my tracked changes using Git and collaborate with other people using GitHub.
+
+# Who is this training for?
+
+This training is pitched at beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from a range of backgrounds (research degree students, project managers, etc.)
+
+We thought about the profile of "Lucia", "Patricia", and "Pepe" in designing the contents of this training:
+
+-   Lucia is a health professional working as a Researcher in Epidemiology. She works with a team of data analysts and research software engineers. She is looking forward to learning to work on Open Science projects and contribute to them.
+
+-   Patricia is a PhD student learning to do exploratory data analysis with R. She works with code at least half of her time, mainly using R for data cleaning and visualization. She is familiar with the Rstudio Graphical Interface.
+
+-   Pepe is a Project Manager and wants to learn how to access and provide feedback to Open Science projects hosted on GitHub. He also wants to know how to start a new project by himself and include contributing good practices.
+
+# What is not included in this training?
+
+Topics that are out of the scope of this training include:
+
+-   How to solve conflicts when merging branches.
+
+-   How to revert commits as a safe method to undo changes.
+
+-   How to review pull requests in GitHub.
+
+-   How to use GitHub Actions for continuous integration of software.
+
+# Duration
+
+The duration of this training is of 3.5 hours with breaks of approximately 5 minutes each 60 minutes.
+
+# Program
+
+|        Time | Activity                                                                   |
+|-----------:|:---------------------------------------------------------|
+| 2:00 - 2:05 | Introduction                                                               |
+|       15min | What is version control and why should I use it for Open Science projects? |
+|        5min | The general workflow                                                       |
+|       10min | How do I set up to start using Git?                                        |
+|       10min | Where does Git store information?                                          |
+|       30min | How do I record changes in Git?                                            |
+|        5min | Break away from the screen                                                 |
+|       20min | How do I record notes about what changes I made and why?                   |
+|       30min | How can I identify old versions of files? How do I review my changes?      |
+|       10min | How can I tell Git to ignore files I don't want to track?                  |
+|        5min | Break away from the screen                                                 |
+|       20min | How do I share my changes with others on the web?                          |
+|       30min | How can I use version control to collaborate with other people?            |
+|       15min | What do I do when my changes conflict with someone else's?                 |
+| 5:30 - 5:35 | Closing                                                                    |
+
+# Materials you will need
+
+We will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions to:
+
+-   Install R and Rstudio <https://posit.co/download/rstudio-desktop/>
+-   Install Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
+-   Create a GitHub account <https://github.com/signup>
+
+# Materials used
+
+- [Slides that we used in the training](https://docs.google.com/presentation/d/1kE13oZCoSwlXJL_UhvhiX6W0hNaE1ZEkFsHAX-Pl5o0/edit?usp=sharing) with notes expanding the content for instructors
+- [Template for our document with shared notes](https://docs.google.com/document/d/1dlPkvkN8ITqPEyiTJC5YZts44-15A5s_HTnE2IOG8JA/copy)
+- [Template for our pre-training form](https://docs.google.com/forms/d/1LsSsMmwuLIr_GCsw1K5AUxfCMb5_XiAlpno7up6zc8Q/copy)
+- [Template for our feedback form at the end of the training](https://docs.google.com/forms/d/1h-mHJgPg0u7Www6D2-kz4Q3scQ03M30IYLm-0d6QIv8/copy) 
+- [Video of the training](https://drive.google.com/file/d/1yAztO0qb13Jo6qwQ-PN7tHgTbGcKv8LX/view?usp=share_link)
+
+# Any questions?
+
+If you need any assistance installing the software or have any other questions about the training, please send an email to [andree.valle-campos\@lshtm.ac.uk](mailto:andree.valle-campos@lshtm.ac.uk){.email}
+
+# Atribution
+
+This format was adapted from [Metadocencia](https://www.metadocencia.org/curso/intro-abc-online/)
