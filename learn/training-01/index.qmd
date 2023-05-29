@@ -67,11 +67,11 @@ The duration of this training is of 3.5 hours with breaks of approximately 5 min
 |       10min | How do I set up to start using Git?                                        |
 |       10min | Where does Git store information?                                          |
 |       30min | How do I record changes in Git?                                            |
-|        5min | Break away from the screen                                                 |
+|        5min | _Break away from the screen_                                                 |
 |       20min | How do I record notes about what changes I made and why?                   |
 |       30min | How can I identify old versions of files? How do I review my changes?      |
 |       10min | How can I tell Git to ignore files I don't want to track?                  |
-|        5min | Break away from the screen                                                 |
+|        5min | _Break away from the screen_                                                 |
 |       20min | How do I share my changes with others on the web?                          |
 |       30min | How can I use version control to collaborate with other people?            |
 |       15min | What do I do when my changes conflict with someone else's?                 |
