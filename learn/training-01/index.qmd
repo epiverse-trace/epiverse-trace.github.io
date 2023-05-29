@@ -98,3 +98,4 @@ If you need any assistance installing the software or have any other questions a
 
 # Atribution
 
+This page format is inspired by [Metadocencia](https://www.metadocencia.org/curso/intro-abc-online/)
