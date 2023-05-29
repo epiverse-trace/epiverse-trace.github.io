@@ -85,13 +85,12 @@ We will use Git within the Rstudio graphical interface and GitHub. For this you 
 -   Install Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
 -   Create a GitHub account <https://github.com/signup>
 
-# Materials used
+# Materials we used
 
 - [Slides that we used in the training](https://docs.google.com/presentation/d/1kE13oZCoSwlXJL_UhvhiX6W0hNaE1ZEkFsHAX-Pl5o0/edit?usp=sharing) with notes expanding the content for instructors
 - [Template for our document with shared notes](https://docs.google.com/document/d/1dlPkvkN8ITqPEyiTJC5YZts44-15A5s_HTnE2IOG8JA/copy)
 - [Template for our pre-training form](https://docs.google.com/forms/d/1LsSsMmwuLIr_GCsw1K5AUxfCMb5_XiAlpno7up6zc8Q/copy)
 - [Template for our feedback form at the end of the training](https://docs.google.com/forms/d/1h-mHJgPg0u7Www6D2-kz4Q3scQ03M30IYLm-0d6QIv8/copy) 
-- [Video of the training](https://drive.google.com/file/d/1yAztO0qb13Jo6qwQ-PN7tHgTbGcKv8LX/view?usp=share_link)
 
 # Any questions?
 
@@ -99,4 +98,3 @@ If you need any assistance installing the software or have any other questions a
 
 # Atribution
 
-This format was adapted from [Metadocencia](https://www.metadocencia.org/curso/intro-abc-online/)
