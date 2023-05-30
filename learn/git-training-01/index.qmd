@@ -27,17 +27,17 @@ If you want to participate in the next version of this training, please complete
 
 -   Create a personal online profile to share my tracked changes on the web using GitHub.
 
--   Identify good practices to describe my tracked changes using Git and collaborate with other people using GitHub.
+-   Identify good practices to describe my tracked changes using Git and collaborate with others using GitHub.
 
 # Who is this training for?
 
-This training is pitched at beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from a range of backgrounds (research degree students, project managers, etc.)
+This training is pitched to beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from various backgrounds (research degree students, project managers, etc.)
 
 We thought about the profile of "Lucia", "Patricia", and "Pepe" in designing the contents of this training:
 
--   Lucia is a health professional working as a Researcher in Epidemiology. She works with a team of data analysts and research software engineers. She is looking forward to learning to work on Open Science projects and contribute to them.
+-   Lucia is a health professional working as a Researcher in Epidemiology. She works with a team of data analysts and research software engineers. She looks forward to learning to work on and contribute to Open Science projects.
 
--   Patricia is a PhD student learning to do exploratory data analysis with R. She works with code at least half of her time, mainly using R for data cleaning and visualization. She is familiar with the Rstudio Graphical Interface.
+-   Patricia is a PhD student learning to do exploratory data analysis with R. She works with code at least half her time, mainly using R for data cleaning and visualization. She is familiar with the Rstudio Graphical Interface.
 
 -   Pepe is a Project Manager and wants to learn how to access and provide feedback to Open Science projects hosted on GitHub. He also wants to know how to start a new project by himself and include contributing good practices.
 
@@ -68,18 +68,18 @@ The duration of this training is of 3.5 hours with breaks of approximately 5 min
 |       10min | Where does Git store information?                                          |
 |       30min | How do I record changes in Git?                                            |
 |        5min | _Break away from the screen_                                                 |
-|       20min | How do I record notes about what changes I made and why?                   |
+|       20min | How do I record notes about my changes and why?                   |
 |       30min | How can I identify old versions of files? How do I review my changes?      |
 |       10min | How can I tell Git to ignore files I don't want to track?                  |
 |        5min | _Break away from the screen_                                                 |
 |       20min | How do I share my changes with others on the web?                          |
-|       30min | How can I use version control to collaborate with other people?            |
+|       30min | How can I use version control to collaborate with others?            |
 |       15min | What do I do when my changes conflict with someone else's?                 |
 | 5:30 - 5:35 | Closing                                                                    |
 
 # Materials you will need
 
-We will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions to:
+We will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions:
 
 -   Install R and Rstudio <https://posit.co/download/rstudio-desktop/>
 -   Install Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
