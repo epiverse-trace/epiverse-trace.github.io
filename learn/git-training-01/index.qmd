@@ -37,7 +37,7 @@ We thought about Lucia, Patricia, and Pepe as learner personas in designing the 
 
 - [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.
 
-- [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public. 
+- [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public.
 
 - [Pepe](https://epiverse-trace.github.io/personas/pepe-openmanager.html) is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects.
 
@@ -90,7 +90,7 @@ We will use Git within the Rstudio graphical interface and GitHub. For this you 
 - [Slides that we used in the training](https://docs.google.com/presentation/d/1kE13oZCoSwlXJL_UhvhiX6W0hNaE1ZEkFsHAX-Pl5o0/edit?usp=sharing) with notes expanding the content for instructors
 - [Template for our document with shared notes](https://docs.google.com/document/d/1p7BWfqG0-advDHmhzYas1WyhHIZQvLs1HWR39_o7X7k/edit?usp=sharing)
 - [Template for our pre-training form](https://docs.google.com/forms/d/1LsSsMmwuLIr_GCsw1K5AUxfCMb5_XiAlpno7up6zc8Q/copy)
-- [Template for our feedback form at the end of the training](https://docs.google.com/forms/d/1h-mHJgPg0u7Www6D2-kz4Q3scQ03M30IYLm-0d6QIv8/copy) 
+- [Template for our feedback form at the end of the training](https://docs.google.com/forms/d/1h-mHJgPg0u7Www6D2-kz4Q3scQ03M30IYLm-0d6QIv8/copy)
 - [Video of the last version of the training](https://drive.google.com/file/d/1yAztO0qb13Jo6qwQ-PN7tHgTbGcKv8LX/view?usp=share_link)
 
 ## Any questions?
