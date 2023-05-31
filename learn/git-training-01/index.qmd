@@ -21,13 +21,13 @@ If you want to participate in the next version of this training, please complete
 
 ## What will you learn?
 
--   Explain why you need to know about Version Control if you work on an Open Science project.
+- Explain why you need to know about Version Control if you work on an Open Science project.
 
--   Describe the most common verb commands to track changes using Git as a Version Control software within Rstudio.
+- Describe the most common verb commands to track changes using Git as a Version Control software within Rstudio.
 
--   Create a personal online profile to share my tracked changes on the web using GitHub.
+- Create a personal online profile to share my tracked changes on the web using GitHub.
 
--   Identify good practices to describe my tracked changes using Git and collaborate with others using GitHub.
+- Identify good practices to describe my tracked changes using Git and collaborate with others using GitHub.
 
 ## Who is this training for?
 
@@ -35,23 +35,23 @@ This training is pitched to beginners with basic knowledge of Git who wish to le
 
 We thought about Lucia, Patricia, and Pepe as learner personas in designing the contents of this training:
 
--   [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.
+- [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.
 
--   [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public. 
+- [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public. 
 
--   [Pepe](https://epiverse-trace.github.io/personas/pepe-openmanager.html) is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects.
+- [Pepe](https://epiverse-trace.github.io/personas/pepe-openmanager.html) is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects.
 
 ## What is not included in this training?
 
 Topics that are out of the scope of this training include:
 
--   How to solve conflicts when merging branches.
+- How to solve conflicts when merging branches.
 
--   How to revert commits as a safe method to undo changes.
+- How to revert commits as a safe method to undo changes.
 
--   How to review pull requests in GitHub.
+- How to review pull requests in GitHub.
 
--   How to use GitHub Actions for continuous integration of software.
+- How to use GitHub Actions for continuous integration of software.
 
 ## Duration
 
@@ -81,9 +81,9 @@ The duration of this training is of 3.5 hours with breaks of approximately 5 min
 
 We will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions:
 
--   Install R and Rstudio <https://posit.co/download/rstudio-desktop/>
--   Install Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
--   Create a GitHub account <https://github.com/signup>
+- Install R and Rstudio <https://posit.co/download/rstudio-desktop/>
+- Install Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
+- Create a GitHub account <https://github.com/signup>
 
 ## Materials we used
 
