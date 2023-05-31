@@ -37,7 +37,7 @@ We thought about Lucia, Patricia, and Pepe as learner personas in designing the 
 
 -   [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a Field epidemiologist. She use R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.
 
--   [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She use R to analyse infectious disease data. She wants to make her research code reusable and open to public. 
+-   [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public. 
 
 -   [Pepe](https://epiverse-trace.github.io/personas/pepe-openmanager.html) is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects.
 
