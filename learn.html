@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Hugo Gruson">
-<meta name="dcterms.date" content="2023-02-20">
 
-<title>Epiverse-TRACE developer space - From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project</title>
+<title>Epiverse-TRACE developer space - Learn</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,6 +61,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
 
 <script type="text/javascript">
@@ -71,9 +100,11 @@ gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
-</head>
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="learn.xml" data-external="1"></head>
 
 <body class="nav-fixed">
 
@@ -82,7 +113,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Epiverse-TRACE developer space</span>
     </a>
   </div>
@@ -97,15 +128,15 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
+    <a class="nav-link" href="./blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations.html" rel="" target="">
+    <a class="nav-link" href="./presentations.html" rel="" target="">
  <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../learn.html" rel="" target="">
+    <a class="nav-link active" href="./learn.html" rel="" target="" aria-current="page">
  <span class="menu-text">Learn</span></a>
   </li>  
 </ul>
@@ -120,113 +151,90 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">data science</div>
-                <div class="quarto-category">pipelines</div>
-                <div class="quarto-category">interoperability</div>
-                <div class="quarto-category">community</div>
-                <div class="quarto-category">deRSE23</div>
-              </div>
-                  </div>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Learn</h1>
+                      </div>
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Hugo Gruson <a href="https://orcid.org/0000-0002-4094-1476" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">February 20, 2023</p>
-      </div>
-    </div>
     
       
-      <div>
-      <div class="quarto-title-meta-heading">Doi</div>
-      <div class="quarto-title-meta-contents">
-        <p class="doi">
-          <a href="https://doi.org/10.5281/zenodo.7697961">10.5281/zenodo.7697961</a>
-        </p>
-      </div>
-    </div>
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#questions-from-the-audience" id="toc-questions-from-the-audience" class="nav-link" data-scroll-target="#questions-from-the-audience">Questions from the audience</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See also</a></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="github">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="next trainings">next trainings <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
-<p>This presentation was given as part of <a href="https://de-rse23.sciencesconf.org/"><em>deRSE23 - Conference for Research Software Engineering in Germany</em></a>, in the <em>Integration vs.&nbsp;Modularity</em> session.</p>
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>There is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users.</p>
-</section>
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<iframe width="780" height="438.75" src="Gruson-Hugo-Epiverse-TRACE.pdf" title="deRSE23 slides"></iframe>
-</section>
-<section id="questions-from-the-audience" class="level2">
-<h2 class="anchored" data-anchor-id="questions-from-the-audience">Questions from the audience</h2>
-<blockquote class="blockquote">
-<p>How do you incentivize developers to collaborate with you?</p>
-</blockquote>
-<p>As mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.</p>
-<p>We also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.</p>
-<p>As an anecdotal piece of evidence, <a href="https://njtierney.github.io/Bio/">Nick Tierney</a>, the maintainer of the <a href="https://njtierney.github.io/conmat/">conmat R package</a>, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.</p>
-<blockquote class="blockquote">
-<p>How do you ensure the long-term sustainability of this project?</p>
-</blockquote>
-<p>This is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.</p>
-<p>However, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the <a href="https://en.wikipedia.org/wiki/Bus_factor">lottery factor</a>.</p>
-</section>
-<section id="see-also" class="level2">
-<h2 class="anchored" data-anchor-id="see-also">See also</h2>
-<ul>
-<li>The <a href="../../posts/s3-generic">companion post on our blog</a></li>
-</ul>
 
 
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
-  author = {Gruson, Hugo},
-  title = {From Disconnected Elements to a Harmonious Ecosystem: {The}
-    {Epiverse-TRACE} Project},
-  date = {2023-02-20},
-  url = {https://epiverse-trace.github.io//slides/harmonious-ecosystem},
-  doi = {10.5281/zenodo.7697961},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Gruson, Hugo. 2023. <span>“From Disconnected Elements to a Harmonious
-Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="https://doi.org/10.5281/zenodo.7697961">https://doi.org/10.5281/zenodo.7697961</a>.
-</div></div></section></div></main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1685551290764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="thumbnail">
+<p><a href="./learn/git-training-01/index.html"> <img src="./learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./learn/git-training-01/index.html">
+<h3 class="no-anchor listing-title">
+Introductory training on Git and GitHub basics using Rstudio
+</h3>
+<div class="listing-subtitle">
+
+</div>
+</a>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
+data science
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
+git
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('github'); return false;">
+github
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('rstudio'); return false;">
+rstudio
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('next trainings'); return false;">
+next trainings
+</div>
+</div>
+<a href="./learn/git-training-01/index.html">
+<div class="listing-description">
+If you want to participate in the next version of this training, please complete this expression of interest form.
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./learn/git-training-01/index.html">
+<div class="listing-date">
+Dec 5, 2022
+</div>
+<div class="listing-author">
+Andree Valle-Campos
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
