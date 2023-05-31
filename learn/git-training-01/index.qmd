@@ -35,7 +35,7 @@ This training is pitched to beginners with basic knowledge of Git who wish to le
 
 We thought about Lucia, Patricia, and Pepe as learner personas in designing the contents of this training:
 
--   [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a Field epidemiologist. She use R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.
+-   [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.
 
 -   [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public. 
 
