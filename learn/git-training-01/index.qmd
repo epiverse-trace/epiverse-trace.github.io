@@ -35,11 +35,11 @@ This training is pitched to beginners with basic knowledge of Git who wish to le
 
 We thought about Lucia, Patricia, and Pepe as learner personas in designing the contents of this training:
 
--   Lucia is a health professional working as a Researcher in Epidemiology. She works with a team of data analysts and research software engineers. She looks forward to learning to work on and contribute to Open Science projects.
+-   [Lucia](https://epiverse-trace.github.io/personas/lucia-outbreaks.html) is a health professional. She looks forward to use R for infectious diseases research and outbreak analysis.
 
--   Patricia is a PhD student learning to do exploratory data analysis with R. She works with code at least half her time, mainly using R for data cleaning and visualization. She is familiar with the Rstudio Graphical Interface.
+-   [Patricia](https://epiverse-trace.github.io/personas/patricia-discoverer.html) is a PhD student in a team with data analysts. She looks forward to working on and contributing to Open Science projects.
 
--   Pepe is a Project Manager and wants to learn how to access and provide feedback to Open Science projects hosted on GitHub. He also wants to know how to start a new project by himself and include contributing good practices.
+-   [Pepe](https://epiverse-trace.github.io/personas/pepe-openmanager.html) is a Project Manager interested in community building. He wants to learn how to access and provide feedback on contributing good practices to Open Science projects.
 
 # What is not included in this training?
 
