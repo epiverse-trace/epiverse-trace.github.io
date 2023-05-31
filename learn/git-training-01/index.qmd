@@ -11,7 +11,7 @@ format:
     toc: true
 ---
 
-# How to participate?
+## How to participate?
 
 If you want to participate in the next version of this training, please complete this [expression of interest form](https://docs.google.com/forms/d/e/1FAIpQLSc0u9ZLSx5WyQWNOzQbU_G2lz0TKNBY-PqVU4cgQ8wP-IIWWA/viewform?usp=sf_link).
 
@@ -19,7 +19,7 @@ If you want to participate in the next version of this training, please complete
 
 *All data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE.*
 
-# What will you learn?
+## What will you learn?
 
 -   Explain why you need to know about Version Control if you work on an Open Science project.
 
@@ -29,7 +29,7 @@ If you want to participate in the next version of this training, please complete
 
 -   Identify good practices to describe my tracked changes using Git and collaborate with others using GitHub.
 
-# Who is this training for?
+## Who is this training for?
 
 This training is pitched to beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from various backgrounds (research degree students, project managers, etc.)
 
@@ -41,7 +41,7 @@ We thought about Lucia, Patricia, and Pepe as learner personas in designing the 
 
 -   [Pepe](https://epiverse-trace.github.io/personas/pepe-openmanager.html) is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects.
 
-# What is not included in this training?
+## What is not included in this training?
 
 Topics that are out of the scope of this training include:
 
@@ -53,11 +53,11 @@ Topics that are out of the scope of this training include:
 
 -   How to use GitHub Actions for continuous integration of software.
 
-# Duration
+## Duration
 
 The duration of this training is of 3.5 hours with breaks of approximately 5 minutes each 60 minutes.
 
-# Program
+## Program
 
 |        Time | Activity                                                                   |
 |-----------:|:---------------------------------------------------------|
@@ -77,7 +77,7 @@ The duration of this training is of 3.5 hours with breaks of approximately 5 min
 |       15min | What do I do when my changes conflict with someone else's?                 |
 | 5:30 - 5:35 | Closing                                                                    |
 
-# Materials you will need
+## Materials you will need
 
 We will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions:
 
@@ -85,7 +85,7 @@ We will use Git within the Rstudio graphical interface and GitHub. For this you 
 -   Install Git <https://git-scm.com/book/en/v2/Getting-Started-Installing-Git>
 -   Create a GitHub account <https://github.com/signup>
 
-# Materials we used
+## Materials we used
 
 - [Slides that we used in the training](https://docs.google.com/presentation/d/1kE13oZCoSwlXJL_UhvhiX6W0hNaE1ZEkFsHAX-Pl5o0/edit?usp=sharing) with notes expanding the content for instructors
 - [Template for our document with shared notes](https://docs.google.com/document/d/1p7BWfqG0-advDHmhzYas1WyhHIZQvLs1HWR39_o7X7k/edit?usp=sharing)
@@ -93,11 +93,11 @@ We will use Git within the Rstudio graphical interface and GitHub. For this you 
 - [Template for our feedback form at the end of the training](https://docs.google.com/forms/d/1h-mHJgPg0u7Www6D2-kz4Q3scQ03M30IYLm-0d6QIv8/copy) 
 - [Video of the last version of the training](https://drive.google.com/file/d/1yAztO0qb13Jo6qwQ-PN7tHgTbGcKv8LX/view?usp=share_link)
 
-# Any questions?
+## Any questions?
 
 If you need any assistance installing the software or have any other questions about the training, please send an email to [andree.valle-campos\@lshtm.ac.uk](mailto:andree.valle-campos@lshtm.ac.uk){.email}
 
-# Attributions
+## Attributions
 
 - This page format is inspired by [Metadocencia](https://www.metadocencia.org/curso/intro-abc-online/).
 - The image of this feed is from [Unsplash](https://unsplash.com/photos/CoqJGsFVJtM), provided by [Priscilla Du Preez](https://unsplash.com/@priscilladupreez), free to use under the [Unsplash License](https://unsplash.com/license).
