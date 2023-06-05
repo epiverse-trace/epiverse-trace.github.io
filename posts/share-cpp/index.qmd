@@ -114,7 +114,7 @@ The package header must also link to the code you want to export, and there are 
 2. Directly write C++ code in the package header. This is technically possible, but unlikely to be a good option as your package's C++ codebase grows.
 3. Manually include any other C++ header files in the package header. This last option might lead to a package header such as that shown below.
 
-```{.cpp filename="include/inst/mypackage.h"}
+```{.cpp filename="inst/include/mypackage.h"}
 // Manually created package header with manual code inclusion
 #ifndef mypackage_mypackage_H
 #define mypackage_mypackage_H
@@ -168,9 +168,7 @@ Functions, structs, or classes defined in header files will be available from th
 
 The code in header files will usually need to be wrapped in (R)C++ code that is exposed to R to make functions from the headers available in R --- see the snippet below.
 
-```c++
-// In a package source file, say, mypackage.cpp
-
+```{.cpp filename="mypackage/src/hello_world.cpp"}
 // #include <Rcpp.h>       // include Rcpp if necessary
 #include <mypackage.h>     // include package header
 
@@ -193,9 +191,9 @@ Furthermore, as noted in the [Rcpp attributes documentation](https://dirk.eddelb
 
 Once you have developed your package, you can link to its C++ header code in the same way as you would to any other Rcpp-based package.
 
-```c++
-// In the source files of a second package, say, yourpackage
+Consider the snippet below which shows how to link the C++ code from {mypackage} in a different package called {yourpackage}.
 
+```{.cpp filename="yourpackage/src/hello_world.cpp"}
 // [[Rcpp::depends(mypackage)]]   /// specify dependency
 #include <mypackage.h>
 
