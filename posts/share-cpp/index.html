@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.124">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pratik Gupte">
+<meta name="dcterms.date" content="2023-04-24">
+
+<title>Epiverse-TRACE developer space - Sharing the C++ Code of an Rcpp Package</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Epiverse-TRACE developer space</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://epiverse-trace.r-universe.dev/ui#packages" rel="" target="">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../learn.html" rel="" target="">
+ <span class="menu-text">Learn</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/epiverse-trace" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/Epiverse_TRACE" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Sharing the C++ Code of an Rcpp Package</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">code sharing</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">R package</div>
+                <div class="quarto-category">Rcpp</div>
+                <div class="quarto-category">interoperability</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Pratik Gupte <a href="https://orcid.org/0000-0001-5294-7819" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 24, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-share-c-code-from-an-rcpp-package" id="toc-why-share-c-code-from-an-rcpp-package" class="nav-link active" data-scroll-target="#why-share-c-code-from-an-rcpp-package">Why share C++ code from an Rcpp package</a></li>
+  <li><a href="#two-ways-to-share-c-code" id="toc-two-ways-to-share-c-code" class="nav-link" data-scroll-target="#two-ways-to-share-c-code">Two ways to share C++ code?</a></li>
+  <li><a href="#the-package-header" id="toc-the-package-header" class="nav-link" data-scroll-target="#the-package-header">The package header</a>
+  <ul class="collapse">
+  <li><a href="#autogenerating-the-package-header" id="toc-autogenerating-the-package-header" class="nav-link" data-scroll-target="#autogenerating-the-package-header">Autogenerating the package header</a></li>
+  <li><a href="#manually-creating-the-package-header" id="toc-manually-creating-the-package-header" class="nav-link" data-scroll-target="#manually-creating-the-package-header">Manually creating the package header</a></li>
+  <li><a href="#contents-of-the-package-header" id="toc-contents-of-the-package-header" class="nav-link" data-scroll-target="#contents-of-the-package-header">Contents of the package header</a></li>
+  </ul></li>
+  <li><a href="#using-rcpp-in-header-code" id="toc-using-rcpp-in-header-code" class="nav-link" data-scroll-target="#using-rcpp-in-header-code">Using Rcpp in header code</a></li>
+  <li><a href="#using-header-code-in-the-package" id="toc-using-header-code-in-the-package" class="nav-link" data-scroll-target="#using-header-code-in-the-package">Using header code in the package</a></li>
+  <li><a href="#linking-header-code-between-pacakges" id="toc-linking-header-code-between-pacakges" class="nav-link" data-scroll-target="#linking-header-code-between-pacakges">Linking header code between pacakges</a></li>
+  <li><a href="#c-code-sharing-in-epiverse-trace" id="toc-c-code-sharing-in-epiverse-trace" class="nav-link" data-scroll-target="#c-code-sharing-in-epiverse-trace">C++ code sharing in Epiverse-TRACE</a></li>
+  <li><a href="#ensuring-the-quality-of-header-code" id="toc-ensuring-the-quality-of-header-code" class="nav-link" data-scroll-target="#ensuring-the-quality-of-header-code">Ensuring the quality of header code</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="why-share-c-code-from-an-rcpp-package" class="level2">
+<h2 class="anchored" data-anchor-id="why-share-c-code-from-an-rcpp-package">Why share C++ code from an Rcpp package</h2>
+<p>Using the <a href="https://www.rcpp.org/">{Rcpp}</a> package is the dominant method for linking the usability of R with the speed of C++, and can be used to write R packages that are fast and easy to use for both end-users and developers.</p>
+<p>From the point of view of developers, it’s very easy to export R code such as functions and classes from an R(cpp) package, but the guidance in the <a href="https://www.rdocumentation.org/packages/Rcpp/versions/1.0.10">Rcpp documentation</a> does not detail how to export the C++ code so that it can be shared with your other Rcpp packages.</p>
+<p>Allowing C++ code to be shared can be very beneficial for the same reasons that sharing R code is — packaging code is a reliable way to reuse it.</p>
+<p>Some widely used examples of this practice are the <a href="https://cran.r-project.org/web/packages/RcppEigen/index.html">{RcppEigen}</a>, <a href="https://cran.r-project.org/web/packages/RcppArmadillo/index.html">{RcppArmadillo}</a>, <a href="https://cran.r-project.org/web/packages/RcppGSL/index.html">{RcppGSL}</a>, and <a href="https://cran.r-project.org/web/packages/BH/index.html">Boost Headers {BH}</a> packages. Indeed, in the Epiverse-TRACE team, {RcppEigen} underpins the <a href="https://github.com/epiverse-trace/finalsize">{finalsize}</a> and upcoming <a href="https://github.com/epiverse-trace/epidemics">{epidemics}</a> packages.</p>
+</section>
+<section id="two-ways-to-share-c-code" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-to-share-c-code">Two ways to share C++ code?</h2>
+<p>Developers searching for a way to make the C++ code of their Rcpp-based packages shareable will likely find two seemingly distinct ways of doing so.</p>
+<ol type="1">
+<li><p>Developers reading the Rcpp Attributes documentation will find that package C++ code can be shared by generating a C++ interface for functions that also have an R interface, <a href="https://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf">using Rcpp attributes</a>.</p></li>
+<li><p>Developers instead scanning widely used Rcpp packages such as {RcppEigen} will notice that C++ code can also be shared by defining the majority of the C++ functions in a package header, to which other Rcpp packages can be linked.</p></li>
+</ol>
+<p>These are simply different pathways to the writing and export of an R(cpp) package header, which allows Rcpp to link the package’s C++ code to other packages.</p>
+<p>This blog post explores different ways of doing this, and explains how the Rcpp packages from Epiverse-TRACE implement C++ code sharing.</p>
+</section>
+<section id="the-package-header" class="level2">
+<h2 class="anchored" data-anchor-id="the-package-header">The package header</h2>
+<p>The package header of the package <code>{mypackage}</code> is a file of the name <code>mypackage.h</code> under <code>inst/include</code>. Defining this header is the key step in making (R)C++ code shareable.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conceptual organisation of an Rcpp package with a package header</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> DESCRIPTION</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> NAMESPACE</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> R</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> └── RcppExports.R</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> inst</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> └── include</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span>     └── mypackage.h       <span class="co"># &lt;= the package header</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> src</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> RcppExports.cpp</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> rcpp_hello.cpp        <span class="co"># &lt;= code from which RcppExports.cpp generates</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="autogenerating-the-package-header" class="level3">
+<h3 class="anchored" data-anchor-id="autogenerating-the-package-header">Autogenerating the package header</h3>
+<p>The package header is autogenerated when the attributes of an Rcpp function are edited to also generate a C++ interface.</p>
+<p>Consider the Rcpp function below which is exposed to R and exported from the package. The line <code>// [[Rcpp::interfaces(cpp)]]</code> instructs Rcpp to autogenerate two header files under <code>inst/include</code>:</p>
+<ol type="1">
+<li>A package header, called <code>mypackage.h</code>, and</li>
+<li>A helper header called <code>mypackage_RcppExports.h</code> with ‘automagic’ C++ bindings for the function <code>hello_world_rcpp()</code>.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/rcpp_hello.cpp</strong></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">// [[Rcpp::interfaces(cpp)]]</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">//' @title Test Rcpp function</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">//' </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">//' @export</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">//[[Rcpp::export]]</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> hello_world_rcpp<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  Rcpp<span class="op">::</span>Rcout <span class="op">&lt;&lt;</span> <span class="st">"hello world!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="manually-creating-the-package-header" class="level3">
+<h3 class="anchored" data-anchor-id="manually-creating-the-package-header">Manually creating the package header</h3>
+<p>The package header can also be created manually, as <code>mypackage.h</code> under <code>inst/include</code>. In this case, the helper file <code>mypackage_RcppExports.h</code> is not generated.</p>
+<p>Examples of this are the widely used {RcppEigen} and {RcppArmadillo} packages, while <a href="https://github.com/coatless-r-n-d/rcpp-shared-cpp-functions">this demonstration package by James Balamuta</a> is a minimal example that is a good place to get started to understand how this approach works.</p>
+<p>The manually defined package header can initially be empty, and is populated by the developer — more on header contents below.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is possible to edit an autogenerated package header to include manually created header files in addition to <code>mypackage_RcppExports.h</code>. To do this, remove the generator tag (see below) to prevent this file from being overwritten by <code>Rcpp::compileAttributes()</code>. Then include any extra header files as usual.</p>
+<p>We would however recommend not autogenerating headers from Rcpp functions, but rather writing a header-heavy package — this is the approach used by {RcppEigen} etc. (see more below on how we organise our packages).</p>
+</div>
+</div>
+</section>
+<section id="contents-of-the-package-header" class="level3">
+<h3 class="anchored" data-anchor-id="contents-of-the-package-header">Contents of the package header</h3>
+<p>We found it difficult to get information on the content of the package header.</p>
+<p>Autogenerated package headers contain an autogeneration message and a generator token, similar to that present in <code>RcppExports</code> files. Package headers should contain a <a href="https://en.wikipedia.org/wiki/Include_guard">header include guard</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The style of the header name in the include guard for autogenerated headers is <code>RCPP_mypackage_H_GEN_</code>. Package headers from the Rcpp core team, such as {RcppEigen} and {RcppArmadillo}, are manually defined and follow the convention <code>mypackage__mypackage__h</code>. In examples, <a href="https://github.com/coatless-r-n-d/rcpp-shared-cpp-functions">such as this bare-bones demonstration package by James Balamuta</a>, you might also encounter a single underscore (<code>_</code>) and a capital <code>H</code> (<code>mypackage_mypackage_H</code>).</p>
+<p>If you are <a href="../lint-rcpp/">linting your Rcpp package’s C++ code</a> with <a href="https://github.com/cpplint/cpplint">Cpplint</a>, all three are incompatible with Cpplint’s preference, which is <code>DIR_SUBDIR_FILE_H</code>. Exclude the package header from linting to avoid this warning if you wish to follow an Rcpp community style instead.</p>
+</div>
+</div>
+<p>The package header must also link to the code you want to export, and there are at least three ways of doing this.</p>
+<ol type="1">
+<li>Include the autogenerated file <code>mypackage_RcppExports.h</code>; this is already done as part of the package header generation.</li>
+<li>Directly write C++ code in the package header. This is technically possible, but unlikely to be a good option as your package’s C++ codebase grows.</li>
+<li>Manually include any other C++ header files in the package header. This last option might lead to a package header such as that shown below.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>inst/include/mypackage.h</strong></pre>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Manually created package header with manual code inclusion</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef mypackage_mypackage_H</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#define mypackage_mypackage_H</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// include files using paths relative to inst/include</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"header_01.h"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"header_02.h"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif  </span><span class="co">// mypackage_mypackage_H</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, the header files might contain code that you wish to make available to other packages, such as a C++ function, struct, or class, and indeed in the current package as well — more on how to do this below.</p>
+</section>
+</section>
+<section id="using-rcpp-in-header-code" class="level2">
+<h2 class="anchored" data-anchor-id="using-rcpp-in-header-code">Using Rcpp in header code</h2>
+<p>Using {Rcpp}’s C++ functionality, such as the Rcpp classes <code>DataFrame</code> or <code>List</code>, or classes and functions of Rcpp-based packages such as {RcppEigen}, is as simple as including those headers in the appropriate location, just as one would in a source file — see the example below.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>inst/include/header_01.h</strong></pre>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// In a manually created header file, say, header_01.h</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">// which is included in mypackage.h</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">// to use Rcpp</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;Rcpp.h&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">// note the use of inline, more on this later</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">inline</span> <span class="dt">void</span> hello_world_rcpp<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  Rcpp<span class="op">::</span>Rcout <span class="op">&lt;&lt;</span> <span class="st">"hello world!</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The appropriate headers are automatically included in autogenerated package headers’ helper files, and the developer need not do anything more.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t forget to link to {Rcpp} or similar packages to the package under development by adding the package names under <code>Imports</code>, <code>Depends</code>, or <code>LinkingTo</code> as appropriate.</p>
+<p>This can often be handled by functions in the {usethis} package such as <code>usethis::use_rcpp_eigen()</code>. You might also need to add <code>// [[Rcpp::depends(&lt;package&gt;)]]</code> in your package’s C++ source files, with a suitable package dependency specified.</p>
+</div>
+</div>
+<p>The same principles apply to using C++ code from this package ({mypackage}) in future packages.</p>
+</section>
+<section id="using-header-code-in-the-package" class="level2">
+<h2 class="anchored" data-anchor-id="using-header-code-in-the-package">Using header code in the package</h2>
+<p>There are some considerations when seeking to use header code from {mypackage} within {mypackage} itself.</p>
+<p>Any functions defined in the package headers must be inline functions (see the example above). This prevents compilation errors related to multiple definitions.</p>
+<p>C++ source files should include the package header, using <code>#include mypackage.h</code>. Functions, structs, or classes defined in header files will be available from the namespace <code>mypackage</code>, as shown in the example below.</p>
+<p>The code in header files will usually need to be wrapped in (R)C++ code that is exposed to R to make functions from the headers available in R — see the snippet below.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>mypackage/src/hello_world.cpp</strong></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">// #include &lt;Rcpp.h&gt;       // include Rcpp if necessary</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;mypackage.h&gt;</span><span class="pp">     </span><span class="co">// include package header</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Function exposed to R</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">//' @title Rcpp function wrapping a header function</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">//'</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">//' @export</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">// [[Rcpp::export]]</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> print_hello_world<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  mypackage<span class="op">::</span>hello_world_rcpp<span class="op">();</span>    <span class="co">// note the namespacing</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember to add <code>PKG_CPPFLAGS += -I../inst/include/</code> to both <code>Makevars</code> and <code>Makevars.win</code> under <code>src/</code>. Furthermore, as noted in the <a href="https://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf">Rcpp attributes documentation</a>, the package will not automatically cause a rebuild when headers are modified — this needs to be done manually.</p>
+</div>
+</div>
+</section>
+<section id="linking-header-code-between-pacakges" class="level2">
+<h2 class="anchored" data-anchor-id="linking-header-code-between-pacakges">Linking header code between pacakges</h2>
+<p>Once you have developed your package, you can link to its C++ header code in the same way as you would to any other Rcpp-based package.</p>
+<p>Consider the snippet below which shows how to link the C++ code from {mypackage} in a different package called {yourpackage}.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>yourpackage/src/hello_world.cpp</strong></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// [[Rcpp::depends(mypackage)]]   /// specify dependency</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;mypackage.h&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Define and export an Rcpp function</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> print_linked_hello<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  mypackage<span class="op">::</span>hello_world_rcpp<span class="op">();</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Be sure to add <code>LinkingTo: mypackage</code> in the <code>DESCRIPTION</code> of the second package {yourpackage}.</p>
+</section>
+<section id="c-code-sharing-in-epiverse-trace" class="level2">
+<h2 class="anchored" data-anchor-id="c-code-sharing-in-epiverse-trace">C++ code sharing in Epiverse-TRACE</h2>
+<p>In Epiverse-TRACE, we have structured the {finalsize} and {epidemics} packages to have manually created headers, following the principles laid out above. We follow some additional principles as well.</p>
+<dl>
+<dt>Header-heavy packages</dt>
+<dd>
+Our packages are header-heavy, so that most of the actual code is defined in the headers. The source files are primarily intended to contain wrappers that expose the header code to R (and our users).
+</dd>
+<dt>Namespaces to organise header code</dt>
+<dd>
+Our header code is organised into C++ namespaces, which makes it easier to understand where functions are likely to be defined, and what they might be related to. It also makes it possible to include the package headers (and namespaces) that are relevant to users, rather than including the entire codebase.
+</dd>
+</dl>
+<p>As an example, functions related to non-pharmaceutical interventions or vaccination regimes from the {epidemics} package can be used in other packages without also including the compartmental epidemic models contained therein.</p>
+</section>
+<section id="ensuring-the-quality-of-header-code" class="level2">
+<h2 class="anchored" data-anchor-id="ensuring-the-quality-of-header-code">Ensuring the quality of header code</h2>
+<p>You can lint and statically check code in a package header using <a href="../lint-rcpp/">tools for linting C++ code such as Cpplint and Cppcheck</a>. When doing so, it may be important to specify minimum C++ standards, or even the language (C or C++) to avoid linter errors. This is because tools — such as Cppcheck — assume that headers with the extension <code>.h</code> are C headers, which throws errors when encountering C++ features such as the use of namespaces.</p>
+<p>Cppcheck’s language and C++ standard can be set using:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cppcheck</span> <span class="at">--std</span><span class="op">=</span>c++14 <span class="at">--language</span><span class="op">=</span>c++ <span class="at">--enable</span><span class="op">=</span>warning,style <span class="at">--error-exitcode</span><span class="op">=</span>1 inst/include/<span class="pp">*</span>.h</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Furthermore, header code can also be tested independently of the R(cpp) code that eventually wraps it. This can be done using the <a href="https://github.com/catchorg/Catch2">Catch2 testing framework</a>, which is <a href="https://testthat.r-lib.org/reference/use_catch.html">conveniently available using {testthat}</a> — this is an extensive topic for another post.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Developing an Rcpp-based package with C++ code sharing in mind takes some organisation, or even reorganisation, of the C++ codebase. It is probably a good idea to consider whether your package will implement code that would be of interest to other developers, or to you in related projects. If either of these is true, it may help to structure your package with C++ code sharing in mind from the very beginning of development. This can substantially reduce development overheads and mistakes associated with maintaining multiple copies of the same or similar code in different projects. Fortunately, some great examples of how to do this are among the most-used Rcpp-based packages, providing both a conceptual template to consult for your work, as well as being a demonstration of how beneficial this practice can be in the long run. In Epiverse-TRACE, we intend to continue developing with C++ code sharing as a core principle so that we and other developers can build on our initial work.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+  author = {Gupte, Pratik},
+  title = {Sharing the {C++} {Code} of an {Rcpp} {Package}},
+  date = {2023-04-24},
+  url = {https://epiverse-trace.github.io//posts/share-cpp},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Gupte, Pratik. 2023. <span>“Sharing the C++ Code of an Rcpp
+Package.”</span> April 24, 2023. <a href="https://epiverse-trace.github.io//posts/share-cpp">https://epiverse-trace.github.io//posts/share-cpp</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          console.log(htmlDoc.body.innerHTML);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="epiverse-trace/epiverse-trace.github.io" data-repo-id="R_kgDOIcolPw" data-category="Blog post discussion" data-category-id="DIC_kwDOIcolP84CWOm8" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+</div> <!-- /content -->
+
+
+
+</body></html>

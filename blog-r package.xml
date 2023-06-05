@@ -9,8 +9,462 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R%20package</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r package.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.114</generator>
-<lastBuildDate>Wed, 12 Apr 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.124</generator>
+<lastBuildDate>Mon, 24 Apr 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Sharing the C++ Code of an Rcpp Package</title>
+  <dc:creator>Pratik Gupte</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/share-cpp/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="why-share-c-code-from-an-rcpp-package" class="level2">
+<h2 class="anchored" data-anchor-id="why-share-c-code-from-an-rcpp-package">Why share C++ code from an Rcpp package</h2>
+<p>Using the <a href="https://www.rcpp.org/">{Rcpp}</a> package is the dominant method for linking the usability of R with the speed of C++, and can be used to write R packages that are fast and easy to use for both end-users and developers.</p>
+<p>From the point of view of developers, it’s very easy to export R code such as functions and classes from an R(cpp) package, but the guidance in the <a href="https://www.rdocumentation.org/packages/Rcpp/versions/1.0.10">Rcpp documentation</a> does not detail how to export the C++ code so that it can be shared with your other Rcpp packages.</p>
+<p>Allowing C++ code to be shared can be very beneficial for the same reasons that sharing R code is — packaging code is a reliable way to reuse it.</p>
+<p>Some widely used examples of this practice are the <a href="https://cran.r-project.org/web/packages/RcppEigen/index.html">{RcppEigen}</a>, <a href="https://cran.r-project.org/web/packages/RcppArmadillo/index.html">{RcppArmadillo}</a>, <a href="https://cran.r-project.org/web/packages/RcppGSL/index.html">{RcppGSL}</a>, and <a href="https://cran.r-project.org/web/packages/BH/index.html">Boost Headers {BH}</a> packages. Indeed, in the Epiverse-TRACE team, {RcppEigen} underpins the <a href="https://github.com/epiverse-trace/finalsize">{finalsize}</a> and upcoming <a href="https://github.com/epiverse-trace/epidemics">{epidemics}</a> packages.</p>
+</section>
+<section id="two-ways-to-share-c-code" class="level2">
+<h2 class="anchored" data-anchor-id="two-ways-to-share-c-code">Two ways to share C++ code?</h2>
+<p>Developers searching for a way to make the C++ code of their Rcpp-based packages shareable will likely find two seemingly distinct ways of doing so.</p>
+<ol type="1">
+<li><p>Developers reading the Rcpp Attributes documentation will find that package C++ code can be shared by generating a C++ interface for functions that also have an R interface, <a href="https://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf">using Rcpp attributes</a>.</p></li>
+<li><p>Developers instead scanning widely used Rcpp packages such as {RcppEigen} will notice that C++ code can also be shared by defining the majority of the C++ functions in a package header, to which other Rcpp packages can be linked.</p></li>
+</ol>
+<p>These are simply different pathways to the writing and export of an R(cpp) package header, which allows Rcpp to link the package’s C++ code to other packages.</p>
+<p>This blog post explores different ways of doing this, and explains how the Rcpp packages from Epiverse-TRACE implement C++ code sharing.</p>
+</section>
+<section id="the-package-header" class="level2">
+<h2 class="anchored" data-anchor-id="the-package-header">The package header</h2>
+<p>The package header of the package <code>{mypackage}</code> is a file of the name <code>mypackage.h</code> under <code>inst/include</code>. Defining this header is the key step in making (R)C++ code shareable.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># conceptual organisation of an Rcpp package with a package header</span></span>
+<span id="cb1-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">.</span></span>
+<span id="cb1-3"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">├──</span> DESCRIPTION</span>
+<span id="cb1-4"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">├──</span> NAMESPACE</span>
+<span id="cb1-5"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">├──</span> R</span>
+<span id="cb1-6"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">│&nbsp;&nbsp;</span> └── RcppExports.R</span>
+<span id="cb1-7"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">├──</span> inst</span>
+<span id="cb1-8"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">│&nbsp;&nbsp;</span> └── include</span>
+<span id="cb1-9"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">│&nbsp;&nbsp;</span>     └── mypackage.h       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># &lt;= the package header</span></span>
+<span id="cb1-10"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">└──</span> src</span>
+<span id="cb1-11">    <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">├──</span> RcppExports.cpp</span>
+<span id="cb1-12">    <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">└──</span> rcpp_hello.cpp        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># &lt;= code from which RcppExports.cpp generates</span></span></code></pre></div>
+<section id="autogenerating-the-package-header" class="level3">
+<h3 class="anchored" data-anchor-id="autogenerating-the-package-header">Autogenerating the package header</h3>
+<p>The package header is autogenerated when the attributes of an Rcpp function are edited to also generate a C++ interface.</p>
+<p>Consider the Rcpp function below which is exposed to R and exported from the package. The line <code>// [[Rcpp::interfaces(cpp)]]</code> instructs Rcpp to autogenerate two header files under <code>inst/include</code>:</p>
+<ol type="1">
+<li>A package header, called <code>mypackage.h</code>, and</li>
+<li>A helper header called <code>mypackage_RcppExports.h</code> with ‘automagic’ C++ bindings for the function <code>hello_world_rcpp()</code>.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>src/rcpp_hello.cpp</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#include </span><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">&lt;Rcpp.h&gt;</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [[Rcpp::interfaces(cpp)]]</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//' @title Test Rcpp function</span></span>
+<span id="cb2-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//' </span></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//' @export</span></span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//[[Rcpp::export]]</span></span>
+<span id="cb2-9"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> hello_world_rcpp<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb2-10">  Rcpp<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>Rcout <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;&lt;</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hello world!</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb2-11"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+</div>
+</section>
+<section id="manually-creating-the-package-header" class="level3">
+<h3 class="anchored" data-anchor-id="manually-creating-the-package-header">Manually creating the package header</h3>
+<p>The package header can also be created manually, as <code>mypackage.h</code> under <code>inst/include</code>. In this case, the helper file <code>mypackage_RcppExports.h</code> is not generated.</p>
+<p>Examples of this are the widely used {RcppEigen} and {RcppArmadillo} packages, while <a href="https://github.com/coatless-r-n-d/rcpp-shared-cpp-functions">this demonstration package by James Balamuta</a> is a minimal example that is a good place to get started to understand how this approach works.</p>
+<p>The manually defined package header can initially be empty, and is populated by the developer — more on header contents below.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is possible to edit an autogenerated package header to include manually created header files in addition to <code>mypackage_RcppExports.h</code>. To do this, remove the generator tag (see below) to prevent this file from being overwritten by <code>Rcpp::compileAttributes()</code>. Then include any extra header files as usual.</p>
+<p>We would however recommend not autogenerating headers from Rcpp functions, but rather writing a header-heavy package — this is the approach used by {RcppEigen} etc. (see more below on how we organise our packages).</p>
+</div>
+</div>
+</section>
+<section id="contents-of-the-package-header" class="level3">
+<h3 class="anchored" data-anchor-id="contents-of-the-package-header">Contents of the package header</h3>
+<p>We found it difficult to get information on the content of the package header.</p>
+<p>Autogenerated package headers contain an autogeneration message and a generator token, similar to that present in <code>RcppExports</code> files. Package headers should contain a <a href="https://en.wikipedia.org/wiki/Include_guard">header include guard</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The style of the header name in the include guard for autogenerated headers is <code>RCPP_mypackage_H_GEN_</code>. Package headers from the Rcpp core team, such as {RcppEigen} and {RcppArmadillo}, are manually defined and follow the convention <code>mypackage__mypackage__h</code>. In examples, <a href="https://github.com/coatless-r-n-d/rcpp-shared-cpp-functions">such as this bare-bones demonstration package by James Balamuta</a>, you might also encounter a single underscore (<code>_</code>) and a capital <code>H</code> (<code>mypackage_mypackage_H</code>).</p>
+<p>If you are <a href="../lint-rcpp/">linting your Rcpp package’s C++ code</a> with <a href="https://github.com/cpplint/cpplint">Cpplint</a>, all three are incompatible with Cpplint’s preference, which is <code>DIR_SUBDIR_FILE_H</code>. Exclude the package header from linting to avoid this warning if you wish to follow an Rcpp community style instead.</p>
+</div>
+</div>
+<p>The package header must also link to the code you want to export, and there are at least three ways of doing this.</p>
+<ol type="1">
+<li>Include the autogenerated file <code>mypackage_RcppExports.h</code>; this is already done as part of the package header generation.</li>
+<li>Directly write C++ code in the package header. This is technically possible, but unlikely to be a good option as your package’s C++ codebase grows.</li>
+<li>Manually include any other C++ header files in the package header. This last option might lead to a package header such as that shown below.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>inst/include/mypackage.h</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Manually created package header with manual code inclusion</span></span>
+<span id="cb3-2"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#ifndef mypackage_mypackage_H</span></span>
+<span id="cb3-3"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#define mypackage_mypackage_H</span></span>
+<span id="cb3-4"></span>
+<span id="cb3-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// include files using paths relative to inst/include</span></span>
+<span id="cb3-6"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#include </span><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">"header_01.h"</span></span>
+<span id="cb3-7"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#include </span><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">"header_02.h"</span></span>
+<span id="cb3-8"></span>
+<span id="cb3-9"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#endif  </span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// mypackage_mypackage_H</span></span></code></pre></div>
+</div>
+<p>Here, the header files might contain code that you wish to make available to other packages, such as a C++ function, struct, or class, and indeed in the current package as well — more on how to do this below.</p>
+</section>
+</section>
+<section id="using-rcpp-in-header-code" class="level2">
+<h2 class="anchored" data-anchor-id="using-rcpp-in-header-code">Using Rcpp in header code</h2>
+<p>Using {Rcpp}’s C++ functionality, such as the Rcpp classes <code>DataFrame</code> or <code>List</code>, or classes and functions of Rcpp-based packages such as {RcppEigen}, is as simple as including those headers in the appropriate location, just as one would in a source file — see the example below.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>inst/include/header_01.h</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// In a manually created header file, say, header_01.h</span></span>
+<span id="cb4-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// which is included in mypackage.h</span></span>
+<span id="cb4-3"></span>
+<span id="cb4-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// to use Rcpp</span></span>
+<span id="cb4-5"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#include </span><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">&lt;Rcpp.h&gt;</span></span>
+<span id="cb4-6"></span>
+<span id="cb4-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// note the use of inline, more on this later</span></span>
+<span id="cb4-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">inline</span> <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> hello_world_rcpp<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb4-9">  Rcpp<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>Rcout <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;&lt;</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"hello world!</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span></span>
+<span id="cb4-10"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+</div>
+<p>The appropriate headers are automatically included in autogenerated package headers’ helper files, and the developer need not do anything more.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t forget to link to {Rcpp} or similar packages to the package under development by adding the package names under <code>Imports</code>, <code>Depends</code>, or <code>LinkingTo</code> as appropriate.</p>
+<p>This can often be handled by functions in the {usethis} package such as <code>usethis::use_rcpp_eigen()</code>. You might also need to add <code>// [[Rcpp::depends(&lt;package&gt;)]]</code> in your package’s C++ source files, with a suitable package dependency specified.</p>
+</div>
+</div>
+<p>The same principles apply to using C++ code from this package ({mypackage}) in future packages.</p>
+</section>
+<section id="using-header-code-in-the-package" class="level2">
+<h2 class="anchored" data-anchor-id="using-header-code-in-the-package">Using header code in the package</h2>
+<p>There are some considerations when seeking to use header code from {mypackage} within {mypackage} itself.</p>
+<p>Any functions defined in the package headers must be inline functions (see the example above). This prevents compilation errors related to multiple definitions.</p>
+<p>C++ source files should include the package header, using <code>#include mypackage.h</code>. Functions, structs, or classes defined in header files will be available from the namespace <code>mypackage</code>, as shown in the example below.</p>
+<p>The code in header files will usually need to be wrapped in (R)C++ code that is exposed to R to make functions from the headers available in R — see the snippet below.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>mypackage/src/hello_world.cpp</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// #include &lt;Rcpp.h&gt;       // include Rcpp if necessary</span></span>
+<span id="cb5-2"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#include </span><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">&lt;mypackage.h&gt;</span><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">     </span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// include package header</span></span>
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Function exposed to R</span></span>
+<span id="cb5-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//' @title Rcpp function wrapping a header function</span></span>
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//'</span></span>
+<span id="cb5-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">//' @export</span></span>
+<span id="cb5-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [[Rcpp::export]]</span></span>
+<span id="cb5-9"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> print_hello_world<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb5-10">  mypackage<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>hello_world_rcpp<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">();</span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// note the namespacing</span></span>
+<span id="cb5-11"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember to add <code>PKG_CPPFLAGS += -I../inst/include/</code> to both <code>Makevars</code> and <code>Makevars.win</code> under <code>src/</code>. Furthermore, as noted in the <a href="https://dirk.eddelbuettel.com/code/rcpp/Rcpp-attributes.pdf">Rcpp attributes documentation</a>, the package will not automatically cause a rebuild when headers are modified — this needs to be done manually.</p>
+</div>
+</div>
+</section>
+<section id="linking-header-code-between-pacakges" class="level2">
+<h2 class="anchored" data-anchor-id="linking-header-code-between-pacakges">Linking header code between pacakges</h2>
+<p>Once you have developed your package, you can link to its C++ header code in the same way as you would to any other Rcpp-based package.</p>
+<p>Consider the snippet below which shows how to link the C++ code from {mypackage} in a different package called {yourpackage}.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>yourpackage/src/hello_world.cpp</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// [[Rcpp::depends(mypackage)]]   /// specify dependency</span></span>
+<span id="cb6-2"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">#include </span><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">&lt;mypackage.h&gt;</span></span>
+<span id="cb6-3"></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">// Define and export an Rcpp function</span></span>
+<span id="cb6-5"><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">void</span> print_linked_hello<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">()</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb6-6">  mypackage<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span>hello_world_rcpp<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">();</span></span>
+<span id="cb6-7"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div>
+</div>
+<p>Be sure to add <code>LinkingTo: mypackage</code> in the <code>DESCRIPTION</code> of the second package {yourpackage}.</p>
+</section>
+<section id="c-code-sharing-in-epiverse-trace" class="level2">
+<h2 class="anchored" data-anchor-id="c-code-sharing-in-epiverse-trace">C++ code sharing in Epiverse-TRACE</h2>
+<p>In Epiverse-TRACE, we have structured the {finalsize} and {epidemics} packages to have manually created headers, following the principles laid out above. We follow some additional principles as well.</p>
+<dl>
+<dt>Header-heavy packages</dt>
+<dd>
+Our packages are header-heavy, so that most of the actual code is defined in the headers. The source files are primarily intended to contain wrappers that expose the header code to R (and our users).
+</dd>
+<dt>Namespaces to organise header code</dt>
+<dd>
+Our header code is organised into C++ namespaces, which makes it easier to understand where functions are likely to be defined, and what they might be related to. It also makes it possible to include the package headers (and namespaces) that are relevant to users, rather than including the entire codebase.
+</dd>
+</dl>
+<p>As an example, functions related to non-pharmaceutical interventions or vaccination regimes from the {epidemics} package can be used in other packages without also including the compartmental epidemic models contained therein.</p>
+</section>
+<section id="ensuring-the-quality-of-header-code" class="level2">
+<h2 class="anchored" data-anchor-id="ensuring-the-quality-of-header-code">Ensuring the quality of header code</h2>
+<p>You can lint and statically check code in a package header using <a href="../lint-rcpp/">tools for linting C++ code such as Cpplint and Cppcheck</a>. When doing so, it may be important to specify minimum C++ standards, or even the language (C or C++) to avoid linter errors. This is because tools — such as Cppcheck — assume that headers with the extension <code>.h</code> are C headers, which throws errors when encountering C++ features such as the use of namespaces.</p>
+<p>Cppcheck’s language and C++ standard can be set using:</p>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">cppcheck</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--std</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>c++14 <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--language</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>c++ <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--enable</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>warning,style <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">--error-exitcode</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>1 inst/include/<span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">*</span>.h</span></code></pre></div>
+<p>Furthermore, header code can also be tested independently of the R(cpp) code that eventually wraps it. This can be done using the <a href="https://github.com/catchorg/Catch2">Catch2 testing framework</a>, which is <a href="https://testthat.r-lib.org/reference/use_catch.html">conveniently available using {testthat}</a> — this is an extensive topic for another post.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Developing an Rcpp-based package with C++ code sharing in mind takes some organisation, or even reorganisation, of the C++ codebase. It is probably a good idea to consider whether your package will implement code that would be of interest to other developers, or to you in related projects. If either of these is true, it may help to structure your package with C++ code sharing in mind from the very beginning of development. This can substantially reduce development overheads and mistakes associated with maintaining multiple copies of the same or similar code in different projects. Fortunately, some great examples of how to do this are among the most-used Rcpp-based packages, providing both a conceptual template to consult for your work, as well as being a demonstration of how beneficial this practice can be in the long run. In Epiverse-TRACE, we intend to continue developing with C++ code sharing as a core principle so that we and other developers can build on our initial work.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+  author = {Gupte, Pratik},
+  title = {Sharing the {C++} {Code} of an {Rcpp} {Package}},
+  date = {2023-04-24},
+  url = {https://epiverse-trace.github.io//posts/share-cpp},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
+Gupte, Pratik. 2023. <span>“Sharing the C++ Code of an Rcpp
+Package.”</span> April 24, 2023. <a href="https://epiverse-trace.github.io//posts/share-cpp">https://epiverse-trace.github.io//posts/share-cpp</a>.
+</div></div></section></div> ]]></description>
+  <category>code sharing</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>Rcpp</category>
+  <category>interoperability</category>
+  <guid>https://epiverse-trace.github.io/posts/share-cpp/index.html</guid>
+  <pubDate>Mon, 24 Apr 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Extending Data Frames</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
@@ -1855,7 +2309,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-27620"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-27620").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-41989"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-41989").innerHTML = tweet["html"];</script><p></p>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
@@ -2328,7 +2782,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h1>Conclusion: automated validation vs peer-review</h1>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-61077"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-61077").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-97864"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-97864").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
