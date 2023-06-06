@@ -3,7 +3,7 @@ title: "Sharing the C++ Code of an Rcpp Package"
 author:
   - name: "Pratik Gupte"
     orcid: "0000-0001-5294-7819"
-date: "2023-04-24"
+date: "2023-06-05"
 categories: [code sharing, R, R package, Rcpp, interoperability]
 format:
   html:
