@@ -1,0 +1,24 @@
+---
+title: "Juniper seminar on improving software for epidemic response"
+author: 
+  - name: "Adam Kucharski"
+    orcid: "0000-0001-8814-9421"
+date: "2023-05-31"
+categories: [epiparameter, finalsize, episoap]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+Talk at the [Juniper](https://maths.org/juniper/) seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE.
+
+::: {.callout-note appearance="minimal"}
+
+## Talk slides
+
+```{=html}
+<iframe width="780" height="438.75" src="2023_05_Juniper_Epiverse.pdf" title="Juniper slides May 2023"></iframe>
+```
