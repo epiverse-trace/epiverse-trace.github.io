@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/learn.html</link>
 <atom:link href="https://epiverse-trace.github.io/learn.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.126</generator>
+<generator>quarto-1.4.146</generator>
 <lastBuildDate>Mon, 05 Dec 2022 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Introductory training on Git and GitHub basics using Rstudio</title>
