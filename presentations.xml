@@ -10,7 +10,42 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.4.146</generator>
-<lastBuildDate>Wed, 05 Apr 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 31 May 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Juniper seminar on improving software for epidemic response</title>
+  <dc:creator>Adam Kucharski</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/juniper-may-2023/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Talk at the <a href="https://maths.org/juniper/">Juniper</a> seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE.</p>
+<p>::: {.callout-note appearance=“minimal”}</p>
+<section id="talk-slides" class="level2">
+<h2 class="anchored" data-anchor-id="talk-slides">Talk slides</h2>
+<iframe width="780" height="438.75" src="2023_05_Juniper_Epiverse.pdf" title="Juniper slides May 2023"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
+  author = {Kucharski, Adam},
+  title = {Juniper Seminar on Improving Software for Epidemic Response},
+  date = {2023-05-31},
+  url = {https://epiverse-trace.github.io//slides/juniper-may-2023},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2023" class="csl-entry quarto-appendix-citeas">
+Kucharski, Adam. 2023. <span>“Juniper Seminar on Improving Software for
+Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.github.io//slides/juniper-may-2023">https://epiverse-trace.github.io//slides/juniper-may-2023</a>.
+</div></div></section></div> ]]></description>
+  <category>epiparameter</category>
+  <category>finalsize</category>
+  <category>episoap</category>
+  <guid>https://epiverse-trace.github.io/slides/juniper-may-2023/index.html</guid>
+  <pubDate>Wed, 31 May 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Epiverse-TRACE Spring 2023 showcase</title>
   <dc:creator>Anna Carnegie</dc:creator>
