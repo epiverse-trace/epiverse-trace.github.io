@@ -17,9 +17,8 @@ Talk at the [Juniper](https://maths.org/juniper/) seminar series that included a
 
 ::: {.callout-note appearance="minimal"}
 
-## episoap slides
+## Talk slides
 
 ```{=html}
 <iframe width="780" height="438.75" src="2023_05_Juniper_Epiverse.pdf" title="Juniper slides May 2023"></iframe>
 ```
-
