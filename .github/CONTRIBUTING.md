@@ -1,3 +1,7 @@
+This website is using [quarto](https://quarto.org/) and the HTML output is automatically generated on pushes to `main` via the [`quarto-publish.yml` GitHub Actions workflow](https://github.com/epiverse-trace/epiverse-trace.github.io/blob/main/.github/workflows/quarto-publish.yml).
+
+All contributions should add an ORCiD for each author.
+
 ## Contributing a new blog post
 
 ### Before starting to write
@@ -37,3 +41,25 @@ Once your post is published, we already have some systems in place to try and ad
 - it is automatically shared on [R-weekly](https://rweekly.org/), which can often result in it also being discussed in the [R-weekly podcast](https://rweekly.fireside.fm/). Keep an eye on their social media account to see if your post is mentioned: [twitter](https://twitter.com/theRcast)
 
 You should also get in touch with the current week's curator of our [Epiverse-TRACE twitter account](https://twitter.com/Epiverse_TRACE/), possibly with a short summary of your post they can use.
+
+## Contributing slides from a presentation
+
+Slides from presentation can be added in the `slides/` folder.
+Alongside the pdf of your slides, please add an `index.qmd` with the following recommended sections:
+
+- Schedule if the event includes multiple presenters and/or multiple presentations
+- The slides in an iframe:
+  - For slides in 16:9 format:
+  ````
+  ```{=html}
+  <iframe width="780" height="438.75" src="slides.pdf" title="slides from event"></iframe>
+  ```
+  ````
+  - For slides in 4:3 format:
+  ````
+  ```{=html}
+  <iframe width="780" height="500" src="slides.pdf" title="slides from event"></iframe>
+  ```
+  ````
+- A list of questions asked during the presentation and a short answer, especially if you didn't have time to answer all questions live
+- A link to the recording if available
