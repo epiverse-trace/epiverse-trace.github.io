@@ -15,8 +15,6 @@ editor:
 
 Talk at the [Juniper](https://maths.org/juniper/) seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE.
 
-::: {.callout-note appearance="minimal"}
-
 ## Talk slides
 
 ```{=html}
