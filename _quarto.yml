@@ -19,6 +19,9 @@ website:
       - icon: twitter
         href: https://twitter.com/Epiverse_TRACE
   google-analytics: "G-XZ471458FQ"
+  twitter-card:
+    creator: "@Epiverse_TRACE"
+  open-graph: true
   comments:
     giscus:
       repo: epiverse-trace/epiverse-trace.github.io
