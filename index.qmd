@@ -7,6 +7,9 @@ about:
     - icon: github
       text: Github
       href: https://github.com/epiverse-trace
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/Epiverse_TRACE
 ---
 
 This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.
