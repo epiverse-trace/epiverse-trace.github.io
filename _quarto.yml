@@ -3,6 +3,7 @@ project:
 
 website:
   site-url: "https://epiverse-trace.github.io/"
+  favicon: hexlogo.png
   title: "Epiverse-TRACE developer space"
   description: "A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work."
   navbar:
