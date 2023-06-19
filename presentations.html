@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.146">
+<meta name="generator" content="quarto-1.4.156">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./hexlogo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -109,7 +110,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="presentations.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="presentations.xml" data-external="1"><meta property="og:title" content="Epiverse-TRACE developer space - Presentations">
+<meta property="og:site_name" content="Epiverse-TRACE developer space">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - Presentations">
+<meta name="twitter:creator" content="@Epiverse_TRACE">
+<meta name="twitter:card" content="summary">
+</head>
 
 <body class="nav-fixed">
 
@@ -188,7 +194,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="epiparameter,finalsize,episoap" data-listing-date-sort="1685491200000" data-listing-file-modified-sort="1686725997549" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-right" data-index="0" data-categories="epiparameter,finalsize,episoap" data-listing-date-sort="1685491200000" data-listing-file-modified-sort="1687197171984" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
 <p><a href="./slides/juniper-may-2023/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -229,7 +235,7 @@ Adam Kucharski
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="sivirep,epiCo,serofoi,showcase" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1686725997561" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
+<div class="quarto-post image-right" data-index="1" data-categories="sivirep,epiCo,serofoi,showcase" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1687197171996" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
 <div class="thumbnail">
 <p><a href="./slides/showcase-spring2023/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -273,7 +279,7 @@ Anna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="data science,pipelines,interoperability,community,deRSE23" data-listing-date-sort="1676851200000" data-listing-file-modified-sort="1686725997517" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-right" data-index="2" data-categories="data science,pipelines,interoperability,community,deRSE23" data-listing-date-sort="1676851200000" data-listing-file-modified-sort="1687197171960" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="./slides/harmonious-ecosystem/index.html"> <img src="./slides/harmonious-ecosystem/diversegroup.png" class="thumbnail-image"> </a></p>
 </div>
@@ -320,7 +326,7 @@ Hugo Gruson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="epiparameter,finalsize,episoap,showcase" data-listing-date-sort="1674604800000" data-listing-file-modified-sort="1686725997609" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
+<div class="quarto-post image-right" data-index="3" data-categories="epiparameter,finalsize,episoap,showcase" data-listing-date-sort="1674604800000" data-listing-file-modified-sort="1687197172028" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17">
 <div class="thumbnail">
 <p><a href="./slides/showcase-winter2023/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
 </div>
@@ -527,7 +533,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           const parser = new DOMParser();
           const htmlDoc = parser.parseFromString(html, "text/html");
           const note = htmlDoc.getElementById(id);
-          console.log(htmlDoc.body.innerHTML);
           if (note !== null) {
             const html = processXRef(id, note);
             instance.setContent(html);

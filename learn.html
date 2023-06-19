@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.146">
+<meta name="generator" content="quarto-1.4.156">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./hexlogo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -109,7 +110,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="learn.xml" data-external="1"></head>
+<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="learn.xml" data-external="1"><meta property="og:title" content="Epiverse-TRACE developer space - Learn">
+<meta property="og:site_name" content="Epiverse-TRACE developer space">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - Learn">
+<meta name="twitter:creator" content="@Epiverse_TRACE">
+<meta name="twitter:card" content="summary">
+</head>
 
 <body class="nav-fixed">
 
@@ -188,7 +194,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1686725997445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1687197171900" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="./learn/git-training-01/index.html"> <img src="./learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg" class="thumbnail-image"> </a></p>
 </div>
@@ -398,7 +404,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           const parser = new DOMParser();
           const htmlDoc = parser.parseFromString(html, "text/html");
           const note = htmlDoc.getElementById(id);
-          console.log(htmlDoc.body.innerHTML);
           if (note !== null) {
             const html = processXRef(id, note);
             instance.setContent(html);

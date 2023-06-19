@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.146">
+<meta name="generator" content="quarto-1.4.156">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Epiverse-TRACE developer space -</title>
+<title>Epiverse-TRACE developer space</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./hexlogo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -75,6 +76,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="">
+<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta property="og:image" content="https://epiverse-trace.github.io/Epiverse-RGB.png">
+<meta property="og:site_name" content="Epiverse-TRACE developer space">
+<meta property="og:image:height" content="1294">
+<meta property="og:image:width" content="1801">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta name="twitter:image" content="https://epiverse-trace.github.io/Epiverse-RGB.png">
+<meta name="twitter:creator" content="@Epiverse_TRACE">
+<meta name="twitter:image-height" content="1294">
+<meta name="twitter:image-width" content="1801">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -138,6 +152,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <a href="https://github.com/epiverse-trace" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
      <span class="about-link-text">Github</span>
+  </a>
+  <a href="https://twitter.com/Epiverse_TRACE" class="about-link" rel="" target="">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">Twitter</span>
   </a>
 </div>
 </div>
@@ -293,7 +311,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           const parser = new DOMParser();
           const htmlDoc = parser.parseFromString(html, "text/html");
           const note = htmlDoc.getElementById(id);
-          console.log(htmlDoc.body.innerHTML);
           if (note !== null) {
             const html = processXRef(id, note);
             instance.setContent(html);
