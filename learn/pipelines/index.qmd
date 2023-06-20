@@ -1,0 +1,36 @@
+---
+title: "Outbreak analytics Pipelines"
+author:
+  - name: "Andree Valle-Campos"
+    orcid: "0000-0002-7779-481X"
+date: "2022-06-20"
+categories: [outbreak analytics, pipelines, tasks, packages]
+image: "sigmund-4CNNH2KEjhc-unsplash.jpg"
+format:
+  html: 
+    toc: true
+---
+
+## The pipeline approach
+
+We can solve Outbreak Analytics tasks with sets of packages integrated in pipelines.
+
+Outbreak analytics can be viewed as a set of data analysis __Tasks__ (@fig-tasks). In more detail, each of these Tasks are connected by their data inputs and outputs (@fig-tasks-detailed). 
+
+### Tasks
+
+![Task for outbreak analytics](task_pipeline-minimal.svg){#fig-tasks}
+
+![Detailed task paths](task_pipeline-detailed.svg){#fig-tasks-detailed}
+
+### Pipelines
+
+We defined a __Pipeline__ as a set of connected Tasks required to obtain an informative outcome for decision-making purposes. For example, estimate the time-varying transmission (@fig-pipe-01), or project the final size (@fig-pipe-02) of an epidemic.
+
+![Transmissibility pipeline](task_pipeline-pipe_01.svg){#fig-pipe-01}
+
+![Scenarios pipelines](task_pipeline-pipe_02.svg){#fig-pipe-02}
+
+## Attributions
+
+- The image of this feed is from [Unsplash](https://unsplash.com/photos/4CNNH2KEjhc), provided by [Sigmund](https://unsplash.com/@sigmund), free to use under the [Unsplash License](https://unsplash.com/license).
