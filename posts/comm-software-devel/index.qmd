@@ -80,6 +80,7 @@ The tidyverse approach is broadly similar to RepoStatus. The {lifecycle} R packa
 Most code will go through the experimental phase, as it will likely change its API and the number and order of arguments might change. Once code is not going to drastically change (i.e. no breaking changes), at least from a users point of view, it can be labelled stable. In the tidyverse lifecycle schematic, all experimental code transitions to stable code.
 
 The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.
+
 ```{r, results='asis', echo=FALSE, fig.height=5, fig.width=5, fig.cap="Reused under MIT license"}
 cat("![](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg)\n")
 ```
@@ -88,7 +89,7 @@ cat("![](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figure
 
 One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., [stringr](https://github.com/tidyverse/stringr)), the function-level (e.g. [`dplyr::group_trim()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R)) or the argument level (e.g., [`dplyr::across()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36)).
 
-Using {lifecycle} in a package can be setup using `usethis::use_lifecycle()`. The {lifecycle} package not only provides badges, but also informative deprecation notices which communicate to users that a function is not longer supported since a version release of a package. This offers the user a chance to find an alternative function for future use. 
+Using {lifecycle} in a package can be setup using `usethis::use_lifecycle()`. The {lifecycle} package not only provides badges, but also informative deprecation notices which communicate to users that a function is not longer supported since a version release of a package. This offers the user a chance to find an alternative function for future use.
 
 The use of deprecation warnings from {lifecycle} leads onto another aspect of tidyverse development: protracted deprecation. There is no fixed rules on how long after a deprecation warning is made to when code should be removed. In the tidyverse, this process is given ample time in order to allow the many developers that utilise tidyverse software to make the necessary changes. Full descriptions of the {lifecycle} package can be found on the [website](https://lifecycle.r-lib.org/index.html), including the deprecated use of questioning and maturing stages.
 
@@ -123,4 +124,4 @@ There are no plans within Epiverse-TRACE to develop a new badging system as the 
 
 Overall, the use of any of the three lifecycle frameworks described here is better than none.
 
-[^1]: https://en.wikipedia.org/wiki/Version_control
+[^1]: <https://en.wikipedia.org/wiki/Version_control>
