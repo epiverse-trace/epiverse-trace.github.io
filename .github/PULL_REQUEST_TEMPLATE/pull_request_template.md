@@ -2,7 +2,7 @@
 - [ ] All authors have an ORCID iD
 - [ ] Relevant keywords / tags has been added. In particular, if you want your post to be shared on R-bloggers, you must tag it with `R`
 - [ ] Images or other external resources have been committed and pushed
-- [ ] The post uses pure quarto syntax, rather than HTML or R code, unless necessary
+- [ ] The post uses [pure quarto syntax, rather than HTML or R code, unless necessary](../CONTRIBUTING.md#pure-quarto-syntax)
 
 Right before merging:
 
