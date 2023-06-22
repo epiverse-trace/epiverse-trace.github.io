@@ -1,0 +1,125 @@
+---
+title: "Communicating development stages of open-source software"
+author:
+  - name: "Joshua W. Lambert"
+    orcid: "0000-0001-5218-3046"
+date: "2023-07-12"
+categories: [open-source, R, R package, versioning, lifecycles, community]
+format:
+  html:
+    toc: true
+---
+
+Software is not immediately stable when being developed. It undergoes design changes, changes to the user interface (application programming interface, API), and features get added or removed over time. Software in a open-source setting, in which the code is publicly hosted in a repository (e.g., Github, GitLab, Bitbucket), allows anyone to track developments. It also allows the developer community to easily contribute to the software.  
+
+There are certain metrics which can be used to convey the stage of development to users or other developers. For example the number of commits, a repository with few commits may indicate that a project is still in an incipient phase and will undergo several breaking changes. However, different software projects become stable at different rates and the number of commits may mean very different things for a repository containing an operating system compared to an R package with minimal functionality. It is therefore important that developers communicate with users and other developers at what stage the project is in, and how stable the code base is. 
+
+Software development, and specifically R package development, has several methods to communicate stability. This blog post will discuss two such methods and give examples for each. The first of these is versioning code, which establishes points in development where the code is ready for use; and the second is lifecycle badges, these can be placed at a different levels within software (e.g., package, function, function argument) to convey how a user should interact and use.
+
+## Versioning
+
+Versioning code is not a new concept and has been used for decades[^1]. It has led to version control systems such as [git](https://git-scm.com/). However, in this post we are interested in versioning to communicate development. 
+
+### Semantic versioning
+
+One such philosophy is [semantic versioning](https://semver.org/) (SemVer). This aims to describe the stage of software development by attaching semantics (i.e. meaning) to the format and numbering of versions. The version system works through three numbers, each separated by a dot. The numbers, from left to right, convey major version, minor version and patch version. As an example, 0.5.2, is newer than 0.3.9.
+
+Employing semantic versioning in ones code development allows others to determine whether a package has undergone substantial development and testing, and informs to whether it would make a suitable package to use in a script or as a dependency for another package. Semantic versioning also describes the changes made to a package. As explained on [their website](https://semver.org/), incrementing the major version implies a breaking change, a minor increment is a backwards compatible change and lastly patches are mostly applied to bug fixes. This aids users in understanding whether they should continue using a package, whether their package needs updating due to a breaking change or whether they need to install the newest version because a bug was recently fixed. 
+
+In R there are several packages that work with versioning, and specifically semantic versioning. The {semver} package provides functions for parsing, rendering and comparing versions. There is also the {semverutils} R package which provides similar functionality using `R6`. The {usethis} package provides handy utility functions for changing the versions of R packages (`usethis::use_version()` and `usethis::use_dev_version()`). R also comes with a `package_version()` function for creating and validating versions.
+
+Overall semantic versioning provides what they describe as a "formal specification" to facilitate management of package development and the dependencies of that package. It is the most widely-used versioning system and therefore will be understood by a wide variety of users and developers.
+
+Some of the critique raised for semantic versioning is the difficulty of defining how changes correspond to a version increment. Semantic versioning states only breaking changes warrant major releases, but a vast re-write of a code base may also justify a major version change. Different breaking changes have different magnitudes, therefore a change to a single exported function or a change to every exported function will be communicated in a single, equal, version increment. 
+
+### Alternatives to seminatic versioning
+
+There are several other versioning frameworks aside from semantic versioning. One common option is [calendar versioning](https://calver.org/) (CalVer). The format of CalVer is usually year-month (YY-MM), or year-month-day (YY-MM-DD), depending on the regularity of releases, and allows appending tags (micros or modifiers, e.g. YY-MM.1). 
+
+Other versioning schemes can appear similar to semantic versioning, but do not follow the guidelines around version semantics. In these cases, a bump in the major version may not relate to a breaking change. Additionally, other numbers can be attached to the traditional x.y.z format, such as build numbers. Build number versioning adds an extra number to specify the build (x.y.z.build_number). There are many other variants but covering all versioning systems is outside the scope of this post.
+
+### Versioning an R package
+
+There are some restrictions on valid version numbers for R packages. The [guidelines state](https://cran.r-project.org/doc/manuals/R-exts.html):
+
+> This is a sequence of at least two (and usually three) non-negative integers separated by single ‘.’ or ‘-’ characters.
+
+### Why version?
+
+The benefits of versioning apply beyond communicating with users and developers. Implementing versioning eases reproducibility by allowing systems to record which version of a language or package was used. In R this can be achieved in several ways, with some popular examples being the [{renv} package](https://rstudio.github.io/renv/index.html) and [docker](https://www.docker.com/).  
+
+## Lifecycle badges
+
+Badges can be pasted onto visible parts of the code, for example a readme document in the root of the repository, to show the development phase and stability. The three badging systems we will discuss in this post are: 
+
+- [RepoStatus](https://www.repostatus.org/)
+- [Tidyverse lifecycles](https://lifecycle.r-lib.org/)
+- [Reconverse lifecyles](https://www.reconverse.org/lifecycle.html)
+
+### RepoStatus
+
+RepoStatus is a language agnostic set of badges which describe the stages of code development and the possible transitions between those stages.
+
+As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.
+
+```{r, results='asis', echo=FALSE, fig.height=5, fig.width=5}
+cat("![](https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg)\n")
+```
+*Reused under CC BY-SA 4.0 from [repostatus.org](https://www.repostatus.org/)*
+
+### Tidyverse
+
+The tidyverse approach is broadly similar to RepoStatus. The {lifecycle} R package contains the description of their process. There are four stages: 
+
+1. Experimental
+2. Stable
+3. Superseded (previously called retired)
+4. Deprecated
+
+Most code will go through the experimental phase, as it will likely change its API and the number and order of arguments might change. Once code is not going to drastically change (i.e. no breaking changes), at least from a users point of view, it can be labelled stable. In the tidyverse lifecycle schematic, all experimental code transitions to stable code. 
+
+The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes. 
+```{r, results='asis', echo=FALSE, fig.height=5, fig.width=5, fig.cap="Reused under MIT license"}
+cat("![](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg)\n")
+```
+*Reused under MIT license from [lifecycles R package](https://lifecycle.r-lib.org/articles/stages.html)*
+
+One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., [stringr](https://github.com/tidyverse/stringr)), the function-level (e.g. [`dplyr::group_trim()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R)) or the argument level (e.g., [`dplyr::across()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36)). 
+
+Using {lifecycle} in a package can be setup using `usethis::use_lifecycle()`. The {lifecycle} package not only provides badges, but also informative deprecation notices which communicate to users that a function is not longer supported since a version release of a package. This offers the user a chance to find an alternative function for future use. 
+
+The use of deprecation warnings from {lifecycle} leads onto another aspect of tidyverse development: protracted deprecation. There is no fixed rules on how long after a deprecation warning is made to when code should be removed. In the tidyverse, this process is given ample time in order to allow the many developers that utilise tidyverse software to make the necessary changes. Full descriptions of the {lifecycle} package can be found on the [website](https://lifecycle.r-lib.org/index.html), including the deprecated use of questioning and maturing stages.
+
+### Reconverse
+
+Is similar to {lifecycle} reconverse provides four stages of software development:
+
+1. concept
+2. experimental
+3. maturing
+4. stable
+
+A difference between {lifecycles} and reconverse is the explicit connection between semantic versioning and development stage in [reconverse](https://www.reconverse.org/lifecycle.html). The transitions between experimental, maturing and stable are linked to the versioning less than 0.1.0, less than 1.0.0 and greater than 1.0.0, respectively.
+
+### Dynamic badges
+
+All badge frameworks discussed only offer static badges that require developers to manually update as the project moves between phases. This is subject to the maintainers remembering, which can lead to miscommunication about a package's stage, which may have move on from being experimental, or not been worked on in years but has an active badge.
+
+Dynamics badges, like those offered by <https://shields.io/> give a good indication of how recently the project was changed by showing time since last commit, or the number of commits since last release. These too are not perfect but may better track changes and take the burden of badge updates off the project maintainer.
+
+## Communicating development in the Epiverse-TRACE
+
+Within the Epiverse-TRACE initiative we use semantic versioning and badges to convey to the community interacting with our code at which stage of developement each project is in. We do not have fixed rules on which badges to use and a variety of badges can be found across the repositories in the [organisation](https://github.com/epiverse-trace). For example reconverse badges are used for [{linelist}](https://github.com/epiverse-trace/linelist), RepoStatus badge is used in [{finalsize}](https://github.com/epiverse-trace/finalsize), and tidyverse badges are used in [{epiparameter}](https://github.com/epiverse-trace/epiparameter).
+
+We take this approach as no lifecycle badging system is perfect, each with benefits and downsides. The badges from {lifecycle} are the most common and thus recognisable in R package development, however may not port well to other languages or be familiar to developers coming to R from other frameworks. RepoStatus has the benefit of not being designed for a single language, and it's number of badges gives greater acuity to the stage of development for a project. This may be especially useful if a package is newly developed and {lifecycle} would describe it as experimental, but RepoStatus provides granularity as to whether it is a concept package, work in progress (WIP) or started but abandoned. 
+
+There is some ambiguity in the semantics of the active stage in RepoStatus, which in the definition is "stable, usable state", but may be misinterpreted as being unstable but actively developed. 
+
+Lastly reconverse provides a system akin to {lifecycle} and may be useful for those working in the epidemiology developer space. However, one downside of the reconverse system is there are no clear semantics for a package being deprecated or archived. As with almost all code, at some point development ceases and this stage should be communicated, even if just to say that the package is not being updated inline with developments in the underlying language, in this case R.
+
+There are no plans within Epiverse-TRACE to develop a new badging system as the existing systems cover almost all use cases. In the event that the current development stage cannot be adequately communicated with a single badge from one of the frameworks discussed, a combination of badges can be used. For example, early on in a project adding both the experimental badge from {lifecycle} or reconverse and the WIP badge from RepoStatus may more accurately describe the projects develop pace. Alternatively, the stable badge, from either {lifecycle} or reconverse, can be coupled with either active or inactive from RepoStatus to let other developers know if software will be updated with new language features or dependency deprecations.
+
+Overall, the use of any of the three lifecycle frameworks described here is better than none.
+
+[^1]: https://en.wikipedia.org/wiki/Version_control
+
