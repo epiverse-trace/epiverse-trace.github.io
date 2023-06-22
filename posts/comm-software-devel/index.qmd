@@ -92,7 +92,7 @@ The use of deprecation warnings from {lifecycle} leads onto another aspect of ti
 
 ### Reconverse
 
-Is similar to {lifecycle} reconverse provides four stages of software development:
+Reconverse provides four stages of software development:
 
 1. concept
 2. experimental
