@@ -18,7 +18,7 @@
     "href": "posts/statistical-correctness/index.html",
     "title": "Ensuring & Showcasing the Statistical Correctness of your R Package",
     "section": "",
-    "text": "We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.\n\nIt is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way 1.\nIn this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.\nThe approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the {testthat} R package, often used from unit testing:\n\n#' Compute the centroid of a set of points\n#'\n#' @param coords Coordinates of the points as a list of vectors. Each element of the \n#'   list is a point.\n#'\n#' @returns A vector of coordinates of the same length of each element of \n#'   `coords`\n#'   \n#' @examples\n#' centroid(list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)))\n#' \ncentroid &lt;- function(coords) {\n\n  # ...\n  # Skip all the necessary input checking for the purpose of this demo\n  # ...\n\n  coords_mat &lt;- do.call(rbind, coords)\n  \n  return(colMeans(coords_mat))\n  \n}\n\n\nCompare your results to the reference implementation\nThe most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.\nFor example, the {gemma2} R package, which re-implements the methods from the GEMMA tool written in C++, verifies that values produced by both tools match:\ntest_that(\"Results of gemma2 equal those of GEMMA v 0.97\", {\n  expect_equal(Sigma_ee, diag(c(18.559, 12.3672)), tolerance = 0.0001)\n  expect_equal(Sigma_uu, diag(c(82.2973, 41.9238)), tolerance = 0.0001)\n})\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\nlibrary(testthat)\n\ntest_that(\"centroid() in 1D produces the same results as mean()\", {\n\n  x &lt;- list(1, 5, 3, 10, 5)\n\n  expect_identical(centroid(x), mean(unlist(x)))\n  \n})\n\nTest passed 😀\n\n\n\n\nNote that even if a reference implementation doesn’t exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.\nHowever, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity 2.\n\n\nCompare to a theoretical upper or lower bound\nAn alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() is inside the hypercube containing the data points\", {\n  \n  x &lt;- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n\n  expect_true(all(centroid(x) &lt;= Reduce(pmax, x)))\n  expect_true(all(centroid(x) &gt;= Reduce(pmin, x)))\n  \n})\n\nTest passed 😀\n\n\n\n\nYou can see a real-life example of this kind of test in the {finalsize} R package. {finalsize} computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:\n# Calculates the upper limit of final size given the r0\n# The upper limit is given by a well mixed population\nupper_limit &lt;- function(r0) {\n  f &lt;- function(par) {\n    abs(1 - exp(-r0 * par[1]) - par[1])\n  }\n  opt &lt;- optim(\n    par = 0.5, fn = f,\n    lower = 0, upper = 1,\n    method = \"Brent\"\n  )\n  opt\n}\n\n\nVerify that output is changing as expected when a single parameter varies\nAn even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() increases when coordinates from one point increase\", {\n  \n  x &lt;- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n  \n  y &lt;- x\n  y[[1]] &lt;- y[[1]] + 1 \n\n  expect_true(all(centroid(x) &lt; centroid(y)))\n  \n})\n\nTest passed 🌈\n\n\n\n\nAn example of this test in an actual R package can again be found in the finalsize package:\nr0_low &lt;- 1.3\nr0_high &lt;- 3.3\n\nepi_outcome_low &lt;- final_size(\n  r0 = r0_low,\n  &lt;...&gt;\n)\nepi_outcome_high &lt;- final_size(\n  r0 = r0_high,\n  &lt;...&gt;\n)\n\ntest_that(\"Higher values of R0 result in a higher number of infectious in all groups\", {\n  expect_true(\n    all(epi_outcome_high$p_infected &gt; epi_outcome_low$p_infected)\n  )\n})\n\n\nConclusion: automated validation vs peer-review\nIn this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.\nMultiple voices in the community are pushing more towards peer-review as a proxy for quality and validity:\n\nWe would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.\nOn the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of bad Random Number Generators when running in parallel.\nBut on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.\nIdeally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.\n\n\n\n\n\n\nBut see the “testing statistical software” post from Alex Hayes where he presents his process to determine if he deems a statistical package trustworthy or not, and rOpenSci Statistical Software Peer Review book.↩︎\nSetting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎\n\n\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{gruson2023,\n  author = {Gruson, Hugo},\n  title = {Ensuring \\& {Showcasing} the {Statistical} {Correctness} of\n    Your {R} {Package}},\n  date = {2023-02-13},\n  url = {https://epiverse-trace.github.io//posts/statistical-correctness},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGruson, Hugo. 2023. “Ensuring & Showcasing the Statistical\nCorrectness of Your R Package.” February 13, 2023. https://epiverse-trace.github.io//posts/statistical-correctness."
+    "text": "We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.\n\nIt is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way 1.\nIn this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.\nThe approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the {testthat} R package, often used from unit testing:\n\n#' Compute the centroid of a set of points\n#'\n#' @param coords Coordinates of the points as a list of vectors. Each element of the \n#'   list is a point.\n#'\n#' @returns A vector of coordinates of the same length of each element of \n#'   `coords`\n#'   \n#' @examples\n#' centroid(list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7)))\n#' \ncentroid &lt;- function(coords) {\n\n  # ...\n  # Skip all the necessary input checking for the purpose of this demo\n  # ...\n\n  coords_mat &lt;- do.call(rbind, coords)\n  \n  return(colMeans(coords_mat))\n  \n}\n\n\nCompare your results to the reference implementation\nThe most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.\nFor example, the {gemma2} R package, which re-implements the methods from the GEMMA tool written in C++, verifies that values produced by both tools match:\ntest_that(\"Results of gemma2 equal those of GEMMA v 0.97\", {\n  expect_equal(Sigma_ee, diag(c(18.559, 12.3672)), tolerance = 0.0001)\n  expect_equal(Sigma_uu, diag(c(82.2973, 41.9238)), tolerance = 0.0001)\n})\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\nlibrary(testthat)\n\ntest_that(\"centroid() in 1D produces the same results as mean()\", {\n\n  x &lt;- list(1, 5, 3, 10, 5)\n\n  expect_identical(centroid(x), mean(unlist(x)))\n  \n})\n\nTest passed 😀\n\n\n\n\nNote that even if a reference implementation doesn’t exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.\nHowever, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity 2.\n\n\nCompare to a theoretical upper or lower bound\nAn alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() is inside the hypercube containing the data points\", {\n  \n  x &lt;- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n\n  expect_true(all(centroid(x) &lt;= Reduce(pmax, x)))\n  expect_true(all(centroid(x) &gt;= Reduce(pmin, x)))\n  \n})\n\nTest passed 😀\n\n\n\n\nYou can see a real-life example of this kind of test in the {finalsize} R package. {finalsize} computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:\n# Calculates the upper limit of final size given the r0\n# The upper limit is given by a well mixed population\nupper_limit &lt;- function(r0) {\n  f &lt;- function(par) {\n    abs(1 - exp(-r0 * par[1]) - par[1])\n  }\n  opt &lt;- optim(\n    par = 0.5, fn = f,\n    lower = 0, upper = 1,\n    method = \"Brent\"\n  )\n  opt\n}\n\n\nVerify that output is changing as expected when a single parameter varies\nAn even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.\n\n\n\n\n\n\nExample with centroid()\n\n\n\n\ntest_that(\"centroid() increases when coordinates from one point increase\", {\n  \n  x &lt;- list(c(0, 1, 5, 3), c(8, 6, 4, 3), c(10, 2, 3, 7))\n  \n  y &lt;- x\n  y[[1]] &lt;- y[[1]] + 1 \n\n  expect_true(all(centroid(x) &lt; centroid(y)))\n  \n})\n\nTest passed 🌈\n\n\n\n\nAn example of this test in an actual R package can again be found in the finalsize package:\nr0_low &lt;- 1.3\nr0_high &lt;- 3.3\n\nepi_outcome_low &lt;- final_size(\n  r0 = r0_low,\n  &lt;...&gt;\n)\nepi_outcome_high &lt;- final_size(\n  r0 = r0_high,\n  &lt;...&gt;\n)\n\ntest_that(\"Higher values of R0 result in a higher number of infectious in all groups\", {\n  expect_true(\n    all(epi_outcome_high$p_infected &gt; epi_outcome_low$p_infected)\n  )\n})\n\n\nConclusion: automated validation vs peer-review\nIn this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.\nMultiple voices in the community are pushing more towards peer-review as a proxy for quality and validity:\n\nWe would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.\nOn the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of bad Random Number Generators when running in parallel.\nBut on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.\nIdeally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.\n\n\n\n\n\nFootnotes\n\n\nBut see the “testing statistical software” post from Alex Hayes where he presents his process to determine if he deems a statistical package trustworthy or not, and rOpenSci Statistical Software Peer Review book.↩︎\nSetting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎\n\nReusehttps://creativecommons.org/licenses/by/4.0/CitationBibTeX citation:@online{gruson2023,\n  author = {Gruson, Hugo},\n  title = {Ensuring \\& {Showcasing} the {Statistical} {Correctness} of\n    Your {R} {Package}},\n  date = {2023-02-13},\n  url = {https://epiverse-trace.github.io//posts/statistical-correctness},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGruson, Hugo. 2023. “Ensuring & Showcasing the Statistical\nCorrectness of Your R Package.” February 13, 2023. https://epiverse-trace.github.io//posts/statistical-correctness."
   },
   {
     "objectID": "posts/share-cpp/index.html",
@@ -140,116 +140,18 @@
     "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
   },
   {
-    "objectID": "slides/harmonious-ecosystem/index.html",
-    "href": "slides/harmonious-ecosystem/index.html",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "objectID": "slides/juniper-may-2023/index.html",
+    "href": "slides/juniper-may-2023/index.html",
+    "title": "Juniper seminar on improving software for epidemic response",
     "section": "",
-    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
+    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
   },
   {
-    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
-    "href": "slides/harmonious-ecosystem/index.html#abstract",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Abstract",
-    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#slides",
-    "href": "slides/harmonious-ecosystem/index.html#slides",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Questions from the audience",
-    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
-    "href": "slides/harmonious-ecosystem/index.html#see-also",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "See also",
-    "text": "See also\n\nThe companion post on our blog"
-  },
-  {
-    "objectID": "learn/git-training-01/index.html",
-    "href": "learn/git-training-01/index.html",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "",
-    "text": "If you want to participate in the next version of this training, please complete this expression of interest form.\n\nAll data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE."
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#how-to-participate",
-    "href": "learn/git-training-01/index.html#how-to-participate",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "",
-    "text": "If you want to participate in the next version of this training, please complete this expression of interest form.\n\nAll data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE."
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#what-will-you-learn",
-    "href": "learn/git-training-01/index.html#what-will-you-learn",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "What will you learn?",
-    "text": "What will you learn?\n\nExplain why you need to know about Version Control if you work on an Open Science project.\nDescribe the most common verb commands to track changes using Git as a Version Control software within Rstudio.\nCreate a personal online profile to share my tracked changes on the web using GitHub.\nIdentify good practices to describe my tracked changes using Git and collaborate with others using GitHub."
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#who-is-this-training-for",
-    "href": "learn/git-training-01/index.html#who-is-this-training-for",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Who is this training for?",
-    "text": "Who is this training for?\nThis training is pitched to beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from various backgrounds (research degree students, project managers, etc.)\nWe thought about Lucia, Patricia, and Pepe as learner personas in designing the contents of this training:\n\nLucia is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.\nPatricia is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public.\nPepe is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects."
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#what-is-not-included-in-this-training",
-    "href": "learn/git-training-01/index.html#what-is-not-included-in-this-training",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "What is not included in this training?",
-    "text": "What is not included in this training?\nTopics that are out of the scope of this training include:\n\nHow to solve conflicts when merging branches.\nHow to revert commits as a safe method to undo changes.\nHow to review pull requests in GitHub.\nHow to use GitHub Actions for continuous integration of software."
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#duration",
-    "href": "learn/git-training-01/index.html#duration",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Duration",
-    "text": "Duration\nThe duration of this training is of 3.5 hours with breaks of approximately 5 minutes each 60 minutes."
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#program",
-    "href": "learn/git-training-01/index.html#program",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Program",
-    "text": "Program\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n2:00 - 2:05\nIntroduction\n\n\n15min\nWhat is version control and why should I use it for Open Science projects?\n\n\n5min\nThe general workflow\n\n\n10min\nHow do I set up to start using Git?\n\n\n10min\nWhere does Git store information?\n\n\n30min\nHow do I record changes in Git?\n\n\n5min\nBreak away from the screen\n\n\n20min\nHow do I record notes about my changes and why?\n\n\n30min\nHow can I identify old versions of files? How do I review my changes?\n\n\n10min\nHow can I tell Git to ignore files I don’t want to track?\n\n\n5min\nBreak away from the screen\n\n\n20min\nHow do I share my changes with others on the web?\n\n\n30min\nHow can I use version control to collaborate with others?\n\n\n15min\nWhat do I do when my changes conflict with someone else’s?\n\n\n5:30 - 5:35\nClosing"
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#materials-you-will-need",
-    "href": "learn/git-training-01/index.html#materials-you-will-need",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Materials you will need",
-    "text": "Materials you will need\nWe will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions:\n\nInstall R and Rstudio https://posit.co/download/rstudio-desktop/\nInstall Git https://git-scm.com/book/en/v2/Getting-Started-Installing-Git\nCreate a GitHub account https://github.com/signup"
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#materials-we-used",
-    "href": "learn/git-training-01/index.html#materials-we-used",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Materials we used",
-    "text": "Materials we used\n\nSlides that we used in the training with notes expanding the content for instructors\nTemplate for our document with shared notes\nTemplate for our pre-training form\nTemplate for our feedback form at the end of the training\nVideo of the last version of the training"
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#any-questions",
-    "href": "learn/git-training-01/index.html#any-questions",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Any questions?",
-    "text": "Any questions?\nIf you need any assistance installing the software or have any other questions about the training, please send an email to andree.valle-campos@lshtm.ac.uk"
-  },
-  {
-    "objectID": "learn/git-training-01/index.html#attributions",
-    "href": "learn/git-training-01/index.html#attributions",
-    "title": "Introductory training on Git and GitHub basics using Rstudio",
-    "section": "Attributions",
-    "text": "Attributions\n\nThis page format is inspired by Metadocencia.\nThe image of this feed is from Unsplash, provided by Priscilla Du Preez, free to use under the Unsplash License."
+    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
+    "href": "slides/juniper-may-2023/index.html#talk-slides",
+    "title": "Juniper seminar on improving software for epidemic response",
+    "section": "Talk slides",
+    "text": "Talk slides"
   },
   {
     "objectID": "index.html",
@@ -257,6 +159,13 @@
     "title": "Epiverse-TRACE developer space",
     "section": "",
     "text": "This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally."
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n  \n\n\n\n\nSharing the C++ Code of an Rcpp Package\n\n\n\n\n\n\n\ncode sharing\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nJun 5, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nExtending Data Frames\n\n\nCreating custom classes and {dplyr} compatibility\n\n\n\n\ndata frame\n\n\nR\n\n\nR package\n\n\ninteroperability\n\n\nS3 class\n\n\ndplyr\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n  \n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n  \n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n  \n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/showcase-spring2023/index.html",
@@ -294,18 +203,95 @@
     "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
   },
   {
-    "objectID": "slides/juniper-may-2023/index.html",
-    "href": "slides/juniper-may-2023/index.html",
-    "title": "Juniper seminar on improving software for epidemic response",
+    "objectID": "slides/harmonious-ecosystem/index.html",
+    "href": "slides/harmonious-ecosystem/index.html",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
     "section": "",
-    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
+    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
   },
   {
-    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
-    "href": "slides/juniper-may-2023/index.html#talk-slides",
-    "title": "Juniper seminar on improving software for epidemic response",
-    "section": "Talk slides",
-    "text": "Talk slides"
+    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
+    "href": "slides/harmonious-ecosystem/index.html#abstract",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Abstract",
+    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#slides",
+    "href": "slides/harmonious-ecosystem/index.html#slides",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Questions from the audience",
+    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
+    "href": "slides/harmonious-ecosystem/index.html#see-also",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "See also",
+    "text": "See also\n\nThe companion post on our blog"
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html",
+    "href": "posts/100days-workshop/index.html",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "",
+    "text": "This vignette summarises the findings from the 100 days and 100 lines of code workshop, hosted in December 2022 by Epiverse-TRACE.\nTo discuss how the first 100 lines of code during an epidemic should look like, we invited 40 experts, including academics, field epidemiologists, and software engineers, to take part in a 3-day workshop, where they discussed the current challenges, and potential solutions, in data analytic pipelines used to analyse epidemic data. In addition to highlighting existing technical solutions and their use cases, presentations on best practices in fostering collaboration across institutions and disciplines set the scene for the subsequent workshop scenario exercises."
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#scenario-1-novel-respiratory-disease-in-the-gambia",
+    "href": "posts/100days-workshop/index.html#scenario-1-novel-respiratory-disease-in-the-gambia",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "Scenario 1: Novel respiratory disease in The Gambia",
+    "text": "Scenario 1: Novel respiratory disease in The Gambia\n\n\nAnalytic pipeline for scenario 1 (analysed by group 2)\n\nData cleaning\n\nlinelist to standardise date format\ncleanr from previous Hackathon\n\nDelay distributions\n\nfitdisrplus to fit parameteric distributions to scenario data\nepiparameter to extract delay distributions from respiratory pathogens\nEpiNow2 to fit reporting delays\nEpiEstim / coarseDataTools to estimate generation time/serial interval of disease\nepicontacts\nmixdiff to estimate delay distributions and correct erroneous dates at the same time (still under development)\n\nPopulation demographics\n\nWould like to have had access to an R package similar to ColOpenData\n\nRisk factors of infection\n\nUsed R4epis as a guide on how to create two-way tables and perform Chi-squared tests\n\nSeverity of disease\n\ndatadelay for CFR calculation\nImplementation of method developed by AC Ghani, 2005 to estimate CFR\n\nContact matching\n\ndiyar to match and link records\nfuzzyjoin to join contact and case data despite misspellings or missing cell contents\n\nEpi curve and maps\n\nUsed incidence and incidence2 for incidence calculation and visualisation\nraster to extract spatial information from library of shapefiles\n\nReproduction number\n\nAPEestim\nbayEStim\nearlyR\nepicontacts\nepidemia\nepiFilter\nEpiNow2\nEpiEstim\nR0\noutbreaker2\nUsed this comparison table to choose the most appropriate package.\n\nSuperspreading, by using these resources:\n\nfitdistrplus\nepicontacts\n\nEpidemic projections\n\nincidence R estimation using a loglinear model\nprojections using Rt estimates, SI distributions and overdispersion estimates\n\nTransmission chains and strain characterisation\n\nIQtree and nextclade to build a maximum likelihood tree and mannually inspect it\nAdvanced modelling through phylodynamic methods, using tools like BEAST\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nData cleaning\nNot knowing what packages are available for this purpose\n\n\nDelay distributions\nDealing with right truncation\nAccounting for multiple infectors\n\n\nPopulation demographics\nLacking tools that provide information about population by age, gender, etc.\n\n\nRisk factors of infection\nDistinguishing between risk factors vs detecting differences in reporting frequencies among groups\n\n\nSeverity of disease\nKnowing the prevalence of disease (denominator)\nRight truncated data\nVarying severity of different strains\n\n\nContact matching\nMissing data\nMisspellings\n\n\nEpicurve and maps\nNA dates entries not included\nReporting levels varying over time\n\n\nOffspring distribution\nRight truncation\nTime varying reporting efforts\nAssumption of a single homogeneous epidemic\nImportation of cases\n\n\nForecasting\nUnderlying assumption of a given R distribution, e.g., single trend, homogeneous mixing, no saturation"
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia",
+    "href": "posts/100days-workshop/index.html#scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "Scenario 2: Outbreak of an unidentified disease in rural Colombia",
+    "text": "Scenario 2: Outbreak of an unidentified disease in rural Colombia\n\n\nAnalytic pipeline for scenario 2 (analysed by group 3)\n\nData cleaning: manually, using R (no packages specified), to\n\nFix data entry issues in columns onset_date and gender\nCheck for missing data\nCheck sequence of dates: symptom onset → hospitalisation → death\n\nData anonymisation to share with partners\n\nfastlink for probabilistic matching between cases ↔︎ contacts, based on names, dates, and ages\n\nCase demographics\n\napyramid to stratify data by age, gender, and health status\n\nReproductive number calculation, by using two approaches:\n\nManually, by calculating the number of cases generated by each source case, data management through dplyr and data.table\nUsing serial interval of disease, through EpiEstim or EpiNow2\n\nSeverity of disease\n\nManual calculation of CFR and hospitalisation ratio\n\nProjection of hospital bed requirements\n\nEpiNow2 to calculate average hospitalisation duration and forecasting\n\nZoonotic transmission of disease\n\nManual inspection of cases’ occupation\nUse of IQtree and ggtree to plot phylogenetic data\n\nSuperspreading\n\nepicontacts\n\nCalculation of attack rate\n\nUnable to calculate, given the lack of seroprevalence data\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nData anonymisation\nDealing with typos and missing data when generating random unique identifiers\n\n\nReproduction number\nRight truncation\nUnderestimation of cases due to reporting delays\n\n\nProjection of hospital bed requirements\nIncomplete data (missing discharge date)\nUndocumented functionality in R packages used\n\n\nZoonotic transmission\nPoor documentation\nUnavailability of packages in R\nDifferentiation between zoonotic transmission and risk factors- need for population data\n\n\nAttack rate\nNot enough information provided"
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#scenario-3-reston-ebolavirus-in-the-philippines",
+    "href": "posts/100days-workshop/index.html#scenario-3-reston-ebolavirus-in-the-philippines",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "Scenario 3: Reston Ebolavirus in the Philippines",
+    "text": "Scenario 3: Reston Ebolavirus in the Philippines\n\n\nAnalytic pipeline for scenario 3 (analysed by group 4)\n\nData cleaning\n\nImporting data with rio, readxl, readr, or openxlsx\nRename variables with janitor\nInitial data checks with pointblank, assertr, compareDF, or skimr\nVertical data checks with matchmaker, lubridate, or parsedate\nHorizontal data checks with hmatch, assertr, or queryR\nDetect duplicates with janitor and tidyverse\nChecking for consistency with dplyr, or powerjoin\nTranslation with matchmaker\n\nDelay distributions\n\nfitdistrplus to fit parameteric distributions to epidemic data\n\nCase demographics\n\napyramid to stratify data by age, gender, and health status\nggplot2 to visualise data\n\nOutbreak description\n\nsitrep to generate reports\n\nVisualisation of geographic data\n\nsf for static maps\nleaflet for interactive maps\n\nGeneration of tables\n\ngtsummary for static tables\njanitor for interactive tables\n\nSeverity of disease\n\nEpiNow2 and survival to calculate CFR\n\nAttack rate\n\ngadm function to get population data\nepitabulate to describe data\nsf and ggplot2 to plot data\n\nForecasting\n\nEpiEstim\nEpiNow2\nbpmodels\n\nSpillover events\n\nBy cross-referencing contact data with occupations\n\nEffectiveness of contact tracing\n\nBy calculating the proportion of case follow-ups and comparing the delay of disease exposure to the follow-up delay\n\nTransmission trees\n\nepicontacts\nggplot2\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nDetection of outliers\nNo known tools to use\n\n\nSeverity of disease\nCensoring\n\n\nSpillover events\nMissing data"
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#scenario-4-emerging-avian-influenza-in-cambodia",
+    "href": "posts/100days-workshop/index.html#scenario-4-emerging-avian-influenza-in-cambodia",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "Scenario 4: Emerging avian influenza in Cambodia",
+    "text": "Scenario 4: Emerging avian influenza in Cambodia\n\n\nAnalytic pipeline for scenario 4 (analysed by group 5)\n\nData cleaning\n\ntidyverse\nreadxl to import data\ndplyr to remove names\nlubridate to standardise date formats\nManually scanning through excel to check for errors\n\nReproduction number\n\nEpiEstim\n\nSeverity of disease\n\nManually using R to detect missing cases\nepiR to check for data censoring\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nData cleaning\nNo available R packages specific for epidemic data\n\n\nReproduction number\nDifficulty finding parameter estimations in the literature\n\n\nSerial interval\nLack of a tool to check for parameter estimates\n\n\nSeverity\nMissing cases\nNeed for an R package for systematic censoring analysis"
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#scenario-5-outbreak-of-respiratory-disease-in-canada",
+    "href": "posts/100days-workshop/index.html#scenario-5-outbreak-of-respiratory-disease-in-canada",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "Scenario 5: Outbreak of respiratory disease in Canada",
+    "text": "Scenario 5: Outbreak of respiratory disease in Canada\n\n\nAnalytic pipeline for scenario 5 (analysed by group 1)\n\nDefine project structure\n\nDefining the script’s structure with cookiecutter, reportfactory, and orderly\nEnsuring reproducibility of the analysis with iRODS and Git\nWorking in a group with GitHub\n\nData cleaning\n\nImporting data with readr or rio\nChecking for errors with linelist, janitor, parsedate, matchmaker, or lubridate\njanitor to eliminate duplicates\nnaniar to check for missing data\nepitrix to anonymise data\n\nDelay distributions\n\nepitrix\nfitdistrplus to fit parameteric distributions to scenario data\n\nCase demographics\n\napyramid to stratify data by age, gender, and health status\n\nNowcasting\n\nincidence2 to visualise incidence from linelist data\nepiparameter to extract infectious disease parameter data\nEpiEstim or EpiNow2 for Rt calculation\n\nSeverity of disease\n\nCalculation of hospitalisation and mortality rates- no R package specified\n\nZoonotic transmission\n\nforecast\n\nGeneration of reports\n\nincidence for static reports\nQuarto and R markdown for dashboards\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nProject structure\nWorking simultaneously on the same script and managing parallel tasks\nAnticipating future incoming data in early pipeline design\n\n\nData cleaning\nLarge amount of code lines used on (reasonably) predictable cleaning (e.g. data sense checks)\nOmitting too many data entries when simply removing NA rows\nNon standardised data formats\nImplementing rapid quality check reports before analysis\n\n\nDelay distributions\nIdentifying the best method to calculate, or compare functionality of tools\nNeed to fit multiple parametric distributions and return best, and store as usable objects\n\n\nSeverity of disease\nCensoring and truncation\nUnderestimation of mild cases\nNeed database of age/gender pyramids for comparisons\n\n\nForecasts\nNeed option for fitting with range of plausible pathogen serial intervals and comparing results\nChanging reporting delays over time\nMatching inputs/outputs between packages\n\n\nZoonotic transmisison\nNeed for specific packages with clear documentation\nHow to compare simple trend-based forecasts"
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#what-next",
+    "href": "posts/100days-workshop/index.html#what-next",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "What next?",
+    "text": "What next?\nScenarios developed by the 100 days workshop participants illustrate that there are many commonalities across proposed analytics pipelines, which could support interoperability across different epidemiological questions. However, there are also several remaining gaps and challenges, which creates an opportunity to build on existing work to tackle common outbreak scenarios, using the issues here as a starting point. This will also require consideration of wider interactions with existing software ecosystems and users of outbreak analytics insights. We are therefore planning to follow up this vignette with a more detailed perspective article discussing potential for broader progress in developing a ‘first 100 lines of code’."
+  },
+  {
+    "objectID": "posts/100days-workshop/index.html#list-of-contributors",
+    "href": "posts/100days-workshop/index.html#list-of-contributors",
+    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "section": "List of contributors",
+    "text": "List of contributors\n\nGroup 1: Rich Fitzjohn, Mauricio Santos Vega, Andrea Torneri, Abdoelnaser Degoot, Rolina van Gaalen, Zulma Cucunuba, Joseph Tsui, Claudine Lim, Adam Kucharski.\nGroup 2: Juan Daniel Umana, Joel Hellewell, Anne Cori, Fanck Kalala, Amrish Baidjoe, Sara Hollis, Chaoran Chen, Pratik Gupte, Andree Valle.\nGroup 3: Mutono Nyamai, Finlay Campbell, Arminder Deol, Simone Carter, Anita Shah, Neale Batra, Issa Karambal, Danil Mihailov, Sebastian Funk.\nGroup 4: Anton Camacho, Louise Dyson, Jeremy Bingham, Simon Cauchemez, Alex Spina, Esther Van Kleef, Anna Carnegie, James Azam.\nGroup 5: Olivia Keiser, Geraldine Gomez, John Lees, Don Klinkenberg, Matthew Biggerstaff, David Santiago Quevedo, Joshua Lambert, Carmen Tamayo."
   },
   {
     "objectID": "posts/s3-generic/index.html",
@@ -413,66 +399,80 @@
     "text": "Conclusion\nIt is actually somewhat surprising that there does not seem to be a canonical linter for C++ code in {Rcpp} packages. The methods laid out here are an initial implementation developed for use with the {finalsize} package, and the considerations here are a starting point. We shall be continuously evaluating how we ensure the quality of our C++ code as we encounter more use cases while developing future Epiverse-TRACE packages."
   },
   {
-    "objectID": "posts/100days-workshop/index.html",
-    "href": "posts/100days-workshop/index.html",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
+    "objectID": "learn/git-training-01/index.html",
+    "href": "learn/git-training-01/index.html",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
     "section": "",
-    "text": "This vignette summarises the findings from the 100 days and 100 lines of code workshop, hosted in December 2022 by Epiverse-TRACE.\nTo discuss how the first 100 lines of code during an epidemic should look like, we invited 40 experts, including academics, field epidemiologists, and software engineers, to take part in a 3-day workshop, where they discussed the current challenges, and potential solutions, in data analytic pipelines used to analyse epidemic data. In addition to highlighting existing technical solutions and their use cases, presentations on best practices in fostering collaboration across institutions and disciplines set the scene for the subsequent workshop scenario exercises."
+    "text": "If you want to participate in the next version of this training, please complete this expression of interest form.\n\nAll data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE."
   },
   {
-    "objectID": "posts/100days-workshop/index.html#scenario-1-novel-respiratory-disease-in-the-gambia",
-    "href": "posts/100days-workshop/index.html#scenario-1-novel-respiratory-disease-in-the-gambia",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "Scenario 1: Novel respiratory disease in The Gambia",
-    "text": "Scenario 1: Novel respiratory disease in The Gambia\n\n\nAnalytic pipeline for scenario 1 (analysed by group 2)\n\nData cleaning\n\nlinelist to standardise date format\ncleanr from previous Hackathon\n\nDelay distributions\n\nfitdisrplus to fit parameteric distributions to scenario data\nepiparameter to extract delay distributions from respiratory pathogens\nEpiNow2 to fit reporting delays\nEpiEstim / coarseDataTools to estimate generation time/serial interval of disease\nepicontacts\nmixdiff to estimate delay distributions and correct erroneous dates at the same time (still under development)\n\nPopulation demographics\n\nWould like to have had access to an R package similar to ColOpenData\n\nRisk factors of infection\n\nUsed R4epis as a guide on how to create two-way tables and perform Chi-squared tests\n\nSeverity of disease\n\ndatadelay for CFR calculation\nImplementation of method developed by AC Ghani, 2005 to estimate CFR\n\nContact matching\n\ndiyar to match and link records\nfuzzyjoin to join contact and case data despite misspellings or missing cell contents\n\nEpi curve and maps\n\nUsed incidence and incidence2 for incidence calculation and visualisation\nraster to extract spatial information from library of shapefiles\n\nReproduction number\n\nAPEestim\nbayEStim\nearlyR\nepicontacts\nepidemia\nepiFilter\nEpiNow2\nEpiEstim\nR0\noutbreaker2\nUsed this comparison table to choose the most appropriate package.\n\nSuperspreading, by using these resources:\n\nfitdistrplus\nepicontacts\n\nEpidemic projections\n\nincidence R estimation using a loglinear model\nprojections using Rt estimates, SI distributions and overdispersion estimates\n\nTransmission chains and strain characterisation\n\nIQtree and nextclade to build a maximum likelihood tree and mannually inspect it\nAdvanced modelling through phylodynamic methods, using tools like BEAST\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nData cleaning\nNot knowing what packages are available for this purpose\n\n\nDelay distributions\nDealing with right truncation\nAccounting for multiple infectors\n\n\nPopulation demographics\nLacking tools that provide information about population by age, gender, etc.\n\n\nRisk factors of infection\nDistinguishing between risk factors vs detecting differences in reporting frequencies among groups\n\n\nSeverity of disease\nKnowing the prevalence of disease (denominator)\nRight truncated data\nVarying severity of different strains\n\n\nContact matching\nMissing data\nMisspellings\n\n\nEpicurve and maps\nNA dates entries not included\nReporting levels varying over time\n\n\nOffspring distribution\nRight truncation\nTime varying reporting efforts\nAssumption of a single homogeneous epidemic\nImportation of cases\n\n\nForecasting\nUnderlying assumption of a given R distribution, e.g., single trend, homogeneous mixing, no saturation"
-  },
-  {
-    "objectID": "posts/100days-workshop/index.html#scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia",
-    "href": "posts/100days-workshop/index.html#scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "Scenario 2: Outbreak of an unidentified disease in rural Colombia",
-    "text": "Scenario 2: Outbreak of an unidentified disease in rural Colombia\n\n\nAnalytic pipeline for scenario 2 (analysed by group 3)\n\nData cleaning: manually, using R (no packages specified), to\n\nFix data entry issues in columns onset_date and gender\nCheck for missing data\nCheck sequence of dates: symptom onset → hospitalisation → death\n\nData anonymisation to share with partners\n\nfastlink for probabilistic matching between cases ↔︎ contacts, based on names, dates, and ages\n\nCase demographics\n\napyramid to stratify data by age, gender, and health status\n\nReproductive number calculation, by using two approaches:\n\nManually, by calculating the number of cases generated by each source case, data management through dplyr and data.table\nUsing serial interval of disease, through EpiEstim or EpiNow2\n\nSeverity of disease\n\nManual calculation of CFR and hospitalisation ratio\n\nProjection of hospital bed requirements\n\nEpiNow2 to calculate average hospitalisation duration and forecasting\n\nZoonotic transmission of disease\n\nManual inspection of cases’ occupation\nUse of IQtree and ggtree to plot phylogenetic data\n\nSuperspreading\n\nepicontacts\n\nCalculation of attack rate\n\nUnable to calculate, given the lack of seroprevalence data\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nData anonymisation\nDealing with typos and missing data when generating random unique identifiers\n\n\nReproduction number\nRight truncation\nUnderestimation of cases due to reporting delays\n\n\nProjection of hospital bed requirements\nIncomplete data (missing discharge date)\nUndocumented functionality in R packages used\n\n\nZoonotic transmission\nPoor documentation\nUnavailability of packages in R\nDifferentiation between zoonotic transmission and risk factors- need for population data\n\n\nAttack rate\nNot enough information provided"
-  },
-  {
-    "objectID": "posts/100days-workshop/index.html#scenario-3-reston-ebolavirus-in-the-philippines",
-    "href": "posts/100days-workshop/index.html#scenario-3-reston-ebolavirus-in-the-philippines",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "Scenario 3: Reston Ebolavirus in the Philippines",
-    "text": "Scenario 3: Reston Ebolavirus in the Philippines\n\n\nAnalytic pipeline for scenario 3 (analysed by group 4)\n\nData cleaning\n\nImporting data with rio, readxl, readr, or openxlsx\nRename variables with janitor\nInitial data checks with pointblank, assertr, compareDF, or skimr\nVertical data checks with matchmaker, lubridate, or parsedate\nHorizontal data checks with hmatch, assertr, or queryR\nDetect duplicates with janitor and tidyverse\nChecking for consistency with dplyr, or powerjoin\nTranslation with matchmaker\n\nDelay distributions\n\nfitdistrplus to fit parameteric distributions to epidemic data\n\nCase demographics\n\napyramid to stratify data by age, gender, and health status\nggplot2 to visualise data\n\nOutbreak description\n\nsitrep to generate reports\n\nVisualisation of geographic data\n\nsf for static maps\nleaflet for interactive maps\n\nGeneration of tables\n\ngtsummary for static tables\njanitor for interactive tables\n\nSeverity of disease\n\nEpiNow2 and survival to calculate CFR\n\nAttack rate\n\ngadm function to get population data\nepitabulate to describe data\nsf and ggplot2 to plot data\n\nForecasting\n\nEpiEstim\nEpiNow2\nbpmodels\n\nSpillover events\n\nBy cross-referencing contact data with occupations\n\nEffectiveness of contact tracing\n\nBy calculating the proportion of case follow-ups and comparing the delay of disease exposure to the follow-up delay\n\nTransmission trees\n\nepicontacts\nggplot2\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nDetection of outliers\nNo known tools to use\n\n\nSeverity of disease\nCensoring\n\n\nSpillover events\nMissing data"
-  },
-  {
-    "objectID": "posts/100days-workshop/index.html#scenario-4-emerging-avian-influenza-in-cambodia",
-    "href": "posts/100days-workshop/index.html#scenario-4-emerging-avian-influenza-in-cambodia",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "Scenario 4: Emerging avian influenza in Cambodia",
-    "text": "Scenario 4: Emerging avian influenza in Cambodia\n\n\nAnalytic pipeline for scenario 4 (analysed by group 5)\n\nData cleaning\n\ntidyverse\nreadxl to import data\ndplyr to remove names\nlubridate to standardise date formats\nManually scanning through excel to check for errors\n\nReproduction number\n\nEpiEstim\n\nSeverity of disease\n\nManually using R to detect missing cases\nepiR to check for data censoring\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nData cleaning\nNo available R packages specific for epidemic data\n\n\nReproduction number\nDifficulty finding parameter estimations in the literature\n\n\nSerial interval\nLack of a tool to check for parameter estimates\n\n\nSeverity\nMissing cases\nNeed for an R package for systematic censoring analysis"
-  },
-  {
-    "objectID": "posts/100days-workshop/index.html#scenario-5-outbreak-of-respiratory-disease-in-canada",
-    "href": "posts/100days-workshop/index.html#scenario-5-outbreak-of-respiratory-disease-in-canada",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "Scenario 5: Outbreak of respiratory disease in Canada",
-    "text": "Scenario 5: Outbreak of respiratory disease in Canada\n\n\nAnalytic pipeline for scenario 5 (analysed by group 1)\n\nDefine project structure\n\nDefining the script’s structure with cookiecutter, reportfactory, and orderly\nEnsuring reproducibility of the analysis with iRODS and Git\nWorking in a group with GitHub\n\nData cleaning\n\nImporting data with readr or rio\nChecking for errors with linelist, janitor, parsedate, matchmaker, or lubridate\njanitor to eliminate duplicates\nnaniar to check for missing data\nepitrix to anonymise data\n\nDelay distributions\n\nepitrix\nfitdistrplus to fit parameteric distributions to scenario data\n\nCase demographics\n\napyramid to stratify data by age, gender, and health status\n\nNowcasting\n\nincidence2 to visualise incidence from linelist data\nepiparameter to extract infectious disease parameter data\nEpiEstim or EpiNow2 for Rt calculation\n\nSeverity of disease\n\nCalculation of hospitalisation and mortality rates- no R package specified\n\nZoonotic transmission\n\nforecast\n\nGeneration of reports\n\nincidence for static reports\nQuarto and R markdown for dashboards\n\n\n\n\n\n\n\n\n\nData analysis step\nChallenges\n\n\n\n\nProject structure\nWorking simultaneously on the same script and managing parallel tasks\nAnticipating future incoming data in early pipeline design\n\n\nData cleaning\nLarge amount of code lines used on (reasonably) predictable cleaning (e.g. data sense checks)\nOmitting too many data entries when simply removing NA rows\nNon standardised data formats\nImplementing rapid quality check reports before analysis\n\n\nDelay distributions\nIdentifying the best method to calculate, or compare functionality of tools\nNeed to fit multiple parametric distributions and return best, and store as usable objects\n\n\nSeverity of disease\nCensoring and truncation\nUnderestimation of mild cases\nNeed database of age/gender pyramids for comparisons\n\n\nForecasts\nNeed option for fitting with range of plausible pathogen serial intervals and comparing results\nChanging reporting delays over time\nMatching inputs/outputs between packages\n\n\nZoonotic transmisison\nNeed for specific packages with clear documentation\nHow to compare simple trend-based forecasts"
-  },
-  {
-    "objectID": "posts/100days-workshop/index.html#what-next",
-    "href": "posts/100days-workshop/index.html#what-next",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "What next?",
-    "text": "What next?\nScenarios developed by the 100 days workshop participants illustrate that there are many commonalities across proposed analytics pipelines, which could support interoperability across different epidemiological questions. However, there are also several remaining gaps and challenges, which creates an opportunity to build on existing work to tackle common outbreak scenarios, using the issues here as a starting point. This will also require consideration of wider interactions with existing software ecosystems and users of outbreak analytics insights. We are therefore planning to follow up this vignette with a more detailed perspective article discussing potential for broader progress in developing a ‘first 100 lines of code’."
-  },
-  {
-    "objectID": "posts/100days-workshop/index.html#list-of-contributors",
-    "href": "posts/100days-workshop/index.html#list-of-contributors",
-    "title": "What Should the First 100 Lines of Code Written During an Epidemic Look Like?",
-    "section": "List of contributors",
-    "text": "List of contributors\n\nGroup 1: Rich Fitzjohn, Mauricio Santos Vega, Andrea Torneri, Abdoelnaser Degoot, Rolina van Gaalen, Zulma Cucunuba, Joseph Tsui, Claudine Lim, Adam Kucharski.\nGroup 2: Juan Daniel Umana, Joel Hellewell, Anne Cori, Fanck Kalala, Amrish Baidjoe, Sara Hollis, Chaoran Chen, Pratik Gupte, Andree Valle.\nGroup 3: Mutono Nyamai, Finlay Campbell, Arminder Deol, Simone Carter, Anita Shah, Neale Batra, Issa Karambal, Danil Mihailov, Sebastian Funk.\nGroup 4: Anton Camacho, Louise Dyson, Jeremy Bingham, Simon Cauchemez, Alex Spina, Esther Van Kleef, Anna Carnegie, James Azam.\nGroup 5: Olivia Keiser, Geraldine Gomez, John Lees, Don Klinkenberg, Matthew Biggerstaff, David Santiago Quevedo, Joshua Lambert, Carmen Tamayo."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "learn/git-training-01/index.html#how-to-participate",
+    "href": "learn/git-training-01/index.html#how-to-participate",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
     "section": "",
-    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n  \n\n\n\n\nSharing the C++ Code of an Rcpp Package\n\n\n\n\n\n\n\ncode sharing\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nJun 5, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nExtending Data Frames\n\n\nCreating custom classes and {dplyr} compatibility\n\n\n\n\ndata frame\n\n\nR\n\n\nR package\n\n\ninteroperability\n\n\nS3 class\n\n\ndplyr\n\n\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n  \n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n  \n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n  \n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n  \n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "If you want to participate in the next version of this training, please complete this expression of interest form.\n\nAll data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE."
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#what-will-you-learn",
+    "href": "learn/git-training-01/index.html#what-will-you-learn",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "What will you learn?",
+    "text": "What will you learn?\n\nExplain why you need to know about Version Control if you work on an Open Science project.\nDescribe the most common verb commands to track changes using Git as a Version Control software within Rstudio.\nCreate a personal online profile to share my tracked changes on the web using GitHub.\nIdentify good practices to describe my tracked changes using Git and collaborate with others using GitHub."
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#who-is-this-training-for",
+    "href": "learn/git-training-01/index.html#who-is-this-training-for",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Who is this training for?",
+    "text": "Who is this training for?\nThis training is pitched to beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from various backgrounds (research degree students, project managers, etc.)\nWe thought about Lucia, Patricia, and Pepe as learner personas in designing the contents of this training:\n\nLucia is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.\nPatricia is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public.\nPepe is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects."
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#what-is-not-included-in-this-training",
+    "href": "learn/git-training-01/index.html#what-is-not-included-in-this-training",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "What is not included in this training?",
+    "text": "What is not included in this training?\nTopics that are out of the scope of this training include:\n\nHow to solve conflicts when merging branches.\nHow to revert commits as a safe method to undo changes.\nHow to review pull requests in GitHub.\nHow to use GitHub Actions for continuous integration of software."
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#duration",
+    "href": "learn/git-training-01/index.html#duration",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Duration",
+    "text": "Duration\nThe duration of this training is of 3.5 hours with breaks of approximately 5 minutes each 60 minutes."
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#program",
+    "href": "learn/git-training-01/index.html#program",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Program",
+    "text": "Program\n\n\n\n\n\n\n\nTime\nActivity\n\n\n\n\n2:00 - 2:05\nIntroduction\n\n\n15min\nWhat is version control and why should I use it for Open Science projects?\n\n\n5min\nThe general workflow\n\n\n10min\nHow do I set up to start using Git?\n\n\n10min\nWhere does Git store information?\n\n\n30min\nHow do I record changes in Git?\n\n\n5min\nBreak away from the screen\n\n\n20min\nHow do I record notes about my changes and why?\n\n\n30min\nHow can I identify old versions of files? How do I review my changes?\n\n\n10min\nHow can I tell Git to ignore files I don’t want to track?\n\n\n5min\nBreak away from the screen\n\n\n20min\nHow do I share my changes with others on the web?\n\n\n30min\nHow can I use version control to collaborate with others?\n\n\n15min\nWhat do I do when my changes conflict with someone else’s?\n\n\n5:30 - 5:35\nClosing"
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#materials-you-will-need",
+    "href": "learn/git-training-01/index.html#materials-you-will-need",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Materials you will need",
+    "text": "Materials you will need\nWe will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions:\n\nInstall R and Rstudio https://posit.co/download/rstudio-desktop/\nInstall Git https://git-scm.com/book/en/v2/Getting-Started-Installing-Git\nCreate a GitHub account https://github.com/signup"
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#materials-we-used",
+    "href": "learn/git-training-01/index.html#materials-we-used",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Materials we used",
+    "text": "Materials we used\n\nSlides that we used in the training with notes expanding the content for instructors\nTemplate for our document with shared notes\nTemplate for our pre-training form\nTemplate for our feedback form at the end of the training\nVideo of the last version of the training"
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#any-questions",
+    "href": "learn/git-training-01/index.html#any-questions",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Any questions?",
+    "text": "Any questions?\nIf you need any assistance installing the software or have any other questions about the training, please send an email to andree.valle-campos@lshtm.ac.uk"
+  },
+  {
+    "objectID": "learn/git-training-01/index.html#attributions",
+    "href": "learn/git-training-01/index.html#attributions",
+    "title": "Introductory training on Git and GitHub basics using Rstudio",
+    "section": "Attributions",
+    "text": "Attributions\n\nThis page format is inspired by Metadocencia.\nThe image of this feed is from Unsplash, provided by Priscilla Du Preez, free to use under the Unsplash License."
   }
 ]
