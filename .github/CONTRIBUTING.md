@@ -13,7 +13,7 @@ npm install markdownlint-cli
 npx markdownlint-cli . --dot --disable line_length first-line-h1 link-image-reference-definitions
 ```
 
-### Pure quarto syntax
+### Pure quarto/markdown syntax
 
 Whenever possible, you should prefer direct markdown/quarto syntax rather than HTML or R code. Indeed, using HTML constrains us into outputting to a specific format, while the strength or markdown is to be able to output in many formats. Using R code adds a dependency to R (and possible some R packages such as knitr) which is not necessary. Below are some examples of good vs bad practices:
 
