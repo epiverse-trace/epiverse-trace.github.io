@@ -2,6 +2,42 @@ This website is using [quarto](https://quarto.org/) and the HTML output is autom
 
 All contributions should add an ORCiD for each author.
 
+## Quarto syntax
+
+### Linting
+
+The validity and best usage of quarto syntax is enforced by the use of a [markdown linter as part of our continuous integration](https://github.com/epiverse-trace/.github/blob/main/workflows/lint-changed-quarto.yaml). You can reproduce the continuous integration checks locally by running in your terminal:
+
+```sh
+npm install markdownlint-cli
+npx markdownlint-cli . --dot --disable line_length first-line-h1 link-image-reference-definitions
+```
+
+### Pure quarto/markdown syntax
+
+Whenever possible, you should prefer direct markdown/quarto syntax rather than HTML or R code. Indeed, using HTML constrains us into outputting to a specific format, while the strength or markdown is to be able to output in many formats. Using R code adds a dependency to R (and possible some R packages such as knitr) which is not necessary. Below are some examples of good vs bad practices:
+
+- Insert a link (this specific example is checked by our linter):
+  - BAD
+    ```html
+    <a href="https://www.example.com/">my link</a>
+    ```
+  - GOOD
+    ```md
+    [my link](https://www.example.com)
+    ```
+- Insert an image:
+  - BAD
+    ````r
+    ```
+    knitr::include_graphics("my_img.png")
+    ```
+    ````
+  - GOOD
+    ```md
+    ![my img](my_img.png)
+    ```
+
 ## Contributing a new blog post
 
 ### Before starting to write
