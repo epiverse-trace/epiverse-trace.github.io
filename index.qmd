@@ -1,8 +1,7 @@
 ---
-image: Epiverse-RGB.png
+image: Epiverse-RGB.svg
 about:
-  template: jolla
-  image-shape: rectangle
+  template: marquee
   links:
     - icon: github
       text: Github
