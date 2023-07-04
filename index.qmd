@@ -40,4 +40,3 @@ El objetivo de Epiverse-TRACE es promover el desarrollo de software para anális
 ![](contribution_figure.png)
 
 Figure inspired by [CSCCE community participation model](https://doi.org/10.5281/zenodo.3997802) (Woodley, Lou, & Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)
-
