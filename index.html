@@ -78,16 +78,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta property="og:image" content="https://epiverse-trace.github.io/Epiverse-RGB.png">
+<meta property="og:image" content="https://epiverse-trace.github.io/Epiverse-RGB.svg">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta property="og:image:height" content="1294">
-<meta property="og:image:width" content="1801">
 <meta name="twitter:title" content="">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/Epiverse-RGB.png">
+<meta name="twitter:image" content="https://epiverse-trace.github.io/Epiverse-RGB.svg">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:image-height" content="1294">
-<meta name="twitter:image-width" content="1801">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -139,16 +135,51 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="Epiverse-RGB.png" class="about-image
-  rectangle " style="width: 15em;">
- <main class="content" id="quarto-document-content">
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="Epiverse-RGB.svg" class="about-image " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+     <main class="content" id="quarto-document-content">
 <p>This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.</p>
+<section id="how-to-collaborate-with-epiverse-on-software-development" class="level2">
+<h2 data-anchor-id="how-to-collaborate-with-epiverse-on-software-development">How to collaborate with Epiverse on software development?</h2>
+<p>Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:</p>
+<ul>
+<li><strong>Standardise</strong>: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">our blueprint</a> for more.</li>
+<li><strong>Consult us</strong>: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g.&nbsp;our team currently contributes to the development of <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.
+<ul>
+<li>In the first instance, we encourage you to post general questions on <a href="https://github.com/orgs/epiverse-trace/discussions">our discussion board</a> so that other community members can contribute.</li>
+<li>For questions related to a specific package, please contact the maintainer (see the <a href="https://github.com/orgs/epiverse-trace/repositories">repositories of packages</a> and their authors).</li>
+<li>For all other questions which fall outside the above categories, please contact Community Manager (anna.carnegie @ lshtm.ac.uk) in the first instance. You can also sign up to <a href="https://data.org/initiatives/epiverse/our-community/">our mailing list</a>, or follow us on Twitter at <a href="https://twitter.com/Epiverse_TRACE">Epiverse_TRACE</a>.</li>
+</ul></li>
+<li><strong>Co-create</strong>: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">WHO collaborative epidemiological parameters initiative</a>.</li>
+<li><strong>Integrate your tools</strong>: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g.&nbsp;<a href="https://github.com/epiverse-trace/episoap">estimating the transmissibility of an infectious disease</a> during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.</li>
+<li><strong>Participate</strong>: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our <a href="https://github.com/epiverse-trace">GitHub repository</a>, with your contributions credited, e.g.&nbsp;by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board.</li>
+</ul>
+</section>
+<section id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace" class="level2">
+<h2 data-anchor-id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace">¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?</h2>
+<p>El objetivo de Epiverse-TRACE es promover el desarrollo de software para análisis epidemiológico que sea generalizable, escalable y dirigido por la comunidad de usuarios, y que se integre con otras herramientas para crear un ecosistema sostenible. Existen diferentes vías que grupos de investigación y desarrolladores externos pueden utilizar para colaborar con Epiverse, ordenadas de menor a mayor nivel de contacto con el equipo:</p>
+<ul>
+<li><strong>Estandarización</strong>: desarrollando herramientas independientemente que cumplan con <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">los principios establecidos por Epiverse</a>, y que sean interoperables con sus herramientas.</li>
+<li><strong>Consulta</strong>: poniéndose en contacto con miembros del equipo de Epiverse, que pueden contribuir al desarrollo de herramientas externas. Esto garantiza que esas herramientas sean compatibles con paquetes desarrollados por Epiverse, por ejemplo, nuestro equipo actualmente colabora con el desarrollo de <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.</li>
+<li><strong>Co-desarrollo</strong>: desarrollando herramientas junto con miembros de Epiverse, que despues se quedarán en plataformas externas, por ejemplo, <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">la iniciativa de la OMS para parámetros epidemiológicos</a>.<br>
+</li>
+<li><strong>Integración</strong>: Epiverse proporciona sistemas para integrar herramientas, o pipelines, que ayudan a los usuarios a optimizar el análisis de problemas epidemiológicos concretos, por ejemplo, para <a href="https://github.com/epiverse-trace/episoap">estimar la transmisión de enfermedades</a>. Incorporar tus herramientas a estos sistemas integrados contribuirá a su visibilidad en la comunidad de usuarios de Epiverse.</li>
+<li><strong>Participación</strong>: contribuyendo al desarrollo de herramientas de Epiverse, en las que aparecerás como coautor en nuestra <a href="https://github.com/epiverse-trace">página web</a>. Para ello, contribuye a issues abiertos en los repositorios de Epiverse, o añade sugerencias, ideas y feedback comentando en nuestro panel de discusión.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="contribution_figure.png" class="img-fluid figure-img" alt="Figure summarizing the models of contributions presented above, alongside an arrow indicating increasing level of involvement: standardise, integrate, co-create, consult, participate. Inspired by [CSCCE community participation model](https://doi.org/10.5281/zenodo.3997802) (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)"></p>
+<figcaption class="figure-caption">Figure of contributions, inspired by <a href="https://doi.org/10.5281/zenodo.3997802">CSCCE community participation model</a> (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)</figcaption>
+</figure>
+</div>
 
 
+</section>
 </main> 
-  <hr class="about-sep">
-   <div class="about-links">
+    <div class="about-footer"><div class="about-links">
   <a href="https://github.com/epiverse-trace" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
      <span class="about-link-text">Github</span>
@@ -158,6 +189,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
      <span class="about-link-text">Twitter</span>
   </a>
 </div>
+</div>
+  </div>
 </div>
  <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
