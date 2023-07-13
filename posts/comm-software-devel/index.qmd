@@ -62,9 +62,7 @@ RepoStatus is a language agnostic set of badges which describe the stages of cod
 
 As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.
 
-```{r, results='asis', echo=FALSE, fig.height=5, fig.width=5}
-cat("![](https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg)\n")
-```
+![](https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg)
 
 *Reused under CC BY-SA 4.0 from [repostatus.org](https://www.repostatus.org/)*
 
@@ -81,9 +79,7 @@ Most code will go through the experimental phase, as it will likely change its A
 
 The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.
 
-```{r, results='asis', echo=FALSE, fig.height=5, fig.width=5, fig.cap="Reused under MIT license"}
-cat("![](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg)\n")
-```
+![](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg)
 
 *Reused under MIT license from [lifecycles R package](https://lifecycle.r-lib.org/articles/stages.html)*
 
