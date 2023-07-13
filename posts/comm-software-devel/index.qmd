@@ -3,7 +3,7 @@ title: "Communicating development stages of open-source software"
 author:
   - name: "Joshua W. Lambert"
     orcid: "0000-0001-5218-3046"
-date: "2023-07-12"
+date: "2023-07-14"
 categories: [open-source, R, R package, versioning, lifecycles, community]
 format:
   html:
