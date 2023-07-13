@@ -32,7 +32,7 @@ Overall semantic versioning provides what they describe as a "formal specificati
 
 Some of the critique raised for semantic versioning is the difficulty of defining how changes correspond to a version increment. Semantic versioning states only breaking changes warrant major releases, but a vast re-write of a code base may also justify a major version change. Different breaking changes have different magnitudes, therefore a change to a single exported function or a change to every exported function will be communicated in a single, equal, version increment.
 
-### Alternatives to seminatic versioning
+### Alternatives to semantic versioning
 
 There are several other versioning frameworks aside from semantic versioning. One common option is [calendar versioning](https://calver.org/) (CalVer). The format of CalVer is usually year-month (YY-MM), or year-month-day (YY-MM-DD), depending on the regularity of releases, and allows appending tags (micros or modifiers, e.g. YY-MM.1).
 
@@ -40,7 +40,7 @@ Other versioning schemes can appear similar to semantic versioning, but do not f
 
 ### Versioning an R package
 
-There are some restrictions on valid version numbers for R packages. The [guidelines state](https://cran.r-project.org/doc/manuals/R-exts.html):
+There are some restrictions on valid version numbers for R packages. The [official "Writing R Extensions" guide](https://cran.r-project.org/doc/manuals/R-exts.html#The-DESCRIPTION-file) state:
 
 > This is a sequence of at least two (and usually three) non-negative integers separated by single ‘.’ or ‘-’ characters.
 
@@ -98,7 +98,7 @@ Reconverse provides four stages of software development:
 3. maturing
 4. stable
 
-A difference between {lifecycles} and reconverse is the explicit connection between semantic versioning and development stage in [reconverse](https://www.reconverse.org/lifecycle.html). The transitions between experimental, maturing and stable are linked to the versioning less than 0.1.0, less than 1.0.0 and greater than 1.0.0, respectively.
+A difference between {lifecycle} and reconverse is the explicit connection between semantic versioning and development stage in [reconverse](https://www.reconverse.org/lifecycle.html). The transitions between experimental, maturing and stable are linked to the versioning less than 0.1.0, less than 1.0.0 and greater than 1.0.0, respectively.
 
 ### Dynamic badges
 
