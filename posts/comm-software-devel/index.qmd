@@ -81,7 +81,6 @@ The two stages that follow stable are: superseded and deprecated. The former des
 
 ![{lifecycle} badge system. *Reused under MIT license from [lifecycles R package](https://lifecycle.r-lib.org/articles/stages.html)*](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg){fig-alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."}
 
-
 One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., [stringr](https://github.com/tidyverse/stringr)), the function-level (e.g. [`dplyr::group_trim()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R)) or the argument level (e.g., [`dplyr::across()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36)).
 
 Using {lifecycle} in a package can be setup using `usethis::use_lifecycle()`. The {lifecycle} package not only provides badges, but also informative deprecation notices which communicate to users that a function is not longer supported since a version release of a package. This offers the user a chance to find an alternative function for future use.
