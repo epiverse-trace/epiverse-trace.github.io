@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.232">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Joshua W. Lambert">
+<meta name="dcterms.date" content="2023-07-18">
+
+<title>Epiverse-TRACE developer space - Communicating development stages of open-source software</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../hexlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Epiverse-TRACE developer space - Communicating development stages of open-source software">
+<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta property="og:site_name" content="Epiverse-TRACE developer space">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - Communicating development stages of open-source software">
+<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta name="twitter:creator" content="@Epiverse_TRACE">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Epiverse-TRACE developer space</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://epiverse-trace.r-universe.dev/ui#packages" rel="" target="">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../presentations.html" rel="" target="">
+ <span class="menu-text">Presentations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../learn.html" rel="" target="">
+ <span class="menu-text">Learn</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/epiverse-trace" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/Epiverse_TRACE" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Communicating development stages of open-source software</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">open-source</div>
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">R package</div>
+                <div class="quarto-category">versioning</div>
+                <div class="quarto-category">lifecycles</div>
+                <div class="quarto-category">community</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Joshua W. Lambert <a href="https://orcid.org/0000-0001-5218-3046" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 18, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#versioning" id="toc-versioning" class="nav-link active" data-scroll-target="#versioning">Versioning</a>
+  <ul class="collapse">
+  <li><a href="#semantic-versioning" id="toc-semantic-versioning" class="nav-link" data-scroll-target="#semantic-versioning">Semantic versioning</a></li>
+  <li><a href="#alternatives-to-semantic-versioning" id="toc-alternatives-to-semantic-versioning" class="nav-link" data-scroll-target="#alternatives-to-semantic-versioning">Alternatives to semantic versioning</a></li>
+  <li><a href="#versioning-an-r-package" id="toc-versioning-an-r-package" class="nav-link" data-scroll-target="#versioning-an-r-package">Versioning an R package</a></li>
+  <li><a href="#why-version" id="toc-why-version" class="nav-link" data-scroll-target="#why-version">Why version?</a></li>
+  </ul></li>
+  <li><a href="#lifecycle-badges" id="toc-lifecycle-badges" class="nav-link" data-scroll-target="#lifecycle-badges">Lifecycle badges</a>
+  <ul class="collapse">
+  <li><a href="#repostatus" id="toc-repostatus" class="nav-link" data-scroll-target="#repostatus">RepoStatus</a></li>
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">Tidyverse</a></li>
+  <li><a href="#reconverse" id="toc-reconverse" class="nav-link" data-scroll-target="#reconverse">Reconverse</a></li>
+  <li><a href="#dynamic-badges" id="toc-dynamic-badges" class="nav-link" data-scroll-target="#dynamic-badges">Dynamic badges</a></li>
+  </ul></li>
+  <li><a href="#communicating-development-in-the-epiverse-trace" id="toc-communicating-development-in-the-epiverse-trace" class="nav-link" data-scroll-target="#communicating-development-in-the-epiverse-trace">Communicating development in the Epiverse-TRACE</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Software is not immediately stable when being developed. It undergoes design changes, changes to the user interface (application programming interface, API), and features get added or removed over time. Software in a open-source setting, in which the code is publicly hosted in a repository (e.g., Github, GitLab, Bitbucket), allows anyone to track developments. It also allows the developer community to easily contribute to the software.</p>
+<p>There are certain metrics which can be used to convey the stage of development to users or other developers. For example the number of commits, a repository with few commits may indicate that a project is still in an incipient phase and will undergo several breaking changes. However, different software projects become stable at different rates and the number of commits may mean very different things for a repository containing an operating system compared to an R package with minimal functionality. It is therefore important that developers communicate with users and other developers at what stage the project is in, and how stable the code base is.</p>
+<p>Software development, and specifically R package development, has several methods to communicate stability. This blog post will discuss two such methods and give examples for each. The first of these is versioning code, which establishes points in development where the code is ready for use; and the second is lifecycle badges, these can be placed at a different levels within software (e.g., package, function, function argument) to convey how a user should interact and use.</p>
+<section id="versioning" class="level2">
+<h2 class="anchored" data-anchor-id="versioning">Versioning</h2>
+<p>Versioning code is not a new concept and has been used for decades<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. It has led to version control systems such as <a href="https://git-scm.com/">git</a>. However, in this post we are interested in versioning to communicate development.</p>
+<section id="semantic-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-versioning">Semantic versioning</h3>
+<p>One such philosophy is <a href="https://semver.org/">semantic versioning</a> (SemVer). This aims to describe the stage of software development by attaching semantics (i.e.&nbsp;meaning) to the format and numbering of versions. The version system works through three numbers, each separated by a dot. The numbers, from left to right, convey major version, minor version and patch version. As an example, 0.5.2, is newer than 0.3.9.</p>
+<p>Employing semantic versioning in ones code development allows others to determine whether a package has undergone substantial development and testing, and informs to whether it would make a suitable package to use in a script or as a dependency for another package. Semantic versioning also describes the changes made to a package. As explained on <a href="https://semver.org/">their website</a>, incrementing the major version implies a breaking change, a minor increment is a backwards compatible change and lastly patches are mostly applied to bug fixes. This aids users in understanding whether they should continue using a package, whether their package needs updating due to a breaking change or whether they need to install the newest version because a bug was recently fixed.</p>
+<p>Examples of changes that correspond to major, minor or patch updates can be seen in the version release notes (NEWS.md file) of <a href="https://github.com/tidyverse/dplyr/blob/main/NEWS.md">{dplyr}</a> and <a href="https://github.com/tidyverse/ggplot2/blob/main/NEWS.md">{ggplot2}</a>.</p>
+<p>In R there are several packages that work with versioning, and specifically semantic versioning. The <a href="https://CRAN.R-project.org/package=semver">{semver}</a> package provides functions for parsing, rendering and comparing versions. There is also the <a href="https://CRAN.R-project.org/package=semverutils">{semverutils}</a> R package which provides similar functionality using <code>R6</code>. The <a href="https://CRAN.R-project.org/package=usethis">{usethis}</a> package provides handy utility functions for changing the versions of R packages (<code>usethis::use_version()</code> and <code>usethis::use_dev_version()</code>). R also comes with a <code>package_version()</code> function for creating and validating versions.</p>
+<p>Overall semantic versioning provides what they describe as a “formal specification” to facilitate management of package development and the dependencies of that package. It is the most widely-used versioning system and therefore will be understood by a wide variety of users and developers.</p>
+<p>Some of the critique raised for semantic versioning is the difficulty of defining how changes correspond to a version increment. Semantic versioning states only breaking changes warrant major releases, but a vast re-write of a code base may also justify a major version change. Different breaking changes have different magnitudes, therefore a change to a single exported function or a change to every exported function will be communicated in a single, equal, version increment.</p>
+</section>
+<section id="alternatives-to-semantic-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="alternatives-to-semantic-versioning">Alternatives to semantic versioning</h3>
+<p>There are several other versioning frameworks aside from semantic versioning. One common option is <a href="https://calver.org/">calendar versioning</a> (CalVer). The format of CalVer is usually year-month (YY-MM), or year-month-day (YY-MM-DD), depending on the regularity of releases, and allows appending tags (micros or modifiers, e.g.&nbsp;YY-MM.1).</p>
+<p>Other versioning schemes can appear similar to semantic versioning, but do not follow the guidelines around version semantics. In these cases, a bump in the major version may not relate to a breaking change. Additionally, other numbers can be attached to the traditional x.y.z format, such as build numbers. Build number versioning adds an extra number to specify the build (x.y.z.build_number). There are many other variants but covering all versioning systems is outside the scope of this post.</p>
+</section>
+<section id="versioning-an-r-package" class="level3">
+<h3 class="anchored" data-anchor-id="versioning-an-r-package">Versioning an R package</h3>
+<p>There are some restrictions on valid version numbers for R packages. The <a href="https://cran.r-project.org/doc/manuals/R-exts.html#The-DESCRIPTION-file">official “Writing R Extensions” guide</a> state:</p>
+<blockquote class="blockquote">
+<p>This is a sequence of at least two (and usually three) non-negative integers separated by single ‘.’ or ‘-’ characters.</p>
+</blockquote>
+</section>
+<section id="why-version" class="level3">
+<h3 class="anchored" data-anchor-id="why-version">Why version?</h3>
+<p>The benefits of versioning apply beyond communicating with users and developers. Implementing versioning eases reproducibility by allowing systems to record which version of a language or package was used. In R this can be achieved in several ways, with some popular examples being the <a href="https://rstudio.github.io/renv/index.html">{renv} package</a> and <a href="https://www.docker.com/">docker</a>.</p>
+</section>
+</section>
+<section id="lifecycle-badges" class="level2">
+<h2 class="anchored" data-anchor-id="lifecycle-badges">Lifecycle badges</h2>
+<p>Badges can be pasted onto visible parts of the code, for example a readme document in the root of the repository, to show the development phase and stability. The three badging systems we will discuss in this post are:</p>
+<ul>
+<li><a href="https://www.repostatus.org/">RepoStatus</a></li>
+<li><a href="https://lifecycle.r-lib.org/">Tidyverse lifecycles</a></li>
+<li><a href="https://www.reconverse.org/lifecycle.html">Reconverse lifecyles</a></li>
+</ul>
+<section id="repostatus" class="level3">
+<h3 class="anchored" data-anchor-id="repostatus">RepoStatus</h3>
+<p>RepoStatus is a language agnostic set of badges which describe the stages of code development and the possible transitions between those stages.</p>
+<p>As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the RepoStatus framework. The flow is not strictly linear as one package can enter and exist stages such as 'suspended', 'abandoned', 'inactive', etc. There a thin green line with the text 'Repo has reached a stable state' between the stages 'concept', 'WIP', 'abandoned', 'suspended' and the stages 'active', 'unsupported', 'inactive'."></p>
+<figcaption class="figure-caption">RepoStatus badge system. <em>Reused under CC BY-SA 4.0 from <a href="https://www.repostatus.org/">repostatus.org</a></em></figcaption>
+</figure>
+</div>
+</section>
+<section id="tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="tidyverse">Tidyverse</h3>
+<p>The tidyverse approach is broadly similar to RepoStatus. The {lifecycle} R package contains the description of their process. There are four stages:</p>
+<ol type="1">
+<li>Experimental</li>
+<li>Stable</li>
+<li>Superseded (previously called retired)</li>
+<li>Deprecated</li>
+</ol>
+<p>Most code will go through the experimental phase, as it will likely change its API and the number and order of arguments might change. Once code is not going to drastically change (i.e.&nbsp;no breaking changes), at least from a users point of view, it can be labelled stable. In the tidyverse lifecycle schematic, all experimental code transitions to stable code.</p>
+<p>The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."></p>
+<figcaption class="figure-caption">{lifecycle} badge system. <em>Reused under MIT license from <a href="https://lifecycle.r-lib.org/articles/stages.html">lifecycles R package</a></em></figcaption>
+</figure>
+</div>
+<p>One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., <a href="https://github.com/tidyverse/stringr">stringr</a>), the function-level (e.g.&nbsp;<a href="https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R"><code>dplyr::group_trim()</code></a>) or the argument level (e.g., <a href="https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36"><code>dplyr::across()</code></a>).</p>
+<p>Using {lifecycle} in a package can be setup using <code>usethis::use_lifecycle()</code>. The {lifecycle} package not only provides badges, but also informative deprecation notices which communicate to users that a function is not longer supported since a version release of a package. This offers the user a chance to find an alternative function for future use.</p>
+<p>The use of deprecation warnings from {lifecycle} leads onto another aspect of tidyverse development: protracted deprecation. There is no fixed rules on how long after a deprecation warning is made to when code should be removed. In the tidyverse, this process is given ample time in order to allow the many developers that utilise tidyverse software to make the necessary changes. Full descriptions of the {lifecycle} package can be found on the <a href="https://lifecycle.r-lib.org/index.html">website</a>, including the deprecated use of questioning and maturing stages.</p>
+</section>
+<section id="reconverse" class="level3">
+<h3 class="anchored" data-anchor-id="reconverse">Reconverse</h3>
+<p>Reconverse provides four stages of software development:</p>
+<ol type="1">
+<li>concept</li>
+<li>experimental</li>
+<li>maturing</li>
+<li>stable</li>
+</ol>
+<p>A difference between {lifecycle} and reconverse is the explicit connection between semantic versioning and development stage in <a href="https://www.reconverse.org/lifecycle.html">reconverse</a>. The transitions between experimental, maturing and stable are linked to the versioning less than 0.1.0, less than 1.0.0 and greater than 1.0.0, respectively.</p>
+</section>
+<section id="dynamic-badges" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-badges">Dynamic badges</h3>
+<p>All badge frameworks discussed only offer static badges that require developers to manually update as the project moves between phases. This is subject to the maintainers remembering, which can lead to miscommunication about a package’s stage, which may have move on from being experimental, or not been worked on in years but has an active badge.</p>
+<p>Dynamics badges, like those offered by <a href="https://shields.io/" class="uri">https://shields.io/</a> give a good indication of how recently the project was changed by showing time since last commit, or the number of commits since last release. These too are not perfect but may better track changes and take the burden of badge updates off the project maintainer.</p>
+</section>
+</section>
+<section id="communicating-development-in-the-epiverse-trace" class="level2">
+<h2 class="anchored" data-anchor-id="communicating-development-in-the-epiverse-trace">Communicating development in the Epiverse-TRACE</h2>
+<p>Within the Epiverse-TRACE initiative we use semantic versioning and badges to convey to the community interacting with our code at which stage of developement each project is in. We do not have fixed rules on which badges to use and a variety of badges can be found across the repositories in the <a href="https://github.com/epiverse-trace">organisation</a>. For example reconverse badges are used for <a href="https://github.com/epiverse-trace/linelist">{linelist}</a>, RepoStatus badge is used in <a href="https://github.com/epiverse-trace/finalsize">{finalsize}</a>, and tidyverse badges are used in <a href="https://github.com/epiverse-trace/epiparameter">{epiparameter}</a>.</p>
+<p>We take this approach as no lifecycle badging system is perfect, each with benefits and downsides. The badges from {lifecycle} are the most common and thus recognisable in R package development, however may not port well to other languages or be familiar to developers coming to R from other frameworks. RepoStatus has the benefit of not being designed for a single language, and it’s number of badges gives greater acuity to the stage of development for a project. This may be especially useful if a package is newly developed and {lifecycle} would describe it as experimental, but RepoStatus provides granularity as to whether it is a concept package, work in progress (WIP) or started but abandoned.</p>
+<p>There is some ambiguity in the semantics of the active stage in RepoStatus, which in the definition is “stable, usable state”, but may be misinterpreted as being unstable but actively developed.</p>
+<p>Lastly reconverse provides a system akin to {lifecycle} and may be useful for those working in the epidemiology developer space. However, one downside of the reconverse system is there are no clear semantics for a package being deprecated or archived. As with almost all code, at some point development ceases and this stage should be communicated, even if just to say that the package is not being updated inline with developments in the underlying language, in this case R.</p>
+<p>There are no plans within Epiverse-TRACE to develop a new badging system as the existing systems cover almost all use cases. In the event that the current development stage cannot be adequately communicated with a single badge from one of the frameworks discussed, a combination of badges can be used. For example, early on in a project adding both the experimental badge from {lifecycle} or reconverse and the WIP badge from RepoStatus may more accurately describe the projects develop pace. Alternatively, the stable badge, from either {lifecycle} or reconverse, can be coupled with either active or inactive from RepoStatus to let other developers know if software will be updated with new language features or dependency deprecations.</p>
+<p>Overall, the use of any of the three lifecycle frameworks described here is better than none.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Version_control" class="uri">https://en.wikipedia.org/wiki/Version_control</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+  author = {W. Lambert, Joshua},
+  title = {Communicating Development Stages of Open-Source Software},
+  date = {2023-07-18},
+  url = {https://epiverse-trace.github.io//posts/comm-software-devel},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w. lambert2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+W. Lambert, Joshua. 2023. <span>“Communicating Development Stages of
+Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.github.io//posts/comm-software-devel">https://epiverse-trace.github.io//posts/comm-software-devel</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="epiverse-trace/epiverse-trace.github.io" data-repo-id="R_kgDOIcolPw" data-category="Blog post discussion" data-category-id="DIC_kwDOIcolP84CWOm8" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+</div> <!-- /content -->
+
+
+
+
+</body></html>

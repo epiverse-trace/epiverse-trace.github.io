@@ -9,8 +9,144 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.186</generator>
-<lastBuildDate>Mon, 05 Jun 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.232</generator>
+<lastBuildDate>Tue, 18 Jul 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Communicating development stages of open-source software</title>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/comm-software-devel/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Software is not immediately stable when being developed. It undergoes design changes, changes to the user interface (application programming interface, API), and features get added or removed over time. Software in a open-source setting, in which the code is publicly hosted in a repository (e.g., Github, GitLab, Bitbucket), allows anyone to track developments. It also allows the developer community to easily contribute to the software.</p>
+<p>There are certain metrics which can be used to convey the stage of development to users or other developers. For example the number of commits, a repository with few commits may indicate that a project is still in an incipient phase and will undergo several breaking changes. However, different software projects become stable at different rates and the number of commits may mean very different things for a repository containing an operating system compared to an R package with minimal functionality. It is therefore important that developers communicate with users and other developers at what stage the project is in, and how stable the code base is.</p>
+<p>Software development, and specifically R package development, has several methods to communicate stability. This blog post will discuss two such methods and give examples for each. The first of these is versioning code, which establishes points in development where the code is ready for use; and the second is lifecycle badges, these can be placed at a different levels within software (e.g., package, function, function argument) to convey how a user should interact and use.</p>
+<section id="versioning" class="level2">
+<h2 class="anchored" data-anchor-id="versioning">Versioning</h2>
+<p>Versioning code is not a new concept and has been used for decades<sup>1</sup>. It has led to version control systems such as <a href="https://git-scm.com/">git</a>. However, in this post we are interested in versioning to communicate development.</p>
+<section id="semantic-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="semantic-versioning">Semantic versioning</h3>
+<p>One such philosophy is <a href="https://semver.org/">semantic versioning</a> (SemVer). This aims to describe the stage of software development by attaching semantics (i.e.&nbsp;meaning) to the format and numbering of versions. The version system works through three numbers, each separated by a dot. The numbers, from left to right, convey major version, minor version and patch version. As an example, 0.5.2, is newer than 0.3.9.</p>
+<p>Employing semantic versioning in ones code development allows others to determine whether a package has undergone substantial development and testing, and informs to whether it would make a suitable package to use in a script or as a dependency for another package. Semantic versioning also describes the changes made to a package. As explained on <a href="https://semver.org/">their website</a>, incrementing the major version implies a breaking change, a minor increment is a backwards compatible change and lastly patches are mostly applied to bug fixes. This aids users in understanding whether they should continue using a package, whether their package needs updating due to a breaking change or whether they need to install the newest version because a bug was recently fixed.</p>
+<p>Examples of changes that correspond to major, minor or patch updates can be seen in the version release notes (NEWS.md file) of <a href="https://github.com/tidyverse/dplyr/blob/main/NEWS.md">{dplyr}</a> and <a href="https://github.com/tidyverse/ggplot2/blob/main/NEWS.md">{ggplot2}</a>.</p>
+<p>In R there are several packages that work with versioning, and specifically semantic versioning. The <a href="https://CRAN.R-project.org/package=semver">{semver}</a> package provides functions for parsing, rendering and comparing versions. There is also the <a href="https://CRAN.R-project.org/package=semverutils">{semverutils}</a> R package which provides similar functionality using <code>R6</code>. The <a href="https://CRAN.R-project.org/package=usethis">{usethis}</a> package provides handy utility functions for changing the versions of R packages (<code>usethis::use_version()</code> and <code>usethis::use_dev_version()</code>). R also comes with a <code>package_version()</code> function for creating and validating versions.</p>
+<p>Overall semantic versioning provides what they describe as a “formal specification” to facilitate management of package development and the dependencies of that package. It is the most widely-used versioning system and therefore will be understood by a wide variety of users and developers.</p>
+<p>Some of the critique raised for semantic versioning is the difficulty of defining how changes correspond to a version increment. Semantic versioning states only breaking changes warrant major releases, but a vast re-write of a code base may also justify a major version change. Different breaking changes have different magnitudes, therefore a change to a single exported function or a change to every exported function will be communicated in a single, equal, version increment.</p>
+</section>
+<section id="alternatives-to-semantic-versioning" class="level3">
+<h3 class="anchored" data-anchor-id="alternatives-to-semantic-versioning">Alternatives to semantic versioning</h3>
+<p>There are several other versioning frameworks aside from semantic versioning. One common option is <a href="https://calver.org/">calendar versioning</a> (CalVer). The format of CalVer is usually year-month (YY-MM), or year-month-day (YY-MM-DD), depending on the regularity of releases, and allows appending tags (micros or modifiers, e.g.&nbsp;YY-MM.1).</p>
+<p>Other versioning schemes can appear similar to semantic versioning, but do not follow the guidelines around version semantics. In these cases, a bump in the major version may not relate to a breaking change. Additionally, other numbers can be attached to the traditional x.y.z format, such as build numbers. Build number versioning adds an extra number to specify the build (x.y.z.build_number). There are many other variants but covering all versioning systems is outside the scope of this post.</p>
+</section>
+<section id="versioning-an-r-package" class="level3">
+<h3 class="anchored" data-anchor-id="versioning-an-r-package">Versioning an R package</h3>
+<p>There are some restrictions on valid version numbers for R packages. The <a href="https://cran.r-project.org/doc/manuals/R-exts.html#The-DESCRIPTION-file">official “Writing R Extensions” guide</a> state:</p>
+<blockquote class="blockquote">
+<p>This is a sequence of at least two (and usually three) non-negative integers separated by single ‘.’ or ‘-’ characters.</p>
+</blockquote>
+</section>
+<section id="why-version" class="level3">
+<h3 class="anchored" data-anchor-id="why-version">Why version?</h3>
+<p>The benefits of versioning apply beyond communicating with users and developers. Implementing versioning eases reproducibility by allowing systems to record which version of a language or package was used. In R this can be achieved in several ways, with some popular examples being the <a href="https://rstudio.github.io/renv/index.html">{renv} package</a> and <a href="https://www.docker.com/">docker</a>.</p>
+</section>
+</section>
+<section id="lifecycle-badges" class="level2">
+<h2 class="anchored" data-anchor-id="lifecycle-badges">Lifecycle badges</h2>
+<p>Badges can be pasted onto visible parts of the code, for example a readme document in the root of the repository, to show the development phase and stability. The three badging systems we will discuss in this post are:</p>
+<ul>
+<li><a href="https://www.repostatus.org/">RepoStatus</a></li>
+<li><a href="https://lifecycle.r-lib.org/">Tidyverse lifecycles</a></li>
+<li><a href="https://www.reconverse.org/lifecycle.html">Reconverse lifecyles</a></li>
+</ul>
+<section id="repostatus" class="level3">
+<h3 class="anchored" data-anchor-id="repostatus">RepoStatus</h3>
+<p>RepoStatus is a language agnostic set of badges which describe the stages of code development and the possible transitions between those stages.</p>
+<p>As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/comm-software-devel/https:/raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the RepoStatus framework. The flow is not strictly linear as one package can enter and exist stages such as 'suspended', 'abandoned', 'inactive', etc. There a thin green line with the text 'Repo has reached a stable state' between the stages 'concept', 'WIP', 'abandoned', 'suspended' and the stages 'active', 'unsupported', 'inactive'."></p>
+<figcaption class="figure-caption">RepoStatus badge system. <em>Reused under CC BY-SA 4.0 from <a href="https://www.repostatus.org/">repostatus.org</a></em></figcaption>
+</figure>
+</div>
+</section>
+<section id="tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="tidyverse">Tidyverse</h3>
+<p>The tidyverse approach is broadly similar to RepoStatus. The {lifecycle} R package contains the description of their process. There are four stages:</p>
+<ol type="1">
+<li>Experimental</li>
+<li>Stable</li>
+<li>Superseded (previously called retired)</li>
+<li>Deprecated</li>
+</ol>
+<p>Most code will go through the experimental phase, as it will likely change its API and the number and order of arguments might change. Once code is not going to drastically change (i.e.&nbsp;no breaking changes), at least from a users point of view, it can be labelled stable. In the tidyverse lifecycle schematic, all experimental code transitions to stable code.</p>
+<p>The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/comm-software-devel/https:/raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."></p>
+<figcaption class="figure-caption">{lifecycle} badge system. <em>Reused under MIT license from <a href="https://lifecycle.r-lib.org/articles/stages.html">lifecycles R package</a></em></figcaption>
+</figure>
+</div>
+<p>One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., <a href="https://github.com/tidyverse/stringr">stringr</a>), the function-level (e.g.&nbsp;<a href="https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R"><code>dplyr::group_trim()</code></a>) or the argument level (e.g., <a href="https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36"><code>dplyr::across()</code></a>).</p>
+<p>Using {lifecycle} in a package can be setup using <code>usethis::use_lifecycle()</code>. The {lifecycle} package not only provides badges, but also informative deprecation notices which communicate to users that a function is not longer supported since a version release of a package. This offers the user a chance to find an alternative function for future use.</p>
+<p>The use of deprecation warnings from {lifecycle} leads onto another aspect of tidyverse development: protracted deprecation. There is no fixed rules on how long after a deprecation warning is made to when code should be removed. In the tidyverse, this process is given ample time in order to allow the many developers that utilise tidyverse software to make the necessary changes. Full descriptions of the {lifecycle} package can be found on the <a href="https://lifecycle.r-lib.org/index.html">website</a>, including the deprecated use of questioning and maturing stages.</p>
+</section>
+<section id="reconverse" class="level3">
+<h3 class="anchored" data-anchor-id="reconverse">Reconverse</h3>
+<p>Reconverse provides four stages of software development:</p>
+<ol type="1">
+<li>concept</li>
+<li>experimental</li>
+<li>maturing</li>
+<li>stable</li>
+</ol>
+<p>A difference between {lifecycle} and reconverse is the explicit connection between semantic versioning and development stage in <a href="https://www.reconverse.org/lifecycle.html">reconverse</a>. The transitions between experimental, maturing and stable are linked to the versioning less than 0.1.0, less than 1.0.0 and greater than 1.0.0, respectively.</p>
+</section>
+<section id="dynamic-badges" class="level3">
+<h3 class="anchored" data-anchor-id="dynamic-badges">Dynamic badges</h3>
+<p>All badge frameworks discussed only offer static badges that require developers to manually update as the project moves between phases. This is subject to the maintainers remembering, which can lead to miscommunication about a package’s stage, which may have move on from being experimental, or not been worked on in years but has an active badge.</p>
+<p>Dynamics badges, like those offered by <a href="https://shields.io/" class="uri">https://shields.io/</a> give a good indication of how recently the project was changed by showing time since last commit, or the number of commits since last release. These too are not perfect but may better track changes and take the burden of badge updates off the project maintainer.</p>
+</section>
+</section>
+<section id="communicating-development-in-the-epiverse-trace" class="level2">
+<h2 class="anchored" data-anchor-id="communicating-development-in-the-epiverse-trace">Communicating development in the Epiverse-TRACE</h2>
+<p>Within the Epiverse-TRACE initiative we use semantic versioning and badges to convey to the community interacting with our code at which stage of developement each project is in. We do not have fixed rules on which badges to use and a variety of badges can be found across the repositories in the <a href="https://github.com/epiverse-trace">organisation</a>. For example reconverse badges are used for <a href="https://github.com/epiverse-trace/linelist">{linelist}</a>, RepoStatus badge is used in <a href="https://github.com/epiverse-trace/finalsize">{finalsize}</a>, and tidyverse badges are used in <a href="https://github.com/epiverse-trace/epiparameter">{epiparameter}</a>.</p>
+<p>We take this approach as no lifecycle badging system is perfect, each with benefits and downsides. The badges from {lifecycle} are the most common and thus recognisable in R package development, however may not port well to other languages or be familiar to developers coming to R from other frameworks. RepoStatus has the benefit of not being designed for a single language, and it’s number of badges gives greater acuity to the stage of development for a project. This may be especially useful if a package is newly developed and {lifecycle} would describe it as experimental, but RepoStatus provides granularity as to whether it is a concept package, work in progress (WIP) or started but abandoned.</p>
+<p>There is some ambiguity in the semantics of the active stage in RepoStatus, which in the definition is “stable, usable state”, but may be misinterpreted as being unstable but actively developed.</p>
+<p>Lastly reconverse provides a system akin to {lifecycle} and may be useful for those working in the epidemiology developer space. However, one downside of the reconverse system is there are no clear semantics for a package being deprecated or archived. As with almost all code, at some point development ceases and this stage should be communicated, even if just to say that the package is not being updated inline with developments in the underlying language, in this case R.</p>
+<p>There are no plans within Epiverse-TRACE to develop a new badging system as the existing systems cover almost all use cases. In the event that the current development stage cannot be adequately communicated with a single badge from one of the frameworks discussed, a combination of badges can be used. For example, early on in a project adding both the experimental badge from {lifecycle} or reconverse and the WIP badge from RepoStatus may more accurately describe the projects develop pace. Alternatively, the stable badge, from either {lifecycle} or reconverse, can be coupled with either active or inactive from RepoStatus to let other developers know if software will be updated with new language features or dependency deprecations.</p>
+<p>Overall, the use of any of the three lifecycle frameworks described here is better than none.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Version_control" class="uri">https://en.wikipedia.org/wiki/Version_control</a>↩︎</p></li>
+</ol>
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+  author = {W. Lambert, Joshua},
+  title = {Communicating Development Stages of Open-Source Software},
+  date = {2023-07-18},
+  url = {https://epiverse-trace.github.io//posts/comm-software-devel},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w. lambert2023" class="csl-entry quarto-appendix-citeas">
+W. Lambert, Joshua. 2023. <span>“Communicating Development Stages of
+Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.github.io//posts/comm-software-devel">https://epiverse-trace.github.io//posts/comm-software-devel</a>.
+</div></div></section></div> ]]></description>
+  <category>open-source</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>versioning</category>
+  <category>lifecycles</category>
+  <category>community</category>
+  <guid>https://epiverse-trace.github.io/posts/comm-software-devel/index.html</guid>
+  <pubDate>Tue, 18 Jul 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Sharing the C++ Code of an Rcpp Package</title>
   <dc:creator>Pratik Gupte</dc:creator>
@@ -2309,7 +2445,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-61717"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-61717").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-26564"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-26564").innerHTML = tweet["html"];</script><p></p>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
@@ -2782,7 +2918,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h1>Conclusion: automated validation vs peer-review</h1>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-74450"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-74450").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-45514"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-45514").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
