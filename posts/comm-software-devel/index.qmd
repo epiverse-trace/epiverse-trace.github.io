@@ -64,7 +64,7 @@ RepoStatus is a language agnostic set of badges which describe the stages of cod
 
 As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.
 
-![RepoStatus badge system. *Reused under CC BY-SA 4.0 from [repostatus.org](https://www.repostatus.org/)*](https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg)
+![RepoStatus badge system. *Reused under CC BY-SA 4.0 from [repostatus.org](https://www.repostatus.org/)*](https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg){fig-alt="Flow diagram of the possible transitions from one state to the other in the RepoStatus framework. The flow is not strictly linear as one package can enter and exist stages such as 'suspended', 'abandoned', 'inactive', etc. There a thin green line with the text 'Repo has reached a stable state' between the stages 'concept', 'WIP', 'abandoned', 'suspended' and the stages 'active', 'unsupported', 'inactive'."}
 
 ### Tidyverse
 
@@ -79,7 +79,8 @@ Most code will go through the experimental phase, as it will likely change its A
 
 The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.
 
-![{lifecycle} badge system. *Reused under MIT license from [lifecycles R package](https://lifecycle.r-lib.org/articles/stages.html)*](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg)
+![{lifecycle} badge system. *Reused under MIT license from [lifecycles R package](https://lifecycle.r-lib.org/articles/stages.html)*](https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg){fig-alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."}
+
 
 One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., [stringr](https://github.com/tidyverse/stringr)), the function-level (e.g. [`dplyr::group_trim()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R)) or the argument level (e.g., [`dplyr::across()`](https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36)).
 
