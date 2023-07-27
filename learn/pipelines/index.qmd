@@ -3,8 +3,11 @@ title: "Outbreak analytics Pipelines"
 author:
   - name: "Andree Valle-Campos"
     orcid: "0000-0002-7779-481X"
-date: "2022-06-20"
+  - name: "Rosalind M Eggo"
+    orcid: "0000-0002-0362-6717"
+date: last-modified
 categories: [outbreak analytics, pipelines, tasks, packages]
+bibliography: pipelines.bib
 image: "sigmund-4CNNH2KEjhc-unsplash.jpg"
 format:
   html: 
@@ -13,23 +16,43 @@ format:
 
 ## The pipeline approach
 
-We can solve Outbreak Analytics tasks with sets of packages integrated in pipelines.
+We can solve Outbreak Analytics *tasks* with sets of packages integrated in *pipelines*.
 
-Outbreak analytics can be viewed as a set of data analysis __Tasks__ (@fig-tasks). In more detail, each of these Tasks are connected by their data inputs and outputs (@fig-tasks-detailed). 
+## Outbreak analytics
+
+*Outbreak analytics* is a data science discipline focused on the technological and methodological aspects of the outbreak data pipeline, from collection to analysis, modelling and reporting to inform outbreak response [@polonsky2019outbreak].
 
 ### Tasks
 
+We can view Outbreak analytics as a set of data analysis __Tasks__. In @fig-tasks we represent this in a directed graph, where each *node* is a Task and each *directed edge* represents the data input and output flow. For each Task, we used active verbs, similar to the [tidyverse](https://r4ds.hadley.nz/whole-game.html) tools for exploratory data analysis. 
+
 ![Task for outbreak analytics](task_pipeline-minimal.svg){#fig-tasks}
+
+In @fig-tasks-detailed we have a summarized detail of data inputs and outputs between Tasks. For example, for the first *task* on the left called "read case data" we need a *data input* called "case data" to get two *data outputs* called "linelist" and "contact data".
 
 ![Detailed task paths](task_pipeline-detailed.svg){#fig-tasks-detailed}
 
+One Task can contain different methods and packages, with similar data inputs and outputs.
+
 ### Pipelines
 
-We defined a __Pipeline__ as a set of connected Tasks required to obtain an informative outcome for decision-making purposes. For example, estimate the time-varying transmission (@fig-pipe-01), or project the final size (@fig-pipe-02) of an epidemic.
+We defined a __Pipeline__ as a set of connected Tasks required to obtain an informative outcome for decision-making purposes. 
+
+For example, to quantify the time-varying reproduction number (@fig-pipe-01), we first *read case data* to generate a linelist. Then, we *describe case data*, using the linelist as inputs to generate delay distributions and epicurves. Finally, we use both outputs as inputs to *quantify transmission* and generate an estimate of transmission. This output allows us to determine the intensity of interventions needed to achieve epidemic control [@cori2017key].
 
 ![Transmissibility pipeline](task_pipeline-pipe_01.svg){#fig-pipe-01}
 
+Similarly, in @fig-pipe-02, we simulate the final size of an epidemic. First, we *read population data* to obtain its demographic distribution and social contact matrix. Next, we collect the estimate of transmission data output, ideally from the *Transmissibility pipeline*. Finally, we use these three data as inputs to *simulate transmission scenarios* and determine the proportion of the population infected. This output allows us to assess the long-term impact of the outbreak, like predicting the magnitude of the epidemic peak or attack rate, and evaluate intervention choices [@cori2017key].
+
 ![Scenarios pipelines](task_pipeline-pipe_02.svg){#fig-pipe-02}
+
+## How we use this approach
+
+We use the Pipeline approach to integrate multiple packages in the design of: 
+
+- Reproducible report templates per Pipeline stored in the [`{episoap}`](https://epiverse-trace.github.io/episoap/) package,
+- Code scripts stored in the [`{howto}`](https://epiverse-trace.github.io/howto/) repository, and
+- [New](https://github.com/orgs/epiverse-trace/discussions/87) packages in relation to other packages and tasks upstream.
 
 ## Attributions
 
