@@ -52,7 +52,7 @@ For example, to quantify the time-varying reproduction number we can follow the 
 
 ![Transmissibility pipeline](task_pipeline-pipe_01.svg){#fig-pipe-01}
 
-Similarly, in @fig-pipe-02, to simulate the final size of an epidemic we can follow the *Scenarios pipeline*. First, we *Read population data* to obtain its demographic distribution and social contact matrix. Next, we collect the estimate of transmission data output, ideally from the *Transmissibility pipeline*. Finally, we use these three data as inputs to *Simulate transmission scenarios* and determine the proportion of the population infected. This output allows us to assess the long-term impact of the outbreak and evaluate intervention choices [@cori2017key].
+Similarly, to simulate the final size of an epidemic we can follow the *Scenarios pipeline* (@fig-pipe-02). First, we *Read population data* to obtain its demographic distribution and social contact matrix. Next, we collect the estimate of transmission data output, ideally from the *Transmissibility pipeline*. Finally, we use these three data as inputs to *Simulate transmission scenarios* and determine the proportion of the population infected. This output allows us to assess the long-term impact of the outbreak and evaluate intervention choices [@cori2017key].
 
 ![Scenarios pipelines](task_pipeline-pipe_02.svg){#fig-pipe-02}
 
