@@ -22,9 +22,9 @@ format:
     toc: true
 ---
 
-## The pipeline approach
+## The Pipeline approach
 
-We can solve Outbreak Analytics *tasks* with sets of packages integrated in *pipelines*.
+We can solve Outbreak Analytics *tasks* connecting multiple packages in *pipelines*.
 
 ## Outbreak analytics
 
@@ -34,7 +34,7 @@ We can solve Outbreak Analytics *tasks* with sets of packages integrated in *pip
 
 ### Tasks
 
-We can view Outbreak analytics as a set of data analysis __Tasks__. In @fig-tasks we represent this in a directed graph, where each *node* is a Task and each *directed edge* represents the flow of input and output data. Tasks are connected similarly to the [tidyverse](https://r4ds.hadley.nz/whole-game.html) diagram for exploratory data analysis. 
+We can view Outbreak analytics as a set of related data analysis __Tasks__. In @fig-tasks we represent this in a directed graph, where each *node* is a Task and each *directed edge* represents the flow of input and output data. Tasks are connected similarly to the [tidyverse](https://r4ds.hadley.nz/whole-game.html) diagram for exploratory data analysis. 
 
 ![Task for outbreak analytics](task_pipeline-minimal.svg){#fig-tasks}
 
@@ -48,17 +48,17 @@ One Task can contain different methods and packages for similar data inputs and 
 
 We defined a __Pipeline__ as a set of connected Tasks required to obtain an informative outcome for decision-making purposes. 
 
-For example, to quantify the time-varying reproduction number (@fig-pipe-01), we first *Read case data* to generate a linelist. Then, we *Describe case data*, using the linelist as inputs to generate delay distributions and epicurves. Finally, we use both outputs as inputs to *Quantify transmission* and generate an estimate of transmission. This output allows us to determine the intensity of interventions needed to achieve epidemic control [@cori2017key].
+For example, to quantify the time-varying reproduction number we can follow the *Transmissibility pipeline* (@fig-pipe-01). First, we *Read case data* to generate a linelist. Then, we *Describe case data*, using the linelist as inputs to generate delay distributions and epicurves. Finally, we use both outputs as inputs to *Quantify transmission* and generate an estimate of transmission. This output allows us to determine the intensity of interventions needed to achieve epidemic control [@cori2017key].
 
 ![Transmissibility pipeline](task_pipeline-pipe_01.svg){#fig-pipe-01}
 
-Similarly, in @fig-pipe-02, we simulate the final size of an epidemic. First, we *Read population data* to obtain its demographic distribution and social contact matrix. Next, we collect the estimate of transmission data output, ideally from the *Transmissibility pipeline*. Finally, we use these three data as inputs to *Simulate transmission scenarios* and determine the proportion of the population infected. This output allows us to assess the long-term impact of the outbreak and evaluate intervention choices [@cori2017key].
+Similarly, in @fig-pipe-02, to simulate the final size of an epidemic we can follow the *Scenarios pipeline*. First, we *Read population data* to obtain its demographic distribution and social contact matrix. Next, we collect the estimate of transmission data output, ideally from the *Transmissibility pipeline*. Finally, we use these three data as inputs to *Simulate transmission scenarios* and determine the proportion of the population infected. This output allows us to assess the long-term impact of the outbreak and evaluate intervention choices [@cori2017key].
 
 ![Scenarios pipelines](task_pipeline-pipe_02.svg){#fig-pipe-02}
 
-## How we use this approach
+## How we use the Pipelines?
 
-We use the Pipeline approach to integrate multiple packages in the design of: 
+We use the Pipeline approach to connect multiple packages in the design of: 
 
 - Reproducible report templates per Pipeline stored in the [`{episoap}`](https://epiverse-trace.github.io/episoap/) package,
 - Code scripts stored in the [`{howto}`](https://epiverse-trace.github.io/howto/) repository, and
