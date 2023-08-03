@@ -36,7 +36,7 @@ We can solve Outbreak Analytics *tasks* connecting multiple packages in *pipelin
 
 We can view Outbreak analytics as a set of related data analysis __Tasks__. In @fig-tasks we represent this in a directed graph, where each *node* is a Task and each *directed edge* represents the flow of input and output data. Tasks are connected similarly to the [tidyverse](https://r4ds.hadley.nz/whole-game.html) diagram for exploratory data analysis. 
 
-![Task for outbreak analytics](task_pipeline-minimal.svg){#fig-tasks}
+![Task for outbreak analytics](task_pipeline-minimal.svg){#fig-tasks fig-alt="Directed graph where tasks are nodes and data flows are directed edges like arrows. One task connect with multiple other tasks."}
 
 In @fig-tasks-detailed we have a summarized detail of data inputs and outputs between Tasks. For example, for the first task on the left called *Read case data* we need a data input called *Case data* to get two data outputs called *Linelist* and *Contact data*.
 
