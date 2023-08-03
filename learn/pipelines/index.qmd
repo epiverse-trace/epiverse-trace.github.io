@@ -30,11 +30,9 @@ We can solve Outbreak Analytics *tasks* connecting multiple packages in *pipelin
 
 *Outbreak analytics* is a specialized field within data science that focuses on the technological and methodological aspects of the outbreak data pipeline. This includes the systematic collection, analysis, modeling, and reporting of data to inform outbreak response [@polonsky2019outbreak].
 
-
-
 ### Tasks
 
-We can view Outbreak analytics as a set of related data analysis __Tasks__. In @fig-tasks we represent this in a directed graph, where each *node* is a Task and each *directed edge* represents the flow of input and output data. Tasks are connected similarly to the [tidyverse](https://r4ds.hadley.nz/whole-game.html) diagram for exploratory data analysis. 
+We can view Outbreak analytics as a set of related data analysis __Tasks__. In @fig-tasks we represent this in a directed graph, where each *node* is a Task and each *directed edge* represents the flow of input and output data. Tasks are connected similarly to the [tidyverse](https://r4ds.hadley.nz/whole-game.html) diagram for exploratory data analysis.
 
 ![Task for outbreak analytics](task_pipeline-minimal.svg){#fig-tasks fig-alt="Directed graph where tasks are nodes and data flows are directed edges like arrows. One task connect with multiple other tasks."}
 
@@ -46,7 +44,7 @@ One Task can contain different methods and packages for similar data inputs and 
 
 ### Pipelines
 
-We defined a __Pipeline__ as a set of connected Tasks required to obtain an informative outcome for decision-making purposes. 
+We defined a __Pipeline__ as a set of connected Tasks required to obtain an informative outcome for decision-making purposes.
 
 For example, to quantify the time-varying reproduction number we can follow the *Transmissibility pipeline* (@fig-pipe-01). First, we *Read case data* to generate a linelist. Then, we *Describe case data*, using the linelist as inputs to generate delay distributions and epicurves. Finally, we use both outputs as inputs to *Quantify transmission* and generate an estimate of transmission. This output allows us to determine the intensity of interventions needed to achieve epidemic control [@cori2017key].
 
