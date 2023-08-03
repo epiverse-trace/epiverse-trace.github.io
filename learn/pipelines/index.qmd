@@ -56,7 +56,7 @@ Similarly, to simulate the final size of an epidemic we can follow the *Scenario
 
 ## How we use the Pipelines?
 
-We use the Pipeline approach to connect multiple packages in the design of: 
+We use the Pipeline approach to connect multiple packages in the design of:
 
 - Reproducible report templates per Pipeline stored in the [`{episoap}`](https://epiverse-trace.github.io/episoap/) package,
 - Code scripts stored in the [`{howto}`](https://epiverse-trace.github.io/howto/) repository, and
