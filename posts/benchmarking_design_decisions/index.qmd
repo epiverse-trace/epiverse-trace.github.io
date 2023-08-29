@@ -1,0 +1,216 @@
+---
+title: "Benchmarking condition handling in R package design"
+author:
+  - name: "James Mba Azam"
+    orcid: "https://orcid.org/0000-0001-5782-7330"
+date: last-modified
+categories: [benchmarking, R, condition handling, R packages, software architecture]
+format:
+  html:
+    toc: true
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+R package development often requires making design decisions about the behaviour
+of functions. One such design decision is condition handling and signalling,
+that is, how to deal with problems with code execution.
+
+Condition handling and signalling in R is classified into errors, warnings, and
+messages. Errors refer to cases where something fatal happens during code
+execution so that it halts, for example, when a function is run without
+specifying the required arguments. Warnings are used to handle less fatal
+issues with code execution that does not need to halt the process, and
+messages are used to provide informative signals to the user, for example
+the messages you occasionally see in the console when you successfully load
+packages like `tidyverse` with `library(tiydverse)` [^1].
+
+Even though condition handling is well defined in most cases, its application can
+occasionally be nuanced. Take for example the design of stochastic simulation functions, which
+are run many times because each run produces a different realisation of the results.
+Condition handling in such functions must be designed carefully so as not to be disruptive [^2].
+The consideration is the least disruptive behaviour in cases where code execution
+goes wrong, but not terribly wrong to cause issues down the line. In such a case,
+the developer must decide whether to throw a warning and fix the issue internally or
+to throw an informative error to aid with fixing it. Either options would be
+fine but the developer will have to manage their implications.
+
+Base R ships with functionality for condition handling and signalling. There is
+`stop()` for signaling errors, `warning()` for throwing warnings messages
+and `message()` for providing messages. These base R functions are, however,
+limited in flexibility in terms of formatting. 
+
+If the developer seeks more
+flexibility, there might decide to take on a package dependency to handle this.
+The `tidyverse` provides the [cli](https://cli.r-lib.org/articles/semantic-cli.html) package as a solution. `cli` provides many advanced features that will not be discussed here, but of
+note is its `cli_abort()`, `cli_warn()`, and `cli_inform()` functions for
+signalling errors, warnings, and messages respectfully.
+
+Dependencies often ease the work of developers but come at a cost. Run time
+costs can for example be teased out using benchmarking experiments. Here, we will
+benchmark base R's `warn()` function against `cli's` `cli_warn()` to investigate
+if the dependency is worth taking on for the benefit of its flexibility.
+
+## Experiment: throwing warnings with base::warning() vs cli::cli_warn()
+
+We are considering different scenarios of number of warnings thrown to tease out
+how the benchmarks change with respect to number of warnings.
+
+### Case 1: Functions throwing one warning
+
+We will define a function that throws one warning.
+
+Based on this description, we will need 2 main packages, [cli](https://cli.r-lib.org/articles/semantic-cli.html) for the function
+in question here and microbenchmark\](https://cran.r-project.org/web/packages/microbenchmark/index.html)
+to measure the run times. We will also use base R's `is.integer()` to
+check whether the input is an integer.
+
+Let us load the packages
+
+```{r}
+library(microbenchmark)
+library(cli)
+```
+
+#### One `base::warning()` instance
+
+Let us define a function to throw one warning using base R.
+
+```{r}
+base_warn_bmrk <- function(){
+    warning("x must be an integer")
+  }
+```
+
+Let's test `base_warn_bmrk()`.
+
+```{r}
+base_warn_bmrk()
+```
+
+As we can see, it works as expected.
+
+Now, let's define a function to throw a warning using `cli_warn()`.
+
+#### One `cli::cli_warn()` instance
+
+```{r}
+cli_warn_bmrk <- function(){
+    cli::cli_warn("x must be an integer")
+  }
+```
+
+Let's test `cli_warn_bmrk()`:
+
+```{r}
+cli_warn_bmrk()
+```
+
+`cli_warn_bmrk()` also works as expected.
+
+We will also check if the benchmark scales with the number of warnings in
+the function. To do this, we will modify the original functions to throw
+two warnings.
+
+### Case 2: Functions throwing two warnings
+
+#### Two `base::warning()` instances
+
+Let us define a function to throw a warning using base R, if an input is
+not an integer.
+
+```{r}
+base_warn_bmrk2 <- function(){
+  warning("x must be an integer\n")
+  
+  warning("y must be an integer")
+  }
+```
+
+Let's test `base_warn_bmrk2()`.
+
+```{r}
+base_warn_bmrk2()
+```
+
+`base_warn_bmrk2` works as expected.
+
+#### Two `cli::cli_warn()` instances
+
+```{r}
+cli_warn_bmrk2 <- function(){
+  cli::cli_warn("x must be an integer\n")
+  cli::cli_warn("y must be an integer")
+}
+```
+
+Let's test `cli_warn_bmrk2()`:
+
+```{r}
+cli_warn_bmrk2()
+```
+
+`cli_warn_bmrk2()` also works as expected.
+
+Now, to the fun part, let us run the functions $1000$ times and plot
+the results.
+
+## Results
+
+### Case 1: Functions throwing one warning
+
+Here, as we know the functions will throw warnings, we will suppress
+them to avoid cluttering this article with their outputs.
+
+```{r warning=FALSE}
+reps <- 1000
+bnmrk_df <- microbenchmark(
+  cli_warn = cli_warn_bmrk(),
+  base_warn = base_warn_bmrk(),
+  times = reps
+)
+
+ggplot2::autoplot(bnmrk_df)
+# title(paste("Functions throwing one warning (replicated", reps, 'times)'))
+```
+
+### Case 2: Functions throwing two warnings
+
+```{r warning=FALSE}
+reps <- 1000
+
+bnmrk_df3 <- microbenchmark(
+  cli_warn = cli_warn_bmrk2(),
+  base_warn = base_warn_bmrk2(),
+  times = reps
+)
+
+ggplot2::autoplot(bnmrk_df3)
+# title(paste("Functions throwing two warnings (replicated", reps, 'times)'))
+```
+
+We can see from this simple example that `cli::cli_warn()` was <insert magnitude> times
+slower on average than `base::warn()`. The benchmark scaled linearly with the
+number of calls to the warning functions. This seems to suggest that taking on
+`cli` as a dependency for condition signalling might require carefully considering
+whether the dependency is necessary and if so, some design considerations to limit
+calls to it. This issue of speed has recently been identified[^3] among other developers
+and highlights the need for benchmarking as a quick check on design decisions.
+
+## Conclusion
+
+In designing R package infrastructure, it is important that the developer(s)
+considers the impact of user-facing decisions. Here, we have demonstrated
+how this decision can be driven with data from benchmarking exercises.
+We show how a simple decision to use `cli::cli_warn()` to handle condition
+signalling could come with a bit of speed.
+
+The demonstration here can be extended to other design decisions.
+We recommend benchmarking as a way to help the developer make design
+decisions.
+
+[^1]: Hadley Wickham's Advanced R chapter on Exceptions and Debugging: http://adv-r.had.co.nz/Exceptions-Debugging.html
+[^2]: R Bloggers post "Error handling in R": https://www.r-bloggers.com/2012/10/error-handling-in-r/
+[^3]: Formating errors can be slow/variable: https://github.com/r-lib/cli/issues/617
