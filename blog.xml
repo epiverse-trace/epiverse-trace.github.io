@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.232</generator>
+<generator>quarto-1.4.349</generator>
 <lastBuildDate>Tue, 18 Jul 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Communicating development stages of open-source software</title>
@@ -1184,7 +1184,9 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">.row_names_info</span>(x, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">type =</span> 0L)</span>
+font-style: inherit;">type =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>L)</span>
 <span id="cb21-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">attributes</span>(x) <span class="ot" style="color: #003B4F;
@@ -1404,7 +1406,12 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-1-novel-respiratory-disease-in-the-gambia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-1-novel-respiratory-disease-in-the-gambia">Scenario 1: Novel respiratory disease in The Gambia</h2>
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid figure-img" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
+<figcaption class="figure-caption">Scenario 1 details</figcaption>
+</figure>
+</div>
 <section id="analytic-pipeline-for-scenario-1-analysed-by-group-2" class="level3">
 <h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-1-analysed-by-group-2">Analytic pipeline for scenario 1 (analysed by group 2)</h3>
 <ul>
@@ -1537,7 +1544,12 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia">Scenario 2: Outbreak of an unidentified disease in rural Colombia</h2>
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario2smq.png" class="img-fluid" alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario2smq.png" class="img-fluid figure-img" alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"></p>
+<figcaption class="figure-caption">Scenario 2 details</figcaption>
+</figure>
+</div>
 <section id="analytic-pipeline-for-scenario-2-analysed-by-group-3" class="level3">
 <h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-2-analysed-by-group-3">Analytic pipeline for scenario 2 (analysed by group 3)</h3>
 <ul>
@@ -1624,7 +1636,12 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-3-reston-ebolavirus-in-the-philippines" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-3-reston-ebolavirus-in-the-philippines">Scenario 3: Reston Ebolavirus in the Philippines</h2>
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario3smq.png" class="img-fluid" alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario3smq.png" class="img-fluid figure-img" alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"></p>
+<figcaption class="figure-caption">Scenario 3 details</figcaption>
+</figure>
+</div>
 <section id="analytic-pipeline-for-scenario-3-analysed-by-group-4" class="level3">
 <h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-3-analysed-by-group-4">Analytic pipeline for scenario 3 (analysed by group 4)</h3>
 <ul>
@@ -1718,7 +1735,12 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-4-emerging-avian-influenza-in-cambodia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-4-emerging-avian-influenza-in-cambodia">Scenario 4: Emerging avian influenza in Cambodia</h2>
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario4smq.png" class="img-fluid" alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario4smq.png" class="img-fluid figure-img" alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"></p>
+<figcaption class="figure-caption">Scenario 4 details</figcaption>
+</figure>
+</div>
 <section id="analytic-pipeline-for-scenario-4-analysed-by-group-5" class="level3">
 <h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-4-analysed-by-group-5">Analytic pipeline for scenario 4 (analysed by group 5)</h3>
 <ul>
@@ -1775,7 +1797,12 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-5-outbreak-of-respiratory-disease-in-canada" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-5-outbreak-of-respiratory-disease-in-canada">Scenario 5: Outbreak of respiratory disease in Canada</h2>
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario5smq.png" class="img-fluid" alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario5smq.png" class="img-fluid figure-img" alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"></p>
+<figcaption class="figure-caption">Scenario 5 details</figcaption>
+</figure>
+</div>
 <section id="analytic-pipeline-for-scenario-5-analysed-by-group-1" class="level3">
 <h3 class="anchored" data-anchor-id="analytic-pipeline-for-scenario-5-analysed-by-group-1">Analytic pipeline for scenario 5 (analysed by group 1)</h3>
 <ul>
@@ -1880,7 +1907,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="list-of-contributors">List of contributors</h2>
 <ul>
 <li>Group 1: Rich Fitzjohn, Mauricio Santos Vega, Andrea Torneri, Abdoelnaser Degoot, Rolina van Gaalen, Zulma Cucunuba, Joseph Tsui, Claudine Lim, Adam Kucharski.</li>
-<li>Group 2: Juan Daniel Umana, Joel Hellewell, Anne Cori, Fanck Kalala, Amrish Baidjoe, Sara Hollis, Chaoran Chen, Pratik Gupte, Andree Valle.</li>
+<li>Group 2: Juan Daniel Umaña, Joel Hellewell, Anne Cori, Fanck Kalala, Amrish Baidjoe, Sara Hollis, Chaoran Chen, Pratik Gupte, Andree Valle.</li>
 <li>Group 3: Mutono Nyamai, Finlay Campbell, Arminder Deol, Simone Carter, Anita Shah, Neale Batra, Issa Karambal, Danil Mihailov, Sebastian Funk.</li>
 <li>Group 4: Anton Camacho, Louise Dyson, Jeremy Bingham, Simon Cauchemez, Alex Spina, Esther Van Kleef, Anna Carnegie, James Azam.</li>
 <li>Group 5: Olivia Keiser, Geraldine Gomez, John Lees, Don Klinkenberg, Matthew Biggerstaff, David Santiago Quevedo, Joshua Lambert, Carmen Tamayo.</li>
@@ -2980,7 +3007,51 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-26564"></div><script>tweet={"url":"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305","author_name":"Alex Engler","author_url":"https:\/\/twitter.com\/AlexCEngler","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EDoes \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E have a position in the trustworthiness \/ validity of any ~statistical methods~ packages in \u003Ca href=\"https:\/\/twitter.com\/hashtag\/Rstats?src=hash&amp;ref_src=twsrc%5Etfw\"\u003E#Rstats\u003C\/a\u003E?\u003Cbr\u003E\u003Cbr\u003EOr, is there a list of packages that \u003Ca href=\"https:\/\/twitter.com\/rstudio?ref_src=twsrc%5Etfw\"\u003E@rstudio\u003C\/a\u003E considers &#39;approved&#39; and thus will recommend to clients?\u003C\/p\u003E&mdash; Alex Engler (@AlexCEngler) \u003Ca href=\"https:\/\/twitter.com\/AlexCEngler\/status\/1092123648834658305?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-26564").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-83244"></div><script>tweet=<!DOCTYPE html>
+<html lang="en" class="dog">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter / ?</title>
+    <meta name="version" content="1">
+    <link href="https://abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-39d97faf8c7cf33e502c3c015176efd9.css">
+  </head>
+  <body dir="auto">
+    <div class="top">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
+        <defs/>
+        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="content">
+        <a href="https://twitter.com" title="Twitter logo"><svg class="bird" viewBox="0 0 24 24"><g><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g></svg></a>
+        <h1 id="header">Nothing to see here</h1>
+        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
+
+          <a id="button_search" href="/" class="button">Looking for this?</a>
+
+      </div>
+      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
+      <div class="footer">
+        <ul>
+          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
+          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
+          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
+          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
+          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
+          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
+          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
+          <li dir="ltr">&copy; Twitter <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
+
+;document.getElementById("tweet-83244").innerHTML = tweet["html"];<p></p>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
@@ -3453,7 +3524,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h1>Conclusion: automated validation vs peer-review</h1>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-45514"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-45514").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-70751"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-70751").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

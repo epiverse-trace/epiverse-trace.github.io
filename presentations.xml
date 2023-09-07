@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.232</generator>
+<generator>quarto-1.4.349</generator>
 <lastBuildDate>Wed, 31 May 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Juniper seminar on improving software for epidemic response</title>
@@ -58,16 +58,12 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 
 
 <p>This showcase is part of a regular cycle of online meetings to present tools for epidemiology.</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <table class="table">
 <colgroup>
 <col style="width: 21%">
@@ -164,6 +160,7 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 <section id="sivirep-slides" class="level2">
@@ -281,16 +278,12 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 
 
 <p>This showcase is part of a regular cycle of online meetings to present tools for epidemiology.</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <table class="table">
 <colgroup>
 <col style="width: 21%">
@@ -387,6 +380,7 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 <section id="finalsize-slides" class="level2">
