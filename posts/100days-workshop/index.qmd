@@ -32,7 +32,7 @@ To generate linelist data, the package [`bpmodels`](https://github.com/epiverse-
 
 To create the contact tracing database, a random number of contacts was generated for each of the cases included in the linelist. These contacts were then assigned a category of *became case*, *under follow up* or *lost to follow up*, at random.
 
-- Through this workshop, we identified the need for a tool to simulate outbreak data in a linelist format, to test analysis methods and other packages while having control over the characteristics of the test data. For this purpose, an R package is currently in progress, see [simulist](https://github.com/epiverse-trace/pitcher/discussions/9).
+- Through this workshop, we identified the need for a tool to simulate outbreak data in a linelist format, to test analysis methods and other packages while having control over the characteristics of the test data. For this purpose, an R package is currently in progress, see [simulist](https://github.com/orgs/epiverse-trace/discussions/46).
 
 ## Scenario 1: Novel respiratory disease in The Gambia
 
