@@ -63,6 +63,6 @@ jobs:
             author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
             branch: automated-release-post
             branch-suffix: timestamp
-            add-paths: _data/papers.bib
+            add-paths: posts
             title: Automated release blog post
             delete-branch: true
