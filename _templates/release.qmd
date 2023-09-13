@@ -1,0 +1,12 @@
+---
+title: "{{ pkgname }} {{ version }}"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "{{ date }}"
+categories: [new-release]
+---
+
+We are very excited to announced the release of a new {{ pkgname }} version {{ v }}.
+Here is a automatically generated summary of the changes in this version.
+
+{{ notes }}
