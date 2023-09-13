@@ -54,15 +54,15 @@ jobs:
           }
         shell: Rscript {0}
 
-        - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
-          id: cpr
-          with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            commit-message: Automated release blog post
-            committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
-            author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
-            branch: automated-release-post
-            branch-suffix: timestamp
-            add-paths: posts
-            title: Automated release blog post
-            delete-branch: true
+      - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
+        id: cpr
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Automated release blog post
+          committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
+          author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
+          branch: automated-release-post
+          branch-suffix: timestamp
+          add-paths: posts
+          title: Automated release blog post
+          delete-branch: true
