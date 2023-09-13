@@ -1,0 +1,66 @@
+on:
+  schedule:
+    cron: 32 23 * * *
+
+name: Automate release post publication
+
+jobs:
+  automate-release-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - uses: r-lib/actions/setup-r@v2
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            gh
+            purrr
+            lubridate
+            knitr
+
+      - name: Check for new releases
+        run: |
+          source("_scripts/create_release_post.R")
+          library(gh)
+
+          org <- "epiverse-trace"
+
+          repos <- gh::gh(
+            "/orgs/{org}/repos",
+            org = org,
+            per_page = 100
+          ) |>
+            purrr::discard(\(x) x$private) |>
+            purrr::keep(\(x) "r-package" %in% x$topics) |>
+            purrr::map_chr("full_name")
+
+          release_today <- repos |>
+            purrr::set_names() |>
+            purrr::map(
+              ~ gh::gh("/repos/{full_name}/releases", full_name = .x, per_page = 1)
+            ) |>
+            purrr::map(unlist, recursive = FALSE) |>
+            purrr::keep(~ isTRUE(lubridate::ymd_hms(.x$published_at) - lubridate::now() > -1))
+
+          if (!is.null(release_today)) {
+
+            release_today |>
+              purrr::iwalk(create_release_post)
+
+          }
+
+        - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
+          id: cpr
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
+            commit-message: Automated release blog post
+            committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
+            author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
+            branch: automated-release-post
+            branch-suffix: timestamp
+            add-paths: _data/papers.bib
+            title: Automated release blog post
+            delete-branch: true
