@@ -51,6 +51,7 @@ jobs:
               purrr::iwalk(create_release_post)
 
           }
+        shell: Rscript {0}
 
         - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
           id: cpr
