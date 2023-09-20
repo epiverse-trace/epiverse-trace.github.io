@@ -8,6 +8,9 @@ name: Automate release post publication
 jobs:
   automate-release-post:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
