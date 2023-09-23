@@ -14,9 +14,9 @@ format:
 We're evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use.
 It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don't change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.
 
-> Does [@rstudio](https://twitter.com/rstudio?ref_src=twsrc%5Etfw) have a position in the trustworthiness / validity of any ~statistical methods~ packages in [#Rstats](https://twitter.com/hashtag/Rstats?src=hash&amp;ref_src=twsrc%5Etfw)?
+> Does [@rstudio](https://twitter.com/rstudio) have a position in the trustworthiness / validity of any ~statistical methods~ packages in [#Rstats](https://twitter.com/hashtag/Rstats)?
 >
-> Or, is there a list of packages that [@rstudio](https://twitter.com/rstudio?ref_src=twsrc%5Etfw) considers 'approved' and thus will recommend to clients?
+> Or, is there a list of packages that [@rstudio](https://twitter.com/rstudio) considers 'approved' and thus will recommend to clients?
 > 
 > --- *(deleted tweet)* February 3, 2019
 
