@@ -17,7 +17,7 @@ It is now increasingly common to add continuous integration to software packages
 > Does [@rstudio](https://twitter.com/rstudio) have a position in the trustworthiness / validity of any ~statistical methods~ packages in [#Rstats](https://twitter.com/hashtag/Rstats)?
 >
 > Or, is there a list of packages that [@rstudio](https://twitter.com/rstudio) considers 'approved' and thus will recommend to clients?
-> 
+>
 > --- *(deleted tweet)* February 3, 2019
 
 It is likely that most statistical package authors run some tests on their own during development but there doesn't seem to be guidelines on how to test statistical correctness in a solid and standard way [^1].
