@@ -66,7 +66,7 @@ test_that("Results of gemma2 equal those of GEMMA v 0.97", {
 })
 ```
 
-::: {.callout-tip title="Example with `centroid()}
+::: {.callout-tip title="Example with `centroid()`"}
 
 ```{r}
 library(testthat)
@@ -92,7 +92,7 @@ However, this approach cannot be used in all cases. Indeed, there may not be a r
 
 An alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.
 
-::: {.callout-tip title="Example with `centroid()}
+::: {.callout-tip title="Example with `centroid()`"}
 
 ```{r}
 test_that("centroid() is inside the hypercube containing the data points", {
@@ -129,7 +129,7 @@ upper_limit <- function(r0) {
 
 An even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.
 
-::: {.callout-tip title="Example with `centroid()}
+::: {.callout-tip title="Example with `centroid()`"}
 
 ```{r}
 test_that("centroid() increases when coordinates from one point increase", {
