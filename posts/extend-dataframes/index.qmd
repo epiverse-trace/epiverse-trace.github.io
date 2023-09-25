@@ -242,7 +242,11 @@ This wraps up the need for adding function to perform data manipulation using th
 
 However, there is some final housekeeping to do. In cases when {dplyr} is not a package dependency (either imported or suggested), then the S3 generic `dplyr_reconstruct()` is required to be loaded. In R versions before 3.6.0 -- this also works for R versions later than 3.6.0 -- the generic function needs to be registered. This is done by writing an `.onLoad()` function, typically in a file called `zzz.R`. This is included in the {ExtendDataFrames} package for illustrative purposes.
 
-```{r filename="zzz.R"}
+<!-- 
+  This is not yet documented in quarto but it looks like code blocks with the
+  'filename' instruction needs .r rather than r as language.
+-->
+```{.r filename="zzz.R"}
 .onLoad <- function(libname, pkgname) {
   s3_register("dplyr::dplyr_reconstruct", "birthdays")
   invisible()
