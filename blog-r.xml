@@ -9,8 +9,8 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.3.450</generator>
-<lastBuildDate>Mon, 17 Jul 2023 22:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.376</generator>
+<lastBuildDate>Tue, 18 Jul 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Communicating development stages of open-source software</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
@@ -66,8 +66,8 @@
 <p>As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/comm-software-devel/https:/raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the RepoStatus framework. The flow is not strictly linear as one package can enter and exist stages such as 'suspended', 'abandoned', 'inactive', etc. There a thin green line with the text 'Repo has reached a stable state' between the stages 'concept', 'WIP', 'abandoned', 'suspended' and the stages 'active', 'unsupported', 'inactive'."></p>
-<figcaption class="figure-caption">RepoStatus badge system. <em>Reused under CC BY-SA 4.0 from <a href="https://www.repostatus.org/">repostatus.org</a></em></figcaption>
+<p><img src="https://epiverse-trace.github.io/posts/comm-software-devel/https:/raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img"></p>
+<figcaption>RepoStatus badge system. <em>Reused under CC BY-SA 4.0 from <a href="https://www.repostatus.org/">repostatus.org</a></em></figcaption>
 </figure>
 </div>
 </section>
@@ -84,8 +84,8 @@
 <p>The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/comm-software-devel/https:/raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."></p>
-<figcaption class="figure-caption">{lifecycle} badge system. <em>Reused under MIT license from <a href="https://lifecycle.r-lib.org/articles/stages.html">lifecycles R package</a></em></figcaption>
+<p><img src="https://epiverse-trace.github.io/posts/comm-software-devel/https:/raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img"></p>
+<figcaption>{lifecycle} badge system. <em>Reused under MIT license from <a href="https://lifecycle.r-lib.org/articles/stages.html">lifecycles R package</a></em></figcaption>
 </figure>
 </div>
 <p>One of the main differences between the tidyverse lifecycles, compared to the others discussed in this posts is their applicability at different levels in the code. The lifecycle badges can be applied at the package-level (e.g., <a href="https://github.com/tidyverse/stringr">stringr</a>), the function-level (e.g.&nbsp;<a href="https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/group-trim.R"><code>dplyr::group_trim()</code></a>) or the argument level (e.g., <a href="https://github.com/tidyverse/dplyr/blob/16b472fb2afc50a87502c2b4ed803e2f5f82b9d6/R/across.R#L36"><code>dplyr::across()</code></a>).</p>
@@ -122,14 +122,15 @@
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Version_control" class="uri">https://en.wikipedia.org/wiki/Version_control</a>↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
   author = {W. Lambert, Joshua},
   title = {Communicating Development Stages of Open-Source Software},
+  pages = {undefined},
   date = {2023-07-18},
   url = {https://epiverse-trace.github.io//posts/comm-software-devel},
   langid = {en}
@@ -145,7 +146,7 @@ Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.g
   <category>lifecycles</category>
   <category>community</category>
   <guid>https://epiverse-trace.github.io/posts/comm-software-devel/index.html</guid>
-  <pubDate>Mon, 17 Jul 2023 22:00:00 GMT</pubDate>
+  <pubDate>Tue, 18 Jul 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Sharing the C++ Code of an Rcpp Package</title>
@@ -228,7 +229,7 @@ font-style: inherit;"># &lt;= code from which RcppExports.cpp generates</span></
 <div class="code-with-filename-file">
 <pre><strong>src/rcpp_hello.cpp</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;
+<div class="sourceCode" id="cb2" data-filename="src/rcpp_hello.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">#include </span><span class="im" style="color: #00769E;
 background-color: null;
@@ -323,7 +324,7 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>inst/include/mypackage.h</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb3" data-filename="inst/include/mypackage.h" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Manually created package header with manual code inclusion</span></span>
 <span id="cb3-2"><span class="pp" style="color: #AD0000;
@@ -363,7 +364,7 @@ font-style: inherit;">// mypackage_mypackage_H</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>inst/include/header_01.h</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb4" data-filename="inst/include/header_01.h" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// In a manually created header file, say, header_01.h</span></span>
 <span id="cb4-2"><span class="co" style="color: #5E5E5E;
@@ -435,7 +436,7 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>mypackage/src/hello_world.cpp</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb5" data-filename="mypackage/src/hello_world.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// #include &lt;Rcpp.h&gt;       // include Rcpp if necessary</span></span>
 <span id="cb5-2"><span class="pp" style="color: #AD0000;
@@ -503,7 +504,7 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>yourpackage/src/hello_world.cpp</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb6" data-filename="yourpackage/src/hello_world.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// [[Rcpp::depends(mypackage)]]   /// specify dependency</span></span>
 <span id="cb6-2"><span class="pp" style="color: #AD0000;
@@ -582,9 +583,10 @@ font-style: inherit;">*</span>.h</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
   author = {Gupte, Pratik},
   title = {Sharing the {C++} {Code} of an {Rcpp} {Package}},
+  pages = {undefined},
   date = {2023-06-05},
   url = {https://epiverse-trace.github.io//posts/share-cpp},
   langid = {en}
@@ -599,7 +601,7 @@ Package.”</span> June 5, 2023. <a href="https://epiverse-trace.github.io//post
   <category>Rcpp</category>
   <category>interoperability</category>
   <guid>https://epiverse-trace.github.io/posts/share-cpp/index.html</guid>
-  <pubDate>Sun, 04 Jun 2023 22:00:00 GMT</pubDate>
+  <pubDate>Mon, 05 Jun 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Extending Data Frames</title>
@@ -1184,7 +1186,9 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">.row_names_info</span>(x, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">type =</span> 0L)</span>
+font-style: inherit;">type =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>L)</span>
 <span id="cb21-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">attributes</span>(x) <span class="ot" style="color: #003B4F;
@@ -1293,12 +1297,15 @@ font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
 </div>
 <p>This wraps up the need for adding function to perform data manipulation using the reconstruction design outlined above.</p>
 <p>However, there is some final housekeeping to do. In cases when {dplyr} is not a package dependency (either imported or suggested), then the S3 generic <code>dplyr_reconstruct()</code> is required to be loaded. In R versions before 3.6.0 – this also works for R versions later than 3.6.0 – the generic function needs to be registered. This is done by writing an <code>.onLoad()</code> function, typically in a file called <code>zzz.R</code>. This is included in the {ExtendDataFrames} package for illustrative purposes.</p>
-<div class="cell">
+<!-- 
+  This is not yet documented in quarto but it looks like code blocks with the
+  'filename' instruction needs .r rather than r as language.
+-->
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>zzz.R</strong></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">.onLoad <span class="ot" style="color: #003B4F;
+<div class="sourceCode" id="cb27" data-filename="zzz.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">.onLoad <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -1314,7 +1321,6 @@ font-style: inherit;">"birthdays"</span>)</span>
 background-color: null;
 font-style: inherit;">invisible</span>()</span>
 <span id="cb27-4">}</span></code></pre></div>
-</div>
 </div>
 <p>The <code>s3_register()</code> function used in <code>.onLoad()</code> also needs to be added to the package and this function is kindly supplied by both {vctrs} and {rlang} unlicensed and thus can be copied into another package. See the <a href="https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-attach-vs-load">R packages book</a> for information about <code>.onLoad()</code> and attaching and loading in general.</p>
 <p>Since R version 3.6.0 this <a href="https://blog.r-project.org/2019/08/19/s3-method-lookup/index.html">S3 generic registration</a> happens automatically with <code>S3Method()</code> in the package namespace using the {roxygen2} documentation <code>#' @exportS3Method dplyr::dplyr_reconstruct</code>.</p>
@@ -1347,14 +1353,15 @@ font-style: inherit;">#' }</span></span></code></pre></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>This is the working practise of tidyverse packages: <a href="https://www.tidyverse.org/blog/2019/04/r-version-support/">https://www.tidyverse.org/blog/2019/04/r-version-support/</a>↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
   author = {W. Lambert, Joshua},
   title = {Extending {Data} {Frames}},
+  pages = {undefined},
   date = {2023-04-12},
   url = {https://epiverse-trace.github.io//posts/extend-dataframes},
   langid = {en}
@@ -1370,7 +1377,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
   <category>S3 class</category>
   <category>dplyr</category>
   <guid>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</guid>
-  <pubDate>Tue, 11 Apr 2023 22:00:00 GMT</pubDate>
+  <pubDate>Wed, 12 Apr 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</title>
@@ -1647,23 +1654,22 @@ font-style: inherit;">w =</span> weights))</span>
 <section id="more-complex-documentation-presentation" class="level2">
 <h2 class="anchored" data-anchor-id="more-complex-documentation-presentation">More complex documentation presentation</h2>
 <p>On the topic of arguments, another pitfall related to the conversion to an S3 generic is the change in the documentation. Below is a collage of before / after the change. This is quite minor and some users may not even notice it but I remember it was very confusing to me when I started using R and I didn’t really know what S3 or OO was: “what do you mean, ‘Default S3 method’, which case applies to me?”</p>
-<div class="quarto-layout-panel">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption>
+<figcaption>Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption>
 </figure>
 </div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/after_conversion.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Screenshot of the <code>centroid()</code> documentation after conversion to an S3 generic</figcaption>
+<figcaption>Screenshot of the <code>centroid()</code> documentation after conversion to an S3 generic</figcaption>
 </figure>
-</div>
 </div>
 </div>
 </div>
@@ -1679,7 +1685,13 @@ font-style: inherit;">centroid</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>)</span></code></pre></div>
 </div>
-<p><img src="https://epiverse-trace.github.io/posts/s3-generic/error_trace.png" class="img-fluid"></p>
+<div id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div>
+<img src="https://epiverse-trace.github.io/posts/s3-generic/error_trace.png" id="fig-539a35d47e664c97a50115a146a7f1bd-1" class="img-fluid figure-img">
+</div>
+</figure>
+</div>
 <p>In this example, we see one extra line that did not exist when <code>centroid()</code> was a regular function, rather than a generic:</p>
 <blockquote class="blockquote">
 <p>centroid.default(3) at centroid.R#19</p>
@@ -1805,7 +1817,7 @@ font-style: inherit;"># code for a beautiful plot for your custom class</span></
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb8" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Imports</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1818,7 +1830,7 @@ font-style: inherit;">  generics</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb9" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
 <span id="cb9-2"><span class="co" style="color: #5E5E5E;
@@ -1838,7 +1850,7 @@ font-style: inherit;"># your code here</span></span>
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb10" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 <span id="cb10-2"></span>
@@ -1867,7 +1879,7 @@ Importing the generic
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb11" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Suggests</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1880,7 +1892,7 @@ font-style: inherit;">  generics</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb12" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @exportS3Method generics::fit</span></span>
 <span id="cb12-2">fit.myclass <span class="ot" style="color: #003B4F;
@@ -1897,7 +1909,7 @@ font-style: inherit;"># your code here</span></span>
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb13" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 <span id="cb13-2"></span>
@@ -1973,16 +1985,17 @@ Spreading the S3 love
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Note that we focus here on the S3 framework but R has other object orientation frameworks, as discussed in <a href="https://adv-r.hadley.nz/oo.html">the relevant section of the ‘Advanced R’ book by Hadley Wickham</a>↩︎</p></li>
 <li id="fn2"><p>Every rule has its exceptions though such as the <a href="https://generics.r-lib.org/">generics</a> package, built by prominent members of the R developer community, which overloads base R functions such as <code>as.factor()</code> or <code>as.difftime()</code>.↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Convert {Your} {R} {Function} to an {S3} {Generic:}
     {Benefits,} {Pitfalls} \&amp; {Design} {Considerations}},
+  pages = {undefined},
   date = {2023-02-20},
   url = {https://epiverse-trace.github.io//posts/s3-generic},
   langid = {en}
@@ -1998,7 +2011,7 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
   <category>S3</category>
   <category>interoperability</category>
   <guid>https://epiverse-trace.github.io/posts/s3-generic/index.html</guid>
-  <pubDate>Sun, 19 Feb 2023 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Improving the C++ Code Quality of an Rcpp Package</title>
@@ -2417,9 +2430,10 @@ font-style: inherit;">*</span>.cpp src</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
   author = {Gupte, Pratik},
   title = {Improving the {C++} {Code} {Quality} of an {Rcpp} {Package}},
+  pages = {undefined},
   date = {2023-02-16},
   url = {https://epiverse-trace.github.io//posts/lint-rcpp},
   langid = {en}
@@ -2433,7 +2447,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
   <category>R package</category>
   <category>Rcpp</category>
   <guid>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</guid>
-  <pubDate>Wed, 15 Feb 2023 23:00:00 GMT</pubDate>
+  <pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Ensuring &amp; Showcasing the Statistical Correctness of your R Package</title>
@@ -2922,7 +2936,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-25996"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-25996").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-27183"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-27183").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
@@ -2932,16 +2946,17 @@ font-style: inherit;">$</span>p_infected)</span>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>But see the <a href="https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/">“testing statistical software” post from Alex Hayes</a> where he presents his process to determine if he deems a statistical package trustworthy or not, and <a href="https://stats-devguide.ropensci.org/">rOpenSci Statistical Software Peer Review book</a>.↩︎</p></li>
 <li id="fn2"><p>Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎</p></li>
 </ol>
-</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Ensuring \&amp; {Showcasing} the {Statistical} {Correctness} of
     Your {R} {Package}},
+  pages = {undefined},
   date = {2023-02-13},
   url = {https://epiverse-trace.github.io//posts/statistical-correctness},
   langid = {en}
@@ -2955,7 +2970,7 @@ Correctness of Your R Package.”</span> February 13, 2023. <a href="https://epi
   <category>R package</category>
   <category>testing</category>
   <guid>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</guid>
-  <pubDate>Sun, 12 Feb 2023 23:00:00 GMT</pubDate>
+  <pubDate>Mon, 13 Feb 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/posts/statistical-correctness/testing_error.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
