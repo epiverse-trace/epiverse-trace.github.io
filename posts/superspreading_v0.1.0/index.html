@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Andree Valle-Campos">
-<meta name="dcterms.date" content="2022-12-05">
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2023-08-18">
 
-<title>Epiverse-TRACE developer space - Introductory training on Git and GitHub basics using Rstudio</title>
+<title>Epiverse-TRACE developer space - superspreading v0.1.0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,18 +74,16 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Epiverse-TRACE developer space - Introductory training on Git and GitHub basics using Rstudio">
+<meta property="og:title" content="Epiverse-TRACE developer space - superspreading v0.1.0">
 <meta property="og:description" content="">
-<meta property="og:image" content="https://epiverse-trace.github.io/learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg">
 <meta property="og:site-name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - Introductory training on Git and GitHub basics using Rstudio">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - superspreading v0.1.0">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -131,13 +129,9 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Introductory training on Git and GitHub basics using Rstudio</h1>
+      <h1 class="title">superspreading v0.1.0</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">data science</div>
-                <div class="quarto-category">git</div>
-                <div class="quarto-category">github</div>
-                <div class="quarto-category">rstudio</div>
-                <div class="quarto-category">next trainings</div>
+                <div class="quarto-category">new-release</div>
               </div>
                   </div>
   </div>
@@ -148,14 +142,14 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Andree Valle-Campos <a href="https://orcid.org/0000-0002-7779-481X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>The Epiverse-TRACE development team </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 5, 2022</p>
+        <p class="date">August 18, 2023</p>
       </div>
     </div>
     
@@ -166,190 +160,57 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#how-to-participate" id="toc-how-to-participate" class="nav-link active" data-scroll-target="#how-to-participate">How to participate?</a></li>
-  <li><a href="#what-will-you-learn" id="toc-what-will-you-learn" class="nav-link" data-scroll-target="#what-will-you-learn">What will you learn?</a></li>
-  <li><a href="#who-is-this-training-for" id="toc-who-is-this-training-for" class="nav-link" data-scroll-target="#who-is-this-training-for">Who is this training for?</a></li>
-  <li><a href="#what-is-not-included-in-this-training" id="toc-what-is-not-included-in-this-training" class="nav-link" data-scroll-target="#what-is-not-included-in-this-training">What is not included in this training?</a></li>
-  <li><a href="#duration" id="toc-duration" class="nav-link" data-scroll-target="#duration">Duration</a></li>
-  <li><a href="#program" id="toc-program" class="nav-link" data-scroll-target="#program">Program</a></li>
-  <li><a href="#materials-you-will-need" id="toc-materials-you-will-need" class="nav-link" data-scroll-target="#materials-you-will-need">Materials you will need</a></li>
-  <li><a href="#materials-we-used" id="toc-materials-we-used" class="nav-link" data-scroll-target="#materials-we-used">Materials we used</a></li>
-  <li><a href="#any-questions" id="toc-any-questions" class="nav-link" data-scroll-target="#any-questions">Any questions?</a></li>
-  <li><a href="#attributions" id="toc-attributions" class="nav-link" data-scroll-target="#attributions">Attributions</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<section id="how-to-participate" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-participate">How to participate?</h2>
-<p>If you want to participate in the next version of this training, please complete this <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0u9ZLSx5WyQWNOzQbU_G2lz0TKNBY-PqVU4cgQ8wP-IIWWA/viewform?usp=sf_link">expression of interest form</a>.</p>
-<!-- The next training session will take place on [Monday 5th of December, at 2pm BST](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Introductory+training+on+Git+basics&iso=20221205T14&p1=%3A&ah=4). Fill out this form to confirm your participation. -->
-<p><em>All data will be handled confidentially and may only be published in aggregated and anonymised form in reports on the scope of Epiverse-TRACE.</em></p>
-</section>
-<section id="what-will-you-learn" class="level2">
-<h2 class="anchored" data-anchor-id="what-will-you-learn">What will you learn?</h2>
+<p>We are very excited to announced the release of a new superspreading version v0.1.0. Here is a automatically generated summary of the changes in this version.</p>
+<p>Initial release of <em>superspreading</em>, an R package to estimate individual-level variation in disease transmission and provide summary metrics for superspreading events.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
 <ul>
-<li><p>Explain why you need to know about Version Control if you work on an Open Science project.</p></li>
-<li><p>Describe the most common verb commands to track changes using Git as a Version Control software within Rstudio.</p></li>
-<li><p>Create a personal online profile to share my tracked changes on the web using GitHub.</p></li>
-<li><p>Identify good practices to describe my tracked changes using Git and collaborate with others using GitHub.</p></li>
+<li>Offspring distributions, not available in base R, to fit to transmission data.</li>
+<li>Functions to calculate the probability an infectious disease will cause an epidemic, go extinct or be contained.</li>
+<li>Summary metric functions to calculate proportion of cases that cause a certain proportion of secondary transmission, as well as which proportion of cases are within clusters of a certain size.</li>
+<li>Three vignettes, including: an introduction to the package, estimating individual-level transmission from data, and the effect of superspreading on epidemic risk.</li>
+<li>Unit tests and documentation files.</li>
+<li>Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, and deploying the pkgdown website.</li>
 </ul>
 </section>
-<section id="who-is-this-training-for" class="level2">
-<h2 class="anchored" data-anchor-id="who-is-this-training-for">Who is this training for?</h2>
-<p>This training is pitched to beginners with basic knowledge of Git who wish to learn more. Three examples of the type of learner who would benefit from this training are included below. The course will be relevant to those from various backgrounds (research degree students, project managers, etc.)</p>
-<p>We thought about Lucia, Patricia, and Pepe as learner personas in designing the contents of this training:</p>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
 <ul>
-<li><p><a href="https://epiverse-trace.github.io/personas/lucia-outbreaks.html">Lucia</a> is a Field epidemiologist. She uses R to clean data and create plots for outbreak response. She wants to communicate her doubts and ideas with package maintainers.</p></li>
-<li><p><a href="https://epiverse-trace.github.io/personas/patricia-discoverer.html">Patricia</a> is a PhD student in a team with data analysts. She uses R to analyse infectious disease data. She wants to make her research code reusable and open to public.</p></li>
-<li><p><a href="https://epiverse-trace.github.io/personas/pepe-openmanager.html">Pepe</a> is a Project Manager interested in community building. He wants to learn how to provide feedback on contributing good practices to Open Science projects.</p></li>
+<li>None</li>
 </ul>
 </section>
-<section id="what-is-not-included-in-this-training" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-not-included-in-this-training">What is not included in this training?</h2>
-<p>Topics that are out of the scope of this training include:</p>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
 <ul>
-<li><p>How to solve conflicts when merging branches.</p></li>
-<li><p>How to revert commits as a safe method to undo changes.</p></li>
-<li><p>How to review pull requests in GitHub.</p></li>
-<li><p>How to use GitHub Actions for continuous integration of software.</p></li>
+<li>None</li>
 </ul>
 </section>
-<section id="duration" class="level2">
-<h2 class="anchored" data-anchor-id="duration">Duration</h2>
-<p>The duration of this training is of 3.5 hours with breaks of approximately 5 minutes each 60 minutes.</p>
-</section>
-<section id="program" class="level2">
-<h2 class="anchored" data-anchor-id="program">Program</h2>
-<table class="table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">Time</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">2:00 - 2:05</td>
-<td style="text-align: left;">Introduction</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15min</td>
-<td style="text-align: left;">What is version control and why should I use it for Open Science projects?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5min</td>
-<td style="text-align: left;">The general workflow</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10min</td>
-<td style="text-align: left;">How do I set up to start using Git?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">10min</td>
-<td style="text-align: left;">Where does Git store information?</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">30min</td>
-<td style="text-align: left;">How do I record changes in Git?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5min</td>
-<td style="text-align: left;"><em>Break away from the screen</em></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20min</td>
-<td style="text-align: left;">How do I record notes about my changes and why?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">30min</td>
-<td style="text-align: left;">How can I identify old versions of files? How do I review my changes?</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">10min</td>
-<td style="text-align: left;">How can I tell Git to ignore files I don’t want to track?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5min</td>
-<td style="text-align: left;"><em>Break away from the screen</em></td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20min</td>
-<td style="text-align: left;">How do I share my changes with others on the web?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">30min</td>
-<td style="text-align: left;">How can I use version control to collaborate with others?</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">15min</td>
-<td style="text-align: left;">What do I do when my changes conflict with someone else’s?</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">5:30 - 5:35</td>
-<td style="text-align: left;">Closing</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="materials-you-will-need" class="level2">
-<h2 class="anchored" data-anchor-id="materials-you-will-need">Materials you will need</h2>
-<p>We will use Git within the Rstudio graphical interface and GitHub. For this you will need to use these instructions:</p>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
 <ul>
-<li>Install R and Rstudio <a href="https://posit.co/download/rstudio-desktop/" class="uri">https://posit.co/download/rstudio-desktop/</a></li>
-<li>Install Git <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" class="uri">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a></li>
-<li>Create a GitHub account <a href="https://github.com/signup" class="uri">https://github.com/signup</a></li>
-</ul>
-</section>
-<section id="materials-we-used" class="level2">
-<h2 class="anchored" data-anchor-id="materials-we-used">Materials we used</h2>
-<ul>
-<li><a href="https://docs.google.com/presentation/d/1kE13oZCoSwlXJL_UhvhiX6W0hNaE1ZEkFsHAX-Pl5o0/edit?usp=sharing">Slides that we used in the training</a> with notes expanding the content for instructors</li>
-<li><a href="https://docs.google.com/document/d/1p7BWfqG0-advDHmhzYas1WyhHIZQvLs1HWR39_o7X7k/edit?usp=sharing">Template for our document with shared notes</a></li>
-<li><a href="https://docs.google.com/forms/d/1LsSsMmwuLIr_GCsw1K5AUxfCMb5_XiAlpno7up6zc8Q/copy">Template for our pre-training form</a></li>
-<li><a href="https://docs.google.com/forms/d/1h-mHJgPg0u7Www6D2-kz4Q3scQ03M30IYLm-0d6QIv8/copy">Template for our feedback form at the end of the training</a></li>
-<li><a href="https://drive.google.com/file/d/1yAztO0qb13Jo6qwQ-PN7tHgTbGcKv8LX/view?usp=share_link">Video of the last version of the training</a></li>
-</ul>
-</section>
-<section id="any-questions" class="level2">
-<h2 class="anchored" data-anchor-id="any-questions">Any questions?</h2>
-<p>If you need any assistance installing the software or have any other questions about the training, please send an email to <a href="mailto:andree.valle-campos@lshtm.ac.uk" class="email">andree.valle-campos@lshtm.ac.uk</a></p>
-</section>
-<section id="attributions" class="level2">
-<h2 class="anchored" data-anchor-id="attributions">Attributions</h2>
-<ul>
-<li>This page format is inspired by <a href="https://www.metadocencia.org/curso/intro-abc-online/">Metadocencia</a>.</li>
-<li>The image of this feed is from <a href="https://unsplash.com/photos/CoqJGsFVJtM">Unsplash</a>, provided by <a href="https://unsplash.com/@priscilladupreez">Priscilla Du Preez</a>, free to use under the <a href="https://unsplash.com/license">Unsplash License</a>.</li>
+<li>None</li>
 </ul>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{valle-campos2022,
-  author = {Valle-Campos, Andree},
-  title = {Introductory Training on {Git} and {GitHub} Basics Using
-    {Rstudio}},
-  date = {2022-12-05},
-  url = {https://epiverse-trace.github.io//learn/git-training-01},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Superspreading V0.1.0},
+  date = {2023-08-18},
+  url = {https://epiverse-trace.github.io//posts/superspreading_v0.1.0},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-valle-campos2022" class="csl-entry quarto-appendix-citeas" role="listitem">
-Valle-Campos, Andree. 2022. <span>“Introductory Training on Git and
-GitHub Basics Using Rstudio.”</span> December 5, 2022. <a href="https://epiverse-trace.github.io//learn/git-training-01">https://epiverse-trace.github.io//learn/git-training-01</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2023. <span>“Superspreading
+V0.1.0.”</span> August 18, 2023. <a href="https://epiverse-trace.github.io//posts/superspreading_v0.1.0">https://epiverse-trace.github.io//posts/superspreading_v0.1.0</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

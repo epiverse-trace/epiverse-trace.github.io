@@ -9,8 +9,66 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.358</generator>
-<lastBuildDate>Tue, 18 Jul 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.450</generator>
+<lastBuildDate>Thu, 17 Aug 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>superspreading v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/superspreading_v0.1.0/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We are very excited to announced the release of a new superspreading version v0.1.0. Here is a automatically generated summary of the changes in this version.</p>
+<p>Initial release of <em>superspreading</em>, an R package to estimate individual-level variation in disease transmission and provide summary metrics for superspreading events.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>Offspring distributions, not available in base R, to fit to transmission data.</li>
+<li>Functions to calculate the probability an infectious disease will cause an epidemic, go extinct or be contained.</li>
+<li>Summary metric functions to calculate proportion of cases that cause a certain proportion of secondary transmission, as well as which proportion of cases are within clusters of a certain size.</li>
+<li>Three vignettes, including: an introduction to the package, estimating individual-level transmission from data, and the effect of superspreading on epidemic risk.</li>
+<li>Unit tests and documentation files.</li>
+<li>Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, and deploying the pkgdown website.</li>
+</ul>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Superspreading V0.1.0},
+  date = {2023-08-18},
+  url = {https://epiverse-trace.github.io//posts/superspreading_v0.1.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2023. <span>“Superspreading
+V0.1.0.”</span> August 18, 2023. <a href="https://epiverse-trace.github.io//posts/superspreading_v0.1.0">https://epiverse-trace.github.io//posts/superspreading_v0.1.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/superspreading_v0.1.0/index.html</guid>
+  <pubDate>Thu, 17 Aug 2023 22:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Communicating development stages of open-source software</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
@@ -122,15 +180,14 @@
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Version_control" class="uri">https://en.wikipedia.org/wiki/Version_control</a>↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
   author = {W. Lambert, Joshua},
   title = {Communicating Development Stages of Open-Source Software},
-  pages = {undefined},
   date = {2023-07-18},
   url = {https://epiverse-trace.github.io//posts/comm-software-devel},
   langid = {en}
@@ -146,7 +203,7 @@ Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.g
   <category>lifecycles</category>
   <category>community</category>
   <guid>https://epiverse-trace.github.io/posts/comm-software-devel/index.html</guid>
-  <pubDate>Tue, 18 Jul 2023 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 17 Jul 2023 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Sharing the C++ Code of an Rcpp Package</title>
@@ -586,7 +643,6 @@ font-style: inherit;">*</span>.h</span></code></pre></div>
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
   author = {Gupte, Pratik},
   title = {Sharing the {C++} {Code} of an {Rcpp} {Package}},
-  pages = {undefined},
   date = {2023-06-05},
   url = {https://epiverse-trace.github.io//posts/share-cpp},
   langid = {en}
@@ -601,7 +657,7 @@ Package.”</span> June 5, 2023. <a href="https://epiverse-trace.github.io//post
   <category>Rcpp</category>
   <category>interoperability</category>
   <guid>https://epiverse-trace.github.io/posts/share-cpp/index.html</guid>
-  <pubDate>Mon, 05 Jun 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 04 Jun 2023 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Extending Data Frames</title>
@@ -1186,9 +1242,7 @@ font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">.row_names_info</span>(x, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">type =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>L)</span>
+font-style: inherit;">type =</span> 0L)</span>
 <span id="cb21-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">attributes</span>(x) <span class="ot" style="color: #003B4F;
@@ -1351,15 +1405,14 @@ font-style: inherit;">#' }</span></span></code></pre></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>This is the working practise of tidyverse packages: <a href="https://www.tidyverse.org/blog/2019/04/r-version-support/">https://www.tidyverse.org/blog/2019/04/r-version-support/</a>↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
   author = {W. Lambert, Joshua},
   title = {Extending {Data} {Frames}},
-  pages = {undefined},
   date = {2023-04-12},
   url = {https://epiverse-trace.github.io//posts/extend-dataframes},
   langid = {en}
@@ -1375,7 +1428,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
   <category>S3 class</category>
   <category>dplyr</category>
   <guid>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</guid>
-  <pubDate>Wed, 12 Apr 2023 00:00:00 GMT</pubDate>
+  <pubDate>Tue, 11 Apr 2023 22:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What Should the First 100 Lines of Code Written During an Epidemic Look Like?</title>
@@ -1923,7 +1976,6 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
   author = {Tamayo, Carmen},
   title = {What {Should} the {First} 100 {Lines} of {Code} {Written}
     {During} an {Epidemic} {Look} {Like?}},
-  pages = {undefined},
   date = {2023-03-09},
   url = {https://epiverse-trace.github.io//posts/100days-workshop},
   langid = {en}
@@ -1936,7 +1988,7 @@ Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://
   <category>100 days workshop</category>
   <category>participatory research</category>
   <guid>https://epiverse-trace.github.io/posts/100days-workshop/index.html</guid>
-  <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 08 Mar 2023 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations</title>
@@ -2539,17 +2591,16 @@ Spreading the S3 love
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Note that we focus here on the S3 framework but R has other object orientation frameworks, as discussed in <a href="https://adv-r.hadley.nz/oo.html">the relevant section of the ‘Advanced R’ book by Hadley Wickham</a>↩︎</p></li>
 <li id="fn2"><p>Every rule has its exceptions though such as the <a href="https://generics.r-lib.org/">generics</a> package, built by prominent members of the R developer community, which overloads base R functions such as <code>as.factor()</code> or <code>as.difftime()</code>.↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Convert {Your} {R} {Function} to an {S3} {Generic:}
     {Benefits,} {Pitfalls} \&amp; {Design} {Considerations}},
-  pages = {undefined},
   date = {2023-02-20},
   url = {https://epiverse-trace.github.io//posts/s3-generic},
   langid = {en}
@@ -2565,7 +2616,7 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
   <category>S3</category>
   <category>interoperability</category>
   <guid>https://epiverse-trace.github.io/posts/s3-generic/index.html</guid>
-  <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 19 Feb 2023 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Improving the C++ Code Quality of an Rcpp Package</title>
@@ -2987,7 +3038,6 @@ font-style: inherit;">*</span>.cpp src</span></code></pre></div>
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
   author = {Gupte, Pratik},
   title = {Improving the {C++} {Code} {Quality} of an {Rcpp} {Package}},
-  pages = {undefined},
   date = {2023-02-16},
   url = {https://epiverse-trace.github.io//posts/lint-rcpp},
   langid = {en}
@@ -3001,7 +3051,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
   <category>R package</category>
   <category>Rcpp</category>
   <guid>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</guid>
-  <pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate>
+  <pubDate>Wed, 15 Feb 2023 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Ensuring &amp; Showcasing the Statistical Correctness of your R Package</title>
@@ -3013,51 +3063,11 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 
 
 <p>We’re evolving in an increasingly data-driven world. And since critical decisions are taken based on results produced by data scientists and data analysts, they need to be be able to trust the tools they use. It is now increasingly common to add continuous integration to software packages and libraries, to ensure the code is not crashing, and that future updates don’t change your code output (snapshot tests). But one type of test still remains uncommon: tests for statistical correctness. That is, tests that ensure the algorithm implemented in your package actually produce the correct results.</p>
-<p></p><div id="tweet-88565"></div><script>tweet=<!DOCTYPE html>
-<html lang="en" class="dog">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twitter / ?</title>
-    <meta name="version" content="1">
-    <link href="https://abs.twimg.com/favicons/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <link rel="stylesheet" href="https://abs.twimg.com/errors/fullscreen_errors-39d97faf8c7cf33e502c3c015176efd9.css">
-  </head>
-  <body dir="auto">
-    <div class="top">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1519 200">
-        <defs/>
-        <path d="M708 103l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9368 9368 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h11l10-6 6 3 9-1 4-1 1 1 1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a38 38 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-        <path d="M-36 193l9-5 13 1 2-2 5 1h8l1-1 42-5h7l7 3v1l12-2a9328 9328 0 0129-6l2-5 12 1 6-2 3 1 2 1v-2l13-2v1l4 2 7-1h1l17-3 1 2 4-1 18-7 3-1 4-1h9l13-1 1-4 3-2 13 1v2l22-2 10-3h6l10 5 16-5 15-3 2-1 8-4 6-2 12-1 7-2 8 5 7 1 22-9h7l5-1v-1l25-3 1 2 5 2v1h11l2 1 8-4h3l-1 1h9a6 6 0 002 0l10-6 6 3 9-1 4-1a6 6 0 001 1l1-2 6-1 1-1 10-2h2l7-5v1h4l3-1c11 0 23 2 34-3 2-2 7 0 10 0l12 1 4 1 9 2 12-1 11-3 11 1h4l10-6 17 1 2 1c9 2 19-3 22-11l1-1 9 1 15-5c3-1 9 4 9-5 5 0 5 3 5 7l2 3 4-1 4-2 9-4 3-3h3l8-4 6-3 26 2 7-4h18l7 1c10 3 13-6 17-12l8 4 3-1 14-3 15-2a37 37 0 01-5-1l-8-4 7-8 8-4-10-136-922 71 16 205z"/>
-      </svg>
-    </div>
-    <div class="container">
-      <div class="content">
-        <a href="https://twitter.com" title="Twitter logo"><svg class="bird" viewBox="0 0 24 24"><g><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g></svg></a>
-        <h1 id="header">Nothing to see here</h1>
-        <p id="description">Looks like this page doesn’t exist. Here’s a picture of a poodle sitting in a chair for your trouble.</p>
-
-          <a id="button_search" href="/" class="button">Looking for this?</a>
-
-      </div>
-      <img id="image" src="https://abs.twimg.com/errors/ErrorState_NotFound.png" alt="A primped poodle with a bow in its hair sitting in a chair like a human.">
-      <div class="footer">
-        <ul>
-          <li><a href="https://twitter.com/" id="footer_home">Home</a></li>
-          <li><a href="https://status.twitterstat.us/" id="footer_status">Status</a></li>
-          <li><a href="https://twitter.com/tos" id="footer_tos">Terms of Service</a></li>
-          <li><a href="https://twitter.com/privacy" id="footer_privacy">Privacy Policy</a></li>
-          <li><a href="https://support.twitter.com/articles/20170514" id="footer_cookie">Cookie Policy</a></li>
-          <li><a href="https://legal.twitter.com/imprint" id="footer_imprint">Imprint</a></li>
-          <li><a href="https://business.twitter.com/en/help/troubleshooting/how-twitter-ads-work.html" id="footer_ads">Ads info</a></li>
-          <li dir="ltr">&copy; Twitter <span id="copyright-year">&emsp;&emsp;&emsp;&emsp;</span></li>
-        </ul>
-      </div>
-    </div>
-  </body>
-  <script src="https://abs.twimg.com/errors/404-8651f633fd193e0b546010676a4fac06.js"></script>
-
-;document.getElementById("tweet-88565").innerHTML = tweet["html"];<p></p>
+<blockquote class="blockquote">
+<p>Does <a href="https://twitter.com/rstudio"><span class="citation" data-cites="rstudio">@rstudio</span></a> have a position in the trustworthiness / validity of any ~statistical methods~ packages in <a href="https://twitter.com/hashtag/Rstats">#Rstats</a>?</p>
+<p>Or, is there a list of packages that <a href="https://twitter.com/rstudio"><span class="citation" data-cites="rstudio">@rstudio</span></a> considers ‘approved’ and thus will recommend to clients?</p>
+<p>— <em>(deleted tweet)</em> February 3, 2019</p>
+</blockquote>
 <p>It is likely that most statistical package authors run some tests on their own during development but there doesn’t seem to be guidelines on how to test statistical correctness in a solid and standard way <sup>1</sup>.</p>
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
@@ -3125,8 +3135,8 @@ font-style: inherit;">colMeans</span>(coords_mat))</span>
 <span id="cb1-21">  </span>
 <span id="cb1-22">}</span></code></pre></div>
 </div>
-<section id="compare-your-results-to-the-reference-implementation" class="level1">
-<h1>Compare your results to the reference implementation</h1>
+<section id="compare-your-results-to-the-reference-implementation" class="level2">
+<h2 class="anchored" data-anchor-id="compare-your-results-to-the-reference-implementation">Compare your results to the reference implementation</h2>
 <p>The most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.</p>
 <p>For example, the <a href="https://github.com/fboehm/gemma2"><code>{gemma2}</code> R package</a>, which re-implements the methods from <a href="https://github.com/genetics-statistics/GEMMA">the GEMMA tool written in C++</a>, <a href="https://github.com/fboehm/gemma2/blob/ea3052f8609622f17224fb8ec5fd83bd1bceb33e/tests/testthat/test_calc_sigma.R#L34-L37">verifies that values produced by both tools match</a>:</p>
 <div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
@@ -3165,7 +3175,7 @@ font-style: inherit;">tolerance =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.0001</span>)</span>
 <span id="cb2-4">})</span></code></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Example with `centroid()`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3214,7 +3224,7 @@ font-style: inherit;">unlist</span>(x)))</span>
 <span id="cb3-8">  </span>
 <span id="cb3-9">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😀</code></pre>
+<pre><code>Test passed 😸</code></pre>
 </div>
 </div>
 </div>
@@ -3222,10 +3232,10 @@ font-style: inherit;">unlist</span>(x)))</span>
 <p>Note that even if a <strong>reference</strong> implementation doesn’t exist, it is still good practice to compare your implementation to competing ones. Discrepancies might reveal a bug in your implementation or theirs but in any case, finding it out is beneficial to the community.</p>
 <p>However, this approach cannot be used in all cases. Indeed, there may not be a reference implementation in your case. Or it might be difficult to replicate identical computations in the case of algorithm with stochasticity <sup>2</sup>.</p>
 </section>
-<section id="compare-to-a-theoretical-upper-or-lower-bound" class="level1">
-<h1>Compare to a theoretical upper or lower bound</h1>
+<section id="compare-to-a-theoretical-upper-or-lower-bound" class="level2">
+<h2 class="anchored" data-anchor-id="compare-to-a-theoretical-upper-or-lower-bound">Compare to a theoretical upper or lower bound</h2>
 <p>An alternative strategy is to compare your result to theoretical upper or lower bound. This offers a weaker guarantee that your implementation and your results are correct but it can still allow you to detect important mistakes.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Example with `centroid()`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3303,7 +3313,7 @@ font-style: inherit;">Reduce</span>(pmin, x)))</span>
 <span id="cb5-7">  </span>
 <span id="cb5-8">})</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Test passed 😀</code></pre>
+<pre><code>Test passed 😸</code></pre>
 </div>
 </div>
 </div>
@@ -3375,10 +3385,10 @@ font-style: inherit;">"Brent"</span></span>
 <span id="cb7-12">  opt</span>
 <span id="cb7-13">}</span></code></pre></div>
 </section>
-<section id="verify-that-output-is-changing-as-expected-when-a-single-parameter-varies" class="level1">
-<h1>Verify that output is changing as expected when a single parameter varies</h1>
+<section id="verify-that-output-is-changing-as-expected-when-a-single-parameter-varies" class="level2">
+<h2 class="anchored" data-anchor-id="verify-that-output-is-changing-as-expected-when-a-single-parameter-varies">Verify that output is changing as expected when a single parameter varies</h2>
 <p>An even looser way to test statistical correctness would be to control that output varies as expected when you update some parameters. This could be for example, checking that the values you return increase when you increase or decrease one of your input parameters.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Example with `centroid()`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3526,31 +3536,30 @@ font-style: inherit;">$</span>p_infected)</span>
 <span id="cb10-16">  )</span>
 <span id="cb10-17">})</span></code></pre></div>
 </section>
-<section id="conclusion-automated-validation-vs-peer-review" class="level1">
-<h1>Conclusion: automated validation vs peer-review</h1>
+<section id="conclusion-automated-validation-vs-peer-review" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-52064"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-52064").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-25996"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-25996").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
-<p>Ideally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated valiation tests.</p>
+<p>Ideally, peer-review and automated validation should work hand-in-hand, with review informing the addition of new automated validation tests.</p>
 
 
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>But see the <a href="https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/">“testing statistical software” post from Alex Hayes</a> where he presents his process to determine if he deems a statistical package trustworthy or not, and <a href="https://stats-devguide.ropensci.org/">rOpenSci Statistical Software Peer Review book</a>.↩︎</p></li>
 <li id="fn2"><p>Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Ensuring \&amp; {Showcasing} the {Statistical} {Correctness} of
     Your {R} {Package}},
-  pages = {undefined},
   date = {2023-02-13},
   url = {https://epiverse-trace.github.io//posts/statistical-correctness},
   langid = {en}
@@ -3564,7 +3573,7 @@ Correctness of Your R Package.”</span> February 13, 2023. <a href="https://epi
   <category>R package</category>
   <category>testing</category>
   <guid>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</guid>
-  <pubDate>Mon, 13 Feb 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sun, 12 Feb 2023 23:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/posts/statistical-correctness/testing_error.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>

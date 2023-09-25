@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/superspreading_v0.1.0/index.html",
       "/posts/comm-software-devel/index.html",
       "/posts/share-cpp/index.html",
       "/posts/extend-dataframes/index.html",
@@ -12,18 +13,18 @@
     ]
   },
   {
-    "listing": "/learn.html",
-    "items": [
-      "/learn/git-training-01/index.html"
-    ]
-  },
-  {
     "listing": "/presentations.html",
     "items": [
       "/slides/juniper-may-2023/index.html",
       "/slides/showcase-spring2023/index.html",
       "/slides/harmonious-ecosystem/index.html",
       "/slides/showcase-winter2023/index.html"
+    ]
+  },
+  {
+    "listing": "/learn.html",
+    "items": [
+      "/learn/git-training-01/index.html"
     ]
   }
 ]
