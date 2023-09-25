@@ -6,6 +6,7 @@ author:
   - name: "Juan Daniel Umaña"
   - name: "Nicolás Torres"
 date: "2023-04-05"
+image: "../showcase.jpg"
 categories: [sivirep, epiCo, serofoi, showcase]
 format:
   html: 

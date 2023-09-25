@@ -9,6 +9,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2023-01-25"
+image: "../showcase.jpg"
 categories: [epiparameter, finalsize, episoap, showcase]
 format:
   html: 
