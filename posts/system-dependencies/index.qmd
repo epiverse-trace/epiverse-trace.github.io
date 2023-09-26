@@ -182,8 +182,8 @@ stringr::str_match("cudaa", c("\\bnvcc\\b", "\\bcuda\\b"))
 This test confirms that the `SystemRequirements` field contents are not recognized by the regular expression.
 Depending on the case, the best course of action might be to:
 
--   either edit the contents of `SystemRequirements` so that it's picked up by the regular expression
--   or submit a pull request to [`rstudio/r-system-requirements`](https://github.com/rstudio/r-system-requirements) [^3] if you believe the regular expression is too restrictive and should be updated ([example](https://github.com/rstudio/r-system-requirements/pull/93))
+- either edit the contents of `SystemRequirements` so that it's picked up by the regular expression
+- or submit a pull request to [`rstudio/r-system-requirements`](https://github.com/rstudio/r-system-requirements) [^3] if you believe the regular expression is too restrictive and should be updated ([example](https://github.com/rstudio/r-system-requirements/pull/93))
 
 [^3]: If you are wondering why we are saying to submit PR to `rstudio/r-system-requirements` when we were previously talking about `r-hub/r-system-requirements`, you can check out [this comment thread](https://github.com/r-hub/blog/pull/165#discussion_r1280644182).
 
