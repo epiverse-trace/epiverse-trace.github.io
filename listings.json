@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/system-dependencies/index.html",
       "/posts/comm-software-devel/index.html",
       "/posts/share-cpp/index.html",
       "/posts/extend-dataframes/index.html",

@@ -9,13 +9,14 @@
 <link>https://epiverse-trace.github.io/learn.html</link>
 <atom:link href="https://epiverse-trace.github.io/learn.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.376</generator>
+<generator>quarto-1.4.383</generator>
 <lastBuildDate>Mon, 05 Dec 2022 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Introductory training on Git and GitHub basics using Rstudio</title>
   <dc:creator>Andree Valle-Campos</dc:creator>
-  <link>https://epiverse-trace.github.io/learn/git-training-01/index.html</link>
+  <link>https://epiverse-trace.github.io/learn/git-training-01/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -187,7 +188,7 @@ GitHub Basics Using Rstudio.”</span> December 5, 2022. <a href="https://epiver
   <category>github</category>
   <category>rstudio</category>
   <category>next trainings</category>
-  <guid>https://epiverse-trace.github.io/learn/git-training-01/index.html</guid>
+  <guid>https://epiverse-trace.github.io/learn/git-training-01/</guid>
   <pubDate>Mon, 05 Dec 2022 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg" medium="image" type="image/jpeg"/>
 </item>

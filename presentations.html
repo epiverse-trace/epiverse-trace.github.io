@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.376">
+<meta name="generator" content="quarto-1.4.383">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -193,9 +193,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 
+
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="epiparameter,finalsize,episoap" data-listing-date-sort="1685491200000" data-listing-file-modified-sort="1695640411293" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="46">
+<div class="quarto-post image-right" data-index="0" data-categories="epiparameter,finalsize,episoap" data-listing-date-sort="1685491200000" data-listing-file-modified-sort="1695727596410" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="46">
 <div class="thumbnail">
 <p><a href="./slides/juniper-may-2023/index.html"></a></p><a href="./slides/juniper-may-2023/index.html">
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -238,7 +239,7 @@ Adam Kucharski
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="sivirep,epiCo,serofoi,showcase" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1695640411305" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3304">
+<div class="quarto-post image-right" data-index="1" data-categories="sivirep,epiCo,serofoi,showcase" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1695727596422" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3304">
 <div class="thumbnail">
 <p><a href="./slides/showcase-spring2023/index.html"></a></p><a href="./slides/showcase-spring2023/index.html">
 <p><img src="./slides/showcase.jpg" class="thumbnail-image"></p>
@@ -284,7 +285,7 @@ Anna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="data science,pipelines,interoperability,community,deRSE23" data-listing-date-sort="1676851200000" data-listing-file-modified-sort="1695640411269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="424">
+<div class="quarto-post image-right" data-index="2" data-categories="data science,pipelines,interoperability,community,deRSE23" data-listing-date-sort="1676851200000" data-listing-file-modified-sort="1695727596386" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="424">
 <div class="thumbnail">
 <p><a href="./slides/harmonious-ecosystem/index.html"></a></p><a href="./slides/harmonious-ecosystem/index.html">
 <p><img src="./slides/harmonious-ecosystem/diversegroup.png" class="thumbnail-image"></p>
@@ -333,7 +334,7 @@ Hugo Gruson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="epiparameter,finalsize,episoap,showcase" data-listing-date-sort="1674604800000" data-listing-file-modified-sort="1695640411329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3304">
+<div class="quarto-post image-right" data-index="3" data-categories="epiparameter,finalsize,episoap,showcase" data-listing-date-sort="1674604800000" data-listing-file-modified-sort="1695727596450" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="17" data-listing-word-count-sort="3304">
 <div class="thumbnail">
 <p><a href="./slides/showcase-winter2023/index.html"></a></p><a href="./slides/showcase-winter2023/index.html">
 <p><img src="./slides/showcase.jpg" class="thumbnail-image"></p>
@@ -512,15 +513,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
         for (let i = 0; i < 2; i++) {
           container.appendChild(note.children[i].cloneNode(true));
         }
+        typesetMath(container);
         return container.innerHTML
       } else {
+        typesetMath(note);
         return note.innerHTML;
       }
     } else {
@@ -529,6 +553,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
+      typesetMath(note);
       return note.innerHTML;
     }
   }
@@ -571,6 +596,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -646,7 +694,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);

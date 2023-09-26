@@ -9,13 +9,14 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.376</generator>
+<generator>quarto-1.4.383</generator>
 <lastBuildDate>Wed, 31 May 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Juniper seminar on improving software for epidemic response</title>
   <dc:creator>Adam Kucharski</dc:creator>
-  <link>https://epiverse-trace.github.io/slides/juniper-may-2023/index.html</link>
+  <link>https://epiverse-trace.github.io/slides/juniper-may-2023/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -43,7 +44,7 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
   <category>epiparameter</category>
   <category>finalsize</category>
   <category>episoap</category>
-  <guid>https://epiverse-trace.github.io/slides/juniper-may-2023/index.html</guid>
+  <guid>https://epiverse-trace.github.io/slides/juniper-may-2023/</guid>
   <pubDate>Wed, 31 May 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -52,8 +53,9 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
   <dc:creator>Geraldine Gómez Millán</dc:creator>
   <dc:creator>Juan Daniel Umaña</dc:creator>
   <dc:creator>Nicolás Torres</dc:creator>
-  <link>https://epiverse-trace.github.io/slides/showcase-spring2023/index.html</link>
+  <link>https://epiverse-trace.github.io/slides/showcase-spring2023/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -201,15 +203,16 @@ Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
   <category>epiCo</category>
   <category>serofoi</category>
   <category>showcase</category>
-  <guid>https://epiverse-trace.github.io/slides/showcase-spring2023/index.html</guid>
+  <guid>https://epiverse-trace.github.io/slides/showcase-spring2023/</guid>
   <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project</title>
   <dc:creator>Hugo Gruson</dc:creator>
-  <link>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</link>
+  <link>https://epiverse-trace.github.io/slides/harmonious-ecosystem/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -265,7 +268,7 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
   <category>interoperability</category>
   <category>community</category>
   <category>deRSE23</category>
-  <guid>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</guid>
+  <guid>https://epiverse-trace.github.io/slides/harmonious-ecosystem/</guid>
   <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/harmonious-ecosystem/diversegroup.png" medium="image" type="image/png" height="122" width="144"/>
 </item>
@@ -275,8 +278,9 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
   <dc:creator>Pratik Gupte</dc:creator>
   <dc:creator>Joshua Lambert</dc:creator>
   <dc:creator>Hugo Gruson</dc:creator>
-  <link>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</link>
+  <link>https://epiverse-trace.github.io/slides/showcase-winter2023/</link>
   <description><![CDATA[ 
+
 
 
 
@@ -423,7 +427,7 @@ Carnegie, Anna, Pratik Gupte, Joshua Lambert, and Hugo Gruson. 2023.
   <category>finalsize</category>
   <category>episoap</category>
   <category>showcase</category>
-  <guid>https://epiverse-trace.github.io/slides/showcase-winter2023/index.html</guid>
+  <guid>https://epiverse-trace.github.io/slides/showcase-winter2023/</guid>
   <pubDate>Wed, 25 Jan 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
 </item>
