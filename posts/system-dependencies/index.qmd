@@ -11,7 +11,7 @@ format:
     toc: true
 ---
 
-*This post has been cross-posted on the R-hub blog, and the R-hub blog maintainers have contributed to the review and improvement of this post.*
+*This post has been [cross-posted on the R-hub blog](https://blog.r-hub.io/2023/09/26/system-dependency/), and the R-hub blog maintainers have contributed to the review and improvement of this post.*
 
 In a [previous R-hub blog post](https://blog.r-hub.io/2022/09/12/r-dependency/), we discussed a package dependency that goes slightly beyond the normal R package ecosystem dependency: R itself.
 Today, we step even further and discuss dependencies outside of R: system dependencies.
