@@ -9,8 +9,51 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.383</generator>
-<lastBuildDate>Wed, 31 May 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.398</generator>
+<lastBuildDate>Wed, 26 Jul 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Global Health Resilience Research Visit</title>
+  <dc:creator>Adam Kucharski</dc:creator>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <dc:creator>Carmen Tamayo</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/harmonize-july-2023/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Three talks at a workshop at the <a href="https://www.bsc.es/">Barcelona Supercomputing Center</a> titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics.</p>
+<section id="talk-slides" class="level2">
+<h2 class="anchored" data-anchor-id="talk-slides">Talk slides</h2>
+<iframe width="780" height="438.75" src="2023_07_BSC_2.pdf" title="Adam Kucharski presentation at BSC, July 2023"></iframe>
+<iframe width="780" height="438.75" src="Epiverse-interoperability.pdf" title="Joshua W. Lambert presentation at BSC, July 2023"></iframe>
+<iframe width="780" height="438.75" src="Applications_CTC_presentation.pdf" title="Carmen Tamayo presentation at BSC, July 2023"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
+  author = {Kucharski, Adam and W. Lambert, Joshua and Tamayo, Carmen},
+  title = {Global {Health} {Resilience} {Research} {Visit}},
+  pages = {undefined},
+  date = {2023-07-26},
+  url = {https://epiverse-trace.github.io//slides/harmonize-july-2023},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2023" class="csl-entry quarto-appendix-citeas">
+Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
+<span>“Global Health Resilience Research Visit.”</span> July 26, 2023.
+<a href="https://epiverse-trace.github.io//slides/harmonize-july-2023">https://epiverse-trace.github.io//slides/harmonize-july-2023</a>.
+</div></div></section></div> ]]></description>
+  <category>Epiverse-TRACE</category>
+  <category>Harmonize</category>
+  <category>workshop</category>
+  <category>interoperability</category>
+  <category>community</category>
+  <guid>https://epiverse-trace.github.io/slides/harmonize-july-2023/</guid>
+  <pubDate>Wed, 26 Jul 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Juniper seminar on improving software for epidemic response</title>
   <dc:creator>Adam Kucharski</dc:creator>
