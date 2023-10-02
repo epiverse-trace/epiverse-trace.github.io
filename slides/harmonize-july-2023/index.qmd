@@ -1,0 +1,29 @@
+---
+title: "Global Health Resilience Research Visit"
+author: 
+  - name: "Joshua W. Lambert"
+    orcid: "0000-0001-5218-3046"
+  - name: "Carmen Tamayo"
+    orcid: "0000-0003-4184-2864"
+date: "2023-07-26"
+categories: [Epiverse-TRACE, Harmonize, workshop, interoperability, community]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+Two talks at a workshop at the [Barcelona Supercomputing Center](https://www.bsc.es/) titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics. 
+
+## Talk slides
+
+```{=html}
+<iframe width="780" height="438.75" src="Epiverse-interoperability" title="Joshua W. Lambert presentation at BSC, July 2023"></iframe>
+```
+
+```{=html}
+<iframe width="780" height="438.75" src="Applications_CTC-presentation" title="Carmen Tamayo presentation at BSC, July 2023"></iframe>
+```
+
