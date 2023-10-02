@@ -15,7 +15,7 @@ editor:
     wrap: 80
 ---
 
-Two talks at a workshop at the [Barcelona Supercomputing Center](https://www.bsc.es/) titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics. 
+Two talks at a workshop at the [Barcelona Supercomputing Center](https://www.bsc.es/) titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics.
 
 ## Talk slides
 
@@ -26,4 +26,3 @@ Two talks at a workshop at the [Barcelona Supercomputing Center](https://www.bsc
 ```{=html}
 <iframe width="780" height="438.75" src="Applications_CTC-presentation" title="Carmen Tamayo presentation at BSC, July 2023"></iframe>
 ```
-
