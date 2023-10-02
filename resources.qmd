@@ -1,0 +1,80 @@
+---
+title: "Resources"
+include-after-body: 
+  text: |
+    <script type="text/javascript" src="select.js"></script>
+    <style>
+        .tags-container {
+            margin-bottom: 10px;
+        }
+        .tag {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #eee;
+            cursor: pointer;
+        }
+        .tag.selected {
+            background-color: #007bff;
+            color: #fff;
+        }
+        #result-count {
+          font-size: 1.2em;
+          font-weight: bold;
+          margin-top: 10px; /* Adjust as needed */
+        }
+    </style>
+---
+
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE
+)
+googlesheets4::gs4_deauth()
+```
+
+
+```{r}
+resource_library <- "https://docs.google.com/spreadsheets/d/1fhRo6w3pr1-uBfq1o359BsNVV9oEFt-O83hFbQtE0HU/edit?usp=sharing" |> 
+  googlesheets4::read_sheet() |> 
+  dplyr::mutate(Tags = strsplit(Tags, ";[[:space:]]*"))
+```
+
+```{r}
+library(htmltools)
+```
+
+```{r, results='asis'}
+tags <- resource_library |>
+  dplyr::pull(Tags) |> 
+  unlist(recursive = TRUE) |> 
+  sort() |> 
+  rle()
+
+tags$values[order(tags$length, decreasing = TRUE)] |> 
+  purrr::map(function(x) {
+    div(x, class = "tag", `data-tag` = x)
+  }) |> 
+  purrr::map_chr(format) |> 
+  paste(collapse = "\n") |> 
+  HTML() |> 
+  div(class = "tag-container")
+```
+
+<div id="result-count"></div>
+
+```{r, results='asis'}
+purrr::pmap(
+  unname(as.list(resource_library[, c("Title", "Tags", "Link")])), 
+  function(title, tags, description) {
+    div(`data-tags` = paste(tags, collapse = ";"), class = "item",
+      a(title, href = description)
+    )
+  }
+) |> 
+  purrr::map_chr(format) |> 
+  paste(collapse = "\n") |> 
+  HTML()
+```
+

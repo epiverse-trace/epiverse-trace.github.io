@@ -1,0 +1,15 @@
+{
+  "hash": "aaf65e662174dc0041361897e13de71c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Resources\"\ninclude-after-body: \n  text: |\n    <script type=\"text/javascript\" src=\"select.js\"></script>\n    <style>\n        .tags-container {\n            margin-bottom: 10px;\n        }\n        .tag {\n            display: inline-block;\n            margin: 5px;\n            padding: 5px 10px;\n            background-color: #eee;\n            cursor: pointer;\n        }\n        .tag.selected {\n            background-color: #007bff;\n            color: #fff;\n        }\n        #result-count {\n          font-size: 1.2em;\n          font-weight: bold;\n          margin-top: 10px; /* Adjust as needed */\n        }\n    </style>\n---\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n::: {.cell}\n\n:::\n\n\n```{=html}\n<div class=\"tag-container\"><div class=\"tag\" data-tag=\"R packages\">R packages</div>\n<div class=\"tag\" data-tag=\"software design\">software design</div>\n<div class=\"tag\" data-tag=\"Epidemiology\">Epidemiology</div>\n<div class=\"tag\" data-tag=\"error messages\">error messages</div>\n<div class=\"tag\" data-tag=\"introduction\">introduction</div>\n<div class=\"tag\" data-tag=\"learning\">learning</div>\n<div class=\"tag\" data-tag=\"psychology\">psychology</div>\n<div class=\"tag\" data-tag=\"R\">R</div></div>\n```\n\n\n<div id=\"result-count\"></div>\n\n\n\n```{=html}\n<div data-tags=\"R packages;introduction\" class=\"item\">\n  <a href=\"https://r-pkgs.org/\">R packages book</a>\n</div>\n<div data-tags=\"R packages;error messages;software design\" class=\"item\">\n  <a href=\"https://blog.r-hub.io/2023/11/30/cliff-notes-about-cli/\">Cliff notes about the cli package</a>\n</div>\n<div data-tags=\"psychology;learning;software design\" class=\"item\">\n  <a href=\"https://doi.org/10.1145/3584859\">10 Things Software Developers Should Learn about Learning</a>\n</div>\n<div data-tags=\"Epidemiology;R\" class=\"item\">\n  <a href=\"https://appliedepi.org/epirhandbook/\">The Epidemiologist R Handbook</a>\n</div>\n```\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
