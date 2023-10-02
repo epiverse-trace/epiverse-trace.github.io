@@ -22,13 +22,13 @@ Three talks at a workshop at the [Barcelona Supercomputing Center](https://www.b
 ## Talk slides
 
 ```{=html}
-<iframe width="780" height="438.75" src="2023_07_BSC_-presentation_2" title="Adam Kucharski presentation at BSC, July 2023"></iframe>
+<iframe width="780" height="438.75" src="2023_07_BSC_2.pdf" title="Adam Kucharski presentation at BSC, July 2023"></iframe>
 ```
 
 ```{=html}
-<iframe width="780" height="438.75" src="Epiverse-interoperability" title="Joshua W. Lambert presentation at BSC, July 2023"></iframe>
+<iframe width="780" height="438.75" src="Epiverse-interoperability.pdf" title="Joshua W. Lambert presentation at BSC, July 2023"></iframe>
 ```
 
 ```{=html}
-<iframe width="780" height="438.75" src="Applications_CTC-presentation" title="Carmen Tamayo presentation at BSC, July 2023"></iframe>
+<iframe width="780" height="438.75" src="Applications_CTC_presentation.pdf" title="Carmen Tamayo presentation at BSC, July 2023"></iframe>
 ```
