@@ -26,7 +26,3 @@ Occasionally, R package developers might decide to supersede their packages with
 ```{=html}
 <iframe width="780" height="438.75" src="RSLondonSE_workshop_2023.pdf" title="James Azam presentation at RSLondonSouthEast, July 2023"></iframe>
 ```
-
-## Questions
-
-> Would it have been more beneficial for {ggplot2} to have been developed as a major upgrade to {ggplot} rather than undergoing a name change?
