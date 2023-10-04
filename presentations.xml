@@ -55,6 +55,50 @@ Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
   <pubDate>Wed, 26 Jul 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}</title>
+  <dc:creator>James M. Azam</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This was a lightning talk at a workshop at the <a href="https://rslondon.ac.uk/rslondonsoutheast2023/">RSLondonSouthEast2023 workshop</a> held at the Imperial College London’s South Kensington Campus. The talk was entitled: “Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}”. The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles.</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Occasionally, R package developers might decide to supersede their packages with a new implementation to reflect their evolved thinking and experiences in package design. Examples include {ggplot2} and {reshape2}. In multiple contributor projects, this often comes with non-trivial decisions, including name changes, deprecations, and the preservation of git histories. These decisions are non-trivial, especially in epidemiology and public health where reproducibility is a key consideration. {bpmodels}, an R package for analyzing infectious disease data, is currently in the same situation. {bpmodels} was independently developed in 2019, but the Epiverse-TRACE Initiative, which aims to develop an interoperable ecosystem for outbreak analytics, now provides the capacity to maintain it. This involves a re-imagination of the package, including a name change to {epichains}, planned integration of existing and new functionalities, and object-oriented programming. This talk will highlight some conundrums faced during this process, which is ongoing, and provide the opportunity for mutual learning.</p>
+</section>
+<section id="talk-slides" class="level2">
+<h2 class="anchored" data-anchor-id="talk-slides">Talk slides</h2>
+<iframe width="780" height="438.75" src="RSLondonSE_workshop_2023.pdf" title="James Azam presentation at RSLondonSouthEast, July 2023"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{m. azam2023,
+  author = {M. Azam, James},
+  title = {Superseding {R} Packages - Lessons Learned from Transitioning
+    to \{Epichains\} from \{Bpmodels\}},
+  pages = {undefined},
+  date = {2023-07-17},
+  url = {https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-m. azam2023" class="csl-entry quarto-appendix-citeas">
+M. Azam, James. 2023. <span>“Superseding R Packages - Lessons Learned
+from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
+2023. <a href="https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023">https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023</a>.
+</div></div></section></div> ]]></description>
+  <category>workshop</category>
+  <category>community</category>
+  <category>R package</category>
+  <category>bpmodels</category>
+  <category>epichains</category>
+  <guid>https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/</guid>
+  <pubDate>Mon, 17 Jul 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Juniper seminar on improving software for epidemic response</title>
   <dc:creator>Adam Kucharski</dc:creator>
   <link>https://epiverse-trace.github.io/slides/juniper-may-2023/</link>

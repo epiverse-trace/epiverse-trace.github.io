@@ -287,74 +287,60 @@
     "text": "Attributions\n\nThis page format is inspired by Metadocencia.\nThe image of this feed is from Unsplash, provided by Priscilla Du Preez, free to use under the Unsplash License."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html",
-    "href": "slides/showcase-winter2023/index.html",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "objectID": "slides/rslondon-southeast-july-2023/index.html",
+    "href": "slides/rslondon-southeast-july-2023/index.html",
+    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
     "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+    "text": "This was a lightning talk at a workshop at the RSLondonSouthEast2023 workshop held at the Imperial College London’s South Kensington Campus. The talk was entitled: “Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}”. The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "finalsize slides",
-    "text": "finalsize slides"
+    "objectID": "slides/rslondon-southeast-july-2023/index.html#abstract",
+    "href": "slides/rslondon-southeast-july-2023/index.html#abstract",
+    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
+    "section": "Abstract",
+    "text": "Abstract\nOccasionally, R package developers might decide to supersede their packages with a new implementation to reflect their evolved thinking and experiences in package design. Examples include {ggplot2} and {reshape2}. In multiple contributor projects, this often comes with non-trivial decisions, including name changes, deprecations, and the preservation of git histories. These decisions are non-trivial, especially in epidemiology and public health where reproducibility is a key consideration. {bpmodels}, an R package for analyzing infectious disease data, is currently in the same situation. {bpmodels} was independently developed in 2019, but the Epiverse-TRACE Initiative, which aims to develop an interoperable ecosystem for outbreak analytics, now provides the capacity to maintain it. This involves a re-imagination of the package, including a name change to {epichains}, planned integration of existing and new functionalities, and object-oriented programming. This talk will highlight some conundrums faced during this process, which is ongoing, and provide the opportunity for mutual learning."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "epiparameter slides",
-    "text": "epiparameter slides"
+    "objectID": "slides/rslondon-southeast-july-2023/index.html#talk-slides",
+    "href": "slides/rslondon-southeast-july-2023/index.html#talk-slides",
+    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
+    "section": "Talk slides",
+    "text": "Talk slides"
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
-    "href": "slides/showcase-winter2023/index.html#episoap-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "episoap slides",
-    "text": "episoap slides"
-  },
-  {
-    "objectID": "slides/showcase-winter2023/index.html#recording",
-    "href": "slides/showcase-winter2023/index.html#recording",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "Recording",
-    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
-  },
-  {
-    "objectID": "slides/showcase-spring2023/index.html",
-    "href": "slides/showcase-spring2023/index.html",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "objectID": "slides/harmonize-july-2023/index.html",
+    "href": "slides/harmonize-july-2023/index.html",
+    "title": "Global Health Resilience Research Visit",
     "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+    "text": "Three talks at a workshop at the Barcelona Supercomputing Center titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics."
   },
   {
-    "objectID": "slides/showcase-spring2023/index.html#sivirep-slides",
-    "href": "slides/showcase-spring2023/index.html#sivirep-slides",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "sivirep slides",
-    "text": "sivirep slides"
+    "objectID": "slides/harmonize-july-2023/index.html#talk-slides",
+    "href": "slides/harmonize-july-2023/index.html#talk-slides",
+    "title": "Global Health Resilience Research Visit",
+    "section": "Talk slides",
+    "text": "Talk slides"
   },
   {
-    "objectID": "slides/showcase-spring2023/index.html#epico-slides",
-    "href": "slides/showcase-spring2023/index.html#epico-slides",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "epiCo slides",
-    "text": "epiCo slides"
+    "objectID": "slides/juniper-may-2023/index.html",
+    "href": "slides/juniper-may-2023/index.html",
+    "title": "Juniper seminar on improving software for epidemic response",
+    "section": "",
+    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
   },
   {
-    "objectID": "slides/showcase-spring2023/index.html#serofoi-slides",
-    "href": "slides/showcase-spring2023/index.html#serofoi-slides",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "serofoi slides",
-    "text": "serofoi slides"
+    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
+    "href": "slides/juniper-may-2023/index.html#talk-slides",
+    "title": "Juniper seminar on improving software for epidemic response",
+    "section": "Talk slides",
+    "text": "Talk slides"
   },
   {
-    "objectID": "slides/showcase-spring2023/index.html#recording",
-    "href": "slides/showcase-spring2023/index.html#recording",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "Recording",
-    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem Dependencies in R Packages & Automatic Testing\n\n\n\n\n\n\npackage development\n\n\nR\n\n\nR package\n\n\ncontinuous integration\n\n\nsystem dependens\n\n\n\n\n\n\n\n\n\nSep 26, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nCommunicating development stages of open-source software\n\n\n\n\n\n\nopen-source\n\n\nR\n\n\nR package\n\n\nversioning\n\n\nlifecycles\n\n\ncommunity\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nSharing the C++ Code of an Rcpp Package\n\n\n\n\n\n\ncode sharing\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nJun 5, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nExtending Data Frames\n\n\nCreating custom classes and {dplyr} compatibility\n\n\n\ndata frame\n\n\nR\n\n\nR package\n\n\ninteroperability\n\n\nS3 class\n\n\ndplyr\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/harmonious-ecosystem/index.html",
@@ -392,39 +378,74 @@
     "text": "See also\n\nThe companion post on our blog"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "slides/showcase-spring2023/index.html",
+    "href": "slides/showcase-spring2023/index.html",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
     "section": "",
-    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem Dependencies in R Packages & Automatic Testing\n\n\n\n\n\n\npackage development\n\n\nR\n\n\nR package\n\n\ncontinuous integration\n\n\nsystem dependens\n\n\n\n\n\n\n\n\n\nSep 26, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nCommunicating development stages of open-source software\n\n\n\n\n\n\nopen-source\n\n\nR\n\n\nR package\n\n\nversioning\n\n\nlifecycles\n\n\ncommunity\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nSharing the C++ Code of an Rcpp Package\n\n\n\n\n\n\ncode sharing\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nJun 5, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nExtending Data Frames\n\n\nCreating custom classes and {dplyr} compatibility\n\n\n\ndata frame\n\n\nR\n\n\nR package\n\n\ninteroperability\n\n\nS3 class\n\n\ndplyr\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
   },
   {
-    "objectID": "slides/juniper-may-2023/index.html",
-    "href": "slides/juniper-may-2023/index.html",
-    "title": "Juniper seminar on improving software for epidemic response",
+    "objectID": "slides/showcase-spring2023/index.html#sivirep-slides",
+    "href": "slides/showcase-spring2023/index.html#sivirep-slides",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "sivirep slides",
+    "text": "sivirep slides"
+  },
+  {
+    "objectID": "slides/showcase-spring2023/index.html#epico-slides",
+    "href": "slides/showcase-spring2023/index.html#epico-slides",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "epiCo slides",
+    "text": "epiCo slides"
+  },
+  {
+    "objectID": "slides/showcase-spring2023/index.html#serofoi-slides",
+    "href": "slides/showcase-spring2023/index.html#serofoi-slides",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "serofoi slides",
+    "text": "serofoi slides"
+  },
+  {
+    "objectID": "slides/showcase-spring2023/index.html#recording",
+    "href": "slides/showcase-spring2023/index.html#recording",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "Recording",
+    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html",
+    "href": "slides/showcase-winter2023/index.html",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
     "section": "",
-    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
   },
   {
-    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
-    "href": "slides/juniper-may-2023/index.html#talk-slides",
-    "title": "Juniper seminar on improving software for epidemic response",
-    "section": "Talk slides",
-    "text": "Talk slides"
+    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "finalsize slides",
+    "text": "finalsize slides"
   },
   {
-    "objectID": "slides/harmonize-july-2023/index.html",
-    "href": "slides/harmonize-july-2023/index.html",
-    "title": "Global Health Resilience Research Visit",
-    "section": "",
-    "text": "Three talks at a workshop at the Barcelona Supercomputing Center titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics."
+    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "epiparameter slides",
+    "text": "epiparameter slides"
   },
   {
-    "objectID": "slides/harmonize-july-2023/index.html#talk-slides",
-    "href": "slides/harmonize-july-2023/index.html#talk-slides",
-    "title": "Global Health Resilience Research Visit",
-    "section": "Talk slides",
-    "text": "Talk slides"
+    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
+    "href": "slides/showcase-winter2023/index.html#episoap-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "episoap slides",
+    "text": "episoap slides"
+  },
+  {
+    "objectID": "slides/showcase-winter2023/index.html#recording",
+    "href": "slides/showcase-winter2023/index.html#recording",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "Recording",
+    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
   },
   {
     "objectID": "learn.html",
@@ -438,7 +459,7 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "Global Health Resilience Research Visit\n\n\n\n\n\n\nEpiverse-TRACE\n\n\nHarmonize\n\n\nworkshop\n\n\ninteroperability\n\n\ncommunity\n\n\n\n\n\n\n\n\n\nJul 26, 2023\n\n\nAdam Kucharski, Joshua W. Lambert, Carmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nJuniper seminar on improving software for epidemic response\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\n\n\n\n\n\n\n\nMay 31, 2023\n\n\nAdam Kucharski\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Spring 2023 showcase\n\n\n\n\n\n\nsivirep\n\n\nepiCo\n\n\nserofoi\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nApr 5, 2023\n\n\nAnna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres\n\n\n\n\n\n\n\n\n\n\n\n\nFrom disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "Global Health Resilience Research Visit\n\n\n\n\n\n\nEpiverse-TRACE\n\n\nHarmonize\n\n\nworkshop\n\n\ninteroperability\n\n\ncommunity\n\n\n\n\n\n\n\n\n\nJul 26, 2023\n\n\nAdam Kucharski, Joshua W. Lambert, Carmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nSuperseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}\n\n\n\n\n\n\nworkshop\n\n\ncommunity\n\n\nR package\n\n\nbpmodels\n\n\nepichains\n\n\n\n\n\n\n\n\n\nJul 17, 2023\n\n\nJames M. Azam\n\n\n\n\n\n\n\n\n\n\n\n\nJuniper seminar on improving software for epidemic response\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\n\n\n\n\n\n\n\nMay 31, 2023\n\n\nAdam Kucharski\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Spring 2023 showcase\n\n\n\n\n\n\nsivirep\n\n\nepiCo\n\n\nserofoi\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nApr 5, 2023\n\n\nAnna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres\n\n\n\n\n\n\n\n\n\n\n\n\nFrom disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/s3-generic/index.html",
