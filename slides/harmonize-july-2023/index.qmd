@@ -8,7 +8,7 @@ author:
   - name: "Carmen Tamayo"
     orcid: "0000-0003-4184-2864"
 date: "2023-07-26"
-categories: [Epiverse-TRACE, Harmonize, workshop, interoperability, community]
+categories: [Harmonize, workshop, interoperability, community, climate]
 format:
   html: 
     toc: true
