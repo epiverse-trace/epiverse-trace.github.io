@@ -14,7 +14,7 @@ editor:
 ---
 
 This was a lightning talk at a workshop at the [RSLondonSouthEast2023 workshop](https://rslondon.ac.uk/rslondonsoutheast2023/) held at the Imperial
-College London's South Kensington Campus. The talk was entitled: "Superseding R packages - lessons learned from transitioning to \{epichains\} from \{bpmodels\}".
+College London's South Kensington Campus. The talk was entitled: "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}".
 The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles.
 
 ## Abstract
