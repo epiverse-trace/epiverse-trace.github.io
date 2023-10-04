@@ -38,6 +38,11 @@ Whenever possible, you should prefer direct markdown/quarto syntax rather than H
     ![my img](my_img.png)
     ```
 
+### Line breaks
+
+To facilitate reviews, please make use of [semantic line breaks](https://sembr.org/) as much as possible.
+This makes it easier to detect changes with git.
+
 ## Contributing a new blog post
 
 ### Before starting to write
