@@ -68,7 +68,7 @@ If you feel your post is getting too long,
 it is often a good idea to split it into several smaller posts linking back to one another. 
 This often gets more views.
 
-The aforementioned `future post` issue can help you to define the exact post of your post.
+The aforementioned `future post` issue can help you to define the exact scope of your post.
 
 #### Posts as one part of the ecosystem 
 
