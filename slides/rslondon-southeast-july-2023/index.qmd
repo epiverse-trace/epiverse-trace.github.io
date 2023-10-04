@@ -1,0 +1,28 @@
+---
+title: "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}"
+author: 
+  - name: "James M. Azam"
+    orcid: "0000-0001-5782-7330"
+date: "2023-07-17"
+categories: [workshop, community, R package, bpmodels, epichains]
+format:
+  html:
+    toc: true
+editor:
+  markdown:
+    wrap: 80
+---
+
+This was a lightning talk at a workshop at the [RSLondonSouthEast2023 workshop](https://rslondon.ac.uk/rslondonsoutheast2023/) held at the Imperial
+College London's South Kensington Campus. The talk was entitled: "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}".
+The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles.
+
+## Abstract
+
+Occasionally, R package developers might decide to supersede their packages with a new implementation to reflect their evolved thinking and experiences in package design. Examples include {ggplot2} and {reshape2}. In multiple contributor projects, this often comes with non-trivial decisions, including name changes, deprecations, and the preservation of git histories. These decisions are non-trivial, especially in epidemiology and public health where reproducibility is a key consideration. {bpmodels}, an R package for analyzing infectious disease data, is currently in the same situation. {bpmodels} was independently developed in 2019, but the Epiverse-TRACE Initiative, which aims to develop an interoperable ecosystem for outbreak analytics, now provides the capacity to maintain it. This involves a re-imagination of the package, including a name change to {epichains}, planned integration of existing and new functionalities, and object-oriented programming. This talk will highlight some conundrums faced during this process, which is ongoing, and provide the opportunity for mutual learning.
+
+## Talk slides
+
+```{=html}
+<iframe width="780" height="438.75" src="RSLondonSE_workshop_2023.pdf" title="James Azam presentation at RSLondonSouthEast, July 2023"></iframe>
+```
