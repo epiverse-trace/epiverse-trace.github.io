@@ -1,0 +1,30 @@
+---
+title: "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas"
+subtitle: "Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases"
+author: 
+  - name: "Catalina González-Uribe"
+    orcid: "0000-0002-3322-5017"
+date: "2023-09-15"
+image: map.png
+categories: [co-design, Colombia, Latin America]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+The lead researcher Catalina González-Uribe, from UniAndes Team, along with other members of Epiverse-TRACE in Latin America, presented the work "Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases" during the review of the Integrated Management Strategy for the Prevention and Control of Arboviral Diseases in the Americas, held as part of the [Global Health Conference 2023](https://ghc2023.com/en/) organized by [FIU Public Health & Social Work](https://stempel.fiu.edu/) in Cartagena.
+
+## Diapositivas (Español)
+
+```{=html}
+<iframe width="780" height="438.75" src="FIU_Cartagena_Sep_2023.pdf" title="Diapositivas GHC 2023"></iframe>
+```
+
+## Slides (English)
+
+```{=html}
+<iframe width="780" height="438.75" src="FIU_Cartagena_Sep_2023_English.pdf" title="Slides GHC 2023"></iframe>
+```
