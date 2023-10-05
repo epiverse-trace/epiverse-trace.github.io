@@ -308,74 +308,39 @@
     "text": "Talk slides"
   },
   {
-    "objectID": "slides/harmonize-july-2023/index.html",
-    "href": "slides/harmonize-july-2023/index.html",
-    "title": "Global Health Resilience Research Visit",
+    "objectID": "slides/showcase-winter2023/index.html",
+    "href": "slides/showcase-winter2023/index.html",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
     "section": "",
-    "text": "Three talks at a workshop at the Barcelona Supercomputing Center titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics."
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
   },
   {
-    "objectID": "slides/harmonize-july-2023/index.html#talk-slides",
-    "href": "slides/harmonize-july-2023/index.html#talk-slides",
-    "title": "Global Health Resilience Research Visit",
-    "section": "Talk slides",
-    "text": "Talk slides"
+    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "finalsize slides",
+    "text": "finalsize slides"
   },
   {
-    "objectID": "slides/juniper-may-2023/index.html",
-    "href": "slides/juniper-may-2023/index.html",
-    "title": "Juniper seminar on improving software for epidemic response",
-    "section": "",
-    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
+    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "epiparameter slides",
+    "text": "epiparameter slides"
   },
   {
-    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
-    "href": "slides/juniper-may-2023/index.html#talk-slides",
-    "title": "Juniper seminar on improving software for epidemic response",
-    "section": "Talk slides",
-    "text": "Talk slides"
+    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
+    "href": "slides/showcase-winter2023/index.html#episoap-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "episoap slides",
+    "text": "episoap slides"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem Dependencies in R Packages & Automatic Testing\n\n\n\n\n\n\npackage development\n\n\nR\n\n\nR package\n\n\ncontinuous integration\n\n\nsystem dependens\n\n\n\n\n\n\n\n\n\nSep 26, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nCommunicating development stages of open-source software\n\n\n\n\n\n\nopen-source\n\n\nR\n\n\nR package\n\n\nversioning\n\n\nlifecycles\n\n\ncommunity\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nSharing the C++ Code of an Rcpp Package\n\n\n\n\n\n\ncode sharing\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nJun 5, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nExtending Data Frames\n\n\nCreating custom classes and {dplyr} compatibility\n\n\n\ndata frame\n\n\nR\n\n\nR package\n\n\ninteroperability\n\n\nS3 class\n\n\ndplyr\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html",
-    "href": "slides/harmonious-ecosystem/index.html",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "",
-    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
-    "href": "slides/harmonious-ecosystem/index.html#abstract",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Abstract",
-    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#slides",
-    "href": "slides/harmonious-ecosystem/index.html#slides",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Questions from the audience",
-    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
-    "href": "slides/harmonious-ecosystem/index.html#see-also",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "See also",
-    "text": "See also\n\nThe companion post on our blog"
+    "objectID": "slides/showcase-winter2023/index.html#recording",
+    "href": "slides/showcase-winter2023/index.html#recording",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "Recording",
+    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
   },
   {
     "objectID": "slides/showcase-spring2023/index.html",
@@ -413,39 +378,95 @@
     "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html",
-    "href": "slides/showcase-winter2023/index.html",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "objectID": "slides/harmonious-ecosystem/index.html",
+    "href": "slides/harmonious-ecosystem/index.html",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
     "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "href": "slides/showcase-winter2023/index.html#finalsize-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "finalsize slides",
-    "text": "finalsize slides"
+    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
+    "href": "slides/harmonious-ecosystem/index.html#abstract",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Abstract",
+    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "href": "slides/showcase-winter2023/index.html#epiparameter-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "epiparameter slides",
-    "text": "epiparameter slides"
+    "objectID": "slides/harmonious-ecosystem/index.html#slides",
+    "href": "slides/harmonious-ecosystem/index.html#slides",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Slides",
+    "text": "Slides"
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#episoap-slides",
-    "href": "slides/showcase-winter2023/index.html#episoap-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "episoap slides",
-    "text": "episoap slides"
+    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Questions from the audience",
+    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
   },
   {
-    "objectID": "slides/showcase-winter2023/index.html#recording",
-    "href": "slides/showcase-winter2023/index.html#recording",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "Recording",
-    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
+    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
+    "href": "slides/harmonious-ecosystem/index.html#see-also",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "See also",
+    "text": "See also\n\nThe companion post on our blog"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "This blog is also available on R-bloggers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSystem Dependencies in R Packages & Automatic Testing\n\n\n\n\n\n\npackage development\n\n\nR\n\n\nR package\n\n\ncontinuous integration\n\n\nsystem dependens\n\n\n\n\n\n\n\n\n\nSep 26, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nCommunicating development stages of open-source software\n\n\n\n\n\n\nopen-source\n\n\nR\n\n\nR package\n\n\nversioning\n\n\nlifecycles\n\n\ncommunity\n\n\n\n\n\n\n\n\n\nJul 18, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nSharing the C++ Code of an Rcpp Package\n\n\n\n\n\n\ncode sharing\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nJun 5, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nExtending Data Frames\n\n\nCreating custom classes and {dplyr} compatibility\n\n\n\ndata frame\n\n\nR\n\n\nR package\n\n\ninteroperability\n\n\nS3 class\n\n\ndplyr\n\n\n\n\n\n\n\n\n\nApr 12, 2023\n\n\nJoshua W. Lambert\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Should the First 100 Lines of Code Written During an Epidemic Look Like?\n\n\n\n\n\n\noutbreak analytics\n\n\n100 days workshop\n\n\nparticipatory research\n\n\n\n\n\n\n\n\n\nMar 9, 2023\n\n\nCarmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nConvert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations\n\n\n\n\n\n\nR\n\n\nR package\n\n\nobject orientation\n\n\nS3\n\n\ninteroperability\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nImproving the C++ Code Quality of an Rcpp Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\nRcpp\n\n\n\n\n\n\n\n\n\nFeb 16, 2023\n\n\nPratik Gupte\n\n\n\n\n\n\n\n\n\n\n\n\nEnsuring & Showcasing the Statistical Correctness of your R Package\n\n\n\n\n\n\ncode quality\n\n\nR\n\n\nR package\n\n\ntesting\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/juniper-may-2023/index.html",
+    "href": "slides/juniper-may-2023/index.html",
+    "title": "Juniper seminar on improving software for epidemic response",
+    "section": "",
+    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
+  },
+  {
+    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
+    "href": "slides/juniper-may-2023/index.html#talk-slides",
+    "title": "Juniper seminar on improving software for epidemic response",
+    "section": "Talk slides",
+    "text": "Talk slides"
+  },
+  {
+    "objectID": "slides/harmonize-july-2023/index.html",
+    "href": "slides/harmonize-july-2023/index.html",
+    "title": "Global Health Resilience Research Visit",
+    "section": "",
+    "text": "Three talks at a workshop at the Barcelona Supercomputing Center titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics."
+  },
+  {
+    "objectID": "slides/harmonize-july-2023/index.html#talk-slides",
+    "href": "slides/harmonize-july-2023/index.html#talk-slides",
+    "title": "Global Health Resilience Research Visit",
+    "section": "Talk slides",
+    "text": "Talk slides"
+  },
+  {
+    "objectID": "slides/global-health-conference-2023/index.html",
+    "href": "slides/global-health-conference-2023/index.html",
+    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
+    "section": "",
+    "text": "The lead researcher Catalina González-Uribe, from UniAndes Team, along with other members of Epiverse-TRACE in Latin America, presented the work “Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases” during the review of the Integrated Management Strategy for the Prevention and Control of Arboviral Diseases in the Americas, held as part of the Global Health Conference 2023 organized by FIU Public Health & Social Work in Cartagena."
+  },
+  {
+    "objectID": "slides/global-health-conference-2023/index.html#diapositivas-español",
+    "href": "slides/global-health-conference-2023/index.html#diapositivas-español",
+    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
+    "section": "Diapositivas (Español)",
+    "text": "Diapositivas (Español)"
+  },
+  {
+    "objectID": "slides/global-health-conference-2023/index.html#slides-english",
+    "href": "slides/global-health-conference-2023/index.html#slides-english",
+    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
+    "section": "Slides (English)",
+    "text": "Slides (English)"
   },
   {
     "objectID": "learn.html",
@@ -459,7 +480,7 @@
     "href": "presentations.html",
     "title": "Presentations",
     "section": "",
-    "text": "Global Health Resilience Research Visit\n\n\n\n\n\n\nHarmonize\n\n\nworkshop\n\n\ninteroperability\n\n\ncommunity\n\n\nclimate\n\n\n\n\n\n\n\n\n\nJul 26, 2023\n\n\nAdam Kucharski, Joshua W. Lambert, Carmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nSuperseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}\n\n\n\n\n\n\nworkshop\n\n\ncommunity\n\n\nR package\n\n\nbpmodels\n\n\nepichains\n\n\n\n\n\n\n\n\n\nJul 17, 2023\n\n\nJames M. Azam\n\n\n\n\n\n\n\n\n\n\n\n\nJuniper seminar on improving software for epidemic response\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\n\n\n\n\n\n\n\nMay 31, 2023\n\n\nAdam Kucharski\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Spring 2023 showcase\n\n\n\n\n\n\nsivirep\n\n\nepiCo\n\n\nserofoi\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nApr 5, 2023\n\n\nAnna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres\n\n\n\n\n\n\n\n\n\n\n\n\nFrom disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
+    "text": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas\n\n\nCo-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases\n\n\n\nco-design\n\n\nColombia\n\n\nLatin America\n\n\n\n\n\n\n\n\n\nSep 15, 2023\n\n\nCatalina González-Uribe\n\n\n\n\n\n\n\n\n\n\n\n\nGlobal Health Resilience Research Visit\n\n\n\n\n\n\nHarmonize\n\n\nworkshop\n\n\ninteroperability\n\n\ncommunity\n\n\nclimate\n\n\n\n\n\n\n\n\n\nJul 26, 2023\n\n\nAdam Kucharski, Joshua W. Lambert, Carmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nSuperseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}\n\n\n\n\n\n\nworkshop\n\n\ncommunity\n\n\nR package\n\n\nbpmodels\n\n\nepichains\n\n\n\n\n\n\n\n\n\nJul 17, 2023\n\n\nJames M. Azam\n\n\n\n\n\n\n\n\n\n\n\n\nJuniper seminar on improving software for epidemic response\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\n\n\n\n\n\n\n\nMay 31, 2023\n\n\nAdam Kucharski\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Spring 2023 showcase\n\n\n\n\n\n\nsivirep\n\n\nepiCo\n\n\nserofoi\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nApr 5, 2023\n\n\nAnna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres\n\n\n\n\n\n\n\n\n\n\n\n\nFrom disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/s3-generic/index.html",

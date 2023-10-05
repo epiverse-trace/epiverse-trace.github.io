@@ -10,7 +10,50 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.4.398</generator>
-<lastBuildDate>Wed, 26 Jul 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 15 Sep 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas</title>
+  <dc:creator>Catalina González-Uribe</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/global-health-conference-2023/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The lead researcher Catalina González-Uribe, from UniAndes Team, along with other members of Epiverse-TRACE in Latin America, presented the work “Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases” during the review of the Integrated Management Strategy for the Prevention and Control of Arboviral Diseases in the Americas, held as part of the <a href="https://ghc2023.com/en/">Global Health Conference 2023</a> organized by <a href="https://stempel.fiu.edu/">FIU Public Health &amp; Social Work</a> in Cartagena.</p>
+<section id="diapositivas-español" class="level2">
+<h2 class="anchored" data-anchor-id="diapositivas-español">Diapositivas (Español)</h2>
+<iframe width="780" height="438.75" src="FIU_Cartagena_Sep_2023.pdf" title="Diapositivas GHC 2023"></iframe>
+</section>
+<section id="slides-english" class="level2">
+<h2 class="anchored" data-anchor-id="slides-english">Slides (English)</h2>
+<iframe width="780" height="438.75" src="FIU_Cartagena_Sep_2023_English.pdf" title="Slides GHC 2023"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gonzález-uribe2023,
+  author = {González-Uribe, Catalina},
+  title = {Co-Diseño de Soluciones de Software Para Los Desafíos de
+    {América} {Latina} y El {Caribe} En Enfermedades Infecciosas},
+  pages = {undefined},
+  date = {2023-09-15},
+  url = {https://epiverse-trace.github.io//slides/global-health-conference-2023},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gonzález-uribe2023" class="csl-entry quarto-appendix-citeas">
+González-Uribe, Catalina. 2023. <span>“Co-Diseño de Soluciones de
+Software Para Los Desafíos de América Latina y El Caribe En Enfermedades
+Infecciosas.”</span> September 15, 2023. <a href="https://epiverse-trace.github.io//slides/global-health-conference-2023">https://epiverse-trace.github.io//slides/global-health-conference-2023</a>.
+</div></div></section></div> ]]></description>
+  <category>co-design</category>
+  <category>Colombia</category>
+  <category>Latin America</category>
+  <guid>https://epiverse-trace.github.io/slides/global-health-conference-2023/</guid>
+  <pubDate>Fri, 15 Sep 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://epiverse-trace.github.io/slides/global-health-conference-2023/map.png" medium="image" type="image/png" height="111" width="144"/>
+</item>
 <item>
   <title>Global Health Resilience Research Visit</title>
   <dc:creator>Adam Kucharski</dc:creator>
