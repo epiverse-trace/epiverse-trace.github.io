@@ -16,6 +16,11 @@ body {
 	margin-top: 160px;
 }
 
+iframe {
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    margin: auto; /* Center the iframe */
+    display: block; /* Make sure it takes the full width */
+}
 
 
 /* Optional: Add a hover effect to scale images up slightly */
