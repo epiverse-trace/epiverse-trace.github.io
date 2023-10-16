@@ -1,0 +1,15 @@
+::::: {.hex}
+
+:::: {.hex-inner}
+
+![{{pkgname}} logo](https://github.com/epiverse-trace/hex-stickers/blob/main/thumbs/{{pkgname}}.png?raw=1)
+
+::: {.description}
+
+{{description}}
+
+:::
+
+::::
+
+:::::

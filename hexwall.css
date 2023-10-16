@@ -1,0 +1,87 @@
+.hex-container {
+    display: flex;
+	justify-content: space-between;
+	max-width: 80%;
+    width: calc(115px * 10); /* Assuming 6 hexagons per row, adjust as needed */
+	margin-left: 100px;
+	margin-top: 160px;
+}
+
+/* Optional: Add a hover effect to scale images up slightly */
+/* .hex-container img:hover {*/
+/*     transform: scale(1.05);*/
+/* }*/
+
+.hex {
+    width: 150px; /* Adjust based on your image size */
+    padding-bottom: 20%; /* This makes the div height relative to its width */
+    position: relative;
+    margin-top: -300px; /* Adjust for tessellation */
+    margin-right: -0px;
+    margin-left: -70px;
+}
+
+.hex:nth-child(odd) {
+    margin-right: 0;
+}
+
+/* Adjust the margin-top for every 6th hexagon to create a new row */
+.hex:nth-child(2n) {
+    margin-top: 0;
+}
+
+.hex-inner {
+    width: 100%; /* Adjust based on your image size */
+    padding-bottom: 133.01%; /* This makes the div height relative to its width */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hex img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.description {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 2;
+}
+
+.hex:hover .description {
+    display: block;
+}
+
+
+.gradient-rectangle {
+    width: 90%; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    background: linear-gradient(to right, white, #00008B);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px; /* Add some padding to space out the text from the edges */
+}
+
+.early {
+    color: black; /* Text color */
+    font-weight: bold;
+}
+
+.late {
+    color: white; /* Text color */
+    font-weight: bold;
+}
