@@ -2,7 +2,7 @@
 
 :::: {.hex-inner}
 
-![{{pkgname}} logo](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/{{pkgname}}.png)
+![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/{{pkgname}}.png){fig-alt="{{pkgname}} logo"}
 
 ::: {.description}
 
