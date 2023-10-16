@@ -1,10 +1,10 @@
 .hex-container {
     display: flex;
-	justify-content: space-between;
-	max-width: 80%;
+    justify-content: space-between;
+    max-width: 80%;
     width: calc(115px * 10); /* Assuming 6 hexagons per row, adjust as needed */
-	margin-left: 100px;
-	margin-top: 160px;
+    margin-left: 100px;
+    margin-top: 160px;
 }
 
 /* Optional: Add a hover effect to scale images up slightly */
@@ -13,10 +13,11 @@
 /* }*/
 
 .hex {
-    width: 150px; /* Adjust based on your image size */
+    width: 10vw; /* Adjust based on your image size */
+    max-width: 100px;
     padding-bottom: 20%; /* This makes the div height relative to its width */
     position: relative;
-    margin-top: -300px; /* Adjust for tessellation */
+    margin-top: -200px; /* Adjust for tessellation */
     margin-right: -0px;
     margin-left: -70px;
 }
