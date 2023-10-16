@@ -1,5 +1,6 @@
 ---
 image: Epiverse-RGB.svg
+css: hexwall.css
 about:
   template: marquee
   links:
@@ -11,5 +12,29 @@ about:
       href: https://twitter.com/Epiverse_TRACE
 ---
 
-This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.
+## Welcome to Epiverse-TRACE
 
+Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
+
+## New packages, from early stage data science to downstream scenario modelling
+
+These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
+
+```{r, results='asis'}
+file.path("_data", "epiverse_pkgs.csv") |> 
+  read.csv() |> 
+  as.list() |> 
+  purrr::transpose() |> 
+  purrr::map_chr(~ knitr::knit_expand(file = "_templates/hexwall_element.Rmd",
+                                      pkgname = .x$pkgname,
+                                      description = .x$description)) |> 
+  purrr::walk(cat, sep = "\n")
+```
+
+::: {.gradient-rectangle}
+
+[Early tasks]{.class key="early"}
+
+[Late tasks]{.class key="late"}
+
+:::
