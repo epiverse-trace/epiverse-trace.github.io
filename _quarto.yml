@@ -10,6 +10,8 @@ website:
     left:
       - text: Software
         href: https://epiverse-trace.r-universe.dev/ui#packages
+      - text: Get involved
+        href: get-involved.qmd
       - blog.qmd
       - presentations.qmd
       - learn.qmd
