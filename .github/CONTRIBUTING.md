@@ -134,3 +134,11 @@ Alongside the pdf of your slides, please add an `index.qmd` with the following r
 - A list of questions asked during the presentation and a short answer, 
   especially if you didn't have time to answer all questions live
 - A link to the recording if available
+
+## Adding new packages to the hexwall
+
+Packages on the hexwall are automatically pulled from the list in 
+`_data/epiverse_pkgs.csv`. New packages can be added by submitting a PR editing
+this file.
+The package logos are fetched from 
+<https://github.com/epiverse-trace/hex-stickers>.
