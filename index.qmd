@@ -37,8 +37,8 @@ file.path("_data", "epiverse_pkgs.csv") |>
 
 ::: {.gradient-rectangle}
 
-[Early tasks]{.class key="early"}
+[Early tasks]{.early}
 
-[Late tasks]{.class key="late"}
+[Late tasks]{.late}
 
 :::
