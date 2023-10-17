@@ -13,11 +13,10 @@
 /* }*/
 
 .hex {
-    width: 10vw; /* Adjust based on your image size */
-    max-width: 100px;
+    width: 13%; /* Adjust based on your image size */
     padding-bottom: 20%; /* This makes the div height relative to its width */
     position: relative;
-    margin-top: -200px; /* Adjust for tessellation */
+    margin-top: -27%; /* Adjust for tessellation */
     margin-right: -0px;
     margin-left: -70px;
 }
