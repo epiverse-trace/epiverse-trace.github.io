@@ -20,16 +20,20 @@ Our aim is to help change how analytics are used in the global infectious diseas
 
 These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
 
-```{r, results='asis'}
-file.path("_data", "epiverse_pkgs.csv") |> 
-  read.csv() |> 
-  as.list() |> 
-  purrr::transpose() |> 
+::: {.hex-container}
+
+```{r, results='asis', echo = FALSE}
+file.path("_data", "epiverse_pkgs.csv") |>
+  read.csv() |>
+  as.list() |>
+  purrr::transpose() |>
   purrr::map_chr(~ knitr::knit_expand(file = "_templates/hexwall_element.Rmd",
                                       pkgname = .x$pkgname,
-                                      description = .x$description)) |> 
-  purrr::walk(cat, sep = "\n")
+                                      description = .x$description)) |>
+  cat(sep = "\n")
 ```
+
+:::
 
 ::: {.gradient-rectangle}
 
