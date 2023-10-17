@@ -88,6 +88,7 @@ function.
 Let's define two functions, `base_warn_bmrk()` and `cli_warn_bmrk()` that
 throw one warning. The former will use base R's `warning()` function and the
 latter `cli's` `cli_warn()`.
+
 ```{r}
 base_warn_bmrk <- function() {
   warning("x must be an integer")
@@ -103,6 +104,7 @@ test functions,
 [bench](https://cran.r-project.org/web/packages/bench/index.html) for measuring
 the run times, and [ggplot2](https://ggplot2.tidyverse.org/) for visualizing
 the results.
+
 ```{r}
 library(bench)
 library(cli)
@@ -145,6 +147,7 @@ bnmrk_df <- bench::mark(
 ```
 
 Drum roll for the results...
+
 ```{r}
 ggplot2::autoplot(bnmrk_df, type = "boxplot") +
 labs(x = "Functions",
@@ -155,6 +158,7 @@ labs(x = "Functions",
 ### Case 2: Functions throwing two warnings
 
 We'll aslso test case 2 with $1000$ replicates and plot the results.
+
 ```{r warning=FALSE}
 reps <- 1000
 bnmrk_df2 <- bench::mark(
@@ -167,6 +171,7 @@ bnmrk_df2 <- bench::mark(
 ```
 
 And the winner is...
+
 ```{r}
 ggplot2::autoplot(
   bnmrk_df2,
