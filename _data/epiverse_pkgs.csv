@@ -1,0 +1,18 @@
+pkgname,description
+readepi,Tools for reading data
+ColOpenData,Open data for Colombia
+cleanepi,Tools for cleaning data
+linelist,Tagging and validating individual data
+epiparameter,Tools for epidemiological parameters
+sivirep,Automated report for SIVIGILA data
+episoap,Pipelines for common tasks
+cfr,Severity estimation
+serofoi,Estimate force of infection from serology
+epiCo,Tools for vector-borne infections
+iraca,Simulate vector-borne outbreaks
+epichains,
+superspreading,
+finalsize,Calculate epidemic final size
+epidemics,Simulate epidemic dynamics
+scenarios,Explore epidemic scenarios
+vaccineff,Analyze vaccine efficacy
