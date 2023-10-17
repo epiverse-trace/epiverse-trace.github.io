@@ -36,7 +36,6 @@ package must do to make the dependency work. In this article, we will
 demonstrate how to use (micro)benchmarking[^1] to guide the decision to take on
 dependencies.
 
-
 For this demonstration, we will look at condition handling and signalling,
 that is, what to do when problems arise during code execution [^2].
 Condition signalling in R is classified into errors and warnings. Errors refer
