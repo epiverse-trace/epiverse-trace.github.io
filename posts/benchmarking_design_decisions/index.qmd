@@ -86,7 +86,7 @@ thrown in a function with and without `cli::cli_warn()`.
 We will also check if the benchmark scales with the number of warnings in the
 function.
 
-### Case 1: Function throwing one warning
+### Experiment scenario 1: Function throwing one warning
 
 Let's define two functions, `base_warn_bmrk()` and `cli_warn_bmrk()` that
 throw one warning. The former will use base R's `warning()` function and the
@@ -114,7 +114,7 @@ library(cli)
 library(ggplot2)
 ```
 
-### Case 2: Functions throwing two warnings
+### Experiment scenario 2: Functions throwing two warnings
 
 For case 2, we will create `base_warn_bmrk2()` and `cli_warn_bmrk2`
 for base R and `cli` respectively to throw two warnings each.
@@ -136,7 +136,7 @@ the results.
 
 ## Results
 
-### Case 1: Functions throwing one warning
+### Scenario 1: Functions throwing one warning
 
 ```{r warning=FALSE}
 reps <- 1000
@@ -158,7 +158,7 @@ labs(x = "Functions",
      )
 ```
 
-### Case 2: Functions throwing two warnings
+### Scenario 2: Functions throwing two warnings
 
 We'll aslso test case 2 with $1000$ replicates and plot the results.
 
