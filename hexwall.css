@@ -26,7 +26,7 @@
 }
 
 /* Adjust the margin-top for every 6th hexagon to create a new row */
-.hex:nth-child(2n) {
+.hex:nth-child(even) {
     margin-top: 0;
 }
 
