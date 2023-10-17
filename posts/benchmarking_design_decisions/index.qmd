@@ -1,10 +1,10 @@
 ---
-title: "Microbenchmarking as a tool for R package design decision-making"
+title: "Using benchmarking to guide the adoption of dependencies in R packages"
 author:
   - name: "James Mba Azam"
     orcid: "https://orcid.org/0000-0001-5782-7330"
 date: last-modified
-categories: [benchmarking, R, condition handling, R packages, software architecture]
+categories: [benchmarking, R, tidyverse, cli, R packages, software architecture]
 format:
   html:
     toc: true
@@ -13,82 +13,82 @@ execute:
 ---
 
 ```{r, echo = FALSE}
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(
+  cache = TRUE,
+  message = FALSE
+)
 ```
 
-# Skeleton
+R package developers are constantly faced with design decisions about user
+friendliness. Such design decisions often include checking that inputs are
+rightly specified and how to fix or signal issues arising from intermediate
+calculations or processes within a function (condition handling).
 
-* R package development involves lots of design decisions that could influence
-user-friendliness.
-* Design decisions include input validation, condition handling and signalling, and
-so forth.
-* Some of the design decisions result in taking on dependencies.
-* Dependencies should not be adopted blindly without considering the overhead
-* Microbenchmarking can guide the decision to take on dependencies
-* Illustration: 
-  - Benchmarking {cli} as a dependency to throw warnings
-  - 
+These design decisions often result in taking on dependencies. Dependencies are
+external packages that enable a function to work properly. For example, the
+`tidyverse` is a collection of packages that are often used together to
+make data analysis easier. The `tidyverse` is a dependency for many
+packages that are built on top of it.
 
-R package developers are constantly faced with design decisions that could influence
-the ease of use of their packages. One such design decision is condition handling and
-signalling, that is, what to do when problems arise during code execution [^3].
+Dependencies should not be adopted blindly without carefully considering the
+overhead they introduce. Overhead here refers to the additional work that a
+package must do to make the dependency work. In this article, we will
+demonstrate how to use (micro)benchmarking[^1] to guide the decision to take on
+dependencies.
+
+
+For this demonstration, we will look at condition handling and signalling,
+that is, what to do when problems arise during code execution [^2].
 Condition signalling in R is classified into errors and warnings. Errors refer
 to cases where something fatal happens during code execution so that it halts,
 for example, when a function is run without specifying the required arguments.
 ```{r}
 try(rnorm())
 ```
-Warnings are used to handle less fatal
-issues with code execution that do not need to halt the process.
+
+Warnings are used to handle less fatal issues with code execution that do not
+need to halt the process.
 ```{r}
 c(1:2) > c(1:3)
 ```
-
-Even though condition handling is well defined in most cases, its application can
-occasionally be nuanced. Take for example the design of stochastic simulation functions, which
-are run many times because each run produces a different realisation of the results.
-Condition handling in such functions must be designed carefully so as not to be disruptive [^4].
-That is, it is important to consider the least disruptive behaviour in cases where code execution goes wrong, but not terribly wrong to cause issues down the line. In such a case,
-the developer must decide whether to throw a warning and fix the issue internally or
-to throw an informative error to aid with fixing it.
 
 Base R ships with functionalities for condition handling and signalling. There is
 `stop()` for signaling errors and `warning()` for throwing warnings. These base R
 functions are, however, are not flexible enough for advanced formatting: colour,
 progress bar, contextual pluralisation, and so forth.
 
-For flexibility in condition signalling, developers often have to adopt external dependencies.
-The `tidyverse` provides the [cli](https://cli.r-lib.org/articles/semantic-cli.html) package as a solution. `cli` offers many advanced features that will not be discussed here, but of
-note is its `cli_abort()` and `cli_warn()` functions for signalling errors and warnings
-respectfully.
+Package developers often have to adopt external dependencies for flexibility
+in condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html) package is well designed for this. `cli` offers many advanced features
+that will not be discussed here, but of note is its `cli_abort()` and
+`cli_warn()` functions for signalling errors and warnings respectfully.
 
-Dependencies often ease the work of developers but come at a cost[^5]. Here, we will
-investigate whether it is worth taking on `cli` to handle simple condition signalling. 
-We will benchmark base R's `warn()` function against `cli's` `cli_warn()` to investigate
-if the dependency is worth taking on in a case where we do not necessarily intend to
-take advantage of its flexibility.
+`cli` is a great candidate for flexibility in condition signalling but is
+a "heavy" package that has many dependencies in itself.
+```{r}
+pak::pkg_deps_tree("cli")
+```
 
-## Illustration 1: Using `cli` for  
+Naturally, one might wonder if its "heaviness" would affect its speed. Here,
+we will investigate this through a benchmarking exercise against base R's
+`warn()` function. The results of this exercise will provide us with insights
+on whether its worth taking on `cli` for its flexibility as a tradeoff for its
+slower speed.
 
-We will consider different scenarios of the number of warnings thrown to tease out
-the qualitative relationship between run time and number of warnings thrown in a
-function with and without `cli`.
+## Experimental set up
+
+We will consider different scenarios of the number of warnings thrown to
+tease out the qualitative relationship between run time and number of warnings
+thrown in a function with and without `cli::cli_warn()`.
+
+We will also check if the benchmark scales with the number of warnings in the
+function.
 
 ### Case 1: Function throwing one warning
 
-Let's define two functions, `base_warn_bmrk()` and `cli_warn_bmrk()` that throw one warning. The
-former will use base R's `warning()` function and the latter `cli's` `cli_warn()`.
-
-Based on this description, we will need 3 main packages, [cli](https://cli.r-lib.org/articles/semantic-cli.html) for the writing the test functions, [bench](https://cran.r-project.org/web/packages/bench/index.html) for measuring the run times,
-and ggplot2 for visualizing the results.
-
-Let us load the packages
-
+Let's define two functions, `base_warn_bmrk()` and `cli_warn_bmrk()` that
+throw one warning. The former will use base R's `warning()` function and the
+latter `cli's` `cli_warn()`.
 ```{r}
-library(bench)
-library(cli)
-library(ggplot2)
-
 base_warn_bmrk <- function() {
   warning("x must be an integer")
 }
@@ -98,16 +98,25 @@ cli_warn_bmrk <- function() {
 }
 ```
 
-We will also check if the benchmark scales with the number of warnings in the
-function. To do this, we will create `base_warn_bmrk2()` and `cli_warn_bmrk2`
-for base R and `cli` respectively to throw two warnings each.
+Based on this description, we will need 3 main packages, [cli](https://cli.r-lib.org/articles/semantic-cli.html) for the writing the
+test functions,
+[bench](https://cran.r-project.org/web/packages/bench/index.html) for measuring
+the run times, and [ggplot2](https://ggplot2.tidyverse.org/) for visualizing
+the results.
+```{r}
+library(bench)
+library(cli)
+library(ggplot2)
+```
 
 ### Case 2: Functions throwing two warnings
+
+For case 2, we will create `base_warn_bmrk2()` and `cli_warn_bmrk2`
+for base R and `cli` respectively to throw two warnings each.
 
 ```{r}
 base_warn_bmrk2 <- function() {
   warning("x must be an integer\n")
-
   warning("y must be an integer")
 }
 
@@ -117,8 +126,8 @@ cli_warn_bmrk2 <- function() {
 }
 ```
 
-Now, to the fun part, let us run the experiments for case 1 and 2, by running them 
-$1000$ times and plotting the results.
+Now, to the fun part, let's test case 1 with $1000$ replicates and plot
+the results.
 
 ## Results
 
@@ -133,8 +142,11 @@ bnmrk_df <- bench::mark(
   time_unit = "s",
   check = FALSE
 )
+```
 
-autoplot(bnmrk_df, type = "boxplot") +
+Drum roll for the results...
+```{r}
+ggplot2::autoplot(bnmrk_df, type = "boxplot") +
 labs(x = "Functions",
      title = paste("Functions throwing one warning (replicated", reps, 'times)')
      )
@@ -142,6 +154,7 @@ labs(x = "Functions",
 
 ### Case 2: Functions throwing two warnings
 
+We'll aslso test case 2 with $1000$ replicates and plot the results.
 ```{r warning=FALSE}
 reps <- 1000
 bnmrk_df2 <- bench::mark(
@@ -151,42 +164,66 @@ bnmrk_df2 <- bench::mark(
   time_unit = "s",
   check = FALSE
 )
+```
 
-autoplot(bnmrk_df2, type = "boxplot") +
-labs(y = "Functions",
+And the winner is...
+```{r}
+ggplot2::autoplot(
+  bnmrk_df2,
+  type = "boxplot"
+  ) +
+labs(x = "Functions",
      title = paste("Functions throwing two warnings (replicated", reps, 'times)')
      )
 ```
 
-We can see from this simple experiment that for the example with one warning, `cli::cli_warn()` was `r bnmrk_df[1, "median"]/bnmrk_df[2, "median"]` times slower on average than `base::warn()` and `r bnmrk_df2[1, "median"]/bnmrk_df2[2, "median"]` times slower for the case with two warnings. 
-By induction, we notice the benchmark scales linearly with the number of calls to the warning functions. This seems to suggest that taking on
-`cli` as a dependency for condition signalling might require carefully considering
-whether the dependency is necessary and if so, how to limit calls to it. Other R developers
-have noticed this issue with cli and have raised an issue on its Github repository [^6].
+We can see from this simple experiment that for the example with one warning, `cli::cli_warn()` was `r bnmrk_df[1, "median"]/bnmrk_df[2, "median"]` times
+slower on average than `base::warn()` and `r bnmrk_df2[1, "median"]/bnmrk_df2[2, "median"]` times slower for the case with two warnings. This points to a
+suspicion that the benchmark scales linearly with the number of calls to the
+warning functions. Other bencmarking experiments with `cli` have revealed
+near-linear relationships between its speed and the number of times its
+called[^3].
+
+This seems to suggest that taking on `cli` as a dependency for condition
+signalling might require carefully considering whether the dependency is
+necessary and if so, how to limit calls to it.
+
+Most developers might argue that this is an optimisation overkill[^4]. However,
+we argue that it is important to consider speed differences in context.
+In the case of simple printing of warnings, the speed difference is
+negligible yet disruptive and somewhat painful. However, in the grand scheme
+of things, this might be negligible compared to much slower processes that
+need more attention. In those cases, the developer might want to consider other
+optimisation strategies such as profiling.
 
 ## Conclusion
 
-In designing R package infrastructure, it is important that the developer(s)
-considers the impact of user-facing decisions. Here, we have demonstrated
-how this decision can be driven with data from benchmarking exercises.
-We show how a simple decision to use `cli::cli_warn()` to handle condition
-signalling could come at the cost of a tiny loss in speed.
+In designing R package infrastructure with "heavy" dependencies, it might
+sometimes be necessary to test your intuition about their overhead with
+experiments. Here, we have demonstrated how benchmarking is one way to achieve
+this. We show how a simple decision to use `cli::cli_warn()` to handle
+warnings could come at the cost of a tiny loss in speed.
 
-The demonstration here can be extended to other design decisions.
-We recommend benchmarking as a way to help the developer make design
-decisions.
+The demonstration here can be extended to other design decisions such as
+input checking, loops, object indexing, and so forth.
 
-## Related
+We recommend benchmarking as a way to help developers make design decisions.
+However, we also recommend that developers consider the context of the
+optimisation in interpreting the results.
 
-* [microbenchmark](https://github.com/joshuaulrich/microbenchmark): an R package for comparing the execution time of R expressions.
-* [rbenchmark](https://code.google.com/archive/p/rbenchmark/): an R package for benchmarking R code.
-* [tictok](https://github.com/collectivemedia/tictoc): an R package to time R functions
-* [touchstone](https://github.com/lorenzwalthert/touchstone/tree/main): an R package for
-benchmarking of pull requests with statistical confidence.
+## Other R packages for benchmarking
 
-<!-- [^1]: Donald Knuth's quoted as having said, "The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming." (See https://en.wikiquote.org/wiki/Donald_Knuth) -->
-[^2]: Benchmark (Wikipedia): https://en.wikipedia.org/wiki/Benchmark_(computing)
-[^3]:  Hadley Wickham's Advanced R chapter on Exceptions and Debugging: http://adv-r.had.co.nz/Exceptions-Debugging.html
-[^4]: R Bloggers post "Error handling in R": https://www.r-bloggers.com/2012/10/error-handling-in-r/
-[^5]: It depends - A dialog about dependencies: https://www.tidyverse.org/blog/2019/05/itdepends/
-[^6]: Formating errors can be slow/variable: https://github.com/r-lib/cli/issues/617
+* [microbenchmark](https://github.com/joshuaulrich/microbenchmark): an R
+  package for comparing the execution time of R expressions.
+* [rbenchmark](https://code.google.com/archive/p/rbenchmark/): an R package
+  for benchmarking R code.
+* [tictok](https://github.com/collectivemedia/tictoc): an R package to time
+R functions
+* [touchstone](https://github.com/lorenzwalthert/touchstone/tree/main): an R
+  package for
+  benchmarking of pull requests with statistical confidence.
+
+[^1]: Benchmark (Wikipedia): <https://en.wikipedia.org/wiki/Benchmark_(computing)>
+[^2]:  Hadley Wickham's Advanced R chapter on Exceptions and Debugging: <http://adv-r.had.co.nz/Exceptions-Debugging.html>
+[^3]: Formating errors can be slow/variable: <https://github.com/r-lib/cli/issues/617>
+[^4]: Donald Knuth's quoted as having said, "The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming." (See <https://en.wikiquote.org/wiki/Donald_Knuth>)
