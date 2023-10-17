@@ -42,12 +42,14 @@ that is, what to do when problems arise during code execution [^2].
 Condition signalling in R is classified into errors and warnings. Errors refer
 to cases where something fatal happens during code execution so that it halts,
 for example, when a function is run without specifying the required arguments.
+
 ```{r}
 try(rnorm())
 ```
 
 Warnings are used to handle less fatal issues with code execution that do not
 need to halt the process.
+
 ```{r}
 c(1:2) > c(1:3)
 ```
@@ -64,6 +66,7 @@ that will not be discussed here, but of note is its `cli_abort()` and
 
 `cli` is a great candidate for flexibility in condition signalling but is
 a "heavy" package that has many dependencies in itself.
+
 ```{r}
 pak::pkg_deps_tree("cli")
 ```
