@@ -185,7 +185,7 @@ bnmark_relative_speeds <- bnmark_res |>
 bnmark_relative_speeds
 ```
 
-As we can see in the new column `relative_speed``, `cli` is consistently
+As we can see in the new column `relative_speed`, `cli` is consistently
 slower than base R and this seems not to
 scale linearly with the number of warnings thrown. Other benchmarking
 experiments
