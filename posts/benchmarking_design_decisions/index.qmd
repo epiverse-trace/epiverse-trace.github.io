@@ -213,7 +213,7 @@ decisions.
 
 ## Conclusion
 
-In designing R package infrastructure with "heavy" dependencies, it might
+In designing R package infrastructure with dependencies, it might
 sometimes be necessary to test your intuition about their overhead with
 experiments. Here, we have demonstrated how benchmarking is one way to achieve
 this. We show how a simple decision to use `cli::cli_warn()` to handle
