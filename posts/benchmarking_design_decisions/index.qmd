@@ -55,7 +55,7 @@ c(1:2) > c(1:3)
 
 Base R ships with functionalities for condition handling and signalling. There is
 `stop()` for signaling errors and `warning()` for throwing warnings. These base R
-functions are, however, are not flexible enough for advanced formatting: colour,
+functions do not include desirable advanced formatting features: colour,
 progress bar, contextual pluralisation, and so forth.
 
 Package developers often have to adopt external dependencies for feature-rich condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html) package is well designed for this. `cli` offers many advanced features
