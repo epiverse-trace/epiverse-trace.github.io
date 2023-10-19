@@ -4,7 +4,7 @@
     max-width: 80%;
     width: calc(115px * 10); /* Assuming 6 hexagons per row, adjust as needed */
     margin-left: 100px;
-    margin-top: 160px;
+    margin-top: 100px;
 }
 
 /* Optional: Add a hover effect to scale images up slightly */
@@ -66,8 +66,8 @@
 
 
 .gradient-rectangle {
-    height: 50px; /* Adjust as needed */
-    background: linear-gradient(to right, white, #00008B);
+    height: 40px; /* Adjust as needed */
+    background: linear-gradient(to right, #fff2cc, #ffe6cc, #f8cecc);
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -75,12 +75,7 @@
     padding: 0 10px; /* Add some padding to space out the text from the edges */
 }
 
-.early {
+.task {
     color: black; /* Text color */
-    font-weight: bold;
-}
-
-.late {
-    color: white; /* Text color */
     font-weight: bold;
 }

@@ -16,9 +16,33 @@ about:
 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
-## New packages, from early stage data science to downstream scenario modelling
+## Roadmap
+
+![](task_pipeline-minimal.svg)
+
+## Epiverse-TRACE packages
 
 These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
+
+```{=html}
+<style>
+.rectangle {
+  height: 50px;
+  width: 100px;
+  background-color: #555;
+}
+</style>
+```
+
+::: {.gradient-rectangle}
+
+[Early tasks]{.task}
+
+[Middle tasks]{.task}
+
+[Late tasks]{.task}
+
+:::
 
 ::: {.hex-container}
 
@@ -35,10 +59,4 @@ file.path("_data", "epiverse_pkgs.csv") |>
 
 :::
 
-::: {.gradient-rectangle}
 
-[Early tasks]{.early}
-
-[Late tasks]{.late}
-
-:::
