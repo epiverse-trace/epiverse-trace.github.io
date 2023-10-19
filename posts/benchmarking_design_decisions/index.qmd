@@ -21,8 +21,9 @@ knitr::opts_chunk$set(
 
 R package developers are constantly faced with design decisions about user
 friendliness. Such design decisions often include checking that inputs are
-rightly specified and how to fix or signal issues arising from intermediate
-calculations or processes within a function (condition handling).
+rightly specified and returning feedback early, deciding on how to deal with
+issues arising during code execution within a function, and how to
+structure outputs.
 
 These design decisions often result in taking on dependencies. Dependencies are
 external packages that enable a function to work properly. For example, the
@@ -30,15 +31,18 @@ external packages that enable a function to work properly. For example, the
 make data analysis easier. The `tidyverse` is a dependency for many
 packages that are built on top of it.
 
-Dependencies should not be adopted blindly without carefully considering the
-overhead they introduce. Overhead here refers to the additional work that a
-package must do to make the dependency work. In this article, we will
-demonstrate how to use (micro)benchmarking[^1] to guide the decision to take on
-dependencies.
+Dependencies should only be adopted after carefully considering their pros and
+cons. In this article, we will demonstrate how to use (micro)benchmarking[^1]
+to guide the decision to take on dependencies that might lead to slower
+processes. In data analytics pipelines, speed is often a key consideration,
+especially when working with large datasets. Therefore, it is important to
+consider how the new dependency might impact the speed of an existing
+process.
 
-For this demonstration, we will look at condition handling and signalling,
-that is, what to do when problems arise during code execution [^2].
-Condition signalling in R is classified into errors and warnings. Errors refer
+For this demonstration, we will look at condition signalling,
+that is, how to signal to a user that an issue has arisen during code
+execution [^2]. Condition signalling in R is classified into errors,
+warnings, and messages. Errors refer
 to cases where something fatal happens during code execution so that it halts,
 for example, when a function is run without specifying the required arguments.
 
@@ -47,18 +51,29 @@ try(rnorm())
 ```
 
 Warnings are used to handle less fatal issues with code execution that do not
-need to halt the process.
+need to halt the process. For example, when you compare two vectors of
+different lengths, R will throw a warning but will still return a result.
 
 ```{r}
 c(1:2) > c(1:3)
 ```
 
-Base R ships with functionalities for condition handling and signalling. There is
-`stop()` for signaling errors and `warning()` for throwing warnings. These base R
-functions do not include desirable advanced formatting features: colour,
-progress bar, contextual pluralisation, and so forth.
+Messages are used to provide useful information about processes. For
+example, when you load a package, R will throw a message to indicate that the
+package has been loaded.
 
-Package developers often have to adopt external dependencies for feature-rich condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html) package is well designed for this. `cli` offers many advanced features
+```{r}
+library(dplyr)
+```
+
+Base R ships with functionalities for condition signalling. There is
+`stop()` for signaling errors, `warning()` for throwing warnings, and
+`message()` for throwing messages. These base R
+functions are, however, are not flexible enough for advanced
+formatting: colour, progress bar, contextual pluralisation, and so forth.
+
+Package developers often have to adopt external dependencies for flexibility
+in condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html) package is well designed for this. `cli` offers many advanced features
 that will not be discussed here, but of note is its `cli_abort()` and
 `cli_warn()` functions for signalling errors and warnings respectfully.
 
@@ -125,32 +140,28 @@ warnings <- c(1, 5, 10, 15, 20, 100)
 Let's run benchmarks over the different scenarios and store results
 in a data.frame.
 
-```{r warning=FALSE}
-bnmark_list <- warnings |>
-  map(
-    \(x) mark(
-      "cli::cli_warn()" = warn_Ntimes(x, pkg = "cli"),
-      "base::warning()" = warn_Ntimes(x, pkg = "base")
+```{r warning=FALSE,message=FALSE}
+bnmark_res <- bench::press(
+  warnings = c(1, 5, 10, 15, 20, 100),
+  bench::mark(
+    cli = warn_Ntimes(warnings, "cli"),
+    base = warn_Ntimes(warnings, "base")
     )
   )
-
-bnmark_tbl <- map2(
-  bnmark_list,
-  warnings,
-  \(x, y) mutate(x, warnings = y)
-) |>
-  reduce(bind_rows)
 ```
 
 ## Results
 
-It's time to explore the results of the data generated. We'll start by
-making a boxplot of the median run times for the different scenarios.
+It's time to explore the results of the data generated. We'll start by making
+a boxplot of the median run times for the different scenarios.
 
 Drum roll please...
 
 ```{r}
-autoplot(bnmark_tbl, type = "boxplot") +
+autoplot(
+  bnmark_res,
+  type = "boxplot"
+  ) +
   labs(
     x = "Package",
     caption = "Functions throwing various numbers of warnings as indicated in the facet label"
@@ -158,38 +169,45 @@ autoplot(bnmark_tbl, type = "boxplot") +
 ```
 
 Finally, let's investigate the relative speeds of the two packages with
-respect to the number of warnings. We will do this by dividing the speed of
-`cli::cli_warn()` by the speed of `base::warning()`.
+respect to the number of warnings. We will do this by dividing the median
+benchmark of `cli::cli_warn()` by that of `base::warning()`.
 
 ```{r}
-bnmark_tbl |>
+bnmark_relative_speeds <- bnmark_res |>
   select(expression, median, warnings) |>
   pivot_wider(
     names_from = expression,
     values_from = c(median)
     ) |> 
   mutate(
-    scale = `cli::cli_warn()`/`base::warning()`
+    relative_speed = cli/base
     )
+bnmark_relative_speeds
 ```
 
-As we can see, `cli` is consistently slower than base R but this seems not to
-scale with the number of warnings thrown. Other benchmarking experiments
+As we can see in the new column `relative_speed``, `cli` is consistently
+slower than base R and this seems not to
+scale linearly with the number of warnings thrown. Other benchmarking
+experiments
 with `cli` have revealed linear relationships between its speed and the number
 of times it invokes other functions [^3]. The developers of `cli` have also
 conducted benchmarks of the `ansi_` family of functions in `cli` in comparison
 to base R and the `fansi` package. They find that `cli` is consistently slower
 than base R, which corroborates the results of our experiment here.
 Their benchmarks are available in the cli documentation [^4]. So, should we
-be worried about the speed of `cli`? Well, it depends on the context.
+be worried about the speed of `cli`? Well, it depends on the context. The
+"R Packages" book by Hadley Wickham and Jenny Bryan has a section on
+this where they suggest approaching such a decision from a holistic, balanced,
+and quantitative approach[^5]. We'll leave the reader to make their own decision
+based on the their use case.
 
-Most developers might argue that this is an optimisation overkill[^5]. However,
+Most developers might argue that this is an optimisation overkill[^6]. However,
 we argue that it is important to consider speed differences in context.
 In the case of simple printing, the speed difference is
 negligible yet disruptive and somewhat painful. However, in the grand scheme
 of things, this might be nothing compared to much slower processes that
 need more attention. In those cases, the developer might want to consider other
-optimisation strategies such as profiling [^6]. The essence of this experiment
+optimisation strategies such as profiling [^7]. The essence of this experiment
 is to demonstrate that benchmarking is one way to help developers make design
 decisions.
 
@@ -223,5 +241,6 @@ R functions
 [^2]:  Hadley Wickham's Advanced R chapter on Exceptions and Debugging: <http://adv-r.had.co.nz/Exceptions-Debugging.html>
 [^3]: Formating errors can be slow/variable: <https://github.com/r-lib/cli/issues/617>
 [^4]: cli benchmarks: <https://cli.r-lib.org/articles/ansi-benchmark.html>
-[^5]: Donald Knuth's quoted as having said, "The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming." (See <https://en.wikiquote.org/wiki/Donald_Knuth>)
-[^6]: Profiling (Wikipedia): <https://csgillespie.github.io/efficientR/performance.html>
+[^5]: Dependencies: Mindset and Background: <https://r-pkgs.org/dependencies-mindset-background.html>
+[^6]: Donald Knuth's quoted as having said, "The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming." (See <https://en.wikiquote.org/wiki/Donald_Knuth>)
+[^7]: Profiling (Wikipedia): <https://csgillespie.github.io/efficientR/performance.html>
