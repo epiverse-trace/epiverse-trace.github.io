@@ -66,7 +66,7 @@ that will not be discussed here, but of note is its `cli_abort()` and
 might naturally wonder if this comes at a cost. Here,
 we will investigate this through a benchmarking exercise against base R's
 `warning()` function. The results of this exercise will provide us with insights
-on whether its worth taking on `cli` for its flexibility as a trade-off for its
+on whether its worth taking on `cli` for its features as a trade-off for its
 slower speed.
 
 ## Experiment
