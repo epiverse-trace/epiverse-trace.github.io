@@ -59,4 +59,5 @@ file.path("_data", "epiverse_pkgs.csv") |>
 
 :::
 
+You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)!
 
