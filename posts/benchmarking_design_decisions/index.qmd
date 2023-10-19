@@ -69,7 +69,7 @@ library(dplyr)
 Base R ships with functionalities for condition signalling. There is
 `stop()` for signaling errors, `warning()` for throwing warnings, and
 `message()` for throwing messages. These base R
-functions are, however, are not flexible enough for advanced
+functions are, however, not flexible enough for advanced
 formatting: colour, progress bar, contextual pluralisation, and so forth.
 
 Package developers often have to adopt external dependencies for flexibility
