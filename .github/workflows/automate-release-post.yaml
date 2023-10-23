@@ -49,7 +49,7 @@ jobs:
               ~ gh::gh("/repos/{full_name}/releases", full_name = .x, per_page = 1)
             ) |>
             purrr::map(unlist, recursive = FALSE) |>
-            purrr::keep(~ isTRUE(lubridate::ymd_hms(.x$published_at) - lubridate::now() > -1))
+            purrr::keep(~ isTRUE(difftime(lubridate::ymd_hms(.x$published_at), lubridate::now(), units = "days") > -1))
 
           if (!is.null(release_today)) {
 
