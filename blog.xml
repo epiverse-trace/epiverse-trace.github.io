@@ -9,8 +9,171 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.398</generator>
-<lastBuildDate>Tue, 26 Sep 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.439</generator>
+<lastBuildDate>Thu, 19 Oct 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>linelist v1.0.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/linelist_v1.0.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announced the release of a new linelist version v1.0.0. Here is a automatically generated summary of the changes in this version.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li><p>Increased compatibility with dplyr is now documented and ensured through tests of all dplyr verbs on linelist objects as part of our testing &amp; continuous integration system, as well as a new vignette: <a href="https://epiverse-trace.github.io/linelist/articles/compat-dplyr.html" class="uri">https://epiverse-trace.github.io/linelist/articles/compat-dplyr.html</a> (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #53)</p></li>
+<li><p>A new selection helper is provided for tidyverse users, based on the existing selectors provided by the tidyselect package: <code>has_tag()</code> (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #61). By feeding it a character vector of tags to operate on, you can work with dplyr verbs on specific tagged columns without having to explicitly use the column names:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb1-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">has_tag</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"id"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_onset"</span>)))</span></code></pre></div></li>
+</ul>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><p>It is no longer possible to use <code>lost_tags_action()</code> within a pipeline. It must now be set as a separate step. This makes the internal code more robust and clarifies what is part of the pipeline versus a global option (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #79).</p></li>
+<li><p>The <code>select_tags()</code> function is now deprecated to ensure we provide just one clear way to address a given issue and that our “happy path” is clearly signposted (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #61). If you were using this function, we now recommend using the more explicit two-steps process:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Deprecated</span></span>
+<span id="cb2-2">x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select_tags</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>)</span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Instead use</span></span>
+<span id="cb2-6">x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tags_df</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(age)</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Or</span></span>
+<span id="cb2-11">x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">has_tag</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb2-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tags_df</span>()</span></code></pre></div></li>
+<li><p>The custom <code>select.linelist()</code> method has been deprecated as providing a custom <code>[.linelist()</code> is sufficient to ensure compatibility with <code>dplyr::select()</code> default methods, including triggering <code>lost_tags_action()</code> on tag removal (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #61). A full deletion of this method is not possible at the moment because we want to provide a smooth transition for users that relied on the custom <code>tags</code> argument of the <code>select.linelist()</code> method. It is now recommend instead to use the new <code>has_tag()</code> selection helper:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-2">  dplyr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">has_tag</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"id"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_onset"</span>)))</span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Instead of</span></span>
+<span id="cb3-5">x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">select</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">tags =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"id"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_onset"</span>))</span></code></pre></div></li>
+<li><p>The custom <code>rename.linelist()</code> method has been removed as providing a custom <code>names&lt;-().linelist</code> method is sufficient to ensure compatibility with <code>dplyr::rename()</code>, including appropriate modification of the tags. (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #60)</p></li>
+</ul>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li><p>added a hex logo thanks to David Mascarina’s contribution (<span class="citation" data-cites="dgmascarina">@dgmascarina</span>)</p></li>
+<li><p>added short lay description to README thanks to Emma Marty’s contribution</p></li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>linelist is now explicitly marked as incompatible with data.table. In practice, <code>make_linelist(x)</code> now errors if <code>x</code> inherits from <code>data.table</code> (#55, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>, based on discussions with <span class="citation" data-cites="TimTaylor">@TimTaylor</span>).</li>
+<li><code>[.linelist()</code> now works to subset by column when including just one argument (#54, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>). E.g., <code>x[1]</code>. As an indirect effect, this also improves compatibility with dplyr verbs that rely on this method (#51).</li>
+<li>subsetting a linelist with extra tags (e.g., created via <code>make_linelist(allow_extra = TRUE)</code>) no longer causes an error (#65, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>; reported by <span class="citation" data-cites="TimTaylor">@TimTaylor</span> in #63)</li>
+</ul>
+</section>
+<section id="internal-changes" class="level2">
+<h2 class="anchored" data-anchor-id="internal-changes">Internal changes</h2>
+<ul>
+<li>testthat tests now run in parallel (#76, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>)</li>
+<li>testthat tests now warn on partial matching (#76, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>)</li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Linelist V1.0.0},
+  pages = {undefined},
+  date = {2023-10-19},
+  url = {https://epiverse-trace.github.io//posts/linelist_v1.0.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2023. <span>“Linelist
+V1.0.0.”</span> October 19, 2023. <a href="https://epiverse-trace.github.io//posts/linelist_v1.0.0">https://epiverse-trace.github.io//posts/linelist_v1.0.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/linelist_v1.0.0/</guid>
+  <pubDate>Thu, 19 Oct 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>System Dependencies in R Packages &amp; Automatic Testing</title>
   <dc:creator>Hugo Gruson</dc:creator>
@@ -4301,7 +4464,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-12386"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-12386").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-18916"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-18916").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

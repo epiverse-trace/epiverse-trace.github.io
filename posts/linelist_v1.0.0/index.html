@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2023-10-19">
 
-<title>Epiverse-TRACE developer space - Learn</title>
+<title>Epiverse-TRACE developer space - linelist v1.0.0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +22,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./hexlogo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../hexlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +102,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
 
 <script type="text/javascript">
@@ -107,25 +112,25 @@ gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="learn.xml" data-external="1"><meta property="og:title" content="Epiverse-TRACE developer space - Learn">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Epiverse-TRACE developer space - linelist v1.0.0">
+<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - Learn">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - linelist v1.0.0">
+<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE developer space</span>
     </a>
   </div>
@@ -140,15 +145,15 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
+    <a class="nav-link" href="../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./learn.html" aria-current="page"> 
+    <a class="nav-link" href="../../learn.html"> 
 <span class="menu-text">Learn</span></a>
   </li>  
 </ul>
@@ -163,89 +168,121 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Learn</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">linelist v1.0.0</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">new-release</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>The Epiverse-TRACE development team </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 19, 2023</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="github">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="next trainings">next trainings <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>We are very excited to announced the release of a new linelist version v1.0.0. Here is a automatically generated summary of the changes in this version.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li><p>Increased compatibility with dplyr is now documented and ensured through tests of all dplyr verbs on linelist objects as part of our testing &amp; continuous integration system, as well as a new vignette: <a href="https://epiverse-trace.github.io/linelist/articles/compat-dplyr.html" class="uri">https://epiverse-trace.github.io/linelist/articles/compat-dplyr.html</a> (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #53)</p></li>
+<li><p>A new selection helper is provided for tidyverse users, based on the existing selectors provided by the tidyselect package: <code>has_tag()</code> (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #61). By feeding it a character vector of tags to operate on, you can work with dplyr verbs on specific tagged columns without having to explicitly use the column names:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">has_tag</span>(<span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"date_of_onset"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><p>It is no longer possible to use <code>lost_tags_action()</code> within a pipeline. It must now be set as a separate step. This makes the internal code more robust and clarifies what is part of the pipeline versus a global option (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #79).</p></li>
+<li><p>The <code>select_tags()</code> function is now deprecated to ensure we provide just one clear way to address a given issue and that our “happy path” is clearly signposted (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #61). If you were using this function, we now recommend using the more explicit two-steps process:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deprecated</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_tags</span>(<span class="st">"age"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead use</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tags_df</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Or</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">has_tag</span>(<span class="st">"age"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tags_df</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The custom <code>select.linelist()</code> method has been deprecated as providing a custom <code>[.linelist()</code> is sufficient to ensure compatibility with <code>dplyr::select()</code> default methods, including triggering <code>lost_tags_action()</code> on tag removal (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #61). A full deletion of this method is not possible at the moment because we want to provide a smooth transition for users that relied on the custom <code>tags</code> argument of the <code>select.linelist()</code> method. It is now recommend instead to use the new <code>has_tag()</code> selection helper:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">has_tag</span>(<span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"date_of_onset"</span>)))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead of</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">tags =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"date_of_onset"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>The custom <code>rename.linelist()</code> method has been removed as providing a custom <code>names&lt;-().linelist</code> method is sufficient to ensure compatibility with <code>dplyr::rename()</code>, including appropriate modification of the tags. (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #60)</p></li>
+</ul>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li><p>added a hex logo thanks to David Mascarina’s contribution (<span class="citation" data-cites="dgmascarina">@dgmascarina</span>)</p></li>
+<li><p>added short lay description to README thanks to Emma Marty’s contribution</p></li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>linelist is now explicitly marked as incompatible with data.table. In practice, <code>make_linelist(x)</code> now errors if <code>x</code> inherits from <code>data.table</code> (#55, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>, based on discussions with <span class="citation" data-cites="TimTaylor">@TimTaylor</span>).</li>
+<li><code>[.linelist()</code> now works to subset by column when including just one argument (#54, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>). E.g., <code>x[1]</code>. As an indirect effect, this also improves compatibility with dplyr verbs that rely on this method (#51).</li>
+<li>subsetting a linelist with extra tags (e.g., created via <code>make_linelist(allow_extra = TRUE)</code>) no longer causes an error (#65, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>; reported by <span class="citation" data-cites="TimTaylor">@TimTaylor</span> in #63)</li>
+</ul>
+</section>
+<section id="internal-changes" class="level2">
+<h2 class="anchored" data-anchor-id="internal-changes">Internal changes</h2>
+<ul>
+<li>testthat tests now run in parallel (#76, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>)</li>
+<li>testthat tests now warn on partial matching (#76, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>)</li>
+</ul>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1698067780448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1313">
-<div class="thumbnail">
-<p><a href="./learn/git-training-01/index.html"></a></p><a href="./learn/git-training-01/index.html">
-<p><img src="./learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg" class="thumbnail-image"></p>
-</a><p><a href="./learn/git-training-01/index.html"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./learn/git-training-01/index.html">Introductory training on Git and GitHub basics using Rstudio</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./learn/git-training-01/index.html"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
-data science
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('github'); return false;">
-github
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('rstudio'); return false;">
-rstudio
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('next trainings'); return false;">
-next trainings
-</div>
-</div>
-<div class="listing-description">
-<a href="./learn/git-training-01/index.html">If you want to participate in the next version of this training, please complete this expression of interest form.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./learn/git-training-01/index.html">
-<div class="listing-date">
-Dec 5, 2022
-</div>
-<div class="listing-author">
-Andree Valle-Campos
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Linelist V1.0.0},
+  pages = {undefined},
+  date = {2023-10-19},
+  url = {https://epiverse-trace.github.io//posts/linelist_v1.0.0},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2023. <span>“Linelist
+V1.0.0.”</span> October 19, 2023. <a href="https://epiverse-trace.github.io//posts/linelist_v1.0.0">https://epiverse-trace.github.io//posts/linelist_v1.0.0</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
