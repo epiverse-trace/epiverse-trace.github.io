@@ -46,7 +46,7 @@ can only do *iteration*.
 | `for`     | ✔️        | ✔️        |
 | `apply()` | ✔️        | ❌        |
 
-With this distinction in mind, we can now focus on why you should favor
+With this distinction in mind, we can now focus on why you should favour
 `apply()` for iteration over `for` loops.
 
 ## Reason 1: clarity of intent
@@ -58,7 +58,7 @@ the code. This leads to code that is easier to read and understand.
 
 Moreover, this clarity of intent is not limited to human readers alone;
 automated static analysis tools can also more effectively identify suboptimal
-patterns. This can be demonstrated using R's most popular static analysis tool:
+patterns. This can be demonstrated using R most popular static analysis tool:
 the lintr package.
 
 ```{r}
