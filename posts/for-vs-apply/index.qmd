@@ -154,5 +154,11 @@ This post focused on R, but the same principles generally apply to other
 functional languages. In Python for example, you would use [list
 comprehensions](https://www.w3schools.com/python/python_lists_comprehension.asp)
 or the [`map()` function](https://www.w3schools.com/python/ref_func_map.asp).
+
 :::
 
+::: {.callout-tip title="Further reading"}
+
+If you liked the code patterns recommended in this post and want to use functional programming in more situations, including recursion, I recommend you check out the ["Functionals" chapter of the *Advanced R* book by Hadley Wickham](https://adv-r.hadley.nz/functionals.html#functionals)
+
+:::
