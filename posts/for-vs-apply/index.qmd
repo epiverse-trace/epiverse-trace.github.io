@@ -71,6 +71,28 @@ res <- vapply(l, mean, numeric(1))
 res
 ```
 
+The simplicity of `apply()` is even more apparent in the case of multiple iterations. For example, if we want to find the median of each matrix row for a list of matrices:
+
+```{r}
+l <- replicate(5, { matrix(runif(9), nrow = 3) }, simplify = FALSE)
+
+# `for` solution -------------------
+res <- list()
+for (i in seq_along(l)) {
+  meds <- numeric(nrow(l[[i]]))
+  for (j in seq_len(nrow(l[[i]]))) {
+    meds[[j]] <- median(l[[i]][j, ])
+  }
+  res[[i]] <- meds
+}
+res
+
+# `vapply()` solution ---------------
+lapply(l, function(e) {
+  apply(e, 1, median)
+})
+```
+
 Moreover, this clarity of intent is not limited to human readers alone;
 automated static analysis tools can also more effectively identify suboptimal
 patterns. This can be demonstrated using R most popular static analysis tool:
