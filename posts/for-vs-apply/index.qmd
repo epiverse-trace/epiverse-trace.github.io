@@ -112,13 +112,13 @@ have to initialize your variables, manage indexing, etc.
 
 This, in turn, impacts code readability since:
 
--   The boilerplate code does not offer meaningful insights into the algorithm
-    or implementation and can be seen as visual noise.
--   While compactness should never take precedence over readability, a more
-    compact solution allows for more code to be displayed on the screen without
-    scrolling. This ultimately makes it easier to understand what the code is
-    doing. With all things otherwise equal, the more compact solution should
-    thus be preferred.
+- The boilerplate code does not offer meaningful insights into the algorithm or
+  implementation and can be seen as visual noise.
+- While compactness should never take precedence over readability, a more
+  compact solution allows for more code to be displayed on the screen without
+  scrolling. This ultimately makes it easier to understand what the code is
+  doing. With all things otherwise equal, the more compact solution should thus
+  be preferred.
 
 ## Reason 3: variable leak
 
