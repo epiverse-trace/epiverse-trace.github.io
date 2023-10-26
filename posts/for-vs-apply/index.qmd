@@ -146,3 +146,12 @@ This post hopefully convinced you why it's better to use `apply()` functions
 rather than `for` loops where possible (i.e., for iteration). Contrary to common
 misconception, the real reason is not performance, but code robustness and
 readability.
+
+::: {.callout-tip title="Beyond R"}
+
+This post focused on R, but the same principles generally apply to other
+functional languages. In Python for example, you would use [list
+comprehensions](https://www.w3schools.com/python/python_lists_comprehension.asp)
+or the [`map()` function](https://www.w3schools.com/python/ref_func_map.asp).
+:::
+
