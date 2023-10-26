@@ -56,29 +56,30 @@ By consistently employing `apply()` for iteration and reserving `for` loops for
 recursion, we enable readers to immediately discern the underlying concept in
 the code. This leads to code that is easier to read and understand.
 
+```{r}
+l <- list(c(1, 2, 6), c(3, 5), 6, c(0, 9, 3, 4, 8))
+
+# `for` solution -------------------
+res <- numeric(length(l))
+for (i in seq_along(l)) {
+  res[[i]] <- mean(l[[i]])
+}
+res
+
+# `vapply()` solution ---------------
+res <- vapply(l, mean, numeric(1))
+res
+```
+
 Moreover, this clarity of intent is not limited to human readers alone;
 automated static analysis tools can also more effectively identify suboptimal
 patterns. This can be demonstrated using R most popular static analysis tool:
-the lintr package.
+the lintr package, suggesting vectorized alternatives:
 
 ```{r}
-lengths_for <- "
-l <- list(c(1, 2, 6), c(3, 5), 6, c(0, 9, 3, 4, 8))
+lintr::lint(text = "vapply(l, length, numeric(1))")
 
-res <- numeric(length(l))
-
-for (i in seq_along(l)) {
-
-  res[i] <- length(l[[i]])
-
-}
-"
-
-lengths_vapply <- "vapply(l, length, numeric(1))"
-
-lintr::lint(text = lengths_for, linters = lintr::lengths_linter()) # pass
-
-lintr::lint(text = lengths_vapply, linters = lintr::lengths_linter()) # lint
+lintr::lint(text = "apply(m, 1, sum)")
 ```
 
 ## Reason 2: code compactness and conciseness
