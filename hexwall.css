@@ -17,7 +17,7 @@
     padding-bottom: 20%; /* This makes the div height relative to its width */
     position: relative;
     margin-top: -12%; /* Adjust for tessellation */
-    margin-right: -0px;
+    margin-right: 0;
     margin-left: -70px;
 }
 
