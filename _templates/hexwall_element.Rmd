@@ -1,6 +1,4 @@
-::::: {.hex}
-
-:::: {.hex-inner}
+:::: {.hex}
 
 [![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/{{pkgname}}.png){fig-alt="{{pkgname}} logo"}](https://epiverse-trace.github.io/{{pkgname}})
 
@@ -11,5 +9,3 @@
 :::
 
 ::::
-
-:::::

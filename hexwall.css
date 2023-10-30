@@ -16,7 +16,7 @@
     width: 12%; /* Adjust based on your image size */
     padding-bottom: 20%; /* This makes the div height relative to its width */
     position: relative;
-    margin-top: -25%; /* Adjust for tessellation */
+    margin-top: -12%; /* Adjust for tessellation */
     margin-right: -0px;
     margin-left: -70px;
 }
@@ -28,15 +28,6 @@
 /* Adjust the margin-top for every 6th hexagon to create a new row */
 .hex:nth-child(even) {
     margin-top: 0;
-}
-
-.hex-inner {
-    width: 100%; /* Adjust based on your image size */
-    padding-bottom: 133.01%; /* This makes the div height relative to its width */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .hex img {
