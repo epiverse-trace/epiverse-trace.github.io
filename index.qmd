@@ -24,16 +24,6 @@ Our aim is to help change how analytics are used in the global infectious diseas
 
 These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
 
-```{=html}
-<style>
-.rectangle {
-  height: 50px;
-  width: 100px;
-  background-color: #555;
-}
-</style>
-```
-
 ::: {.gradient-rectangle}
 
 [Early tasks]{.task}
@@ -60,4 +50,3 @@ file.path("_data", "epiverse_pkgs.csv") |>
 :::
 
 You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)!
-
