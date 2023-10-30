@@ -18,7 +18,7 @@ Our aim is to help change how analytics are used in the global infectious diseas
 
 ## Roadmap
 
-![](task_pipeline-minimal.svg)
+![ ](task_pipeline-minimal.svg){fig-alt='A typical epidemiological pipeline presented as a flowchart. Each box corresponds to a specific task (e.g., "reconstruct transmission chains", or "estimate severity"). The tasks are split into three categories based on the position in the data pipeline: early tasks, middle tasks and late tasks.'}
 
 ## Epiverse-TRACE packages
 
