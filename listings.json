@@ -14,6 +14,12 @@
     ]
   },
   {
+    "listing": "/learn.html",
+    "items": [
+      "/learn/git-training-01/index.html"
+    ]
+  },
+  {
     "listing": "/presentations.html",
     "items": [
       "/slides/global-health-conference-2023/index.html",
@@ -23,12 +29,6 @@
       "/slides/showcase-spring2023/index.html",
       "/slides/harmonious-ecosystem/index.html",
       "/slides/showcase-winter2023/index.html"
-    ]
-  },
-  {
-    "listing": "/learn.html",
-    "items": [
-      "/learn/git-training-01/index.html"
     ]
   }
 ]

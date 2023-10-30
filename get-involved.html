@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="James M. Azam">
-<meta name="dcterms.date" content="2023-07-17">
 
-<title>Epiverse-TRACE developer space - Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}</title>
+<title>Epiverse-TRACE developer space – get-involved</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../hexlogo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./hexlogo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,26 +77,17 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Epiverse-TRACE developer space - Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}">
-<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta property="og:image" content="https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
-<meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}">
-<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
-<meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Epiverse-TRACE developer space</span>
     </a>
   </div>
@@ -113,19 +102,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../get-involved.html"> 
+    <a class="nav-link active" href="./get-involved.html" aria-current="page"> 
 <span class="menu-text">Get involved</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations.html"> 
+    <a class="nav-link" href="./presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../learn.html"> 
+    <a class="nav-link" href="./learn.html"> 
 <span class="menu-text">Learn</span></a>
   </li>  
 </ul>
@@ -138,87 +127,54 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">workshop</div>
-                <div class="quarto-category">community</div>
-                <div class="quarto-category">R package</div>
-                <div class="quarto-category">bpmodels</div>
-                <div class="quarto-category">epichains</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>James M. Azam <a href="https://orcid.org/0000-0001-5782-7330" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">July 17, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">Abstract</a></li>
-  <li><a href="#talk-slides" id="toc-talk-slides" class="nav-link" data-scroll-target="#talk-slides">Talk slides</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 
 
-
-<p>This was a lightning talk at a workshop at the <a href="https://rslondon.ac.uk/rslondonsoutheast2023/">RSLondonSouthEast2023 workshop</a> held at the Imperial College London’s South Kensington Campus. The talk was entitled: “Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}”. The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles.</p>
-<section id="abstract" class="level2">
-<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>Occasionally, R package developers might decide to supersede their packages with a new implementation to reflect their evolved thinking and experiences in package design. Examples include {ggplot2} and {reshape2}. In multiple contributor projects, this often comes with non-trivial decisions, including name changes, deprecations, and the preservation of git histories. These decisions are non-trivial, especially in epidemiology and public health where reproducibility is a key consideration. {bpmodels}, an R package for analyzing infectious disease data, is currently in the same situation. {bpmodels} was independently developed in 2019, but the Epiverse-TRACE Initiative, which aims to develop an interoperable ecosystem for outbreak analytics, now provides the capacity to maintain it. This involves a re-imagination of the package, including a name change to {epichains}, planned integration of existing and new functionalities, and object-oriented programming. This talk will highlight some conundrums faced during this process, which is ongoing, and provide the opportunity for mutual learning.</p>
+<section id="how-to-collaborate-with-epiverse-on-software-development" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-collaborate-with-epiverse-on-software-development">How to collaborate with Epiverse on software development?</h2>
+<p>Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:</p>
+<ul>
+<li><strong>Standardise</strong>: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">our blueprint</a> for more.</li>
+<li><strong>Consult us</strong>: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g.&nbsp;our team currently contributes to the development of <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.
+<ul>
+<li>In the first instance, we encourage you to post general questions on <a href="https://github.com/orgs/epiverse-trace/discussions">our discussion board</a> so that other community members can contribute.</li>
+<li>For questions related to a specific package, please contact the maintainer (see the <a href="https://github.com/orgs/epiverse-trace/repositories">repositories of packages</a> and their authors).</li>
+<li>For all other questions which fall outside the above categories, please contact Community Manager (anna.carnegie @ lshtm.ac.uk) in the first instance. You can also sign up to <a href="https://data.org/initiatives/epiverse/our-community/">our mailing list</a>, or follow us on Twitter at <a href="https://twitter.com/Epiverse_TRACE">Epiverse_TRACE</a>.</li>
+</ul></li>
+<li><strong>Co-create</strong>: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">WHO collaborative epidemiological parameters initiative</a>.</li>
+<li><strong>Integrate your tools</strong>: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g.&nbsp;<a href="https://github.com/epiverse-trace/episoap">estimating the transmissibility of an infectious disease</a> during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.</li>
+<li><strong>Participate</strong>: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our <a href="https://github.com/epiverse-trace">GitHub repository</a>, with your contributions credited, e.g.&nbsp;by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board.</li>
+</ul>
 </section>
-<section id="talk-slides" class="level2">
-<h2 class="anchored" data-anchor-id="talk-slides">Talk slides</h2>
-<iframe width="780" height="438.75" src="RSLondonSE_workshop_2023.pdf" title="James Azam presentation at RSLondonSouthEast, July 2023"></iframe>
+<section id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace">¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?</h2>
+<p>El objetivo de Epiverse-TRACE es promover el desarrollo de software para análisis epidemiológico que sea generalizable, escalable y dirigido por la comunidad de usuarios, y que se integre con otras herramientas para crear un ecosistema sostenible. Existen diferentes vías que grupos de investigación y desarrolladores externos pueden utilizar para colaborar con Epiverse, ordenadas de menor a mayor nivel de contacto con el equipo:</p>
+<ul>
+<li><strong>Estandarización</strong>: desarrollando herramientas independientemente que cumplan con <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">los principios establecidos por Epiverse</a>, y que sean interoperables con sus herramientas.</li>
+<li><strong>Consulta</strong>: poniéndose en contacto con miembros del equipo de Epiverse, que pueden contribuir al desarrollo de herramientas externas. Esto garantiza que esas herramientas sean compatibles con paquetes desarrollados por Epiverse, por ejemplo, nuestro equipo actualmente colabora con el desarrollo de <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.</li>
+<li><strong>Co-desarrollo</strong>: desarrollando herramientas junto con miembros de Epiverse, que despues se quedarán en plataformas externas, por ejemplo, <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">la iniciativa de la OMS para parámetros epidemiológicos</a>.<br>
+</li>
+<li><strong>Integración</strong>: Epiverse proporciona sistemas para integrar herramientas, o pipelines, que ayudan a los usuarios a optimizar el análisis de problemas epidemiológicos concretos, por ejemplo, para <a href="https://github.com/epiverse-trace/episoap">estimar la transmisión de enfermedades</a>. Incorporar tus herramientas a estos sistemas integrados contribuirá a su visibilidad en la comunidad de usuarios de Epiverse.</li>
+<li><strong>Participación</strong>: contribuyendo al desarrollo de herramientas de Epiverse, en las que aparecerás como coautor en nuestra <a href="https://github.com/epiverse-trace">página web</a>. Para ello, contribuye a issues abiertos en los repositorios de Epiverse, o añade sugerencias, ideas y feedback comentando en nuestro panel de discusión.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="contribution_figure.png" class="img-fluid figure-img"></p>
+<figcaption>Figure of contributions, inspired by <a href="https://doi.org/10.5281/zenodo.3997802">CSCCE community participation model</a> (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)</figcaption>
+</figure>
+</div>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{m. azam2023,
-  author = {M. Azam, James},
-  title = {Superseding {R} Packages - Lessons Learned from Transitioning
-    to \{Epichains\} from \{Bpmodels\}},
-  pages = {undefined},
-  date = {2023-07-17},
-  url = {https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-m. azam2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-M. Azam, James. 2023. <span>“Superseding R Packages - Lessons Learned
-from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
-2023. <a href="https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023">https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023</a>.
-</div></div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

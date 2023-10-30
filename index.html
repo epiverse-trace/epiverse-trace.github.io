@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.439">
+<meta name="generator" content="quarto-1.4.455">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -77,6 +77,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="hexwall.css">
 <meta property="og:title" content="">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:image" content="https://epiverse-trace.github.io/Epiverse-RGB.svg">
@@ -108,6 +109,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="https://epiverse-trace.r-universe.dev/ui#packages"> 
 <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./get-involved.html"> 
+<span class="menu-text">Get involved</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./blog.html"> 
@@ -142,40 +147,125 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   </div>
   <div class="about-contents">
      <main class="content" id="quarto-document-content">
-<p>This is the developer space of the Epiverse-TRACE project, where we share opinions and investigations in R package development, or scientific software development more generally.</p>
-<section id="how-to-collaborate-with-epiverse-on-software-development" class="level2">
-<h2 data-anchor-id="how-to-collaborate-with-epiverse-on-software-development">How to collaborate with Epiverse on software development?</h2>
-<p>Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:</p>
-<ul>
-<li><strong>Standardise</strong>: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">our blueprint</a> for more.</li>
-<li><strong>Consult us</strong>: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g.&nbsp;our team currently contributes to the development of <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.
-<ul>
-<li>In the first instance, we encourage you to post general questions on <a href="https://github.com/orgs/epiverse-trace/discussions">our discussion board</a> so that other community members can contribute.</li>
-<li>For questions related to a specific package, please contact the maintainer (see the <a href="https://github.com/orgs/epiverse-trace/repositories">repositories of packages</a> and their authors).</li>
-<li>For all other questions which fall outside the above categories, please contact Community Manager (anna.carnegie @ lshtm.ac.uk) in the first instance. You can also sign up to <a href="https://data.org/initiatives/epiverse/our-community/">our mailing list</a>, or follow us on Twitter at <a href="https://twitter.com/Epiverse_TRACE">Epiverse_TRACE</a>.</li>
-</ul></li>
-<li><strong>Co-create</strong>: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">WHO collaborative epidemiological parameters initiative</a>.</li>
-<li><strong>Integrate your tools</strong>: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g.&nbsp;<a href="https://github.com/epiverse-trace/episoap">estimating the transmissibility of an infectious disease</a> during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.</li>
-<li><strong>Participate</strong>: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our <a href="https://github.com/epiverse-trace">GitHub repository</a>, with your contributions credited, e.g.&nbsp;by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board.</li>
-</ul>
+<section id="welcome-to-epiverse-trace" class="level2">
+<h2 data-anchor-id="welcome-to-epiverse-trace">Welcome to Epiverse-TRACE</h2>
+<p>Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.</p>
 </section>
-<section id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace" class="level2">
-<h2 data-anchor-id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace">¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?</h2>
-<p>El objetivo de Epiverse-TRACE es promover el desarrollo de software para análisis epidemiológico que sea generalizable, escalable y dirigido por la comunidad de usuarios, y que se integre con otras herramientas para crear un ecosistema sostenible. Existen diferentes vías que grupos de investigación y desarrolladores externos pueden utilizar para colaborar con Epiverse, ordenadas de menor a mayor nivel de contacto con el equipo:</p>
-<ul>
-<li><strong>Estandarización</strong>: desarrollando herramientas independientemente que cumplan con <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">los principios establecidos por Epiverse</a>, y que sean interoperables con sus herramientas.</li>
-<li><strong>Consulta</strong>: poniéndose en contacto con miembros del equipo de Epiverse, que pueden contribuir al desarrollo de herramientas externas. Esto garantiza que esas herramientas sean compatibles con paquetes desarrollados por Epiverse, por ejemplo, nuestro equipo actualmente colabora con el desarrollo de <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.</li>
-<li><strong>Co-desarrollo</strong>: desarrollando herramientas junto con miembros de Epiverse, que despues se quedarán en plataformas externas, por ejemplo, <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">la iniciativa de la OMS para parámetros epidemiológicos</a>.<br>
-</li>
-<li><strong>Integración</strong>: Epiverse proporciona sistemas para integrar herramientas, o pipelines, que ayudan a los usuarios a optimizar el análisis de problemas epidemiológicos concretos, por ejemplo, para <a href="https://github.com/epiverse-trace/episoap">estimar la transmisión de enfermedades</a>. Incorporar tus herramientas a estos sistemas integrados contribuirá a su visibilidad en la comunidad de usuarios de Epiverse.</li>
-<li><strong>Participación</strong>: contribuyendo al desarrollo de herramientas de Epiverse, en las que aparecerás como coautor en nuestra <a href="https://github.com/epiverse-trace">página web</a>. Para ello, contribuye a issues abiertos en los repositorios de Epiverse, o añade sugerencias, ideas y feedback comentando en nuestro panel de discusión.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="contribution_figure.png" class="img-fluid figure-img"></p>
-<figcaption>Figure of contributions, inspired by <a href="https://doi.org/10.5281/zenodo.3997802">CSCCE community participation model</a> (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)</figcaption>
-</figure>
+<section id="roadmap" class="level2">
+<h2 data-anchor-id="roadmap">Roadmap</h2>
+<p><img src="task_pipeline-minimal.svg" class="img-fluid" alt="A typical epidemiological pipeline presented as a flowchart. Each box corresponds to a specific task (e.g., &quot;reconstruct transmission chains&quot;, or &quot;estimate severity&quot;). The tasks are split into three categories based on the position in the data pipeline: early tasks, middle tasks and late tasks."></p>
+</section>
+<section id="epiverse-trace-packages" class="level2">
+<h2 data-anchor-id="epiverse-trace-packages">Epiverse-TRACE packages</h2>
+<p>These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.</p>
+<div class="gradient-rectangle">
+<p><span class="task">Early tasks</span></p>
+<p><span class="task">Middle tasks</span></p>
+<p><span class="task">Late tasks</span></p>
 </div>
+<div class="hex-container">
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/readepi"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/readepi.png" class="img-fluid" alt="readepi logo"></a></p>
+<div class="description">
+<p>Tools for reading data</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/ColOpenData"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/ColOpenData.png" class="img-fluid" alt="ColOpenData logo"></a></p>
+<div class="description">
+<p>Open data for Colombia</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/cleanepi"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/cleanepi.png" class="img-fluid" alt="cleanepi logo"></a></p>
+<div class="description">
+<p>Tools for cleaning data</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/linelist"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/linelist.png" class="img-fluid" alt="linelist logo"></a></p>
+<div class="description">
+<p>Tagging and validating individual data</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/epiparameter"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epiparameter.png" class="img-fluid" alt="epiparameter logo"></a></p>
+<div class="description">
+<p>Tools for epidemiological parameters</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/sivirep"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/sivirep.png" class="img-fluid" alt="sivirep logo"></a></p>
+<div class="description">
+<p>Automated report for SIVIGILA data</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/episoap"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/episoap.png" class="img-fluid" alt="episoap logo"></a></p>
+<div class="description">
+<p>Pipelines for common tasks</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/cfr"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/cfr.png" class="img-fluid" alt="cfr logo"></a></p>
+<div class="description">
+<p>Severity estimation</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/serofoi"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/serofoi.png" class="img-fluid" alt="serofoi logo"></a></p>
+<div class="description">
+<p>Estimate force of infection from serology</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/epiCo"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epiCo.png" class="img-fluid" alt="epiCo logo"></a></p>
+<div class="description">
+<p>Tools for vector-borne infections</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/iraca"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/iraca.png" class="img-fluid" alt="iraca logo"></a></p>
+<div class="description">
+<p>Simulate vector-borne outbreaks</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/epichains"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epichains.png" class="img-fluid" alt="epichains logo"></a></p>
+<div class="description">
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/superspreading"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/superspreading.png" class="img-fluid" alt="superspreading logo"></a></p>
+<div class="description">
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/finalsize"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/finalsize.png" class="img-fluid" alt="finalsize logo"></a></p>
+<div class="description">
+<p>Calculate epidemic final size</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/epidemics"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epidemics.png" class="img-fluid" alt="epidemics logo"></a></p>
+<div class="description">
+<p>Simulate epidemic dynamics</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/scenarios"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/scenarios.png" class="img-fluid" alt="scenarios logo"></a></p>
+<div class="description">
+<p>Explore epidemic scenarios</p>
+</div>
+</div>
+<div class="hex">
+<p><a href="https://epiverse-trace.github.io/vaccineff"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/vaccineff.png" class="img-fluid" alt="vaccineff logo"></a></p>
+<div class="description">
+<p>Analyze vaccine efficacy</p>
+</div>
+</div>
+</div>
+<p>You want to get involved? Read more about the different ways you can contribute in the <a href="./get-involved.html">dedicated section</a>!</p>
 
 
 </section>
