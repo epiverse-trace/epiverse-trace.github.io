@@ -10,8 +10,8 @@ cfr,Severity estimation
 serofoi,Estimate force of infection from serology
 epiCo,Tools for vector-borne infections
 iraca,Simulate vector-borne outbreaks
-epichains,
-superspreading,
+epichains,Simulation and analysis of transmission chains
+superspreading,Analysis of transmission variation
 finalsize,Calculate epidemic final size
 epidemics,Simulate epidemic dynamics
 scenarios,Explore epidemic scenarios
