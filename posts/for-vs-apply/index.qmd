@@ -3,7 +3,7 @@ title: "Lesser-known reasons to prefer `apply()` over for loops"
 author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
-date: "2023-10-23"
+date: "2023-11-02"
 categories: [R, functional programming, iteration, readability, good practices]
 format:
   html: 
