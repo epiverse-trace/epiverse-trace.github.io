@@ -171,6 +171,9 @@ rather than `for` loops where possible (i.e., for iteration). Contrary to common
 misconception, the real reason is not performance, but code robustness and
 readability.
 
+*Thanks to Jaime Pavlich-Mariscal, James Azam, Tim Taylor, and Pratik Gupte for
+their thoughtful comments and suggestions on earlier drafts of this post.*
+
 ::: {.callout-tip title="Beyond R"}
 
 This post focused on R, but the same principles generally apply to other
