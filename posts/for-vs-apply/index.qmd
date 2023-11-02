@@ -1,0 +1,190 @@
+---
+title: "Lesser-known reasons to prefer `apply()` over for loops"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2023-11-02"
+categories: [R, functional programming, iteration, readability, good practices]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+The debate regarding the use of `for` loops versus the `apply()` function family
+(`apply()`, `lapply()`, `vapply()`, etc., along with their purrr counterparts:
+`map()`, `map2()`, `map_lgl()`, `map_chr()`, etc.), has been a longstanding one
+in the R community.
+
+While you may occasionally hear that `for` loops are slower, this notion has
+already been debunked [in other
+posts](https://privefl.github.io/blog/why-loops-are-slow-in-r/). When utilized
+correctly, a `for` loop can achieve performance on par with `apply()` functions.
+
+However, there are still lesser-known reasons to prefer `apply()` functions over
+`for` loops, which we will explore in this post.
+
+## Preamble: `for` loops can be used in more cases than `apply()`
+
+It is important to understand that `for` loops and `apply()` functions are not
+always interchangeable. Indeed, `for` loops can be used in cases where `apply`
+functions can't: when the next step depends on the previous one. This concept is
+known as [*recursion*](https://en.wikipedia.org/wiki/Recursion).
+
+Conversely, when each step is independent of the previous one, but you want to
+perform the same operation on each element of a vector, it is referred to as
+[*iteration*](https://en.wikipedia.org/wiki/Iteration).
+
+`for` loops are capable of both *recursion* and *iteration*, whereas `apply()`
+can only do *iteration*.
+
+| Operator  | Iteration | Recursion |
+|-----------|-----------|-----------|
+| `for`     | ✔️        | ✔️        |
+| `apply()` | ✔️        | ❌        |
+
+With this distinction in mind, we can now focus on why you should favour
+`apply()` for iteration over `for` loops.
+
+## Reason 1: clarity of intent
+
+As mentioned earlier, `for` loops can be used for both iteration and recursion.
+By consistently employing `apply()` for iteration[^caveat] and reserving `for` loops for
+recursion, we enable readers to immediately discern the underlying concept in
+the code. This leads to code that is easier to read and understand.
+
+[^caveat]: There are a handful of rare corner cases where `apply()` is not the best method for iteration. These are cases that make use of `match.call()` or `sys.call()`. More details are available in `lapply()` documentation and in [this GitHub comment by Tim Taylor during the review of this post](https://github.com/epiverse-trace/epiverse-trace.github.io/pull/125#issuecomment-1775929451).
+
+```{r}
+l <- list(c(1, 2, 6), c(3, 5), 6, c(0, 9, 3, 4, 8))
+
+# `for` solution -------------------
+res <- numeric(length(l))
+for (i in seq_along(l)) {
+  res[[i]] <- mean(l[[i]])
+}
+res
+
+# `vapply()` solution ---------------
+res <- vapply(l, mean, numeric(1))
+res
+```
+
+The simplicity of `apply()` is even more apparent in the case of multiple iterations. For example, if we want to find the median of each matrix row for a list of matrices:
+
+```{r}
+l <- replicate(5, { matrix(runif(9), nrow = 3) }, simplify = FALSE)
+
+# `for` solution -------------------
+res <- list()
+for (i in seq_along(l)) {
+  meds <- numeric(nrow(l[[i]]))
+  for (j in seq_len(nrow(l[[i]]))) {
+    meds[[j]] <- median(l[[i]][j, ])
+  }
+  res[[i]] <- meds
+}
+res
+
+# `vapply()` solution ---------------
+lapply(l, function(e) {
+  apply(e, 1, median)
+})
+```
+
+Moreover, this clarity of intent is not limited to human readers alone;
+automated static analysis tools can also more effectively identify suboptimal
+patterns. This can be demonstrated using R most popular static analysis tool:
+the lintr package, suggesting vectorized alternatives:
+
+```{r}
+lintr::lint(text = "vapply(l, length, numeric(1))")
+
+lintr::lint(text = "apply(m, 1, sum)")
+```
+
+## Reason 2: code compactness and conciseness
+
+As illustrated in the preceding example, `apply()` often leads to more compact
+code, as much of the boilerplate code is handled behind the scenes: you don't
+have to initialize your variables, manage indexing, etc.
+
+This, in turn, impacts code readability since:
+
+- The boilerplate code does not offer meaningful insights into the algorithm or
+  implementation and can be seen as visual noise.
+- While compactness should never take precedence over readability, a more
+  compact solution allows for more code to be displayed on the screen without
+  scrolling. This ultimately makes it easier to understand what the code is
+  doing. With all things otherwise equal, the more compact solution should thus
+  be preferred.
+
+## Reason 3: variable leak
+
+As discussed in the previous sections, you have to manually manage the iteration
+index in a `for` loop, whereas they are abstracted in `apply()`. This can
+sometimes lead to perplexing errors:
+
+```{r, error = TRUE}
+k <- 10
+
+for (k in c("Paul", "Pierre", "Jacques")) {
+  message("Hello ", k)
+}
+
+rep(letters, times = k)
+```
+
+This is because the loop index variable leaks into the global environment and
+can overwrite existing variables:
+
+```{r}
+for (k in 1:3) {
+  # do something
+}
+
+message("The value of k is now ", k)
+```
+
+## Reason 4: pipelines
+
+The final reason is that `apply()` (or more commonly in this situation
+`purrr::map()`) can be used in pipelines due to their functional nature:
+
+```{r}
+l <- list(c(1, 2, 6), c(3, 5), 6, c(0, 9, 3, 4, 8))
+
+# Without pipe
+vapply(l, mean, numeric(1))
+
+# With pipe
+l |> vapply(mean, numeric(1))
+l |> purrr::map_dbl(mean)
+```
+
+## Conclusion
+
+This post hopefully convinced you why it's better to use `apply()` functions
+rather than `for` loops where possible (i.e., for iteration). Contrary to common
+misconception, the real reason is not performance, but code robustness and
+readability.
+
+*Thanks to Jaime Pavlich-Mariscal, James Azam, Tim Taylor, and Pratik Gupte for
+their thoughtful comments and suggestions on earlier drafts of this post.*
+
+::: {.callout-tip title="Beyond R"}
+
+This post focused on R, but the same principles generally apply to other
+functional languages. In Python for example, you would use [list
+comprehensions](https://www.w3schools.com/python/python_lists_comprehension.asp)
+or the [`map()` function](https://www.w3schools.com/python/ref_func_map.asp).
+
+:::
+
+::: {.callout-tip title="Further reading"}
+
+If you liked the code patterns recommended in this post and want to use functional programming in more situations, including recursion, I recommend you check out the ["Functionals" chapter of the *Advanced R* book by Hadley Wickham](https://adv-r.hadley.nz/functionals.html#functionals)
+
+:::
