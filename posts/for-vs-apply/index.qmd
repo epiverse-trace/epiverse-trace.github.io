@@ -1,6 +1,5 @@
 ---
-title: "Why use `apply()` instead of `for` loops?"
-subtitle: "Going beyond the debunked performance argument."
+title: "Lesser-known reasons to prefer `apply()` over for loops"
 author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
