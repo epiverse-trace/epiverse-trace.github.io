@@ -51,9 +51,11 @@ With this distinction in mind, we can now focus on why you should favour
 ## Reason 1: clarity of intent
 
 As mentioned earlier, `for` loops can be used for both iteration and recursion.
-By consistently employing `apply()` for iteration and reserving `for` loops for
+By consistently employing `apply()` for iteration[^caveat] and reserving `for` loops for
 recursion, we enable readers to immediately discern the underlying concept in
 the code. This leads to code that is easier to read and understand.
+
+[^caveat]: There are a handful of rare corner cases where `apply()` is not the best method for iteration. These are cases that make use of `match.call()` or `sys.call()`. More details are available in `lapply()` documentation and in [this GitHub comment by Tim Taylor during the review of this post](https://github.com/epiverse-trace/epiverse-trace.github.io/pull/125#issuecomment-1775929451).
 
 ```{r}
 l <- list(c(1, 2, 6), c(3, 5), 6, c(0, 9, 3, 4, 8))
