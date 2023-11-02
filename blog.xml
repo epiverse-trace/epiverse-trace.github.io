@@ -9,8 +9,492 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.468</generator>
-<lastBuildDate>Thu, 19 Oct 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.471</generator>
+<lastBuildDate>Thu, 02 Nov 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Lesser-known reasons to prefer apply() over for loops</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/for-vs-apply/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>The debate regarding the use of <code>for</code> loops versus the <code>apply()</code> function family (<code>apply()</code>, <code>lapply()</code>, <code>vapply()</code>, etc., along with their purrr counterparts: <code>map()</code>, <code>map2()</code>, <code>map_lgl()</code>, <code>map_chr()</code>, etc.), has been a longstanding one in the R community.</p>
+<p>While you may occasionally hear that <code>for</code> loops are slower, this notion has already been debunked <a href="https://privefl.github.io/blog/why-loops-are-slow-in-r/">in other posts</a>. When utilized correctly, a <code>for</code> loop can achieve performance on par with <code>apply()</code> functions.</p>
+<p>However, there are still lesser-known reasons to prefer <code>apply()</code> functions over <code>for</code> loops, which we will explore in this post.</p>
+<section id="preamble-for-loops-can-be-used-in-more-cases-than-apply" class="level2">
+<h2 class="anchored" data-anchor-id="preamble-for-loops-can-be-used-in-more-cases-than-apply">Preamble: <code>for</code> loops can be used in more cases than <code>apply()</code></h2>
+<p>It is important to understand that <code>for</code> loops and <code>apply()</code> functions are not always interchangeable. Indeed, <code>for</code> loops can be used in cases where <code>apply</code> functions can’t: when the next step depends on the previous one. This concept is known as <a href="https://en.wikipedia.org/wiki/Recursion"><em>recursion</em></a>.</p>
+<p>Conversely, when each step is independent of the previous one, but you want to perform the same operation on each element of a vector, it is referred to as <a href="https://en.wikipedia.org/wiki/Iteration"><em>iteration</em></a>.</p>
+<p><code>for</code> loops are capable of both <em>recursion</em> and <em>iteration</em>, whereas <code>apply()</code> can only do <em>iteration</em>.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Iteration</th>
+<th>Recursion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>for</code></td>
+<td>✔️</td>
+<td>✔️</td>
+</tr>
+<tr class="even">
+<td><code>apply()</code></td>
+<td>✔️</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>With this distinction in mind, we can now focus on why you should favour <code>apply()</code> for iteration over <code>for</code> loops.</p>
+</section>
+<section id="reason-1-clarity-of-intent" class="level2">
+<h2 class="anchored" data-anchor-id="reason-1-clarity-of-intent">Reason 1: clarity of intent</h2>
+<p>As mentioned earlier, <code>for</code> loops can be used for both iteration and recursion. By consistently employing <code>apply()</code> for iteration<sup>1</sup> and reserving <code>for</code> loops for recursion, we enable readers to immediately discern the underlying concept in the code. This leads to code that is easier to read and understand.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">l <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>))</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># `for` solution -------------------</span></span>
+<span id="cb1-4">res <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">length</span>(l))</span>
+<span id="cb1-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_along</span>(l)) {</span>
+<span id="cb1-6">  res[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(l[[i]])</span>
+<span id="cb1-7">}</span>
+<span id="cb1-8">res</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># `vapply()` solution ---------------</span></span>
+<span id="cb3-2">res <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">vapply</span>(l, mean, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">numeric</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span>
+<span id="cb3-3">res</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
+</div>
+</div>
+<p>The simplicity of <code>apply()</code> is even more apparent in the case of multiple iterations. For example, if we want to find the median of each matrix row for a list of matrices:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">l <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">replicate</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, { <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">matrix</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">runif</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) }, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">simplify =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb5-2"></span>
+<span id="cb5-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># `for` solution -------------------</span></span>
+<span id="cb5-4">res <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>()</span>
+<span id="cb5-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_along</span>(l)) {</span>
+<span id="cb5-6">  meds <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">numeric</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(l[[i]]))</span>
+<span id="cb5-7">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (j <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_len</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">nrow</span>(l[[i]]))) {</span>
+<span id="cb5-8">    meds[[j]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">median</span>(l[[i]][j, ])</span>
+<span id="cb5-9">  }</span>
+<span id="cb5-10">  res[[i]] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> meds</span>
+<span id="cb5-11">}</span>
+<span id="cb5-12">res</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 0.4649759 0.2207012 0.6641384
+
+[[2]]
+[1] 0.7294329 0.5922619 0.2698467
+
+[[3]]
+[1] 0.6492639 0.5704303 0.3644155
+
+[[4]]
+[1] 0.6646998 0.5034247 0.3045794
+
+[[5]]
+[1] 0.1697894 0.1721191 0.2859237</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># `vapply()` solution ---------------</span></span>
+<span id="cb7-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lapply</span>(l, <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">function</span>(e) {</span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">apply</span>(e, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, median)</span>
+<span id="cb7-4">})</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 0.4649759 0.2207012 0.6641384
+
+[[2]]
+[1] 0.7294329 0.5922619 0.2698467
+
+[[3]]
+[1] 0.6492639 0.5704303 0.3644155
+
+[[4]]
+[1] 0.6646998 0.5034247 0.3045794
+
+[[5]]
+[1] 0.1697894 0.1721191 0.2859237</code></pre>
+</div>
+</div>
+<p>Moreover, this clarity of intent is not limited to human readers alone; automated static analysis tools can also more effectively identify suboptimal patterns. This can be demonstrated using R most popular static analysis tool: the lintr package, suggesting vectorized alternatives:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">lintr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lint</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">text =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"vapply(l, length, numeric(1))"</span>)</span>
+<span id="cb9-2"></span>
+<span id="cb9-3">lintr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">lint</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">text =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"apply(m, 1, sum)"</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="reason-2-code-compactness-and-conciseness" class="level2">
+<h2 class="anchored" data-anchor-id="reason-2-code-compactness-and-conciseness">Reason 2: code compactness and conciseness</h2>
+<p>As illustrated in the preceding example, <code>apply()</code> often leads to more compact code, as much of the boilerplate code is handled behind the scenes: you don’t have to initialize your variables, manage indexing, etc.</p>
+<p>This, in turn, impacts code readability since:</p>
+<ul>
+<li>The boilerplate code does not offer meaningful insights into the algorithm or implementation and can be seen as visual noise.</li>
+<li>While compactness should never take precedence over readability, a more compact solution allows for more code to be displayed on the screen without scrolling. This ultimately makes it easier to understand what the code is doing. With all things otherwise equal, the more compact solution should thus be preferred.</li>
+</ul>
+</section>
+<section id="reason-3-variable-leak" class="level2">
+<h2 class="anchored" data-anchor-id="reason-3-variable-leak">Reason 3: variable leak</h2>
+<p>As discussed in the previous sections, you have to manually manage the iteration index in a <code>for</code> loop, whereas they are abstracted in <code>apply()</code>. This can sometimes lead to perplexing errors:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">k <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (k <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Paul"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Pierre"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Jacques"</span>)) {</span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Hello "</span>, k)</span>
+<span id="cb10-5">}</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Hello Paul</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Hello Pierre</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Hello Jacques</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rep</span>(letters, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">times =</span> k)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in rep(letters, times = k): invalid 'times' argument</code></pre>
+</div>
+</div>
+<p>This is because the loop index variable leaks into the global environment and can overwrite existing variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> (k <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>) {</span>
+<span id="cb17-2">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># do something</span></span>
+<span id="cb17-3">}</span>
+<span id="cb17-4"></span>
+<span id="cb17-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The value of k is now "</span>, k)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The value of k is now 3</code></pre>
+</div>
+</div>
+</section>
+<section id="reason-4-pipelines" class="level2">
+<h2 class="anchored" data-anchor-id="reason-4-pipelines">Reason 4: pipelines</h2>
+<p>The final reason is that <code>apply()</code> (or more commonly in this situation <code>purrr::map()</code>) can be used in pipelines due to their functional nature:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">l <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>), <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>), <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">9</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>))</span>
+<span id="cb19-2"></span>
+<span id="cb19-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Without pipe</span></span>
+<span id="cb19-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">vapply</span>(l, mean, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">numeric</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># With pipe</span></span>
+<span id="cb21-2">l <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">vapply</span>(mean, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">numeric</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">l <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_dbl</span>(mean)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This post hopefully convinced you why it’s better to use <code>apply()</code> functions rather than <code>for</code> loops where possible (i.e., for iteration). Contrary to common misconception, the real reason is not performance, but code robustness and readability.</p>
+<p><em>Thanks to Jaime Pavlich-Mariscal, James Azam, Tim Taylor, and Pratik Gupte for their thoughtful comments and suggestions on earlier drafts of this post.</em></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Beyond R">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Beyond R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post focused on R, but the same principles generally apply to other functional languages. In Python for example, you would use <a href="https://www.w3schools.com/python/python_lists_comprehension.asp">list comprehensions</a> or the <a href="https://www.w3schools.com/python/ref_func_map.asp"><code>map()</code> function</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Further reading">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Further reading
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you liked the code patterns recommended in this post and want to use functional programming in more situations, including recursion, I recommend you check out the <a href="https://adv-r.hadley.nz/functionals.html#functionals">“Functionals” chapter of the <em>Advanced R</em> book by Hadley Wickham</a></p>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>There are a handful of rare corner cases where <code>apply()</code> is not the best method for iteration. These are cases that make use of <code>match.call()</code> or <code>sys.call()</code>. More details are available in <code>lapply()</code> documentation and in <a href="https://github.com/epiverse-trace/epiverse-trace.github.io/pull/125#issuecomment-1775929451">this GitHub comment by Tim Taylor during the review of this post</a>.↩︎</p></li>
+</ol>
+</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+  author = {Gruson, Hugo},
+  title = {Lesser-Known Reasons to Prefer `Apply()` over for Loops},
+  pages = {undefined},
+  date = {2023-11-02},
+  url = {https://epiverse-trace.github.io//posts/for-vs-apply},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2023. <span>“Lesser-Known Reasons to Prefer `Apply()` over
+for Loops.”</span> November 2, 2023. <a href="https://epiverse-trace.github.io//posts/for-vs-apply">https://epiverse-trace.github.io//posts/for-vs-apply</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>functional programming</category>
+  <category>iteration</category>
+  <category>readability</category>
+  <category>good practices</category>
+  <guid>https://epiverse-trace.github.io/posts/for-vs-apply/</guid>
+  <pubDate>Thu, 02 Nov 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>linelist v1.0.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
@@ -4464,7 +4948,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-52670"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-52670").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-65483"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-65483").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
