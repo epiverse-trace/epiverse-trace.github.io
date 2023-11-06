@@ -1,0 +1,18 @@
+---
+title: "bpmodels v0.3.1"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2023-11-06"
+categories: [new-release]
+---
+
+We are very excited to announced the release of a new bpmodels version v0.3.1.
+Here is a automatically generated summary of the changes in this version.
+
+## Input validation
+
+* The following internal functions now have input validation: `rborel()`, `dborel()`, `complementary_logprob()`, and `rnbinom_mean_disp()`.
+
+## Unit tests
+
+* Code coverage has been improved with more tests on the following functions: `rborel()`, `dborel()`, `chain_sim()`, `rnbinom_mean_disp()`, `complementary_logprob()`, `rgen_length()`, and `rbinom_size()`.
