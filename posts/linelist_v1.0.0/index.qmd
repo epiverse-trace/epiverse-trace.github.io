@@ -6,7 +6,7 @@ date: "2023-10-19"
 categories: [new-release]
 ---
 
-We are very excited to announced the release of a new linelist version v1.0.0.
+We are very excited to announce the release of a new linelist version v1.0.0.
 Here is a automatically generated summary of the changes in this version.
 
 ## New features
