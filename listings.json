@@ -1,8 +1,18 @@
 [
   {
-    "listing": "/learn.html",
+    "listing": "/blog.html",
     "items": [
-      "/learn/git-training-01/index.html"
+      "/posts/bpmodels_v0.3.1/index.html",
+      "/posts/for-vs-apply/index.html",
+      "/posts/linelist_v1.0.0/index.html",
+      "/posts/system-dependencies/index.html",
+      "/posts/comm-software-devel/index.html",
+      "/posts/share-cpp/index.html",
+      "/posts/extend-dataframes/index.html",
+      "/posts/100days-workshop/index.html",
+      "/posts/s3-generic/index.html",
+      "/posts/lint-rcpp/index.html",
+      "/posts/statistical-correctness/index.html"
     ]
   },
   {
@@ -18,18 +28,9 @@
     ]
   },
   {
-    "listing": "/blog.html",
+    "listing": "/learn.html",
     "items": [
-      "/posts/for-vs-apply/index.html",
-      "/posts/linelist_v1.0.0/index.html",
-      "/posts/system-dependencies/index.html",
-      "/posts/comm-software-devel/index.html",
-      "/posts/share-cpp/index.html",
-      "/posts/extend-dataframes/index.html",
-      "/posts/100days-workshop/index.html",
-      "/posts/s3-generic/index.html",
-      "/posts/lint-rcpp/index.html",
-      "/posts/statistical-correctness/index.html"
+      "/learn/git-training-01/index.html"
     ]
   }
 ]
