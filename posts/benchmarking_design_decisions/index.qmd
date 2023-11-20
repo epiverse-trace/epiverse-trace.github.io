@@ -118,10 +118,10 @@ to throw and `pkg` for the type of package to use.
 warn_Ntimes <- function(n, pkg) {
   warning_msg <- "x must be an integer"
   switch(pkg,
-    base = for (i in 1:n) {
+    base = for (i in seq_len(n)) {
       warning(warning_msg)
     },
-    cli = for (i in 1:n) {
+    cli = for (i in seq_len(n)) {
       cli_warn(warning_msg)
     }
   )
