@@ -4,7 +4,7 @@ author:
   - name: "James Mba Azam"
     orcid: "https://orcid.org/0000-0001-5782-7330"
 date: last-modified
-categories: [benchmarking, R, tidyverse, cli, R packages, software architecture]
+categories: [benchmarking, R, cli, R packages, software architecture]
 bibliography: index.bib
 format:
   html:
