@@ -75,7 +75,8 @@ functions are, however, not flexible enough for advanced
 formatting: colour, progress bar, contextual pluralisation, and so forth.
 
 Package developers often have to adopt external dependencies for flexibility
-in condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html) package is well designed for this. `cli` offers many advanced features
+in condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html)
+package is well designed for this. `cli` offers many advanced features
 that will not be discussed here, but of note is its `cli_abort()` and
 `cli_warn()` functions for signalling errors and warnings respectfully.
 
