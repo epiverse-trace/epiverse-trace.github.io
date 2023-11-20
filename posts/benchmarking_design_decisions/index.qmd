@@ -174,37 +174,22 @@ autoplot(
   )
 ```
 
-Finally, let's investigate the relative speeds of the two packages with
-respect to the number of warnings. We will do this by dividing the median
-benchmark of `cli::cli_warn()` by that of `base::warning()`.
+As we can see, `cli` is consistently slower than base R for the same number of
+warnings thrown. Benchmarking experiments with other `cli` functions have revealed linear
+relationships between its speed and the number of times it invokes those
+functions [^2]. However, those exercises were not compared with equivalent functions
+in base R. The relative comparison here is useful for decision-making.
 
-```{r}
-bnmark_relative_speeds <- bnmark_res |>
-  select(expression, median, warnings) |>
-  pivot_wider(
-    names_from = expression,
-    values_from = c(median)
-    ) |> 
-  mutate(
-    relative_speed = cli/base
-    )
-bnmark_relative_speeds
-```
+The developers of `cli` have also conducted benchmarks of the `ansi_*()` family
+of functions in `cli` in comparison to base R and the `fansi` package.
+They find that `cli` is consistently slower than base R, which corroborates the
+results of our experiment here. Their benchmarks are available in the cli
+documentation [^3].
 
-As we can see in the new column `relative_speed`, `cli` is consistently
-slower than base R and this seems not to
-scale linearly with the number of warnings thrown. Other benchmarking
-experiments
-with `cli` have revealed linear relationships between its speed and the number
-of times it invokes other functions [^3]. The developers of `cli` have also
-conducted benchmarks of the `ansi_` family of functions in `cli` in comparison
-to base R and the `fansi` package. They find that `cli` is consistently slower
-than base R, which corroborates the results of our experiment here.
-Their benchmarks are available in the cli documentation [^4]. So, should we
-be worried about the speed of `cli`? Well, it depends on the context. The
-"R Packages" book by Hadley Wickham and Jenny Bryan has a section on
-this where they suggest approaching such a decision from a holistic, balanced,
-and quantitative approach[^5]. We'll leave the reader to make their own decision
+So, should we be worried about the speed of `cli`? Well, it depends on the context.
+The "R Packages" book by Hadley Wickham and Jenny Bryan suggests approaching
+such a decision from a holistic, balanced, and quantitative
+approach[@wickham2023r]. We'll leave the reader to make their own decision
 based on the their use case.
 
 Most developers might argue that this is an optimisation overkill[^6]. However,
