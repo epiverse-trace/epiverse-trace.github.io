@@ -60,10 +60,11 @@ c(1:2) > c(1:3)
 ```
 
 Messages are used to provide useful information about processes. For
-example, when you load a package, R will throw a message to indicate that the
-package has been loaded.
+example, sometimes, when you load a package, R will throw a message to indicate
+that the package has been loaded.
 
 ```{r}
+#| message: true
 library(dplyr)
 ```
 
