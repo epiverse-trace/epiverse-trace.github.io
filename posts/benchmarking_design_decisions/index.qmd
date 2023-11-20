@@ -192,13 +192,13 @@ such a decision from a holistic, balanced, and quantitative
 approach[@wickham2023r]. We'll leave the reader to make their own decision
 based on the their use case.
 
-Most developers might argue that this is an optimisation overkill[^6]. However,
+Most developers might argue that this is an optimisation overkill[^4]. However,
 we argue that it is important to consider speed differences in context.
 In the case of simple printing, the speed difference is
 negligible yet disruptive and somewhat painful. However, in the grand scheme
 of things, this might be nothing compared to much slower processes that
 need more attention. In those cases, the developer might want to consider other
-optimisation strategies such as profiling [^7]. The essence of this experiment
+optimisation strategies such as profiling [^5]. The essence of this experiment
 is to demonstrate that benchmarking is one way to help developers make design
 decisions.
 
