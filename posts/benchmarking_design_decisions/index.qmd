@@ -98,16 +98,15 @@ tease out the relationship between speed of the function and number of warnings
 thrown in a function with and without `cli::cli_warn()`. We will also check if
 the benchmark scales with the number of warnings in the function.
 
-Based on this description, we will need the following packages: `cli` for its warning function,
-[bench](https://cran.r-project.org/web/packages/bench/index.html) for measuring
-the run times, `purrr`, `tidyr`, and `dplyr` for running the functions and
-wrangling the results, and and `ggplot2` for visualizing the results.
+Based on this description, we will need the following packages: `cli` for its
+warning function, [bench](https://cran.r-project.org/web/packages/bench/index.html)
+for measuring the run times, `dplyr` and `tidyr` for wrangling the results,
+and `ggplot2` for visualizing the results.
 
 ```{r}
 library(bench)
 library(cli)
 library(ggplot2)
-library(purrr)
 library(dplyr)
 library(tidyr)
 ```
