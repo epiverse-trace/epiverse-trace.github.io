@@ -5,6 +5,7 @@ author:
     orcid: "https://orcid.org/0000-0001-5782-7330"
 date: last-modified
 categories: [benchmarking, R, tidyverse, cli, R packages, software architecture]
+bibliography: index.bib
 format:
   html:
     toc: true
@@ -27,7 +28,7 @@ structure outputs.
 
 These design decisions often result in taking on dependencies. Dependencies are
 external packages that provide extra functionalities or features to another
-package[^0]. Quite often, the goal of taking on dependencies is to utilize its
+package[@wickham2023r]. Quite often, the goal of taking on dependencies is to utilize its
 features and reduce duplicated coding effort. For example, the
 `ggplot2` package is often used, instead of R's inbuilt plotting functionalities
 to make visualizations using the rich features it implements.
@@ -42,7 +43,7 @@ process.
 
 For this demonstration, we will look at condition signalling,
 that is, how to signal to a user that an issue has arisen during code
-execution [^2]. Condition signalling in R is classified into errors,
+execution [@wickham2019advanced]. Condition signalling in R is classified into errors,
 warnings, and messages. Errors refer
 to cases where something fatal happens during code execution so that it halts,
 for example, when a function is run without specifying the required arguments.
@@ -244,9 +245,7 @@ R functions
   benchmarking of pull requests with statistical confidence.
 
 [^1]: Benchmark (Wikipedia): <https://en.wikipedia.org/wiki/Benchmark_(computing)>
-[^2]:  Hadley Wickham's Advanced R chapter on Exceptions and Debugging: <http://adv-r.had.co.nz/Exceptions-Debugging.html>
-[^3]: Formating errors can be slow/variable: <https://github.com/r-lib/cli/issues/617>
-[^4]: cli benchmarks: <https://cli.r-lib.org/articles/ansi-benchmark.html>
-[^5]: Dependencies: Mindset and Background: <https://r-pkgs.org/dependencies-mindset-background.html>
-[^6]: Donald Knuth's quoted as having said, "The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming." (See <https://en.wikiquote.org/wiki/Donald_Knuth>)
-[^7]: Profiling (Wikipedia): <https://csgillespie.github.io/efficientR/performance.html>
+[^2]: Formating errors can be slow/variable: <https://github.com/r-lib/cli/issues/617>
+[^3]: cli benchmarks: <https://cli.r-lib.org/articles/ansi-benchmark.html>
+[^4]: Donald Knuth's quoted as having said, "The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming." (See <https://en.wikiquote.org/wiki/Donald_Knuth>)
+[^5]: Profiling (Wikipedia): <https://csgillespie.github.io/efficientR/performance.html>
