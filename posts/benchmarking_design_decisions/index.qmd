@@ -26,10 +26,11 @@ issues arising during code execution within a function, and how to
 structure outputs.
 
 These design decisions often result in taking on dependencies. Dependencies are
-external packages that enable a function to work properly. For example, the
-`tidyverse` is a collection of packages that are often used together to
-make data analysis easier. The `tidyverse` is a dependency for many
-packages that are built on top of it.
+external packages that provide extra functionalities or features to another
+package[^0]. Quite often, the goal of taking on dependencies is to utilize its
+features and reduce duplicated coding effort. For example, the
+`ggplot2` package is often used, instead of R's inbuilt plotting functionalities
+to make visualizations using the rich features it implements.
 
 Dependencies should only be adopted after carefully considering their pros and
 cons. In this article, we will demonstrate how to use (micro)benchmarking[^1]
