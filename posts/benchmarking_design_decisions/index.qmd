@@ -80,12 +80,15 @@ package is well designed for this. `cli` offers many advanced features
 that will not be discussed here, but of note is its `cli_abort()` and
 `cli_warn()` functions for signalling errors and warnings respectfully.
 
-`cli` is a great candidate for flexibility in condition signalling but one
-might naturally wonder if this comes at a cost. Here,
-we will investigate this through a benchmarking exercise against base R's
-`warning()` function. The results of this exercise will provide us with insights
-on whether its worth taking on `cli` for its features as a trade-off for its
-slower speed.
+Code optimisation is often reserved for heavy processes like data processing steps.
+However, sometimes, even small processes like printing messages to the screen
+might take longer than desired. Benchmarking can be used to check whether an
+introduced function from a dependency would undesirably slow down existing code.
+
+Here, we will benchmark `cli::cli_warn()` against base R's `base::warning()` to
+see if the former has any speed issues. The results of this exercise will
+provide us with insights on whether its worth taking on `cli` for its features
+as a trade-off for slower printing speed.
 
 ## Experiment
 
