@@ -21,6 +21,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+```{r, message=FALSE, warning=FALSE}
+library(bench)
+library(cli)
+library(dplyr)
+library(ggplot2)
+```
 R package developers often have to take on dependencies for various reasons.
 Dependencies are external packages that provide extra functionalities or
 features to another package [@wickham2023r]. Quite often, the goal of taking
@@ -120,13 +127,6 @@ warning function, and [bench](https://cran.r-project.org/web/packages/bench/inde
 for measuring the run times,  [dplyr](https://dplyr.tidyverse.org/)
 for manipulating the results, and [ggplot2](https://ggplot2.tidyverse.org/)
 for plotting.
-
-```{r}
-library(bench)
-library(cli)
-library(dplyr)
-library(ggplot2)
-```
 
 Let's define a function that takes an argument `n` for the number of warnings
 to throw and `pkg` for the type of package to use.
