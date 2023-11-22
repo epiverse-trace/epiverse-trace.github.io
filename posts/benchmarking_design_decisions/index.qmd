@@ -1,5 +1,6 @@
 ---
 title: "Using benchmarking to guide the adoption of dependencies in R packages"
+subtitle: "An example with cli"
 author:
   - name: "James Mba Azam"
     orcid: "https://orcid.org/0000-0001-5782-7330"
