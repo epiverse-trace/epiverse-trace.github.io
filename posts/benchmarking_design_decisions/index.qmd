@@ -69,7 +69,7 @@ library(dplyr)
 ```
 
 These base R functions are, however, not flexible enough for advanced
-formatting: colour, progress bar, contextual pluralisation, and so forth. 
+formatting: colour, progress bar, contextual pluralisation, and so forth.
 The package developer might want to adopt external dependencies for these
 flexibilities. The [cli](https://cli.r-lib.org/articles/semantic-cli.html)
 package is well designed for this. `cli` offers many of the advanced formatting
@@ -90,7 +90,7 @@ try(
 
 In this example, we used inline text formatting to print `n` as a variable
 and interpolated code to print the class of `n` in the error message and all in
-just 6 lines of code.   
+just 6 lines of code.
 
 If this is enough to excite your interests, check out `cli`'s [website](https://cli.r-lib.org/)
 and help files, which provide in-depth guides on its myriad features.
