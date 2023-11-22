@@ -158,8 +158,8 @@ bnmark_res <- bench::press(
 
 ## Results
 
-It's time to explore the results of the data generated. We'll start by making
-a boxplot of the median run times for the different scenarios.
+It's time to explore the results of the data generated. Let's first make a
+boxplot of the run times for the different scenarios.
 
 Drum roll please...
 
@@ -174,8 +174,24 @@ autoplot(
   )
 ```
 
+Now, let's see how the benchmarks scale with the number of warnings thrown.
+
+```{r}
+bnmark_res$pkg <- attr(bnmark_res$expression, "description")
+
+ggplot(bnmark_res) +
+  geom_line(
+    aes(
+      x = warnings,
+      y = median,
+      color = pkg
+    )
+  )
+```
+
 As we can see, `cli` is consistently slower than base R for the same number of
-warnings thrown. Benchmarking experiments with other `cli` functions have revealed linear
+warnings thrown. The median times also follow a similar non-linear trajectory.
+Benchmarking experiments with other `cli` functions have revealed similar non-linear
 relationships between its speed and the number of times it invokes those
 functions [^2]. However, those exercises were not compared with equivalent functions
 in base R. The relative comparison here is useful for decision-making.
