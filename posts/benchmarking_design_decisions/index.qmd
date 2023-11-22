@@ -60,26 +60,40 @@ different lengths, R will throw a warning but will still return a result.
 c(1:2) > c(1:3)
 ```
 
-Messages are used to provide useful information about processes. For
-example, sometimes, when you load a package, R will throw a message to indicate
-that the package has been loaded.
+Lastly, there is `base::message()` for throwing messages. Messages are used
+to provide useful information about processes. For example, sometimes, when
+you load a package, R will throw a message to indicate that the package has
+been loaded.
 
 ```{r}
 #| message: true
 library(dplyr)
 ```
 
-Base R ships with functionalities for condition signalling. There is
-`stop()` for signaling errors, `warning()` for throwing warnings, and
-`message()` for throwing messages. These base R
-functions are, however, not flexible enough for advanced
-formatting: colour, progress bar, contextual pluralisation, and so forth.
+These base R functions are, however, not flexible enough for advanced
+formatting: colour, progress bar, contextual pluralisation, and so forth. 
+The package developer might want to adopt external dependencies for these
+flexibilities. The [cli](https://cli.r-lib.org/articles/semantic-cli.html)
+package is well designed for this. `cli` offers many of the advanced formatting
+features. Here is a quick example (adopted from the help file) using
+`cli::cli_abort()`, the equivalent of `base::stop()`.
+
+```{r}
+n <- "c(1, 2, 3)"
+try(
+  cli_abort(
+    c(
+      "{.var n} must be a numeric vector",
+      "x" = "You've supplied a {.cls {class(n)}} vector."
+    )
+  )
+)
+```
 
 Package developers often have to adopt external dependencies for flexibility
 in condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html)
-package is well designed for this. `cli` offers many advanced features
-that will not be discussed here, but of note is its `cli_abort()` and
-`cli_warn()` functions for signalling errors and warnings respectfully.
+and interpolated code to print the class of `n` in the error message and all in
+just 6 lines of code.   
 
 Code optimisation is often reserved for heavy processes like data processing steps.
 However, sometimes, even small processes like printing messages to the screen
