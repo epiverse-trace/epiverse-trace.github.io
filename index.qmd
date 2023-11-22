@@ -1,4 +1,8 @@
 ---
+# We need a title here to avoid picking up comments from other pages via GitHub
+# fuzzy matching. It can also be disabled in giscus via `data-strict=1` but
+# quarto doesn't support it yet.
+title: Welcome to Epiverse-TRACE
 image: Epiverse-RGB.svg
 css: hexwall.css
 about:
@@ -11,8 +15,6 @@ about:
       text: Twitter
       href: https://twitter.com/Epiverse_TRACE
 ---
-
-## Welcome to Epiverse-TRACE
 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
