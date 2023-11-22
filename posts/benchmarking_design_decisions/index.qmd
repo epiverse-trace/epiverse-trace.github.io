@@ -163,11 +163,11 @@ Let's run benchmarks over the different scenarios and store results
 in a data.frame.
 
 ```{r warning=FALSE,message=FALSE}
-bnmark_res <- bench::press(
+bnmark_res <- press(
   warnings = c(1, 5, 10, 15, 20, 100),
-  bench::mark(
-    cli = warn_Ntimes(warnings, "cli"),
-    base = warn_Ntimes(warnings, "base")
+    mark(
+      cli = warn_Ntimes(warnings, "cli"),
+      base = warn_Ntimes(warnings, "base")
     )
   )
 ```
