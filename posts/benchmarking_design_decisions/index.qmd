@@ -3,7 +3,7 @@ title: "Using benchmarking to guide the adoption of dependencies in R packages"
 author:
   - name: "James Mba Azam"
     orcid: "https://orcid.org/0000-0001-5782-7330"
-date: last-modified
+date: "2023-11-22"
 categories: [benchmarking, R, cli, R packages, software architecture]
 bibliography: index.bib
 format:
