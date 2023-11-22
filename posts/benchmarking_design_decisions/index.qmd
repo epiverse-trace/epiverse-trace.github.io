@@ -53,8 +53,8 @@ Base R ships with functionalities for condition signalling. There is
 happens during code execution so that it halts, for example, when a function is
 run without specifying the required arguments.
 
-```{r}
-try(rnorm())
+```{r, error=TRUE}
+rnorm()
 ```
 
 Base R provides `base::warning()` for throwing warnings. Warnings are used to
@@ -84,15 +84,13 @@ package is well designed for this. `cli` offers many of the advanced formatting
 features. Here is a quick example (adopted from the help file) using
 `cli::cli_abort()`, the equivalent of `base::stop()`.
 
-```{r}
+```{r, error=TRUE}
 n <- "c(1, 2, 3)"
-try(
-  cli_abort(
+cli_abort(
     c(
       "{.var n} must be a numeric vector",
       "x" = "You've supplied a {.cls {class(n)}} vector."
     )
-  )
 )
 ```
 
