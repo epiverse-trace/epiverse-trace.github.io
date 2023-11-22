@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.506</generator>
+<generator>quarto-1.4.510</generator>
 <lastBuildDate>Fri, 15 Sep 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas</title>
@@ -37,7 +37,6 @@
   author = {González-Uribe, Catalina},
   title = {Co-Diseño de Soluciones de Software Para Los Desafíos de
     {América} {Latina} y El {Caribe} En Enfermedades Infecciosas},
-  pages = {undefined},
   date = {2023-09-15},
   url = {https://epiverse-trace.github.io//slides/global-health-conference-2023},
   langid = {en}
@@ -79,7 +78,6 @@ Infecciosas.”</span> September 15, 2023. <a href="https://epiverse-trace.githu
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
   author = {Kucharski, Adam and W. Lambert, Joshua and Tamayo, Carmen},
   title = {Global {Health} {Resilience} {Research} {Visit}},
-  pages = {undefined},
   date = {2023-07-26},
   url = {https://epiverse-trace.github.io//slides/harmonize-july-2023},
   langid = {en}
@@ -123,7 +121,6 @@ Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
   author = {M. Azam, James},
   title = {Superseding {R} Packages - Lessons Learned from Transitioning
     to \{Epichains\} from \{Bpmodels\}},
-  pages = {undefined},
   date = {2023-07-17},
   url = {https://epiverse-trace.github.io//slides/rslondon-southeast-july-2023},
   langid = {en}
@@ -162,7 +159,6 @@ from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
   author = {Kucharski, Adam},
   title = {Juniper Seminar on Improving Software for Epidemic Response},
-  pages = {undefined},
   date = {2023-05-31},
   url = {https://epiverse-trace.github.io//slides/juniper-may-2023},
   langid = {en}
@@ -319,7 +315,6 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
   author = {Carnegie, Anna and Gómez Millán, Geraldine and Daniel Umaña,
     Juan and Torres, Nicolás},
   title = {Epiverse-TRACE {Spring} 2023 Showcase},
-  pages = {undefined},
   date = {2023-04-05},
   url = {https://epiverse-trace.github.io//slides/showcase-spring2023},
   langid = {en}
@@ -383,7 +378,6 @@ Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
   author = {Gruson, Hugo},
   title = {From Disconnected Elements to a Harmonious Ecosystem: {The}
     {Epiverse-TRACE} Project},
-  pages = {undefined},
   date = {2023-02-20},
   url = {https://epiverse-trace.github.io//slides/harmonious-ecosystem},
   doi = {10.5281/zenodo.7697961},
@@ -544,7 +538,6 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
   author = {Carnegie, Anna and Gupte, Pratik and Lambert, Joshua and
     Gruson, Hugo},
   title = {Epiverse-TRACE {Winter} 2023 Showcase},
-  pages = {undefined},
   date = {2023-01-25},
   url = {https://epiverse-trace.github.io//slides/showcase-winter2023},
   langid = {en}
