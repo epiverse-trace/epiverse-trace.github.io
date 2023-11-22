@@ -200,7 +200,13 @@ ggplot(bnmark_res) +
       x = warnings,
       y = median,
       color = pkg
-    )
+    ),
+    linewidth = 2
+  ) +
+  labs(
+    x = "Number of warnigns",
+    y = "Median execution time",
+    color = "Package"
   )
 ```
 
