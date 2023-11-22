@@ -21,13 +21,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 ```{r, message=FALSE, warning=FALSE}
 library(bench)
 library(cli)
 library(dplyr)
 library(ggplot2)
 ```
+
 R package developers often have to take on dependencies for various reasons.
 Dependencies are external packages that provide extra functionalities or
 features to another package [@wickham2023r]. Quite often, the goal of taking
