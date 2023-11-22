@@ -20,39 +20,37 @@ knitr::opts_chunk$set(
 )
 ```
 
-R package developers are constantly faced with design decisions about user
-friendliness. Such design decisions often include checking that inputs are
-rightly specified and returning feedback early, deciding on how to deal with
-issues arising during code execution within a function, and how to
-structure outputs.
+R package developers often have to take on dependencies for various reasons.
+Dependencies are external packages that provide extra functionalities or
+features to another package [@wickham2023r]. Quite often, the goal of taking
+on a dependency is to utilize its rich features and reduce duplicated coding
+effort. For example, the `ggplot2` package is often adopted, instead of R's
+inbuilt plotting functions, to make visualizations using its declarative
+system and implementation of the Grammar of Graphics, and slick automation
+across the board.
 
-These design decisions often result in taking on dependencies. Dependencies are
-external packages that provide extra functionalities or features to another
-package[@wickham2023r]. Quite often, the goal of taking on dependencies is to utilize its
-features and reduce duplicated coding effort. For example, the
-`ggplot2` package is often used, instead of R's inbuilt plotting functionalities
-to make visualizations using the rich features it implements.
+Sometimes, introducing a dependency might slow down existing processes. Hence,
+it is important to consider the speed of a dependency's functions before
+adopting it. Code optimisation is often reserved for heavy processes like data
+processing steps. However, here, we will focus on lesser optimised processes,
+and in particular, printing of texts in R.
 
-Dependencies should only be adopted after carefully considering their pros and
-cons. In this article, we will demonstrate how to use (micro)benchmarking[^1]
-to guide the decision to take on dependencies that might lead to slower
-processes. In data analytics pipelines, speed is often a key consideration,
-especially when working with large datasets. Therefore, it is important to
-consider how the new dependency might impact the speed of an existing
-process.
+For this demonstration, we will look at a situation where a package developer
+is considering options for condition signalling beyond the functionalities
+provided in base R. Condition signalling refers to the process of communicating
+to a user that an issue has arisen during code execution [@wickham2019advanced].
 
-For this demonstration, we will look at condition signalling,
-that is, how to signal to a user that an issue has arisen during code
-execution [@wickham2019advanced]. Condition signalling in R is classified into errors,
-warnings, and messages. Errors refer
-to cases where something fatal happens during code execution so that it halts,
-for example, when a function is run without specifying the required arguments.
+Base R ships with functionalities for condition signalling. There is
+`base::stop()` for signalling errors.  Errors refer to cases where something fatal
+happens during code execution so that it halts, for example, when a function is
+run without specifying the required arguments.
 
 ```{r}
 try(rnorm())
 ```
 
-Warnings are used to handle less fatal issues with code execution that do not
+Base R provides `base::warning()` for throwing warnings. Warnings are used to
+handle less fatal issues with code execution that do not
 need to halt the process. For example, when you compare two vectors of
 different lengths, R will throw a warning but will still return a result.
 
@@ -90,15 +88,19 @@ try(
 )
 ```
 
-Package developers often have to adopt external dependencies for flexibility
-in condition signalling. The [cli](https://cli.r-lib.org/articles/semantic-cli.html)
+In this example, we used inline text formatting to print `n` as a variable
 and interpolated code to print the class of `n` in the error message and all in
 just 6 lines of code.   
 
-Code optimisation is often reserved for heavy processes like data processing steps.
-However, sometimes, even small processes like printing messages to the screen
-might take longer than desired. Benchmarking can be used to check whether an
-introduced function from a dependency would undesirably slow down existing code.
+If this is enough to excite your interests, check out `cli`'s [website](https://cli.r-lib.org/)
+and help files, which provide in-depth guides on its myriad features.
+
+Now, considering all these amazing features that `cli` offers, what should a
+package developer consider to adopt it? In this article, we will
+demonstrate how to use (micro)benchmarking[^1] to guide the decision through
+the lense of speed. Benchmarking can be used to check whether
+adopting `cli` as a dependency would slow down existing printing
+processes in undesirable ways.
 
 Here, we will benchmark `cli::cli_warn()` against base R's `base::warning()` to
 see if the former has any speed issues. The results of this exercise will
@@ -109,20 +111,20 @@ as a trade-off for slower printing speed.
 
 We will consider different scenarios of number of warnings thrown to
 tease out the relationship between speed of the function and number of warnings
-thrown in a function with and without `cli::cli_warn()`. We will also check if
+thrown in a function with and without `cli::cli_warn()`. We will also check how
 the benchmark scales with the number of warnings in the function.
 
 Based on this description, we will need the following packages: `cli` for its
-warning function, [bench](https://cran.r-project.org/web/packages/bench/index.html)
-for measuring the run times, `dplyr` and `tidyr` for wrangling the results,
-and `ggplot2` for visualizing the results.
+warning function, and [bench](https://cran.r-project.org/web/packages/bench/index.html)
+for measuring the run times,  [dplyr](https://dplyr.tidyverse.org/)
+for manipulating the results, and [ggplot2](https://ggplot2.tidyverse.org/)
+for plotting.
 
 ```{r}
 library(bench)
 library(cli)
-library(ggplot2)
 library(dplyr)
-library(tidyr)
+library(ggplot2)
 ```
 
 Let's define a function that takes an argument `n` for the number of warnings
@@ -213,7 +215,7 @@ in base R. The relative comparison here is useful for decision-making.
 The developers of `cli` have also conducted benchmarks of the `ansi_*()` family
 of functions in `cli` in comparison to base R and the `fansi` package.
 They find that `cli` is consistently slower than base R, which corroborates the
-results of our experiment here. Their benchmarks are available in the cli
+results of our experiment here. These benchmarks are available in the `cli`
 documentation [^3].
 
 So, should we be worried about the speed of `cli`? Well, it depends on the context.
@@ -223,26 +225,26 @@ approach[@wickham2023r]. We'll leave the reader to make their own decision
 based on their use case.
 
 Most developers might argue that this is an optimisation overkill[^4]. However,
-we argue that it is important to consider speed differences in context.
+it is important to consider speed differences in context.
 In the case of simple printing, the speed difference is
 negligible yet disruptive and somewhat painful. However, in the grand scheme
-of things, this might be nothing compared to much slower processes that
+of things, this might be nothing compared with much slower processes that
 need more attention. In those cases, the developer might want to consider other
 optimisation strategies such as profiling [^5]. The essence of this experiment
-is to demonstrate the utility of benchmarking making quick design decisions.
+is to demonstrate the utility of benchmarking in making quick design decisions.
 
 ## Conclusion
 
 In designing R package infrastructure with dependencies, it might
-sometimes be necessary to test your intuition about their overhead with
-experiments. Here, we have demonstrated how benchmarking is one way to achieve
-this. We show how a simple decision to use `cli::cli_warn()` to handle
-warnings could come at the cost of a tiny loss in speed, which is worth
-considering in its context.
+sometimes be necessary to check if they don't slow down existing processes.
+Here, we have demonstrated how benchmarking is one way to achieve
+this for a process involving condition signalling. We show how a simple
+decision to use `cli::cli_warn()` to handle warnings could come at the cost of
+a tiny loss in speed, which is worth considering in its context.
 
-The demonstration here can be extended to other design decisions such as
-input checking, loops, object indexing, and so forth. We recommend benchmarking
-as a way to help developers make design decisions. However, we also recommend
+The demonstration here can be extended to other dependency adoption decisions for
+input checking, loops, object manipulations, and so forth. We recommend benchmarking
+as a way to help developers make quick design decisions. However, we also recommend
 that developers consider the context of the optimisation in interpreting the results.
 
 ## Other R packages for benchmarking
