@@ -27,4 +27,3 @@ This release includes:
 ## Correction
 
 _cfr_ v0.1.0 only includes functionality for static ascertainment calculations. The functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation was removed just prior to release. The news section for _cfr_ v0.1.0 has been updated to reflect this.
-
