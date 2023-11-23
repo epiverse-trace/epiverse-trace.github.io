@@ -437,6 +437,49 @@ of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epi
   <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>cfr v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
+<p>This release includes:</p>
+<ol type="1">
+<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
+<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
+<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
+<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
+<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
+<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
+<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
+<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
+<li>100% code coverage,</li>
+<li>Workflows to render the vignettes and README as a website.</li>
+</ol>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Cfr V0.1.0},
+  date = {2023-11-22},
+  url = {https://epiverse-trace.github.io//posts/cfr_v0.1.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
+November 22, 2023. <a href="https://epiverse-trace.github.io//posts/cfr_v0.1.0">https://epiverse-trace.github.io//posts/cfr_v0.1.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
+  <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>bpmodels v0.3.1</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
   <link>https://epiverse-trace.github.io/posts/bpmodels_v0.3.1/</link>
@@ -5405,7 +5448,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-71345"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-71345").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-96395"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-96395").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
