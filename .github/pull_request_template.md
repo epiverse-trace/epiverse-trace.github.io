@@ -7,5 +7,6 @@
 Right before merging:
 
 - [ ] The `date` field has been updated
+- [ ] All reviewers have been acknowledged in a short paragraph
 - [ ] A PR has been opened in the [`blueprints`](https://github.com/epiverse-trace/blueprints) to link to this post
 - [ ] The post has been re-rendered and content of the `_freeze/` folder is up-to-date
