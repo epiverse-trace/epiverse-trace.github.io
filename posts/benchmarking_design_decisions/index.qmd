@@ -67,8 +67,9 @@ c(1:2) > c(1:3)
 ```
 
 Lastly, there is `base::message()` for throwing messages. Messages are used
-to provide useful information about processes. For example, sometimes, some
-packages through useful messages in the R console when loaded.
+to provide useful information about processes. For example, packages throw
+messages about NAMESPACE conflicts when loaded. This is to inform the user so
+they know what next steps to take.
 
 ```{r}
 #| message: true
