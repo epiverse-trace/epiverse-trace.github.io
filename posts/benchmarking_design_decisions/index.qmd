@@ -251,9 +251,9 @@ input checking, loops, object manipulations, and so forth. We recommend benchmar
 as a way to help developers make quick design decisions. However, we also recommend
 that developers consider the context of the optimisation in interpreting the results.
 
-*I would like to thank Pratik Gupte (https://github.com/pratikunterwegs),
-Joshua Lambert (https://github.com/joshwlambert), and
-Hugo Gruson (https://github.com/Bisaloo) for their invaluable reviews and
+*I would like to thank [Pratik Gupte](https://github.com/pratikunterwegs),
+[Joshua Lambert](https://github.com/joshwlambert), and
+[Hugo Gruson](https://github.com/Bisaloo) for their invaluable reviews and
 suggestions that helped improve this post.*
 
 ## Other R packages for benchmarking
