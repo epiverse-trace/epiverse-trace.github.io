@@ -21,7 +21,7 @@
 
 
 
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_0a2ec7d38e9ea06380d825f14f6bb229">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-2_6427aedfe9df2fdccd56e2d5fc479f85">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(bench)</span>
@@ -39,7 +39,7 @@ font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
 <p>Sometimes, introducing a dependency might slow down existing processes. Hence, it is important to consider the speed of a dependency’s functions before adopting it. Code optimisation is often reserved for heavy processes like data processing steps. However, here, we will focus on lesser optimised processes, and in particular, printing of texts in R.</p>
 <p>For this demonstration, we will look at a situation where a package developer is considering options for condition signalling beyond the functionalities provided in base R. Condition signalling refers to the process of communicating to a user that an issue has arisen during code execution <span class="citation" data-cites="wickham2019advanced">(Wickham 2019)</span>.</p>
 <p>Base R ships with functionalities for condition signalling. There is <code>base::stop()</code> for signalling errors. Errors refer to cases where something fatal happens during code execution so that it halts, for example, when a function is run without specifying the required arguments.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_629334328ed1f15628bd14baa045adb7">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-3_1bceb70b9f2071743517f6cb2ef2751b">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rnorm</span>()</span></code></pre></div>
@@ -48,7 +48,7 @@ font-style: inherit;">rnorm</span>()</span></code></pre></div>
 </div>
 </div>
 <p>Base R provides <code>base::warning()</code> for throwing warnings. Warnings are used to handle less fatal issues with code execution that do not need to halt the process. For example, when you compare two vectors of different lengths, R will throw a warning but will still return a result.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_53d77875f26fd1c6f1accb75fa8d8366">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-4_17dcb284cf1d07ccddac82bbd422ffa1">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
@@ -76,37 +76,46 @@ object length</code></pre>
 <pre><code>[1] FALSE FALSE FALSE</code></pre>
 </div>
 </div>
-<p>Lastly, there is <code>base::message()</code> for throwing messages. Messages are used to provide useful information about processes. For example, sometimes, when you load a package, R will throw a message to indicate that the package has been loaded.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_e0e505ebc837174ee1b8456f534d1af0">
+<p>Lastly, there is <code>base::message()</code> for throwing messages. Messages are used to provide useful information about processes. For example, sometimes, some packages through useful messages in the R console when loaded.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-5_13f169b7a570f5bdf17e39d49ecf3d66">
 <div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+font-style: inherit;">library</span>(data.table)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'data.table'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    between, first, last</code></pre>
+</div>
 </div>
 <p>These base R functions are, however, not flexible enough for advanced formatting: colour, progress bar, contextual pluralisation, and so forth. The package developer might want to adopt external dependencies for these flexibilities. The <a href="https://cli.r-lib.org/articles/semantic-cli.html">cli</a> package is well designed for this. <code>cli</code> offers many of the advanced formatting features. Here is a quick example (adopted from the help file) using <code>cli::cli_abort()</code>, the equivalent of <code>base::stop()</code>.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_549d605e9fabee5726c9366d82d9f7f0">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1">n <span class="ot" style="color: #003B4F;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-6_ce643d1e4f92738c43252acbd2f651a0">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">n <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"c(1, 2, 3)"</span></span>
-<span id="cb8-2"><span class="fu" style="color: #4758AB;
+<span id="cb10-2"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cli_abort</span>(</span>
-<span id="cb8-3">    <span class="fu" style="color: #4758AB;
+<span id="cb10-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(</span>
-<span id="cb8-4">      <span class="st" style="color: #20794D;
+<span id="cb10-4">      <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"{.var n} must be a numeric vector"</span>,</span>
-<span id="cb8-5">      <span class="st" style="color: #20794D;
+<span id="cb10-5">      <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"x"</span> <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"You've supplied a {.cls {class(n)}} vector."</span></span>
-<span id="cb8-6">    )</span>
-<span id="cb8-7">)</span></code></pre></div>
+<span id="cb10-6">    )</span>
+<span id="cb10-7">)</span></code></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
 ! `n` must be a numeric vector
@@ -122,21 +131,21 @@ font-style: inherit;">"You've supplied a {.cls {class(n)}} vector."</span></span
 <p>We will consider different scenarios of number of warnings thrown to tease out the relationship between speed of the function and number of warnings thrown in a function with and without <code>cli::cli_warn()</code>. We will also check how the benchmark scales with the number of warnings in the function.</p>
 <p>Based on this description, we will need the following packages: <code>cli</code> for its warning function, and <a href="https://cran.r-project.org/web/packages/bench/index.html">bench</a> for measuring the run times, <a href="https://dplyr.tidyverse.org/">dplyr</a> for manipulating the results, and <a href="https://ggplot2.tidyverse.org/">ggplot2</a> for plotting.</p>
 <p>Let’s define a function that takes an argument <code>n</code> for the number of warnings to throw and <code>pkg</code> for the type of package to use.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_71188b7abdbc468bfc356ea681b11a3e">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">warn_Ntimes <span class="ot" style="color: #003B4F;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-7_4d16d181ce319e13cc1e41b83ecf5d6a">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">warn_Ntimes <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">function</span>(n, pkg) {</span>
-<span id="cb10-2">  warning_msg <span class="ot" style="color: #003B4F;
+<span id="cb12-2">  warning_msg <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"x must be an integer"</span></span>
-<span id="cb10-3">  <span class="cf" style="color: #003B4F;
+<span id="cb12-3">  <span class="cf" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">switch</span>(pkg,</span>
-<span id="cb10-4">    <span class="at" style="color: #657422;
+<span id="cb12-4">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -145,11 +154,11 @@ background-color: null;
 font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">seq_len</span>(n)) {</span>
-<span id="cb10-5">      <span class="fu" style="color: #4758AB;
+<span id="cb12-5">      <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warning</span>(warning_msg)</span>
-<span id="cb10-6">    },</span>
-<span id="cb10-7">    <span class="at" style="color: #657422;
+<span id="cb12-6">    },</span>
+<span id="cb12-7">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">cli =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -158,16 +167,16 @@ background-color: null;
 font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">seq_len</span>(n)) {</span>
-<span id="cb10-8">      <span class="fu" style="color: #4758AB;
+<span id="cb12-8">      <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">cli_warn</span>(warning_msg)</span>
-<span id="cb10-9">    }</span>
-<span id="cb10-10">  )</span>
-<span id="cb10-11">}</span></code></pre></div>
+<span id="cb12-9">    }</span>
+<span id="cb12-10">  )</span>
+<span id="cb12-11">}</span></code></pre></div>
 </div>
 <p>Let’s test our function to see if it works as expected.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_b2124bb03ff9b8ec22e22516661bd38e">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-8_b3f7e18a57bd68412902c77ecd171299">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warn_Ntimes</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -181,7 +190,7 @@ Warning in warn_Ntimes(3, "base"): x must be an integer
 
 Warning in warn_Ntimes(3, "base"): x must be an integer</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warn_Ntimes</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -197,11 +206,11 @@ x must be an integer</code></pre>
 </div>
 </div>
 <p>Now, we’ll consider scenarios where a function throws 1, 5, 10, 15, 20, and 100 warnings using base R and <code>cli</code>.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_202006e941090e6e2fd79826c263afd3">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-9_c844ffb7866a8cafc768916faaf836e7">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Number of warnings to throw</span></span>
-<span id="cb16-2">warnings <span class="ot" style="color: #003B4F;
+<span id="cb18-2">warnings <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -220,13 +229,13 @@ background-color: null;
 font-style: inherit;">100</span>)</span></code></pre></div>
 </div>
 <p>Let’s run benchmarks over the different scenarios and store results in a data.frame.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-10_c9761cbedeb5ab662f89090949c7f2a2">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">bnmark_res <span class="ot" style="color: #003B4F;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-10_d0335acbe798f47ae6c233bca5e58014">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">bnmark_res <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">press</span>(</span>
-<span id="cb17-2">  <span class="at" style="color: #657422;
+<span id="cb19-2">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">warnings =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -243,61 +252,58 @@ background-color: null;
 font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">100</span>),</span>
-<span id="cb17-3">    <span class="fu" style="color: #4758AB;
+<span id="cb19-3">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">mark</span>(</span>
-<span id="cb17-4">      <span class="at" style="color: #657422;
+<span id="cb19-4">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">cli =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warn_Ntimes</span>(warnings, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"cli"</span>),</span>
-<span id="cb17-5">      <span class="at" style="color: #657422;
+<span id="cb19-5">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">base =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warn_Ntimes</span>(warnings, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"base"</span>)</span>
-<span id="cb17-6">    )</span>
-<span id="cb17-7">  )</span></code></pre></div>
+<span id="cb19-6">    )</span>
+<span id="cb19-7">  )</span></code></pre></div>
 </div>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <p>It’s time to explore the results of the data generated. Let’s first make a boxplot of the run times for the different scenarios.</p>
 <p>Drum roll please…</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-11_bf5bd5c36fb9bb794aa23a88b4d6ad0b">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="fu" style="color: #4758AB;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-11_ee5f1c6c9e2eaabf58c8eeaa6cbbfa0f">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">autoplot</span>(</span>
-<span id="cb18-2">  bnmark_res,</span>
-<span id="cb18-3">  <span class="at" style="color: #657422;
+<span id="cb20-2">  bnmark_res,</span>
+<span id="cb20-3">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"boxplot"</span></span>
-<span id="cb18-4">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb20-4">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb18-5">  <span class="fu" style="color: #4758AB;
+<span id="cb20-5">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb18-6">    <span class="at" style="color: #657422;
+<span id="cb20-6">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Package"</span>,</span>
-<span id="cb18-7">    <span class="at" style="color: #657422;
+<span id="cb20-7">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Functions throwing various numbers of warnings as indicated in the facet label"</span></span>
-<span id="cb18-8">  )</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required namespace: tidyr</code></pre>
-</div>
+<span id="cb20-8">  )</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -307,8 +313,8 @@ font-style: inherit;">"Functions throwing various numbers of warnings as indicat
 </div>
 </div>
 <p>Now, let’s see how the benchmarks scale with the number of warnings thrown.</p>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-12_9fbeecc1659a3d5548d52aab04da9a01">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">bnmark_res<span class="sc" style="color: #5E5E5E;
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-12_a8dd2dbfafcb83cbc7265da4ab684cde">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">bnmark_res<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>pkg <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -319,55 +325,55 @@ background-color: null;
 font-style: inherit;">$</span>expression, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"description"</span>)</span>
-<span id="cb20-2"></span>
-<span id="cb20-3"><span class="fu" style="color: #4758AB;
+<span id="cb21-2"></span>
+<span id="cb21-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">ggplot</span>(bnmark_res) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb20-4">  <span class="fu" style="color: #4758AB;
+<span id="cb21-4">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">geom_line</span>(</span>
-<span id="cb20-5">    <span class="fu" style="color: #4758AB;
+<span id="cb21-5">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">aes</span>(</span>
-<span id="cb20-6">      <span class="at" style="color: #657422;
+<span id="cb21-6">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> warnings,</span>
-<span id="cb20-7">      <span class="at" style="color: #657422;
+<span id="cb21-7">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> median,</span>
-<span id="cb20-8">      <span class="at" style="color: #657422;
+<span id="cb21-8">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color =</span> pkg</span>
-<span id="cb20-9">    ),</span>
-<span id="cb20-10">    <span class="at" style="color: #657422;
+<span id="cb21-9">    ),</span>
+<span id="cb21-10">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span></span>
-<span id="cb20-11">  ) <span class="sc" style="color: #5E5E5E;
+<span id="cb21-11">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb20-12">  <span class="fu" style="color: #4758AB;
+<span id="cb21-12">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">labs</span>(</span>
-<span id="cb20-13">    <span class="at" style="color: #657422;
+<span id="cb21-13">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Number of warnigns"</span>,</span>
-<span id="cb20-14">    <span class="at" style="color: #657422;
+<span id="cb21-14">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Median execution time"</span>,</span>
-<span id="cb20-15">    <span class="at" style="color: #657422;
+<span id="cb21-15">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Package"</span></span>
-<span id="cb20-16">  )</span></code></pre></div>
+<span id="cb21-16">  )</span></code></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -385,6 +391,7 @@ font-style: inherit;">"Package"</span></span>
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>In designing R package infrastructure with dependencies, it might sometimes be necessary to check if they don’t slow down existing processes. Here, we have demonstrated how benchmarking is one way to achieve this for a process involving condition signalling. We show how a simple decision to use <code>cli::cli_warn()</code> to handle warnings could come at the cost of a tiny loss in speed, which is worth considering in its context.</p>
 <p>The demonstration here can be extended to other dependency adoption decisions for input checking, loops, object manipulations, and so forth. We recommend benchmarking as a way to help developers make quick design decisions. However, we also recommend that developers consider the context of the optimisation in interpreting the results.</p>
+<p><em>I would like to thank <a href="https://github.com/pratikunterwegs">Pratik Gupte</a>, <a href="https://github.com/joshwlambert">Joshua Lambert</a>, and <a href="https://github.com/Bisaloo">Hugo Gruson</a> for their invaluable reviews and suggestions that helped improve this post.</em></p>
 </section>
 <section id="other-r-packages-for-benchmarking" class="level2">
 <h2 class="anchored" data-anchor-id="other-r-packages-for-benchmarking">Other R packages for benchmarking</h2>
@@ -4158,7 +4165,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-96395"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-96395").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-78471"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-78471").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
