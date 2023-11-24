@@ -67,13 +67,12 @@ c(1:2) > c(1:3)
 ```
 
 Lastly, there is `base::message()` for throwing messages. Messages are used
-to provide useful information about processes. For example, sometimes, when
-you load a package, R will throw a message to indicate that the package has
-been loaded.
+to provide useful information about processes. For example, sometimes, some
+packages through useful messages in the R console when loaded.
 
 ```{r}
 #| message: true
-library(dplyr)
+library(data.table)
 ```
 
 These base R functions are, however, not flexible enough for advanced
