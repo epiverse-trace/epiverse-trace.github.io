@@ -1,0 +1,102 @@
+---
+title: "Epiverse-TRACE Autumn 2023 showcase"
+author: 
+  - name: "Carmen Tamayo"
+    orcid: "0000-0003-4184-2864"
+  - name: "Karim Mané"
+    orcid: "0000-0002-9892-2999"
+  - name: "Abdoelnaser Degoot"
+    orcid: "0000-0001-8788-2496"
+  - name: "Bankole Ahadzie"
+date: "2023-11-30"
+image: "../showcase.jpg"
+categories: [readepi, cleanepi, pipleline demo, showcase]
+format:
+  html: 
+    toc: true
+editor: 
+  markdown: 
+    wrap: 80
+---
+
+This showcase is part of a regular cycle of online meetings to present tools for
+epidemiology.
+
+::: {.callout-note appearance="minimal"}
+
++----------------+-----------------------------+-----------------------------+
+| Time           | Item                        | Presenter                   |
++================+=============================+=============================+
+| 12:00 - 12:05  | Welcome                     | Carmen                      |
+|                |                             |                             |
+|                | -   Intro to Epiverse-TRACE |                             |
+|                | -   Purpose of the session  |                             |
+|                | -   Housekeeping            |                             |
+|                |     - 15 min for  PKGs,     |                             |
+|                |     - 25 min for demo       |                             |
+|                |     - 10 min for Q & A      |                             |
+|                | - Closing remarks           |                             |
++----------------+-----------------------------+-----------------------------+
+| 12:05 - 12:06  | One line intro to Karim &   | Carmen                      |
+|                | readepi & cleanepi          |                             |
++----------------+-----------------------------+-----------------------------+
+| 12:06 - 12:22  | readepi & cleanepi PKGs     | Karim                       |
+|                |                             |                             |
+|                | -   Purpose (motivation for |                             |
+|                |     developing the PKGs,    |                             |
+|                |     problem they are trying |                             |
+|                |     to address)             |                             |
+|                | -   Features                |                             |
++----------------+-----------------------------+-----------------------------+
+| 12:22 - 12:23  | One line intro to Degoot &  | Carmen                      |
+|                | demo pipleline              |                             |
++----------------+-----------------------------+-----------------------------+
+| 12:23 - 12:45  | Pipleline demo:             | Degoot                      |
++----------------+-----------------------------+-----------------------------+
+|                |                             |                             |
+|                | -   overview                |                             |
+|                | -   Acutal demo             |                             |
++----------------+-----------------------------+-----------------------------+
+| 12:46 - 12:58  | Questions                   | Attendees, all (Carmen      |
+|                |                             | moderates)                  |
++----------------+-----------------------------+-----------------------------+
+| 12:58 - 13:00  | Closing remarks             | Carmen                      |
++----------------+-----------------------------+-----------------------------+
+
+:::
+
+## readepi slides
+
+```{=html}
+<iframe width="780" height="500" src="readepi.pdf" title="finalsize slides showcase winder 2023"></iframe>
+```
+
+## cleanepi slides
+
+```{=html}
+<iframe width="780" height="438.75" src="cleanepi.pdf" title="epiparameter slides showcase winder 2023"></iframe>
+```
+
+## pipleline demo
+ - Coming soon
+
+## Questions & answers
+1. will `{cleanepi}` package have an option to create new columns and to perform other actions such as filtering and sorting data?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: Some cleaning processes in the `{cleanepi}` package actually create new columns. `{cleanepi}` does data filtering but not data sorting, which can be done with other existing packages.\
+2. when will the `{readepi}` and `{cleanepi}` packages be available on CRAN?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: These packages are still in development stage, and we intend to submit them to CRAN soon.\
+3. does `{cleanepi}` has an option to show which IDs are been cleaned? This will help to inform the curators about which ID as wrong?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: Yes, `{cleanepi}` reports any change to the end-user.\  
+4. Will there be a package in epiverse for spatial analysis to visualize distribution of cases during epidemics?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: Yes. We intend to create a package for visualization.\
+5. have you thought about combining the epiverse packages into a single package (like tidyverse package for example) so the user won’t have to load the packages one by one?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__:  Yes. In fact such package is already under development, see [epiverse](https://github.com/epiverse-trace/epiverse).\
+6. can the epiverse be used to model severity or case fatality of outbreaks against counter factual to proof effectiveness of disease control interventions?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: To this, we would say that epiverse-TRACE packages such as `{cfr}` provide robust methods for computing unbaised and timely case fatality ratios. With such knowledge, it is up to the user to decide whether or not control measures are effective. \
+7. is there any plan to account for genomic data?\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__:  Yes. We intend to create a package for reading and integrating genomic data with case data. 
+
+
+## Recording
+
+Go to the "Watch the recording" button on the [event website](https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Flshtm.zoom.us%2Frec%2Fshare%2Fw-RCXY8BoMCkhrGqqjKu-mDbZD_yPwklVcBphkcQDb8uccdYr3fatlOYDI0zeDK5.alGBHRfQ6WpALo8O) to watch back this showcase.
