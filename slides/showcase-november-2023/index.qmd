@@ -78,25 +78,39 @@ epidemiology.
 ```
 
 ## pipleline demo
+
  - Coming soon
 
 ## Questions & answers
-1. will `{cleanepi}` package have an option to create new columns and to perform other actions such as filtering and sorting data?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: Some cleaning processes in the `{cleanepi}` package actually create new columns. `{cleanepi}` does data filtering but not data sorting, which can be done with other existing packages.\
-2. when will the `{readepi}` and `{cleanepi}` packages be available on CRAN?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: These packages are still in development stage, and we intend to submit them to CRAN soon.\
-3. does `{cleanepi}` has an option to show which IDs are been cleaned? This will help to inform the curators about which ID as wrong?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: Yes, `{cleanepi}` reports any change to the end-user.\  
-4. Will there be a package in epiverse for spatial analysis to visualize distribution of cases during epidemics?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: Yes. We intend to create a package for visualization.\
-5. have you thought about combining the epiverse packages into a single package (like tidyverse package for example) so the user won’t have to load the packages one by one?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__:  Yes. In fact such package is already under development, see [epiverse](https://github.com/epiverse-trace/epiverse).\
-6. can the epiverse be used to model severity or case fatality of outbreaks against counter factual to proof effectiveness of disease control interventions?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__: To this, we would say that epiverse-TRACE packages such as `{cfr}` provide robust methods for computing unbaised and timely case fatality ratios. With such knowledge, it is up to the user to decide whether or not control measures are effective. \
-7. is there any plan to account for genomic data?\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__Ans__:  Yes. We intend to create a package for reading and integrating genomic data with case data. 
 
+> Will `{cleanepi}` package have an option to create new columns and to perform other actions such as filtering and sorting data?
+
+Some cleaning processes in the `{cleanepi}` package actually create new columns. `{cleanepi}` does data filtering but not data sorting, which can be done with other existing packages.
+
+> When will the `{readepi}` and `{cleanepi}` packages be available on CRAN?
+
+These packages are still in development stage, and we intend to submit them to CRAN soon.
+
+> Does `{cleanepi}` has an option to show which IDs are been cleaned? This will help to inform the curators about which ID as wrong?
+
+Yes, `{cleanepi}` reports any change to the end-user.
+
+> Will there be a package in epiverse for spatial analysis to visualize distribution of cases during epidemics?
+
+Yes. We intend to create a package for visualization.
+
+> Have you thought about combining the epiverse packages into a single package (like tidyverse package for example) so the user won’t have to load the packages one by one?
+
+Yes. In fact such package is already under development, see [epiverse](https://github.com/epiverse-trace/epiverse).
+
+> Can the epiverse be used to model severity or case fatality of outbreaks against counter factual to proof effectiveness of disease control interventions?\
+
+For this, we would say that Epiverse-TRACE packages such as `{cfr}` provide robust methods for computing unbiased and timely case fatality ratios. With such knowledge, it is up to the user to decide whether or not control measures are effective.
+
+> Is there any plan to account for genomic data?
+
+Yes. We intend to create a package for reading and integrating genomic data with case data. 
 
 ## Recording
 
-Go to the "Watch the recording" button on the [event website](https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Flshtm.zoom.us%2Frec%2Fshare%2Fw-RCXY8BoMCkhrGqqjKu-mDbZD_yPwklVcBphkcQDb8uccdYr3fatlOYDI0zeDK5.alGBHRfQ6WpALo8O) to watch back this showcase.
+Go to the "Watch the recording" button on the [event website](https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov) to watch back this showcase.
