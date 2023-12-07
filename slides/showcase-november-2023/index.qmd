@@ -77,9 +77,9 @@ epidemiology.
 <iframe width="780" height="438.75" src="cleanepi.pdf" title="epiparameter slides showcase winder 2023"></iframe>
 ```
 
-## pipleline demo
+## pipeline demo
 
- - Coming soon
+- Coming soon
 
 ## Questions & answers
 
@@ -109,7 +109,7 @@ For this, we would say that Epiverse-TRACE packages such as `{cfr}` provide robu
 
 > Is there any plan to account for genomic data?
 
-Yes. We intend to create a package for reading and integrating genomic data with case data. 
+Yes. We intend to create a package for reading and integrating genomic data with case data.
 
 ## Recording
 
