@@ -1,5 +1,7 @@
 ---
 title: "Epiverse-TRACE Spring 2023 showcase"
+aliases: 
+  - "showcase-spring2023"
 author: 
   - name: "Anna Carnegie"
   - name: "Geraldine Gómez Millán"

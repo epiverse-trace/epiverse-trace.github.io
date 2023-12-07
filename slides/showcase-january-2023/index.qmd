@@ -1,5 +1,7 @@
 ---
 title: "Epiverse-TRACE Winter 2023 showcase"
+aliases: 
+  - "showcase-winter2023"
 author: 
   - name: "Anna Carnegie"
   - name: "Pratik Gupte"
