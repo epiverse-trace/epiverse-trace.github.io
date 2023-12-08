@@ -6,10 +6,13 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="The Epiverse-TRACE development team">
-<meta name="dcterms.date" content="2023-11-22">
+<meta name="author" content="Anna Carnegie">
+<meta name="author" content="Geraldine Gómez Millán">
+<meta name="author" content="Juan Daniel Umaña">
+<meta name="author" content="Nicolás Torres">
+<meta name="dcterms.date" content="2023-04-05">
 
-<title>Epiverse-TRACE developer space - cfr v0.1.0</title>
+<title>Epiverse-TRACE developer space - Epiverse-TRACE Spring 2023 showcase</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,16 +84,18 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Epiverse-TRACE developer space - cfr v0.1.0">
+<meta property="og:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Spring 2023 showcase">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta property="og:image" content="https://epiverse-trace.github.io/slides/showcase.jpg">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - cfr v0.1.0">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Spring 2023 showcase">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta name="twitter:image" content="https://epiverse-trace.github.io/slides/showcase.jpg">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -140,9 +145,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">cfr v0.1.0</h1>
+      <h1 class="title">Epiverse-TRACE Spring 2023 showcase</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">new-release</div>
+                <div class="quarto-category">sivirep</div>
+                <div class="quarto-category">epiCo</div>
+                <div class="quarto-category">serofoi</div>
+                <div class="quarto-category">showcase</div>
               </div>
                   </div>
   </div>
@@ -151,16 +159,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <div class="quarto-title-meta">
 
       <div>
-      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-heading">Authors</div>
       <div class="quarto-title-meta-contents">
-               <p>The Epiverse-TRACE development team </p>
+               <p>Anna Carnegie </p>
+               <p>Geraldine Gómez Millán </p>
+               <p>Juan Daniel Umaña </p>
+               <p>Nicolás Torres </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 22, 2023</p>
+        <p class="date">April 5, 2023</p>
       </div>
     </div>
     
@@ -171,7 +182,18 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sivirep-slides" id="toc-sivirep-slides" class="nav-link active" data-scroll-target="#sivirep-slides">sivirep slides</a></li>
+  <li><a href="#epico-slides" id="toc-epico-slides" class="nav-link" data-scroll-target="#epico-slides">epiCo slides</a></li>
+  <li><a href="#serofoi-slides" id="toc-serofoi-slides" class="nav-link" data-scroll-target="#serofoi-slides">serofoi slides</a></li>
+  <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -179,34 +201,143 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 
-<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
-<p>This release includes:</p>
-<ol type="1">
-<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
-<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
-<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
-<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
-<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
-<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
-<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
-<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
-<li>100% code coverage,</li>
-<li>Workflows to render the vignettes and README as a website.</li>
-</ol>
+<p>This showcase is part of a regular cycle of online meetings to present tools for epidemiology.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Item</th>
+<th>Presenter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>00:00 - 00:05</td>
+<td><p>Welcome</p>
+<ul>
+<li><p>Intro to Epiverse-TRACE</p></li>
+<li><p>Purpose of the session</p></li>
+<li><p>Housekeeping - 10 mins per PKG, 5 min Q&amp;A after each. Room at the end for open discussion</p></li>
+</ul></td>
+<td>Anna</td>
+</tr>
+<tr class="even">
+<td>00:05 - 00:06</td>
+<td>One line intro to Geraldine &amp; sivirep</td>
+<td>Anna</td>
+</tr>
+<tr class="odd">
+<td>00:06 - 00:16</td>
+<td><p>sivirep demo</p>
+<ul>
+<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
+<li><p>Features</p></li>
+<li><p>Tips and tricks</p></li>
+</ul></td>
+<td>Geraldine</td>
+</tr>
+<tr class="even">
+<td>00:16 - 00:20</td>
+<td>Q &amp; A from the floor</td>
+<td>Geraldine, attendees (Anna moderates)</td>
+</tr>
+<tr class="odd">
+<td>00:20 - 00:21</td>
+<td>One line intro to Juan &amp; epiCo</td>
+<td>Anna</td>
+</tr>
+<tr class="even">
+<td>00:21 - 00:31</td>
+<td><p>epiCo demo:</p>
+<ul>
+<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
+<li><p>Features</p></li>
+<li><p>Tips and tricks</p></li>
+</ul></td>
+<td>Juan</td>
+</tr>
+<tr class="odd">
+<td>00:31 - 00:35</td>
+<td>Q &amp; A from the floor</td>
+<td>Juan, attendees (Anna moderates)</td>
+</tr>
+<tr class="even">
+<td>00:35 - 00:36</td>
+<td>One line intro to Nicolás &amp; serofoi</td>
+<td>Anna</td>
+</tr>
+<tr class="odd">
+<td>00:36 - 00:46</td>
+<td><p>serofoi demo:</p>
+<ul>
+<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
+<li><p>Features</p></li>
+<li><p>Tips and tricks</p></li>
+</ul></td>
+<td>Nicolás</td>
+</tr>
+<tr class="even">
+<td>00:46 - 00:50</td>
+<td>Q &amp; A from the floor</td>
+<td>Nicolás, attendees (Anna moderates)</td>
+</tr>
+<tr class="odd">
+<td>00:50 - 00:58</td>
+<td>Open discussion</td>
+<td>Attendees, all (Anna moderates)</td>
+</tr>
+<tr class="even">
+<td>00:58 - 00:00</td>
+<td>Thank you and close</td>
+<td>Anna</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="sivirep-slides" class="level2">
+<h2 class="anchored" data-anchor-id="sivirep-slides">sivirep slides</h2>
+<iframe width="780" height="438.75" src="sivirep.pdf" title="sivirep slides showcase spring 2023"></iframe>
+</section>
+<section id="epico-slides" class="level2">
+<h2 class="anchored" data-anchor-id="epico-slides">epiCo slides</h2>
+<iframe width="780" height="438.75" src="epiCo.pdf" title="epiCo slides showcase spring 2023"></iframe>
+</section>
+<section id="serofoi-slides" class="level2">
+<h2 class="anchored" data-anchor-id="serofoi-slides">serofoi slides</h2>
+<iframe width="780" height="438.75" src="serofoi.pdf" title="serofoi slides showcase spring 2023"></iframe>
+</section>
+<section id="recording" class="level2">
+<h2 class="anchored" data-anchor-id="recording">Recording</h2>
+<p>Go to the “Watch the recording” button on the <a href="https://www.lshtm.ac.uk/newsevents/events/epiverse-trace-spring-2023-showcase">event website</a> to watch back this showcase.</p>
 
 
+</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
-  author = {Epiverse-TRACE development team, The},
-  title = {Cfr V0.1.0},
-  date = {2023-11-22},
-  url = {https://epiverse-trace.github.io//posts/cfr_v0.1.0},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
+  author = {Carnegie, Anna and Gómez Millán, Geraldine and Daniel Umaña,
+    Juan and Torres, Nicolás},
+  title = {Epiverse-TRACE {Spring} 2023 Showcase},
+  date = {2023-04-05},
+  url = {https://epiverse-trace.github.io//slides/showcase-april-2023},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
-November 22, 2023. <a href="https://epiverse-trace.github.io//posts/cfr_v0.1.0">https://epiverse-trace.github.io//posts/cfr_v0.1.0</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Carnegie, Anna, Geraldine Gómez Millán, Juan Daniel Umaña, and Nicolás
+Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
+5, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-april-2023">https://epiverse-trace.github.io//slides/showcase-april-2023</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

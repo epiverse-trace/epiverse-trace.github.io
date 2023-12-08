@@ -2,17 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.510">
+<meta name="generator" content="quarto-1.4.523">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Anna Carnegie">
-<meta name="author" content="Geraldine Gómez Millán">
-<meta name="author" content="Juan Daniel Umaña">
-<meta name="author" content="Nicolás Torres">
-<meta name="dcterms.date" content="2023-04-05">
+<meta name="author" content="Carmen Tamayo">
+<meta name="author" content="Karim Mané">
+<meta name="author" content="Abdoelnaser Degoot">
+<meta name="author" content="Bankole Ahadzie">
+<meta name="dcterms.date" content="2023-11-30">
 
-<title>Epiverse-TRACE developer space - Epiverse-TRACE Spring 2023 showcase</title>
+<title>Epiverse-TRACE developer space - Epiverse-TRACE Autumn 2023 showcase</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -83,11 +84,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Spring 2023 showcase">
+<meta property="og:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Autumn 2023 showcase">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:image" content="https://epiverse-trace.github.io/slides/showcase.jpg">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Spring 2023 showcase">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Autumn 2023 showcase">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:image" content="https://epiverse-trace.github.io/slides/showcase.jpg">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
@@ -97,7 +98,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -144,11 +145,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Epiverse-TRACE Spring 2023 showcase</h1>
+      <h1 class="title">Epiverse-TRACE Autumn 2023 showcase</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">sivirep</div>
-                <div class="quarto-category">epiCo</div>
-                <div class="quarto-category">serofoi</div>
+                <div class="quarto-category">readepi</div>
+                <div class="quarto-category">cleanepi</div>
+                <div class="quarto-category">pipleline demo</div>
                 <div class="quarto-category">showcase</div>
               </div>
                   </div>
@@ -160,17 +161,17 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Authors</div>
       <div class="quarto-title-meta-contents">
-               <p>Anna Carnegie </p>
-               <p>Geraldine Gómez Millán </p>
-               <p>Juan Daniel Umaña </p>
-               <p>Nicolás Torres </p>
+               <p>Carmen Tamayo <a href="https://orcid.org/0000-0003-4184-2864" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>Karim Mané <a href="https://orcid.org/0000-0002-9892-2999" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>Abdoelnaser Degoot <a href="https://orcid.org/0000-0001-8788-2496" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>Bankole Ahadzie </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 5, 2023</p>
+        <p class="date">November 30, 2023</p>
       </div>
     </div>
     
@@ -186,9 +187,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#sivirep-slides" id="toc-sivirep-slides" class="nav-link active" data-scroll-target="#sivirep-slides">sivirep slides</a></li>
-  <li><a href="#epico-slides" id="toc-epico-slides" class="nav-link" data-scroll-target="#epico-slides">epiCo slides</a></li>
-  <li><a href="#serofoi-slides" id="toc-serofoi-slides" class="nav-link" data-scroll-target="#serofoi-slides">serofoi slides</a></li>
+  <li><a href="#readepi-slides" id="toc-readepi-slides" class="nav-link active" data-scroll-target="#readepi-slides">readepi slides</a></li>
+  <li><a href="#cleanepi-slides" id="toc-cleanepi-slides" class="nav-link" data-scroll-target="#cleanepi-slides">cleanepi slides</a></li>
+  <li><a href="#pipeline-demo" id="toc-pipeline-demo" class="nav-link" data-scroll-target="#pipeline-demo">pipeline demo</a></li>
+  <li><a href="#questions-answers" id="toc-questions-answers" class="nav-link" data-scroll-target="#questions-answers">Questions &amp; answers</a></li>
   <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
   </ul>
 </nav>
@@ -222,121 +224,133 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </thead>
 <tbody>
 <tr class="odd">
-<td>00:00 - 00:05</td>
+<td>12:00 - 12:05</td>
 <td><p>Welcome</p>
 <ul>
-<li><p>Intro to Epiverse-TRACE</p></li>
-<li><p>Purpose of the session</p></li>
-<li><p>Housekeeping - 10 mins per PKG, 5 min Q&amp;A after each. Room at the end for open discussion</p></li>
-</ul></td>
-<td>Anna</td>
-</tr>
-<tr class="even">
-<td>00:05 - 00:06</td>
-<td>One line intro to Geraldine &amp; sivirep</td>
-<td>Anna</td>
-</tr>
-<tr class="odd">
-<td>00:06 - 00:16</td>
-<td><p>sivirep demo</p>
+<li>Intro to Epiverse-TRACE</li>
+<li>Purpose of the session</li>
+<li>Housekeeping
 <ul>
-<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
-<li><p>Features</p></li>
-<li><p>Tips and tricks</p></li>
+<li>15 min for PKGs,</li>
+<li>25 min for demo</li>
+<li>10 min for Q &amp; A</li>
+</ul></li>
+<li>Closing remarks</li>
 </ul></td>
-<td>Geraldine</td>
+<td>Carmen</td>
 </tr>
 <tr class="even">
-<td>00:16 - 00:20</td>
-<td>Q &amp; A from the floor</td>
-<td>Geraldine, attendees (Anna moderates)</td>
+<td>12:05 - 12:06</td>
+<td>One line intro to Karim &amp; readepi &amp; cleanepi</td>
+<td>Carmen</td>
 </tr>
 <tr class="odd">
-<td>00:20 - 00:21</td>
-<td>One line intro to Juan &amp; epiCo</td>
-<td>Anna</td>
-</tr>
-<tr class="even">
-<td>00:21 - 00:31</td>
-<td><p>epiCo demo:</p>
+<td>12:06 - 12:22</td>
+<td><p>readepi &amp; cleanepi PKGs</p>
 <ul>
-<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
-<li><p>Features</p></li>
-<li><p>Tips and tricks</p></li>
+<li>Purpose (motivation for developing the PKGs, problem they are trying to address)</li>
+<li>Features</li>
 </ul></td>
-<td>Juan</td>
-</tr>
-<tr class="odd">
-<td>00:31 - 00:35</td>
-<td>Q &amp; A from the floor</td>
-<td>Juan, attendees (Anna moderates)</td>
+<td>Karim</td>
 </tr>
 <tr class="even">
-<td>00:35 - 00:36</td>
-<td>One line intro to Nicolás &amp; serofoi</td>
-<td>Anna</td>
+<td>12:22 - 12:23</td>
+<td>One line intro to Degoot &amp; demo pipleline</td>
+<td>Carmen</td>
 </tr>
 <tr class="odd">
-<td>00:36 - 00:46</td>
-<td><p>serofoi demo:</p>
-<ul>
-<li><p>Purpose (motivation for developing the PKG, problem it is trying to address)</p></li>
-<li><p>Features</p></li>
-<li><p>Tips and tricks</p></li>
+<td>12:23 - 12:45</td>
+<td>Pipleline demo:</td>
+<td>Degoot</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><ul>
+<li>overview</li>
+<li>Acutal demo</li>
 </ul></td>
-<td>Nicolás</td>
-</tr>
-<tr class="even">
-<td>00:46 - 00:50</td>
-<td>Q &amp; A from the floor</td>
-<td>Nicolás, attendees (Anna moderates)</td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>00:50 - 00:58</td>
-<td>Open discussion</td>
-<td>Attendees, all (Anna moderates)</td>
+<td>12:46 - 12:58</td>
+<td>Questions</td>
+<td>Attendees, all (Carmen moderates)</td>
 </tr>
 <tr class="even">
-<td>00:58 - 00:00</td>
-<td>Thank you and close</td>
-<td>Anna</td>
+<td>12:58 - 13:00</td>
+<td>Closing remarks</td>
+<td>Carmen</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<section id="sivirep-slides" class="level2">
-<h2 class="anchored" data-anchor-id="sivirep-slides">sivirep slides</h2>
-<iframe width="780" height="438.75" src="sivirep.pdf" title="sivirep slides showcase spring 2023"></iframe>
+<section id="readepi-slides" class="level2">
+<h2 class="anchored" data-anchor-id="readepi-slides">readepi slides</h2>
+<iframe width="780" height="500" src="readepi.pdf" title="finalsize slides showcase winder 2023"></iframe>
 </section>
-<section id="epico-slides" class="level2">
-<h2 class="anchored" data-anchor-id="epico-slides">epiCo slides</h2>
-<iframe width="780" height="438.75" src="epiCo.pdf" title="epiCo slides showcase spring 2023"></iframe>
+<section id="cleanepi-slides" class="level2">
+<h2 class="anchored" data-anchor-id="cleanepi-slides">cleanepi slides</h2>
+<iframe width="780" height="438.75" src="cleanepi.pdf" title="epiparameter slides showcase winder 2023"></iframe>
 </section>
-<section id="serofoi-slides" class="level2">
-<h2 class="anchored" data-anchor-id="serofoi-slides">serofoi slides</h2>
-<iframe width="780" height="438.75" src="serofoi.pdf" title="serofoi slides showcase spring 2023"></iframe>
+<section id="pipeline-demo" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-demo">pipeline demo</h2>
+<ul>
+<li>Coming soon</li>
+</ul>
+</section>
+<section id="questions-answers" class="level2">
+<h2 class="anchored" data-anchor-id="questions-answers">Questions &amp; answers</h2>
+<blockquote class="blockquote">
+<p>Will <code>{cleanepi}</code> package have an option to create new columns and to perform other actions such as filtering and sorting data?</p>
+</blockquote>
+<p>Some cleaning processes in the <code>{cleanepi}</code> package actually create new columns. <code>{cleanepi}</code> does data filtering but not data sorting, which can be done with other existing packages.</p>
+<blockquote class="blockquote">
+<p>When will the <code>{readepi}</code> and <code>{cleanepi}</code> packages be available on CRAN?</p>
+</blockquote>
+<p>These packages are still in development stage, and we intend to submit them to CRAN soon.</p>
+<blockquote class="blockquote">
+<p>Does <code>{cleanepi}</code> has an option to show which IDs are been cleaned? This will help to inform the curators about which ID as wrong?</p>
+</blockquote>
+<p>Yes, <code>{cleanepi}</code> reports any change to the end-user.</p>
+<blockquote class="blockquote">
+<p>Will there be a package in epiverse for spatial analysis to visualize distribution of cases during epidemics?</p>
+</blockquote>
+<p>Yes. We intend to create a package for visualization.</p>
+<blockquote class="blockquote">
+<p>Have you thought about combining the epiverse packages into a single package (like tidyverse package for example) so the user won’t have to load the packages one by one?</p>
+</blockquote>
+<p>Yes. In fact such package is already under development, see <a href="https://github.com/epiverse-trace/epiverse">epiverse</a>.</p>
+<blockquote class="blockquote">
+<p>Can the epiverse be used to model severity or case fatality of outbreaks against counter factual to proof effectiveness of disease control interventions?<br>
+</p>
+</blockquote>
+<p>For this, we would say that Epiverse-TRACE packages such as <code>{cfr}</code> provide robust methods for computing unbiased and timely case fatality ratios. With such knowledge, it is up to the user to decide whether or not control measures are effective.</p>
+<blockquote class="blockquote">
+<p>Is there any plan to account for genomic data?</p>
+</blockquote>
+<p>Yes. We intend to create a package for reading and integrating genomic data with case data.</p>
 </section>
 <section id="recording" class="level2">
 <h2 class="anchored" data-anchor-id="recording">Recording</h2>
-<p>Go to the “Watch the recording” button on the <a href="https://www.lshtm.ac.uk/newsevents/events/epiverse-trace-spring-2023-showcase">event website</a> to watch back this showcase.</p>
+<p>Go to the “Watch the recording” button on the <a href="https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov">event website</a> to watch back this showcase.</p>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
-  author = {Carnegie, Anna and Gómez Millán, Geraldine and Daniel Umaña,
-    Juan and Torres, Nicolás},
-  title = {Epiverse-TRACE {Spring} 2023 Showcase},
-  date = {2023-04-05},
-  url = {https://epiverse-trace.github.io//slides/showcase-spring2023},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
+  author = {Tamayo, Carmen and Mané, Karim and Degoot, Abdoelnaser and
+    Ahadzie, Bankole},
+  title = {Epiverse-TRACE {Autumn} 2023 Showcase},
+  date = {2023-11-30},
+  url = {https://epiverse-trace.github.io//slides/showcase-november-2023},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Carnegie, Anna, Geraldine Gómez Millán, Juan Daniel Umaña, and Nicolás
-Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
-5, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-spring2023">https://epiverse-trace.github.io//slides/showcase-spring2023</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tamayo2023" class="csl-entry quarto-appendix-citeas" role="listitem">
+Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
+2023. <span>“Epiverse-TRACE Autumn 2023 Showcase.”</span> November 30,
+2023. <a href="https://epiverse-trace.github.io//slides/showcase-november-2023">https://epiverse-trace.github.io//slides/showcase-november-2023</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

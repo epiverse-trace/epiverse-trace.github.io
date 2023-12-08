@@ -9,8 +9,179 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.510</generator>
-<lastBuildDate>Fri, 15 Sep 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.523</generator>
+<lastBuildDate>Thu, 30 Nov 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Epiverse-TRACE Autumn 2023 showcase</title>
+  <dc:creator>Carmen Tamayo</dc:creator>
+  <dc:creator>Karim Mané</dc:creator>
+  <dc:creator>Abdoelnaser Degoot</dc:creator>
+  <dc:creator>Bankole Ahadzie</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/showcase-november-2023/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This showcase is part of a regular cycle of online meetings to present tools for epidemiology.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Time</th>
+<th>Item</th>
+<th>Presenter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>12:00 - 12:05</td>
+<td><p>Welcome</p>
+<ul>
+<li>Intro to Epiverse-TRACE</li>
+<li>Purpose of the session</li>
+<li>Housekeeping
+<ul>
+<li>15 min for PKGs,</li>
+<li>25 min for demo</li>
+<li>10 min for Q &amp; A</li>
+</ul></li>
+<li>Closing remarks</li>
+</ul></td>
+<td>Carmen</td>
+</tr>
+<tr class="even">
+<td>12:05 - 12:06</td>
+<td>One line intro to Karim &amp; readepi &amp; cleanepi</td>
+<td>Carmen</td>
+</tr>
+<tr class="odd">
+<td>12:06 - 12:22</td>
+<td><p>readepi &amp; cleanepi PKGs</p>
+<ul>
+<li>Purpose (motivation for developing the PKGs, problem they are trying to address)</li>
+<li>Features</li>
+</ul></td>
+<td>Karim</td>
+</tr>
+<tr class="even">
+<td>12:22 - 12:23</td>
+<td>One line intro to Degoot &amp; demo pipleline</td>
+<td>Carmen</td>
+</tr>
+<tr class="odd">
+<td>12:23 - 12:45</td>
+<td>Pipleline demo:</td>
+<td>Degoot</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><ul>
+<li>overview</li>
+<li>Acutal demo</li>
+</ul></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>12:46 - 12:58</td>
+<td>Questions</td>
+<td>Attendees, all (Carmen moderates)</td>
+</tr>
+<tr class="even">
+<td>12:58 - 13:00</td>
+<td>Closing remarks</td>
+<td>Carmen</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<section id="readepi-slides" class="level2">
+<h2 class="anchored" data-anchor-id="readepi-slides">readepi slides</h2>
+<iframe width="780" height="500" src="readepi.pdf" title="finalsize slides showcase winder 2023"></iframe>
+</section>
+<section id="cleanepi-slides" class="level2">
+<h2 class="anchored" data-anchor-id="cleanepi-slides">cleanepi slides</h2>
+<iframe width="780" height="438.75" src="cleanepi.pdf" title="epiparameter slides showcase winder 2023"></iframe>
+</section>
+<section id="pipeline-demo" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-demo">pipeline demo</h2>
+<ul>
+<li>Coming soon</li>
+</ul>
+</section>
+<section id="questions-answers" class="level2">
+<h2 class="anchored" data-anchor-id="questions-answers">Questions &amp; answers</h2>
+<blockquote class="blockquote">
+<p>Will <code>{cleanepi}</code> package have an option to create new columns and to perform other actions such as filtering and sorting data?</p>
+</blockquote>
+<p>Some cleaning processes in the <code>{cleanepi}</code> package actually create new columns. <code>{cleanepi}</code> does data filtering but not data sorting, which can be done with other existing packages.</p>
+<blockquote class="blockquote">
+<p>When will the <code>{readepi}</code> and <code>{cleanepi}</code> packages be available on CRAN?</p>
+</blockquote>
+<p>These packages are still in development stage, and we intend to submit them to CRAN soon.</p>
+<blockquote class="blockquote">
+<p>Does <code>{cleanepi}</code> has an option to show which IDs are been cleaned? This will help to inform the curators about which ID as wrong?</p>
+</blockquote>
+<p>Yes, <code>{cleanepi}</code> reports any change to the end-user.</p>
+<blockquote class="blockquote">
+<p>Will there be a package in epiverse for spatial analysis to visualize distribution of cases during epidemics?</p>
+</blockquote>
+<p>Yes. We intend to create a package for visualization.</p>
+<blockquote class="blockquote">
+<p>Have you thought about combining the epiverse packages into a single package (like tidyverse package for example) so the user won’t have to load the packages one by one?</p>
+</blockquote>
+<p>Yes. In fact such package is already under development, see <a href="https://github.com/epiverse-trace/epiverse">epiverse</a>.</p>
+<blockquote class="blockquote">
+<p>Can the epiverse be used to model severity or case fatality of outbreaks against counter factual to proof effectiveness of disease control interventions?<br>
+</p>
+</blockquote>
+<p>For this, we would say that Epiverse-TRACE packages such as <code>{cfr}</code> provide robust methods for computing unbiased and timely case fatality ratios. With such knowledge, it is up to the user to decide whether or not control measures are effective.</p>
+<blockquote class="blockquote">
+<p>Is there any plan to account for genomic data?</p>
+</blockquote>
+<p>Yes. We intend to create a package for reading and integrating genomic data with case data.</p>
+</section>
+<section id="recording" class="level2">
+<h2 class="anchored" data-anchor-id="recording">Recording</h2>
+<p>Go to the “Watch the recording” button on the <a href="https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov">event website</a> to watch back this showcase.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
+  author = {Tamayo, Carmen and Mané, Karim and Degoot, Abdoelnaser and
+    Ahadzie, Bankole},
+  title = {Epiverse-TRACE {Autumn} 2023 Showcase},
+  date = {2023-11-30},
+  url = {https://epiverse-trace.github.io//slides/showcase-november-2023},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tamayo2023" class="csl-entry quarto-appendix-citeas">
+Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
+2023. <span>“Epiverse-TRACE Autumn 2023 Showcase.”</span> November 30,
+2023. <a href="https://epiverse-trace.github.io//slides/showcase-november-2023">https://epiverse-trace.github.io//slides/showcase-november-2023</a>.
+</div></div></section></div> ]]></description>
+  <category>readepi</category>
+  <category>cleanepi</category>
+  <category>pipleline demo</category>
+  <category>showcase</category>
+  <guid>https://epiverse-trace.github.io/slides/showcase-november-2023/</guid>
+  <pubDate>Thu, 30 Nov 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas</title>
   <dc:creator>Catalina González-Uribe</dc:creator>
@@ -33,7 +204,7 @@
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gonzález-uribe2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gonzález-uribe2023,
   author = {González-Uribe, Catalina},
   title = {Co-Diseño de Soluciones de Software Para Los Desafíos de
     {América} {Latina} y El {Caribe} En Enfermedades Infecciosas},
@@ -75,7 +246,7 @@ Infecciosas.”</span> September 15, 2023. <a href="https://epiverse-trace.githu
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
   author = {Kucharski, Adam and W. Lambert, Joshua and Tamayo, Carmen},
   title = {Global {Health} {Resilience} {Research} {Visit}},
   date = {2023-07-26},
@@ -117,7 +288,7 @@ Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{m. azam2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{m. azam2023,
   author = {M. Azam, James},
   title = {Superseding {R} Packages - Lessons Learned from Transitioning
     to \{Epichains\} from \{Bpmodels\}},
@@ -156,7 +327,7 @@ from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2023,
   author = {Kucharski, Adam},
   title = {Juniper Seminar on Improving Software for Epidemic Response},
   date = {2023-05-31},
@@ -179,7 +350,7 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
   <dc:creator>Geraldine Gómez Millán</dc:creator>
   <dc:creator>Juan Daniel Umaña</dc:creator>
   <dc:creator>Nicolás Torres</dc:creator>
-  <link>https://epiverse-trace.github.io/slides/showcase-spring2023/</link>
+  <link>https://epiverse-trace.github.io/slides/showcase-april-2023/</link>
   <description><![CDATA[ 
 
 
@@ -311,24 +482,24 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
   author = {Carnegie, Anna and Gómez Millán, Geraldine and Daniel Umaña,
     Juan and Torres, Nicolás},
   title = {Epiverse-TRACE {Spring} 2023 Showcase},
   date = {2023-04-05},
-  url = {https://epiverse-trace.github.io//slides/showcase-spring2023},
+  url = {https://epiverse-trace.github.io//slides/showcase-april-2023},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas">
 Carnegie, Anna, Geraldine Gómez Millán, Juan Daniel Umaña, and Nicolás
 Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
-5, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-spring2023">https://epiverse-trace.github.io//slides/showcase-spring2023</a>.
+5, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-april-2023">https://epiverse-trace.github.io//slides/showcase-april-2023</a>.
 </div></div></section></div> ]]></description>
   <category>sivirep</category>
   <category>epiCo</category>
   <category>serofoi</category>
   <category>showcase</category>
-  <guid>https://epiverse-trace.github.io/slides/showcase-spring2023/</guid>
+  <guid>https://epiverse-trace.github.io/slides/showcase-april-2023/</guid>
   <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
 </item>
@@ -374,7 +545,7 @@ Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {From Disconnected Elements to a Harmonious Ecosystem: {The}
     {Epiverse-TRACE} Project},
@@ -402,7 +573,7 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
   <dc:creator>Pratik Gupte</dc:creator>
   <dc:creator>Joshua Lambert</dc:creator>
   <dc:creator>Hugo Gruson</dc:creator>
-  <link>https://epiverse-trace.github.io/slides/showcase-winter2023/</link>
+  <link>https://epiverse-trace.github.io/slides/showcase-january-2023/</link>
   <description><![CDATA[ 
 
 
@@ -534,23 +705,23 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{carnegie2023,
   author = {Carnegie, Anna and Gupte, Pratik and Lambert, Joshua and
     Gruson, Hugo},
   title = {Epiverse-TRACE {Winter} 2023 Showcase},
   date = {2023-01-25},
-  url = {https://epiverse-trace.github.io//slides/showcase-winter2023},
+  url = {https://epiverse-trace.github.io//slides/showcase-january-2023},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas">
 Carnegie, Anna, Pratik Gupte, Joshua Lambert, and Hugo Gruson. 2023.
-<span>“Epiverse-TRACE Winter 2023 Showcase.”</span> January 25, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-winter2023">https://epiverse-trace.github.io//slides/showcase-winter2023</a>.
+<span>“Epiverse-TRACE Winter 2023 Showcase.”</span> January 25, 2023. <a href="https://epiverse-trace.github.io//slides/showcase-january-2023">https://epiverse-trace.github.io//slides/showcase-january-2023</a>.
 </div></div></section></div> ]]></description>
   <category>epiparameter</category>
   <category>finalsize</category>
   <category>episoap</category>
   <category>showcase</category>
-  <guid>https://epiverse-trace.github.io/slides/showcase-winter2023/</guid>
+  <guid>https://epiverse-trace.github.io/slides/showcase-january-2023/</guid>
   <pubDate>Wed, 25 Jan 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
 </item>

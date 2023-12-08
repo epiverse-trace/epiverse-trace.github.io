@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.510</generator>
+<generator>quarto-1.4.523</generator>
 <lastBuildDate>Wed, 22 Nov 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Using benchmarking to guide the adoption of dependencies in R packages</title>
@@ -407,14 +407,14 @@ font-style: inherit;">"Package"</span></span>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
 <div id="ref-wickham2019advanced" class="csl-entry">
 Wickham, Hadley. 2019. <em>Advanced r</em>. CRC press.
 </div>
 <div id="ref-wickham2023r" class="csl-entry">
 Wickham, Hadley, and Jennifer Bryan. 2023. <em>R Packages</em>. " O’Reilly Media, Inc.".
 </div>
-</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Benchmark (Wikipedia): <a href="https://en.wikipedia.org/wiki/Benchmark_(computing)" class="uri">https://en.wikipedia.org/wiki/Benchmark_(computing)</a>↩︎</p></li>
@@ -423,7 +423,7 @@ Wickham, Hadley, and Jennifer Bryan. 2023. <em>R Packages</em>. " O’Reilly Med
 <li id="fn4"><p>Donald Knuth’s quoted as having said, “The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming.” (See <a href="https://en.wikiquote.org/wiki/Donald_Knuth" class="uri">https://en.wikiquote.org/wiki/Donald_Knuth</a>)↩︎</p></li>
 <li id="fn5"><p>Profiling (Wikipedia): <a href="https://csgillespie.github.io/efficientR/performance.html" class="uri">https://csgillespie.github.io/efficientR/performance.html</a>↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{mba azam2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{mba azam2023,
   author = {Mba Azam, James},
   title = {Using Benchmarking to Guide the Adoption of Dependencies in
     {R} Packages},
@@ -471,7 +471,7 @@ of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epi
 
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
   author = {Epiverse-TRACE development team, The},
   title = {Cfr V0.1.0},
   date = {2023-11-22},
@@ -512,7 +512,7 @@ November 22, 2023. <a href="https://epiverse-trace.github.io//posts/cfr_v0.1.0">
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
   author = {Epiverse-TRACE development team, The},
   title = {Bpmodels V0.3.1},
   date = {2023-11-06},
@@ -986,12 +986,12 @@ Further reading
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>There are a handful of rare corner cases where <code>apply()</code> is not the best method for iteration. These are cases that make use of <code>match.call()</code> or <code>sys.call()</code>. More details are available in <code>lapply()</code> documentation and in <a href="https://github.com/epiverse-trace/epiverse-trace.github.io/pull/125#issuecomment-1775929451">this GitHub comment by Tim Taylor during the review of this post</a>.↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Lesser-Known Reasons to Prefer `Apply()` over for Loops},
   date = {2023-11-02},
@@ -1157,7 +1157,7 @@ font-style: inherit;">"date_of_onset"</span>))</span></code></pre></div></li>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
   author = {Epiverse-TRACE development team, The},
   title = {Linelist V1.0.0},
   date = {2023-10-19},
@@ -1947,14 +1947,14 @@ font-style: inherit;">+    container: ghcr.io/org/repo:main</span></span>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>For R history fans, this has been the case <a href="https://github.com/r-devel/r-svn/blob/9c46956fd784c6985867aca069b926d774602928/doc/NEWS.1#L2348-L2350">since R 1.7.0</a>, released in April 2003.↩︎</p></li>
 <li id="fn2"><p>Alternatively, if you’re not using usethis, you can manually copy-paste the relevant GitHub Actions workflow file from the <a href="https://github.com/r-lib/actions/tree/HEAD/examples"><code>examples</code> of the <code>r-lib/actions</code> project</a>.↩︎</p></li>
 <li id="fn3"><p>If you are wondering why we are saying to submit PR to <code>rstudio/r-system-requirements</code> when we were previously talking about <code>r-hub/r-system-requirements</code>, you can check out <a href="https://github.com/r-hub/blog/pull/165#discussion_r1280644182">this comment thread</a>.↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {System {Dependencies} in {R} {Packages} \&amp; {Automatic}
     {Testing}},
@@ -2086,12 +2086,12 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Version_control" class="uri">https://en.wikipedia.org/wiki/Version_control</a>↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
   author = {W. Lambert, Joshua},
   title = {Communicating Development Stages of Open-Source Software},
   date = {2023-07-18},
@@ -2547,7 +2547,7 @@ font-style: inherit;">*</span>.h</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
   author = {Gupte, Pratik},
   title = {Sharing the {C++} {Code} of an {Rcpp} {Package}},
   date = {2023-06-05},
@@ -3317,12 +3317,12 @@ font-style: inherit;">#' }</span></span></code></pre></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>This is the working practise of tidyverse packages: <a href="https://www.tidyverse.org/blog/2019/04/r-version-support/">https://www.tidyverse.org/blog/2019/04/r-version-support/</a>↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w. lambert2023,
   author = {W. Lambert, Joshua},
   title = {Extending {Data} {Frames}},
   date = {2023-04-12},
@@ -3885,7 +3885,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
   author = {Tamayo, Carmen},
   title = {What {Should} the {First} 100 {Lines} of {Code} {Written}
     {During} an {Epidemic} {Look} {Like?}},
@@ -4184,17 +4184,21 @@ font-style: inherit;">w =</span> weights))</span>
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/after_conversion.png" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of the <code>centroid()</code> documentation after conversion to an S3 generic</figcaption>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -4504,13 +4508,13 @@ Spreading the S3 love
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Note that we focus here on the S3 framework but R has other object orientation frameworks, as discussed in <a href="https://adv-r.hadley.nz/oo.html">the relevant section of the ‘Advanced R’ book by Hadley Wickham</a>↩︎</p></li>
 <li id="fn2"><p>Every rule has its exceptions though such as the <a href="https://generics.r-lib.org/">generics</a> package, built by prominent members of the R developer community, which overloads base R functions such as <code>as.factor()</code> or <code>as.difftime()</code>.↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Convert {Your} {R} {Function} to an {S3} {Generic:}
     {Benefits,} {Pitfalls} \&amp; {Design} {Considerations}},
@@ -4949,7 +4953,7 @@ font-style: inherit;">*</span>.cpp src</span></code></pre></div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
   author = {Gupte, Pratik},
   title = {Improving the {C++} {Code} {Quality} of an {Rcpp} {Package}},
   date = {2023-02-16},
@@ -5455,7 +5459,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-70147"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-70147").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-33221"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-33221").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
@@ -5465,13 +5469,13 @@ font-style: inherit;">$</span>p_infected)</span>
 </section>
 
 
-<div id="quarto-appendix" class="default"><aside id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>But see the <a href="https://www.alexpghayes.com/post/2019-06-07_testing-statistical-software/">“testing statistical software” post from Alex Hayes</a> where he presents his process to determine if he deems a statistical package trustworthy or not, and <a href="https://stats-devguide.ropensci.org/">rOpenSci Statistical Software Peer Review book</a>.↩︎</p></li>
 <li id="fn2"><p>Setting the random seed is not enough to compare implementations across programming languages because different languages use different kind of Random Number Generators.↩︎</p></li>
 </ol>
-</aside><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
   author = {Gruson, Hugo},
   title = {Ensuring \&amp; {Showcasing} the {Statistical} {Correctness} of
     Your {R} {Package}},
