@@ -1,6 +1,5 @@
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches: main
 
@@ -24,12 +23,7 @@ jobs:
 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Test render on PR
-        if: github.event_name == 'pull_request'
-        uses: quarto-dev/quarto-actions/render@v2
-
-      - name: Publish to GitHub Pages (and render)
-        if: github.event_name != 'pull_request'
+      - name: Render & Publish to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
