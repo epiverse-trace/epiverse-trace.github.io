@@ -10,7 +10,7 @@ author:
   - name: "Bankole Ahadzie"
 date: "2023-11-30"
 image: "../showcase.jpg"
-categories: [readepi, cleanepi, pipleline demo, showcase]
+categories: [readepi, cleanepi, pipeline demo, showcase]
 format:
   html: 
     toc: true
@@ -49,9 +49,9 @@ epidemiology.
 |                | -   Features                |                             |
 +----------------+-----------------------------+-----------------------------+
 | 12:22 - 12:23  | One line intro to Degoot &  | Carmen                      |
-|                | demo pipleline              |                             |
+|                | demo pipeline               |                             |
 +----------------+-----------------------------+-----------------------------+
-| 12:23 - 12:45  | Pipleline demo:             | Degoot                      |
+| 12:23 - 12:45  | Pipeline demo:              | Degoot                      |
 +----------------+-----------------------------+-----------------------------+
 |                |                             |                             |
 |                | -   overview                |                             |
