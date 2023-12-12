@@ -1,12 +1,33 @@
 ---
 title: "Learn"
 listing:
-  contents: learn
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
+  type: grid
+  contents:
+    - title: Epiverse-TRACE Tutorials
+      path: https://epiverse-trace.github.io/tutorials/
+      description: ""
+      image: https://epiverse-trace.github.io/task_pipeline-minimal.svg
+      author: 
+        - Amanda Minter
+        - Andree Valle Campos
+    - title: Análisis de Brotes y Modelamiento en Salud Pública 
+      path: https://epiverse-trace.github.io/epimodelac/
+      description: ""
+      image: https://epiverse-trace.github.io/epimodelac/practicalfig.jpg
+      author: 
+        - José María Velasco-España
+    - title: Improve your code for Epidemic Analysis with R
+      path: https://epiverse-trace.github.io/research-compendium/
+      description: ""
+      image: https://epiverse-trace.github.io/research-compendium/fig/goal-intro.png
+      author: 
+        - Andree Valle Campos
+    - title:  Version Control with Git using Rstudio 
+      path: https://epiverse-trace.github.io/git-rstudio-basics/
+      description: ""
+      image: https://epiverse-trace.github.io/git-rstudio-basics/fig/topic-git.png
+      author: 
+        - Andree Valle Campos
   feed: true
 page-layout: full
 title-block-banner: true
