@@ -1,0 +1,98 @@
+---
+title: "packagetemplate v2.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2023-12-20"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new packagetemplate version v2.0.0.
+Here is an automatically generated summary of the changes in this version.
+
+## Automated checks
+
+### Infrastructure and internal changes
+
+- GitHub Actions workflow now include the necessary `permissions` field to run in a secure environment with minimal permissions granted by default to the `GITHUB_TOKEN` secret (#114, @Bisaloo).
+
+- testthat tests now run in parallel (#93, @Bisaloo). Number of cores on GitHub Actions workflows is 2 by default and number of cores on local computers can be set as [documented in the dedicated vignette](https://testthat.r-lib.org/articles/parallel.html).
+
+- GitHub Actions workflows are now run in more contexts:
+  - In merge queues (#94, @Bisaloo, based on a report from @jamesmbaazam in #72).
+  - On all branches for pull requests (#64 & #66, @Bisaloo, based on a report from @Karim-Mane). This makes packagetemplate more suitable for git flows with several long-lived branches, such as a `develop` branch alongside the `main` branch.
+
+- pkgdown website is now rendered with `clean: true` on releases, so that each release starts with a clean slate and does not accidentally still include removed vignettes (#58, @Bisaloo, based on a report from @TimTaylor).
+
+- GitHub Actions workflows pushing updates to files (at this time: [render_readme.yml](https://github.com/epiverse-trace/packagetemplate/blob/main/.github/workflows/render_readme.yml) & [update-citation-cff.yaml](https://github.com/epiverse-trace/packagetemplate/blob/main/.github/workflows/update-citation-cff.yaml)) no longer run on git tags or releases (#92 and #109, @Bisaloo, based on a report from @joshwlambert and early feedback from @sbfnk).
+
+- GitHub Actions workflows pushing updates to files (at this time: [render_readme.yml](https://github.com/epiverse-trace/packagetemplate/blob/main/.github/workflows/render_readme.yml) & [update-citation-cff.yaml](https://github.com/epiverse-trace/packagetemplate/blob/main/.github/workflows/update-citation-cff.yaml)) no longer fail because they try to push to an outdated branch when they run at the same time. This is achieved by running `git pull --rebase` before attempting to push (#92 by @Bisaloo, thanks to a report from @joshwlambert).
+
+- READMEs that reference external files (images, bibliography, etc.) are now rendered without errors by the automated `render-readme` GitHub Actions workflow.
+
+  *Implemented in #57 by `@Bisaloo`*.
+
+### New checks
+
+- Internal links are not checked on pkgdown website before deploying in our `pkgdown.yaml` GitHub Actions workflow (#117, @Bisaloo, based on a report from @pratikunterwegs in #102.). This prevents stale links to deleted vignettes to go unnoticed.
+
+- Spellchecking via the spelling package is now part of the standard continuous integration of Epiverse-TRACE packages (#56, @Bisaloo, #105, @bahadzie, based on reports from @pratikunterwegs and @jamesmbaazam).
+
+- testthat warnings and R CMD check warnings & notes now result in failure in our continuous integration (#96, @Bisaloo). This will help correcting early some minor issues that were until now going undetected for a while.
+
+- the template includes a new testthat help `helper-state.R` to ensure global state is not modified (or restored correctly) by the package (#90, @Bisaloo, and improved in #111 based on feedback from the epinowcast community, and in particular @medewitt and @pearsonca).
+
+- partial matching of arguments, dollars and attributes now generate warnings as part of our testing & continuous integration process but setting special arguments in testthat runs (#61, @Bisaloo, based on a report from @TimTaylor and a tip from @gaborcsardi).
+
+- Two new linters are enabled by default:
+  - `undesirable_function_linter()`, which signals potential bugs such as leftover debugging calls, error-prone or slow functions (#87, @Bisaloo).
+  - additional custom linters via the etdev package (#85, @Bisaloo)
+
+- packagetemplate now includes an extra workflow `dependency-change.yaml` to analyze the impact of dependency changes in terms of total (direct & indirect) dependencies and system dependencies (#107, @Bisaloo, with feedback from @joshwlambert and @pratikunterwegs).
+
+### False positives
+
+- Some auto-generated files are excluded from linting:
+  - `R/RcppExports.R` (#95, @Bisaloo, based on a report from @pratikunterwegs).
+  - `R/stanmodels.R` (#106, @Bisaloo)
+
+- Some lintr are disabled globally:
+  - `lintr::indentation_linter()` because as of lintr 3.1.0, it generates too many false-positive and conflicts with styler (#75, @Bisaloo).
+  - `library_call_linter()`, to offer more flexibility in vignettes, tests, or development scripts (#88, @Bisaloo)
+
+- Additionally, `missing_package_linter()` and `namespace_linter()` are now disabled in the `data-raw/` folder to avoid pushing extra package inclusion as dependencies in `DESCRIPTION` (#81, @Bisaloo). It is indeed generally not advisable to add development dependencies to `DESCRIPTION`.
+
+## Release process
+
+- Three new good practice reminders have been added to the release checklist:
+
+  - [ ] Ensure every contributor in acknowledged in some way, [as documented in our blueprints](https://epiverse-trace.github.io/blueprints/contribution-acknowledgements.html) (@Bisaloo, #115).
+  - [ ] Review the `WORDLIST` to ensure misspelled words were not added by accident (#68, @Bisaloo).
+  - [ ] Go through `# nolint` comments in the code to check if these comments are still necessary. (#84, @Bisaloo).
+
+- This template now includes explicitly a `NEWS.md` file. This is meant to encourage the documentation of changes as early as possible in the development process, rather than waiting until `usethis::use_release_issue()` points it out (#82, @Bisaloo, based on discussions with @ntorresd).
+
+## Documentation & community
+
+- The svg template for package logos (by @dgmascarina) is now included in `man/figures/logo.svg` (standard location and name for R package logo) (#71, @Bisaloo).
+
+- packagetemplate includes a new GitHub Actions workflow `update-citation-cff.yaml` to create and keep in sync a file `CITATION.cff` which contains information on how to cite the package in a standard, language-agnostic way that is [nicely integrated with GitHub](https://github.blog/2021-08-19-enhanced-support-citations-github/) (#31, @Bisaloo).
+
+### Vignettes
+
+- A template is now provided for the design vignette that all Epiverse-TRACE packages should contain (#97 and #99, @joshwlambert and @pratikunterwegs).
+
+### GitHub community infrastructure
+
+- bibtex (`.bib`) files are now excluded from repository statistics via a custom linguist override. This helps making sure our repositories are correctly identified as `R` projects, rather than `TeX` (#76 @Bisaloo, based on discussions with @jamesmbaazam, @pratikunterwegs, @sbfnk & @TimTaylor).
+
+- Pull request and issue templates have been transferred out of this repository and now live as community defaults under [`epiverse-trace/.github`](https://github.com/epiverse-trace/.github) (#74, @Bisaloo). Developers are still encouraged to write specific templates better tailored to each individual package.
+
+- GitHub Actions workflows now include some instructions indicating how to reproduce their results locally for easier debugging (#70, @Bisaloo).
+
+## Meta changes
+
+packagetemplate itself is now more thoroughly tested to limit the risk that a broken package is shipped to users:
+
+- R CMD check (#100, @Bisaloo).
+- lintr (#69, @Bisaloo)
+- pkgdown
