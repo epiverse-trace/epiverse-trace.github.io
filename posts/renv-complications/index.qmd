@@ -10,7 +10,7 @@ format:
     toc: true
 ---
 
-We use renv to ensure reproducibility of the training materials and the pipelines we are providing.
+We use the [renv R package](https://rstudio.github.io/renv/) to ensure reproducibility of the training materials and the pipelines we are providing.
 But we sometimes get reports from users who struggle to rebuild the environment and run the code.
 In this post, we dissect the source of these issues, explain why in reality renv is not at fault, and how this is caused by the inherent complexity of **reproducibility**.
 We finish by mentioning a couple of more complete (but more complex!) frameworks that can overcome the issues presented here.
@@ -35,12 +35,12 @@ This means you are more likely to have to compile the package yourself and see t
 
 ## Beyond renv scope: incompatibility with system dependency versions
 
-We [discussed previously the topic of system dependencies](../system-dependencies/), and dependencies on specific R versions. These special dependencies can also be a source of headaches when using renv.
+We [discussed previously the topic of system dependencies](../system-dependencies/), and [dependencies on specific R versions](https://blog.r-hub.io/2022/09/12/r-dependency/). These special dependencies can also be a source of headaches when using renv.
 
 The heart of the issue is that renv provides a simplified solution to reproducibility: it focuses on R packages and R package versions.
 But other sources of non-reproducibility are outside its scope. In many cases, this will not be a problem, as the main source of non-reproducibility, especially in the relatively short-term, will be R package versions.
 
-But sometimes, it is possible that the `renv.lock` lockfiles requires such an old version of an R package that it was written with a syntax that is no longer supported by recent R versions or modern compilers.
+But sometimes, it is possible that the `renv.lock` lockfile requires such an old version of an R package that it was written with a syntax that is no longer supported by recent R versions or modern compilers.
 
 For example, a recent project (from 2023) was trying to install the version 0.60.1 of the `matrixStats` package (from 2021). This lead to this compilation error:
 
@@ -105,23 +105,25 @@ A potential solution would be to avoid this compilation step and always install 
 
 This is not possible while installing from CRAN as CRAN only provides binaries for recent versions of R and for a limited number of platforms.
 
-But Posit for example provides a larger collection of binaries, for different package versions, and different platforms, via their Public Posit Package Manager (PPM).
+But Posit for example provides a larger collection of binaries, for different package versions, and different platforms, via their Public [Posit Package Manager (PPM)](https://packagemanager.posit.co/).
 
 Making sure you install from PPM rather than CRAN can be a first simple step to make some of the issues discussed here vanish. 
 
 ### Extended reproducibility
 
-Another solution could be to add more complex and more complete reproducibility solutions than renv.
+Another solution could be to add more complex reproducibility solutions that go beyond the scope of renv.
 
 #### renv with rig
 
 The R version is specified in `renv.lock` and to avoid incompatibility of older package versions with newer versions of R, you could run the declared R version.
 This can be achieved with various means but a convenient solution is the [rig](https://github.com/r-lib/rig) tool.
 
+There are even some [discussions](https://github.com/r-lib/rig/issues/131) to integrate rig and renv more tightly and let rig detect automatically which R version to use based on the `renv.lock` file.
+
 #### Docker, Nix and others
 
 Alternatively, you could use other reproducibility toolkit that focus not just on the R package versions, but on the entire software stack.
-These solutions can be more complex to setup and use, and we won't detail them in this blog post but you can find more information in:
+These solutions can be more complex to set up and use, and we won't detail them in this blog post but you can find more information in:
 
 - [The "Using renv with Docker" renv vignette](https://rstudio.github.io/renv/articles/docker.html)
 - [the "An Introduction to Rocker: Docker Containers for R" paper](https://doi.org/10.32614/RJ-2017-065)
