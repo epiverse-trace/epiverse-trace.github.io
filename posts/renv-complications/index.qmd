@@ -94,9 +94,8 @@ ERROR: compilation failed for package ‘matrixStats’
 
 The explanation for this error can be found in [the `matrixStats` release notes](https://github.com/HenrikBengtsson/matrixStats/blob/799669fc6de6f55a74cab06cc6a97634aa24ab0e/NEWS.md?plain=1#L111-L113), specifically the section for matrixStats 0.63.0:
 
->  * Updated native code to use the C99 constant `DBL_MAX` instead of
-   legacy S constant `DOUBLE_XMAX`, which is planned to be unsupported
-   in R (>= 4.2.0).
+> * Updated native code to use the C99 constant `DBL_MAX` instead of legacy S 
+constant `DOUBLE_XMAX`, which is planned to be unsupported in R (>= 4.2.0).
 
 ## Some solutions
 
@@ -127,6 +126,6 @@ There are even some [discussions](https://github.com/r-lib/rig/issues/131) to in
 Alternatively, you could use other reproducibility toolkit that focus not just on the R package versions, but on the entire software stack.
 These solutions can be more complex to set up and use, and we won't detail them in this blog post but you can find more information in:
 
-- [The "Using renv with Docker" renv vignette](https://rstudio.github.io/renv/articles/docker.html)
-- [the "An Introduction to Rocker: Docker Containers for R" paper](https://doi.org/10.32614/RJ-2017-065)
-- [Bruno Rodrigues' entire series of blog posts on Nix](https://www.brodrigues.co/blog/2023-07-13-nix_for_r_part1/)
+* [The "Using renv with Docker" renv vignette](https://rstudio.github.io/renv/articles/docker.html)
+* [the "An Introduction to Rocker: Docker Containers for R" paper](https://doi.org/10.32614/RJ-2017-065)
+* [Bruno Rodrigues' entire series of blog posts on Nix](https://www.brodrigues.co/blog/2023-07-13-nix_for_r_part1/)
