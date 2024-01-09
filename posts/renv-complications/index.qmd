@@ -94,7 +94,7 @@ ERROR: compilation failed for package ‘matrixStats’
 
 The explanation for this error can be found in [the `matrixStats` release notes](https://github.com/HenrikBengtsson/matrixStats/blob/799669fc6de6f55a74cab06cc6a97634aa24ab0e/NEWS.md?plain=1#L111-L113), specifically the section for matrixStats 0.63.0:
 
-> * Updated native code to use the C99 constant `DBL_MAX` instead of legacy S 
+> * Updated native code to use the C99 constant `DBL_MAX` instead of legacy S
 constant `DOUBLE_XMAX`, which is planned to be unsupported in R (>= 4.2.0).
 
 ## Some solutions
@@ -108,7 +108,7 @@ This is not possible while installing from CRAN as CRAN only provides binaries f
 
 But Posit for example provides a larger collection of binaries, for different package versions, and different platforms, via their Public [Posit Package Manager (PPM)](https://packagemanager.posit.co/).
 
-Making sure you install from PPM rather than CRAN can be a first simple step to make some of the issues discussed here vanish. 
+Making sure you install from PPM rather than CRAN can be a first simple step to make some of the issues discussed here vanish.
 
 ### Extended reproducibility
 
