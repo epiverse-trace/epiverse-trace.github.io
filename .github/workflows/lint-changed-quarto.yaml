@@ -1,0 +1,25 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  pull_request:
+    branches: [main, master]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-changed-quarto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm install markdownlint-cli
+
+      - name: Get changed quarto files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: changed-qmd
+        run: echo "CHANGED=$(gh pr diff ${{ github.event.pull_request.number }} --name-only | grep '\.qmd$' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
+      - run: npx markdownlint-cli ${{ steps.changed-qmd.outputs.CHANGED }} --dot --disable line_length first-line-h1 link-image-reference-definitions
