@@ -9,8 +9,62 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.525</generator>
-<lastBuildDate>Wed, 22 Nov 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.537</generator>
+<lastBuildDate>Tue, 09 Jan 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>simulist v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/simulist_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new simulist version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>Initial release of <em>simulist</em>, an R package containing tools to simulate epidemiological data such as line lists and contact tables.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>A set of simulation functions to simulate epidemiological data. These simulation functions contain arguments that allow for the simulation to be flexibly parameterised to be generated under specified epidemiological or demographic conditions.
+<ul>
+<li><code>sim_linelist()</code>: simulate line list data</li>
+<li><code>sim_contacts()</code>: simulate contacts data</li>
+<li><code>sim_outbreak()</code>: simulate both line list and contacts data</li>
+</ul></li>
+<li>Four general vignettes
+<ul>
+<li>Get Started vignette (<code>simulist.Rmd</code>)</li>
+<li>Age-stratified hospitalisation and death risks vignette (<code>age-strat-risks.Rmd</code>)</li>
+<li>Age structured population vignette (<code>age-struct-pop.Rmd</code>)</li>
+<li>Visualising simulated data (<code>vis-linelist.Rmd</code>)</li>
+</ul></li>
+<li>One developer focused vignette
+<ul>
+<li>Design Principles for {simulist} (<code>design-principles.Rmd</code>)</li>
+</ul></li>
+<li>Unit tests (100% code coverage) and documentation files.</li>
+<li>Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, deploying the pkgdown website, updating the citation file, and checking new package or system dependencies.</li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.1.0},
+  date = {2024-01-09},
+  url = {https://epiverse-trace.github.io//posts/simulist_v0.1.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Simulist
+V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io//posts/simulist_v0.1.0">https://epiverse-trace.github.io//posts/simulist_v0.1.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/simulist_v0.1.0/</guid>
+  <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Using benchmarking to guide the adoption of dependencies in R packages</title>
   <dc:creator>James Mba Azam</dc:creator>
@@ -2028,7 +2082,7 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
 <h3 class="anchored" data-anchor-id="repostatus">RepoStatus</h3>
 <p>RepoStatus is a language agnostic set of badges which describe the stages of code development and the possible transitions between those stages.</p>
 <p>As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.</p>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the RepoStatus framework. The flow is not strictly linear as one package can enter and exist stages such as 'suspended', 'abandoned', 'inactive', etc. There a thin green line with the text 'Repo has reached a stable state' between the stages 'concept', 'WIP', 'abandoned', 'suspended' and the stages 'active', 'unsupported', 'inactive'."></p>
 <figcaption>RepoStatus badge system. <em>Reused under CC BY-SA 4.0 from <a href="https://www.repostatus.org/">repostatus.org</a></em></figcaption>
@@ -2046,7 +2100,7 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
 </ol>
 <p>Most code will go through the experimental phase, as it will likely change its API and the number and order of arguments might change. Once code is not going to drastically change (i.e.&nbsp;no breaking changes), at least from a users point of view, it can be labelled stable. In the tidyverse lifecycle schematic, all experimental code transitions to stable code.</p>
 <p>The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.</p>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."></p>
 <figcaption>{lifecycle} badge system. <em>Reused under MIT license from <a href="https://lifecycle.r-lib.org/articles/stages.html">lifecycles R package</a></em></figcaption>
@@ -3375,7 +3429,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-1-novel-respiratory-disease-in-the-gambia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-1-novel-respiratory-disease-in-the-gambia">Scenario 1: Novel respiratory disease in The Gambia</h2>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid figure-img" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
 <figcaption>Scenario 1 details</figcaption>
@@ -3513,7 +3567,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia">Scenario 2: Outbreak of an unidentified disease in rural Colombia</h2>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario2smq.png" class="img-fluid figure-img" alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"></p>
 <figcaption>Scenario 2 details</figcaption>
@@ -3605,7 +3659,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-3-reston-ebolavirus-in-the-philippines" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-3-reston-ebolavirus-in-the-philippines">Scenario 3: Reston Ebolavirus in the Philippines</h2>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario3smq.png" class="img-fluid figure-img" alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"></p>
 <figcaption>Scenario 3 details</figcaption>
@@ -3704,7 +3758,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-4-emerging-avian-influenza-in-cambodia" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-4-emerging-avian-influenza-in-cambodia">Scenario 4: Emerging avian influenza in Cambodia</h2>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario4smq.png" class="img-fluid figure-img" alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"></p>
 <figcaption>Scenario 4 details</figcaption>
@@ -3766,7 +3820,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 </section>
 <section id="scenario-5-outbreak-of-respiratory-disease-in-canada" class="level2">
 <h2 class="anchored" data-anchor-id="scenario-5-outbreak-of-respiratory-disease-in-canada">Scenario 5: Outbreak of respiratory disease in Canada</h2>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario5smq.png" class="img-fluid figure-img" alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"></p>
 <figcaption>Scenario 5 details</figcaption>
@@ -4184,16 +4238,16 @@ font-style: inherit;">w =</span> weights))</span>
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row quarto-layout-valign-bottom">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/before_conversion.png" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of the <code>centroid()</code> documentation before conversion to an S3 generic</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://epiverse-trace.github.io/posts/s3-generic/after_conversion.png" class="img-fluid figure-img"></p>
 <figcaption>Screenshot of the <code>centroid()</code> documentation after conversion to an S3 generic</figcaption>
@@ -5459,7 +5513,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-34732"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-34732").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-69146"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-69146").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
