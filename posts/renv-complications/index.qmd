@@ -12,7 +12,9 @@ format:
 
 We use the [renv R package](https://rstudio.github.io/renv/) to ensure reproducibility of the training materials and the pipelines we are providing.
 But we sometimes get reports from users who struggle to rebuild the environment and run the code.
-In this post, we dissect the source of these issues, explain why in reality renv is not at fault, and how this is caused by the inherent complexity of **reproducibility**.
+
+In this post, we dissect the source of these issues, explain why in reality renv is not at fault, and how this is caused by the inherent complexity of reproducibility. renv documentation already includes [caveats](https://rstudio.github.io/renv/articles/renv.html#caveats) explaining why some situations are bound to require more complex tools. This blog post reiterates some of these caveats and illustrates them with concrete examples.
+
 We finish by mentioning a couple of more complete (but more complex!) frameworks that can overcome the issues presented here.
 We do not explore these alternative framework in details but we provide links to more information.
 
