@@ -9,6 +9,13 @@ listing:
       author: 
         - Amanda Minter
         - Andree Valle Campos
+    - title: e-Epi-training kit
+      path: https://epiverse-trace.github.io/epi-training-kit/
+      description: ""
+      image: epitrainingkit.png
+      author:
+        - Zulma M. Cucunubá
+        - Laura Gómez-Bermeo
     - title: Análisis de Brotes y Modelamiento en Salud Pública 
       path: https://epiverse-trace.github.io/epimodelac/
       description: ""
