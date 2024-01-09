@@ -28,16 +28,3 @@ Initial release of _simulist_, an R package containing tools to simulate epidemi
 
 * Unit tests (100% code coverage) and documentation files.
 * Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, deploying the pkgdown website, updating the citation file, and checking new package or system dependencies.
-
-## Breaking changes
-
-* None
-
-## Bug fixes
-
-* None
-
-## Deprecated and defunct
-
-* None
-
