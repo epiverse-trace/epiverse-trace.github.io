@@ -24,7 +24,7 @@ Software, including R packages, can generally be delivered in two forms: as bina
 If you are installing as source code, you may in some case need a compilation toolchain on your computer.
 If the toolchain is missing, it can lead to errors such as:
 
-> ```
+> ```txt
 > ld: warning: search path '/opt/gfortran/lib' not found
 > ld: library 'gfortran' not found
 > ```
@@ -50,7 +50,7 @@ For example, a recent project (from 2023) was trying to install the version 0.60
 
 <details><summary>Click to see the full error message</summary>
 
-```
+```txt
 ! Error installing package 'matrixStats':
 =======================================
 
