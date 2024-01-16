@@ -87,6 +87,7 @@ We will use Git within the Rstudio graphical interface and GitHub. For this you 
 
 ## Materials we used
 
+- [Tutorial used as a reference for the training](https://epiverse-trace.github.io/git-rstudio-basics/)
 - [Slides that we used in the training](https://docs.google.com/presentation/d/1kE13oZCoSwlXJL_UhvhiX6W0hNaE1ZEkFsHAX-Pl5o0/edit?usp=sharing) with notes expanding the content for instructors
 - [Template for our document with shared notes](https://docs.google.com/document/d/1p7BWfqG0-advDHmhzYas1WyhHIZQvLs1HWR39_o7X7k/edit?usp=sharing)
 - [Template for our pre-training form](https://docs.google.com/forms/d/1LsSsMmwuLIr_GCsw1K5AUxfCMb5_XiAlpno7up6zc8Q/copy)
