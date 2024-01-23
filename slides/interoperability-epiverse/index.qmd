@@ -1,0 +1,16 @@
+---
+title: "Interoperability strategy for the Epiverse"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2023-10"
+categories: [interoperability, ecosystem, R, R packages]
+image: "interoperable_venn.svg"
+---
+
+This presentation was done internally to the Epiverse-TRACE team, and to the
+Epiverse-TRACE funders.
+
+```{=html}
+<iframe width="780" height="500" src="interoperability-epiverse.pdf" title="Inteoperability strategy for the Epiverse slides"></iframe>
+```
