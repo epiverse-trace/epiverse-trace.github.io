@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.4.537</generator>
+<generator>quarto-1.4.549</generator>
 <lastBuildDate>Thu, 30 Nov 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse-TRACE Autumn 2023 showcase</title>
@@ -181,6 +181,40 @@ Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
   <guid>https://epiverse-trace.github.io/slides/showcase-november-2023/</guid>
   <pubDate>Thu, 30 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Interoperability strategy for the Epiverse</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/interoperability-epiverse/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This presentation was done internally to the Epiverse-TRACE team, and to the Epiverse-TRACE funders.</p>
+<iframe width="780" height="500" src="interoperability-epiverse.pdf" title="Inteoperability strategy for the Epiverse slides"></iframe>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
+  author = {Gruson, Hugo},
+  title = {Interoperability Strategy for the {Epiverse}},
+  date = {2023-10-01},
+  url = {https://epiverse-trace.github.io//slides/interoperability-epiverse},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2023. <span>“Interoperability Strategy for the
+Epiverse.”</span> October 1, 2023. <a href="https://epiverse-trace.github.io//slides/interoperability-epiverse">https://epiverse-trace.github.io//slides/interoperability-epiverse</a>.
+</div></div></section></div> ]]></description>
+  <category>interoperability</category>
+  <category>ecosystem</category>
+  <category>R</category>
+  <category>R packages</category>
+  <guid>https://epiverse-trace.github.io/slides/interoperability-epiverse/</guid>
+  <pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://epiverse-trace.github.io/slides/interoperability-epiverse/interoperable_venn.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas</title>

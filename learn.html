@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.537">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -228,7 +228,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1704819944841" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1313">
+<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1706087970907" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1313">
 <div class="thumbnail">
 <p><a href="./learn/git-training-01/index.html" class="no-external"></a></p><a href="./learn/git-training-01/index.html" class="no-external">
 <p><img src="./learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg" class="thumbnail-image"></p>
@@ -439,7 +439,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
