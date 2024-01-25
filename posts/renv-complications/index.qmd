@@ -137,3 +137,11 @@ These solutions can be more complex to set up and use, and we won't detail them 
 * [The "Using renv with Docker" renv vignette](https://rstudio.github.io/renv/articles/docker.html)
 * [the "An Introduction to Rocker: Docker Containers for R" paper](https://doi.org/10.32614/RJ-2017-065)
 * [Bruno Rodrigues' entire series of blog posts on Nix](https://www.brodrigues.co/blog/2023-07-13-nix_for_r_part1/)
+
+### Conclusion: a final note for developers
+
+renv is an elegant solution that focuses on the most immediate source of non-reproducibility. This however means it needs to be complemented by other tools in more complex cases.
+
+Ultimately, reproducibility is a team effort. People who write code can minimise the risk of renv complications by keeping the packages they use close to their CRAN version and regularly updating their code and `renv.lock` accordingly.
+Other programming languages have automated tooling to help with this, via, e.g., the [dependabot tool](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) which submits pull requests to update dependencies.
+There is no well established equivalent for R yet, but anyone willing to set this mechanism up can look at the code used by the [Carpentries workbench](https://github.com/carpentries/actions/tree/70ff4b4e8d50fdcd0eb33e7c33a4a6f305a82702/update-lockfile) for this task.
