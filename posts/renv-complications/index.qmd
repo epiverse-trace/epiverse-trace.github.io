@@ -35,6 +35,14 @@ Indeed, CRAN provides pre-compiled binaries for Windows and macOS for the last v
 With renv, you often want to install older versions of the packages, which won't be available as binaries from CRAN.
 This means you are more likely to have to compile the package yourself and see this kind of errors, even though renv is not causing them.
 
+::: {.callout-tip}
+
+### gfortran issues on Apple Silicon computers
+
+If you are an Apple Silicon (Mac M1, M2, M3) user and encounter issues with gfortran, we have had success using the [macrtools R package](https://github.com/coatless-mac/macrtools/) and we strongly recommend checking it out.
+
+:::
+
 ## Beyond renv scope: incompatibility with system dependency versions
 
 We [discussed previously the topic of system dependencies](../system-dependencies/), and [dependencies on specific R versions](https://blog.r-hub.io/2022/09/12/r-dependency/). These special dependencies can also be a source of headaches when using renv.
