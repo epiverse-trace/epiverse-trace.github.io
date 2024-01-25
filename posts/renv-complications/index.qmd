@@ -47,7 +47,7 @@ If you are an Apple Silicon (Mac M1, M2, M3) user and encounter issues with gfor
 
 We [discussed previously the topic of system dependencies](../system-dependencies/), and [dependencies on specific R versions](https://blog.r-hub.io/2022/09/12/r-dependency/). These special dependencies can also be a source of headaches when using renv.
 
-The heart of the issue is that renv provides a simplified solution to reproducibility: it focuses on R packages and R package versions.
+The heart of the issue is that renv provides a simplified solution to reproducibility: it focuses on R packages and their versions.
 But other sources of non-reproducibility are outside its scope. In many cases, this will not be a problem, as the main source of non-reproducibility, especially in the relatively short-term, will be R package versions.
 
 But sometimes, it is possible that the `renv.lock` lockfile requires such an old version of an R package that it was written with a syntax that is no longer supported by recent R versions or modern compilers.
