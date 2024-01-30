@@ -1,119 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://epiverse-trace.github.io/slides/showcase-april-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.067Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/harmonize-july-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/interoperability-epiverse/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/showcase-november-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.091Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/showcase-january-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.091Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/cfr_v0.1.0/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/100days-workshop/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.939Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/comm-software-devel/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.939Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/share-cpp/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.907Z</lastmod>
-  </url>
-  <url>
     <loc>https://epiverse-trace.github.io/get-involved.html</loc>
-    <lastmod>2024-01-24T09:19:30.903Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/blog.html</loc>
-    <lastmod>2024-01-24T09:19:30.903Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/learn.html</loc>
-    <lastmod>2024-01-24T09:19:30.907Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/presentations.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/for-vs-apply/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/posts/system-dependencies/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
+    <lastmod>2024-01-30T08:48:36.565Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/posts/linelist_v1.0.0/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/posts/simulist_v0.1.0/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
+    <loc>https://epiverse-trace.github.io/posts/statistical-correctness/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
+    <loc>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
   </url>
   <url>
-    <loc>https://epiverse-trace.github.io/posts/bpmodels_v0.3.1/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.943Z</lastmod>
+    <loc>https://epiverse-trace.github.io/posts/extend-dataframes/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/system-dependencies/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/share-cpp/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/s3-generic/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/presentations.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/learn/git-training-01/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.907Z</lastmod>
+    <lastmod>2024-01-30T08:48:36.565Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/harmonize-july-2023/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.681Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/slides/harmonious-ecosystem/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.979Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/global-health-conference-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:30.967Z</lastmod>
-  </url>
-  <url>
-    <loc>https://epiverse-trace.github.io/slides/juniper-may-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.047Z</lastmod>
+    <lastmod>2024-01-30T08:48:36.637Z</lastmod>
   </url>
   <url>
     <loc>https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/index.html</loc>
-    <lastmod>2024-01-24T09:19:31.055Z</lastmod>
+    <lastmod>2024-01-30T08:48:36.713Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/showcase-january-2023/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.745Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/blog.html</loc>
+    <lastmod>2024-01-30T08:48:36.561Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/interoperability-epiverse/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.681Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/global-health-conference-2023/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.625Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/juniper-may-2023/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.705Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/showcase-november-2023/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.749Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/slides/showcase-april-2023/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.565Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/learn.html</loc>
+    <lastmod>2024-01-30T08:48:36.565Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/100days-workshop/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/simulist_v0.1.0/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/comm-software-devel/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/bpmodels_v0.3.1/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/cfr_v0.1.0/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/for-vs-apply/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
+  </url>
+  <url>
+    <loc>https://epiverse-trace.github.io/posts/lint-rcpp/index.html</loc>
+    <lastmod>2024-01-30T08:48:36.601Z</lastmod>
   </url>
 </urlset>
