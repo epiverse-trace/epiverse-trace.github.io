@@ -11,3 +11,5 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
+
+A feed of the presentations is also available via [RSS](./presentations.xml).
