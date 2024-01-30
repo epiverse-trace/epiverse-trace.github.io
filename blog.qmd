@@ -13,4 +13,4 @@ page-layout: full
 title-block-banner: true
 ---
 
-This blog is also available on [R-bloggers](https://www.r-bloggers.com/).
+This blog is available via [RSS](./blog.xml) and on [R-bloggers](https://www.r-bloggers.com/).
