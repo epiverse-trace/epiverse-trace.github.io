@@ -12,7 +12,7 @@ listing:
     - title: e-Epi-training kit
       path: https://epiverse-trace.github.io/epi-training-kit/
       description: ""
-      image: epitrainingkit.png
+      image: "https://epiverse-trace.github.io/epi-training-kit/img/unidades.png"
       author:
         - Zulma M. Cucunubá
         - Laura Gómez-Bermeo
@@ -34,6 +34,19 @@ listing:
       image: https://epiverse-trace.github.io/git-rstudio-basics/fig/topic-git.png
       author: 
         - Andree Valle Campos
+    - title: Introductory training on Git and GitHub basics using Rstudio
+      path: "learn/git-training-01/index.qmd"
+      description: ""
+      author: 
+        - Andree Valle Campos
+    - title: How to guides
+      path: "https://epiverse-trace.github.io/howto/"
+      description: "The goal of `howto` is to collect reproducible How to guides of Outbreak data analysis tasks using `R` packages."
+      image: "public/jason-goodman-vbxyFxlgpjM-unsplash.jpg"
+    - title: Lessons
+      path: "https://epiverse-trace.github.io/lessons/"
+      description: ""
+      image: "public/nils-stahl-neUbjUnjXNk-unsplash.jpg"
   feed: true
 page-layout: full
 title-block-banner: true
