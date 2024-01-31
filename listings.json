@@ -1,7 +1,14 @@
 [
   {
+    "listing": "/learn.html",
+    "items": [
+      "/learn/git-training-01/index.html"
+    ]
+  },
+  {
     "listing": "/blog.html",
     "items": [
+      "/posts/superspreading_v0.2.0/index.html",
       "/posts/simulist_v0.1.0/index.html",
       "/posts/benchmarking_design_decisions/index.html",
       "/posts/cfr_v0.1.0/index.html",
@@ -30,12 +37,6 @@
       "/slides/showcase-april-2023/index.html",
       "/slides/harmonious-ecosystem/index.html",
       "/slides/showcase-january-2023/index.html"
-    ]
-  },
-  {
-    "listing": "/learn.html",
-    "items": [
-      "/learn/git-training-01/index.html"
     ]
   }
 ]
