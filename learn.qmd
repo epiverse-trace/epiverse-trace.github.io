@@ -43,10 +43,6 @@ listing:
       path: "https://epiverse-trace.github.io/howto/"
       description: "The goal of `howto` is to collect reproducible How to guides of Outbreak data analysis tasks using `R` packages."
       image: "public/jason-goodman-vbxyFxlgpjM-unsplash.jpg"
-    - title: Lessons
-      path: "https://epiverse-trace.github.io/lessons/"
-      description: ""
-      image: "public/nils-stahl-neUbjUnjXNk-unsplash.jpg"
   feed: true
 page-layout: full
 title-block-banner: true
