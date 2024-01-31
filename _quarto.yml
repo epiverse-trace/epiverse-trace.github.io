@@ -22,6 +22,9 @@ website:
             url: "https://epiverse-trace.github.io/blog.html"
       - presentations.qmd
       - learn.qmd
+      - text: About
+        menu: 
+          - people.qmd
     tools:
       - icon: github
         href: https://github.com/epiverse-trace
