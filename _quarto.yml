@@ -23,8 +23,7 @@ website:
       - presentations.qmd
       - learn.qmd
       - text: About
-        menu: 
-          - people.qmd
+        href: people.qmd
     tools:
       - icon: github
         href: https://github.com/epiverse-trace
