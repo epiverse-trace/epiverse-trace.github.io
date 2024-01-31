@@ -145,3 +145,5 @@ renv is an elegant solution that focuses on the most immediate source of non-rep
 Ultimately, reproducibility is a team effort. People who write code can minimise the risk of renv complications by keeping the packages they use close to their CRAN version and regularly updating their code and `renv.lock` accordingly.
 Other programming languages have automated tooling to help with this, via, e.g., the [dependabot tool](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) which submits pull requests to update dependencies.
 There is no well established equivalent for R yet, but anyone willing to set this mechanism up can look at the code used by the [Carpentries workbench](https://github.com/carpentries/actions/tree/70ff4b4e8d50fdcd0eb33e7c33a4a6f305a82702/update-lockfile) for this task.
+
+*Thanks to Pratik Gupte and Chris Hartgerink for their valuable comments on earlier drafts of this post.*
