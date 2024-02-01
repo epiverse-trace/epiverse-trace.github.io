@@ -19,7 +19,7 @@ website:
           - text: Release notes
             url: "https://epiverse-trace.github.io/blog.html#category=new-release"
           - text: All
-            url: "https://epiverse-trace.github.io/blog.html#category="
+            url: "https://epiverse-trace.github.io/blog.html"
       - presentations.qmd
       - learn.qmd
     tools:
