@@ -108,7 +108,7 @@ To make contributing a blog post accessible, we outline an exact step by step gu
 2. Create a folder for your blog post under `posts/` (e.g., `posts/title-blog`).
 3. Add a `index.qmd` file in the folder from point 2 (e.g., `posts/title-blog/index.qmd`). You can create your blog post in this file. Optionally add an `index.bib` in that same folder.
 4. Commit and push changes to remote.
-5. Create pull request and request reviews.
+5. Create [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) and [request reviews](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review).
 6. Request at least one review and work through discussion points, until the pull request gets approved.
 7. The post gets merged after final checks [by one of the code owners](./CODEOWNERS).
 
