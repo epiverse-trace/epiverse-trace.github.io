@@ -110,7 +110,7 @@ To make contributing a blog post accessible, we outline an exact step by step gu
 4. Commit and push changes to remote.
 5. Create pull request and request reviews.
 6. Request at least one review and work through discussion points, until the pull request gets approved.
-7. The post gets merged after final checks by one of the code owners.
+7. The post gets merged after final checks [by one of the code owners](./CODEOWNERS).
 
 ### After the post is published
 
