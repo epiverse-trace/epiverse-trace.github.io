@@ -102,7 +102,7 @@ The "alex" GitHub Actions workflow can help you detect and fix such occurrences 
 
 #### Step by step
 
-To make contributing a blog post accessible, we outline an exact step by step guide below. We assume you are starting from an up to date `main` branch.
+To make contributing a blog post accessible, we outline an exact step by step guide below. We assume you are starting from an up to date `main` branch - so do not forget to pull the latest changes before starting with the following steps (e.g., `git pull origin`).
 
 1. Create a branch for the blog post (e.g., `git checkout -b title-blog`).
 2. Create a folder for your blog post under `posts/` (e.g., `posts/title-blog`).
