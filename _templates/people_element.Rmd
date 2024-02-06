@@ -1,0 +1,6 @@
+:::: contributor-{{ handle }}
+
+[![]({{ avatar }}){fig-alt="GitHub avatar of {{ handle }}"}](https://github.com/{{ handle }})
+
+[{{ handle }}](https://github.com/{{ handle }})
+::::
