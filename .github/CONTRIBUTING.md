@@ -100,6 +100,18 @@ and everybody's experience, as describe in our Code of Conduct.
 In particular, we are paying extra attention to avoid dismissive or demotivating language, such as "obvious", "just", "straightforward", etc. 
 The "alex" GitHub Actions workflow can help you detect and fix such occurrences of demotivating language.
 
+#### Step by step
+
+To make contributing a blog post accessible, we outline an exact step by step guide below. We assume you are starting from an up to date `main` branch.
+
+1. Create a branch for the blog post (e.g., `git checkout -b title-blog`).
+2. Create a folder for your blog post under `posts/` (e.g., `posts/title-blog`).
+3. Add a `index.qmd` file in the folder from point 2 (e.g., `posts/title-blog/index.qmd`). You can create your blog post in this file. Optionally add an `index.bib` in that same folder.
+4. Commit and push changes to remote.
+5. Create pull request and request reviews.
+6. Request at least one review and work through discussion points, until the pull request gets approved.
+7. The post gets merged after final checks by one of the code owners.
+
 ### After the post is published
 
 Once your post is published, we already have some systems in place to try and advertise it in the community:
