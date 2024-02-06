@@ -52,7 +52,10 @@ page-layout: full
 title-block-banner: true
 ---
 
+# Learning materials
+
 :::{.callout-note}
+
 ## Submit your resources
 
 We encourage community submissions for this page. You can do this through [creating a new issue on GitHub](https://github.com/epiverse-trace/epiverse-trace.github.io/issues/new?assignees=&labels=&projects=&template=other_issue.md&title=).
