@@ -9,6 +9,7 @@ listing:
       author: 
         - Amanda Minter
         - Andree Valle Campos
+      categories: [Tutorial, English]
     - title: e-Epi-training kit
       path: https://epiverse-trace.github.io/epi-training-kit/
       description: ""
@@ -16,12 +17,14 @@ listing:
       author:
         - Zulma M. Cucunubá
         - Laura Gómez-Bermeo
+      categories: [Spanish]
     - title: Análisis de Brotes y Modelamiento en Salud Pública 
       path: https://epiverse-trace.github.io/epimodelac/
       description: ""
       image: https://epiverse-trace.github.io/epimodelac/practicalfig.jpg
       author: 
         - José María Velasco-España
+      categories: [Spanish, Tutorial]
     - title: Improve your code for Epidemic Analysis with R
       path: https://epiverse-trace.github.io/research-compendium/
       description: ""
@@ -34,16 +37,27 @@ listing:
       image: https://epiverse-trace.github.io/git-rstudio-basics/fig/topic-git.png
       author: 
         - Andree Valle Campos
-    - title: Introductory training on Git and GitHub basics using Rstudio
-      path: "learn/git-training-01/index.qmd"
-      description: ""
-      author: 
-        - Andree Valle Campos
+      categories: [English, Git, Rstudio]
     - title: How to guides
       path: "https://epiverse-trace.github.io/howto/"
       description: "The goal of `howto` is to collect reproducible How to guides of Outbreak data analysis tasks using `R` packages."
       image: "public/jason-goodman-vbxyFxlgpjM-unsplash.jpg"
+      categories: [English]
   feed: true
+  sort: "date desc"
+  categories: true
+  sort-ui: false
+  filter-ui: false
 page-layout: full
 title-block-banner: true
 ---
+
+:::{.callout-note}
+## Submit your resources
+
+We encourage community submissions for this page. You can do this through [creating a new issue on GitHub](https://github.com/epiverse-trace/epiverse-trace.github.io/issues/new?assignees=&labels=&projects=&template=other_issue.md&title=).
+:::
+
+:::{.callout-warning}
+Because these learning materials come from our community, we cannot guarantee they are up to date with the latest developments.
+:::
