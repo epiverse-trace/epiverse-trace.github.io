@@ -28,5 +28,5 @@ file.path("_data", "epiverse_contributors.csv") |>
 
 This list is generated automatically every Monday - if you started contributing you should be included soon.
 
-If it's been a while and you're still not showing up - we're sorry 😔 Please let us know on <epiverse@data.org> - we did not mean to exclude you. 
+If it's been a while and you're still not showing up - we're sorry 😔 Please let us know on <epiverse@data.org> - we did not mean to exclude you.
 :::
