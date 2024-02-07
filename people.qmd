@@ -26,5 +26,7 @@ file.path("_data", "epiverse_contributors.csv") |>
 
 ## Did we miss your contribution?
 
-We're sorry! 😔 This list is generated automatically and it can happen. Please let us know so that we can see where it went wrong - we definitely did not mean to exclude you.
+This list is generated automatically every Monday - if you started contributing you should be included soon.
+
+If it's been a while and you're still not showing up - we're sorry 😔 Please let us know on <epiverse@data.org> - we did not mean to exclude you. 
 :::
