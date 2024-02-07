@@ -146,12 +146,12 @@ Click to see the full error message
   author = {Gruson, Hugo},
   title = {Things That Can Go Wrong When Using Renv},
   date = {2024-12-31},
-  url = {https://epiverse-trace.github.io//posts/renv-complications},
+  url = {https://epiverse-trace.github.io/posts/renv-complications},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Things That Can Go Wrong When Using
-Renv.”</span> December 31, 2024. <a href="https://epiverse-trace.github.io//posts/renv-complications">https://epiverse-trace.github.io//posts/renv-complications</a>.
+Renv.”</span> December 31, 2024. <a href="https://epiverse-trace.github.io/posts/renv-complications">https://epiverse-trace.github.io/posts/renv-complications</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>reproducibility</category>
@@ -225,12 +225,12 @@ font-style: inherit;">library</span>(superspreading)</span></code></pre></div>
   author = {Epiverse-TRACE development team, The},
   title = {Superspreading V0.2.0},
   date = {2024-01-29},
-  url = {https://epiverse-trace.github.io//posts/superspreading_v0.2.0},
+  url = {https://epiverse-trace.github.io/posts/superspreading_v0.2.0},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas">
 Epiverse-TRACE development team, The. 2024. <span>“Superspreading
-V0.2.0.”</span> January 29, 2024. <a href="https://epiverse-trace.github.io//posts/superspreading_v0.2.0">https://epiverse-trace.github.io//posts/superspreading_v0.2.0</a>.
+V0.2.0.”</span> January 29, 2024. <a href="https://epiverse-trace.github.io/posts/superspreading_v0.2.0">https://epiverse-trace.github.io/posts/superspreading_v0.2.0</a>.
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/superspreading_v0.2.0/</guid>
@@ -279,16 +279,59 @@ V0.2.0.”</span> January 29, 2024. <a href="https://epiverse-trace.github.io//p
   author = {Epiverse-TRACE development team, The},
   title = {Simulist V0.1.0},
   date = {2024-01-09},
-  url = {https://epiverse-trace.github.io//posts/simulist_v0.1.0},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.1.0},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas">
 Epiverse-TRACE development team, The. 2024. <span>“Simulist
-V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io//posts/simulist_v0.1.0">https://epiverse-trace.github.io//posts/simulist_v0.1.0</a>.
+V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io/posts/simulist_v0.1.0">https://epiverse-trace.github.io/posts/simulist_v0.1.0</a>.
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/simulist_v0.1.0/</guid>
   <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>cfr v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
+<p>This release includes:</p>
+<ol type="1">
+<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
+<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
+<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
+<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
+<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
+<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
+<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
+<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
+<li>100% code coverage,</li>
+<li>Workflows to render the vignettes and README as a website.</li>
+</ol>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Cfr V0.1.0},
+  date = {2023-11-22},
+  url = {https://epiverse-trace.github.io/posts/cfr_v0.1.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
+November 22, 2023. <a href="https://epiverse-trace.github.io/posts/cfr_v0.1.0">https://epiverse-trace.github.io/posts/cfr_v0.1.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
+  <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Using benchmarking to guide the adoption of dependencies in R packages</title>
@@ -713,12 +756,12 @@ Wickham, Hadley, and Jennifer Bryan. 2023. <em>R Packages</em>. " O’Reilly Med
   title = {Using Benchmarking to Guide the Adoption of Dependencies in
     {R} Packages},
   date = {2023-11-22},
-  url = {https://epiverse-trace.github.io//posts/benchmarking_design_decisions},
+  url = {https://epiverse-trace.github.io/posts/benchmarking_design_decisions},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba azam2023" class="csl-entry quarto-appendix-citeas">
 Mba Azam, James. 2023. <span>“Using Benchmarking to Guide the Adoption
-of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epiverse-trace.github.io//posts/benchmarking_design_decisions">https://epiverse-trace.github.io//posts/benchmarking_design_decisions</a>.
+of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epiverse-trace.github.io/posts/benchmarking_design_decisions">https://epiverse-trace.github.io/posts/benchmarking_design_decisions</a>.
 </div></div></section></div> ]]></description>
   <category>benchmarking</category>
   <category>R</category>
@@ -726,49 +769,6 @@ of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epi
   <category>R package</category>
   <category>software architecture</category>
   <guid>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</guid>
-  <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>cfr v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
-<p>This release includes:</p>
-<ol type="1">
-<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
-<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
-<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
-<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
-<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
-<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
-<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
-<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
-<li>100% code coverage,</li>
-<li>Workflows to render the vignettes and README as a website.</li>
-</ol>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2023,
-  author = {Epiverse-TRACE development team, The},
-  title = {Cfr V0.1.0},
-  date = {2023-11-22},
-  url = {https://epiverse-trace.github.io//posts/cfr_v0.1.0},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
-November 22, 2023. <a href="https://epiverse-trace.github.io//posts/cfr_v0.1.0">https://epiverse-trace.github.io//posts/cfr_v0.1.0</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
   <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -801,12 +801,12 @@ November 22, 2023. <a href="https://epiverse-trace.github.io//posts/cfr_v0.1.0">
   author = {Epiverse-TRACE development team, The},
   title = {Bpmodels V0.3.1},
   date = {2023-11-06},
-  url = {https://epiverse-trace.github.io//posts/bpmodels_v0.3.1},
+  url = {https://epiverse-trace.github.io/posts/bpmodels_v0.3.1},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
 Epiverse-TRACE development team, The. 2023. <span>“Bpmodels
-V0.3.1.”</span> November 6, 2023. <a href="https://epiverse-trace.github.io//posts/bpmodels_v0.3.1">https://epiverse-trace.github.io//posts/bpmodels_v0.3.1</a>.
+V0.3.1.”</span> November 6, 2023. <a href="https://epiverse-trace.github.io/posts/bpmodels_v0.3.1">https://epiverse-trace.github.io/posts/bpmodels_v0.3.1</a>.
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/bpmodels_v0.3.1/</guid>
@@ -1291,12 +1291,12 @@ Further reading
   author = {Gruson, Hugo},
   title = {Lesser-Known Reasons to Prefer `Apply()` over for Loops},
   date = {2023-11-02},
-  url = {https://epiverse-trace.github.io//posts/for-vs-apply},
+  url = {https://epiverse-trace.github.io/posts/for-vs-apply},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Lesser-Known Reasons to Prefer `Apply()` over
-for Loops.”</span> November 2, 2023. <a href="https://epiverse-trace.github.io//posts/for-vs-apply">https://epiverse-trace.github.io//posts/for-vs-apply</a>.
+for Loops.”</span> November 2, 2023. <a href="https://epiverse-trace.github.io/posts/for-vs-apply">https://epiverse-trace.github.io/posts/for-vs-apply</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>functional programming</category>
@@ -1457,12 +1457,12 @@ font-style: inherit;">"date_of_onset"</span>))</span></code></pre></div></li>
   author = {Epiverse-TRACE development team, The},
   title = {Linelist V1.0.0},
   date = {2023-10-19},
-  url = {https://epiverse-trace.github.io//posts/linelist_v1.0.0},
+  url = {https://epiverse-trace.github.io/posts/linelist_v1.0.0},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2023" class="csl-entry quarto-appendix-citeas">
 Epiverse-TRACE development team, The. 2023. <span>“Linelist
-V1.0.0.”</span> October 19, 2023. <a href="https://epiverse-trace.github.io//posts/linelist_v1.0.0">https://epiverse-trace.github.io//posts/linelist_v1.0.0</a>.
+V1.0.0.”</span> October 19, 2023. <a href="https://epiverse-trace.github.io/posts/linelist_v1.0.0">https://epiverse-trace.github.io/posts/linelist_v1.0.0</a>.
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/linelist_v1.0.0/</guid>
@@ -2333,12 +2333,12 @@ font-style: inherit;">+    container: ghcr.io/org/repo:main</span></span>
   title = {System {Dependencies} in {R} {Packages} \&amp; {Automatic}
     {Testing}},
   date = {2023-09-26},
-  url = {https://epiverse-trace.github.io//posts/system-dependencies},
+  url = {https://epiverse-trace.github.io/posts/system-dependencies},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“System Dependencies in R Packages &amp;
-Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace.github.io//posts/system-dependencies">https://epiverse-trace.github.io//posts/system-dependencies</a>.
+Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace.github.io/posts/system-dependencies">https://epiverse-trace.github.io/posts/system-dependencies</a>.
 </div></div></section></div> ]]></description>
   <category>package development</category>
   <category>R</category>
@@ -2469,12 +2469,12 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
   author = {W. Lambert, Joshua},
   title = {Communicating Development Stages of Open-Source Software},
   date = {2023-07-18},
-  url = {https://epiverse-trace.github.io//posts/comm-software-devel},
+  url = {https://epiverse-trace.github.io/posts/comm-software-devel},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w. lambert2023" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2023. <span>“Communicating Development Stages of
-Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.github.io//posts/comm-software-devel">https://epiverse-trace.github.io//posts/comm-software-devel</a>.
+Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.github.io/posts/comm-software-devel">https://epiverse-trace.github.io/posts/comm-software-devel</a>.
 </div></div></section></div> ]]></description>
   <category>open-source</category>
   <category>R</category>
@@ -2926,12 +2926,12 @@ font-style: inherit;">*</span>.h</span></code></pre></div>
   author = {Gupte, Pratik},
   title = {Sharing the {C++} {Code} of an {Rcpp} {Package}},
   date = {2023-06-05},
-  url = {https://epiverse-trace.github.io//posts/share-cpp},
+  url = {https://epiverse-trace.github.io/posts/share-cpp},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
 Gupte, Pratik. 2023. <span>“Sharing the C++ Code of an Rcpp
-Package.”</span> June 5, 2023. <a href="https://epiverse-trace.github.io//posts/share-cpp">https://epiverse-trace.github.io//posts/share-cpp</a>.
+Package.”</span> June 5, 2023. <a href="https://epiverse-trace.github.io/posts/share-cpp">https://epiverse-trace.github.io/posts/share-cpp</a>.
 </div></div></section></div> ]]></description>
   <category>code sharing</category>
   <category>R</category>
@@ -3718,12 +3718,12 @@ font-style: inherit;">#' }</span></span></code></pre></div>
   author = {W. Lambert, Joshua},
   title = {Extending {Data} {Frames}},
   date = {2023-04-12},
-  url = {https://epiverse-trace.github.io//posts/extend-dataframes},
+  url = {https://epiverse-trace.github.io/posts/extend-dataframes},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w. lambert2023" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
-12, 2023. <a href="https://epiverse-trace.github.io//posts/extend-dataframes">https://epiverse-trace.github.io//posts/extend-dataframes</a>.
+12, 2023. <a href="https://epiverse-trace.github.io/posts/extend-dataframes">https://epiverse-trace.github.io/posts/extend-dataframes</a>.
 </div></div></section></div> ]]></description>
   <category>data frame</category>
   <category>R</category>
@@ -4282,12 +4282,12 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
   title = {What {Should} the {First} 100 {Lines} of {Code} {Written}
     {During} an {Epidemic} {Look} {Like?}},
   date = {2023-03-09},
-  url = {https://epiverse-trace.github.io//posts/100days-workshop},
+  url = {https://epiverse-trace.github.io/posts/100days-workshop},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tamayo2023" class="csl-entry quarto-appendix-citeas">
 Tamayo, Carmen. 2023. <span>“What Should the First 100 Lines of Code
-Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://epiverse-trace.github.io//posts/100days-workshop">https://epiverse-trace.github.io//posts/100days-workshop</a>.
+Written During an Epidemic Look Like?”</span> March 9, 2023. <a href="https://epiverse-trace.github.io/posts/100days-workshop">https://epiverse-trace.github.io/posts/100days-workshop</a>.
 </div></div></section></div> ]]></description>
   <category>outbreak analytics</category>
   <category>100 days workshop</category>
@@ -4927,13 +4927,13 @@ Spreading the S3 love
   title = {Convert {Your} {R} {Function} to an {S3} {Generic:}
     {Benefits,} {Pitfalls} \&amp; {Design} {Considerations}},
   date = {2023-02-20},
-  url = {https://epiverse-trace.github.io//posts/s3-generic},
+  url = {https://epiverse-trace.github.io/posts/s3-generic},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Convert Your R Function to an S3 Generic:
 Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
-2023. <a href="https://epiverse-trace.github.io//posts/s3-generic">https://epiverse-trace.github.io//posts/s3-generic</a>.
+2023. <a href="https://epiverse-trace.github.io/posts/s3-generic">https://epiverse-trace.github.io/posts/s3-generic</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>R package</category>
@@ -5394,12 +5394,12 @@ font-style: inherit;">*</span>.cpp src</span></code></pre></div>
   author = {Gupte, Pratik},
   title = {Improving the {C++} {Code} {Quality} of an {Rcpp} {Package}},
   date = {2023-02-16},
-  url = {https://epiverse-trace.github.io//posts/lint-rcpp},
+  url = {https://epiverse-trace.github.io/posts/lint-rcpp},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
 Gupte, Pratik. 2023. <span>“Improving the C++ Code Quality of an Rcpp
-Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io//posts/lint-rcpp">https://epiverse-trace.github.io//posts/lint-rcpp</a>.
+Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/posts/lint-rcpp">https://epiverse-trace.github.io/posts/lint-rcpp</a>.
 </div></div></section></div> ]]></description>
   <category>code quality</category>
   <category>R</category>
@@ -5899,7 +5899,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-43216"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-43216").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-98638"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-98638").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
@@ -5920,12 +5920,12 @@ font-style: inherit;">$</span>p_infected)</span>
   title = {Ensuring \&amp; {Showcasing} the {Statistical} {Correctness} of
     Your {R} {Package}},
   date = {2023-02-13},
-  url = {https://epiverse-trace.github.io//posts/statistical-correctness},
+  url = {https://epiverse-trace.github.io/posts/statistical-correctness},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Ensuring &amp; Showcasing the Statistical
-Correctness of Your R Package.”</span> February 13, 2023. <a href="https://epiverse-trace.github.io//posts/statistical-correctness">https://epiverse-trace.github.io//posts/statistical-correctness</a>.
+Correctness of Your R Package.”</span> February 13, 2023. <a href="https://epiverse-trace.github.io/posts/statistical-correctness">https://epiverse-trace.github.io/posts/statistical-correctness</a>.
 </div></div></section></div> ]]></description>
   <category>code quality</category>
   <category>R</category>
