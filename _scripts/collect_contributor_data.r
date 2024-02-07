@@ -20,7 +20,7 @@ excluded_repos <- c(
 )
 
 repos <- lapply(repos, function(x) {
-    if (sum(x$name == excluded_repos) == 0) {
+    if (!x$name %in% excluded_repos) {
         one_repo <- get_contributors(org = org_name, repo = x$name)
         return(one_repo)
     }
