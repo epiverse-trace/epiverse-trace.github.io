@@ -15,7 +15,7 @@ repos <- gh(
   org = org_name,
   # We do not want to count contributions for forks from external orgs.
   type = "sources",
-  .limit = 100
+  per_page = 100
 )
 # A vector of repo names in the organization that we do not include
 # This is because they are forks from external orgs, for example.
