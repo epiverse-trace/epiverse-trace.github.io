@@ -1,5 +1,25 @@
 [
   {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/showcase-november-2023/index.html",
+      "/slides/interoperability-epiverse/index.html",
+      "/slides/global-health-conference-2023/index.html",
+      "/slides/harmonize-july-2023/index.html",
+      "/slides/rslondon-southeast-july-2023/index.html",
+      "/slides/juniper-may-2023/index.html",
+      "/slides/showcase-april-2023/index.html",
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-january-2023/index.html"
+    ]
+  },
+  {
+    "listing": "/learn.html",
+    "items": [
+      "/learn/git-training-01/index.html"
+    ]
+  },
+  {
     "listing": "/blog.html",
     "items": [
       "/posts/renv-complications/index.html",
@@ -18,26 +38,6 @@
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
-    ]
-  },
-  {
-    "listing": "/learn.html",
-    "items": [
-      "/learn/git-training-01/index.html"
-    ]
-  },
-  {
-    "listing": "/presentations.html",
-    "items": [
-      "/slides/showcase-november-2023/index.html",
-      "/slides/interoperability-epiverse/index.html",
-      "/slides/global-health-conference-2023/index.html",
-      "/slides/harmonize-july-2023/index.html",
-      "/slides/rslondon-southeast-july-2023/index.html",
-      "/slides/juniper-may-2023/index.html",
-      "/slides/showcase-april-2023/index.html",
-      "/slides/harmonious-ecosystem/index.html",
-      "/slides/showcase-january-2023/index.html"
     ]
   }
 ]
