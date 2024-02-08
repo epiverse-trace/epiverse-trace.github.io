@@ -28,7 +28,8 @@ excluded_handles <- c(
 )
 # A vector of handles of contributors who contributed outside of GitHub
 included_handles <- c(
-  "Na-Nino"
+  "Na-Nino",
+  "dgmascarina" # linelist logo and graphical summary
 )
 
 repos <- lapply(repos, function(x) {
