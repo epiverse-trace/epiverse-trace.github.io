@@ -246,12 +246,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <li><a href="#where-should-the-generic-methods-live" id="toc-where-should-the-generic-methods-live" class="nav-link" data-scroll-target="#where-should-the-generic-methods-live">Where should the generic &amp; methods live?</a>
   <ul class="collapse">
   <li><a href="#where-should-the-generic-live" id="toc-where-should-the-generic-live" class="nav-link" data-scroll-target="#where-should-the-generic-live">Where should the generic live?</a></li>
-  <li><a href="#where-should-the-methods-live" id="toc-where-should-the-methods-live" class="nav-link" data-scroll-target="#where-should-the-methods-live">Where should the methods live?</a>
-  <ul class="collapse">
-  <li><a href="#method-in-the-class-package" id="toc-method-in-the-class-package" class="nav-link" data-scroll-target="#method-in-the-class-package">Method in the class package</a></li>
-  <li><a href="#method-in-the-generic-package" id="toc-method-in-the-generic-package" class="nav-link" data-scroll-target="#method-in-the-generic-package">Method in the generic package</a></li>
-  <li><a href="#coordination-between-maintainers" id="toc-coordination-between-maintainers" class="nav-link" data-scroll-target="#coordination-between-maintainers">Coordination between maintainers</a></li>
-  </ul></li>
+  <li><a href="#where-should-the-methods-live" id="toc-where-should-the-methods-live" class="nav-link" data-scroll-target="#where-should-the-methods-live">Where should the methods live?</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
@@ -268,8 +263,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <p>But many packages and software start as standalone projects, and don’t always stem from a careful consideration of the larger ecosystem. In this situation, developers often see little benefit of using an OO system in their project initially.</p>
 <p>But as the project matures, and as the position of the tool in the wider ecosystem becomes clearer, they may want to start using OO to benefit from the better integration it may provide with other tools upstream and downstream in the data pipeline. However, by then, their tool likely has an established community of users, and it is important to tread carefully with breaking changes.</p>
 <p>In this blog post, we show that it’s possible to start using an S3 OO system almost invisibly in your R package, with minimal disruption to your users. We detail some minor changes that will nonetheless occur, and which pitfalls you should be looking out for. Finally, we take a step back and reflect how you should ensure you are a good open-source citizen in this endeavour.</p>
-<section id="benefits" class="level1">
-<h1>Benefits</h1>
+<section id="benefits" class="level2">
+<h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
 <p>Let’s reuse the example function from <a href="../statistical-correctness/">one of our previous posts</a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
@@ -333,11 +328,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="what-subtle-changes-should-you-be-looking-out-for" class="level1">
-<h1>What subtle changes should you be looking out for?</h1>
+<section id="what-subtle-changes-should-you-be-looking-out-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-subtle-changes-should-you-be-looking-out-for">What subtle changes should you be looking out for?</h2>
 <p>You may already have noticed a couple of minor changes in the example above but some changes are even less evident and easy to forget, hence this blog post.</p>
-<section id="all-methods-must-have-the-same-arguments-as-the-generic" class="level2">
-<h2 class="anchored" data-anchor-id="all-methods-must-have-the-same-arguments-as-the-generic">All methods must have the same arguments as the generic</h2>
+<section id="all-methods-must-have-the-same-arguments-as-the-generic" class="level3">
+<h3 class="anchored" data-anchor-id="all-methods-must-have-the-same-arguments-as-the-generic">All methods must have the same arguments as the generic</h3>
 <p>You can see that the method for <code>pointset</code> class, <code>centroid.pointset()</code> has a <code>weights</code> argument, even though it is not used because weights are already contained in the <code>coords</code> object. This seems clunky and potentially confusing for users. But this is mandatory because all methods must have the same arguments as the generic.</p>
 <p>Another option here could have been to remove <code>weights</code> from the generic, and add <code>...</code> instead, thus allowing to pass <code>weights</code> as an extra argument only in selected methods. This is more idiomatic in R, and in line with the <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Generic-functions-and-methods">recommendation from the official ‘Writing R Extensions’ document (“always keep generics simple”)</a>:</p>
 <div class="cell">
@@ -359,8 +354,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </div>
 <p>But this extra <code>...</code> argument, which is documented as “ignored”, may be confusing as well.</p>
 </section>
-<section id="more-complex-documentation-presentation" class="level2">
-<h2 class="anchored" data-anchor-id="more-complex-documentation-presentation">More complex documentation presentation</h2>
+<section id="more-complex-documentation-presentation" class="level3">
+<h3 class="anchored" data-anchor-id="more-complex-documentation-presentation">More complex documentation presentation</h3>
 <p>On the topic of arguments, another pitfall related to the conversion to an S3 generic is the change in the documentation. Below is a collage of before / after the change. This is quite minor and some users may not even notice it but I remember it was very confusing to me when I started using R and I didn’t really know what S3 or OO was: “what do you mean, ‘Default S3 method’, which case applies to me?”</p>
 <div>
 
@@ -387,8 +382,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </div>
 <p>The answer is that “Default S3 method” lists the arguments for <code>centroid.default()</code>, i.e., the method which is used if no other method is defined for your class. Arguments for all methods are usually documented together but you should only focus on those present in the call after the comment stating “S3 method for class ‘XXX’” for the class you’re working with.</p>
 </section>
-<section id="more-complicated-error-traceback" class="level2">
-<h2 class="anchored" data-anchor-id="more-complicated-error-traceback">More complicated error traceback</h2>
+<section id="more-complicated-error-traceback" class="level3">
+<h3 class="anchored" data-anchor-id="more-complicated-error-traceback">More complicated error traceback</h3>
 <p>Another situation where converting to an S3 adds an extra layer of complexity is where you are trying to follow the error <a href="https://en.wikipedia.org/wiki/Stack_trace">traceback</a>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">centroid</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -401,16 +396,16 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <p>This line corresponds to the dispatch operation.</p>
 <p>However, this slight difference in behaviour is likely not a big issue as we mostly expect experienced users to interact with the traceback. These users are likely to be familiar with S3 dispatch and understand the traceback in any case.</p>
 </section>
-<section id="extra-source-of-bugs-during-dispatch" class="level2">
-<h2 class="anchored" data-anchor-id="extra-source-of-bugs-during-dispatch">Extra source of bugs during dispatch</h2>
+<section id="extra-source-of-bugs-during-dispatch" class="level3">
+<h3 class="anchored" data-anchor-id="extra-source-of-bugs-during-dispatch">Extra source of bugs during dispatch</h3>
 <p>On a related note, the extra step introduced by this conversion to generic is another potential source of bugs. This doesn’t really impact your users directly but it does mean that as a developer, you will maintaining slightly more complex code and you will need to be more careful when making any changes. However, as always, a robust testing suite should help you catch any error before it makes it to production.</p>
 </section>
 </section>
-<section id="where-should-the-generic-methods-live" class="level1">
-<h1>Where should the generic &amp; methods live?</h1>
+<section id="where-should-the-generic-methods-live" class="level2">
+<h2 class="anchored" data-anchor-id="where-should-the-generic-methods-live">Where should the generic &amp; methods live?</h2>
 <p>In the previous section, we mentioned that you may want to rely on existing, established S3 classes. How does it work in practice when you want to add a method for a class outside of your package? Do you need to import the package where the class is defined? On the other side of the fence, as a class developer, is it okay to provide methods for generics provided in other packages? If you have the choice, should the method live in the package defining the generic or the class?</p>
-<section id="where-should-the-generic-live" class="level2">
-<h2 class="anchored" data-anchor-id="where-should-the-generic-live">Where should the generic live?</h2>
+<section id="where-should-the-generic-live" class="level3">
+<h3 class="anchored" data-anchor-id="where-should-the-generic-live">Where should the generic live?</h3>
 <p>The generic should always live in the package implementing the actual computation in the function in the first place. For example, if you defined the original <code>centroid()</code> function in a package called geometryops, the S3 generic should also be defined in that package, not in the package defining the <code>pointset</code> class.</p>
 <p>It is possible in theory to overwrite a function defined by another package with a generic (“overloading”). For example, we could overload base R <code>table()</code> function with:</p>
 <div class="cell">
@@ -440,11 +435,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <li>light wrappers around a function from another package as this may be seen as an attempt to steal citations and credit.</li>
 </ul>
 </section>
-<section id="where-should-the-methods-live" class="level2">
-<h2 class="anchored" data-anchor-id="where-should-the-methods-live">Where should the methods live?</h2>
+<section id="where-should-the-methods-live" class="level3">
+<h3 class="anchored" data-anchor-id="where-should-the-methods-live">Where should the methods live?</h3>
 <p>For methods, there is more flexibility than for generics. They could either in the package defining the class, or in the package defining the generic. Let’s present the practical setup in both cases, as well as each strategy pros &amp; cons.</p>
-<section id="method-in-the-class-package" class="level3">
-<h3 class="anchored" data-anchor-id="method-in-the-class-package">Method in the class package</h3>
+<section id="method-in-the-class-package" class="level4">
+<h4 class="anchored" data-anchor-id="method-in-the-class-package">Method in the class package</h4>
 <p>This is the strategy used when you defined a new class and provide it with a <code>print()</code>, a <code>summary()</code>, or a <code>plot()</code> method. The generics for these functions are defined in R base.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' @export</span></span>
@@ -520,8 +515,8 @@ Importing the generic
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">S3method</span>(generics<span class="sc">::</span>fit,myclass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="method-in-the-generic-package" class="level3">
-<h3 class="anchored" data-anchor-id="method-in-the-generic-package">Method in the generic package</h3>
+<section id="method-in-the-generic-package" class="level4">
+<h4 class="anchored" data-anchor-id="method-in-the-generic-package">Method in the generic package</h4>
 <p>Alternatively, you can define the method in the package defining the generic. This is the approach taken in the <a href="https://easystats.github.io/report/">report package</a> from example, which defines the <code>report()</code> generic and methods for various model outputs produced by different package.</p>
 <p>In theory, no <code>Imports</code> or <code>Suggests</code> is required here:</p>
 <div class="cell">
@@ -541,14 +536,14 @@ Importing the generic
 </blockquote>
 <p>It may be a good idea to explicitly signal the strong relationship between both packages so that the package defining the method is checked as a reverse dependency, and informed of potential breaking changes as discussed below. You may see an example of this in the <a href="https://cran.r-project.org/package=slam">slam package</a>, which provides his methods for both base matrices and sparse matrices, as defined in the Matrix and the spam packages.</p>
 </section>
-<section id="coordination-between-maintainers" class="level3">
-<h3 class="anchored" data-anchor-id="coordination-between-maintainers">Coordination between maintainers</h3>
+<section id="coordination-between-maintainers" class="level4">
+<h4 class="anchored" data-anchor-id="coordination-between-maintainers">Coordination between maintainers</h4>
 <p>No matter the strategy you end up choosing, we strongly recommend you keep an open communication channel between the class package and the generic package developer (provided they are not the same person) as breaking changes will impact both parties.</p>
 </section>
 </section>
 </section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>As we’ve seen here, there are clear benefits to converting your standard function to an S3 generic. This can be done <strong>almost</strong> transparently but we’ve highlighting some subtle changes you may want to consider before pulling the switch.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
