@@ -18,11 +18,8 @@ repos <- gh(
   per_page = 100
 )
 # A vector of repo names in the organization that we do not include
-# This is because they are forks from external orgs, for example.
 excluded_repos <- c(
-  "sandpaper",
-  "testpkg",
-  "varnish"
+  "testpkg"
 )
 # A vector of handles that we do not include
 excluded_handles <- c(
