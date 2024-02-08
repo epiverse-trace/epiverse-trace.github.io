@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  site-url: "https://epiverse-trace.github.io/"
+  site-url: "https://epiverse-trace.github.io"
   favicon: hexlogo.png
   title: "Epiverse-TRACE developer space"
   description: "A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work."
@@ -23,6 +23,8 @@ website:
       - presentations.qmd
       - text: Learn
         href: learn.qmd
+      - text: About
+        href: people.qmd
     tools:
       - icon: github
         href: https://github.com/epiverse-trace
