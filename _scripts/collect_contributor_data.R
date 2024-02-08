@@ -28,8 +28,12 @@ excluded_handles <- c(
 )
 # A vector of handles of contributors who contributed outside of GitHub
 included_handles <- c(
-  "Na-Nino",
-  "dgmascarina" # linelist logo and graphical summary
+  "CatalinaGU",
+  "dgmascarina", # linelist logo and graphical summary
+  "hawyndiaz",
+  "mauricio110785",
+  "modiazv",
+  "Na-Nino"
 )
 
 repos <- lapply(repos, function(x) {
@@ -52,7 +56,7 @@ df_list <- lapply(included_handles, function(x) {
     logins = user$login,
     contributions = NA,
     avatar = user$avatar_url,
-    type = "analysis"
+    type = "research"
   )
 })
 
