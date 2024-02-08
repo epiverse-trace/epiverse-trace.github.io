@@ -10,7 +10,13 @@ library(allcontributors)
 library(gh)
 
 org_name <- "epiverse-trace"
-repos <- gh("GET /orgs/:org/repos", org = org_name, .limit = 100)
+repos <- gh(
+  "GET /orgs/:org/repos",
+  org = org_name,
+  # We do not want to count contributions for forks from external orgs.
+  type = "sources",
+  .limit = 100
+)
 # A vector of repo names in the organization that we do not include
 # This is because they are forks from external orgs, for example.
 excluded_repos <- c(
