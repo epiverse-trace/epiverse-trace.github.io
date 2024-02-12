@@ -38,7 +38,8 @@ included_handles <- c(
 
 repos <- lapply(repos, function(x) {
   if (!x$name %in% excluded_repos) {
-    one_repo <- get_contributors(org = org_name, repo = x$name)
+    one_repo <- get_contributors(org = org_name, repo = x$name, check_urls = FALSE)
+    Sys.sleep(5)
     return(one_repo)
   }
 })
