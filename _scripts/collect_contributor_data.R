@@ -39,6 +39,9 @@ included_handles <- c(
 repos <- lapply(repos, function(x) {
   if (!x$name %in% excluded_repos) {
     one_repo <- get_contributors(org = org_name, repo = x$name, check_urls = FALSE)
+    # It seems we are hitting GitHub API rate limit. We circumvent this issue with Sys.sleep() for now
+    # but keep an eye on https://github.com/ropenscilabs/allcontributors/issues/36 for a potentially
+    # better solution.
     Sys.sleep(5)
     return(one_repo)
   }
