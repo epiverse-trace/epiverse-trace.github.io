@@ -3,7 +3,7 @@ title: "New team member: Chris Hartgerink"
 author:
   - name: "Chris Hartgerink"
     orcid: "0000-0003-1050-6809"
-date: "2024-02-07"
+date: "2024-02-15"
 categories: [Team]
 title-block-banner: "header.jpg"
 format:
@@ -11,7 +11,7 @@ format:
     toc: true
 ---
 
-In January, I joined Epiverse as part of my new role as Senior Software Engineer at [data.org](https://data.org). In the weeks since, I have been able to already meet a lot of you, which further excites me about being part of this community! In order to build on that and keep the energy flowing, I wanted to introduce myself here more broadly.
+In January, I joined Epiverse as part of my new role as Senior Software Engineer at [data.org](https://data.org). In the weeks since, I have been able to already meet a lot of members of the Epiverse community. Talking to you and hearing about what drives you, further excites me to be part of this community! In order to build on that and keep the energy flowing, I wanted to introduce myself here more broadly.
 
 In this blog post, I share some of my background in R, my interest in open source, and how I look to contribute to this community. I want to already highlight that I love finishing things, from peanut butter jars to pull requests --- so if you have anything that you'd like to pull over the finish line, I am more than happy to support in doing that!
 
@@ -29,23 +29,23 @@ I come to open source through open science, which is all about reducing the "ins
 
 As a natural extension of open science, I started getting involved with open source communities around 2015-2016. I started with smaller open source projects springboarding to bigger projects over time. I documented all my own research projects on GitHub and started building websites (e.g., one about [copyright in research publishing](https://libscie.github.io/libcopy/)). All this practice developed my philosophy of working openly, which culminated in my time as a Mozilla Open Science Fellow in 2017.
 
-From over a decade of practice, I approach [working openly](https://wiki.mozilla.org/Working_open#Open_vs._Transparent) as community work. It goes beyond making information public - it requires making that information accessible and actionable. It is public **and** participatory. It needs to be informed by the needs of those participating, and participation needs to be encouraged, enabled, and scaffolded. This also means that the community needs to define what it desires. Are we working on a static piece of information that we want to enable reuse of (e.g., a finalized dataset) or do we want to co-create with people who we still need to invite in?
+With over a decade of practice, I approach [working openly](https://wiki.mozilla.org/Working_open#Open_vs._Transparent) as community work. Open source is not just making information public - it requires making that information accessible and actionable. It has to be public **and** participatory. It needs to be informed by the needs of those participating, and participation needs to be encouraged, enabled, and scaffolded. This also means that the community needs to define what it desires. Are we working on a static piece of information that we want to enable reuse of (e.g., a finalized dataset) or do we want to co-create with people who we still need to invite in? People come and go, and so this community culture has to evolve.
 
-Working openly, to me, also means that considerate and empathetic communication is key. It requires articulating our own needs, wants, and uncertainty with honesty. It requires accepting that our personal wants are not always one to one with what the community wants. How do we deal with those situations? Do we seek consensus or majorities? These discussions need humility and not getting entitled to things. It means actually listening to each other. There is no room for peacockery or posturing, but lots of room for caring and celebrating each other.
+Working openly, to me, also means that considerate and empathetic communication is key. It requires articulating our own needs, wants, and uncertainty with honesty. It requires accepting that our personal wants are not always aligned with what the community wants. How do we deal with those situations? Do we seek consensus or majorities? These discussions need humility and not getting entitled to things. It means actually listening to each other. There is no room for peacockery or posturing, but lots of room for caring and celebrating each other.
 
 ## Contributing to Epiverse
 
-I am excited to bring this philosophy of working open to Epiverse and vice versa, learn how this community is open in its own unique way. With an international community across three continents there are important questions around what it means to be participatory. After talking to various community members, it is clear this community raises important and practical questions.
+I am excited to bring this philosophy of working open to Epiverse and vice versa, learn how this community is open in its own unique way. With an international community across three continents there are important questions around what it means to be participatory. After talking to various community members, it is clear this community raises important and practical questions. I am also intrigued to see what is preventing people from joining this community - what barriers are we unconsciously putting up?
 
 I see my role within Epiverse as a ["rush goalie"](https://en.wikipedia.org/wiki/Rush_goalie) (also known as a fly goalie). I will own the development and maintainance of specific pieces of software, yet I can leave those to actively support work throughout Epiverse. In short: I go where I am needed, in whatever form that may be. That can be software development, community engagement, and so much more.
 
 To that end: Get in touch with me anytime you think I might be of support. Tag me on GitHub liberally (`@chartgerink`). Send me emails on <chris@data.org>. DM me wherever. I am here to support Epiverse and all its various packages in whatever shape they may need. This includes code reviews, making fixes, and being part of discussions. I would rather be tagged once too often than once too little.
 
-Epiverse is also not a standalone within the R space, so when practical, I will also contribute back to the packages that we use in our work. I already started making pull requests elsewhere, and it is great to see the R community be so welcoming to outside contributions. My hope is that Epiverse will be just as welcoming and a part of that wider ecosystem.
+Epiverse is also not a standalone community within the R space, so when practical, I will also contribute back to the packages that we use in our work. I already started making pull requests elsewhere, and it is great to see the R community be so welcoming to outside contributions. My hope is that Epiverse will be just as welcoming and a part of that wider ecosystem.
 
 ---
 
-At the moment, I am still finding my way throughout the various repositories. It takes time to understand new code and start identifying areas to contribute. I will be checking in on the repositories (and there are a lot!) and may ask around to see whether PRs or issues are still relevant. Nonetheless, after several weeks, I am starting to feel more like a part of the team than a newbie.
+At the moment, I am still finding my way throughout the various repositories. It takes time to understand new code and start identifying areas to contribute (and it's not always as easy as can be). I will be checking in on the repositories (and there are a lot!) and may ask around to see whether PRs or issues are still relevant. Nonetheless, after several weeks, I am starting to feel more like a part of the community than a newbie.
 
 Thanks for reading along and feel free to leave a comment if you have anything else you'd like to know.
 
