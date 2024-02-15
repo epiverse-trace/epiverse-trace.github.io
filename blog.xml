@@ -10,7 +10,73 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.5.14</generator>
-<lastBuildDate>Wed, 31 Jan 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 15 Feb 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>New team member: Chris Hartgerink</title>
+  <dc:creator>Chris Hartgerink</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/chjh-intro-blog/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In January, I joined Epiverse as part of my new role as Senior Software Engineer at <a href="https://data.org">data.org</a>. In the weeks since, I have been able to already meet a lot of members of the Epiverse community. Talking to you and hearing about what drives you, further excites me to be part of this community! In order to build on that and keep the energy flowing, I wanted to introduce myself here more broadly.</p>
+<p>In this blog post, I share some of my background in R, my interest in open source, and how I look to contribute to this community. I want to already highlight that I love finishing things, from peanut butter jars to pull requests — so if you have anything that you’d like to pull over the finish line, I am more than happy to support in doing that!</p>
+<section id="background-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="background-in-r">Background in R</h2>
+<p>My first real introduction to programming was with R back in 2013, during a course on statistical programming. This was more about scripting than engineering, but it was where I dipped my toes. During my PhD at <a href="https://www.tilburguniversity.edu/about/schools/socialsciences/organization/departments/methodology-statistics">a methodology and statistics department</a>, I ended up becoming the go to person for getting mundane things done faster. I ended up writing R and shell scripts left and right, with most of them ending up being used only once. <a href="https://xkcd.com/1319">I wasted a lot of time</a> and had tons of fun doing this! I ended up writing scripts for my research as well, leading to some legal troubles with big publishers (<a href="https://www.chjh.nl/elsevier-stopped-me-doing-my-research/">see this old blog post</a>). Oops!</p>
+<p>From scripting came contributing to R packages like <a href="https://cran.r-project.org/web/packages/statcheck/index.html"><code>statcheck</code></a>, from which came developing my own packages like <a href="https://cran.r-project.org/web/packages/retractcheck/index.html"><code>retractcheck</code></a>. Before I knew it I was helping others learn R and build their own packages in small workshops. This was back when the <code>devtools</code> experience was pretty decent but in no way as complete as it is today.</p>
+<p>Around 2018, <a href="https://www.chjh.nl/reflections-on-my-phd/">I ended up leaving academia</a> and stopped needing to develop in R. I was not upset because R development is rather quirky and arbitrary at times. Since then, I have designed, built, and maintained production web applications in NodeJS, with my biggest achievement being <a href="https://www.researchequals.com">ResearchEquals</a>. I’m excited to bring the best of different languages together in this new position. Coming from NodeJS engineering, I already see some avenues for building a better developer experience in R. I look forward to not just contribute packages but also more general tooling during my time working on Epiverse.</p>
+</section>
+<section id="working-openly" class="level2">
+<h2 class="anchored" data-anchor-id="working-openly">Working openly</h2>
+<p>I come to open source through open science, which is all about reducing the “insiders” and “outsiders” of research. Can people access publications equitably? Can people contribute to the work that’s happening equitably? Are funds distributed equitably? There are still big barriers to accessing research, its institutions, and as a result there remain inequities in the knowledge that is produced.</p>
+<p>As a natural extension of open science, I started getting involved with open source communities around 2015-2016. I started with smaller open source projects springboarding to bigger projects over time. I documented all my own research projects on GitHub and started building websites (e.g., one about <a href="https://libscie.github.io/libcopy/">copyright in research publishing</a>). All this practice developed my philosophy of working openly, which culminated in my time as a Mozilla Open Science Fellow in 2017.</p>
+<p>With over a decade of practice, I approach <a href="https://wiki.mozilla.org/Working_open#Open_vs._Transparent">working openly</a> as community work. Open source is not just making information public - it requires making that information accessible and actionable. It has to be public <strong>and</strong> participatory. It needs to be informed by the needs of those participating, and participation needs to be encouraged, enabled, and scaffolded. This also means that the community needs to define what it desires. Are we working on a static piece of information that we want to enable reuse of (e.g., a finalized dataset) or do we want to co-create with people who we still need to invite in? People come and go, and so this community culture has to evolve.</p>
+<p>Working openly, to me, also means that considerate and empathetic communication is key. It requires articulating our own needs, wants, and uncertainty with honesty. It requires accepting that our personal wants are not always aligned with what the community wants. How do we deal with those situations? Do we seek consensus or majorities? These discussions need humility and not getting entitled to things. It means actually listening to each other. There is no room for peacockery or posturing, but lots of room for caring and celebrating each other.</p>
+</section>
+<section id="contributing-to-epiverse" class="level2">
+<h2 class="anchored" data-anchor-id="contributing-to-epiverse">Contributing to Epiverse</h2>
+<p>I am excited to bring this philosophy of working open to Epiverse and vice versa, learn how this community is open in its own unique way. With an international community across three continents there are important questions around what it means to be participatory. After talking to various community members, it is clear this community raises important and practical questions. I am also intrigued to see what is preventing people from joining this community - what barriers are we unconsciously putting up?</p>
+<p>I see my role within Epiverse as a <a href="https://en.wikipedia.org/wiki/Rush_goalie">“rush goalie”</a> (also known as a fly goalie). I will own the development and maintainance of specific pieces of software, yet I can leave those to actively support work throughout Epiverse. In short: I go where I am needed, in whatever form that may be. That can be software development, community engagement, and so much more.</p>
+<p>To that end: Get in touch with me anytime you think I might be of support. Tag me on GitHub liberally (<code>@chartgerink</code>). Send me emails on <a href="mailto:chris@data.org" class="email">chris@data.org</a>. DM me wherever. I am here to support Epiverse and all its various packages in whatever shape they may need. This includes code reviews, making fixes, and being part of discussions. I would rather be tagged once too often than once too little.</p>
+<p>Epiverse is also not a standalone community within the R space, so when practical, I will also contribute back to the packages that we use in our work. I already started making pull requests elsewhere, and it is great to see the R community be so welcoming to outside contributions. My hope is that Epiverse will be just as welcoming and a part of that wider ecosystem.</p>
+<hr>
+<p>At the moment, I am still finding my way throughout the various repositories. It takes time to understand new code and start identifying areas to contribute (and it’s not always as easy as can be). I will be checking in on the repositories (and there are a lot!) and may ask around to see whether PRs or issues are still relevant. Nonetheless, after several weeks, I am starting to feel more like a part of the community than a newbie.</p>
+<p>Thanks for reading along and feel free to leave a comment if you have anything else you’d like to know.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Getting in touch
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can reach me on <a href="mailto:chris@data.org" class="email">chris@data.org</a> or on GitHub under <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>. I am also on Mastodon under <a href="https://akademienl.social/@chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span><span class="citation" data-cites="akademienl.social">@akademienl.social</span></a>.</p>
+</div>
+</div>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{hartgerink2024,
+  author = {Hartgerink, Chris},
+  title = {New Team Member: {Chris} {Hartgerink}},
+  date = {2024-02-15},
+  url = {https://epiverse-trace.github.io/posts/chjh-intro-blog},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-hartgerink2024" class="csl-entry quarto-appendix-citeas">
+Hartgerink, Chris. 2024. <span>“New Team Member: Chris
+Hartgerink.”</span> February 15, 2024. <a href="https://epiverse-trace.github.io/posts/chjh-intro-blog">https://epiverse-trace.github.io/posts/chjh-intro-blog</a>.
+</div></div></section></div> ]]></description>
+  <category>Team</category>
+  <guid>https://epiverse-trace.github.io/posts/chjh-intro-blog/</guid>
+  <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Things that can go wrong when using renv</title>
   <dc:creator>Hugo Gruson</dc:creator>
@@ -5902,7 +5968,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-37106"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-37106").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-11146"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-11146").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
