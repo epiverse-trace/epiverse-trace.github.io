@@ -1,0 +1,14 @@
+---
+title: "Interoperability strategy for the Epiverse"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-02-03"
+categories: [interoperability, ecosystem, R, R packages]
+---
+
+These slides were prepared for a lightning talk at FOSDEM 2024, in the "Public Code and Digital Public Goods" devroom, organized by the [Foundation for Public Code](https://standard.publiccode.net/) and the [Digital Public Goods Alliance](https://digitalpublicgoods.net/).
+
+```{=html}
+<iframe width="780" height="500" src="FOSDEM 2024.pdf" title="Slides"></iframe>
+```

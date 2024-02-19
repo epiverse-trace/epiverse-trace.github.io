@@ -27,7 +27,7 @@ jobs:
                     allcontributors
 
             - name: Collect contributor data
-              run: Rscript _script/collect_contributor_data.R
+              run: Rscript _scripts/collect_contributor_data.R
 
             - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
               id: cpr

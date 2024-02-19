@@ -15,11 +15,11 @@ website:
       - text: Blog
         menu:
           - text: Articles
-            url: "https://epiverse-trace.github.io/blog.html#category=R"
+            url: "/blog.html#category=R"
           - text: Release notes
-            url: "https://epiverse-trace.github.io/blog.html#category=new-release"
+            url: "/blog.html#category=new-release"
           - text: All
-            url: "https://epiverse-trace.github.io/blog.html"
+            url: "/blog.html"
       - presentations.qmd
       - text: Learn
         href: learn.qmd
