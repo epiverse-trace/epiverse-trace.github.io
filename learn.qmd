@@ -54,13 +54,27 @@ title-block-banner: true
 
 # Learning materials
 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mi, ultricies eu arcu sit amet, consequat condimentum magna. Praesent consectetur, leo id mollis feugiat, libero erat euismod odio, quis vulputate orci magna ac ante. Donec efficitur neque id arcu suscipit porttitor. Nullam pellentesque sit amet justo ut consequat. Morbi quis pulvinar velit, vitae ullamcorper ipsum. Donec ac egestas dui, vel iaculis risus. Nullam congue nunc vitae ex semper, et congue elit imperdiet.
+
+Etiam sodales est sit amet pharetra porttitor. Mauris eu ligula et nunc molestie ornare. Nulla vel justo rutrum, congue felis a, rutrum felis. Duis vel purus consectetur, scelerisque purus ac, congue elit. Donec id lacinia lectus. Nunc quis velit sed magna pharetra tempor ac a turpis. Nullam mi dui, varius non tempor non, sollicitudin ut arcu.
+
+Suspendisse at massa id ipsum rutrum feugiat quis id lectus. Aliquam non risus a tortor porta venenatis at in magna. Praesent ut ligula nibh. Etiam ac eros a arcu pellentesque varius. Sed quis urna placerat, feugiat erat at, dictum risus. Integer laoreet quam ligula, quis mattis nibh tempus sed. Aliquam congue ornare diam et laoreet. Vivamus et lectus bibendum, blandit mauris eu, maximus justo. Nam pellentesque urna id odio mollis euismod. Quisque neque magna, aliquam sit amet accumsan a, sodales vel ipsum. Donec suscipit ante neque, non sagittis massa sodales vitae. Maecenas sed diam fringilla, maximus libero sit amet, maximus lorem. Donec non sollicitudin leo, eu scelerisque mi. Nulla nec nisi in lorem sollicitudin venenatis. Pellentesque laoreet lorem id augue faucibus, at ornare justo blandit.
+
+## Tutorial header
+
+| Lesson                                                                                                                 | Repository                                                 | Instructor view                                                                 | Status                                                     |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [Reading and cleaning data for outbreak analytics with R](https://epiverse-trace.github.io/tutorials-early/)           | [Repo](https://github.com/epiverse-trace/tutorials-early)  | [View](https://epiverse-trace.github.io/tutorials-early/instructor/index.html)  | ![Static Badge](https://img.shields.io/badge/alpha-991b1b) |
+| [Real-time analysis and forecasting for outbreak analytics with R](https://epiverse-trace.github.io/tutorials-middle/) | [Repo](https://github.com/epiverse-trace/tutorials-middle) | [View](https://epiverse-trace.github.io/tutorials-middle/instructor/index.html) | ![Static Badge](https://img.shields.io/badge/alpha-991b1b) |
+| [Scenario modelling for outbreak analytics with R](https://epiverse-trace.github.io/tutorials-late/)                   | [Repo](https://github.com/epiverse-trace/tutorials-late)   | [View](https://epiverse-trace.github.io/tutorials-late/instructor/index.html)   | ![Static Badge](https://img.shields.io/badge/alpha-991b1b) |
+
+---
+
+## Community resources
+
 :::{.callout-note}
 
 ## Submit your resources
 
-We encourage community submissions for this page. You can do this through [creating a new issue on GitHub](https://github.com/epiverse-trace/epiverse-trace.github.io/issues/new?assignees=&labels=&projects=&template=other_issue.md&title=).
-:::
-
-:::{.callout-warning}
-Because these learning materials come from our community, we cannot guarantee they are up to date with the latest developments.
+We encourage community submissions for this page. You can do this by [creating a new issue on GitHub](https://github.com/epiverse-trace/epiverse-trace.github.io/issues/new?assignees=&labels=&projects=&template=other_issue.md&title=).
 :::
