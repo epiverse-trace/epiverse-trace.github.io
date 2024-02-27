@@ -9,8 +9,89 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.16</generator>
-<lastBuildDate>Thu, 15 Feb 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.5.21</generator>
+<lastBuildDate>Fri, 23 Feb 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>simulist v0.2.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/simulist_v0.2.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new simulist version v0.2.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>Second release of <em>simulist</em>, updates the core simulation model and, as a result, the arguments for <code>sim_*()</code> functions for simulating line list data and/or contact table data exported from <em>simulist</em> are updated. The internal package architecture is also refactored.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<section id="external" class="level3">
+<h3 class="anchored" data-anchor-id="external">External</h3>
+<ul>
+<li><code>create_config()</code> now returns a new element in the list: <code>$network</code>. By default <code>create_config()</code> returns <code>network = "adjusted"</code>, which assumes the simulation is a random network and samples contacts with an excess degree distribution (see Details in <code>?create_config()</code>). The network effect can be changed to <code>"unadjusted"</code> to <em>switch off</em> the network effect. <code>$network</code> is checked internally (in <code>.sim_network_bp()</code>) and will error if not valid (#60).</li>
+<li>Package architecture diagram is added to <code>design-principles.Rmd</code> (#66).</li>
+<li>lintr GitHub action workflow (<code>lint-changed-files.yaml</code>) is added to the suite of continuous integration workflows (#68).</li>
+<li>Transmission chain visualisation is added to <code>vis-linelist.Rmd</code> (#70).</li>
+</ul>
+</section>
+<section id="internal" class="level3">
+<h3 class="anchored" data-anchor-id="internal">Internal</h3>
+<ul>
+<li><code>.sim_network_bp()</code> is added as an internal function and replaces <code>bpmodels::chain_sim()</code> as the core simulation model producing contacted and infected individuals. <code>{bpmodels}</code> is removed as a dependency as a result (#60).</li>
+<li><code>.sample_names()</code> is added as an internal function to utilise <code>randomNames::randomNames()</code> to produce more unique names than <code>randomNames(..., sample.with.replacement = FALSE)</code>.</li>
+<li>Refactor of internal simulation architecture replaced <code>.sim_bp_linelist()</code>, <code>.sim_clinical_linelist()</code> and <code>.sim_contacts_tbl()</code> with <code>.sim_internal()</code> (#66).</li>
+<li>The <code>sim_utils.R</code> file was renamed to <code>utils.R</code> (#66) and the empty <code>create_linelist.R</code> file was removed (#72).</li>
+<li><code>.add_date_contact()</code> argument <code>outbreak_start_date</code> is now <code>NULL</code> by default instead of missing (#82).</li>
+<li>Regression tests of <code>sim_*()</code> functions now use <a href="https://testthat.r-lib.org/articles/snapshotting.html">snapshot testing</a> for more detailed data checking (#65).</li>
+<li>Internal testing data (<code>testdata</code>) files have been updated, as has the <code>testdata/README.md</code> with instructions (#64).</li>
+</ul>
+</section>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><code>R</code> and <code>serial_interval</code> arguments have been removed from <code>sim_linelist()</code>, <code>sim_contacts()</code> and <code>sim_outbreak()</code> functions and instead <code>contact_distribution</code>, <code>contact_interval</code> and <code>prob_infect</code> are used to parameterise the simulation. Documentation, both functions and vignettes, have been updated with these changes (#60).</li>
+<li>The <code>contact_distribution</code> argument in <code>sim_*()</code> functions requires a density function if supplied as an anonymous function. Information is added to <code>simulist.Rmd</code> to explain this.</li>
+<li>The line list output from <code>sim_linelist()</code> now uses column header <code>sex</code> instead of <code>gender</code>. The contacts table output from <code>sim_contacts()</code> and <code>sim_outbreak()</code> now uses column headers <code>age</code> and <code>sex</code> instead of <code>cnt_age</code> and <code>cnt_gender</code> (#60, #79).</li>
+<li><code>contact_distribution</code> is redefined and redocumented as the distribution of contacts per individual, rather than the number of contacts that do not get infected as it was in v0.1.0.</li>
+<li><code>row.names</code> for <code>&lt;data.frame&gt;</code>s output by <code>sim_linelist()</code>, <code>sim_contacts()</code> and <code>sim_outbreak()</code> are now sequential from <code>1:nrows</code> (#63).</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li><code>sim_contacts()</code> now correctly runs with an age-structured population. In the previous version (v0.1.0), <code>sim_contacts()</code> did not call <code>.check_age_df()</code> and as a result the function errored, this is fixed as of PR #81.</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Many thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):</p>
+<p><a href="https://github.com/adamkucharski"><span class="citation" data-cites="adamkucharski">@adamkucharski</span></a>, <a href="https://github.com/avallecam"><span class="citation" data-cites="avallecam">@avallecam</span></a>, <a href="https://github.com/Bisaloo"><span class="citation" data-cites="Bisaloo">@Bisaloo</span></a>, <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>, <a href="https://github.com/jamesmbaazam"><span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span></a>, <a href="https://github.com/pratikunterwegs"><span class="citation" data-cites="pratikunterwegs">@pratikunterwegs</span></a>, and <a href="https://github.com/sbfnk"><span class="citation" data-cites="sbfnk">@sbfnk</span></a>.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.2.0},
+  date = {2024-02-23},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.2.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Simulist
+V0.2.0.”</span> February 23, 2024. <a href="https://epiverse-trace.github.io/posts/simulist_v0.2.0">https://epiverse-trace.github.io/posts/simulist_v0.2.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/simulist_v0.2.0/</guid>
+  <pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>New team member: Chris Hartgerink</title>
   <dc:creator>Chris Hartgerink</dc:creator>
@@ -5968,7 +6049,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-28964"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-28964").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-93287"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-93287").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
