@@ -55,7 +55,7 @@ El **e-Epi-training kit** es una estrategia para el aprendizaje en línea que pe
 
 | Material                                                                                                                  | Repository                                                               | Instructor schedule | Development stage                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [{{< fa regular window-maximize >}} How-to guides for Outbreak Analytics with R](https://epiverse-trace.github.io/howto/) | [{{< fa brands github >}} Repo](https://github.com/epiverse-trace/howto) | (empty)             | experimental, WIP [https://github.com/epiverse-trace/howto?tab=readme-ov-file#howto](https://github.com/epiverse-trace/howto?tab=readme-ov-file#howto) |
+| [{{< fa regular window-maximize >}} How-to guides for Outbreak Analytics with R](https://epiverse-trace.github.io/howto/) | [{{< fa brands github >}} Repo](https://github.com/epiverse-trace/howto) | (empty)             | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
 
 ## Research Software Curriculum
 
