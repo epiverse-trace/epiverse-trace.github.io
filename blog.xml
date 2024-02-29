@@ -9,8 +9,361 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.21</generator>
-<lastBuildDate>Fri, 23 Feb 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.5.22</generator>
+<lastBuildDate>Wed, 28 Feb 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>linelist v1.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/linelist_v1.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new linelist version v1.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><p><code>make_linelist()</code> and <code>set_tags()</code> no longer accept a named list of characters as input. Instead, <code>make_linelist()</code>, <code>set_tags()</code> and <code>tags_types()</code> now use <a href="https://rlang.r-lib.org/reference/dyn-dots.html">rlang’s dynamic dots</a>, which means that you can splice list arguments. This implementation is more robust, better tested, and makes it explicit that users want to splice the list (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #96).</p>
+<ul>
+<li>Before:</li>
+</ul>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">my_tags <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb1-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"case_ID"</span>,</span>
+<span id="cb1-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_prodrome"</span>,</span>
+<span id="cb1-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>,</span>
+<span id="cb1-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span></span>
+<span id="cb1-6">)</span>
+<span id="cb1-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(obj, my_tags)</span>
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># OR</span></span>
+<span id="cb1-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(</span>
+<span id="cb1-10">  obj,</span>
+<span id="cb1-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"case_ID"</span>,</span>
+<span id="cb1-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_prodrome"</span>,</span>
+<span id="cb1-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>,</span>
+<span id="cb1-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span></span>
+<span id="cb1-15">)</span></code></pre></div>
+<ul>
+<li>Now:</li>
+</ul>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">my_tags <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb2-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"case_ID"</span>,</span>
+<span id="cb2-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_prodrome"</span>,</span>
+<span id="cb2-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>,</span>
+<span id="cb2-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span></span>
+<span id="cb2-6">)</span>
+<span id="cb2-7"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(obj, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!!!</span>my_tags)</span>
+<span id="cb2-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># OR</span></span>
+<span id="cb2-9"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(</span>
+<span id="cb2-10">  obj,</span>
+<span id="cb2-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"case_ID"</span>,</span>
+<span id="cb2-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_of_prodrome"</span>,</span>
+<span id="cb2-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span>,</span>
+<span id="cb2-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gender"</span></span>
+<span id="cb2-15">)</span></code></pre></div></li>
+</ul>
+</section>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li><p>linelist warnings and errors in the case of a tag loss now have a custom class (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #109), which means it is easier to silence them specifically, or to catch them programmatically for advanced error handling. One example of a new advanced condition handling that was before not possible is:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">warning_counter <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">withCallingHandlers</span>({</span>
+<span id="cb3-4">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> linelist<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(cars, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dist"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"speed"</span>)</span>
+<span id="cb3-5">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> x[, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]</span>
+<span id="cb3-6">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> x[, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>]</span>
+<span id="cb3-7">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">warning</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"This is not a linelist warning"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">call. =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>)</span>
+<span id="cb3-8">}, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">linelist_warning =</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(w) {</span>
+<span id="cb3-9">  warning_counter <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;&lt;-</span> warning_counter <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb3-10">})</span>
+<span id="cb3-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Warning: The following tags have lost their variable:</span></span>
+<span id="cb3-12"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  age:speed</span></span>
+<span id="cb3-13"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Warning: The following tags have lost their variable:</span></span>
+<span id="cb3-14"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  date_onset:dist</span></span>
+<span id="cb3-15"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Warning: This is not a linelist warning</span></span>
+<span id="cb3-16"></span>
+<span id="cb3-17"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">warning</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"This pipeline generated "</span>, warning_counter, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">" linelist warnings."</span>)</span>
+<span id="cb3-18"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Warning: This pipeline generated 2 linelist warnings.</span></span></code></pre></div></li>
+<li><p>linelist objects now have a new custom <code>$&lt;-.linelist()</code> to prevent tag loss when subsetting a linelist object (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #86). This completes the functionality already provided by the <code>[&lt;-.linelist()</code> and <code>[[&lt;-.linelist()</code> methods.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">x<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>tagged_column <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb4-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Warning in prune_tags(out, lost_action): The following tags have lost their variable:</span></span>
+<span id="cb4-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;  tag:tagged_column</span></span></code></pre></div></li>
+<li><p>Validation failures in <code>validate_types()</code> now integrate a delayed error mechanism (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #106). This ensures that the error message will return all the invalid tag types at once rather than having to go through multiple trials and runs.</p>
+<ul>
+<li>Before: only the first invalid tag type is returned.</li>
+</ul>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># No warning about age, even though it also has an invalid type</span></span>
+<span id="cb5-2">x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(cars, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"speed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dist"</span>)</span>
+<span id="cb5-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">validate_types</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ref_types =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tags_types</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"factor"</span>))</span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Error in validate_types(x, ref_types = tags_types(age = "factor")) : </span></span>
+<span id="cb5-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;   Issue when checking class of tag `gender`:</span></span>
+<span id="cb5-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Must inherit from class 'character'/'factor', but has class 'numeric'</span></span></code></pre></div>
+<ul>
+<li>Now: the error message returns all the invalid tag types at once.</li>
+</ul>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(cars, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"speed"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"dist"</span>)</span>
+<span id="cb6-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">validate_types</span>(x, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ref_types =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tags_types</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"factor"</span>))</span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt; Some tags have the wrong class:</span></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;   - gender: Must inherit from class 'character'/'factor', but has class 'numeric'</span></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#&gt;   - age: Must inherit from class 'factor', but has class 'numeric'</span></span></code></pre></div></li>
+</ul>
+</section>
+<section id="internal-changes" class="level2">
+<h2 class="anchored" data-anchor-id="internal-changes">Internal changes</h2>
+<ul>
+<li>Internal duplication in the specification of the tags supported by linelist by default has been removed. This makes it easier to add or remove tags in the future, and reduces the risk of inconsistencies between the different parts of the package (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #111).</li>
+<li>The internal <code>tag_variable()</code> function has been replace by a vectorized alternative <code>tag_variable</code>, thus improving performance in <code>make_linelist()</code> and <code>set_tags()</code> about twofold. The error message when tags are specified by position with a number larger than the number of columns in the dataset to tag has also been clarified (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #110).</li>
+</ul>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li>linelist now provides a design vignette for future contributors or maintainers (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #112).</li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Linelist V1.1.0},
+  date = {2024-02-28},
+  url = {https://epiverse-trace.github.io/posts/linelist_v1.1.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Linelist
+V1.1.0.”</span> February 28, 2024. <a href="https://epiverse-trace.github.io/posts/linelist_v1.1.0">https://epiverse-trace.github.io/posts/linelist_v1.1.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/linelist_v1.1.0/</guid>
+  <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>simulist v0.2.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
@@ -2554,7 +2907,7 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
 <p>As shown in the figure below, there are multiple stages to communicate both unstable and stable software. There are also multiple paths between each stage, recognising the varied routes software development can take.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the RepoStatus framework. The flow is not strictly linear as one package can enter and exist stages such as 'suspended', 'abandoned', 'inactive', etc. There a thin green line with the text 'Repo has reached a stable state' between the stages 'concept', 'WIP', 'abandoned', 'suspended' and the stages 'active', 'unsupported', 'inactive'."></p>
+<p><img src="https://raw.githubusercontent.com/jantman/repostatus.org/master/gh_pages/images/lifecycle.svg" class="img-fluid figure-img"></p>
 <figcaption>RepoStatus badge system. <em>Reused under CC BY-SA 4.0 from <a href="https://www.repostatus.org/">repostatus.org</a></em></figcaption>
 </figure>
 </div>
@@ -2572,7 +2925,7 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
 <p>The two stages that follow stable are: superseded and deprecated. The former describes a situation in which a new package, a new function or a new argument, depending on the context, has been developed which the developer feels should be used instead of the now superseded code. Superseded code is still developed in the sense that changes to the language or package that may break the function will be fixed as well as bug fixes, but the function will not received ongoing development. The latter, deprecation, is used in cases when the developer thinks that a package or function should not longer be used. This is primarily employed when code is depended on by other software and therefore deleting the code would cause breaks in reverse dependencies. Thus the deprecation warning allows developers of those dependencies time to make the relevant changes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img" alt="Flow diagram of the possible transitions from one state to the other in the tidyverse lifecycle framework. Packages will go from experimental to stable, and possibly end up in a superseded or deprecated stage."></p>
+<p><img src="https://raw.githubusercontent.com/r-lib/lifecycle/main/vignettes/figures/lifecycle.svg" class="img-fluid figure-img"></p>
 <figcaption>{lifecycle} badge system. <em>Reused under MIT license from <a href="https://lifecycle.r-lib.org/articles/stages.html">lifecycles R package</a></em></figcaption>
 </figure>
 </div>
@@ -3919,7 +4272,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="scenario-1-novel-respiratory-disease-in-the-gambia">Scenario 1: Novel respiratory disease in The Gambia</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid figure-img" alt="Situation report: Location: Banjul, The Gambia. Pathogen: novel respiratory disease. Background: index case travelled to London in Dec 2022. 85 symptomatic individuals identified in February 2023 are under investigation. Modified data: linelist: added travel history column, added imported case column, added id column, added missing cases, introduced errors; contact database: added missing cases and introduced errors. Questions: 1. What are the most affected groups? 2. What are the epidemiological characteristics of infection? 2. What is the level of individual variation of transmission? 3. How is the outbreak likely to develop over the next weeks? 4. What public health measures are required to contain it?"></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario1smq.png" class="img-fluid figure-img"></p>
 <figcaption>Scenario 1 details</figcaption>
 </figure>
 </div>
@@ -4057,7 +4410,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="scenario-2-outbreak-of-an-unidentified-disease-in-rural-colombia">Scenario 2: Outbreak of an unidentified disease in rural Colombia</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario2smq.png" class="img-fluid figure-img" alt="Situation report: Location: Ibague, Colombia. Pathogen: unspecified. Background: suspected link to a zoonotic reservoir, since early cases were farmers, envoy is colourblind and unable to deal with complex visual information. Modified data: linelist: added travel to rural area column, added case occupation column, added notification date column, added missing cases and introduced errors. No changes were added to the contact database. Questions: 1. Have there been exposures to a zoonotic reservoir? 2. How transmissible is the disease? 3. What are the hospital bed requirements for next weeks? 4. What is the attack rate and the no. of deaths we expect? 5. Can you reconstruct transmission chains?"></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario2smq.png" class="img-fluid figure-img"></p>
 <figcaption>Scenario 2 details</figcaption>
 </figure>
 </div>
@@ -4149,7 +4502,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="scenario-3-reston-ebolavirus-in-the-philippines">Scenario 3: Reston Ebolavirus in the Philippines</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario3smq.png" class="img-fluid figure-img" alt="Situation report: Location: Calabarzon, Philippines. Pathogen: Reston Ebolavirus (RESTV). Background: first ever recorded case of symptomatic RESTV, in January 2023. More potential cases found: patients with haemorragic fever. Modified data: Linelist: added geographic region column, added case occupation column, added missing cases, introduced errors. Contact database: added risk category column, added missing cases, introduced errors. Questions: 1. What is the CFR? 2. Can you estimate the % of unobserved cases? 3. When did the outbreak start? 4. What are the forecasted no. of cases over next weeks? 5. How many spillover events? 6. Is contact tracing effective? 7. How good is the risk classification system?"></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario3smq.png" class="img-fluid figure-img"></p>
 <figcaption>Scenario 3 details</figcaption>
 </figure>
 </div>
@@ -4248,7 +4601,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="scenario-4-emerging-avian-influenza-in-cambodia">Scenario 4: Emerging avian influenza in Cambodia</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario4smq.png" class="img-fluid figure-img" alt="Situation report: Location: Phnom Penh, Cambodia. Pathogen: emerging avian influenza. Background: outbreak started in a small rural community of poultry farmers in Cambodia. Cases now also reported in the capital. Modified data: linelist: added outcome column, added origin column, added exposure column, added missing cases, introduced errors. Contact database: no changes were added. Questions: 1. What are the % of human vs zoonotic transmission? 2. What is the epidemic potential? 3. Is the outbreak contained by the implemented measures? 4. What is the severity of disease? 5. Can underreporting be estimated? 6. Are more hospital beds needed? 7. Should they cull poultry farms?"></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario4smq.png" class="img-fluid figure-img"></p>
 <figcaption>Scenario 4 details</figcaption>
 </figure>
 </div>
@@ -4310,7 +4663,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="scenario-5-outbreak-of-respiratory-disease-in-canada">Scenario 5: Outbreak of respiratory disease in Canada</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario5smq.png" class="img-fluid figure-img" alt="Situation report: Location: Saskatoon, Canada. Pathogen: unknown respiratory pathogen. Background: influenza-like illness (ILI), with severe outcomes, including deaths. Possible link to visits to local zoo, which has seen an increased number of bird deaths. Modified data: linelist: added test date column, added report date column, added missing cases, introduced errors. Questions: 1. What is the demographic distribution of cases? 2. What data sources are needed to understand the outbreak? 3. What is the severity of disease? 4. Can you nowcast cases? 5. How many cases are being missed? 6. What % of infections are likely zoonoses?"></p>
+<p><img src="https://epiverse-trace.github.io/posts/100days-workshop/Scenario5smq.png" class="img-fluid figure-img"></p>
 <figcaption>Scenario 5 details</figcaption>
 </figure>
 </div>
@@ -6049,7 +6402,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-58131"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-58131").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-18266"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-18266").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

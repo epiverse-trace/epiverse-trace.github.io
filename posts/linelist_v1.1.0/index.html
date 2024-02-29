@@ -6,13 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Carmen Tamayo">
-<meta name="author" content="Karim Mané">
-<meta name="author" content="Abdoelnaser Degoot">
-<meta name="author" content="Bankole Ahadzie">
-<meta name="dcterms.date" content="2023-11-30">
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2024-02-28">
 
-<title>Epiverse-TRACE developer space – Epiverse-TRACE Autumn 2023 showcase</title>
+<title>Epiverse-TRACE developer space – linelist v1.1.0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -84,18 +115,16 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Autumn 2023 showcase">
+<meta property="og:title" content="Epiverse-TRACE developer space - linelist v1.1.0">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta property="og:image" content="https://epiverse-trace.github.io/slides/showcase.jpg">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - Epiverse-TRACE Autumn 2023 showcase">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - linelist v1.1.0">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/slides/showcase.jpg">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -164,12 +193,9 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Epiverse-TRACE Autumn 2023 showcase</h1>
+      <h1 class="title">linelist v1.1.0</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">readepi</div>
-                <div class="quarto-category">cleanepi</div>
-                <div class="quarto-category">pipeline demo</div>
-                <div class="quarto-category">showcase</div>
+                <div class="quarto-category">new-release</div>
               </div>
                   </div>
   </div>
@@ -178,19 +204,16 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <div class="quarto-title-meta">
 
       <div>
-      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Carmen Tamayo <a href="https://orcid.org/0000-0003-4184-2864" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-               <p>Karim Mané <a href="https://orcid.org/0000-0002-9892-2999" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-               <p>Abdoelnaser Degoot <a href="https://orcid.org/0000-0001-8788-2496" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-               <p>Bankole Ahadzie </p>
+               <p>The Epiverse-TRACE development team </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 30, 2023</p>
+        <p class="date">February 28, 2024</p>
       </div>
     </div>
     
@@ -201,19 +224,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#readepi-slides" id="toc-readepi-slides" class="nav-link active" data-scroll-target="#readepi-slides">readepi slides</a></li>
-  <li><a href="#cleanepi-slides" id="toc-cleanepi-slides" class="nav-link" data-scroll-target="#cleanepi-slides">cleanepi slides</a></li>
-  <li><a href="#pipeline-demo" id="toc-pipeline-demo" class="nav-link" data-scroll-target="#pipeline-demo">pipeline demo</a></li>
-  <li><a href="#questions-answers" id="toc-questions-answers" class="nav-link" data-scroll-target="#questions-answers">Questions &amp; answers</a></li>
-  <li><a href="#recording" id="toc-recording" class="nav-link" data-scroll-target="#recording">Recording</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -221,155 +232,121 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 
-<p>This showcase is part of a regular cycle of online meetings to present tools for epidemiology.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<table class="table">
-<colgroup>
-<col style="width: 21%">
-<col style="width: 38%">
-<col style="width: 38%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Time</th>
-<th>Item</th>
-<th>Presenter</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>12:00 - 12:05</td>
-<td><p>Welcome</p>
+<p>We are very excited to announce the release of a new linelist version v1.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
 <ul>
-<li>Intro to Epiverse-TRACE</li>
-<li>Purpose of the session</li>
-<li>Housekeeping
+<li><p><code>make_linelist()</code> and <code>set_tags()</code> no longer accept a named list of characters as input. Instead, <code>make_linelist()</code>, <code>set_tags()</code> and <code>tags_types()</code> now use <a href="https://rlang.r-lib.org/reference/dyn-dots.html">rlang’s dynamic dots</a>, which means that you can splice list arguments. This implementation is more robust, better tested, and makes it explicit that users want to splice the list (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #96).</p>
 <ul>
-<li>15 min for PKGs,</li>
-<li>25 min for demo</li>
-<li>10 min for Q &amp; A</li>
-</ul></li>
-<li>Closing remarks</li>
-</ul></td>
-<td>Carmen</td>
-</tr>
-<tr class="even">
-<td>12:05 - 12:06</td>
-<td>One line intro to Karim &amp; readepi &amp; cleanepi</td>
-<td>Carmen</td>
-</tr>
-<tr class="odd">
-<td>12:06 - 12:22</td>
-<td><p>readepi &amp; cleanepi PKGs</p>
+<li>Before:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_tags <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"case_ID"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_onset =</span> <span class="st">"date_of_prodrome"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="st">"age"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"gender"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(obj, my_tags)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  obj,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"case_ID"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_onset =</span> <span class="st">"date_of_prodrome"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="st">"age"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"gender"</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Purpose (motivation for developing the PKGs, problem they are trying to address)</li>
-<li>Features</li>
-</ul></td>
-<td>Karim</td>
-</tr>
-<tr class="even">
-<td>12:22 - 12:23</td>
-<td>One line intro to Degoot &amp; demo pipeline</td>
-<td>Carmen</td>
-</tr>
-<tr class="odd">
-<td>12:23 - 12:45</td>
-<td>Pipeline demo:</td>
-<td>Degoot</td>
-</tr>
-<tr class="even">
-<td></td>
-<td><ul>
-<li>overview</li>
-<li>Acutal demo</li>
-</ul></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>12:46 - 12:58</td>
-<td>Questions</td>
-<td>Attendees, all (Carmen moderates)</td>
-</tr>
-<tr class="even">
-<td>12:58 - 13:00</td>
-<td>Closing remarks</td>
-<td>Carmen</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<section id="readepi-slides" class="level2">
-<h2 class="anchored" data-anchor-id="readepi-slides">readepi slides</h2>
-<iframe width="780" height="500" src="readepi.pdf" title="finalsize slides showcase winder 2023"></iframe>
-</section>
-<section id="cleanepi-slides" class="level2">
-<h2 class="anchored" data-anchor-id="cleanepi-slides">cleanepi slides</h2>
-<iframe width="780" height="438.75" src="cleanepi.pdf" title="epiparameter slides showcase winder 2023"></iframe>
-</section>
-<section id="pipeline-demo" class="level2">
-<h2 class="anchored" data-anchor-id="pipeline-demo">pipeline demo</h2>
-<ul>
-<li>Coming soon</li>
+<li>Now:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>my_tags <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"case_ID"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_onset =</span> <span class="st">"date_of_prodrome"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="st">"age"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"gender"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(obj, <span class="sc">!!!</span>my_tags)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  obj,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"case_ID"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_onset =</span> <span class="st">"date_of_prodrome"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="st">"age"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"gender"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="questions-answers" class="level2">
-<h2 class="anchored" data-anchor-id="questions-answers">Questions &amp; answers</h2>
-<blockquote class="blockquote">
-<p>Will <code>{cleanepi}</code> package have an option to create new columns and to perform other actions such as filtering and sorting data?</p>
-</blockquote>
-<p>Some cleaning processes in the <code>{cleanepi}</code> package actually create new columns. <code>{cleanepi}</code> does data filtering but not data sorting, which can be done with other existing packages.</p>
-<blockquote class="blockquote">
-<p>When will the <code>{readepi}</code> and <code>{cleanepi}</code> packages be available on CRAN?</p>
-</blockquote>
-<p>These packages are still in development stage, and we intend to submit them to CRAN soon.</p>
-<blockquote class="blockquote">
-<p>Does <code>{cleanepi}</code> has an option to show which IDs are been cleaned? This will help to inform the curators about which ID as wrong?</p>
-</blockquote>
-<p>Yes, <code>{cleanepi}</code> reports any change to the end-user.</p>
-<blockquote class="blockquote">
-<p>Will there be a package in epiverse for spatial analysis to visualize distribution of cases during epidemics?</p>
-</blockquote>
-<p>Yes. We intend to create a package for visualization.</p>
-<blockquote class="blockquote">
-<p>Have you thought about combining the epiverse packages into a single package (like tidyverse package for example) so the user won’t have to load the packages one by one?</p>
-</blockquote>
-<p>Yes. In fact such package is already under development, see <a href="https://github.com/epiverse-trace/epiverse">epiverse</a>.</p>
-<blockquote class="blockquote">
-<p>Can the epiverse be used to model severity or case fatality of outbreaks against counter factual to proof effectiveness of disease control interventions?<br>
-</p>
-</blockquote>
-<p>For this, we would say that Epiverse-TRACE packages such as <code>{cfr}</code> provide robust methods for computing unbiased and timely case fatality ratios. With such knowledge, it is up to the user to decide whether or not control measures are effective.</p>
-<blockquote class="blockquote">
-<p>Is there any plan to account for genomic data?</p>
-</blockquote>
-<p>Yes. We intend to create a package for reading and integrating genomic data with case data.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li><p>linelist warnings and errors in the case of a tag loss now have a custom class (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #109), which means it is easier to silence them specifically, or to catch them programmatically for advanced error handling. One example of a new advanced condition handling that was before not possible is:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>warning_counter <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">withCallingHandlers</span>({</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> linelist<span class="sc">::</span><span class="fu">make_linelist</span>(cars, <span class="at">date_onset =</span> <span class="st">"dist"</span>, <span class="at">age =</span> <span class="st">"speed"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x[, <span class="sc">-</span><span class="dv">1</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">warning</span>(<span class="st">"This is not a linelist warning"</span>, <span class="at">call. =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}, <span class="at">linelist_warning =</span> <span class="cf">function</span>(w) {</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  warning_counter <span class="ot">&lt;&lt;-</span> warning_counter <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: The following tags have lost their variable:</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  age:speed</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: The following tags have lost their variable:</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  date_onset:dist</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: This is not a linelist warning</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">warning</span>(<span class="st">"This pipeline generated "</span>, warning_counter, <span class="st">" linelist warnings."</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: This pipeline generated 2 linelist warnings.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>linelist objects now have a new custom <code>$&lt;-.linelist()</code> to prevent tag loss when subsetting a linelist object (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #86). This completes the functionality already provided by the <code>[&lt;-.linelist()</code> and <code>[[&lt;-.linelist()</code> methods.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>tagged_column <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in prune_tags(out, lost_action): The following tags have lost their variable:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  tag:tagged_column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Validation failures in <code>validate_types()</code> now integrate a delayed error mechanism (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #106). This ensures that the error message will return all the invalid tag types at once rather than having to go through multiple trials and runs.</p>
+<ul>
+<li>Before: only the first invalid tag type is returned.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No warning about age, even though it also has an invalid type</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">make_linelist</span>(cars, <span class="at">age =</span> <span class="st">"speed"</span>, <span class="at">gender =</span> <span class="st">"dist"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">validate_types</span>(x, <span class="at">ref_types =</span> <span class="fu">tags_types</span>(<span class="at">age =</span> <span class="st">"factor"</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in validate_types(x, ref_types = tags_types(age = "factor")) : </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Issue when checking class of tag `gender`:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Must inherit from class 'character'/'factor', but has class 'numeric'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Now: the error message returns all the invalid tag types at once.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">make_linelist</span>(cars, <span class="at">age =</span> <span class="st">"speed"</span>, <span class="at">gender =</span> <span class="st">"dist"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">validate_types</span>(x, <span class="at">ref_types =</span> <span class="fu">tags_types</span>(<span class="at">age =</span> <span class="st">"factor"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Some tags have the wrong class:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   - gender: Must inherit from class 'character'/'factor', but has class 'numeric'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   - age: Must inherit from class 'factor', but has class 'numeric'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
 </section>
-<section id="recording" class="level2">
-<h2 class="anchored" data-anchor-id="recording">Recording</h2>
-<p>Go to the “Watch the recording” button on the <a href="https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov">event website</a> to watch back this showcase.</p>
+<section id="internal-changes" class="level2">
+<h2 class="anchored" data-anchor-id="internal-changes">Internal changes</h2>
+<ul>
+<li>Internal duplication in the specification of the tags supported by linelist by default has been removed. This makes it easier to add or remove tags in the future, and reduces the risk of inconsistencies between the different parts of the package (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #111).</li>
+<li>The internal <code>tag_variable()</code> function has been replace by a vectorized alternative <code>tag_variable</code>, thus improving performance in <code>make_linelist()</code> and <code>set_tags()</code> about twofold. The error message when tags are specified by position with a number larger than the number of columns in the dataset to tag has also been clarified (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #110).</li>
+</ul>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<ul>
+<li>linelist now provides a design vignette for future contributors or maintainers (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #112).</li>
+</ul>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{tamayo2023,
-  author = {Tamayo, Carmen and Mané, Karim and Degoot, Abdoelnaser and
-    Ahadzie, Bankole},
-  title = {Epiverse-TRACE {Autumn} 2023 Showcase},
-  date = {2023-11-30},
-  url = {https://epiverse-trace.github.io/slides/showcase-november-2023},
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Linelist V1.1.0},
+  date = {2024-02-28},
+  url = {https://epiverse-trace.github.io/posts/linelist_v1.1.0},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tamayo2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
-2023. <span>“Epiverse-TRACE Autumn 2023 Showcase.”</span> November 30,
-2023. <a href="https://epiverse-trace.github.io/slides/showcase-november-2023">https://epiverse-trace.github.io/slides/showcase-november-2023</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2024. <span>“Linelist
+V1.1.0.”</span> February 28, 2024. <a href="https://epiverse-trace.github.io/posts/linelist_v1.1.0">https://epiverse-trace.github.io/posts/linelist_v1.1.0</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

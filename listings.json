@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/linelist_v1.1.0/index.html",
       "/posts/simulist_v0.2.0/index.html",
       "/posts/chjh-intro-blog/index.html",
       "/posts/renv-complications/index.html",
@@ -23,6 +24,12 @@
     ]
   },
   {
+    "listing": "/learn.html",
+    "items": [
+      "/learn/git-training-01/index.html"
+    ]
+  },
+  {
     "listing": "/presentations.html",
     "items": [
       "/slides/fosdem-2024/index.html",
@@ -35,12 +42,6 @@
       "/slides/showcase-april-2023/index.html",
       "/slides/harmonious-ecosystem/index.html",
       "/slides/showcase-january-2023/index.html"
-    ]
-  },
-  {
-    "listing": "/learn.html",
-    "items": [
-      "/learn/git-training-01/index.html"
     ]
   }
 ]
