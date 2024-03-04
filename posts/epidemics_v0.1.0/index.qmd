@@ -6,12 +6,18 @@ date: "2024-02-27"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new epidemics version v0.1.0.
+We would like to announce the realease on GitHub of version 0.1.0 of _epidemics_.
+
+This release is aimed at supporting the reproducibility of [analyses in this report](https://gaza-projections.org/), which would be subject to breaking changes due to planned package development.
+
+Please note that this version has not been released to CRAN. _epidemics_ is still being actively developed, with major changes planned for the near future, which will soon supersede this version.
+
+_epidemics_ v0.1.0 can be installed using the {pak} package from GitHub using `pak::pak("epiverse-trace/epidemics@v0.1.0")`.
+
 Here is an automatically generated summary of the changes in this version.
 
 This is an initial GitHub release of _epidemics_, an R package that ships a library of compartmental epidemic model structures that can be used, along with supplied classes that help define population characteristics and epidemic response interventions including vaccinations, to compose and model epidemic scenarios.
 
-_epidemics_ is still being actively developed, with major changes planned for the near future. This release is aimed at supporting the reproducibility of projects that used _epidemics_ which would be subject to breaking changes due to planned package development.
 The sections below describe the contents of this release.
 
 ## Model structures
@@ -20,7 +26,8 @@ This release of _epidemics_ includes four model structures supporting a range of
 
 1. "Default" model: A deterministic SEIR-V model allowing heterogeneity in social contacts between demographic groups, with optional, single-dose non-leaky vaccination;
 
-2. "Vacamole" model: A deterministic SEI-HRD-V2 implementation of a model allowing heterogeneity in social contacts between demographic groups, with a two-dose leaky vaccination, supporting different infection trajectories through the infectious and hospitalised (H) compartments for doubly vaccinated individuals, which tracks deaths (D), and which was initially developed by the Dutch public health agency RIVM for vaccine impact modelling during the Covid-19 pandemic, and published as Ainslie et al. 2022 <https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090>;
+2. "Vacamole" model: A deterministic SEI-HRD-V2 implementation of a model allowing heterogeneity in social contacts between demographic groups, with two-dose leaky vaccination (V2), supporting different infection trajectories through the infectious and hospitalised (H) compartments for doubly vaccinated individuals, which tracks deaths (D), and which was initially developed by the Dutch public health agency RIVM for vaccine impact modelling during the Covid-19 pandemic, and published as Ainslie et al. 2022 <https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090>;
+
 
 3. "Diphtheria" model: A deterministic SEIHR model tracking outcomes for different demographic groups, but not including heterogeneity in social contacts, adapted from Finger et al. 2019 <https://doi.org/10.1186/s12916-019-1288-7> and intended for application to disease outbreaks in a humanitarian camp setting;
 
