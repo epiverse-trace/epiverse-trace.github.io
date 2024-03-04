@@ -365,6 +365,107 @@ V1.1.0.”</span> February 28, 2024. <a href="https://epiverse-trace.github.io/p
   <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>epidemics v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/epidemics_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We would like to announce the realease on GitHub of version 0.1.0 of <em>epidemics</em>.</p>
+<p>This release is aimed at supporting the reproducibility of <a href="https://gaza-projections.org/">analyses in this report</a>, which would be subject to breaking changes due to planned package development.</p>
+<p>Please note that this version has not been released to CRAN. <em>epidemics</em> is still being actively developed, with major changes planned for the near future, which will soon supersede this version.</p>
+<p><em>epidemics</em> v0.1.0 can be installed using the {pak} package from GitHub using <code>pak::pak("epiverse-trace/epidemics@v0.1.0")</code>.</p>
+<p>Here is an automatically generated summary of the changes in this version.</p>
+<p>This is an initial GitHub release of <em>epidemics</em>, an R package that ships a library of compartmental epidemic model structures that can be used, along with supplied classes that help define population characteristics and epidemic response interventions including vaccinations, to compose and model epidemic scenarios.</p>
+<p>The sections below describe the contents of this release.</p>
+<section id="model-structures" class="level2">
+<h2 class="anchored" data-anchor-id="model-structures">Model structures</h2>
+<p>This release of <em>epidemics</em> includes four model structures supporting a range of composable elements to modify epidemic trajectories.</p>
+<ol type="1">
+<li><p>“Default” model: A deterministic SEIR-V model allowing heterogeneity in social contacts between demographic groups, with optional, single-dose non-leaky vaccination;</p></li>
+<li><p>“Vacamole” model: A deterministic SEI-HRD-V2 implementation of a model allowing heterogeneity in social contacts between demographic groups, with two-dose leaky vaccination (V2), supporting different infection trajectories through the infectious and hospitalised (H) compartments for doubly vaccinated individuals, which tracks deaths (D), and which was initially developed by the Dutch public health agency RIVM for vaccine impact modelling during the Covid-19 pandemic, and published as Ainslie et al.&nbsp;2022 <a href="https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090" class="uri">https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090</a>;</p></li>
+<li><p>“Diphtheria” model: A deterministic SEIHR model tracking outcomes for different demographic groups, but not including heterogeneity in social contacts, adapted from Finger et al.&nbsp;2019 <a href="https://doi.org/10.1186/s12916-019-1288-7" class="uri">https://doi.org/10.1186/s12916-019-1288-7</a> and intended for application to disease outbreaks in a humanitarian camp setting;</p></li>
+<li><p>“Ebola” model: A discrete time stochastic SEIHFR model suitable for modelling Ebola virus disease and other haemorrhagic fevers, and which allows varying the efficacy of isolation in a hospital setting (H), and allows modelling transmission in a funeral context (F), as adapted from a consensus Ebola virus disease model in Li et al.&nbsp;2019 <a href="https://doi.org/10.1098/rspb.2019.0774" class="uri">https://doi.org/10.1098/rspb.2019.0774</a> and using simulation methods from Getz and Dougherty 2018 <a href="https://doi.org/10.1080/17513758.2017.1401677" class="uri">https://doi.org/10.1080/17513758.2017.1401677</a>.</p></li>
+</ol>
+</section>
+<section id="solving-ode-systems-using-boost-odeint" class="level2">
+<h2 class="anchored" data-anchor-id="solving-ode-systems-using-boost-odeint">Solving ODE systems using Boost <em>odeint</em></h2>
+<p><em>epidemics</em> uses Boost’s <em>odeint</em> <a href="https://www.boost.org/doc/libs/1_84_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html" class="uri">https://www.boost.org/doc/libs/1_84_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html</a> to treat the deterministic models’ ordinary differential equations (ODEs) as initial value problems and solve them.</p>
+<p>Model ODEs are defined as <code>structs</code> with operators in the package headers, and exposed to R as internal Rcpp functions. The ‘default’, ‘Vacamole’, and ‘diphtheria’ models are ODE models defined in this way. This is intended to help reduce overheads associated with passing ODE systems written in R back and forth from a solver (such as those provided by {deSolve}), and is an easier way to define feature-rich models than writing C code for solvers provided by {deSolve} that accept compiled code.</p>
+<p><em>epidemics</em> headers include tools for handling the C++ representations of R objects used in the package (see below), and can be imported by other Rcpp packages.</p>
+<p>The ‘default’ and ‘Vacamole’ models have equivalent R-only implementations as well which use the {deSolve} package; these are intended to be made unavailable in future releases.</p>
+</section>
+<section id="composable-elements-as-classes" class="level2">
+<h2 class="anchored" data-anchor-id="composable-elements-as-classes">Composable elements as classes</h2>
+<p><em>epidemics</em> provides classes that help to organise the components of an epidemic scenario model.</p>
+<ol type="1">
+<li><p><code>&lt;population&gt;</code>: An S3 class to store population characteristics including the size of demographic groups, a social contacts matrix, and initial conditions for a model;</p></li>
+<li><p><code>&lt;intervention&gt;</code>: An S3 abstract class and super-class that allows the definition of events that modify the epidemic trajectory:</p>
+<ol type="a">
+<li><p><code>&lt;rate_intervention&gt;</code>: A sub-class of <code>&lt;intervention&gt;</code> that allows the reduction of transition rates between model compartments to simulate the effect of policy interventions over a specific period;</p></li>
+<li><p><code>&lt;contacts_intervention&gt;</code>: A sub-class of <code>&lt;intervention&gt;</code> that allows the reduction of social contacts to simulate the effect of policy interventions over a specific period;</p></li>
+</ol></li>
+<li><p><code>&lt;vaccination&gt;</code>: An S3 class that holds the intervals and group-specific rates at which individuals transition into the ‘vaccinated’ compartment(s) of a model, if available;</p></li>
+</ol>
+</section>
+<section id="other-composable-elements" class="level2">
+<h2 class="anchored" data-anchor-id="other-composable-elements">Other composable elements</h2>
+<p><em>epidemics</em> allows models to include elements that affect an epidemic trajectory, but which are not custom classes.</p>
+<ol type="1">
+<li><p>Time-dependence: All models can be passed a list of functions with two arguments, <code>time</code> and <code>x</code> which are expected to return <code>x</code> as a function of <code>time</code>, and which may be used to model the effect of seasonality in model parameters;</p></li>
+<li><p>Population changes: Applicable only to the diphtheria model, a two element list of <code>time</code> and <code>values</code>, which allow the definition of changes to the number of susceptible individuals in the model, and which may be used to model influxes and evacuations of individuals from humanitarian camps.</p></li>
+</ol>
+</section>
+<section id="output-processing-functions" class="level2">
+<h2 class="anchored" data-anchor-id="output-processing-functions">Output processing functions</h2>
+<p><em>epidemics</em> provides functions to help process the output of an epidemic model run, to calculate the size of the epidemic in each demographic group at any stage (<code>epidemic_size()</code>), and to calculate the number of new infections in each demographic group at each timepoint in the model (<code>new_infections()</code>).</p>
+</section>
+<section id="usage-vignettes" class="level2">
+<h2 class="anchored" data-anchor-id="usage-vignettes">Usage vignettes</h2>
+<p><em>epidemics</em> includes a range of usage vignettes that demonstrate how to:</p>
+<ol type="1">
+<li><p>Get started with the package;</p></li>
+<li><p>Get started with modelling interventions on social contacts to control outbreaks;</p></li>
+<li><p>Model overlapping and sequential interventions on social contacts;</p></li>
+<li><p>Model interventions that modify transition rates between model compartments;</p></li>
+<li><p>Get started with modelling a vaccination campaign;</p></li>
+<li><p>Model time-dependence and seasonality in disease transmission dynamics;</p></li>
+<li><p>Generate and model uncertainty in model parameters;</p></li>
+<li><p>Reduce the number of parameters required for final size estimation;</p></li>
+<li><p>Use the ‘Vacamole’ model for scenarios of leaky vaccination and vaccine impact on hospitalisation;</p></li>
+<li><p>Use the ‘Ebola’ model for scenarios of responses to an Ebola virus disease outbreak;</p></li>
+<li><p>Use the ‘diphtheria’ model for scenarios of outbreaks in a humanitarian camp setting.</p></li>
+</ol>
+</section>
+<section id="miscellaneous" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h2>
+<ol type="1">
+<li><p>Workflows to render the vignettes and README as a website;</p></li>
+<li><p>Test code coverage of 93%.</p></li>
+</ol>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Epidemics V0.1.0},
+  date = {2024-02-27},
+  url = {https://epiverse-trace.github.io/posts/epidemics_v0.1.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Epidemics
+V0.1.0.”</span> February 27, 2024. <a href="https://epiverse-trace.github.io/posts/epidemics_v0.1.0">https://epiverse-trace.github.io/posts/epidemics_v0.1.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/epidemics_v0.1.0/</guid>
+  <pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>simulist v0.2.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
   <link>https://epiverse-trace.github.io/posts/simulist_v0.2.0/</link>
@@ -6402,7 +6503,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-18266"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-18266").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-11499"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-11499").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

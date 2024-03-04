@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2024-02-27">
 
-<title>Epiverse-TRACE developer space – Learn</title>
+<title>Epiverse-TRACE developer space – epidemics v0.1.0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./hexlogo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../hexlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
 
 <script type="text/javascript">
@@ -108,52 +79,25 @@ gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Epiverse-TRACE developer space" href="learn.xml" data-external="1"><meta property="og:title" content="Epiverse-TRACE developer space - Learn">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Epiverse-TRACE developer space - epidemics v0.1.0">
+<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - Learn">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - epidemics v0.1.0">
+<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE developer space</span>
     </a>
   </div>
@@ -168,7 +112,7 @@ window.Quarto = {
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./get-involved.html"> 
+    <a class="nav-link" href="../../get-involved.html"> 
 <span class="menu-text">Get involved</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -177,29 +121,29 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-blog">    
         <li>
-    <a class="dropdown-item" href="./blog.html#category=R">
+    <a class="dropdown-item" href="../../blog.html#category=R">
  <span class="dropdown-text">Articles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./blog.html#category=new-release">
+    <a class="dropdown-item" href="../../blog.html#category=new-release">
  <span class="dropdown-text">Release notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./blog.html">
+    <a class="dropdown-item" href="../../blog.html">
  <span class="dropdown-text">All</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
+    <a class="nav-link" href="../../presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./learn.html" aria-current="page"> 
+    <a class="nav-link" href="../../learn.html"> 
 <span class="menu-text">Learn</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./people.html"> 
+    <a class="nav-link" href="../../people.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -214,89 +158,133 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Learn</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">epidemics v0.1.0</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">new-release</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>The Epiverse-TRACE development team </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 27, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="data science">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="git">git <span class="quarto-category-count">(1)</span></div><div class="category" data-category="github">github <span class="quarto-category-count">(1)</span></div><div class="category" data-category="next trainings">next trainings <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rstudio">rstudio <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>We would like to announce the realease on GitHub of version 0.1.0 of <em>epidemics</em>.</p>
+<p>This release is aimed at supporting the reproducibility of <a href="https://gaza-projections.org/">analyses in this report</a>, which would be subject to breaking changes due to planned package development.</p>
+<p>Please note that this version has not been released to CRAN. <em>epidemics</em> is still being actively developed, with major changes planned for the near future, which will soon supersede this version.</p>
+<p><em>epidemics</em> v0.1.0 can be installed using the {pak} package from GitHub using <code>pak::pak("epiverse-trace/epidemics@v0.1.0")</code>.</p>
+<p>Here is an automatically generated summary of the changes in this version.</p>
+<p>This is an initial GitHub release of <em>epidemics</em>, an R package that ships a library of compartmental epidemic model structures that can be used, along with supplied classes that help define population characteristics and epidemic response interventions including vaccinations, to compose and model epidemic scenarios.</p>
+<p>The sections below describe the contents of this release.</p>
+<section id="model-structures" class="level2">
+<h2 class="anchored" data-anchor-id="model-structures">Model structures</h2>
+<p>This release of <em>epidemics</em> includes four model structures supporting a range of composable elements to modify epidemic trajectories.</p>
+<ol type="1">
+<li><p>“Default” model: A deterministic SEIR-V model allowing heterogeneity in social contacts between demographic groups, with optional, single-dose non-leaky vaccination;</p></li>
+<li><p>“Vacamole” model: A deterministic SEI-HRD-V2 implementation of a model allowing heterogeneity in social contacts between demographic groups, with two-dose leaky vaccination (V2), supporting different infection trajectories through the infectious and hospitalised (H) compartments for doubly vaccinated individuals, which tracks deaths (D), and which was initially developed by the Dutch public health agency RIVM for vaccine impact modelling during the Covid-19 pandemic, and published as Ainslie et al.&nbsp;2022 <a href="https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090" class="uri">https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090</a>;</p></li>
+<li><p>“Diphtheria” model: A deterministic SEIHR model tracking outcomes for different demographic groups, but not including heterogeneity in social contacts, adapted from Finger et al.&nbsp;2019 <a href="https://doi.org/10.1186/s12916-019-1288-7" class="uri">https://doi.org/10.1186/s12916-019-1288-7</a> and intended for application to disease outbreaks in a humanitarian camp setting;</p></li>
+<li><p>“Ebola” model: A discrete time stochastic SEIHFR model suitable for modelling Ebola virus disease and other haemorrhagic fevers, and which allows varying the efficacy of isolation in a hospital setting (H), and allows modelling transmission in a funeral context (F), as adapted from a consensus Ebola virus disease model in Li et al.&nbsp;2019 <a href="https://doi.org/10.1098/rspb.2019.0774" class="uri">https://doi.org/10.1098/rspb.2019.0774</a> and using simulation methods from Getz and Dougherty 2018 <a href="https://doi.org/10.1080/17513758.2017.1401677" class="uri">https://doi.org/10.1080/17513758.2017.1401677</a>.</p></li>
+</ol>
+</section>
+<section id="solving-ode-systems-using-boost-odeint" class="level2">
+<h2 class="anchored" data-anchor-id="solving-ode-systems-using-boost-odeint">Solving ODE systems using Boost <em>odeint</em></h2>
+<p><em>epidemics</em> uses Boost’s <em>odeint</em> <a href="https://www.boost.org/doc/libs/1_84_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html" class="uri">https://www.boost.org/doc/libs/1_84_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html</a> to treat the deterministic models’ ordinary differential equations (ODEs) as initial value problems and solve them.</p>
+<p>Model ODEs are defined as <code>structs</code> with operators in the package headers, and exposed to R as internal Rcpp functions. The ‘default’, ‘Vacamole’, and ‘diphtheria’ models are ODE models defined in this way. This is intended to help reduce overheads associated with passing ODE systems written in R back and forth from a solver (such as those provided by {deSolve}), and is an easier way to define feature-rich models than writing C code for solvers provided by {deSolve} that accept compiled code.</p>
+<p><em>epidemics</em> headers include tools for handling the C++ representations of R objects used in the package (see below), and can be imported by other Rcpp packages.</p>
+<p>The ‘default’ and ‘Vacamole’ models have equivalent R-only implementations as well which use the {deSolve} package; these are intended to be made unavailable in future releases.</p>
+</section>
+<section id="composable-elements-as-classes" class="level2">
+<h2 class="anchored" data-anchor-id="composable-elements-as-classes">Composable elements as classes</h2>
+<p><em>epidemics</em> provides classes that help to organise the components of an epidemic scenario model.</p>
+<ol type="1">
+<li><p><code>&lt;population&gt;</code>: An S3 class to store population characteristics including the size of demographic groups, a social contacts matrix, and initial conditions for a model;</p></li>
+<li><p><code>&lt;intervention&gt;</code>: An S3 abstract class and super-class that allows the definition of events that modify the epidemic trajectory:</p>
+<ol type="a">
+<li><p><code>&lt;rate_intervention&gt;</code>: A sub-class of <code>&lt;intervention&gt;</code> that allows the reduction of transition rates between model compartments to simulate the effect of policy interventions over a specific period;</p></li>
+<li><p><code>&lt;contacts_intervention&gt;</code>: A sub-class of <code>&lt;intervention&gt;</code> that allows the reduction of social contacts to simulate the effect of policy interventions over a specific period;</p></li>
+</ol></li>
+<li><p><code>&lt;vaccination&gt;</code>: An S3 class that holds the intervals and group-specific rates at which individuals transition into the ‘vaccinated’ compartment(s) of a model, if available;</p></li>
+</ol>
+</section>
+<section id="other-composable-elements" class="level2">
+<h2 class="anchored" data-anchor-id="other-composable-elements">Other composable elements</h2>
+<p><em>epidemics</em> allows models to include elements that affect an epidemic trajectory, but which are not custom classes.</p>
+<ol type="1">
+<li><p>Time-dependence: All models can be passed a list of functions with two arguments, <code>time</code> and <code>x</code> which are expected to return <code>x</code> as a function of <code>time</code>, and which may be used to model the effect of seasonality in model parameters;</p></li>
+<li><p>Population changes: Applicable only to the diphtheria model, a two element list of <code>time</code> and <code>values</code>, which allow the definition of changes to the number of susceptible individuals in the model, and which may be used to model influxes and evacuations of individuals from humanitarian camps.</p></li>
+</ol>
+</section>
+<section id="output-processing-functions" class="level2">
+<h2 class="anchored" data-anchor-id="output-processing-functions">Output processing functions</h2>
+<p><em>epidemics</em> provides functions to help process the output of an epidemic model run, to calculate the size of the epidemic in each demographic group at any stage (<code>epidemic_size()</code>), and to calculate the number of new infections in each demographic group at each timepoint in the model (<code>new_infections()</code>).</p>
+</section>
+<section id="usage-vignettes" class="level2">
+<h2 class="anchored" data-anchor-id="usage-vignettes">Usage vignettes</h2>
+<p><em>epidemics</em> includes a range of usage vignettes that demonstrate how to:</p>
+<ol type="1">
+<li><p>Get started with the package;</p></li>
+<li><p>Get started with modelling interventions on social contacts to control outbreaks;</p></li>
+<li><p>Model overlapping and sequential interventions on social contacts;</p></li>
+<li><p>Model interventions that modify transition rates between model compartments;</p></li>
+<li><p>Get started with modelling a vaccination campaign;</p></li>
+<li><p>Model time-dependence and seasonality in disease transmission dynamics;</p></li>
+<li><p>Generate and model uncertainty in model parameters;</p></li>
+<li><p>Reduce the number of parameters required for final size estimation;</p></li>
+<li><p>Use the ‘Vacamole’ model for scenarios of leaky vaccination and vaccine impact on hospitalisation;</p></li>
+<li><p>Use the ‘Ebola’ model for scenarios of responses to an Ebola virus disease outbreak;</p></li>
+<li><p>Use the ‘diphtheria’ model for scenarios of outbreaks in a humanitarian camp setting.</p></li>
+</ol>
+</section>
+<section id="miscellaneous" class="level2">
+<h2 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h2>
+<ol type="1">
+<li><p>Workflows to render the vignettes and README as a website;</p></li>
+<li><p>Test code coverage of 93%.</p></li>
+</ol>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="data science,git,github,rstudio,next trainings" data-listing-date-sort="1670198400000" data-listing-file-modified-sort="1709555736807" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1321">
-<div class="thumbnail">
-<p><a href="./learn/git-training-01/index.html" class="no-external"></a></p><a href="./learn/git-training-01/index.html" class="no-external">
-<p><img src="./learn/git-training-01/priscilla-du-preez-CoqJGsFVJtM-unsplash.jpg" class="thumbnail-image"></p>
-</a><p><a href="./learn/git-training-01/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./learn/git-training-01/index.html" class="no-external">Introductory training on Git and GitHub basics using Rstudio</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./learn/git-training-01/index.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('data science'); return false;">
-data science
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('git'); return false;">
-git
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('github'); return false;">
-github
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('rstudio'); return false;">
-rstudio
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('next trainings'); return false;">
-next trainings
-</div>
-</div>
-<div class="listing-description">
-<a href="./learn/git-training-01/index.html" class="no-external">If you want to participate in the next version of this training, please complete this expression of interest form.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./learn/git-training-01/index.html" class="no-external">
-<div class="listing-date">
-Dec 5, 2022
-</div>
-<div class="listing-author">
-Andree Valle-Campos
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace development team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Epidemics V0.1.0},
+  date = {2024-02-27},
+  url = {https://epiverse-trace.github.io/posts/epidemics_v0.1.0},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace development team2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2024. <span>“Epidemics
+V0.1.0.”</span> February 27, 2024. <a href="https://epiverse-trace.github.io/posts/epidemics_v0.1.0">https://epiverse-trace.github.io/posts/epidemics_v0.1.0</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
