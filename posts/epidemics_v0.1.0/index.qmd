@@ -28,7 +28,6 @@ This release of _epidemics_ includes four model structures supporting a range of
 
 2. "Vacamole" model: A deterministic SEI-HRD-V2 implementation of a model allowing heterogeneity in social contacts between demographic groups, with two-dose leaky vaccination (V2), supporting different infection trajectories through the infectious and hospitalised (H) compartments for doubly vaccinated individuals, which tracks deaths (D), and which was initially developed by the Dutch public health agency RIVM for vaccine impact modelling during the Covid-19 pandemic, and published as Ainslie et al. 2022 <https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090>;
 
-
 3. "Diphtheria" model: A deterministic SEIHR model tracking outcomes for different demographic groups, but not including heterogeneity in social contacts, adapted from Finger et al. 2019 <https://doi.org/10.1186/s12916-019-1288-7> and intended for application to disease outbreaks in a humanitarian camp setting;
 
 4. "Ebola" model: A discrete time stochastic SEIHFR model suitable for modelling Ebola virus disease and other haemorrhagic fevers, and which allows varying the efficacy of isolation in a hospital setting (H), and allows modelling transmission in a funeral context (F), as adapted from a consensus Ebola virus disease model in Li et al. 2019 <https://doi.org/10.1098/rspb.2019.0774> and using simulation methods from Getz and Dougherty 2018 <https://doi.org/10.1080/17513758.2017.1401677>.
@@ -100,4 +99,3 @@ _epidemics_ includes a range of usage vignettes that demonstrate how to:
 1. Workflows to render the vignettes and README as a website;
 
 2. Test code coverage of 93%.
-
