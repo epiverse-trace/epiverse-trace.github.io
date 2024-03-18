@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.22</generator>
+<generator>quarto-1.5.25</generator>
 <lastBuildDate>Sat, 03 Feb 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Interoperability strategy for the Epiverse</title>
@@ -355,7 +355,7 @@ Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{m. azam2023,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{m._azam2023,
   author = {M. Azam, James},
   title = {Superseding {R} Packages - Lessons Learned from Transitioning
     to \{Epichains\} from \{Bpmodels\}},
@@ -363,7 +363,7 @@ Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
   url = {https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-m. azam2023" class="csl-entry quarto-appendix-citeas">
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-m._azam2023" class="csl-entry quarto-appendix-citeas">
 M. Azam, James. 2023. <span>“Superseding R Packages - Lessons Learned
 from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
 2023. <a href="https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023">https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023</a>.
