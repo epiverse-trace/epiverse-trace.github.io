@@ -22,6 +22,7 @@ website:
             url: "/blog.html"
       - presentations.qmd
       - learn.qmd
+      - resources.qmd
       - text: About
         href: people.qmd
     tools:
