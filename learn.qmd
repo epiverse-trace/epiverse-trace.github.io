@@ -6,7 +6,7 @@ format:
 
 # Learning materials
 
-We organise our training materials in two curricula. The **Outbreak Analytics curriculum** aims to facilitate finding, choosing, and using R packages for outbreak analytics tasks to inform decision-making. The Research **Sofware curriculum** aims to extend our R toolset to produce open, reproducible and sustainable data analysis projects following good Research Sofware practices.
+We organise our training materials in two curricula. The **Outbreak Analytics curriculum** aims to facilitate finding, choosing, and using R packages for outbreak analytics tasks to inform decision-making. The **Research Sofware curriculum** aims to extend our R toolset to produce open, reproducible and sustainable data analysis projects following good Research Sofware practices.
 
 We address these goals with an e-Epi training kit, Tutorials, How-to guides, and Case studies:
 
