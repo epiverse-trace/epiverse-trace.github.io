@@ -1,13 +1,73 @@
 ---
-title: "Learn"
-listing:
-  contents: learn
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-  feed: true
-page-layout: full
-title-block-banner: true
+format:
+  html:
+    toc: true
 ---
+
+# Learning materials
+
+We organise our training materials in two curricula. The **Outbreak Analytics curriculum** aims to facilitate finding, choosing, and using R packages for outbreak analytics tasks to inform decision-making. The **Research Sofware curriculum** aims to extend our R toolset to produce open, reproducible and sustainable data analysis projects following good Research Sofware practices.
+
+We address these goals with an e-Epi training kit, Tutorials, Case studies, and How-to guides:
+
+- The **e-Epi training kit** is an e-learning strategy for progressive
+  and flexible learning. It includes an introductory e-course in data
+  science for public health and infectious disease modelling in Latin
+  America and the Caribbean with a gender perspective. Initially only
+  with content in Spanish. (coming soon)
+- **Tutorials** will help you learn how to complete an outbreak analytic
+  task following a practical step-by-step guide using R packages to
+  start your own journey.
+- **Case studies** are real-life retrospective accounts of real projects
+  delivered by users in the field. (coming soon)
+- **How-to guides** are question-specific recipe-like scripts to show
+  how multiple R packages can interoperate to get a solution.
+
+Please note the development stage of the learning materials. A "pre-alpha" tutorial is still being constructed. An "alpha" tutorial is being taught by the original authors but has not been fully tested.
+
+## Outbreak Analytics Curriculum
+
+These workshops focus on working with outbreak data using peer-reviewed interoperable open-source software like R packages to help the decision-making process in public health.
+
+### e-Epi training kit en Español
+
+El **e-Epi-training kit** es una estrategia para el aprendizaje en línea que permite un aprendizaje progresivo y flexible. Este kit incluye el curso virtual en ciencia de datos en salud pública y modelamiento de enfermedades infecciosas, el cual está dirigido a América Latina y el Caribe y cuenta con un enfoque de género. [Leer más detalles sobre la estrategia en línea](https://epiverse-trace.github.io/epi-training-kit/).
+
+### Tutoriales en Español
+
+| Tutorial                                           | Sitio                                                                                                                                                    | Repositorio                                                                                        | Agenda para instructoras/es                                                                                                   | Fase de desarrollo                                                                                                                                                   |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Análisis de Brotes y Modelamiento en Salud Pública | [{{< fa regular window-maximize title="Website">}}](https://epiverse-trace.github.io/epimodelac/) | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/epimodelac/) | [{{< fa solid person-chalkboard title="Instructor view">}}](https://epiverse-trace.github.io/epimodelac/instructor/index.html) | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
+
+### Tutorials in English
+
+| Tutorial                                                         | Site                                                                                                    | Repository                                                                                              | Instructor Schedule                                                                                                                 | Development stage                                                                                                                                                    |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Reading and cleaning data for outbreak analytics with R          | [{{< fa regular window-maximize title="Website">}}](https://epiverse-trace.github.io/tutorials-early/)  | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/tutorials-early)  | [{{< fa solid person-chalkboard title="Instructor view">}}](https://epiverse-trace.github.io/tutorials-early/instructor/index.html)  | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
+| Real-time analysis and forecasting for outbreak analytics with R | [{{< fa regular window-maximize title="Website">}}](https://epiverse-trace.github.io/tutorials-middle/) | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/tutorials-middle) | [{{< fa solid person-chalkboard title="Instructor view">}}](https://epiverse-trace.github.io/tutorials-middle/instructor/index.html) | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
+| Scenario modelling for outbreak analytics with R                 | [{{< fa regular window-maximize title="Website">}}](https://epiverse-trace.github.io/tutorials-late/)   | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/tutorials-late)   | [{{< fa solid person-chalkboard title="Instructor view">}}](https://epiverse-trace.github.io/tutorials-late/instructor/index.html)   | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
+
+### How-to guides in English
+
+| Material                                    | Site                                                                                          | Repository                                                                                   | Instructor schedule | Development stage                                                                                                                                                    |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| How-to guides for Outbreak Analytics with R | [{{< fa regular window-maximize title="Website" >}}](https://epiverse-trace.github.io/howto/) | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/howto) |                     | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
+
+## Research Software Curriculum
+
+The focus of these workshops is on best practices for your outbreak analytics R projects and data. This uses command line utilities and complementary R packages to improve the openness, reproducibility, and sustainability of your analysis project.
+
+| Tutorial                                       | Site                                                                                                        | Repository                                                                                                 | Instructor schedule                                                                                                                    | Development stage                                                                                                                                                    |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Version Control with Git in Rstudio            | [{{< fa regular window-maximize title="Website" >}}](https://epiverse-trace.github.io/git-rstudio-basics/)  | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/git-rstudio-basics/) | [{{< fa solid person-chalkboard title="Instructor view">}}](https://epiverse-trace.github.io/git-rstudio-basics/instructor/index.html)  | [![Static Badge](https://img.shields.io/badge/alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development)     |
+| Improve your code for Epidemic Analysis with R | [{{< fa regular window-maximize title="Website" >}}](https://epiverse-trace.github.io/research-compendium/) | [{{< fa brands github title="GitHub Repository" >}}](https://github.com/epiverse-trace/research-compendium) | [{{< fa solid person-chalkboard title="Instructor view">}}](https://epiverse-trace.github.io/research-compendium/instructor/index.html) | [![Static Badge](https://img.shields.io/badge/pre-alpha-991b1b)](https://carpentries.github.io/lesson-development-training/lesson-design.html#iterative-development) |
+
+Para **Tutoriales en Español** recomendamos la [curricula del Software Carpentry en Español](https://software-carpentry.org/lessons/) con tutoriales sobre La terminal de Unix, Control de versiones con R, y R para análisis cientificos reproducible
+
+## Your questions
+
+Are you interested in participating in any of our workshops? Sign up for [our mailing list](https://data.org/initiatives/epiverse/our-community/), or follow us on Twitter at [Epiverse_TRACE](https://twitter.com/Epiverse_TRACE). You can also subscribe to [our blog feed](https://epiverse-trace.github.io/blog.html) and [take a look at our events calendar](https://view.monday.com/1267767805-fb40bb51c837164bf95532907829c3f8?r=euc1).
+
+Are you interested in teaching these materials? For this and more questions about broader training topics, [start a discussion](https://github.com/orgs/epiverse-trace/discussions/new/choose).
+
+For questions about a specific learning material, go to its repository to [create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue).

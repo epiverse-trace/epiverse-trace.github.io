@@ -21,7 +21,8 @@ website:
           - text: All
             url: "/blog.html"
       - presentations.qmd
-      - learn.qmd
+      - text: Learn
+        href: learn.qmd
       - text: About
         href: people.qmd
     tools:
