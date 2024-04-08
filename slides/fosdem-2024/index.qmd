@@ -1,5 +1,5 @@
 ---
-title: "Interoperability strategy for the Epiverse"
+title: "Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem"
 author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
