@@ -37,7 +37,6 @@ jobs:
                 committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
                 author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
                 branch: update-contributors
-                branch-suffix: timestamp
                 add-paths: _data
                 title: Automated update of contributor  data
                 reviewers: chartgerink
