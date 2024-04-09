@@ -58,7 +58,7 @@ df_list <- lapply(included_handles, function(x) {
   user <- gh("GET /users/:username", username = x)
   data.frame(
     logins = user$login,
-    avatar = user$avatar_url,
+    avatar = user$avatar_url
   )
 })
 
