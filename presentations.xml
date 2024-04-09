@@ -12,7 +12,7 @@
 <generator>quarto-1.5.28</generator>
 <lastBuildDate>Sat, 03 Feb 2024 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>Interoperability strategy for the Epiverse</title>
+  <title>Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem</title>
   <dc:creator>Hugo Gruson</dc:creator>
   <link>https://epiverse-trace.github.io/slides/fosdem-2024/</link>
   <description><![CDATA[ 
@@ -28,14 +28,16 @@
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
   author = {Gruson, Hugo},
-  title = {Interoperability Strategy for the {Epiverse}},
+  title = {Epiverse-TRACE @ {FOSDEM} 2024: {From} Disconnected Elements
+    to a Harmonious Ecosystem},
   date = {2024-02-03},
   url = {https://epiverse-trace.github.io/slides/fosdem-2024},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
-Gruson, Hugo. 2024. <span>“Interoperability Strategy for the
-Epiverse.”</span> February 3, 2024. <a href="https://epiverse-trace.github.io/slides/fosdem-2024">https://epiverse-trace.github.io/slides/fosdem-2024</a>.
+Gruson, Hugo. 2024. <span>“Epiverse-TRACE @ FOSDEM 2024: From
+Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
+2024. <a href="https://epiverse-trace.github.io/slides/fosdem-2024">https://epiverse-trace.github.io/slides/fosdem-2024</a>.
 </div></div></section></div> ]]></description>
   <category>interoperability</category>
   <category>ecosystem</category>
