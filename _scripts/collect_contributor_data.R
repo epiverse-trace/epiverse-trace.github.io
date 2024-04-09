@@ -43,7 +43,7 @@ repos <- lapply(repos, function(x) {
     # but keep an eye on https://github.com/ropenscilabs/allcontributors/issues/36 for a potentially
     # better solution.
     Sys.sleep(5)
-    return(one_repo)
+    return(one_repo[, c("logins", "avatar")])
   }
 })
 
