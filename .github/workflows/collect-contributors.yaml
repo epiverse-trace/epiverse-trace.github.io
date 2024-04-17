@@ -29,10 +29,9 @@ jobs:
             - name: Collect contributor data
               run: Rscript _scripts/collect_contributor_data.R
             - uses: EndBug/add-and-commit@v9
-                with:
-                  author_name: epiverse-trace-bot
-                  author_email: epiverse-trace-bot@users.noreply.github.com
-                  message: "Update `_data/epiverse_contributors.csv`"
-                  add: '_data/epiverse_contributors.csv'
-                  token: ${{ secrets.SUDO_GITHUB_TOKEN }}
-                  
+              with:
+                author_name: epiverse-trace-bot
+                author_email: epiverse-trace-bot@users.noreply.github.com
+                message: "Update `_data/epiverse_contributors.csv`"
+                add: '_data/epiverse_contributors.csv'
+                token: ${{ secrets.SUDO_GITHUB_TOKEN }}
