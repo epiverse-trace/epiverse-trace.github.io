@@ -28,16 +28,11 @@ jobs:
 
             - name: Collect contributor data
               run: Rscript _scripts/collect_contributor_data.R
-
-            - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
-              id: cpr
-              with:
-                token: ${{ secrets.GITHUB_TOKEN }}
-                commit-message: Update `_data/epiverse_contributors.csv`
-                committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
-                author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
-                branch: update-contributors
-                add-paths: _data
-                title: Automated update of contributor  data
-                reviewers: chartgerink
-                delete-branch: true
+            - uses: EndBug/add-and-commit@v9
+                with:
+                  author_name: epiverse-trace-bot
+                  author_email: epiverse-trace-bot@users.noreply.github.com
+                  message: "Update `_data/epiverse_contributors.csv`"
+                  add: '_data/epiverse_contributors.csv'
+                  token: ${{ secrets.SUDO_GITHUB_TOKEN }}
+                  
