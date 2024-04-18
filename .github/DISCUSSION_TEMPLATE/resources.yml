@@ -1,0 +1,48 @@
+title: "<resource title>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Resource Submission
+        
+        Please provide the following details about the resource you are sharing. 
+        
+        Note that duplicate resources may be removed to keep things tidy.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: 'Provide any additional context about the resource. Why is it useful? Who might it benefit?'
+      placeholder: 'This guide is useful for those looking to understand React from scratch.'
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Provide the most direct link to the resource
+      placeholder: 'https://example.com'
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional information
+      description: "Share any additional links or information here."
+      value: |
+        ...
+    validations:
+      required: false
+  - type: checkboxes
+    id: labels
+    attributes:
+      label: 'Labels'
+      description: 'Select appropriate labels for this resource (you can select multiple).'
+      options:
+        - label: 'documentation'
+        - label: 'tools'
+        - label: 'best-practices'
+        - label: 'tutorial'
+        - label: 'other'
+    validations:
+      required: true
