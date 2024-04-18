@@ -48,8 +48,6 @@ repos <- lapply(repos, function(x) {
 })
 
 ctbs <- do.call(rbind, repos)
-# Sum all the repeat contributors across repos
-ctbs$contributions <- ave(ctbs$contributions, ctbs$login, FUN = sum)
 # Remove duplicates
 result <- ctbs[!duplicated(ctbs$logins), ]
 
