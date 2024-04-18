@@ -1,4 +1,5 @@
 title: "<resource title>"
+labels: ["Resource"]
 body:
   - type: markdown
     attributes:
