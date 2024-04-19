@@ -1,0 +1,16 @@
+---
+title: "linelist v1.1.2"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-04-19"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new linelist version v1.1.2.
+Here is an automatically generated summary of the changes in this version.
+
+## Minor change
+
+* Fix URL in CITATION (@Bisaloo, #123).
+* Tests no longer error on warnings on CRAN, to avoid false positives on a 
+platform where we have limited control (@Bisaloo, #123).
