@@ -1,0 +1,15 @@
+---
+title: "linelist v1.1.3"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-04-22"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new linelist version v1.1.3.
+Here is an automatically generated summary of the changes in this version.
+
+## Minor change
+
+* Convert `meta$Date` in CITATION to `Date` before attempting to run `format()` (@Bisaloo, #125)
+
