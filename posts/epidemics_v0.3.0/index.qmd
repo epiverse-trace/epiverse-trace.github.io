@@ -1,0 +1,77 @@
+---
+title: "epidemics v0.3.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-04-23"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new epidemics version v0.3.0.
+Here is an automatically generated summary of the changes in this version.
+
+This is a minor version release of _epidemics_ is the end point of this project that allows [vector inputs to the Ebola model](https://github.com/orgs/epiverse-trace/projects/36) (#211, #212).
+
+## Breaking changes
+
+1. The Ebola model run with a single parameter set and a single set of composable (i.e., functionality before this vignette) now runs 100 replicates of the model by default, and the output returns the additional column name "replicate" (#211).
+
+2. The Ebola model disallows rate interventions on, and time-dependence for, the 'infectiousness rate' and the 'removal rate' as these control the number of epidemiological sub-compartments and cannot be allowed to vary during run time.
+
+1. The default behaviour of `epidemic_size()` is to exclude the 'dead' compartment from epidemic size calculations; this has changed from including it by default, as most models don't have a 'dead' compartment (#212);
+
+## Model functions
+
+1. The Ebola model code has been split into a two-level structure similar to the ODE models. The user facing function `model_ebola()` now handles input checking and some cross-checking, and makes combinations of infection parameter sets and scenarios, and handles output. The internal model function `.model_ebola_internal()` is now called over combinations of parameters and scenario elements (#211).
+
+2. `.model_ebola_internal()` relies on functionality from the {withr} package to preserve the random number seed between parameter set-scenario combinations, and to ensure that each $i$-th replicate of each scenario starts with the same random number stream.
+
+## Model structures
+
+## Classes
+
+1. The `<intervention>` helper functions `.cumulative_rate_intervention()` and `.intervention_on_rates()` have been renamed to include the prefix `.` to indicate they are internal functions (#211).
+
+2. Small updates to `.cross_check_intervention()` to better handle intervention sets where contacts interventions are optional (the Ebola model) (#211).
+
+## Helper functions
+
+1. `.check_prepare_args_ebola()` is a new argument cross-checking and preparation function for the Ebola model (#212).
+
+2. `epidemic_size()` is substantially updated (#212):
+
+   - Added option for `time` which returns epidemic size at a specific time point, overriding the `stage` argument, defaults to `NULL` as the intended use of the function is to return the final size;
+
+   - Added option to return epidemic sizes at multiple stages or time points (`stage` and `time` can be vectors);
+
+   - Added option to simplify the output to a vector, which is `TRUE` by default to keep consistency with previous functionality;
+
+   - Added functionality to handle replicates from the Ebola model;
+
+   - Added tests for new functionality.
+
+3. Added function `.output_to_df_ebola()` to handle output from the Ebola model (#211).
+
+## Documentation
+
+1. Updates to the Ebola model vignette showing new functionality.
+
+2. Updates to the design decisions vignette documenting decisions taken for the Ebola model.
+
+3. Updated sections on handling social contacts data in the 'Getting started' and 'Modelling interventions on social contacts' vignettes, added reference to Wallinga et al. 2006 <https://doi.org/10.1093/aje/kwj317> (#217).
+
+4. Enables auto development mode for the website in `_pkgdown.yml`, and manually specify Bootstrap version 5 (#213).
+
+5. Updates WORDLIST.
+
+6. Updates installation instructions in the Readme; link under 'Contribute' correctly directs to pull requests page (#217).
+
+## Package
+
+1. {withr} moved from Suggests to Imports due to use in seed management.
+
+2. Added @bahadzie as contributor and @jamesmbaazam as reviewer.
+
+3. Updates to the GitHub Actions workflows and linter config file.
+
+4. Updates the license year to 2024 in all files with the year.
+
