@@ -25,15 +25,6 @@ body:
       placeholder: 'https://example.com'
     validations:
       required: true
-  - type: textarea
-    id: extra
-    attributes:
-      label: Additional information
-      description: "Share any additional links or information here."
-      value: |
-        ...
-    validations:
-      required: false
   - type: checkboxes
     id: labels
     attributes:
