@@ -202,6 +202,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
                 <div class="quarto-category">iteration</div>
                 <div class="quarto-category">readability</div>
                 <div class="quarto-category">good practices</div>
+                <div class="quarto-category">tidyverse</div>
               </div>
                   </div>
   </div>
@@ -320,19 +321,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 0.4278542 0.3265237 0.5433079
+[1] 0.7807203 0.2448108 0.7407391
 
 [[2]]
-[1] 0.1559343 0.4797861 0.7725579
+[1] 0.3249898 0.1742138 0.3917644
 
 [[3]]
-[1] 0.5113269 0.5074208 0.6371496
+[1] 0.2876697 0.8835354 0.5606563
 
 [[4]]
-[1] 0.1825518 0.6402405 0.2021850
+[1] 0.08360038 0.37515714 0.43738127
 
 [[5]]
-[1] 0.9030861 0.7609473 0.3594749</code></pre>
+[1] 0.4834298 0.6106350 0.6328951</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># `vapply()` solution ---------------</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(l, <span class="cf">function</span>(e) {</span>
@@ -340,19 +341,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] 0.4278542 0.3265237 0.5433079
+[1] 0.7807203 0.2448108 0.7407391
 
 [[2]]
-[1] 0.1559343 0.4797861 0.7725579
+[1] 0.3249898 0.1742138 0.3917644
 
 [[3]]
-[1] 0.5113269 0.5074208 0.6371496
+[1] 0.2876697 0.8835354 0.5606563
 
 [[4]]
-[1] 0.1825518 0.6402405 0.2021850
+[1] 0.08360038 0.37515714 0.43738127
 
 [[5]]
-[1] 0.9030861 0.7609473 0.3594749</code></pre>
+[1] 0.4834298 0.6106350 0.6328951</code></pre>
 </div>
 </div>
 <p>Moreover, this clarity of intent is not limited to human readers alone; automated static analysis tools can also more effectively identify suboptimal patterns. This can be demonstrated using R most popular static analysis tool: the lintr package, suggesting vectorized alternatives:</p>
