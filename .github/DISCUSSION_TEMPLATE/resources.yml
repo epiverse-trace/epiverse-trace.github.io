@@ -25,16 +25,11 @@ body:
       placeholder: 'https://example.com'
     validations:
       required: true
-  - type: checkboxes
+  - type: textarea
     id: labels
     attributes:
-      label: 'Labels'
-      description: 'Select appropriate labels for this resource (you can select multiple).'
-      options:
-        - label: 'documentation'
-        - label: 'tools'
-        - label: 'best-practices'
-        - label: 'tutorial'
-        - label: 'other'
+      label: 'Suggested labels'
+      description: 'Suggest relevant labels for this resource. These are required for categorization.'
+      placeholder: 'Documentation, Tools, Best Practices, Tutorial, Other'
     validations:
       required: true
