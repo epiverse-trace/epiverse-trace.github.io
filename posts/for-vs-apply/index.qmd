@@ -4,7 +4,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2023-11-02"
-categories: [R, functional programming, iteration, readability, good practices]
+categories: [R, functional programming, iteration, readability, good practices, tidyverse]
 format:
   html: 
     toc: true

@@ -4,7 +4,7 @@ author:
   - name: "Pratik Gupte"
     orcid: "0000-0001-5294-7819"
 date: "2023-06-05"
-categories: [code sharing, R, R package, Rcpp, interoperability]
+categories: [code sharing, R, R package, Rcpp, interoperability, package development]
 format:
   html:
     toc: true
