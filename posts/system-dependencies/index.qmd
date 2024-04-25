@@ -4,7 +4,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2023-09-26"
-categories: [package development, R, R package, continuous integration, system dependens]
+categories: [package development, R, R package, continuous integration, system dependencies]
 format:
   html: 
     toc: true
