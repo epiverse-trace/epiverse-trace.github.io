@@ -1,0 +1,22 @@
+---
+title: "Resources"
+listing:
+  contents: resources
+  sort:
+    - "date desc"
+    - "upvotes asc"
+  type: default
+  categories: true
+  filter-ui: true
+  sort-ui:
+    - date
+    - upvotes
+  template: custom_listing_resources.ejs
+  field-types:
+    upvotes: number
+page-layout: full
+title-block-banner: true
+comments: false
+---
+
+On this page, you can find resources shared on our discussion forum. [You can submit your own](https://github.com/orgs/epiverse-trace/discussions/new?category=resources) too!
