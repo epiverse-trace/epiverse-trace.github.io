@@ -14,13 +14,15 @@ website:
         href: get-involved.qmd
       - text: Blog
         menu:
+          - text: All
+            url: "/blog.html"
           - text: Articles
             url: "/blog.html#category=R"
           - text: Release notes
             url: "/blog.html#category=new-release"
-          - text: All
-            url: "/blog.html"
-      - presentations.qmd
+          - text: Presentations
+            href: presentations.qmd
+      - href: resources.qmd
       - text: Learn
         href: learn.qmd
       - text: About
