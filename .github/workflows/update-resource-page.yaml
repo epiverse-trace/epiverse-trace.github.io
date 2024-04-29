@@ -1,0 +1,31 @@
+name: Update resource page
+
+on:
+    workflow_dispatch:
+    schedule:
+      - cron: '0 8 * * *'
+  
+jobs:
+    run-r-script:
+        runs-on: ubuntu-latest
+        env:
+            GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        permissions:
+            contents: write
+            pull-requests: write
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+              with:
+                # This helps override the branch protection later
+                token: ${{ secrets.SUDO_GITHUB_TOKEN }}
+            - name: Collect resource data
+              run: node _scripts/resource-retrieval-graphql Resources
+            - name: Re-render resource page
+              run: quarto render resource.qmd
+            - uses: EndBug/add-and-commit@v9
+              with:
+                author_name: epiverse-trace-bot
+                author_email: epiverse-trace-bot@users.noreply.github.com
+                message: "Update `./resources/`"
+                add: './resources/'
