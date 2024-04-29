@@ -3,8 +3,8 @@
     <% for (const item of items) { %>
     <div class="quarto-post image-right" <%= metadataAttrs(item) %>>
         <div class="body">
-            <h3 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h3>
-            <div class="listing-subtitle"><a href="<%- item.path %>" class="no-external"><%= item.subtitle %></a></div>
+            <h3 class="no-anchor listing-title"><a href="<%- item.url %>" class="no-external"><%= item.title %></a></h3>
+            <div class="listing-subtitle"><a href="<%- item.url %>" class="no-external"><%= item.subtitle %></a></div>
         </div>
         <div class="metadata">
             <div class="ratings">
