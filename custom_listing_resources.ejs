@@ -1,24 +1,22 @@
 ```{=html}
 <div class="archive list">
     <% for (const item of items) { %>
-
     <div class="quarto-post image-right" <%= metadataAttrs(item) %>>
-       
         <div class="body">
             <h3 class="no-anchor listing-title"><a href="<%- item.path %>" class="no-external"><%= item.title %></a></h3>
             <div class="listing-subtitle"><a href="<%- item.path %>" class="no-external"><%= item.subtitle %></a></div>
-            <span class="ratings">
-                <span class="rating listing-upvotes rating-upvotes-<%= item.upvotes %> ">Upvotes: <%= item.upvotes %></span>
-            </span>
-            <% if (item.categories) { %>
-            <div class="listing-categories">
-                <% for (const category of item.categories) { %>
-            <div class="listing-category" onclick="window.quartoListingCategory('<%=category%>'); return false;"><%= category %></div>
-                <% } %>
-            </div>
-            <% } %>
         </div>
-        <div class="metadata"><a href="<%- item.path %>" class="no-external">
+        <div class="metadata">
+            <div class="ratings">
+                <span class="rating listing-upvotes rating-upvotes-<%= item.upvotes %> ">👍 <%= item.upvotes %></span>
+            </div>
+            <% if (item.categories) { %>
+            <span class="listing-categories">
+                <% for (const category of item.categories) { %>
+            <span class="listing-category" onclick="window.quartoListingCategory('<%=category%>'); return false;"><%= category %></span>
+                <% } %>
+            </span>
+            <% } %>
             <span class="archive-item-date">
                 <span class="listing-date">
                     <%= item.date %>

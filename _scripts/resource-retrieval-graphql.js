@@ -84,8 +84,8 @@ fetchDiscussions(null).then((discussions) => {
     fs.writeFile(
       `resources/${discussion.id}.qmd`,
       `---
-title: "${discussion.title}"
-url: ${discussion.url}
+title: "${discussion.title.replace(/"/g, '')}"
+url: "${discussion.url}"
 date: "${discussion.createdAt.substr(0,10)}"
 author: ${discussion.author}
 categories: [${discussion.labels}]

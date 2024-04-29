@@ -3,8 +3,7 @@ title: "Resources"
 listing:
   contents: resources
   sort:
-    - "date desc"
-    - "upvotes asc"
+    - "upvotes desc"
   type: default
   categories: true
   filter-ui: true
@@ -19,4 +18,4 @@ title-block-banner: true
 comments: false
 ---
 
-On this page, you can find resources shared on our discussion forum. [You can submit your own](https://github.com/orgs/epiverse-trace/discussions/new?category=resources) too!
+On this page, you can find resources shared on our discussion forum. [Submit your own](https://github.com/orgs/epiverse-trace/discussions/new?category=resources) and upvote the ones you like on GtiHub!
