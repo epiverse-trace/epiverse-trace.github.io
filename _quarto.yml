@@ -20,8 +20,8 @@ website:
             url: "/blog.html#category=R"
           - text: Release notes
             url: "/blog.html#category=new-release"
-          - text: Presentations
-            href: presentations.qmd
+      - text: Presentations
+        href: presentations.qmd
       - href: resources.qmd
       - text: Learn
         href: learn.qmd
