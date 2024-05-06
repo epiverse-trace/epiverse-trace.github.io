@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="The Epiverse-TRACE development team">
-<meta name="dcterms.date" content="2023-11-06">
 
-<title>Epiverse-TRACE developer space – bpmodels v0.3.1</title>
+<title>Epiverse-TRACE developer space – Resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../hexlogo.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./hexlogo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-project','listing-website','listing-format','listing-execute','listing-language','listing-comments','listing-title','listing-url','listing-date','listing-author','listing-categories','listing-upvotes','listing-path','listing-outputHref','listing-date-modified','listing-description','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-upvotes-sort'] }],
+      
+      searchColumns: ["listing-project","listing-website","listing-format","listing-execute","listing-language","listing-comments","listing-title","listing-url","listing-date","listing-author","listing-categories","listing-upvotes","listing-path","listing-outputHref","listing-date-modified","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
 
 <script type="text/javascript">
@@ -79,25 +108,54 @@ gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Epiverse-TRACE developer space - bpmodels v0.3.1">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Epiverse-TRACE developer space - Resources">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Epiverse-TRACE developer space - bpmodels v0.3.1">
+<meta name="twitter:title" content="Epiverse-TRACE developer space - Resources">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Epiverse-TRACE developer space</span>
     </a>
   </div>
@@ -112,7 +170,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span class="menu-text">Software</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../get-involved.html"> 
+    <a class="nav-link" href="./get-involved.html"> 
 <span class="menu-text">Get involved</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -121,33 +179,33 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-blog">    
         <li>
-    <a class="dropdown-item" href="../../blog.html">
+    <a class="dropdown-item" href="./blog.html">
  <span class="dropdown-text">All</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../blog.html#category=R">
+    <a class="dropdown-item" href="./blog.html#category=R">
  <span class="dropdown-text">Articles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../../blog.html#category=new-release">
+    <a class="dropdown-item" href="./blog.html#category=new-release">
  <span class="dropdown-text">Release notes</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../../presentations.html"> 
+    <a class="nav-link" href="./presentations.html"> 
 <span class="menu-text">Presentations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../resources.html"> 
+    <a class="nav-link active" href="./resources.html" aria-current="page"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../learn.html"> 
+    <a class="nav-link" href="./learn.html"> 
 <span class="menu-text">Learn</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../people.html"> 
+    <a class="nav-link" href="./people.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -162,73 +220,93 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">bpmodels v0.3.1</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">new-release</div>
-              </div>
-                  </div>
+    <div class="quarto-title column-page-left">
+      <h1 class="title">Resources</h1>
+                      </div>
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>The Epiverse-TRACE development team </p>
-            </div>
-    </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 6, 2023</p>
-      </div>
-    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
 
 
 
 
-<p>We are very excited to announce the release of a new bpmodels version v0.3.1. Here is an automatically generated summary of the changes in this version.</p>
-<section id="input-validation" class="level2">
-<h2 class="anchored" data-anchor-id="input-validation">Input validation</h2>
-<ul>
-<li>The following internal functions now have input validation: <code>rborel()</code>, <code>dborel()</code>, <code>complementary_logprob()</code>, and <code>rnbinom_mean_disp()</code>.</li>
-</ul>
-</section>
-<section id="unit-tests" class="level2">
-<h2 class="anchored" data-anchor-id="unit-tests">Unit tests</h2>
-<ul>
-<li>Code coverage has been improved with more tests on the following functions: <code>rborel()</code>, <code>dborel()</code>, <code>chain_sim()</code>, <code>rnbinom_mean_disp()</code>, <code>complementary_logprob()</code>, <code>rgen_length()</code>, and <code>rbinom_size()</code>.</li>
-</ul>
+<p>On this page, you can find resources shared on our discussion forum. <a href="https://github.com/orgs/epiverse-trace/discussions/new?category=resources">Submit your own</a> and upvote the ones you like on GtiHub!</p>
 
 
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2023,
-  author = {Epiverse-TRACE development team, The},
-  title = {Bpmodels V0.3.1},
-  date = {2023-11-06},
-  url = {https://epiverse-trace.github.io/posts/bpmodels_v0.3.1},
-  langid = {en}
-}
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Epiverse-TRACE development team, The. 2023. <span>“Bpmodels
-V0.3.1.”</span> November 6, 2023. <a href="https://epiverse-trace.github.io/posts/bpmodels_v0.3.1">https://epiverse-trace.github.io/posts/bpmodels_v0.3.1</a>.
-</div></div></section></div></main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-upvotes-sort" data-direction="asc">
+          upvotes (Low to High)
+        </option>
+         <option value="listing-upvotes-sort" data-direction="desc">
+          upvotes (High to Low)
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="archive list">
+    
+    <div class="quarto-post image-right" data-index="0" data-categories="" data-listing-date-sort="1714953600000" data-listing-file-modified-sort="1714984998067" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-upvotes-sort="1">
+        <div class="body">
+            <h3 class="no-anchor listing-title"><a href="https://github.com/orgs/epiverse-trace/discussions/245" class="no-external">How to Run GitHub Actions Locally Using the act CLI Tool</a></h3>
+            <div class="listing-subtitle"><a href="https://github.com/orgs/epiverse-trace/discussions/245" class="no-external"></a></div>
+        </div>
+        <div class="metadata">
+            <div class="ratings">
+                <span class="rating listing-upvotes rating-upvotes-1 ">👍 1</span>
+            </div>
+            
+            <span class="listing-categories">
+                
+            </span>
+            
+            <span class="archive-item-date">
+                <span class="listing-date">
+                    May 6, 2024
+                </span>
+            </span>
+        </div>
+    </div>
+    
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -649,10 +727,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="epiverse-trace/epiverse-trace.github.io" data-repo-id="R_kgDOIcolPw" data-category="Blog post discussion" data-category-id="DIC_kwDOIcolP84CWOm8" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 
 
