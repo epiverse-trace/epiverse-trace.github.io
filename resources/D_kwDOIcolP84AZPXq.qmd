@@ -1,0 +1,8 @@
+---
+title: "How to Run GitHub Actions Locally Using the act CLI Tool"
+url: "https://github.com/orgs/epiverse-trace/discussions/245"
+date: "2024-05-06"
+author: chartgerink
+categories: []
+upvotes: 1
+---
