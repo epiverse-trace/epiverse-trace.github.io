@@ -21,6 +21,9 @@ jobs:
                 token: ${{ secrets.SUDO_GITHUB_TOKEN }}
             - name: Collect resource data
               run: node _scripts/resource-retrieval-graphql Resources
+            - uses: quarto-dev/quarto-actions/setup@v2
+              with:
+                version: pre-release
             - name: Re-render resource page
               run: quarto render resource.qmd
             - uses: EndBug/add-and-commit@v9
