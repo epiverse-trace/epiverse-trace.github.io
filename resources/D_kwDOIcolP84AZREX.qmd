@@ -1,0 +1,8 @@
+---
+title: "Using data.table"
+url: "https://github.com/orgs/epiverse-trace/discussions/253"
+date: "2024-05-07"
+author: bahadzie
+categories: []
+upvotes: 2
+---

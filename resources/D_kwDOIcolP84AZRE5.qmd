@@ -1,0 +1,8 @@
+---
+title: "Epimodelac2023 - Outbreak Analysis and Modeling in Public Health"
+url: "https://github.com/orgs/epiverse-trace/discussions/256"
+date: "2024-05-07"
+author: ntorresd
+categories: []
+upvotes: 1
+---

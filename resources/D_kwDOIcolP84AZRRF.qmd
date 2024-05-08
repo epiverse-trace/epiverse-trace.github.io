@@ -1,0 +1,8 @@
+---
+title: "Checks and automation early feedback via local commit hooks and the precommit package"
+url: "https://github.com/orgs/epiverse-trace/discussions/258"
+date: "2024-05-07"
+author: Bisaloo
+categories: []
+upvotes: 1
+---
