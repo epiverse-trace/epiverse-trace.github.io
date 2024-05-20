@@ -1,20 +1,5 @@
 [
   {
-    "listing": "/presentations.html",
-    "items": [
-      "/slides/fosdem-2024/index.html",
-      "/slides/showcase-november-2023/index.html",
-      "/slides/interoperability-epiverse/index.html",
-      "/slides/global-health-conference-2023/index.html",
-      "/slides/harmonize-july-2023/index.html",
-      "/slides/rslondon-southeast-july-2023/index.html",
-      "/slides/juniper-may-2023/index.html",
-      "/slides/showcase-april-2023/index.html",
-      "/slides/harmonious-ecosystem/index.html",
-      "/slides/showcase-january-2023/index.html"
-    ]
-  },
-  {
     "listing": "/blog.html",
     "items": [
       "/posts/linelist_v1.1.0/index.html",
@@ -42,19 +27,34 @@
   {
     "listing": "/resources.html",
     "items": [
-      "/resources/D_kwDOIcolP84AZPXq.html",
-      "/resources/D_kwDOIcolP84AZREB.html",
-      "/resources/D_kwDOIcolP84AZREP.html",
-      "/resources/D_kwDOIcolP84AZREX.html",
-      "/resources/D_kwDOIcolP84AZRHG.html",
       "/resources/D_kwDOIcolP84AZRD5.html",
+      "/resources/D_kwDOIcolP84AZPXq.html",
+      "/resources/D_kwDOIcolP84AZREX.html",
+      "/resources/D_kwDOIcolP84AZREP.html",
+      "/resources/D_kwDOIcolP84AZRHG.html",
+      "/resources/D_kwDOIcolP84AZREB.html",
       "/resources/D_kwDOIcolP84AZRED.html",
-      "/resources/D_kwDOIcolP84AZRE5.html",
-      "/resources/D_kwDOIcolP84AZREC.html",
       "/resources/D_kwDOIcolP84AZRRF.html",
-      "/resources/D_kwDOIcolP84AZRD1.html",
       "/resources/D_kwDOIcolP84AZREa.html",
+      "/resources/D_kwDOIcolP84AZRE5.html",
+      "/resources/D_kwDOIcolP84AZRD1.html",
+      "/resources/D_kwDOIcolP84AZREC.html",
       "/resources/D_kwDOIcolP84AZREo.html"
+    ]
+  },
+  {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/fosdem-2024/index.html",
+      "/slides/showcase-november-2023/index.html",
+      "/slides/interoperability-epiverse/index.html",
+      "/slides/global-health-conference-2023/index.html",
+      "/slides/harmonize-july-2023/index.html",
+      "/slides/rslondon-southeast-july-2023/index.html",
+      "/slides/juniper-may-2023/index.html",
+      "/slides/showcase-april-2023/index.html",
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-january-2023/index.html"
     ]
   }
 ]
