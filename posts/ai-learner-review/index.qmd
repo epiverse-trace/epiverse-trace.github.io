@@ -1,0 +1,99 @@
+---
+title: "Using LLM agents to review tutorials 'in character' as learners"
+author:
+  - name: "Adam Kucharski"
+    orcid: "0000-0001-8814-9421"
+date: "2024-05-28"
+categories: [tutorials, R, R package]
+format:
+  html:
+    toc: true
+---
+
+## Turning learner personas into LLM agents
+
+Part of the Epiverse-TRACE initiative involves development of training materials that span early, middle and late stage outbreak analysis and modelling tasks. To ensure that our tutorials are accessible to target audiences, we have developed a series of [learner personas](https://github.com/epiverse-trace/personas) to inform the design of learning materials. These personas include the following:
+
+As the volume of training materials increases, we have explored automating the generation of initial reviews using large language models (LLMs) that take the form of 'in character' agents with instructions to provide constructive comments. This reflects a wider focus within the field of outbreak analytics on how LLMs agents can be used to increase the efficiency and scalability of common tasks (e.g. [van Hoek et al, Lancet Microbe, 2024](XX) ).
+
+To generate the AI tutorial reviews, we use the OpenAI GPT-4 API, via the `openai` R package, as described in [this repository](https://github.com/adamkucharski/llm-api-scripts/). We also use the `gh` package to load the `.Rmd` materials from a given repository (e.g. `epiverse-trace/tutorials-middle`). Full illustrative code is [available here](https://github.com/adamkucharski/llm-api-scripts/scripts/content_review_gpt.R), with the GPT-4 API prompts outlined below.
+
+```r
+# Define first prompt
+user_prompt_1 <- "You are the following person, and give all your answers in character:"
+
+# Load Lucia persona
+persona_bio <- read_file("https://raw.githubusercontent.com/epiverse-trace/personas/master/lucia-outbreaks.qmd")
+
+# Define second prompt
+user_prompt_2 <- "Now suppose you want to complete the following tutorial about outbreak analysis in R. The content is in R markdown but would be knitted to HTML in reality, with additional figures where relevant. Provide a critique of the tutorial from your perspective as a learner. What is unclear? What is useful? What is difficult? What could be refined? Support comments with brief quotes. In your feedback be succinct, positive, constructive and specific. State what content to keep and what to improve. Provide clear suggestions for next steps to remove, change or add content. Note that visualisations will be in the tutorial, but are not shown in the Rmd, so do not comment on these. Summarise your review and suggestions for specific improvements in short bullet point paragraphs. If some of the points are similar, amalgamate these into a single bullet point. \n\n"
+
+# Call OpenAI API (credentials must already be defined - see full illustrative code link above)
+output <- create_chat_completion(
+    model = "gpt-4",
+    messages = list(list("role"="user","content" = paste0(user_prompt_1,persona_bio,
+                                                          user_prompt_2,tutorial_contents))
+    )
+
+# Write review to .md using readr
+write_lines(output,"output_review.md"))
+
+```
+
+
+## Reviewing transmissibilty training materials as a senior academic
+
+To illustrate the sort of reviews that can be generated with the above approach, the below is the output produced when we imported the [Vania senior academic persona](XX) alongside an early pre-Alpha version of the training materials for our transmissibility estimation tutorial:
+
+Overall, the tutorial is well-structured and provides a comprehensive guide on how to use the `EpiNow2` package to estimate transmission metrics from case data. However, there are several areas that could be improved to enhance clarity and understanding for learners like me. 
+
+1. **Prerequisites**: The prerequisites section could be expanded to include specific resources for learners to review the necessary concepts. For instance, links to resources on Bayesian analysis and the effective reproduction number would be helpful.
+
+2. **Jargon and Terminology**: The tutorial contains several technical terms and jargon that could be confusing for learners. For example, terms like "Bayesian inference", "posterior probability", "likelihood", and "prior probability" are used without clear explanations. Providing definitions or links to resources for these terms would be beneficial.
+
+3. **Code Explanation**: While the tutorial does a good job of explaining what the code does, it could provide more context on why certain functions or packages are used. For instance, it would be helpful to explain why the `EpiNow2` package is used and how it differs from other packages.
+
+4. **Visualizations**: Although visualizations are not shown in the Rmd, it would be beneficial to explain what learners should expect to see in the visualizations and how to interpret them.
+
+5. **Exercises**: The tutorial lacks exercises for learners to practice the concepts and skills they have learned. Including exercises with solutions would greatly enhance the learning experience.
+
+Suggestions for improvements:
+
+- Expand the prerequisites section to include specific resources for learners to review necessary concepts.
+- Provide definitions or links to resources for technical terms and jargon.
+- Provide more context on why certain functions or packages are used.
+- Explain what learners should expect to see in the visualizations and how to interpret them.
+- Include exercises with solutions for learners to practice the concepts and skills they have learned.
+
+
+## Reviewing forecast materials as a field epidemiologist
+To further illustrate review outputs, the below is what was produced when we imported the [Lucia field epidemiologist persona](XX) alongside an early pre-Alpha version of the training materials for our forecasting tutorial:
+
+**Positive Feedback:**
+
+1. The tutorial is well-structured and follows a logical progression, which makes it easier to follow.
+2. The use of real-world examples and datasets (COVID-19 and Ebola) makes the tutorial more relatable and practical.
+3. The inclusion of questions, objectives, prerequisites, and key points at the beginning and end of the tutorial respectively, helps to guide the learning process.
+4. The tutorial provides a good balance between theory and practice, with clear explanations and practical coding examples.
+5. The use of callouts to highlight important information or provide additional context is very helpful.
+
+**Constructive Feedback:**
+
+1. The tutorial assumes a certain level of familiarity with R and statistical concepts, which might be challenging for beginners. It would be helpful to provide more explanations or links to resources for beginners.
+2. The code chunks are quite complex and could be broken down into smaller parts with more explanations.
+3. The tutorial could benefit from more visualizations to illustrate the concepts and results.
+4. The challenge section could provide more guidance or hints to help learners complete the task.
+
+**Suggestions for Improvement:**
+
+1. Provide more explanations or links to resources for beginners to learn R and statistical concepts.
+2. Break down complex code chunks into smaller parts with more explanations.
+3. Include more visualizations to illustrate the concepts and results.
+4. Provide more guidance or hints in the challenge section to help learners complete the task.
+5. Include a glossary of terms or a list of R packages used in the tutorial for quick reference.
+
+## Overcoming feedback bottlenecks
+
+A challenge with LLMs trained for general use is finding domain-specific tasks where they can add sufficient value beyond existing human input. Tasks like providing early sense checking and tailored feedback, particularly from differing perspectives, therefore has potential to overcome common bottlenecks in developing training materials (e.g. providing initial comments and flagging obvious issues while waiting for more detailed human feedback).
+
+As Epiverse-TRACE training materials continue to develop, we plan to explore further uses beyond simple first-pass reviews. For example, LLMs are well suited to synthesising qualitative feedback, increasing the range of insights that can be collected and summarised from learners as we move into beta testing. We also hope to identify opportunities where LLMs can help supplement the learner experience, as demonstrated by emerging tools like [RTutor](http://rtutor.ai/) for descriptive plotting functionality in R, which combines generation of code in response to user queries with translation into shiny outputs.
