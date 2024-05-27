@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.37</generator>
+<generator>quarto-1.5.39</generator>
 <lastBuildDate>Sat, 03 Feb 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem</title>
@@ -66,7 +66,7 @@ Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 38%">
@@ -433,7 +433,7 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 38%">
@@ -656,7 +656,7 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 38%">
