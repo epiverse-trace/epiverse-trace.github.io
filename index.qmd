@@ -5,6 +5,7 @@
 title: Welcome to Epiverse-TRACE
 image: Epiverse-RGB.svg
 css: hexwall.css
+comments: false
 about:
   template: marquee
   links:
