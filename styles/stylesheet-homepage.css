@@ -1,0 +1,8 @@
+.page-columns > * {
+    width: 100vw;
+    grid-column: unset;
+  }
+  
+.page-columns .content {
+    grid-column: unset;
+}

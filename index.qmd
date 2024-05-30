@@ -15,13 +15,16 @@ about:
     - icon: twitter
       text: Twitter
       href: https://twitter.com/Epiverse_TRACE
+format: 
+  html:
+    css: styles/stylesheet-homepage.css
 include-in-header:
   text: |
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             corePlugins: {
-                preflight: false,
+                preflight: true,
             },
             prefix: 'tw-',
         }
