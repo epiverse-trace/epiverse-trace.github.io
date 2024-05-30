@@ -35,6 +35,8 @@ include-in-header:
 {{< react Hero >}}
 <!-- markdownlint-enable MD041 -->
 
+{{< react LogoCloud >}}
+
 <!-- 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
