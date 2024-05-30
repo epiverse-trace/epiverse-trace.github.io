@@ -38,3 +38,9 @@ Initial release of the {epiparameter} R package. {epiparameter} provides:
 
 * None
 
+## Acknowledgements
+
+Many thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):
+
+[@adamkucharski](https://github.com/adamkucharski), [@avallecam](https://github.com/avallecam), [@Bisaloo](https://github.com/Bisaloo), [@CarmenTamayo](https://github.com/CarmenTamayo), [@chartgerink](https://github.com/chartgerink), [@jamesmbaazam](https://github.com/jamesmbaazam), [@maelle](https://github.com/maelle), [@pratikunterwegs](https://github.com/pratikunterwegs), [@pitmonticone](https://github.com/pitmonticone), [@sbfnk](https://github.com/sbfnk), and [@TimTaylor](https://github.com/TimTaylor).
+
