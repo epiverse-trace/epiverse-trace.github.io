@@ -6,3 +6,7 @@
 .page-columns .content {
     grid-column: unset;
 }
+
+body {
+    background: #071e2d;
+}

@@ -2,8 +2,8 @@
 # We need a title here to avoid picking up comments from other pages via GitHub
 # fuzzy matching. It can also be disabled in giscus via `data-strict=1` but
 # quarto doesn't support it yet.
-title: Welcome to Epiverse-TRACE
-image: Epiverse-RGB.svg
+# title: Welcome to Epiverse-TRACE
+# image: Epiverse-RGB.svg
 css: hexwall.css
 comments: false
 about:
@@ -31,6 +31,11 @@ include-in-header:
     </script>
 ---
 
+<!-- markdownlint-disable MD041 -->
+{{< react Hero >}}
+<!-- markdownlint-enable MD041 -->
+
+<!-- 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
 ## Roadmap
@@ -66,4 +71,4 @@ file.path("_data", "epiverse_pkgs.csv") |>
 
 :::
 
-You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)!
+You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)! -->
