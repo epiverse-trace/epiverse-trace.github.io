@@ -14,4 +14,4 @@ quarto render <file>
 
 ## Scheduling pull requests
 
-Given that we sometimes want to merge pull requests at specific times, especially for blog posts, there is the option to schedule a merge attempt. To do so, add an ISO8601 compliant datetime command as such to the first post in the PR: `/schedule <datetime>` (e.g., `/schedule 2026-01-01` for January 1st, 2026).
+Given that we sometimes want to merge pull requests at specific times, especially for blog posts, there is the option to schedule a merge attempt. To do so, add an ISO8601 compliant datetime command as such at the end of the first post in the PR: `/schedule <datetime>` (e.g., `/schedule 2026-01-01` for January 1st, 2026).
