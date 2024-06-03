@@ -68,11 +68,11 @@ jobs:
         id: cpr
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Automated release blog post
+          commit-message: Automated release blog post `${{env.PACKAGE}}` - `${{env.PACKAGE_VERSION}}`
           committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
           author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
           branch: automated-release-post
           branch-suffix: timestamp
           add-paths: posts
-          title: Automated release blog post
+          title: Automated release blog post `${{env.PACKAGE}}` - `${{env.PACKAGE_VERSION}}`
           delete-branch: true
