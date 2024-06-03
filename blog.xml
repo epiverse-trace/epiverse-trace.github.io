@@ -10,7 +10,94 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.5.40</generator>
-<lastBuildDate>Thu, 30 May 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 03 Jun 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>simulist v0.3.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/simulist_v0.3.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new simulist version v0.3.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>The third release of the <em>simulist</em> R package contains a range of new features, enhancements, documentation and unit tests.</p>
+<p>The headline changes to the package are:</p>
+<ul>
+<li>The simulation is now parameterised with an infectious period rather than a contact interval.</li>
+<li>Line list data now has <code>date_outcome</code> and <code>outcome</code> columns which can be parameterised with <code>onset_to_death</code> and <code>onset_to_recovery</code>.</li>
+<li>Case fatality risk can vary through time with a customisable user-defined function.</li>
+<li>Two new vignettes on time-varying case fatality risk, and wrangling line list and contact tracing data.</li>
+</ul>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<section id="external" class="level3">
+<h3 class="anchored" data-anchor-id="external">External</h3>
+<ul>
+<li><p><code>onset_to_hosp</code> and <code>onset_to_death</code> arguments can now take <code>NA</code> as input and will return a column of <code>NA</code>s in the line list columns <code>date_admission</code> and <code>date_outcome</code> (#98).</p></li>
+<li><p>An <code>onset_to_recovery</code> argument has been added to the simulation functions, <code>sim_linelist()</code> and <code>sim_outbreak()</code>, and so the recovery date can be explicitly given in the line list data (#99).</p></li>
+<li><p>The line list simulation can now use a time-varying case fatality risk. The <code>create_config()</code> function now returns a <code>$time_varying_death_risk</code> list element, which is <code>NULL</code> by default but can take an R function to enable the fatality risk of cases to change over the epidemic (#101).</p></li>
+<li><p>A new vignette, <code>time-varying-cfr.Rmd</code>, has been added to the package to describe how to use the time-varying case fatality risk functionality and describe a few different time-varying functions that can be used (#101).</p></li>
+<li><p>A new vignette, <code>wrangling-linelist.Rmd</code>, has been added to go over some of the common post-processing steps that might be required after simulating line list or contact tracing data. This vignette is short and currently only contains a single post-processing example, more examples will be added over time (#104).</p></li>
+<li><p>The <code>README</code> now has a section on related projects to provide an overview of packages that simulate line list data, or are related to <em>simulist</em>. This section contains a disclosure widget containing a feature table providing a high-level description of the features and development status of each related package (#110).</p></li>
+<li><p>A Key features section and Complimentary R packages section has been added to the <code>README</code> (#134).</p></li>
+<li><p>Updated package architecture diagram in the <code>design-principles.Rmd</code> vignette (#113).</p></li>
+</ul>
+</section>
+<section id="internal" class="level3">
+<h3 class="anchored" data-anchor-id="internal">Internal</h3>
+<ul>
+<li><p>The <code>.add_deaths()</code> function has been replaced by the <code>.add_outcome()</code> function which can simulate death and recovery times (#99).</p></li>
+<li><p><code>.cross_check_sim_input()</code> function has been added to the package to ensure user input is coherent across arguments (#98).</p></li>
+<li><p><code>.anonymise()</code> function has been added to convert individual’s names into alphanumeric codes to anonymise individuals in line list and contact tracing data (#106).</p></li>
+</ul>
+</section>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><p>The simulation functions are now parameterised with an infectious period (<code>infect_period</code> argument) instead of a contact interval (<code>contact_interval</code> argument). This moves away from parameterising the simulation with the time delay between a person becoming infected and having contact with a susceptible individual, and instead uses an infectious period distribution within which contacts are uniformly distributed in time (#96).</p></li>
+<li><p>The simulation functions can now set a maximum as well as a minimum outbreak size. The <code>min_outbreak_size</code> argument in the exported <code>sim_*()</code> functions has been renamed <code>outbreak_size</code> and takes a <code>numeric</code> vector of two elements, the minimum and maximum outbreak size. The maximum outbreak size is a soft limit due to the stochastic nature of the branching process model, so epidemiological data returned can contain more cases and/or contacts that the maximum in <code>outbreak_size</code> but in these case a warning is returned explaining to the user how many cases/contacts are being returned (#93).</p></li>
+<li><p>The <code>add_ct</code> argument in <code>sim_linelist()</code> and <code>sim_outbreak()</code> has been removed. The functionality is now equivalent to <code>add_ct = TRUE</code> in the previous <em>simulist</em> version. The <code>add_ct</code> argument was removed to move the package to always returning <code>&lt;data.frame&gt;</code>s with the same number of columns, for consistency and predictability (#104).</p></li>
+<li><p>The <code>add_names</code> argument in the simulation functions has been renamed to <code>anonymise</code>. The new argument controls whether names are given to each case (<code>anonymise = FALSE</code>, default behaviour) or whether fixed length hexadecimal codes are given to each case (<code>anonymise = TRUE</code>), this ensures the returned <code>&lt;data.frame&gt;</code> has the same number of columns (#106).</p></li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li><code>.sim_network_bp()</code> now indexes the time vector correctly. Previously a vector indexing bug meant the epidemic would not progress through time (#95).</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Many thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):</p>
+<p><a href="https://github.com/adamkucharski"><span class="citation" data-cites="adamkucharski">@adamkucharski</span></a>, <a href="https://github.com/avallecam"><span class="citation" data-cites="avallecam">@avallecam</span></a>, <a href="https://github.com/Bisaloo"><span class="citation" data-cites="Bisaloo">@Bisaloo</span></a>, <a href="https://github.com/CarmenTamayo"><span class="citation" data-cites="CarmenTamayo">@CarmenTamayo</span></a>, <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>, <a href="https://github.com/jamesmbaazam"><span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span></a>, <a href="https://github.com/ntncmch"><span class="citation" data-cites="ntncmch">@ntncmch</span></a>, <a href="https://github.com/PaulC91"><span class="citation" data-cites="PaulC91">@PaulC91</span></a>, <a href="https://github.com/pratikunterwegs"><span class="citation" data-cites="pratikunterwegs">@pratikunterwegs</span></a>, and <a href="https://github.com/sbfnk"><span class="citation" data-cites="sbfnk">@sbfnk</span></a>.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.3.0},
+  date = {2024-06-03},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.3.0},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Simulist
+V0.3.0.”</span> June 3, 2024. <a href="https://epiverse-trace.github.io/posts/simulist_v0.3.0">https://epiverse-trace.github.io/posts/simulist_v0.3.0</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/simulist_v0.3.0/</guid>
+  <pubDate>Mon, 03 Jun 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>epiparameter v0.1.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
@@ -5619,473 +5706,6 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
   <category>interoperability</category>
   <guid>https://epiverse-trace.github.io/posts/s3-generic/</guid>
   <pubDate>Mon, 20 Feb 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Improving the C++ Code Quality of an Rcpp Package</title>
-  <dc:creator>Pratik Gupte</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/lint-rcpp/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<section id="use-case" class="level2">
-<h2 class="anchored" data-anchor-id="use-case">Use case</h2>
-<p>The R package development ecosystem includes packages such as <a href="https://lintr.r-lib.org/">{lintr}</a> and <a href="https://styler.r-lib.org">{styler}</a> that can help to check code style, and to format R code.</p>
-<p>However, these packages cannot lint or style the C++ code of <a href="https://www.rcpp.org/">{Rcpp}</a> packages. This could leave the C++ code of an Rcpp package less clean than the R code, increasing the technical debt already associated with using two languages.</p>
-<p>In Epiverse-TRACE, we encounter this issue with <a href="https://epiverse-trace.github.io/finalsize/">{finalsize}</a>, and we anticipate the same issue with further epidemic modelling packages that we seek to develop or adapt, such as <a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005838">{fluEvidenceSynthesis}</a>.</p>
-<p>Our use-case is not unique, of course, and other projects could have their own solutions. One such, from which we have borrowed some ideas, is the <a href="https://arrow.apache.org/">Apache Arrow project</a>, whose R package also uses a C++ backend (via <a href="https://cpp11.r-lib.org/">{cpp11}</a> rather than {Rcpp}).</p>
-</section>
-<section id="choice-of-c-linters" class="level2">
-<h2 class="anchored" data-anchor-id="choice-of-c-linters">Choice of C++ linters</h2>
-<p>C++ linters such as <a href="https://clang.llvm.org/extra/clang-tidy/"><em>clang-tidy</em></a> stumble when dealing with C++ code in <code>src/</code>, as the <em>clang</em> toolchain attempts to compile it. This does not work for Rcpp packages, as the <code>Rcpp.h</code> header cannot be found — this linking is handled by {Rcpp}.</p>
-<p>Fortunately, other C++ linters and code checking tools are available and can be used safely with Rcpp packages.</p>
-<p>We have chosen to use <em>cpplint</em> and <em>cppcheck</em> for {finalsize}.</p>
-<section id="cpplint" class="level3">
-<h3 class="anchored" data-anchor-id="cpplint">Cpplint</h3>
-<p><a href="https://github.com/cpplint/cpplint"><em>cpplint</em></a> is a tool that checks whether C/C++ files follow <a href="http://google.github.io/styleguide/cppguide.html">Google’s C++ style guide</a>. <em>cpplint</em> is easy to install across platforms, and does not error when it cannot find <code>Rcpp.h</code>.</p>
-<p>Importantly, <em>cpplint</em> can be instructed to not lint the autogenerated <code>RcppExports.cpp</code> file, which follows a different style.</p>
-<p>To lint all other <code>.cpp</code> files, we simply run <code>cpplint</code> from the terminal.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cpplint</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--exclude</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"src/RcppExports.cpp"</span> src/<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>.cpp</span></code></pre></div>
-</section>
-<section id="cppcheck" class="level3">
-<h3 class="anchored" data-anchor-id="cppcheck">Cppcheck</h3>
-<p><a href="https://cppcheck.sourceforge.io/"><em>cppcheck</em></a> is a static code analysis tool, that aims to “have very few false positives”. This is especially useful for the non-standard organisation of Rcpp projects compared to C++ projects.</p>
-<p><em>cppcheck</em> can also be run locally and instructed to ignore the autogenerated <code>RcppExports.cpp</code> file, while throwing up issues with style.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cppcheck</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> src/RcppExports.cpp <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--enable</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>style <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--error-exitcode</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>1 src</span></code></pre></div>
-<p>Here, the <code>--enable=style</code> option lets <em>cppcheck</em> flag issues with style, acting as a second linter. This enables the <code>performance</code> and <code>portability</code> flags as well. (We have not found any difference when using <code>--enable=warning</code> instead.)</p>
-<p>Enabling all checks (<code>--enable=all</code>) would flag two specific issues for {Rcpp} packages: (1) the <code>Rcpp*.h</code> headers not being found (of the class <code>missingIncludeSystem</code>), and (2) the solver functions not being used by any other C++ function (<code>unusedFunction</code>).</p>
-<p>These extra options should be avoided in {Rcpp} packages, as the linking is handled for us, and the functions are indeed used later — just not by other C++ functions.</p>
-<p>The <code>--error-exitcode=1</code> argument returns the integer <code>1</code> when an error is found, which is by convention the output for an error.</p>
-</section>
-</section>
-<section id="adding-c-linting-to-ci-workflows" class="level2">
-<h2 class="anchored" data-anchor-id="adding-c-linting-to-ci-workflows">Adding C++ linting to CI workflows</h2>
-<p>Both <em>cpplint</em> and <em>cppcheck</em> can be easily added to continuous integration workflows. In Epiverse-TRACE, we use Github Actions. The C++ lint workflow we have implemented looks like this:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">on</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-2"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">push</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-3"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">paths</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"src/**"</span></span>
-<span id="cb3-4"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull_request</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-5"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">branches</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-6"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"*"</span></span>
-<span id="cb3-7"></span>
-<span id="cb3-8"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> Cpp-lint-check</span></span>
-<span id="cb3-9"></span>
-<span id="cb3-10"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">jobs</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-11"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cpplint</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-12"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">runs-on</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ubuntu-latest</span></span>
-<span id="cb3-13"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">steps</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-14"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> actions/checkout@v3</span></span>
-<span id="cb3-15"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> actions/setup-python@v2</span></span>
-<span id="cb3-16"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> pip install cpplint</span></span>
-<span id="cb3-17"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> cpplint --quiet --exclude="src/RcppExports.cpp" src/*.cpp</span></span>
-<span id="cb3-18"></span>
-<span id="cb3-19"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cppcheck</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-20"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">runs-on</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ubuntu-latest</span></span>
-<span id="cb3-21"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">steps</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb3-22"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> actions/checkout@v3</span></span>
-<span id="cb3-23"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> sudo apt-get install cppcheck</span></span>
-<span id="cb3-24"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">run</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .</span></span></code></pre></div>
-<p>The workflow is triggered when there are changes to files in <code>src/</code>, and on all pull requests.</p>
-</section>
-<section id="formatting-c-code" class="level2">
-<h2 class="anchored" data-anchor-id="formatting-c-code">Formatting C++ code</h2>
-<p>C++ code can be automatically formatted to avoid linter errors. An especially useful tool is <a href="https://clang.llvm.org/docs/ClangFormat.html"><em>clang-format</em></a>. Our code is styled to follow the <a href="https://google.github.io/styleguide/cppguide.html">Google C++ style guide</a> using:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># replace .cpp with .h to format headers</span></span>
-<span id="cb4-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">clang-format</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-style</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>google src/<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>.cpp</span></code></pre></div>
-<p>However, this also formats the autogenerated <code>RcppExports.cpp</code> file. It can be extra work to repeatedly undo this change and keep the original formatting, but <em>clang-format</em> does not provide an easy inline way to ignore this file.</p>
-<p>Instead, <em>clang-format</em> can be passed all files except <code>RcppExports.cpp</code> to style using some simple shell commands. In smaller projects, it might be worth</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">find</span> src <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-name</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"*.cpp"</span> ! <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-name</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"RcppExports.cpp"</span> <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-exec</span> clang-format <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-style</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>google <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-i</span> {} <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">\;</span></span></code></pre></div>
-</section>
-<section id="turning-off-linting-and-formatting" class="level2">
-<h2 class="anchored" data-anchor-id="turning-off-linting-and-formatting">Turning off linting and formatting</h2>
-<p>There are cases in which we might want to turn linting and formatting off. This might be when the linter does not agree with valid C++ code required in the project, or when the linters and stylers do not agree with each other. These tools are developed separately by large software projects with their own internal requirements, and solutions to issues encountered in their work: <em>clang-format</em> by LLVM (although specifying <code>-style=google</code>), and <em>cpplint</em> from Google’s work.</p>
-<section id="linter-enforced-paradigms" class="level3">
-<h3 class="anchored" data-anchor-id="linter-enforced-paradigms">Linter-enforced paradigms</h3>
-<p>Sometimes, the linter or styler developer enforces both a style <em>and</em> the use of certain programming paradigms. An example from <em>cpplint</em> is when it warns against passing function arguments by reference, and prefers for these to be passed as pointers, or as constant references (<code>const int &amp;value</code>).</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> some_function<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">(</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">int</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&amp;</span>value<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">)</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span> </span>
-<span id="cb6-2">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/* operations modifying value */</span></span>
-<span id="cb6-3">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> value<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span></span>
-<span id="cb6-4"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
-<p>Passing the argument as a <code>const</code> reference would not serve the needs of this function, and passing by value is a valid strategy when we don’t want to get into the details of using pointers. (Note that this is typically an issue when large objects such as custom classes or structs are passed to a function multiple times.)</p>
-<p>Similarly, <em>cpplint</em> will throw a warning about accessing variables using <code>std::move</code>, which is something we encounter in the Newton solver in {finalsize}. While not technically wrong for such a simple use case, the linter is correct to cautiously throw a warning nonetheless.</p>
-</section>
-<section id="linter-styler-disagreement" class="level3">
-<h3 class="anchored" data-anchor-id="linter-styler-disagreement">Linter-styler disagreement</h3>
-<p>One example of linter-styler disagreement is the use of <code>BOOST_FOREACH</code> from the <a href="https://www.boost.org/">Boost libraries</a> as an alternative to <code>for</code> loops. <em>clang-format</em> will insist on adding two spaces before the opening bracket: <code>BOOST_FOREACH  ()</code>. <em>cpplint</em> will insist on removing one space.</p>
-<p><em>cpplint</em> and <em>clang-format</em> also disagree on the order of header inclusions, especially when both local and system headers are included.</p>
-</section>
-<section id="disabling-checks-on-code-chunks" class="level3">
-<h3 class="anchored" data-anchor-id="disabling-checks-on-code-chunks">Disabling checks on code chunks</h3>
-<p>Either of these cases could require disabling linting or formatting on some part of the code. It is possible to turn off linting using <em>cpplint</em> at particular lines using the comment <code>// NOLINT</code>. Multiple lines can be protected from linting as well.</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// NOLINTBEGIN</span></span>
-<span id="cb7-2"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>some C<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">++</span> code here<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb7-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// NOLINTEND</span></span></code></pre></div>
-<p>Alternatively, <em>clang-format</em> can be instructed to ignore chunks of code using comment messages too.</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// clang-format off</span></span>
-<span id="cb8-2"><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>some C<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">++</span> code here<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span></span>
-<span id="cb8-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">// clang-format on</span></span></code></pre></div>
-</section>
-</section>
-<section id="linter-options-for-future-packages" class="level2">
-<h2 class="anchored" data-anchor-id="linter-options-for-future-packages">Linter options for future packages</h2>
-<p>{finalsize} is a relatively simple {Rcpp} package, with no C/C++ headers, and no C++ tests. However, future Epiverse-TRACE packages could be more similar to {fluEvidenceSynthesis}, and will have header files, and could also have <a href="https://github.com/catchorg/Catch2">C++ unit tests via the <em>catch</em> framework</a>.</p>
-<p><em>cpplint</em> will demand that all local headers be prefixed with their directory (<code>src/</code>), but this would cause the code to break as {Rcpp} looks for a subdirectory called <code>src/src/</code>. This can be turned off by passing the filter option <code>--filter="-build/include_subdir"</code> to <em>cpplint</em>. Alternatively, we could place headers in a subdirectory such as <code>inst/include</code>.</p>
-<p>Both <em>cpplint</em> and <em>cppcheck</em> can be instructed to ignore C++ test files using the <em>catch</em> testing framework provided by {testthat}. This prevents errors due to the specialised syntax provided by {testthat} in <code>testthat.h</code>, such as <code>context</code>.</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># for cpplint, add an extra exclude statement</span></span>
-<span id="cb9-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cpplint</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>...<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> --exclude=<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"src/test*.cpp"</span> src/<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>.cpp</span>
-<span id="cb9-3"></span>
-<span id="cb9-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># for cppcheck, suppress checks on test files</span></span>
-<span id="cb9-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">cppcheck</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&lt;</span>...<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> --suppress=<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>:src/test_<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">*</span>.cpp src</span></code></pre></div>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>It is actually somewhat surprising that there does not seem to be a canonical linter for C++ code in {Rcpp} packages. The methods laid out here are an initial implementation developed for use with the {finalsize} package, and the considerations here are a starting point. We shall be continuously evaluating how we ensure the quality of our C++ code as we encounter more use cases while developing future Epiverse-TRACE packages.</p>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gupte2023,
-  author = {Gupte, Pratik},
-  title = {Improving the {C++} {Code} {Quality} of an {Rcpp} {Package}},
-  date = {2023-02-16},
-  url = {https://epiverse-trace.github.io/posts/lint-rcpp},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
-Gupte, Pratik. 2023. <span>“Improving the C++ Code Quality of an Rcpp
-Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/posts/lint-rcpp">https://epiverse-trace.github.io/posts/lint-rcpp</a>.
-</div></div></section></div> ]]></description>
-  <category>code quality</category>
-  <category>R</category>
-  <category>R package</category>
-  <category>Rcpp</category>
-  <category>good practices</category>
-  <category>continuous integration</category>
-  <guid>https://epiverse-trace.github.io/posts/lint-rcpp/</guid>
-  <pubDate>Thu, 16 Feb 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
