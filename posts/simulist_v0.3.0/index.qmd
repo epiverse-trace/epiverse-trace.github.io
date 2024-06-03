@@ -9,7 +9,7 @@ categories: [new-release]
 We are very excited to announce the release of a new simulist version v0.3.0.
 Here is an automatically generated summary of the changes in this version.
 
-The third release of the _simulist_ R package contains a range of new features, enhancements, documentation and unit tests. 
+The third release of the _simulist_ R package contains a range of new features, enhancements, documentation and unit tests.
 
 The headline changes to the package are:
 
@@ -48,13 +48,13 @@ The headline changes to the package are:
 
 ## Breaking changes
 
-* The simulation functions are now parameterised with an infectious period (`infect_period` argument) instead of a contact interval (`contact_interval` argument). This moves away from parameterising the simulation with the time delay between a person becoming infected and having contact with a susceptible individual, and instead uses an infectious period distribution within which contacts are uniformly distributed in time (#96). 
+* The simulation functions are now parameterised with an infectious period (`infect_period` argument) instead of a contact interval (`contact_interval` argument). This moves away from parameterising the simulation with the time delay between a person becoming infected and having contact with a susceptible individual, and instead uses an infectious period distribution within which contacts are uniformly distributed in time (#96).
 
 * The simulation functions can now set a maximum as well as a minimum outbreak size. The `min_outbreak_size` argument in the exported `sim_*()` functions has been renamed `outbreak_size` and takes a `numeric` vector of two elements, the minimum and maximum outbreak size. The maximum outbreak size is a soft limit due to the stochastic nature of the branching process model, so epidemiological data returned can contain more cases and/or contacts that the maximum in `outbreak_size` but in these case a warning is returned explaining to the user how many cases/contacts are being returned (#93).
 
 * The `add_ct` argument in `sim_linelist()` and `sim_outbreak()` has been removed. The functionality is now equivalent to `add_ct = TRUE` in the previous _simulist_ version. The `add_ct` argument was removed to move the package to always returning `<data.frame>`s with the same number of columns, for consistency and predictability (#104).
 
-* The `add_names` argument in the simulation functions has been renamed to `anonymise`. The new argument controls whether names are given to each case (`anonymise = FALSE`, default behaviour) or whether fixed length hexadecimal codes are given to each case (`anonymise = TRUE`), this ensures the returned `<data.frame>` has the same number of columns (#106). 
+* The `add_names` argument in the simulation functions has been renamed to `anonymise`. The new argument controls whether names are given to each case (`anonymise = FALSE`, default behaviour) or whether fixed length hexadecimal codes are given to each case (`anonymise = TRUE`), this ensures the returned `<data.frame>` has the same number of columns (#106).
 
 ## Bug fixes
 
