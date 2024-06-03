@@ -2,7 +2,7 @@
 title: "simulist v0.3.0"
 author:
   - name: "The Epiverse-TRACE development team"
-date: "2024-05-31"
+date: "2024-06-03"
 categories: [new-release]
 ---
 
