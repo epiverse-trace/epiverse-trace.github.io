@@ -6,7 +6,7 @@ function LogoCloud() {
           Partners
         </h2>
         <div className="-tw-mx-6 tw-grid tw-grid-cols-2 tw-gap-0.5 tw-overflow-hidden sm:tw-mx-0 sm:tw-rounded-2xl md:tw-grid-cols-4">
-          <div className="tw-bg-white/5 tw-p-6 sm:tw-p-10">
+          <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
               className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
               src="../public/LogoDataDotOrg.png"
@@ -15,7 +15,7 @@ function LogoCloud() {
               height={48}
             />
           </div>
-          <div className="tw-bg-white/5 tw-p-8 sm:tw-p-10">
+          <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
               className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
               src="https://data.org/wp-content/uploads/2021/10/lshtm-logo-975x468.png"
@@ -24,7 +24,7 @@ function LogoCloud() {
               height={48}
             />
           </div>
-          <div className="tw-bg-white/5 tw-p-6 sm:tw-p-10">
+          <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
               className="tw-max-h-16 tw-w-full tw-object-contain"
               src="../public/logo-andes.svg"
@@ -35,7 +35,7 @@ function LogoCloud() {
           </div>
           <div className="tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
-              className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
+              className="tw-max-h-24 tw-w-full tw-object-contain tw-invert"
               src="../public/Javeriana.png"
               alt="Pontificia Universidad Javeriana"
               width={158}
