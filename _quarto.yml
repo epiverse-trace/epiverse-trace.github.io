@@ -9,7 +9,7 @@ website:
   navbar:
     left:
       - text: Software
-        href: https://epiverse-trace.r-universe.dev/ui#packages
+        href: https://epiverse-trace.r-universe.dev/packages
       - text: Get involved
         href: get-involved.qmd
       - text: Blog
