@@ -1,0 +1,15 @@
+---
+title: "cleanepi v1.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-06-04"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new cleanepi version v1.0.0.
+Here is an automatically generated summary of the changes in this version.
+
+## first major release
+
+* contains features for data cleaning
+* contains a feature for reporting on cleaning results
