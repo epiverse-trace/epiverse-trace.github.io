@@ -1,0 +1,8 @@
+---
+title: "The True ROI of Doing It Right the First Time in Software Projects"
+url: "https://github.com/orgs/epiverse-trace/discussions/267"
+date: "2024-06-03"
+author: Bisaloo
+categories: []
+upvotes: 2
+---

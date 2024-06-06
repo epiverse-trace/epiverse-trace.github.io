@@ -22,7 +22,7 @@ website:
         menu:
         - href: getting-started.qmd
         - text: Software
-          href: https://epiverse-trace.r-universe.dev/ui#packages
+          href: https://epiverse-trace.r-universe.dev/packages
       - text: Learn
         menu:
           - text: Learning materials
