@@ -4,7 +4,7 @@ ColOpenData,Open Colombian data
 cleanepi,Clean imported data
 simulist,Simulate outbreak data
 linelist,Tag and validate individual data
-epiparameter,Use epidemiological parameters
+epiparameter,Access epidemiological parameters
 sivirep,Generate automated report for SIVIGILA data
 episoap,Pipelines for common tasks
 cfr,Severity estimation
