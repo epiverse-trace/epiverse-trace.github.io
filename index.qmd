@@ -37,6 +37,12 @@ include-in-header:
 
 {{< react LogoCloud >}}
 
+{{< react Usp >}}
+
+{{< react Benefits >}}
+
+{{< react Cta >}}
+
 <!-- 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
