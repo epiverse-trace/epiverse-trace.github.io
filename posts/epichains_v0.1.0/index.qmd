@@ -9,7 +9,7 @@ categories: [new-release]
 We are very excited to announce the release of a new epichains version v0.1.0.
 Here is an automatically generated summary of the changes in this version.
 
-# epichains 0.1.0
+## epichains 0.1.0
 
 We are excited to announce the first minor release of `{epichains}`.
 
