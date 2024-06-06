@@ -10,3 +10,11 @@ We are very excited to announce the release of a new {{ pkgname }} version {{ v 
 Here is an automatically generated summary of the changes in this version.
 
 {{ notes }}
+
+## Acknowledgements
+
+```{r ctbs, results='asis', echo=FALSE}
+ctbs <- suppressMessages(usethis::use_tidy_thanks(paste0('epiverse-trace/', "{{ pkgname }}")))
+ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
+cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
+```
