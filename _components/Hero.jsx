@@ -27,16 +27,16 @@ function Hero() {
             </p>
             <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
               <a
-                href="getting-started.html"
+                href="./getting-started.html"
                 className="tw-rounded-md tw-bg-lime-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-black tw-shadow-sm hover:tw-bg-lime-400 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-lime-400"
               >
                 Get started
               </a>
               <a
-                href="learn.html"
+                href="https://join.slack.com/t/epiversetrace/shared_invite/zt-2dl52uahe-vH1AtHgYUV_IptVk84Tzrw"
                 className="tw-text-sm tw-font-semibold tw-leading-6 tw-text-white"
               >
-                Learn more <span aria-hidden="true">→</span>
+                Join our chat <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>

@@ -19,11 +19,11 @@ function Cta() {
             Want to help prepare for the next epidemic?
           </h2>
           <p className="tw-mx-auto tw-mt-6 tw-max-w-xl tw-text-lg tw-leading-8 tw-text-gray-300">
-            Find the right pathway for your situation.
+            Find the right pathway for you.
           </p>
           <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
             <a
-              href="#"
+              href="./getting-started.html"
               className="tw-rounded-md tw-bg-lime-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-black tw-shadow-sm hover:tw-bg-gray-100 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-white"
             >
               Use
