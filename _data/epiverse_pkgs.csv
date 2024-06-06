@@ -7,7 +7,7 @@ linelist,Tag and validate individual data
 epiparameter,Access epidemiological parameters
 sivirep,Generate automated report for SIVIGILA data
 episoap,Pipelines for common tasks
-cfr,Severity estimation
+cfr,Estimate disease severity
 serofoi,Estimate force of infection from serology
 epiCo,Tools for vector-borne infections
 iraca,Simulate vector-borne outbreaks
