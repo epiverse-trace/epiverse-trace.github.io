@@ -25,9 +25,11 @@ jobs:
         with:
           packages: |
             gh
+            glue
             purrr
             lubridate
             knitr
+            usethis
 
       - name: Check for new releases
         run: |
