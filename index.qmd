@@ -29,6 +29,8 @@ include-in-header:
             prefix: 'tw-',
         }
     </script>
+resources: 
+  - public/*
 ---
 
 <!-- markdownlint-disable MD041 -->

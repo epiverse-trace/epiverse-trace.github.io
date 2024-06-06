@@ -9,7 +9,7 @@ function LogoCloud() {
           <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
               className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
-              src="../public/LogoDataDotOrg.png"
+              src="public/LogoDataDotOrg.png"
               alt="DataDotOrg"
               width={158}
               height={48}
@@ -27,7 +27,7 @@ function LogoCloud() {
           <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
               className="tw-max-h-16 tw-w-full tw-object-contain"
-              src="../public/logo-andes.svg"
+              src="public/logo-andes.svg"
               alt="Universidad de los Andes (Uniandes)"
               width={158}
               height={48}
@@ -36,7 +36,7 @@ function LogoCloud() {
           <div className="tw-bg-white/5 tw-p-6 sm:tw-p-10">
             <img
               className="tw-max-h-24 tw-w-full tw-object-contain tw-invert"
-              src="../public/Javeriana.png"
+              src="public/Javeriana.png"
               alt="Pontificia Universidad Javeriana"
               width={158}
               height={48}
