@@ -1,0 +1,40 @@
+---
+title: Getting started
+image: Epiverse-RGB.svg
+css: hexwall.css
+---
+
+Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
+
+## Roadmap
+
+![ ](task_pipeline-minimal.svg){fig-alt='A typical epidemiological pipeline presented as a flowchart. Each box corresponds to a specific task (e.g., "reconstruct transmission chains", or "estimate severity"). The tasks are split into three categories based on the position in the data pipeline: early tasks, middle tasks and late tasks.'}
+
+## Epiverse-TRACE packages
+
+These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
+
+::: {.gradient-rectangle}
+
+[Early tasks]{.task}
+
+[Middle tasks]{.task}
+
+[Late tasks]{.task}
+
+:::
+
+::: {.hex-container}
+
+```{r, results='asis', echo = FALSE}
+file.path("_data", "epiverse_pkgs.csv") |>
+  read.csv() |>
+  as.list() |>
+  purrr::transpose() |>
+  purrr::map_chr(~ knitr::knit_expand(file = "_templates/hexwall_element.Rmd",
+                                      pkgname = .x$pkgname,
+                                      description = .x$description)) |>
+  cat(sep = "\n")
+```
+
+:::

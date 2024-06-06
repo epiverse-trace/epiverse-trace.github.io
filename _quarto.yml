@@ -20,6 +20,7 @@ website:
             href: presentations.qmd
       - text: Use
         menu:
+        - href: getting-started.qmd
         - text: Software
           href: https://epiverse-trace.r-universe.dev/ui#packages
       - text: Learn
