@@ -1,0 +1,12 @@
+---
+title: "readepi v0.1.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-06-10"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new readepi version v0.1.0.
+Here is an automatically generated summary of the changes in this version.
+
+This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.
