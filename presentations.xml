@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.40</generator>
+<generator>quarto-1.5.43</generator>
 <lastBuildDate>Sat, 03 Feb 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem</title>
@@ -216,6 +216,50 @@ Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
   <guid>https://epiverse-trace.github.io/slides/showcase-november-2023/</guid>
   <pubDate>Thu, 30 Nov 2023 00:00:00 GMT</pubDate>
   <media:content url="https://epiverse-trace.github.io/slides/showcase.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Epiverse-TRACE LAC @ LatinR</title>
+  <dc:creator>Laura Gómez Bermeo</dc:creator>
+  <dc:creator>Nicolás T. Domínguez</dc:creator>
+  <dc:creator>Diana Fajardo Pulido</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/2023-LatinR/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Presentaciones de Epiverse-TRACE LAC en la <a href="https://latin-r.com/">conferencia LatinR 2023</a>, en Montevideo, Uruguay.</p>
+<section id="epi-training-kit" class="level2">
+<h2 class="anchored" data-anchor-id="epi-training-kit"><a href="https://github.com/epiverse-trace/epi-training-kit">Epi-training kit</a></h2>
+<iframe width="780" height="500" src="epiKit - Presentacion LatinR.pdf" title="Slides for the Epi-training kit presentation at the LatinR conference"></iframe>
+</section>
+<section id="serofoi" class="level2">
+<h2 class="anchored" data-anchor-id="serofoi"><a href="https://github.com/epiverse-trace/serofoi">serofoi</a></h2>
+<iframe width="780" height="500" src="serofoi - Presentacion LatinR.pdf" title="Slides for serofoi presentation at the LatinR conference"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gómez_bermeo2023,
+  author = {Gómez Bermeo, Laura and T. Domínguez, Nicolás and Fajardo
+    Pulido, Diana},
+  title = {Epiverse-TRACE {LAC} @ {LatinR}},
+  date = {2023-10-10},
+  url = {https://epiverse-trace.github.io/slides/2023-LatinR},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gómez_bermeo2023" class="csl-entry quarto-appendix-citeas">
+Gómez Bermeo, Laura, Nicolás T. Domínguez, and Diana Fajardo Pulido.
+2023. <span>“Epiverse-TRACE LAC @ LatinR.”</span> October 10, 2023. <a href="https://epiverse-trace.github.io/slides/2023-LatinR">https://epiverse-trace.github.io/slides/2023-LatinR</a>.
+</div></div></section></div> ]]></description>
+  <category>TRACE-LAC</category>
+  <category>R</category>
+  <category>Latin America</category>
+  <category>serofoi</category>
+  <category>Epi-training kit</category>
+  <guid>https://epiverse-trace.github.io/slides/2023-LatinR/</guid>
+  <pubDate>Tue, 10 Oct 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Interoperability strategy for the Epiverse</title>
