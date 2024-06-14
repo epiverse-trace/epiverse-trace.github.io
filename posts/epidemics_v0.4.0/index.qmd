@@ -2,7 +2,7 @@
 title: "epidemics v0.4.0"
 author:
   - name: "The Epiverse-TRACE development team"
-date: "2024-06-10"
+date: "2024-06-24"
 categories: [new-release]
 ---
 
