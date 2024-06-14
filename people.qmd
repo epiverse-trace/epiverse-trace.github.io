@@ -1,10 +1,15 @@
+---
+execute:
+  freeze: false
+---
+
 # People
 
 <!-- ## Team -->
 
 ## Contributors
 
-We appreciate all contributions throughout Epiverse - big or small 💜 Below you can find anybody who has participated in our discussions, contributed code (in)directly, or reported a bug at some point (in alphabetical order). 
+We appreciate all contributions throughout Epiverse - big or small 💜 Below you can find anybody who has participated in our discussions, contributed code (in)directly, or reported a bug at some point (in alphabetical order).
 
 Collectively, they make Epiverse possible.
 
