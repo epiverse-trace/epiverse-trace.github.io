@@ -2,7 +2,7 @@
 title: "cleanepi v1.0.0"
 author:
   - name: "The Epiverse-TRACE development team"
-date: "2024-06-04"
+date: "2024-06-17"
 categories: [new-release]
 ---
 
