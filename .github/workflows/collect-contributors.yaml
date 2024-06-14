@@ -19,6 +19,10 @@ jobs:
               with:
                 token: ${{ secrets.SUDO_GITHUB_TOKEN }}
 
+            - name: Setup Quarto
+              uses: quarto-dev/quarto-actions/setup@v2
+              with:
+                version: pre-release
             - name: Setup R
               uses: r-lib/actions/setup-r@v2
 
@@ -30,9 +34,13 @@ jobs:
 
             - name: Collect contributor data
               run: Rscript _scripts/collect_contributor_data.R
+            - name: Render people page
+              uses: quarto-dev/quarto-actions/render@v2
+              with:
+                path: people.qmd
             - uses: EndBug/add-and-commit@v9
               with:
                 author_name: epiverse-trace-bot
                 author_email: epiverse-trace-bot@users.noreply.github.com
-                message: "Update `_data/epiverse_contributors.csv`"
-                add: '_data/epiverse_contributors.csv'
+                message: "Update `_data/epiverse_contributors.csv` and `_freeze/`"
+                add: '_data/epiverse_contributors.csv _freeze/'
