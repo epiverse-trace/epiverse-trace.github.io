@@ -39,9 +39,8 @@ Maintainer is changing to @rozeggo.
 
 1. Updated Codecov GitHub Actions workflow to restore code coverage reporting.
 
-2. Updated package title and citation file. 
+2. Updated package title and citation file.
 
 3. Updated `_pkgdown.yaml` with new vignette and updated section titles.
 
 4. Updated WORDLIST.
-
