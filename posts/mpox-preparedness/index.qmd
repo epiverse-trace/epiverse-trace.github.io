@@ -10,17 +10,17 @@ format:
     toc: true
 ---
 
-# Introduction
+## Introduction
 
 There is an ongoing outbreak of Mpox globally that will require a coordinated response from the global health community. The Epiverse-TRACE team is developing a set of tools to help provide analytics support to decision-makers during this outbreak.
 
 This post provides an overview of aspects of analytics that could support decision-making in the context of the ongoing outbreak of Mpox. For each scenario, we briefly describe the data required to inform these decisions, and the ready tools developed by the Epiverse-TRACE team and the wider community.
 
-# Decision-making scenarios
+## Decision-making scenarios
 
 Outbreak analytics in the context of the ongoing Mpox outbreak can be broadly classified into estimating the reproductive number, identifying transmission clusters, and assessing the impact of interventions.
 
-## Reproductive number and superspreading
+### Reproductive number and superspreading
 
 A key and initial question during outbreaks of this nature concerns the transmission potential of the disease. This can be quantified as the reproduction number, $R0$, the time varying reproduction number, $Rt$, and individual heterogeneity in transmission, a.k.a., superspreading.
 
@@ -34,19 +34,19 @@ With data on transmission clusters and/or secondary cases of index cases, the [e
 
 Using the secondary cases data, the [superspreading](https://epiverse-trace.github.io/superspreading/) package provides functions to estimate the probability of a full blown outbreak.
 
-## Forecasting and nowcasting
+### Forecasting and nowcasting
 
 Forecasting and nowcasting are crucial for planning and resource allocation during an outbreak. Forecasting is the prediction of future cases, deaths, or other outcomes, while nowcasting is the prediction of the current state of the outbreak.
 
 The [EpiNow2](https://epiforecasts.io/EpiNow2/) and [epinowcast](https://package.epinowcast.org/) package provides functions to forecast and nowcast the number of cases. The data required for `{EpiNow2}` have already been described in the previous section. The `{epinowcast}` package similarly requires data on the number of cases reported per date.
 
-## Estimation severity
+### Disease severity (CFR)
 
 The case fatality rate is a key metric to assess the severity of a disease. The case fatality rate is the proportion of deaths among confirmed cases.
 
 With data on the number of cases reported and the number of deaths reported, the [cfr](https://epiverse-trace.github.io/cfr/) package can be used to estimate the case fatality rate and its uncertainty. Importantly, it accounts for the delay between the onset of symptoms and death, which is crucial for accurate estimation of the case fatality rate.
 
-## Estimation of the impact of interventions
+### The impact of interventions
 
 Mpox can be mitigated with behaviour change, treatment, and vaccination. Here, a few tools are available to assess the impact of intervention scenarios.
 
@@ -54,7 +54,7 @@ The [epidemics](https://epiverse-trace.github.io/epidemics/) package provides re
 
 `{epidemics}` allows for stratifying the population structure into arbitrary groups, specifying the contact structure between these groups, and rates of interventions. Hence, the data required to inform these models are the population structure, contact structure, and the rates of interventions.
 
-# Summary
+## Summary
 
 In this post, we have outlined the tools available to support decision-making in the context of the ongoing outbreak of Mpox. These tools are developed by the Epiverse-TRACE team and the wider community and are available as R packages. The tools are designed to be user-friendly and accessible to a wide range of users, from public health professionals to researchers.
 
