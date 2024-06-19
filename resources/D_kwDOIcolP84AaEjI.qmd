@@ -1,0 +1,8 @@
+---
+title: "Tutorial on the types of tests to write for an R function"
+url: "https://github.com/orgs/epiverse-trace/discussions/282"
+date: "2024-06-18"
+author: jamesmbaazam
+categories: []
+upvotes: 1
+---
