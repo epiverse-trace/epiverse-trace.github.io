@@ -13,15 +13,15 @@ Here is an automatically generated summary of the changes in this version.
 
 ## Acknowledgements
 
-```{r ctbs, results='asis', echo=FALSE}
-releases <- suppressMessages(gh::gh("GET /repos/{owner}/{repo}/releases", 
+```{r ctbs, results='asis', echo=FALSE, message = FALSE}
+releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
                owner = "epiverse-trace",
-               repo = "{{ pkgname }}"))
-ctbs <- suppressMessages(usethis::use_tidy_thanks(
+               repo = "{{ pkgname }}")
+ctbs <- usethis::use_tidy_thanks(
   paste0('epiverse-trace/', 
     "{{ pkgname }}"), 
   from = releases[[length(releases) - 1]][["tag_name"]], 
-  to = "{{ version }}"))
+  to = "{{ version }}")
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
 cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
 ```
