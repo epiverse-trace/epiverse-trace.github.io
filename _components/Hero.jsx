@@ -20,9 +20,9 @@ function Hero() {
               Developing tools for the next epidemic
             </h1>
             <p className="tw-mt-6 tw-text-lg tw-leading-8 tw-text-gray-300">
-              Epiverse is a universe of epidemiological tools to respond to
+              Epiverse-TRACE is a universe of epidemiological tools to respond to
               outbreaks. From reading your data through estimating vaccine
-              efficacy, Epiverse provides robust tools so you can focus on the
+              efficacy, Epiverse-TRACE provides robust tools so you can focus on the
               results.
             </p>
             <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">

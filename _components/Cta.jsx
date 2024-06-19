@@ -19,7 +19,7 @@ function Cta() {
             Want to help prepare for the next epidemic?
           </h2>
           <p className="tw-mx-auto tw-mt-6 tw-max-w-xl tw-text-lg tw-leading-8 tw-text-gray-300">
-            Find the right pathway for your entry into Epiverse.
+            Find the right pathway for your entry into Epiverse-TRACE.
           </p>
           <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
             <a

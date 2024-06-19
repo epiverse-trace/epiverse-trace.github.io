@@ -25,7 +25,7 @@ const features = [
   {
     name: "Co-creation",
     description:
-      "Your suggestions help shape Epiverse - surfacing needs is encouraged.",
+      "Your suggestions help shape Epiverse-TRACE - surfacing needs is encouraged.",
     icon: ChatBubbleIcon,
   },
   {
