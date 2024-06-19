@@ -16,7 +16,9 @@ Here is an automatically generated summary of the changes in this version.
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
 releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
                owner = "epiverse-trace",
-               repo = "{{ pkgname }}")
+               repo = "{{ pkgname }}") |>
+  purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
+
 ctbs <- usethis::use_tidy_thanks(
   paste0('epiverse-trace/', 
     "{{ pkgname }}"), 
