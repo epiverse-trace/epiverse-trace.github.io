@@ -3,6 +3,6 @@ title: "Difference between the `apply()` family of functions in R"
 url: "https://github.com/orgs/epiverse-trace/discussions/255"
 date: "2024-05-07"
 author: jamesmbaazam
-categories: []
+categories: [Advanced R]
 upvotes: 1
 ---

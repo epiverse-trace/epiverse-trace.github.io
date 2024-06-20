@@ -3,6 +3,6 @@ title: "Painless introduction to object-oriented programming using S3 classes"
 url: "https://github.com/orgs/epiverse-trace/discussions/257"
 date: "2024-05-07"
 author: davidsantiagoquevedo
-categories: []
+categories: [documentation, Tutorial]
 upvotes: 2
 ---

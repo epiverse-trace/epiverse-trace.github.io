@@ -3,6 +3,6 @@ title: "Tidyverse book on code review"
 url: "https://github.com/orgs/epiverse-trace/discussions/248"
 date: "2024-05-07"
 author: joshwlambert
-categories: []
+categories: [GitHub]
 upvotes: 2
 ---
