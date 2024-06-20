@@ -20,8 +20,7 @@ releases <- gh::gh("GET /repos/{owner}/{repo}/releases",
   purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
 
 ctbs <- usethis::use_tidy_thanks(
-  paste0('epiverse-trace/', 
-    "{{ pkgname }}"), 
+  "epiverse-trace/{{ pkgname }}", 
   from = releases[[2]][["tag_name"]], 
   to = "{{ version }}")
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
