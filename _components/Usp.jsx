@@ -59,13 +59,15 @@ function Usp() {
                 </dl>
               </div>
             </div>
-            <img
-              src="../public/Epiverse-Trace-Summit-group-photo-1920x1080.jpg"
-              alt="Epiverse-TRACE summit 2023 group photo"
-              className="tw-w-[48rem] tw-max-w-none tw-rounded-xl tw-shadow-w-xl tw-ring-1 tw-ring-gray-400/10 sm:tw-w-[57rem] md:-tw-ml-32 lg:-tw-ml-0"
-              width={2432}
-              height={1442}
-            />
+            <div className="tw-flex">
+              <img
+                src="../public/Epiverse-Trace-Summit-group-photo-1920x1080.jpg"
+                alt="Epiverse-TRACE summit 2023 group photo"
+                className="tw-w-[48rem] tw-max-w-[100%] tw-rounded-xl tw-shadow-w-xl tw-ring-1 tw-ring-gray-400/10 lg:tw-h-[360.5px]"
+                width={2432}
+                height={1442}
+              />
+            </div>
           </div>
         </div>
       </div>

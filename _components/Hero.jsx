@@ -1,6 +1,6 @@
 function Hero() {
   return (
-    <div className="tw-relative tw-isolate tw-pt-14">
+    <div className="tw-relative tw-isolate">
       <div
         className="tw-absolute tw-inset-x-0 -tw-top-40 -tw-z-10 tw-transform-gpu tw-overflow-hidden tw-blur-3xl sm:-tw-top-80"
         aria-hidden="true"
@@ -20,10 +20,11 @@ function Hero() {
               Developing tools for the next epidemic
             </h1>
             <p className="tw-mt-6 tw-text-lg tw-leading-8 tw-text-gray-300">
-              Epiverse-TRACE is a universe of epidemiological tools to respond to
-              outbreaks. From reading your data through estimating vaccine
-              efficacy, Epiverse-TRACE provides robust tools so you can focus on the
-              results.
+              Epiverse-TRACE is a global collaborative ecosystem dedicated to
+              getting ahead of the next public health crisis. From reading and
+              cleaning your data to estimating vaccine efficacy and policy
+              impact, Epiverse-TRACE provides robust tools so you can focus on
+              the results.
             </p>
             <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
               <a
@@ -33,10 +34,10 @@ function Hero() {
                 Get started
               </a>
               <a
-                href="https://join.slack.com/t/epiversetrace/shared_invite/zt-2dl52uahe-vH1AtHgYUV_IptVk84Tzrw"
+                href="https://github.com/orgs/epiverse-trace/discussions"
                 className="tw-text-sm tw-font-semibold tw-leading-6 tw-text-white"
               >
-                Join our chat <span aria-hidden="true">→</span>
+                Join the discussion <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
