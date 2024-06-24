@@ -4,7 +4,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2024-01-31"
-categories: [R, reproducibility, renv]
+categories: [R, reproducibility, renv, DOI]
 format:
   html: 
     toc: true
