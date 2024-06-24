@@ -32,7 +32,7 @@ function LogoCloud() {
             <a href="https://uniandes.edu.co/en" target="_blank" rel="norefer">
               <img
                 className="tw-max-h-16 tw-w-full tw-object-contain"
-                src="public/logo-andes.svg"
+                src="public/logo-andes.png"
                 alt="Universidad de los Andes (Uniandes)"
                 width={158}
                 height={48}
