@@ -59,11 +59,11 @@ function Usp() {
                 </dl>
               </div>
             </div>
-            <div className="tw-flex">
+            <div>
               <img
                 src="../public/Epiverse-Trace-Summit-group-photo-1920x1080.jpg"
                 alt="Epiverse-TRACE summit 2023 group photo"
-                className="tw-w-[48rem] tw-max-w-[100%] tw-rounded-xl tw-shadow-w-xl tw-ring-1 tw-ring-gray-400/10 lg:tw-h-[360.5px]"
+                className="tw-w-[48rem] tw-max-w-[100%] tw-rounded-xl tw-shadow-w-xl tw-ring-1 tw-ring-gray-400/10"
                 width={2432}
                 height={1442}
               />
