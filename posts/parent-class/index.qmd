@@ -3,7 +3,7 @@ title: "Choosing the Right Parent for R Object Classes"
 author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
-date: "2023-06-24"
+date: "2024-06-24"
 categories: [R, R package, object-oriented programming, S3, interoperability]
 ---
 
