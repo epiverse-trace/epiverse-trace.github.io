@@ -45,6 +45,6 @@ A good example here is the [epiparameter](https://github.com/epiverse-trace/epip
 
 Overall, these tips on relying of strong parent classes and their existing ecosystems should help produce a package:
 
--   more easily accessible for users because it uses objects that feel familiar
--   more maintainable because a lot of method writing is offloaded to the parent class
--   more likely to be interoperable because standard classes are a good way to pass data between functions or packages
+- more easily accessible for users because it uses objects that feel familiar
+- more maintainable because a lot of method writing is offloaded to the parent class
+- more likely to be interoperable because standard classes are a good way to pass data between functions or packages
