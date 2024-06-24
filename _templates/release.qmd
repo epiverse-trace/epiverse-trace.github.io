@@ -10,3 +10,19 @@ We are very excited to announce the release of a new {{ pkgname }} version {{ v 
 Here is an automatically generated summary of the changes in this version.
 
 {{ notes }}
+
+## Acknowledgements
+
+```{r ctbs, results='asis', echo=FALSE, message = FALSE}
+releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
+               owner = "epiverse-trace",
+               repo = "{{ pkgname }}") |>
+  purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
+
+ctbs <- usethis::use_tidy_thanks(
+  "epiverse-trace/{{ pkgname }}", 
+  from = releases[[2]][["tag_name"]], 
+  to = "{{ version }}")
+ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
+cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
+```

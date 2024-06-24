@@ -31,6 +31,7 @@ included_handles <- c(
   "CatalinaGU",
   "dgmascarina", # linelist logo and graphical summary
   "hawyndiaz",
+  "krlmlr", # https://github.com/epiverse-trace/linelist/commit/314c4b75f01b1473e60b6850946dd085f71e6fd8#r141430850
   "mauricio110785",
   "modiazv",
   "Na-Nino"

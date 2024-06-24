@@ -1,0 +1,25 @@
+---
+title: "Epiverse-TRACE LAC @ LatinR"
+author:
+  - name: "Laura Gómez Bermeo"
+    orcid: "0000-0003-4028-2893"
+  - name: "Nicolás T. Domínguez"
+    orcid: "0009-0002-8484-1298"
+  - name: "Diana Fajardo Pulido"
+date: "2023-10-10"
+categories: [TRACE-LAC, R, Latin America, serofoi, Epi-training kit]
+---
+
+Presentaciones de Epiverse-TRACE LAC en la [conferencia LatinR 2023](https://latin-r.com/), en Montevideo, Uruguay.
+
+## [Epi-training kit](https://github.com/epiverse-trace/epi-training-kit)
+
+```{=html}
+<iframe width="780" height="500" src="epiKit - Presentacion LatinR.pdf" title="Slides for the Epi-training kit presentation at the LatinR conference"></iframe>
+```
+
+## [serofoi](https://github.com/epiverse-trace/serofoi)
+
+```{=html}
+<iframe width="780" height="500" src="serofoi - Presentacion LatinR.pdf" title="Slides for serofoi presentation at the LatinR conference"></iframe>
+```

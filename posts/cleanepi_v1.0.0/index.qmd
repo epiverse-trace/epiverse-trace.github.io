@@ -1,0 +1,30 @@
+---
+title: "cleanepi v1.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-06-17"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new cleanepi version v1.0.0.
+Here is an automatically generated summary of the changes in this version.
+
+## first major release
+
+Initial CRAN submission of [`{cleanepi}`](https://epiverse-trace.github.io/cleanepi/), an R package designed for cleaning, curating, and standardizing epidemiological data.
+
+This release includes the following key functionalities:
+
+1. **Removing irregularities**: It removes duplicated and empty rows and columns, as well as columns with constant values.
+
+2. **Handling missing values**: It replaces missing values with the standard `NA` format, ensuring consistency and ease of analysis.
+
+3. **Ensuring data integrity**: It ensures the uniqueness of uniquely identified columns, thus maintaining data integrity and preventing duplicates.
+
+4. **Date conversion**: It offers functionality to convert character columns to Date format under specific conditions, enhancing data uniformity and facilitating temporal analysis. It also offers conversion of numeric values written in letters into numbers.
+
+5. **Standardizing entries**: It can standardize column entries into specified formats, promoting consistency across the dataset.
+
+6. **Time span calculation**: It calculates the time span between two elements of type `Date`, providing valuable demographic insights for epidemiological analysis.
+
+7. **Reporting cleaning outcome**: It displays the report that reflects the changes made on the input data during the cleaning process, hence allowing the user to amend on the cleaning operations.

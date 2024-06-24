@@ -3,6 +3,6 @@ title: "Rcpp gallery"
 url: "https://github.com/orgs/epiverse-trace/discussions/250"
 date: "2024-05-07"
 author: pratikunterwegs
-categories: []
+categories: [documentation, Tutorial]
 upvotes: 1
 ---
