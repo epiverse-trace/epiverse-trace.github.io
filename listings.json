@@ -40,8 +40,10 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/epidemics_v0.4.0/index.html",
       "/posts/cleanepi_v1.0.0/index.html",
       "/posts/epichains_v0.1.0/index.html",
+      "/posts/readepi_v0.1.0/index.html",
       "/posts/simulist_v0.3.0/index.html",
       "/posts/epiparameter_v0.1.0/index.html",
       "/posts/linelist_v1.1.0/index.html",

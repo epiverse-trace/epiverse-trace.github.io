@@ -21,6 +21,13 @@
     "text": "A feed of the presentations is also available via RSS.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem\n\n\n\n\n\n\ninteroperability\n\n\necosystem\n\n\nR\n\n\nR packages\n\n\n\n\n\n\n\n\n\nFeb 3, 2024\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Autumn 2023 showcase\n\n\n\n\n\n\nreadepi\n\n\ncleanepi\n\n\npipeline demo\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nNov 30, 2023\n\n\nCarmen Tamayo, Karim Mané, Abdoelnaser Degoot, Bankole Ahadzie\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE LAC @ LatinR\n\n\n\n\n\n\nTRACE-LAC\n\n\nR\n\n\nLatin America\n\n\nserofoi\n\n\nEpi-training kit\n\n\n\n\n\n\n\n\n\nOct 10, 2023\n\n\nLaura Gómez Bermeo, Nicolás T. Domínguez, Diana Fajardo Pulido\n\n\n\n\n\n\n\n\n\n\n\n\nInteroperability strategy for the Epiverse\n\n\n\n\n\n\ninteroperability\n\n\necosystem\n\n\nR\n\n\nR packages\n\n\n\n\n\n\n\n\n\nOct 1, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nCo-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas\n\n\nCo-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases\n\n\n\nco-design\n\n\nColombia\n\n\nLatin America\n\n\n\n\n\n\n\n\n\nSep 15, 2023\n\n\nCatalina González-Uribe\n\n\n\n\n\n\n\n\n\n\n\n\nGlobal Health Resilience Research Visit\n\n\n\n\n\n\nHarmonize\n\n\nworkshop\n\n\ninteroperability\n\n\ncommunity\n\n\nclimate\n\n\n\n\n\n\n\n\n\nJul 26, 2023\n\n\nAdam Kucharski, Joshua W. Lambert, Carmen Tamayo\n\n\n\n\n\n\n\n\n\n\n\n\nSuperseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}\n\n\n\n\n\n\nworkshop\n\n\ncommunity\n\n\nR package\n\n\nbpmodels\n\n\nepichains\n\n\n\n\n\n\n\n\n\nJul 17, 2023\n\n\nJames M. Azam\n\n\n\n\n\n\n\n\n\n\n\n\nJuniper seminar on improving software for epidemic response\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\n\n\n\n\n\n\n\nMay 31, 2023\n\n\nAdam Kucharski\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Spring 2023 showcase\n\n\n\n\n\n\nsivirep\n\n\nepiCo\n\n\nserofoi\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nApr 5, 2023\n\n\nAnna Carnegie, Geraldine Gómez Millán, Juan Daniel Umaña, Nicolás Torres\n\n\n\n\n\n\n\n\n\n\n\n\nFrom disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project\n\n\n\n\n\n\ndata science\n\n\npipelines\n\n\ninteroperability\n\n\ncommunity\n\n\ndeRSE23\n\n\n\n\n\n\n\n\n\nFeb 20, 2023\n\n\nHugo Gruson\n\n\n\n\n\n\n\n\n\n\n\n\nEpiverse-TRACE Winter 2023 showcase\n\n\n\n\n\n\nepiparameter\n\n\nfinalsize\n\n\nepisoap\n\n\nshowcase\n\n\n\n\n\n\n\n\n\nJan 25, 2023\n\n\nAnna Carnegie, Pratik Gupte, Joshua Lambert, Hugo Gruson\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "posts/readepi_v0.1.0/index.html",
+    "href": "posts/readepi_v0.1.0/index.html",
+    "title": "readepi v0.1.0",
+    "section": "",
+    "text": "We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.\nThis release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.\n\n\n\nReuseCC BY 4.0CitationBibTeX citation:@online{epiverse-trace_development_team2024,\n  author = {Epiverse-TRACE development team, The},\n  title = {Readepi V0.1.0},\n  date = {2024-06-10},\n  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nEpiverse-TRACE development team, The. 2024. “Readepi\nV0.1.0.” June 10, 2024. https://epiverse-trace.github.io/posts/readepi_v0.1.0/."
+  },
+  {
     "objectID": "posts/benchmarking_design_decisions/index.html",
     "href": "posts/benchmarking_design_decisions/index.html",
     "title": "Using benchmarking to guide the adoption of dependencies in R packages",
@@ -1223,6 +1230,41 @@
     "title": "epiparameter v0.1.0",
     "section": "Acknowledgements",
     "text": "Acknowledgements\nMany thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):\n@adamkucharski, @avallecam, @Bisaloo, @CarmenTamayo, @chartgerink, @jamesmbaazam, @maelle, @pratikunterwegs, @pitmonticone, @sbfnk, and @TimTaylor."
+  },
+  {
+    "objectID": "posts/epidemics_v0.4.0/index.html",
+    "href": "posts/epidemics_v0.4.0/index.html",
+    "title": "epidemics v0.4.0",
+    "section": "",
+    "text": "We are very excited to announce the release of a new epidemics version v0.4.0. Here is an automatically generated summary of the changes in this version.\nMaintainer is changing to @rozeggo."
+  },
+  {
+    "objectID": "posts/epidemics_v0.4.0/index.html#model-functions",
+    "href": "posts/epidemics_v0.4.0/index.html#model-functions",
+    "title": "epidemics v0.4.0",
+    "section": "Model functions",
+    "text": "Model functions\n\nInternal model functions for the models which allow vaccination have been corrected to prevent vaccination introducing negative values of susceptibles; tests added to check for this (#235, initially reported by @avallecam)."
+  },
+  {
+    "objectID": "posts/epidemics_v0.4.0/index.html#helper-functions",
+    "href": "posts/epidemics_v0.4.0/index.html#helper-functions",
+    "title": "epidemics v0.4.0",
+    "section": "Helper functions",
+    "text": "Helper functions\n\nAdded the epidemic_peak() function to calculate the timing and size of the largest peak in each compartment in an scenario model (#240) by @bahadzie.\nAdded the outcomes_averted() function to compare epidemic scenarios (e.g. with and without interventions or vaccination) (#225, #230)."
+  },
+  {
+    "objectID": "posts/epidemics_v0.4.0/index.html#documentation",
+    "href": "posts/epidemics_v0.4.0/index.html#documentation",
+    "title": "epidemics v0.4.0",
+    "section": "Documentation",
+    "text": "Documentation\n\nAdds a developer-focused vignette on how to modify epidemics and model structures to address potential modelling requests or tasks (#210).\nSplits up the ‘Modelling uncertainty and scenarios’ vignette into separate vignettes on uncertainty and scenario comparisons (#225).\nRemoved unnecessary plots from the vignette on modelling vaccination (#235).\nFixed link to socialmixr package in the ‘Get started’ and ‘Modelling interventions’ vignettes.\nUpdated and added documentation for all new or modified functions.\nUpdated references JSON file."
+  },
+  {
+    "objectID": "posts/epidemics_v0.4.0/index.html#package",
+    "href": "posts/epidemics_v0.4.0/index.html#package",
+    "title": "epidemics v0.4.0",
+    "section": "Package",
+    "text": "Package\n\nUpdated Codecov GitHub Actions workflow to restore code coverage reporting.\nUpdated package title and citation file.\nUpdated _pkgdown.yaml with new vignette and updated section titles.\nUpdated WORDLIST."
   },
   {
     "objectID": "index.html",
