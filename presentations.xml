@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.45</generator>
+<generator>quarto-1.5.47</generator>
 <lastBuildDate>Sat, 03 Feb 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem</title>
@@ -31,13 +31,13 @@
   title = {Epiverse-TRACE @ {FOSDEM} 2024: {From} Disconnected Elements
     to a Harmonious Ecosystem},
   date = {2024-02-03},
-  url = {https://epiverse-trace.github.io/slides/fosdem-2024},
+  url = {https://epiverse-trace.github.io/slides/fosdem-2024/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Epiverse-TRACE @ FOSDEM 2024: From
 Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
-2024. <a href="https://epiverse-trace.github.io/slides/fosdem-2024">https://epiverse-trace.github.io/slides/fosdem-2024</a>.
+2024. <a href="https://epiverse-trace.github.io/slides/fosdem-2024/">https://epiverse-trace.github.io/slides/fosdem-2024/</a>.
 </div></div></section></div> ]]></description>
   <category>interoperability</category>
   <category>ecosystem</category>
@@ -201,13 +201,13 @@ Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
     Ahadzie, Bankole},
   title = {Epiverse-TRACE {Autumn} 2023 Showcase},
   date = {2023-11-30},
-  url = {https://epiverse-trace.github.io/slides/showcase-november-2023},
+  url = {https://epiverse-trace.github.io/slides/showcase-november-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-tamayo2023" class="csl-entry quarto-appendix-citeas">
 Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
 2023. <span>“Epiverse-TRACE Autumn 2023 Showcase.”</span> November 30,
-2023. <a href="https://epiverse-trace.github.io/slides/showcase-november-2023">https://epiverse-trace.github.io/slides/showcase-november-2023</a>.
+2023. <a href="https://epiverse-trace.github.io/slides/showcase-november-2023/">https://epiverse-trace.github.io/slides/showcase-november-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>readepi</category>
   <category>cleanepi</category>
@@ -246,12 +246,12 @@ Tamayo, Carmen, Karim Mané, Abdoelnaser Degoot, and Bankole Ahadzie.
     Pulido, Diana},
   title = {Epiverse-TRACE {LAC} @ {LatinR}},
   date = {2023-10-10},
-  url = {https://epiverse-trace.github.io/slides/2023-LatinR},
+  url = {https://epiverse-trace.github.io/slides/2023-LatinR/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gómez_bermeo2023" class="csl-entry quarto-appendix-citeas">
 Gómez Bermeo, Laura, Nicolás T. Domínguez, and Diana Fajardo Pulido.
-2023. <span>“Epiverse-TRACE LAC @ LatinR.”</span> October 10, 2023. <a href="https://epiverse-trace.github.io/slides/2023-LatinR">https://epiverse-trace.github.io/slides/2023-LatinR</a>.
+2023. <span>“Epiverse-TRACE LAC @ LatinR.”</span> October 10, 2023. <a href="https://epiverse-trace.github.io/slides/2023-LatinR/">https://epiverse-trace.github.io/slides/2023-LatinR/</a>.
 </div></div></section></div> ]]></description>
   <category>TRACE-LAC</category>
   <category>R</category>
@@ -280,12 +280,12 @@ Gómez Bermeo, Laura, Nicolás T. Domínguez, and Diana Fajardo Pulido.
   author = {Gruson, Hugo},
   title = {Interoperability Strategy for the {Epiverse}},
   date = {2023-10-01},
-  url = {https://epiverse-trace.github.io/slides/interoperability-epiverse},
+  url = {https://epiverse-trace.github.io/slides/interoperability-epiverse/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Interoperability Strategy for the
-Epiverse.”</span> October 1, 2023. <a href="https://epiverse-trace.github.io/slides/interoperability-epiverse">https://epiverse-trace.github.io/slides/interoperability-epiverse</a>.
+Epiverse.”</span> October 1, 2023. <a href="https://epiverse-trace.github.io/slides/interoperability-epiverse/">https://epiverse-trace.github.io/slides/interoperability-epiverse/</a>.
 </div></div></section></div> ]]></description>
   <category>interoperability</category>
   <category>ecosystem</category>
@@ -322,13 +322,13 @@ Epiverse.”</span> October 1, 2023. <a href="https://epiverse-trace.github.io/s
   title = {Co-Diseño de Soluciones de Software Para Los Desafíos de
     {América} {Latina} y El {Caribe} En Enfermedades Infecciosas},
   date = {2023-09-15},
-  url = {https://epiverse-trace.github.io/slides/global-health-conference-2023},
+  url = {https://epiverse-trace.github.io/slides/global-health-conference-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gonzález-uribe2023" class="csl-entry quarto-appendix-citeas">
 González-Uribe, Catalina. 2023. <span>“Co-Diseño de Soluciones de
 Software Para Los Desafíos de América Latina y El Caribe En Enfermedades
-Infecciosas.”</span> September 15, 2023. <a href="https://epiverse-trace.github.io/slides/global-health-conference-2023">https://epiverse-trace.github.io/slides/global-health-conference-2023</a>.
+Infecciosas.”</span> September 15, 2023. <a href="https://epiverse-trace.github.io/slides/global-health-conference-2023/">https://epiverse-trace.github.io/slides/global-health-conference-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>co-design</category>
   <category>Colombia</category>
@@ -363,13 +363,13 @@ Infecciosas.”</span> September 15, 2023. <a href="https://epiverse-trace.githu
   author = {Kucharski, Adam and W. Lambert, Joshua and Tamayo, Carmen},
   title = {Global {Health} {Resilience} {Research} {Visit}},
   date = {2023-07-26},
-  url = {https://epiverse-trace.github.io/slides/harmonize-july-2023},
+  url = {https://epiverse-trace.github.io/slides/harmonize-july-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2023" class="csl-entry quarto-appendix-citeas">
 Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
 <span>“Global Health Resilience Research Visit.”</span> July 26, 2023.
-<a href="https://epiverse-trace.github.io/slides/harmonize-july-2023">https://epiverse-trace.github.io/slides/harmonize-july-2023</a>.
+<a href="https://epiverse-trace.github.io/slides/harmonize-july-2023/">https://epiverse-trace.github.io/slides/harmonize-july-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>Harmonize</category>
   <category>workshop</category>
@@ -406,13 +406,13 @@ Kucharski, Adam, Joshua W. Lambert, and Carmen Tamayo. 2023.
   title = {Superseding {R} Packages - Lessons Learned from Transitioning
     to \{Epichains\} from \{Bpmodels\}},
   date = {2023-07-17},
-  url = {https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023},
+  url = {https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-m._azam2023" class="csl-entry quarto-appendix-citeas">
 M. Azam, James. 2023. <span>“Superseding R Packages - Lessons Learned
 from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
-2023. <a href="https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023">https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023</a>.
+2023. <a href="https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/">https://epiverse-trace.github.io/slides/rslondon-southeast-july-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>workshop</category>
   <category>community</category>
@@ -444,12 +444,12 @@ from Transitioning to {Epichains} from {Bpmodels}.”</span> July 17,
   author = {Kucharski, Adam},
   title = {Juniper Seminar on Improving Software for Epidemic Response},
   date = {2023-05-31},
-  url = {https://epiverse-trace.github.io/slides/juniper-may-2023},
+  url = {https://epiverse-trace.github.io/slides/juniper-may-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2023" class="csl-entry quarto-appendix-citeas">
 Kucharski, Adam. 2023. <span>“Juniper Seminar on Improving Software for
-Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.github.io/slides/juniper-may-2023">https://epiverse-trace.github.io/slides/juniper-may-2023</a>.
+Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.github.io/slides/juniper-may-2023/">https://epiverse-trace.github.io/slides/juniper-may-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>epiparameter</category>
   <category>finalsize</category>
@@ -600,13 +600,13 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
     Juan and Torres, Nicolás},
   title = {Epiverse-TRACE {Spring} 2023 Showcase},
   date = {2023-04-05},
-  url = {https://epiverse-trace.github.io/slides/showcase-april-2023},
+  url = {https://epiverse-trace.github.io/slides/showcase-april-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas">
 Carnegie, Anna, Geraldine Gómez Millán, Juan Daniel Umaña, and Nicolás
 Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
-5, 2023. <a href="https://epiverse-trace.github.io/slides/showcase-april-2023">https://epiverse-trace.github.io/slides/showcase-april-2023</a>.
+5, 2023. <a href="https://epiverse-trace.github.io/slides/showcase-april-2023/">https://epiverse-trace.github.io/slides/showcase-april-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>sivirep</category>
   <category>epiCo</category>
@@ -663,7 +663,7 @@ Torres. 2023. <span>“Epiverse-TRACE Spring 2023 Showcase.”</span> April
   title = {From Disconnected Elements to a Harmonious Ecosystem: {The}
     {Epiverse-TRACE} Project},
   date = {2023-02-20},
-  url = {https://epiverse-trace.github.io/slides/harmonious-ecosystem},
+  url = {https://epiverse-trace.github.io/slides/harmonious-ecosystem/},
   doi = {10.5281/zenodo.7697961},
   langid = {en}
 }
@@ -823,12 +823,12 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
     Gruson, Hugo},
   title = {Epiverse-TRACE {Winter} 2023 Showcase},
   date = {2023-01-25},
-  url = {https://epiverse-trace.github.io/slides/showcase-january-2023},
+  url = {https://epiverse-trace.github.io/slides/showcase-january-2023/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-carnegie2023" class="csl-entry quarto-appendix-citeas">
 Carnegie, Anna, Pratik Gupte, Joshua Lambert, and Hugo Gruson. 2023.
-<span>“Epiverse-TRACE Winter 2023 Showcase.”</span> January 25, 2023. <a href="https://epiverse-trace.github.io/slides/showcase-january-2023">https://epiverse-trace.github.io/slides/showcase-january-2023</a>.
+<span>“Epiverse-TRACE Winter 2023 Showcase.”</span> January 25, 2023. <a href="https://epiverse-trace.github.io/slides/showcase-january-2023/">https://epiverse-trace.github.io/slides/showcase-january-2023/</a>.
 </div></div></section></div> ]]></description>
   <category>epiparameter</category>
   <category>finalsize</category>
