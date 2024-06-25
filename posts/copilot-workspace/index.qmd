@@ -10,7 +10,7 @@ author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
 date: "2024-06-24"
-categories: [AI, GitHub, Copilot Workspace, R package, software development]
+categories: [AI, GitHub, Copilot Workspace, R, R package, software development]
 bibliography: index.bib
 format:
   html: 
