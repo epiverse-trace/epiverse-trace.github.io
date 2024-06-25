@@ -1,0 +1,31 @@
+---
+title: "Improving Ecosystem Interoperability Iteratively via Progressive Enhancement"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-01-31"
+categories: [R, reproducibility, renv]
+format:
+  html: 
+    toc: true
+---
+
+We are continuing on post series on S3 and interoperability. 
+We have previously discussed what makes a good S3 class and how to choose a good parent for it, as well as when to write or not write a custom method.
+We have highlighted in particular how classes inheriting from data.frames can simplify user experience, and reduce developer workload.
+
+We have detailed how to improve compatibility with the tidyverse by explaining:
+
+- how functions taking data.frames or data.frames subclass can easily and should also allow compatibility with tibble
+- how to ensure class attribute is preserved whenever possible while using dplyr functions.
+
+Here, we are going to explore how to actually start adding support in the ecosystem for the newly S3 classes while minimizing user-facing breaking changes.
+We have previously delved into this topic with our previous post "" and this is a wider and higher-level view of the same topic.
+
+The strategy presented here is the declination of a common concept in web development and the web ecosystem: progressive enhancement. This philosophy aims to support browsers with limited range of features, while allowing a slightly richer experience for browsers with extra features.
+It makes sense to think about this philosophy with the prism of introducing new classes to a new software ecosystem as it has the similar constraints of multiple stakeholders with different interests and timelines.
+The application of progressive enhancement in this context means that users or packages that did not (yet) adopt the new classes are not penalized compared to users or packages that did.
+
+## Adding class support to function inputs via progressive enhancement
+
+## Adding class support to function outputs via progressive enhancement
