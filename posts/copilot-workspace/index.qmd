@@ -36,7 +36,8 @@ To test this out, a small group of Epiverse-TRACE professors and research softwa
 
 ## Experiment 1: Export an R function by updating the documentation
 
-_Difficulty level: basic_
+[!NOTE]
+Difficulty level: basic
 
 The first experiment was on an R package {EpiNow2}, which provides functions for forecasting and nowcasting epidemics and pandemics. [Issue #681](https://github.com/epiforecasts/EpiNow2/issues/681) was chosen as a simple task to evaluate Copilot workspace's ability to interpret requests that require small changes to the codebase of a package (i.e. can be achieved in a single commit by changing less than 5 lines of code). The issue stated that an internal function, `epinow2_cmdstan_model()` should be exported, with the issue description explaining this would help users specify compile-time options.
 
@@ -58,7 +59,8 @@ The changes made will still require the user to manually run the documentation (
 
 ## Experiment 2: Add a simple epidemic model to an R package that contains more complex models
 
-_Difficulty level: moderate to high_
+[!NOTE]
+Difficulty level: moderate to high
 
 {epidemics} is an Epiverse-TRACE R package that exports a range of compartmental  epidemiological models of varying complexities and applications.
 
@@ -80,7 +82,8 @@ AI generated code like that seen in this example showcases where users need to b
 
 ## Experiment 3: Conducting a code review on an R package
 
-_Difficulty level: moderate to high_
+[!NOTE]
+Difficulty level: moderate to high
 
 In the last test case, we requested GitHub copilot workspace to conduct a [code review of the entire code base of a package](https://github.com/epiverse-trace/simulist/pull/117). At Epiverse-TRACE, it is standard practise to conduct a full package review. As any code base develops, including R packages, more commits are added and often the number of lines of code increases. Reviewing all of these changes before releasing a new version of the package is a timely undertaking for package reviewers. If AI tools could review the code base, similar to how static code analysers work, and suggest improvements to, for example, code style, memory efficiency, documentation, unit testing, UX/UI, it would greatly improve efficiency before releasing the code.
 
