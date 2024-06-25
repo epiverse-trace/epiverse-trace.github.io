@@ -2,9 +2,10 @@
 # We need a title here to avoid picking up comments from other pages via GitHub
 # fuzzy matching. It can also be disabled in giscus via `data-strict=1` but
 # quarto doesn't support it yet.
-title: Welcome to Epiverse-TRACE
-image: Epiverse-RGB.svg
+# title: Welcome to Epiverse-TRACE
+# image: Epiverse-RGB.svg
 css: hexwall.css
+comments: false
 about:
   template: marquee
   links:
@@ -14,8 +15,37 @@ about:
     - icon: twitter
       text: Twitter
       href: https://twitter.com/Epiverse_TRACE
+format: 
+  html:
+    css: styles/stylesheet-homepage.css
+include-in-header:
+  text: |
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: true,
+            },
+            prefix: 'tw-',
+        }
+    </script>
+resources: 
+  - public/*
 ---
 
+<!-- markdownlint-disable MD041 -->
+{{< react Hero >}}
+<!-- markdownlint-enable MD041 -->
+
+{{< react LogoCloud >}}
+
+{{< react Usp >}}
+
+{{< react Benefits >}}
+
+{{< react Cta >}}
+
+<!-- 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
 ## Roadmap
@@ -51,4 +81,4 @@ file.path("_data", "epiverse_pkgs.csv") |>
 
 :::
 
-You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)!
+You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)! -->

@@ -8,23 +8,32 @@ website:
   description: "A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work."
   navbar:
     left:
-      - text: Software
-        href: https://epiverse-trace.r-universe.dev/packages
-      - text: Get involved
-        href: get-involved.qmd
-      - text: Blog
+      - text: News
         menu:
-          - text: All
-            url: "/blog.html"
-          - text: Articles
-            url: "/blog.html#category=R"
-          - text: Release notes
-            url: "/blog.html#category=new-release"
-      - text: Presentations
-        href: presentations.qmd
-      - href: resources.qmd
+          - text: Blog
+            href: blog.qmd
+          - text: Blog - Articles
+            href: blog.qmd#category=R
+          - text: Blog - Release notes
+            href: blog.qmd#category=new-release
+          - text: Presentations
+            href: presentations.qmd
+      - text: Use
+        menu:
+        - href: getting-started.qmd
+        - text: Software
+          href: https://epiverse-trace.r-universe.dev/packages
       - text: Learn
-        href: learn.qmd
+        menu:
+          - text: Learning materials
+            href: learn.qmd
+          - href: resources.qmd
+      - text: Contribute
+        menu:
+          - text: "Good first issues"
+            href: "https://github.com/search?q=org%3Aepiverse-trace++label%3A%22good+first+issue%22+is%3Aopen&type=issues"
+          - text: Get involved
+            href: get-involved.qmd
       - text: About
         href: people.qmd
     tools:
