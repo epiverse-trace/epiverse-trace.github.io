@@ -31,7 +31,7 @@ A follow up recommendation from inheriting from standard classes is to leverage 
 
 [One of the first](https://github.com/epiverse-trace/linelist/pull/60) [changes I made](https://github.com/epiverse-trace/linelist/pull/61) when becoming maintainer of the [linelist](https://github.com/epiverse-trace/linelist) package was to remove the `rename.linelist()` and `select.linelist()` methods. Indeed, they were, or could easily be, behaving identically as the parent `rename.data.frame()` and `select.data.frame()` methods. Rather than burdening the codebase and maintenance with an extra unnecessary method, it is much simpler and more robust to rely on the well-tested parent method. In fact, the [dplyr documentation](https://dplyr.tidyverse.org/reference/dplyr_extending.html) explicitly recommends only writing methods for a couple of standard functions (including `[.subclass()` and `names<-.subclass()`), which will enable the use of parent methods directly, rather than writing custom methods for each dplyr function.
 
-Similarly, many developers have the reflex to write a custom `print.subclass()` method as part of the method implementation. While it may be justified in some cases, it is also sometimes unnecessary extra fluff. My recommendation would be to evaluate carefully what benefit the custom method brings other defaulting to the parent method.
+Similarly, many developers have the reflex to write a custom `print.subclass()` method as part of the method implementation. While it may be justified in some cases, it is sometimes unnecessary. My recommendation would be to evaluate carefully what benefits the custom method brings over the default parent method.
 
 ## Enable conversion to standard classes
 
