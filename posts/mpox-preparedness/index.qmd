@@ -1,10 +1,10 @@
 ---
-title: "Epiverse-TRACE tools for analysing ongoing Mpox outbreak"
+title: "Epiverse-TRACE tools for analysing ongoing mpox outbreak"
 author:
   - name: "James Azam"
     orcid: "0000-0001-5782-7330"
 date: "2024-06-19"
-categories: [R, Epiverse-TRACE, Mpox, outbreak, outbreak-analytics]
+categories: [R, Epiverse-TRACE, mpox, outbreak, outbreak-analytics]
 format:
   html: 
     toc: true
@@ -12,13 +12,13 @@ format:
 
 ## Introduction
 
-There is an ongoing outbreak of Mpox globally that will require a coordinated response from the global health community. The Epiverse-TRACE team is developing a set of tools to help provide analytics support to decision-makers during this outbreak.
+There is an ongoing outbreak of mpox globally that will require a coordinated response from the global health community. The Epiverse-TRACE team is developing a set of tools to help provide analytics support to decision-makers during this outbreak.
 
-This post provides an overview of aspects of analytics that could support decision-making in the context of the ongoing outbreak of Mpox. For each scenario, we briefly describe the data required to inform these decisions, and the ready tools developed by the Epiverse-TRACE team and the wider community.
+This post provides an overview of aspects of analytics that could support decision-making in the context of the ongoing outbreak of mpox. For each scenario, we briefly describe the data required to inform these decisions, and the ready tools developed by the Epiverse-TRACE team and the wider community.
 
 ## Decision-making scenarios
 
-Outbreak analytics in the context of the ongoing Mpox outbreak can be broadly classified into estimating the reproductive number, identifying transmission clusters, and assessing the impact of interventions.
+Outbreak analytics in the context of the ongoing mpox outbreak can be broadly classified into estimating the reproductive number, identifying transmission clusters, and assessing the impact of interventions.
 
 ### Reproductive number and superspreading
 
@@ -48,7 +48,7 @@ With data on the number of cases reported and the number of deaths reported, the
 
 ### The impact of interventions
 
-Mpox can be mitigated with behaviour change, treatment, and vaccination. Here, a few tools are available to assess the impact of intervention scenarios.
+mpox can be mitigated with behaviour change, treatment, and vaccination. Here, a few tools are available to assess the impact of intervention scenarios.
 
 The [epidemics](https://epiverse-trace.github.io/epidemics/) package provides ready compartmental models to estimate the impact of vaccination and non-pharmaceutical interventions like behaviour change, which can conceptually be modelled as a reduction in the transmission rate through changes in the population contact structure.
 
@@ -56,6 +56,6 @@ The [epidemics](https://epiverse-trace.github.io/epidemics/) package provides re
 
 ## Summary
 
-In this post, we have outlined the tools available to support decision-making in the context of the ongoing outbreak of Mpox. These tools are developed by the Epiverse-TRACE team and the wider community and are available as R packages. The tools are designed to be user-friendly and accessible to a wide range of users, from public health professionals to researchers.
+In this post, we have outlined the tools available to support decision-making in the context of the ongoing outbreak of mpox. These tools are developed by the Epiverse-TRACE team and the wider community and are available as R packages. The tools are designed to be user-friendly and accessible to a wide range of users, from public health professionals to researchers.
 
 *Thanks to <insert reviewers> for their valuable comments on earlier drafts of this post.*
