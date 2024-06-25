@@ -1,5 +1,5 @@
 ---
-title: "Epiverse-TRACE tools for analysing ongoing mpox outbreak"
+title: "2024 mpox outbreak: common analytics scenarios and available R tools"
 author:
   - name: "James Azam"
     orcid: "0000-0001-5782-7330"
