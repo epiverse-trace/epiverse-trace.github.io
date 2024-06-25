@@ -36,7 +36,7 @@ If individual-level data are available, packages such as {[epidist](https://epid
 
 Tools like {[cleanepi](https://epiverse-trace.github.io/cleanepi/)} can be used to clean these individual-level datasets, and {[listlist](https://epiverse-trace.github.io/linelist/)} can be used to tag and validate key variables in datasets that might change overtime. {[numberize](https://epiverse-trace.github.io/numberize/)} can also be used to convert numbers-as-characters if needed.
 
-If such data are not avaiable, published estimates of the incubation period and serial interval can be obtained from the [epiparameter](https://epiverse-trace.github.io/epiparameter/) package, which collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. See the [database here](https://epiverse-trace.github.io/epiparameter/dev/articles/database) for currently available parameters (more entries are planned).
+If such data are not available, published estimates of the incubation period and serial interval can be obtained from the [epiparameter](https://epiverse-trace.github.io/epiparameter/) package, which collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. See the [database here](https://epiverse-trace.github.io/epiparameter/dev/articles/database) for currently available parameters (more entries are planned).
 
 Additionally, if only summary statistics in reports are available (e.g. range and median), we can use {epiparameter} to extract such values.
 
