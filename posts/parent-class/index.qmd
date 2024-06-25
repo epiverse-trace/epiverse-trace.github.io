@@ -11,8 +11,7 @@ categories: [R, R package, object-oriented programming, S3, interoperability, DO
 
 But there are still questions I have not addressed directly, even if they may have been implicitly included sometimes: what makes a good object class? What good practices in class & function design can improve interoperability?
 
-As you can expect from these questions, this post may be slightly more subjective than the previous ones on this topic.
-
+As you can expect from these questions, this post will present a subjective view on S3 class and method design.
 I will argue that it is often a good strategy to inherit from existing standards classes, and to leverage this inheritance relationship as much as possible.
 
 ## Inherit from standard classes
