@@ -38,7 +38,7 @@ To test this out, a small group of Epiverse-TRACE professors and research softwa
 
 _Difficulty level: basic_
 
-The first experiment was on an R package {EpiNow2} used for forecasting and nowcasting epidemics and pandemics. [Issue #681](https://github.com/epiforecasts/EpiNow2/issues/681) was chosen as a simple task to evaluate Copilot workspace's ability to interpret requests that require small changes to the codebase of a package (i.e. can be achieved in a single commit by changing less than 5 lines of code). The issue stated that an internal function, `epinow2_cmdstan_model()` should be exported, with the issue description explaining this would help users specify compile-time options.
+The first experiment was on an R package {EpiNow2}, which provides functions for forecasting and nowcasting epidemics and pandemics. [Issue #681](https://github.com/epiforecasts/EpiNow2/issues/681) was chosen as a simple task to evaluate Copilot workspace's ability to interpret requests that require small changes to the codebase of a package (i.e. can be achieved in a single commit by changing less than 5 lines of code). The issue stated that an internal function, `epinow2_cmdstan_model()` should be exported, with the issue description explaining this would help users specify compile-time options.
 
 ![Screenshot of EpiNow2 package issue 681 which was used as an example application of GitHub Copilot Workspace.](epinow2_issue.png)
 
