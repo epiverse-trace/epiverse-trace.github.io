@@ -20,11 +20,15 @@ function Hero() {
               Developing tools for the next epidemic
             </h1>
             <p className="tw-mt-6 tw-text-lg tw-leading-8 tw-text-gray-300">
-              Epiverse-TRACE is a global collaborative working to develop a
-              trustworthy data analysis ecosystem dedicated to getting ahead of
-              the next public health crisis. From reading and cleaning your data
-              to estimating vaccine efficacy and policy impact, Epiverse-TRACE
-              provides robust tools so you can focus on the results.
+              Epiverse-TRACE is one of the pillars of the wider{" "}
+              <a href="https://epiverse.org" className="tw-underline">
+                Epiverse
+              </a>{" "}
+              project, and is a suite of innovative software and tools for
+              global infectious disease analysis and response. From reading and
+              cleaning your data to estimating vaccine efficacy and policy
+              impact, Epiverse-TRACE provides robust tools so you can focus on
+              the results.
             </p>
             <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
               <a
