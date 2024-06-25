@@ -12,9 +12,6 @@ about:
     - icon: github
       text: Github
       href: https://github.com/epiverse-trace
-    - icon: slack
-      text: Slack
-      href: https://join.slack.com/t/epiversetrace/shared_invite/zt-2dl52uahe-vH1AtHgYUV_IptVk84Tzrw
     - icon: twitter
       text: Twitter
       href: https://twitter.com/Epiverse_TRACE
