@@ -22,17 +22,29 @@ Outbreak analytics in the context of the ongoing mpox outbreak can be broadly cl
 
 ### Reproductive number and superspreading
 
-A key and initial question during outbreaks of this nature concerns the transmission potential of the disease. This can be quantified as the reproduction number, $R0$, the time varying reproduction number, $Rt$, and individual heterogeneity in transmission, a.k.a., superspreading.
+A key initial question during emerging outbreaks is the transmission potential of the disease. This is typically quantified using parameters such as: the basic reproduction number, $R0$; the time varying reproduction number, $Rt$; and $k$, which captures individual heterogeneity in transmission (i.e. 'superspreading' potential).
 
 These quantities are useful to assess the potential for further spread of the disease and the impact of interventions.
 
 Two types of reproduction numbers are commonly used to quantify the transmission potential of infectious diseases: the basic reproduction number, $R_0$, and the instanteneous reproduction number, $R_t$. The basic reproduction number is the average number of secondary cases produced by a single infected individual in a completely susceptible population. The instantaneous reproduction number is the average number of secondary cases produced by a single infected individual at time $t$ in a partially susceptible population. The instantaneous reproduction number is a more useful quantity during an outbreak as it accounts for the impact of interventions and changes in population immunity.
 
-With data on the number of reported cases per date, [EpiNow2](https://epiforecasts.io/EpiNow2/) and  [EpiEstim](https://mrc-ide.github.io/EpiEstim/) are excellent choices to estimate the time varying reproduction number, $Rt$. These packages additionally requires data on the serial interval and incubation period, generation time, and reporting delays, although this can be estimated from the data using `{EpiNow2}` for example. Data on the incubation period and serial interval can be obtained from the [epiparameter](https://epiverse-trace.github.io/epiparameter/) package, which collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. See the database [here](https://epiverse-trace.github.io/epiparameter/dev/articles/database).
+If data are available on the daily number of reported cases, [EpiNow2](https://epiforecasts.io/EpiNow2/) and  [EpiEstim](https://mrc-ide.github.io/EpiEstim/) allow estimation of the time varying reproduction number, $Rt$. These packages require data on the timescale of transmission (i.e. the generation time, or the serial interval, which is [commonly used as a proxy](https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0756) for this).
 
-With data on transmission clusters and/or secondary cases of index cases, the [epichains](https://epiverse-trace.github.io/epichains/) package provides functions to estimate the basic reproduction number, $R0$, and the dispersion parameter of the negative binomial distribution, which is a measure of superspreading.
+To adjust for delays in symptom onset and reporting, `{EpiNow2}` also takes incubation period and reporting delay as inputs, although the latter can be estimated from the data using `{EpiNow2}` if data on incidence by date of onset and report are available. 
 
-Using the secondary cases data, the [superspreading](https://epiverse-trace.github.io/superspreading/) package provides functions to estimate the probability of a full blown outbreak.
+If individual-level data are available, packages such as {[epidist](https://epidist.epinowcast.org/articles/epidist.html)} offer the ability to estimate delay distributions, accounting for issues such as truncation (i.e. not all disease outcomes will be known yet in real-time).
+
+Tools like {[cleanepi](https://epiverse-trace.github.io/cleanepi/)} can be used to clean these individual-level datasets, and {[listlist](https://epiverse-trace.github.io/linelist/)} can be used to tag and validate key variables in datasets that might change overtime. {[numberize](https://epiverse-trace.github.io/numberize/)} can also be used to convert numbers-as-characters if needed.
+
+If such data are not avaiable, published estimates of the incubation period and serial interval can be obtained from the [epiparameter](https://epiverse-trace.github.io/epiparameter/) package, which collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. See the [database here](https://epiverse-trace.github.io/epiparameter/dev/articles/database) for currently available parameters (more entries are planned).
+
+Additionally, if only summary statistics in reports are available (e.g. range and median), we can use {epiparameter} to extract such values.
+
+If we have data on the distribution of sizes of transmission clusters, the [epichains](https://epiverse-trace.github.io/epichains/) package provides functions to estimate the basic reproduction number, $R0$, and the dispersion parameter $k$ of the negative binomial distribution, which is a measure of superspreading.
+
+If we have individual-level transmission chain data, the [superspreading](https://epiverse-trace.github.io/superspreading/) package can be used to estimate $R_0$ and $k$ from the offspring distribution. This package as provides functions to estimate the probability that an outbreak will not go extinct in its early stages because of randomness in transmission (e.g. if the primary spillover case(s) does not infect others).
+
+If have data on sexual contacts and the secondary attack rate, then we can also use {superspreading} to [calculate R accounting for network effects](https://epiverse-trace.github.io/superspreading/articles/heterogeneous_network_outbreaks.html).
 
 ### Forecasting and nowcasting
 
@@ -44,7 +56,7 @@ The [EpiNow2](https://epiforecasts.io/EpiNow2/) and [epinowcast](https://package
 
 The case fatality rate is a key metric to assess the severity of a disease. The case fatality rate is the proportion of deaths among confirmed cases.
 
-With data on the number of cases reported and the number of deaths reported, the [cfr](https://epiverse-trace.github.io/cfr/) package can be used to estimate the case fatality rate and its uncertainty. Importantly, it accounts for the delay between the onset of symptoms and death, which is crucial for accurate estimation of the case fatality rate.
+With incidence data on the number of cases reported and the number of deaths reported, the [cfr](https://epiverse-trace.github.io/cfr/) package can be used to estimate the case fatality rate and its uncertainty. Importantly, it accounts for the delay between the onset of symptoms and death, which is crucial for accurate estimation of the case fatality rate.
 
 ### The impact of interventions
 
@@ -52,7 +64,7 @@ mpox can be mitigated with behaviour change, treatment, and vaccination. Here, a
 
 The [epidemics](https://epiverse-trace.github.io/epidemics/) package provides ready compartmental models to estimate the impact of vaccination and non-pharmaceutical interventions like behaviour change, which can conceptually be modelled as a reduction in the transmission rate through changes in the population contact structure.
 
-`{epidemics}` allows for stratifying the population structure into arbitrary groups, specifying the contact structure between these groups, and rates of interventions. Hence, the data required to inform these models are the population structure, contact structure, and the rates of interventions.
+If we want to explore population-level outbreak dynamics, `{epidemics}` allows for stratifying the population into arbitrary groups, specifying the contact structure between these groups, and rates of interventions. The data required to run these models include: population structure, contact structure, and timing and magnitude of interventions.
 
 ## Summary
 
