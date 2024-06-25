@@ -17,9 +17,9 @@ I will argue that it is often a good strategy to inherit from existing standards
 
 ## Inherit from standard classes
 
-A peculiarity of R is the availability and centrality of `data.frame`s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., pandas in Python).
+A peculiarity of R is the availability and centrality of `data.frame`s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., [pandas](https://pandas.pydata.org/) in Python).
 
-`data.frame` is one of the first "complex" (in the sense of [non-atomic](https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors)) object most R learners will be exposed to and will develop a familiarity with. A good way to leverage this familiarity is to make your subclass a thin wrapper around `data.frame`s.
+`data.frame` is one of the first "complex" (in the sense of [non-atomic](https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors)) object most R learners will be exposed to and will develop a familiarity with. A good way to leverage this familiarity is to [make your subclass a thin wrapper around `data.frame`s](https://epiverse-trace.github.io/posts/extend-dataframes/).
 
 This means that not only users will be able to get started with your package faster because of this familiarity, but you will also immediately benefit for the huge ecosystem of functions and packages working on data.frames, such as the [tidyverse](https://tidyverse.org). If you want some examples, this is what we did in the [linelist](https://github.com/epiverse-trace/linelist), [pavo](https://github.com/rmaia/pavo), [scoringutils](https://github.com/epiforecasts/scoringutils), and [vaccineff](https://github.com/epiverse-trace/vaccineff) R packages.
 
@@ -29,7 +29,7 @@ In some cases, the output is too complex to fit into a `data.frame`. Even in thi
 
 A follow up recommendation from inheriting from standard classes is to leverage their methods wherever possible.
 
-[One of the first](https://github.com/epiverse-trace/linelist/pull/60) [changes I made](https://github.com/epiverse-trace/linelist/pull/61) when becoming maintainer of the [linelist](https://github.com/epiverse-trace/linelist) package was to remove the `rename.linelist()` and `select.linelist()` methods. Indeed, they were, or could easily be, behaving identically as the parent `rename.data.frame()` and `select.data.frame()` methods. Rather than burdening the codebase and maintenance with an extra unnecessary method, it is much simpler and more robust to rely on the well-tested parent method. In fact, the [dplyr documentation](https://dplyr.tidyverse.org/reference/dplyr_extending.html) explicitly recommends only writing methods for a couple of standard functions (including `[.subclass()` and `names<-.subclass()`), which will enable the use of parent methods directly, rather than writing custom methods for each dplyr functions.
+[One of the first](https://github.com/epiverse-trace/linelist/pull/60) [changes I made](https://github.com/epiverse-trace/linelist/pull/61) when becoming maintainer of the [linelist](https://github.com/epiverse-trace/linelist) package was to remove the `rename.linelist()` and `select.linelist()` methods. Indeed, they were, or could easily be, behaving identically as the parent `rename.data.frame()` and `select.data.frame()` methods. Rather than burdening the codebase and maintenance with an extra unnecessary method, it is much simpler and more robust to rely on the well-tested parent method. In fact, the [dplyr documentation](https://dplyr.tidyverse.org/reference/dplyr_extending.html) explicitly recommends only writing methods for a couple of standard functions (including `[.subclass()` and `names<-.subclass()`), which will enable the use of parent methods directly, rather than writing custom methods for each dplyr function.
 
 Similarly, many developers have the reflex to write a custom `print.subclass()` method as part of the method implementation. While it may be justified in some cases, it is also sometimes unnecessary extra fluff. My recommendation would be to evaluate carefully what benefit the custom method brings other defaulting to the parent method.
 
@@ -39,11 +39,11 @@ If after careful consideration, extra metadata makes it too difficult to fit you
 
 But even in this case, you can still apply some of the ideas proposed earlier. As much as possible, you should provide helpers or methods to enable the streamlined conversion of your method to a standard class.
 
-A good example here is the [epiparameter](https://github.com/epiverse-trace/epiparameter) package, which provides a complex S3 class built on lists, including extensive metadata about probability distribution of epidemiological parameters. As such, this custom class cannot be used out of the box in most functions from other packages. [But an `as.function()` method is conveniently provided to enables the conversion of this probability distribution parameters into a density distribution](https://github.com/epiverse-trace/epiparameter/blob/0f805b90f984def4851a78148f1cf44c3d480845/R/coercion.R#L18-L41), which can then be used in functions which expect a `function` object.
+A good example here is the [epiparameter](https://github.com/epiverse-trace/epiparameter) package, which provides a complex S3 class built on lists, including extensive metadata about probability distribution of epidemiological parameters. As such, this custom class cannot be used out of the box in most functions from other packages. [But an `as.function()` method is conveniently provided to enable the conversion of this probability distribution parameters into a density distribution](https://github.com/epiverse-trace/epiparameter/blob/0f805b90f984def4851a78148f1cf44c3d480845/R/coercion.R#L18-L41), which can then be used in functions which expect a `function` object.
 
 ## Conclusion
 
-Overall, these tips on relying of strong parent classes and their existing ecosystems should help produce a package:
+Overall, these tips on relying on strong parent classes and their existing ecosystems should help produce a package:
 
 - more easily accessible for users because it uses objects that feel familiar
 - more maintainable because a lot of method writing is offloaded to the parent class
