@@ -42,7 +42,7 @@ A good example here is the [epiparameter](https://github.com/epiverse-trace/epip
 
 ## Conclusion
 
-Overall, these tips on relying on strong parent classes and their existing ecosystems should help produce a package:
+In summary, I recommend relying on well-established parent classes such as `data.frame`s or at least providing direct conversion functions to these standard classes, and using parent methods wherever possible rather than writing custom dedicated methods. This should help produce a package:
 
 - more easily accessible for users because it uses objects that feel familiar
 - more maintainable because a lot of method writing is offloaded to the parent class
