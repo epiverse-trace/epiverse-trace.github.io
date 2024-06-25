@@ -1024,6 +1024,7 @@ gfortran issues on Apple Silicon computers
 <blockquote class="blockquote">
 <p>error: ‘DOUBLE_XMAX’ undeclared (first use in this function); did you mean ‘DBL_MAX’?</p>
 </blockquote>
+<!-- markdownlint-disable MD033 -->
 <details>
 <summary>
 Click to see the full error message
@@ -1124,6 +1125,7 @@ Renv.”</span> January 31, 2024. <a href="https://epiverse-trace.github.io/post
   <category>R</category>
   <category>reproducibility</category>
   <category>renv</category>
+  <category>DOI</category>
   <guid>https://epiverse-trace.github.io/posts/renv-complications/</guid>
   <pubDate>Wed, 31 Jan 2024 00:00:00 GMT</pubDate>
 </item>

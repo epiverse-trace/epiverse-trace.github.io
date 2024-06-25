@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Epiverse-TRACE developer space</title>
+<link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
+<atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
+<description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
+<generator>quarto-1.5.47</generator>
+<lastBuildDate>Wed, 31 Jan 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Things that can go wrong when using renv</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/renv-complications/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Throughout the Epiverse project, we use the <a href="https://rstudio.github.io/renv/">renv R package</a> to ensure reproducibility of the training materials and the pipelines we are providing. But we sometimes get reports from users who struggle to rebuild the environment and run the code.</p>
+<p>In this post, we dissect the source of these issues, explain why in reality renv is not at fault, and how this is caused by the inherent complexity of reproducibility. The renv documentation already includes <a href="https://rstudio.github.io/renv/articles/renv.html#caveats">caveats</a> explaining why some situations are bound to require more complex tools. This blog post reiterates some of these caveats and illustrates them with concrete examples.</p>
+<p>Finally, we mention a couple of more complete (but more complex!) frameworks that can overcome the issues presented here. We do not explore these alternative framework in detail but provide links to more information.</p>
+<section id="binaries-vs-building-from-source" class="level2">
+<h2 class="anchored" data-anchor-id="binaries-vs-building-from-source">Binaries vs building from source</h2>
+<p>Software, including R packages, can generally be delivered in two forms: as binaries or as source code. If you are building from the source code, you may in some case need a compilation toolchain on your computer. If that toolchain is missing, it can lead to errors such as:</p>
+<blockquote class="blockquote">
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1">ld: warning: search path '/opt/gfortran/lib' not found</span>
+<span id="cb1-2">ld: library 'gfortran' not found</span></code></pre></div>
+</blockquote>
+<p>Most of the time, regular users of R will not see these errors because they are installing binaries. Indeed, CRAN provides pre-compiled binaries for Windows and macOS for the last version of the package and R.</p>
+<p>With renv, you often want to install older versions of the packages, which won’t be available as binaries from CRAN. This means you are more likely to have to compile the package yourself and see this kind of errors, even though renv is not causing them.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+gfortran issues on Apple Silicon computers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are an Apple Silicon (Mac M1, M2, M3) user and encounter issues with gfortran, we have had success using the <a href="https://github.com/coatless-mac/macrtools/">macrtools R package</a> and we strongly recommend checking it out.</p>
+</div>
+</div>
+</section>
+<section id="beyond-renv-scope-incompatibility-with-system-dependency-versions" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-renv-scope-incompatibility-with-system-dependency-versions">Beyond renv scope: incompatibility with system dependency versions</h2>
+<p>We <a href="../system-dependencies/">discussed previously the topic of system dependencies</a>, and <a href="https://blog.r-hub.io/2022/09/12/r-dependency/">dependencies on specific R versions</a>. These special dependencies can also be a source of headaches when using renv.</p>
+<p>The heart of the issue is that renv provides a simplified solution to reproducibility: it focuses on R packages and their versions. But other sources of non-reproducibility are outside its scope. In many cases, this will not be a problem, as the main source of non-reproducibility, especially in the relatively short-term, will be R package versions.</p>
+<p>But sometimes, it is possible that the <code>renv.lock</code> lockfile requires such an old version of an R package that it was written with a syntax that is no longer supported by recent R versions or modern compilers.</p>
+<p>For example, a recent project (from 2023) was trying to install the version 0.60.1 of the <code>matrixStats</code> package (from 2021). This lead to this compilation error:</p>
+<blockquote class="blockquote">
+<p>error: ‘DOUBLE_XMAX’ undeclared (first use in this function); did you mean ‘DBL_MAX’?</p>
+</blockquote>
+<!-- markdownlint-disable MD033 -->
+<details>
+<summary>
+Click to see the full error message
+</summary>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1">! Error installing package 'matrixStats':</span>
+<span id="cb2-2">=======================================</span>
+<span id="cb2-3"></span>
+<span id="cb2-4">* installing *source* package ‘matrixStats’ ...</span>
+<span id="cb2-5">** package ‘matrixStats’ successfully unpacked and MD5 sums checked</span>
+<span id="cb2-6">** using staged installation</span>
+<span id="cb2-7">** libs</span>
+<span id="cb2-8">using C compiler: ‘gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0’</span>
+<span id="cb2-9">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c 000.init.c -o 000.init.o</span>
+<span id="cb2-10">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c allocMatrix2.c -o allocMatrix2.o</span>
+<span id="cb2-11">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c anyMissing.c -o anyMissing.o</span>
+<span id="cb2-12">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c binCounts.c -o binCounts.o</span>
+<span id="cb2-13">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c binMeans.c -o binMeans.o</span>
+<span id="cb2-14">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c colCounts.c -o colCounts.o</span>
+<span id="cb2-15">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c colOrderStats.c -o colOrderStats.o</span>
+<span id="cb2-16">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c colRanges.c -o colRanges.o</span>
+<span id="cb2-17">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c diff2.c -o diff2.o</span>
+<span id="cb2-18">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c indexByRow.c -o indexByRow.o</span>
+<span id="cb2-19">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c logSumExp.c -o logSumExp.o</span>
+<span id="cb2-20">gcc -I"/usr/share/R/include" -DNDEBUG       -fpic  -g -O2 -ffile-prefix-map=/build/r-base-H0vbME/r-base-4.3.2=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c mean2.c -o mean2.o</span>
+<span id="cb2-21">In file included from mean2_lowlevel.h:14,</span>
+<span id="cb2-22">                 from mean2.c:9:</span>
+<span id="cb2-23">mean2_lowlevel_template.h: In function ‘mean2_int’:</span>
+<span id="cb2-24">mean2_lowlevel_template.h:59:13: error: ‘DOUBLE_XMAX’ undeclared (first use in this function); did you mean ‘DBL_MAX’?</span>
+<span id="cb2-25">   59 |   if (sum &gt; DOUBLE_XMAX) {</span>
+<span id="cb2-26">      |             ^~~~~~~~~~~</span>
+<span id="cb2-27">      |             DBL_MAX</span>
+<span id="cb2-28">mean2_lowlevel_template.h:59:13: note: each undeclared identifier is reported only once for each function it appears in</span>
+<span id="cb2-29">In file included from mean2_lowlevel.h:18,</span>
+<span id="cb2-30">                 from mean2.c:9:</span>
+<span id="cb2-31">mean2_lowlevel_template.h: In function ‘mean2_dbl’:</span>
+<span id="cb2-32">mean2_lowlevel_template.h:59:13: error: ‘DOUBLE_XMAX’ undeclared (first use in this function); did you mean ‘DBL_MAX’?</span>
+<span id="cb2-33">   59 |   if (sum &gt; DOUBLE_XMAX) {</span>
+<span id="cb2-34">      |             ^~~~~~~~~~~</span>
+<span id="cb2-35">      |             DBL_MAX</span>
+<span id="cb2-36">make: *** [/usr/lib/R/etc/Makeconf:191: mean2.o] Error 1</span>
+<span id="cb2-37">ERROR: compilation failed for package ‘matrixStats’</span></code></pre></div>
+</details>
+<p>The explanation for this error can be found in <a href="https://github.com/HenrikBengtsson/matrixStats/blob/799669fc6de6f55a74cab06cc6a97634aa24ab0e/NEWS.md?plain=1#L111-L113">the <code>matrixStats</code> release notes</a>, specifically the section for matrixStats 0.63.0:</p>
+<blockquote class="blockquote">
+<ul>
+<li>Updated native code to use the C99 constant <code>DBL_MAX</code> instead of legacy S constant <code>DOUBLE_XMAX</code>, which is planned to be unsupported in R (&gt;= 4.2.0).</li>
+</ul>
+</blockquote>
+</section>
+<section id="some-solutions" class="level2">
+<h2 class="anchored" data-anchor-id="some-solutions">Some solutions</h2>
+<section id="alternative-package-managers" class="level3">
+<h3 class="anchored" data-anchor-id="alternative-package-managers">Alternative package managers</h3>
+<p>We discussed how many issues when using renv can arise during the package compilation from source. A potential solution would be to avoid this compilation step and always install pre-compiled binaries.</p>
+<p>This is not possible while installing from CRAN as CRAN only provides binaries for recent versions of R and for a limited number of platforms.</p>
+<p>But Posit for example provides a larger collection of binaries, for different package versions, and different platforms, via their Public <a href="https://packagemanager.posit.co/">Posit Package Manager (PPM)</a>.</p>
+<p>Making sure you install from PPM rather than CRAN can be a first simple step to make some of the issues discussed here vanish.</p>
+</section>
+<section id="extending-the-scope-of-reproducibility" class="level3">
+<h3 class="anchored" data-anchor-id="extending-the-scope-of-reproducibility">Extending the scope of reproducibility</h3>
+<p>Another solution could be to add more complex reproducibility solutions that go beyond the scope of renv.</p>
+<section id="renv-with-rig" class="level4">
+<h4 class="anchored" data-anchor-id="renv-with-rig">renv with rig</h4>
+<p>The R version is specified in <code>renv.lock</code> and to avoid incompatibility of older package versions with newer versions of R, you could run the declared R version. This can be achieved with various means but a convenient solution is the <a href="https://github.com/r-lib/rig">rig</a> tool.</p>
+<p>There are even some <a href="https://github.com/r-lib/rig/issues/131">discussions</a> to integrate rig and renv more tightly and let rig detect automatically which R version to use based on the <code>renv.lock</code> file.</p>
+</section>
+<section id="docker-nix-and-others" class="level4">
+<h4 class="anchored" data-anchor-id="docker-nix-and-others">Docker, Nix and others</h4>
+<p>Alternatively, you could use other reproducibility toolkits that focus not just on the R package versions, but on the entire software stack (e.g., including the operating system, the system dependencies). These solutions can be more complex to set up and use, and we won’t detail them in this blog post but you can find more information in:</p>
+<ul>
+<li><a href="https://rstudio.github.io/renv/articles/docker.html">The “Using renv with Docker” renv vignette</a></li>
+<li><a href="https://doi.org/10.32614/RJ-2017-065">the “An Introduction to Rocker: Docker Containers for R” paper</a></li>
+<li><a href="https://www.brodrigues.co/blog/2023-07-13-nix_for_r_part1/">Bruno Rodrigues’ entire series of blog posts on Nix</a></li>
+</ul>
+</section>
+</section>
+<section id="conclusion-a-final-note-for-developers" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion-a-final-note-for-developers">Conclusion: a final note for developers</h3>
+<p>renv is an elegant solution that focuses on the most immediate source of non-reproducibility. This however means it needs to be complemented by other tools in more complex cases.</p>
+<p>Ultimately, reproducibility is a team effort. People who write code can minimise the risk of renv complications by keeping the packages they use close to their CRAN version and regularly updating their code and <code>renv.lock</code> accordingly. Other programming languages have automated tooling to help with this, via, e.g., the <a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/">dependabot tool</a> which submits pull requests to update dependencies. There is no well established equivalent for R yet, but anyone willing to set this mechanism up can look at the code used by the <a href="https://github.com/carpentries/actions/tree/70ff4b4e8d50fdcd0eb33e7c33a4a6f305a82702/update-lockfile">Carpentries workbench</a> for this task.</p>
+<p><em>Thanks to Pratik Gupte and Chris Hartgerink for their valuable comments on earlier drafts of this post.</em></p>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
+  author = {Gruson, Hugo},
+  title = {Things That Can Go Wrong When Using Renv},
+  date = {2024-01-31},
+  url = {https://epiverse-trace.github.io/posts/renv-complications/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2024. <span>“Things That Can Go Wrong When Using
+Renv.”</span> January 31, 2024. <a href="https://epiverse-trace.github.io/posts/renv-complications/">https://epiverse-trace.github.io/posts/renv-complications/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>reproducibility</category>
+  <category>renv</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/renv-complications/</guid>
+  <pubDate>Wed, 31 Jan 2024 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
