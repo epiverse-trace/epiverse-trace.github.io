@@ -4,7 +4,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2024-06-24"
-categories: [R, R package, object-oriented programming, S3, interoperability]
+categories: [R, R package, object-oriented programming, S3, interoperability, DOI]
 ---
 
 [I have recently published](https://hugogruson.fr/posts/compa-tibble/) a [series of blog posts](https://epiverse-trace.github.io/posts/s3-generic/) on the reasons why one may want to start using object-oriented programming (and more specifically R S3 classes) to improve interoperability with other tools from the ecosystem.
