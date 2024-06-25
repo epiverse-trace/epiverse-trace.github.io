@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to Epiverse-TRACE – Epiverse-TRACE developer space</title>
+<title>Epiverse-TRACE developer space</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,6 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/react-17.0.2/react.min.js"></script>
+<script src="site_libs/quarto-contrib/react-dom-17.0.2/react-dom.min.js"></script>
+<script src="site_libs/quarto-contrib/babel-6.26.0/babel.min.js"></script>
+<script src="site_libs/quarto-contrib/babel-presets-1.0.0/babel-presets.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,19 +79,25 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        corePlugins: {
+            preflight: true,
+        },
+        prefix: 'tw-',
+    }
+</script>
 
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="hexwall.css">
-<meta property="og:title" content="Welcome to Epiverse-TRACE – Epiverse-TRACE developer space">
-<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta property="og:image" content="https://epiverse-trace.github.io/Epiverse-RGB.svg">
+<link rel="stylesheet" href="styles/stylesheet-homepage.css">
+<meta property="og:title" content="Epiverse-TRACE developer space">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Welcome to Epiverse-TRACE – Epiverse-TRACE developer space">
-<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/Epiverse-RGB.svg">
+<meta name="twitter:title" content="Epiverse-TRACE developer space">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -107,45 +117,74 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://epiverse-trace.r-universe.dev/packages"> 
-<span class="menu-text">Software</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./get-involved.html"> 
-<span class="menu-text">Get involved</span></a>
-  </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-blog" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Blog</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-news" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">News</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-blog">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
         <li>
     <a class="dropdown-item" href="./blog.html">
- <span class="dropdown-text">All</span></a>
+ <span class="dropdown-text">Blog</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./blog.html#category=R">
- <span class="dropdown-text">Articles</span></a>
+ <span class="dropdown-text">Blog - Articles</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./blog.html#category=new-release">
- <span class="dropdown-text">Release notes</span></a>
+ <span class="dropdown-text">Blog - Release notes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./presentations.html">
+ <span class="dropdown-text">Presentations</span></a>
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./presentations.html"> 
-<span class="menu-text">Presentations</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Use</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-use">    
+        <li>
+    <a class="dropdown-item" href="./getting-started.html">
+ <span class="dropdown-text">Getting started</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./resources.html"> 
-<span class="menu-text">Resources</span></a>
+        <li>
+    <a class="dropdown-item" href="https://epiverse-trace.r-universe.dev/packages">
+ <span class="dropdown-text">Software</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./learn.html"> 
-<span class="menu-text">Learn</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Learn</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">    
+        <li>
+    <a class="dropdown-item" href="./learn.html">
+ <span class="dropdown-text">Learning materials</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./resources.html">
+ <span class="dropdown-text">Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contribute" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Contribute</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/search?q=org%3Aepiverse-trace++label%3A%22good+first+issue%22+is%3Aopen&amp;type=issues">
+ <span class="dropdown-text">Good first issues</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./get-involved.html">
+ <span class="dropdown-text">Get involved</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./people.html"> 
 <span class="menu-text">About</span></a>
@@ -167,137 +206,134 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <!-- main -->
 <div class="quarto-about-marquee">
   <div class="about-image-container">
-    <img src="Epiverse-RGB.svg" class="about-image " style="width: 100%;">
   </div>
   <div class="about-contents">
-    <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Welcome to Epiverse-TRACE</h1>
-</div>
-<div class="quarto-title-meta">
-  </div>
-</header> <main class="content" id="quarto-document-content">
-<p>Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.</p>
-<section id="roadmap" class="level2">
-<h2 data-anchor-id="roadmap">Roadmap</h2>
-<p><img src="task_pipeline-minimal.svg" class="img-fluid" alt="A typical epidemiological pipeline presented as a flowchart. Each box corresponds to a specific task (e.g., &quot;reconstruct transmission chains&quot;, or &quot;estimate severity&quot;). The tasks are split into three categories based on the position in the data pipeline: early tasks, middle tasks and late tasks."></p>
-</section>
-<section id="epiverse-trace-packages" class="level2">
-<h2 data-anchor-id="epiverse-trace-packages">Epiverse-TRACE packages</h2>
-<p>These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.</p>
-<div class="gradient-rectangle">
-<p><span class="task">Early tasks</span></p>
-<p><span class="task">Middle tasks</span></p>
-<p><span class="task">Late tasks</span></p>
-</div>
-<div class="hex-container">
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/readepi"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/readepi.png" class="img-fluid" alt="readepi logo"></a></p>
-<div class="description">
-<p>Tools for reading data</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/ColOpenData"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/ColOpenData.png" class="img-fluid" alt="ColOpenData logo"></a></p>
-<div class="description">
-<p>Open data for Colombia</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/cleanepi"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/cleanepi.png" class="img-fluid" alt="cleanepi logo"></a></p>
-<div class="description">
-<p>Tools for cleaning data</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/simulist"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/simulist.png" class="img-fluid" alt="simulist logo"></a></p>
-<div class="description">
-<p>Simulate outbreak data</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/linelist"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/linelist.png" class="img-fluid" alt="linelist logo"></a></p>
-<div class="description">
-<p>Tagging and validating individual data</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/epiparameter"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epiparameter.png" class="img-fluid" alt="epiparameter logo"></a></p>
-<div class="description">
-<p>Tools for epidemiological parameters</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/sivirep"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/sivirep.png" class="img-fluid" alt="sivirep logo"></a></p>
-<div class="description">
-<p>Automated report for SIVIGILA data</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/episoap"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/episoap.png" class="img-fluid" alt="episoap logo"></a></p>
-<div class="description">
-<p>Pipelines for common tasks</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/cfr"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/cfr.png" class="img-fluid" alt="cfr logo"></a></p>
-<div class="description">
-<p>Severity estimation</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/serofoi"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/serofoi.png" class="img-fluid" alt="serofoi logo"></a></p>
-<div class="description">
-<p>Estimate force of infection from serology</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/epiCo"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epiCo.png" class="img-fluid" alt="epiCo logo"></a></p>
-<div class="description">
-<p>Tools for vector-borne infections</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/iraca"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/iraca.png" class="img-fluid" alt="iraca logo"></a></p>
-<div class="description">
-<p>Simulate vector-borne outbreaks</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/epichains"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epichains.png" class="img-fluid" alt="epichains logo"></a></p>
-<div class="description">
-<p>Simulation and analysis of transmission chains</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/superspreading"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/superspreading.png" class="img-fluid" alt="superspreading logo"></a></p>
-<div class="description">
-<p>Analysis of transmission variation</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/finalsize"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/finalsize.png" class="img-fluid" alt="finalsize logo"></a></p>
-<div class="description">
-<p>Calculate epidemic final size</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/epidemics"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epidemics.png" class="img-fluid" alt="epidemics logo"></a></p>
-<div class="description">
-<p>Simulate epidemic dynamics</p>
-</div>
-</div>
-<div class="hex">
-<p><a href="https://epiverse-trace.github.io/vaccineff"><img src="https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/vaccineff.png" class="img-fluid" alt="vaccineff logo"></a></p>
-<div class="description">
-<p>Analyze vaccine efficacy</p>
-</div>
-</div>
-</div>
-<p>You want to get involved? Read more about the different ways you can contribute in the <a href="./get-involved.html">dedicated section</a>!</p>
+     <main class="content" id="quarto-document-content">
+<!-- markdownlint-disable MD041 -->
+<p></p><div id="react-Hero-L9Gm5u0C"></div><p></p>
+<!-- markdownlint-enable MD041 -->
+<p></p><div id="react-LogoCloud-hp11Mk34"></div><p></p>
+<p></p><div id="react-Usp-lIrwScwN"></div><p></p>
+<p></p><div id="react-Benefits-KLHT3Yzo"></div><p></p>
+<p></p><div id="react-Cta-nPYu0IwW"></div><p></p>
+<!-- 
+Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
+## Roadmap
+![ ](task_pipeline-minimal.svg){fig-alt='A typical epidemiological pipeline presented as a flowchart. Each box corresponds to a specific task (e.g., "reconstruct transmission chains", or "estimate severity"). The tasks are split into three categories based on the position in the data pipeline: early tasks, middle tasks and late tasks.'}
+## Epiverse-TRACE packages
+These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
+::: {.gradient-rectangle}
+[Early tasks]{.task}
+[Middle tasks]{.task}
+[Late tasks]{.task}
+:::
+::: {.hex-container}
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/readepi.png){fig-alt="readepi logo"}](https://epiverse-trace.github.io/readepi)
+::: {.description}
+Import data
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/ColOpenData.png){fig-alt="ColOpenData logo"}](https://epiverse-trace.github.io/ColOpenData)
+::: {.description}
+Access and manipulate Colombian data
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/cleanepi.png){fig-alt="cleanepi logo"}](https://epiverse-trace.github.io/cleanepi)
+::: {.description}
+Clean imported data
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/simulist.png){fig-alt="simulist logo"}](https://epiverse-trace.github.io/simulist)
+::: {.description}
+Simulate outbreak data
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/linelist.png){fig-alt="linelist logo"}](https://epiverse-trace.github.io/linelist)
+::: {.description}
+Tag and validate individual data
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epiparameter.png){fig-alt="epiparameter logo"}](https://epiverse-trace.github.io/epiparameter)
+::: {.description}
+Access epidemiological parameters
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/sivirep.png){fig-alt="sivirep logo"}](https://epiverse-trace.github.io/sivirep)
+::: {.description}
+Generate automated report for SIVIGILA data
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/episoap.png){fig-alt="episoap logo"}](https://epiverse-trace.github.io/episoap)
+::: {.description}
+Use curated pipelines
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/cfr.png){fig-alt="cfr logo"}](https://epiverse-trace.github.io/cfr)
+::: {.description}
+Estimate disease severity
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/serofoi.png){fig-alt="serofoi logo"}](https://epiverse-trace.github.io/serofoi)
+::: {.description}
+Estimate force of infection from serology
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epiCo.png){fig-alt="epiCo logo"}](https://epiverse-trace.github.io/epiCo)
+::: {.description}
+Tools for vector-borne infections
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/iraca.png){fig-alt="iraca logo"}](https://epiverse-trace.github.io/iraca)
+::: {.description}
+Simulate vector-borne outbreaks
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epichains.png){fig-alt="epichains logo"}](https://epiverse-trace.github.io/epichains)
+::: {.description}
+Simulation and analysis of transmission chains
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/superspreading.png){fig-alt="superspreading logo"}](https://epiverse-trace.github.io/superspreading)
+::: {.description}
+Analysis of transmission variation
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/finalsize.png){fig-alt="finalsize logo"}](https://epiverse-trace.github.io/finalsize)
+::: {.description}
+Calculate epidemic final size
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/epidemics.png){fig-alt="epidemics logo"}](https://epiverse-trace.github.io/epidemics)
+::: {.description}
+Simulate epidemic dynamics
+:::
+::::
+:::: {.hex}
+[![](https://raw.githubusercontent.com/epiverse-trace/hex-stickers/main/thumbs/vaccineff.png){fig-alt="vaccineff logo"}](https://epiverse-trace.github.io/vaccineff)
+::: {.description}
+Analyze vaccine efficacy
+:::
+::::
+:::
+You want to get involved? Read more about the different ways you can contribute in the [dedicated section](get-involved.qmd)! -->
 
 
-</section>
 </main> 
     <div class="about-footer"><div class="about-links">
   <a href="https://github.com/epiverse-trace" class="about-link" rel="" target="">
@@ -726,11 +762,520 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<script src="https://giscus.app/client.js" data-repo="epiverse-trace/epiverse-trace.github.io" data-repo-id="R_kgDOIcolPw" data-category="Blog post discussion" data-category-id="DIC_kwDOIcolP84CWOm8" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
-</script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
+<script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function Hero() {
+  return (
+    <div className="tw-relative tw-isolate">
+      <div
+        className="tw-absolute tw-inset-x-0 -tw-top-40 -tw-z-10 tw-transform-gpu tw-overflow-hidden tw-blur-3xl sm:-tw-top-80"
+        aria-hidden="true"
+      >
+        <div
+          className="tw-relative tw-left-[calc(50%-11rem)] tw-aspect-[1155/678] tw-w-[36.125rem] -tw-translate-x-1/2 tw-rotate-[30deg] tw-bg-gradient-to-tr tw-from-[#1063A0] tw-to-[#deff00] tw-opacity-20 sm:tw-w-left-[calc(50%-30rem)] sm:tw-w-[72.1875rem]"
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+        />
+      </div>
+      <div className="tw-py-24 sm:tw-py-32">
+        <div className="tw-mx-auto tw-max-w-7xl tw-px-6 lg:tw-px-8">
+          <div className="tw-mx-auto tw-max-w-2xl tw-text-center">
+            <h1 className="tw-text-4xl tw-font-bold tw-tracking-tight tw-text-white sm:tw-text-6xl">
+              Developing tools for the next epidemic
+            </h1>
+            <p className="tw-mt-6 tw-text-lg tw-leading-8 tw-text-gray-300">
+              Epiverse-TRACE is one of the pillars of the wider{" "}
+              <a href="https://epiverse.org" className="tw-underline">
+                Epiverse
+              </a>{" "}
+              project, and is a suite of innovative software and tools for
+              global infectious disease analysis and response. From reading and
+              cleaning your data to estimating vaccine efficacy and policy
+              impact, Epiverse-TRACE provides robust tools so you can focus on
+              the results.
+            </p>
+            <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
+              <a
+                href="./getting-started.html"
+                className="tw-rounded-md tw-bg-lime-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-black tw-shadow-sm hover:tw-bg-lime-400 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-lime-400"
+              >
+                Get started
+              </a>
+              <a
+                href="https://github.com/orgs/epiverse-trace/discussions"
+                className="tw-text-sm tw-font-semibold tw-leading-6 tw-text-white"
+              >
+                Join the discussion <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+          <img
+            src="public/render1717079674378.gif"
+            alt="Terminal recording introducing Epiverse"
+            width={2432}
+            height={1442}
+            className="tw-mt-16 tw-rounded-md tw-bg-white/5 tw-shadow-w-2xl tw-ring-1 tw-ring-white/10 sm:tw-mt-24"
+          />
+        </div>
+      </div>
+      <div
+        className="tw-w-absolute tw-w-inset-x-0 tw-w-top-[calc(100%-13rem)] -tw-w-z-10 tw-w-transform-gpu tw-w-overflow-hidden tw-w-blur-3xl sm:tw-w-top-[calc(100%-30rem)]"
+        aria-hidden="true"
+      >
+        <div
+          className="tw-w-relative tw-w-left-[calc(50%+3rem)] tw-w-aspect-[1155/678] tw-w-[36.125rem] -tw-translate-x-1/2 tw-bg-gradient-to-tr tw-from-[#ff80b5] tw-to-[#9089fc] tw-opacity-20 sm:tw-w-left-[calc(50%+36rem)] sm:tw-w-[72.1875rem]"
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+ReactDOM.render( <React.StrictMode>    <Hero/>  </React.StrictMode>,  document.getElementById("react-Hero-L9Gm5u0C") );</script>
+<script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function LogoCloud() {
+  return (
+    <div className="tw-pb-24 sm:tw-pb-32">
+      <div className="tw-mx-auto tw-max-w-7xl tw-px-6 lg:tw-px-8">
+        <h2 className="tw-text-white/80 tw-text-center tw-w-full tw-font-bold tw-text-xl">
+          Partners
+        </h2>
+        <div className="-tw-mx-6 tw-grid tw-grid-cols-2 tw-gap-0.5 tw-overflow-hidden sm:tw-mx-0 sm:tw-rounded-2xl md:tw-grid-cols-4">
+          <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
+            <a href="https://data.org" target="_blank" rel="norefer">
+              <img
+                className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
+                src="public/LogoDataDotOrg.png"
+                alt="DataDotOrg"
+                width={158}
+                height={48}
+              />
+            </a>
+          </div>
+          <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
+            <a href="https://www.lshtm.ac.uk/" target="_blank" rel="norefer">
+              <img
+                className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
+                src="https://data.org/wp-content/uploads/2021/10/lshtm-logo-975x468.png"
+                alt="London School of Hygiene and Tropical Medicine"
+                width={158}
+                height={48}
+              />
+            </a>
+          </div>
+          <div className="tw-flex tw-items-center tw-justify-center tw-bg-white/5 tw-p-6 sm:tw-p-10">
+            <a href="https://uniandes.edu.co/en" target="_blank" rel="norefer">
+              <img
+                className="tw-max-h-16 tw-w-full tw-object-contain"
+                src="public/logo-andes.png"
+                alt="Universidad de los Andes (Uniandes)"
+                width={158}
+                height={48}
+              />
+            </a>
+          </div>
+          <div className="tw-bg-white/5 tw-p-6 sm:tw-p-10">
+            <a
+              href="https://www.javeriana.edu.co/inicio"
+              target="_blank"
+              rel="norefer"
+            >
+              <img
+                className="tw-max-h-24 tw-w-full tw-object-contain tw-invert"
+                src="public/Javeriana.png"
+                alt="Pontificia Universidad Javeriana"
+                width={158}
+                height={48}
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+ReactDOM.render( <React.StrictMode>    <LogoCloud/>  </React.StrictMode>,  document.getElementById("react-LogoCloud-hp11Mk34") );</script>
+<script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function RocketIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+      />
+    </svg>
+  );
+}
+
+function AcademicIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
+      />
+    </svg>
+  );
+}
+
+function UnlockIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+      />
+    </svg>
+  );
+}
+
+
+
+
+const features = [
+  {
+    name: "Robust",
+    description:
+      "All tools are developed with high standards, ensured through automated tests and continuous review.",
+    icon: RocketIcon,
+  },
+  {
+    name: "Validated",
+    description:
+      "Our tools get validated through their use in other tools, in research, and in policy.",
+    icon: AcademicIcon,
+  },
+  {
+    name: "Reliable",
+    description:
+      "We manage the lifecycle of our tools carefully to avoid sudden breaking changes.",
+    icon: UnlockIcon,
+  },
+];
+
+function Usp() {
+  return (
+    <>
+      <div className="tw-overflow-hidden tw-bg-white/5 tw-py-24 sm:tw-py-32">
+        <div className="tw-mx-auto tw-max-w-7xl tw-px-6 lg:tw-px-8">
+          <div className="tw-mx-auto tw-grid tw-max-w-2xl tw-grid-cols-1 tw-gap-x-8 tw-gap-y-16 sm:tw-gap-y-20 lg:tw-mx-0 lg:tw-max-w-none lg:tw-grid-cols-2">
+            <div className="lg:tw-pr-8 lg:tw-pt-4">
+              <div className="lg:tw-max-w-lg tw-text-white">
+                <h2 className="tw-mt-2 tw-text-3xl tw-font-bold tw-tracking-tight  sm:tw-text-4xl">
+                  Better prepared, together
+                </h2>
+                <p className="tw-mt-6 tw-text-lg tw-leading-8 ">
+                  We are building robust, validated, and reliable tools that we
+                  know we will need in an epidemic. This is a direct response to
+                  not having them during the COVID-19 pandemic. This way we can
+                  address a next epidemic with a head start.
+                </p>
+                <dl className="tw-mt-10 tw-max-w-xl space-y-8 tw-text-base tw-leading-7 lg:tw-max-w-none">
+                  {features.map((feature) => {
+                    const Component = feature.icon;
+                    return (
+                      <div
+                        key={feature.name}
+                        className="tw-relative tw-pl-9 tw-my-2"
+                      >
+                        <dt className="tw-font-semibold tw-flex -tw-ml-[1.75rem]">
+                          <Component aria-hidden="true" />
+                          {feature.name}
+                        </dt>{" "}
+                        <dd className="tw-inline">{feature.description}</dd>
+                      </div>
+                    );
+                  })}
+                </dl>
+              </div>
+            </div>
+            <div>
+              <img
+                src="../public/Epiverse-Trace-Summit-group-photo-1920x1080.jpg"
+                alt="Epiverse-TRACE summit 2023 group photo"
+                className="tw-w-[48rem] tw-max-w-[100%] tw-rounded-xl tw-shadow-w-xl tw-ring-1 tw-ring-gray-400/10"
+                width={2432}
+                height={1442}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+ReactDOM.render( <React.StrictMode>    <Usp/>  </React.StrictMode>,  document.getElementById("react-Usp-lIrwScwN") );</script>
+<script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function ShellIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
+      />
+    </svg>
+  );
+}
+
+function CommunityIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
+      />
+    </svg>
+  );
+}
+
+function DocumentCheckIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12"
+      />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+      />
+    </svg>
+  );
+}
+
+function ChatBubbleIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+      />
+    </svg>
+  );
+}
+
+function RocketIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      className="tw-w-6 tw-h-6 tw-stroke-lime-500 tw-mr-1"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+      />
+    </svg>
+  );
+}
+
+
+
+
+
+
+const features = [
+  {
+    name: "Open Source",
+    description: "We make our work open and accessible, for anyone to verify.",
+    icon: ShellIcon,
+  },
+  {
+    name: "Lean and Agile",
+    description:
+      "We focus on clearly defined problems and deliver viable products.",
+    icon: RocketIcon,
+  },
+  {
+    name: "Documentation as Code",
+    description:
+      "Quality code requires quality documentation, so we regard docs as code.",
+    icon: DocumentCheckIcon,
+  },
+  {
+    name: "Co-creation",
+    description:
+      "Your suggestions help shape Epiverse-TRACE - surfacing needs is encouraged.",
+    icon: ChatBubbleIcon,
+  },
+  {
+    name: "Social Impact",
+    description:
+      "We close access gaps and transfer our software into practice.",
+    icon: CommunityIcon,
+  },
+  {
+    name: "Quality control",
+    description:
+      "All our software gets community reviewed. We are in this together!",
+    icon: CheckIcon,
+  },
+];
+
+function Benefits() {
+  return (
+    <>
+      <div className="tw-py-12 sm:tw-py-16 tw-text-white">
+        <div className="tw-mx-auto tw-max-w-7xl tw-px-6 lg:tw-px-8">
+          <div className="tw-mx-auto tw-max-w-2xl sm:tw-text-center">
+            <h2 className="tw-mt-2 tw-text-3xl tw-font-bold tw-tracking-tight sm:tw-text-4xl">
+              How we work
+            </h2>
+            {/* <p className="tw-mt-6 tw-text-lg tw-leading-8">
+              Epiverse 
+            </p> */}
+          </div>
+        </div>
+        <div className="tw-mx-auto tw-mt-16 tw-max-w-7xl tw-px-6 sm:tw-mt-20 md:tw-mt-24 lg:tw-px-8">
+          <dl className="tw-mx-auto tw-grid tw-max-w-2xl tw-grid-cols-1 tw-gap-x-6 tw-gap-y-10 tw-text-base tw-leading-7 sm:tw-grid-cols-2 lg:tw-mx-0 lg:tw-max-w-none lg:tw-grid-cols-3 lg:tw-gap-x-8 lg:tw-gap-y-16">
+            {features.map((feature) => {
+              const Component = feature.icon;
+              return (
+                <div key={feature.name} className="tw-flex tw-flex-col">
+                  <dt className="tw-flex tw-font-semibold ">
+                    <Component aria-hidden="true" />
+                    {feature.name}
+                  </dt>{" "}
+                  <dd className="tw-inline">{feature.description}</dd>
+                </div>
+              );
+            })}
+          </dl>
+        </div>
+      </div>
+    </>
+  );
+}
+ReactDOM.render( <React.StrictMode>    <Benefits/>  </React.StrictMode>,  document.getElementById("react-Benefits-KLHT3Yzo") );</script>
+<script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function Cta() {
+  return (
+    <div className="tw-relative tw-isolate tw-pt-14">
+      <div
+        className="tw-absolute tw-inset-x-0 -tw-top-40 -tw-z-10 tw-transform-gpu tw-overflow-hidden tw-blur-3xl sm:-tw-top-80"
+        aria-hidden="true"
+      >
+        <div
+          className="tw-relative tw-left-[calc(50%-11rem)] tw-aspect-[1155/678] tw-w-[36.125rem] -tw-translate-x-1/2 tw-rotate-[30deg] tw-bg-gradient-to-tr tw-from-[#1063A0] tw-to-[#deff00] tw-opacity-20 sm:tw-w-left-[calc(50%-30rem)] sm:tw-w-[72.1875rem] tw-rotate-180"
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+        />
+      </div>
+      <div className="tw-px-6 tw-py-24 sm:tw-px-6 sm:tw-py-32 lg:tw-px-8">
+        <div className="tw-mx-auto tw-max-w-2xl tw-text-center">
+          <h2 className="tw-text-3xl tw-font-bold tw-tracking-tight tw-text-white sm:tw-text-4xl">
+            Want to help prepare for the next epidemic?
+          </h2>
+          <p className="tw-mx-auto tw-mt-6 tw-max-w-xl tw-text-lg tw-leading-8 tw-text-gray-300">
+            Find the right pathway for your entry into Epiverse-TRACE.
+          </p>
+          <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
+            <a
+              href="./getting-started.html"
+              className="tw-rounded-md tw-bg-lime-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-black tw-shadow-sm hover:tw-bg-gray-100 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-white"
+            >
+              Use
+            </a>
+            <a
+              href="./learn.html"
+              className="tw-rounded-md tw-bg-lime-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-black tw-shadow-sm hover:tw-bg-gray-100 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-white"
+            >
+              Learn
+            </a>
+            <a
+              href="./get-involved.html"
+              className="tw-rounded-md tw-bg-lime-500 tw-px-3.5 tw-py-2.5 tw-text-sm tw-font-semibold tw-text-black tw-shadow-sm hover:tw-bg-gray-100 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 focus-visible:tw-outline-white"
+            >
+              Contribute
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        className="tw-w-absolute tw-w-inset-x-0 tw-w-top-[calc(100%-13rem)] -tw-w-z-10 tw-w-transform-gpu tw-w-overflow-hidden tw-w-blur-3xl sm:tw-w-top-[calc(100%-30rem)]"
+        aria-hidden="true"
+      >
+        <div
+          className="tw-w-relative tw-w-left-[calc(50%+3rem)] tw-w-aspect-[1155/678] tw-w-[36.125rem] -tw-translate-x-1/2 tw-bg-gradient-to-tr tw-from-[#ff80b5] tw-to-[#9089fc] tw-opacity-20 sm:tw-w-left-[calc(50%+36rem)] sm:tw-w-[72.1875rem] tw-rotate-180"
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+ReactDOM.render( <React.StrictMode>    <Cta/>  </React.StrictMode>,  document.getElementById("react-Cta-nPYu0IwW") );</script>
 
 
 
