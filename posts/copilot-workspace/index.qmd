@@ -43,6 +43,7 @@ The first experiment was on an R package {EpiNow2}, which provides functions for
 
 ![Screenshot of EpiNow2 package issue 681 which was used as an example application of GitHub Copilot Workspace.](epinow2_issue.png)
 
+<!-- markdownlint-disable MD024 -->
 ### Outcome
 
 The specification provided by Copilot workspace diagnosed the issue requirements, mentioning that the `NAMESPACE` would have to be updated for the R package to export this currently unexported function. The proposed solution also addressed the desired changes, stating that the function was to be exported and the keyword `internal` would be removed. The automatically generated plan proposed to edit the file documentation and `NAMESPACE`, but we edited this to more specifically replace the `@keyword internal` {roxygen} tag with `@export`.
