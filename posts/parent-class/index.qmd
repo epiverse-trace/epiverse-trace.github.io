@@ -17,7 +17,7 @@ I will argue that it is often a good strategy to inherit from existing standards
 
 ## Inherit from standard classes
 
-A peculiarity of R is the availability and centrality of `data.frame`s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., [pandas](https://pandas.pydata.org/) in Python).
+A unique feature of R is the availability and centrality of `data.frame`s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., [pandas](https://pandas.pydata.org/) in Python).
 
 `data.frame` is one of the first "complex" (in the sense of [non-atomic](https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors)) object most R learners will be exposed to and will develop a familiarity with. A good way to leverage this familiarity is to [make your subclass a thin wrapper around `data.frame`s](https://epiverse-trace.github.io/posts/extend-dataframes/).
 
