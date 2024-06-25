@@ -28,7 +28,7 @@ We decided to explore the suitability of one such, GitHub Copilot integrated wit
 
 To test this out, a small group of Epiverse-TRACE professors and research software engineers explored its functionality. The aim of this blog post is to summarise our experience with Copilot and Workspaces, and share our thoughts more generally about how the current feature set of AI-powered development tools could help with our daily development tasks, and with research software development at large. We evaluated Copilot workspace across three tasks of varying difficulty and requirements:
 
-* Experiment 1: Export an R function by updating the documentation
+* Experiment 1: Exporting an R function by updating the documentation
 
 * Experiment 2: Adding a basic Susceptible-Infected-Recovered (SIR) model to an existing R package that contains other epidemiological models
 
