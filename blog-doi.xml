@@ -61,11 +61,12 @@
   title = {Choosing the {Right} {Parent} for {R} {Object} {Classes}},
   date = {2024-06-26},
   url = {https://epiverse-trace.github.io/posts/parent-class/},
+  doi = {10.59350/fk6nv-1k973},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Choosing the Right Parent for R Object
-Classes.”</span> June 26, 2024. <a href="https://epiverse-trace.github.io/posts/parent-class/">https://epiverse-trace.github.io/posts/parent-class/</a>.
+Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973">https://doi.org/10.59350/fk6nv-1k973</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>R package</category>
@@ -213,11 +214,12 @@ Click to see the full error message
   title = {Things That Can Go Wrong When Using Renv},
   date = {2024-01-31},
   url = {https://epiverse-trace.github.io/posts/renv-complications/},
+  doi = {10.59350/hsy4m-6se90},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Things That Can Go Wrong When Using
-Renv.”</span> January 31, 2024. <a href="https://epiverse-trace.github.io/posts/renv-complications/">https://epiverse-trace.github.io/posts/renv-complications/</a>.
+Renv.”</span> January 31, 2024. <a href="https://doi.org/10.59350/hsy4m-6se90">https://doi.org/10.59350/hsy4m-6se90</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>reproducibility</category>
