@@ -112,6 +112,8 @@ To make contributing a blog post accessible, we outline an exact step by step gu
 6. Request at least one review and [work through discussion points](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews), until the pull request gets approved.
 7. The post gets merged after final checks [by one of the code owners](./CODEOWNERS).
 
+If you want to get a DOI for your blog post, please add the `DOI` category (case sensitive).
+
 ### After the post is published
 
 Once your post is published, we already have some systems in place to try and advertise it in the community:
