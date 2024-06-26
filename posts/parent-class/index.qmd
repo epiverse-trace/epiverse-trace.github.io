@@ -4,6 +4,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2024-06-26"
+doi: '10.59350/fk6nv-1k973'
 categories: [R, R package, object-oriented programming, S3, interoperability, DOI]
 ---
 
