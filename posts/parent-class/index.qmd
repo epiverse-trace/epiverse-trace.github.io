@@ -1,0 +1,51 @@
+---
+title: "Choosing the Right Parent for R Object Classes"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-06-26"
+categories: [R, R package, object-oriented programming, S3, interoperability, DOI]
+---
+
+[I have recently published](https://hugogruson.fr/posts/compa-tibble/) a [series of blog posts](https://epiverse-trace.github.io/posts/s3-generic/) on the reasons why one may want to start using object-oriented programming (and more specifically R S3 classes) to improve interoperability with other tools from the ecosystem.
+
+But there are still questions I have not addressed directly, even if they may have been implicitly included sometimes: what makes a good object class? What good practices in class & function design can improve interoperability?
+
+As you can expect from these questions, this post will present a subjective view on S3 class and method design.
+I will argue that it is often a good strategy to inherit from existing standards classes, and to leverage this inheritance relationship as much as possible.
+
+## Inherit from standard classes
+
+A unique feature of R is the availability and centrality of `data.frame`s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., [pandas](https://pandas.pydata.org/) in Python).
+
+`data.frame` is one of the first "complex" (in the sense of [non-atomic](https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors)) object most R learners will be exposed to and will develop a familiarity with. A good way to leverage this familiarity is to [make your subclass a thin wrapper around `data.frame`s](https://epiverse-trace.github.io/posts/extend-dataframes/).
+
+This means that not only will users be able to get started with your package faster because of this familiarity, but you will also immediately benefit from the huge ecosystem of functions and packages working on `data.frame`s, such as the [tidyverse](https://tidyverse.org). If you want some examples, this is what collaborators and I did in the [linelist](https://github.com/epiverse-trace/linelist), [pavo](https://github.com/rmaia/pavo), [scoringutils](https://github.com/epiforecasts/scoringutils), [epichains](https://github.com/epiverse-trace/epichains), and [vaccineff](https://github.com/epiverse-trace/vaccineff) R packages.
+
+In some cases, the output is too complex to fit into a `data.frame`. Even in this situation, I would recommend inheriting from existing, well-established, classes for the same two reasons: familiarity and ecosystem. For example, for the [serofoi](https://github.com/epiverse-trace/serofoi) R package, [we have made the decision to inherit from `stanfit` objects, rather than a custom structure](https://github.com/epiverse-trace/serofoi/pull/117).
+
+## Rely on parent methods as much as possible
+
+A follow up recommendation from inheriting from standard classes is to leverage their methods wherever possible.
+
+[One of the first](https://github.com/epiverse-trace/linelist/pull/60) [changes I made](https://github.com/epiverse-trace/linelist/pull/61) when becoming maintainer of the [linelist](https://github.com/epiverse-trace/linelist) package was to remove the `rename.linelist()` and `select.linelist()` methods. Indeed, they were, or could easily be, behaving identically as the parent `rename.data.frame()` and `select.data.frame()` methods. Rather than burdening the codebase and maintenance with an extra unnecessary method, it is much simpler and more robust to rely on the well-tested parent method. In fact, the [dplyr documentation](https://dplyr.tidyverse.org/reference/dplyr_extending.html) explicitly recommends only writing methods for a couple of standard functions (including `[.subclass()` and `names<-.subclass()`), which will enable the use of parent methods directly, rather than writing custom methods for each dplyr function.
+
+Similarly, many developers have the reflex to write a custom `print.subclass()` method as part of the method implementation. While it may be justified in some cases, it is sometimes unnecessary. My recommendation would be to evaluate carefully what benefits the custom method brings over the default parent method.
+
+## Enable conversion to standard classes
+
+If after careful consideration, extra metadata makes it too difficult to fit your new class into an existing class, you may sometimes have to define your own class from "scratch" (i.e., often `list()` in R).
+
+But even in this case, you can still apply some of the ideas proposed earlier. As much as possible, you should provide helpers or methods to enable the streamlined conversion of your method to a standard class.
+
+A good example here is the [epiparameter](https://github.com/epiverse-trace/epiparameter) package, which provides a complex S3 class built on lists, including extensive metadata about probability distribution of epidemiological parameters. As such, this custom class cannot be used out of the box in most functions from other packages. [But an `as.function()` method is conveniently provided to enable the conversion of this probability distribution parameters into a density distribution](https://github.com/epiverse-trace/epiparameter/blob/0f805b90f984def4851a78148f1cf44c3d480845/R/coercion.R#L18-L41), which can then be used in functions which expect a `function` object.
+
+## Conclusion
+
+In summary, I recommend relying on well-established parent classes such as `data.frame`s or at least providing direct conversion functions to these standard classes, and using parent methods wherever possible rather than writing custom dedicated methods. This should help produce a package:
+
+- more easily accessible for users because it uses objects that feel familiar
+- more maintainable because a lot of method writing is offloaded to the parent class
+- more likely to be interoperable because standard classes are a good way to pass data between functions or packages
+
+**Thanks to Chris Hartgerink, James Azam and Josh Lambert, for their very valuable feedback on this post.**
