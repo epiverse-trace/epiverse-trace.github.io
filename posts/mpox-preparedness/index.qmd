@@ -56,7 +56,7 @@ If delay data are not available, published estimates of the incubation period an
 The individual-level transmission heterogeneity (superspreading), often denoted as $k$, is an important measure for tailoring interventions at the individual level.
 :::
 
-If we have data on the distribution of sizes of transmission clusters, the [`{epichains}`](https://epiverse-trace.github.io/epichains/) package provides functions to estimate $R0$ and $k$, by assuming individuals exhibit considerable heterogeneity in transmission. It then models this with the negative binomial distribution.
+If we have data on the distribution of sizes of transmission clusters, the [`{epichains}`](https://epiverse-trace.github.io/epichains/) package provides functions to estimate $R0$ and $k$. The user inputs the negative binomial offspring, which assumes individuals exhibit some heterogeneity in transmission. The parameters of the offspring distribution are then estimated using maximum likelihood estimation or a bayesian framework.
 
 Furthermore, if we have individual-level transmission chain data, the [`{superspreading}`](https://epiverse-trace.github.io/superspreading/) package can be used to estimate $R0$ and $k$ from the offspring distribution. This package also provides functions to estimate the probability that an outbreak will not go extinct in its early stages because of randomness in transmission (e.g. if the primary spillover case(s) does not infect others).
 
