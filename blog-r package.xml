@@ -10,7 +10,72 @@
 <atom:link href="https://epiverse-trace.github.io/blog-r package.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.5.47</generator>
-<lastBuildDate>Wed, 22 Nov 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 26 Jun 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Choosing the Right Parent for R Object Classes</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/parent-class/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="https://hugogruson.fr/posts/compa-tibble/">I have recently published</a> a <a href="https://epiverse-trace.github.io/posts/s3-generic/">series of blog posts</a> on the reasons why one may want to start using object-oriented programming (and more specifically R S3 classes) to improve interoperability with other tools from the ecosystem.</p>
+<p>But there are still questions I have not addressed directly, even if they may have been implicitly included sometimes: what makes a good object class? What good practices in class &amp; function design can improve interoperability?</p>
+<p>As you can expect from these questions, this post will present a subjective view on S3 class and method design. I will argue that it is often a good strategy to inherit from existing standards classes, and to leverage this inheritance relationship as much as possible.</p>
+<section id="inherit-from-standard-classes" class="level2">
+<h2 class="anchored" data-anchor-id="inherit-from-standard-classes">Inherit from standard classes</h2>
+<p>A unique feature of R is the availability and centrality of <code>data.frame</code>s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., <a href="https://pandas.pydata.org/">pandas</a> in Python).</p>
+<p><code>data.frame</code> is one of the first “complex” (in the sense of <a href="https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors">non-atomic</a>) object most R learners will be exposed to and will develop a familiarity with. A good way to leverage this familiarity is to <a href="https://epiverse-trace.github.io/posts/extend-dataframes/">make your subclass a thin wrapper around <code>data.frame</code>s</a>.</p>
+<p>This means that not only will users be able to get started with your package faster because of this familiarity, but you will also immediately benefit from the huge ecosystem of functions and packages working on <code>data.frame</code>s, such as the <a href="https://tidyverse.org">tidyverse</a>. If you want some examples, this is what collaborators and I did in the <a href="https://github.com/epiverse-trace/linelist">linelist</a>, <a href="https://github.com/rmaia/pavo">pavo</a>, <a href="https://github.com/epiforecasts/scoringutils">scoringutils</a>, <a href="https://github.com/epiverse-trace/epichains">epichains</a>, and <a href="https://github.com/epiverse-trace/vaccineff">vaccineff</a> R packages.</p>
+<p>In some cases, the output is too complex to fit into a <code>data.frame</code>. Even in this situation, I would recommend inheriting from existing, well-established, classes for the same two reasons: familiarity and ecosystem. For example, for the <a href="https://github.com/epiverse-trace/serofoi">serofoi</a> R package, <a href="https://github.com/epiverse-trace/serofoi/pull/117">we have made the decision to inherit from <code>stanfit</code> objects, rather than a custom structure</a>.</p>
+</section>
+<section id="rely-on-parent-methods-as-much-as-possible" class="level2">
+<h2 class="anchored" data-anchor-id="rely-on-parent-methods-as-much-as-possible">Rely on parent methods as much as possible</h2>
+<p>A follow up recommendation from inheriting from standard classes is to leverage their methods wherever possible.</p>
+<p><a href="https://github.com/epiverse-trace/linelist/pull/60">One of the first</a> <a href="https://github.com/epiverse-trace/linelist/pull/61">changes I made</a> when becoming maintainer of the <a href="https://github.com/epiverse-trace/linelist">linelist</a> package was to remove the <code>rename.linelist()</code> and <code>select.linelist()</code> methods. Indeed, they were, or could easily be, behaving identically as the parent <code>rename.data.frame()</code> and <code>select.data.frame()</code> methods. Rather than burdening the codebase and maintenance with an extra unnecessary method, it is much simpler and more robust to rely on the well-tested parent method. In fact, the <a href="https://dplyr.tidyverse.org/reference/dplyr_extending.html">dplyr documentation</a> explicitly recommends only writing methods for a couple of standard functions (including <code>[.subclass()</code> and <code>names&lt;-.subclass()</code>), which will enable the use of parent methods directly, rather than writing custom methods for each dplyr function.</p>
+<p>Similarly, many developers have the reflex to write a custom <code>print.subclass()</code> method as part of the method implementation. While it may be justified in some cases, it is sometimes unnecessary. My recommendation would be to evaluate carefully what benefits the custom method brings over the default parent method.</p>
+</section>
+<section id="enable-conversion-to-standard-classes" class="level2">
+<h2 class="anchored" data-anchor-id="enable-conversion-to-standard-classes">Enable conversion to standard classes</h2>
+<p>If after careful consideration, extra metadata makes it too difficult to fit your new class into an existing class, you may sometimes have to define your own class from “scratch” (i.e., often <code>list()</code> in R).</p>
+<p>But even in this case, you can still apply some of the ideas proposed earlier. As much as possible, you should provide helpers or methods to enable the streamlined conversion of your method to a standard class.</p>
+<p>A good example here is the <a href="https://github.com/epiverse-trace/epiparameter">epiparameter</a> package, which provides a complex S3 class built on lists, including extensive metadata about probability distribution of epidemiological parameters. As such, this custom class cannot be used out of the box in most functions from other packages. <a href="https://github.com/epiverse-trace/epiparameter/blob/0f805b90f984def4851a78148f1cf44c3d480845/R/coercion.R#L18-L41">But an <code>as.function()</code> method is conveniently provided to enable the conversion of this probability distribution parameters into a density distribution</a>, which can then be used in functions which expect a <code>function</code> object.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In summary, I recommend relying on well-established parent classes such as <code>data.frame</code>s or at least providing direct conversion functions to these standard classes, and using parent methods wherever possible rather than writing custom dedicated methods. This should help produce a package:</p>
+<ul>
+<li>more easily accessible for users because it uses objects that feel familiar</li>
+<li>more maintainable because a lot of method writing is offloaded to the parent class</li>
+<li>more likely to be interoperable because standard classes are a good way to pass data between functions or packages</li>
+</ul>
+<p><strong>Thanks to Chris Hartgerink, James Azam and Josh Lambert, for their very valuable feedback on this post.</strong></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
+  author = {Gruson, Hugo},
+  title = {Choosing the {Right} {Parent} for {R} {Object} {Classes}},
+  date = {2024-06-26},
+  url = {https://epiverse-trace.github.io/posts/parent-class/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2024. <span>“Choosing the Right Parent for R Object
+Classes.”</span> June 26, 2024. <a href="https://epiverse-trace.github.io/posts/parent-class/">https://epiverse-trace.github.io/posts/parent-class/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>R package</category>
+  <category>object-oriented programming</category>
+  <category>S3</category>
+  <category>interoperability</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/parent-class/</guid>
+  <pubDate>Wed, 26 Jun 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Using benchmarking to guide the adoption of dependencies in R packages</title>
   <dc:creator>James Mba Azam</dc:creator>
@@ -4326,7 +4391,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-56040"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-56040").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-74019"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-74019").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/parent-class/index.html",
       "/posts/epidemics_v0.4.0/index.html",
       "/posts/cleanepi_v1.0.0/index.html",
       "/posts/epichains_v0.1.0/index.html",
