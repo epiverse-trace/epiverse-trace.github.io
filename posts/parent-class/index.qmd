@@ -47,3 +47,5 @@ In summary, I recommend relying on well-established parent classes such as `data
 - more easily accessible for users because it uses objects that feel familiar
 - more maintainable because a lot of method writing is offloaded to the parent class
 - more likely to be interoperable because standard classes are a good way to pass data between functions or packages
+
+**Thanks to Chris Hartgerink, James Azam and Josh Lambert, for their very valuable feedback on this post.**
