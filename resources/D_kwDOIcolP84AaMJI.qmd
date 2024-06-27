@@ -1,0 +1,8 @@
+---
+title: "Why You Should (or Shouldn’t) Build an API Client?"
+url: "https://github.com/orgs/epiverse-trace/discussions/294"
+date: "2024-06-26"
+author: Bisaloo
+categories: []
+upvotes: 1
+---
