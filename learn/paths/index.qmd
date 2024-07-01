@@ -1,0 +1,108 @@
+---
+title: "Learning paths"
+author:
+  - name: "Andree Valle-Campos"
+    orcid: "0000-0002-7779-481X"
+date: "2022-12-05"
+categories: [data science, learning path, outbreak analytics]
+image: "brett-jordan-NDjaUqvB7uE-unsplash.jpg"
+format:
+  html: 
+    toc: true
+---
+
+## Find your way to Outbreak analytics
+
+[Outbreak analytics](https://github.com/epiverse-trace/epiverse-trace.github.io/pull/88/files) integrates skills across at least three knowledge domains: programming, mathematics, and epidemiology.
+
+In Epiverse-TRACE, we love to present our project and packages to more potential users. However, a common question that we hear is: How can I start learning R?
+
+Here we share a list of learning resources that you can use as learning tracks to find your learning path to Outbreak analytics.
+
+We aim to embrace the Epidemiology and Outbreak analytic ecosystem, so we emphasized the referral to epidemiology-led training initiatives and complement them with other R learning alternatives.
+
+## Programming
+
+::: {.callout-caution collapse="true"}
+### Beginners
+
+- **Install R and Rstudio** <https://epirhandbook.com/en/r-basics.html#installation>. If you need a visual guide to these two steps, you can follow this video <https://youtu.be/jIU920azbzU> 
+- **Spend an hour with a Data dive into the Ebola in Sierra Leone** <https://youtu.be/Qm9LB0v7F9s>. If you are coming to R from another data analysis software like Stata, this video will show you the basics of data analysis in R, with emphasis on how to install R packages, read a database, explore and visualize your data. You can also prefer another one hour video on how to clean data using the tidyverse <https://posit.co/resources/videos/a-gentle-introduction-to-tidy-statistics-in-r/>  
+- **Read The Epidemiologist R Handbook** <https://epirhandbook.com/en/>. If you learn best with book and prefer to use epidemiological data to learn, this is for you. This is available in four languages: spanish, vietnamese, japanise, turkish. If you are comming to R from analysis softwares like Excel, STATA, or SAS, the transition to R chapter will help you to translate your knowledge <https://epirhandbook.com/en/transition-to-r.html>. You can also read the R for data science book <https://r4ds.hadley.nz/> focused on data cleaning with the tydiverse. This is available in three languages: spanish, italian, turkish
+- **Start coding using online tutorials** <https://www.appliedepi.org/tutorial/>. Interactive tutorials are one of the most effective ways to start using R with out the need to install it in your computer. You can even use them in your mobile phone. You can also follow self-paced hands-on tutorials with video companions <https://thegraphcourses.org/courses-portal/>. For a interactive dive into tidyverse packages use the Posit Primers <https://posit.cloud/learn/primers>. 
+- **Enroll into a online learning cohort.** AppliedEpi offer Synchronous R Courses with follow-up support <https://www.appliedepi.org/live/>. Join to their email list or follow them on LinkedIn <https://www.linkedin.com/company/appliedepi/>. The GRAPH Courses offers a Live Coding Bootcamp with interactive workshops. Follow them on LinkedIn <https://www.linkedin.com/company/the-graph-network/> 
+- **Publish your work with Rmarkdown** <https://rmarkdown.rstudio.com/lesson-1.html>. R is excellent to analyse data and generate visualizations. If you want to show your work with narrative text in reports in PDF, MS Word, HTML, or presentations in MS PowerPoint, follow this tutorial. If you prefer a video introduction before a dive into the tutorials, watch this <https://posit.co/resources/videos/getting-started-with-r-markdown/> 
+:::
+
+::: {.callout-caution collapse="true"}
+### Intermediates
+
+- **Learn to get help.** <https://community.appliedepi.org/>. <https://stackoverflow.com/collectives/r-language> 
+- **Learn good Scientific computing practices.** Git and GitHub - Watch or sign up for the next one Epiverse-TRACE online training <https://epiverse-trace.github.io/learn/git-training-01/> - Read tutorials Software Carpentries lessons ENG <https://swcarpentry.github.io/r-novice-gapminder/> ESP <https://swcarpentry.github.io/r-novice-gapminder-es/>
+- **Dive into specialized Epiverse-TRACE packages**. Read vignettes <https://github.com/epiverse-trace/> Watch our showcases recordings <https://epiverse-trace.github.io/slides/showcase-spring2023/> and <https://epiverse-trace.github.io/slides/showcase-winter2023/> 
+- **Dive into cheetsheets** data cleaning with the tidyverse and more <https://posit.co/resources/cheatsheets/> . Shortcuts and tips <https://appsilon.com/rstudio-shortcuts-and-tips/> 
+- **Extend your knowledge.** Watch Spanish LatinR Interactive <https://www.learnr4free.com/es/index.html> Videos <https://www.youtube.com/c/LatinR/playlists> Rladies Interactive <https://yabellini.shinyapps.io/RLadiesLesson/> Videos <https://www.youtube.com/@RLadiesGlobal/videos> 
+- **Publish your work with Quarto** <https://quarto.org/docs/get-started/>. R is excellent to analyse data and generate visualizations. If you want to show your work with narrative text in reports in PDF, MS Word, HTML, or presentations in MS PowerPoint, follow step 2 of the get started tutorial. If you prefer a video introduction before a dive into the tutorials, watch Mine Çetinkaya-Rundel video to author a Quarto document and create a website <https://youtu.be/_f3latmOhew> 
+:::
+
+::: {.callout-caution collapse="true"}
+### Experts
+
+- **Build your own R packages** <https://r-pkgs.org/>. Read the learning of the Epiverse-TRACE doing this as an organization <https://epiverse-trace.github.io/blueprints/> and follow good practices <https://devguide.ropensci.org/index.html> 
+- **Use Research compendium** for your data analysis project <https://frbcesab.github.io/rcompendium/> 
+- **Communicate with Rmarkdown and Quarto** -  <https://quarto.org/docs/guide/> - For your packages use <https://pkgdown.r-lib.org/> 
+:::
+
+## Mathematics
+
+::: {.callout-caution collapse="true"}
+### Beginners
+
+- **Open Intro free books on Mathematics** <https://www.openintro.org/> 
+- A user’s guide to infectious disease models <http://prism.edu.au/publications/prism-modeling-guideline/> 
+:::
+
+::: {.callout-caution collapse="true"}
+### Intermediates
+
+- **Short courses** <https://www.lshtm.ac.uk/study/courses/short-courses/modern-techniques-disease-modelling> 
+- **Book on modelling concepts in R**, Bjornstad's Epidemics <https://link.springer.com/book/10.1007/978-3-031-12056-5> with R package <https://github.com/objornstad/epimdr>  also <https://anintroductiontoinfectiousdiseasemodelling.com/> 
+- **Online MOOC** <https://www.coursera.org/learn/epidemics> Infectious disease dynamics and data (6 votes) Penn MOOC: <https://www.coursera.org/learn/epidemics?action=enroll#syllabus> SISMID - summer school in modelling/epi. In Seattle. Pick and Mix courses. <https://si.biostat.washington.edu/about/sismid>
+- **Recipes on modelling** <http://epirecip.es/epicookbook/chapters/simple>  
+- **RECON Practical.** Real time ebola ENG <https://www.reconlearn.org/post/real-time-response-1> ESP <https://www.reconlearn.org/post/real-time-response-1-spanish> TB comportamental model <https://www.reconlearn.org/post/practical-tb> vector borne ENG <https://www.reconlearn.org/post/practical-vbd> ESP <https://www.reconlearn.org/post/practical-vbd-spanish> 
+- **Online Lectures.** Slides on Estimate disease transmissibility <https://www.newton.ac.uk/files/seminar/20200703170018001-1892172.pdf> 
+:::
+
+::: {.callout-caution collapse="true"}
+### Experts
+
+- **Paper repositories.** CMMID repository <https://cmmid.github.io/topics/covid19/> 
+- **Bayesian statistic** Statistical rethinking: <https://xcelab.net/rm/statistical-rethinking/> Regression and other stories: <https://avehtari.github.io/ROS-Examples/> 
+- **Optimization algorithms and MCMC** Model fitting course materials: <http://sbfnk.github.io/mfiidd/index.html> SISMID course materials: <https://kingaa.github.io/sbied/index.html> 
+:::
+
+## Epidemiology
+
+::: {.callout-caution collapse="true"}
+### Beginners
+
+- **Book** Gordis ENG <https://shop.elsevier.com/books/gordis-epidemiology/celentano/978-0-323-55229-5>  ESP <https://tienda.elsevier.es/gordis-epidemiologia-9788491135364.html> 
+- **Online materials** TEPHINET learning center <https://www.tephinet.org/tephinet-learning-center> 
+:::
+
+::: {.callout-caution collapse="true"}
+### Intermediates
+
+- **Read papers** on outbreak analytics <https://royalsocietypublishing.org/doi/10.1098/rstb.2016.0371> and <https://royalsocietypublishing.org/doi/full/10.1098/rstb.2018.0276> 
+- **Online materials**. CDC Field epi manual <https://www.cdc.gov/eis/field-epi-manual/chapters.html> 
+:::
+
+::: {.callout-caution collapse="true"}
+### Experts
+
+- **Books**. Surveillance <https://academic.oup.com/book/25656?login=false> 
+:::
+
+## Attributions
+
+- The image of this feed is from [Unsplash](https://unsplash.com/photos/NDjaUqvB7uE), provided by [Brett Jordan](https://unsplash.com/@brett_jordan), free to use under the [Unsplash License](https://unsplash.com/license).
