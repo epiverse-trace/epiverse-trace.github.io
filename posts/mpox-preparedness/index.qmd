@@ -53,7 +53,7 @@ In estimating $Rt$, one practical consideration is the impact of various delays 
 
 Furthermore, dedicated packages have emerged for estimating epidemiological delays from data using best practices. [`{epidist}`](https://epidist.epinowcast.org/articles/epidist.html) offers the ability to estimate delay distributions, accounting for issues such as truncation (i.e., not all disease outcomes will yet be known in real-time).
 
-If delay data are not available, published estimates of the incubation period and serial interval can be used. The [`{epiparameter}`](https://epiverse-trace.github.io/epiparameter/) package collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. You can view the [database ](https://epiverse-trace.github.io/epiparameter/dev/articles/database) for currently available parameters (more entries are planned). Additionally, if only summary statistics are available (e.g. range and median), `{epiparameter}` can be used to extract the distribution parameters.
+If delay data are not available, published estimates of the incubation period and serial interval can be used. The [`{epiparameter}`](https://epiverse-trace.github.io/epiparameter/) package collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. You can view the [database](https://epiverse-trace.github.io/epiparameter/dev/articles/database) for currently available parameters (more entries are planned). Additionally, if only summary statistics are available (e.g. range and median), `{epiparameter}` can be used to extract the distribution parameters.
 
 #### Individual-level transmissibility (superspreading)
 
