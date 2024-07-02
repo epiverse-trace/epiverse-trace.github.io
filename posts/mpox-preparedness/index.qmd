@@ -103,4 +103,4 @@ In this post, we have outlined the tools available to support decision-making in
 [^2]: [Modeling Household Transmission of Clade I Mpox in the United States](https://www.cdc.gov/forecast-outbreak-analytics/about/modeling-forecasting/mpox-transmission.html)
 [^3]: [Risk of Clade 1 Mpox Outbreaks Among Gay, Bisexual, and Other Men Who Have Sex With Men in the United States](https://www.cdc.gov/forecast-outbreak-analytics/about/modeling-forecasting/mpox-gbmsm-technical-brief.html)
 
-*Thanks to \<insert reviewers>\ for their valuable comments on earlier drafts of this post.*
+*Thanks to Karim Mane for his valuable comments on earlier drafts of this post.*
