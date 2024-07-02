@@ -3,7 +3,8 @@ title: "2024 mpox outbreak: common analytics tasks and available R tools"
 author:
   - name: "James Azam"
     orcid: "0000-0001-5782-7330"
-    author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-147"
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
 date: "2024-06-19"
