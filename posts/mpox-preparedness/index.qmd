@@ -14,7 +14,7 @@ format:
     toc: true
 ---
 
-There is an ongoing outbreak of mpox globally and countries are on the high alert. Various analyses of the impact of the outbreak at country level are emerging. The US CDC for example has analysed the potential size of outbreaks resulting from transmission within and between households [^1] and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes [^2]. However, the ongoing outbreak will require a coordinated response from the global health community.
+There is an ongoing outbreak of mpox globally and countries are on the high alert. The Democratic Republic of Congo is so far the worst hit with a total of 7, 851 cases and 384 deaths between January 1 and May 26, 2024 [^1]. Before 2022, there were no reports of sustained mpox outbreaks in most countries of the world. However, within 1 year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85, 473 confirmed cases and 89 deaths [@laurenson2023description].
 
 The Epiverse-TRACE team is developing a set of tools to help provide analytics support to decision-makers during this outbreak. This post provides an overview of aspects of analytics that could support decision-making in the context of the ongoing outbreak of mpox.
 
