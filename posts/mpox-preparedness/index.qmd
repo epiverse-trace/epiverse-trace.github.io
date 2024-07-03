@@ -21,7 +21,7 @@ Mpox is transmitted through respiratory droplets and direct contact with infecte
 
 Various analyses of the impact of the outbreak at country level are emerging. The US CDC for example has analysed the potential size of outbreaks resulting from transmission within and between households [^2] and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes [^3]. However, the ongoing outbreak will require a coordinated response from the global health community.
 
-The Epiverse-TRACE team is developing a set of tools to help provide analytics support to decision-makers during this outbreak. This post provides an overview of aspects of analytics that could support decision-making in the context of the ongoing outbreak of mpox.
+The Epiverse-TRACE team is developing a set of analytical tools that could help support decision-makers during outbreaks. This post provides an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks.
 
 ## Common outbreak analytics tasks
 
