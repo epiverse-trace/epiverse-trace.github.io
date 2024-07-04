@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/mpox-preparedness/index.html",
       "/posts/parent-class/index.html",
       "/posts/epidemics_v0.4.0/index.html",
       "/posts/cleanepi_v1.0.0/index.html",
@@ -16,7 +17,6 @@
       "/posts/renv-complications/index.html",
       "/posts/superspreading_v0.2.0/index.html",
       "/posts/simulist_v0.1.0/index.html",
-      "/posts/mpox-preparedness/index.html",
       "/posts/cfr_v0.1.0/index.html",
       "/posts/benchmarking_design_decisions/index.html",
       "/posts/bpmodels_v0.3.1/index.html",
