@@ -1,0 +1,58 @@
+---
+title: "Improving Ecosystem Interoperability Iteratively via Progressive Enhancement"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-07-04"
+categories: [R, interoperability, S3, progressive enhancement, ecosystem, lifecycle, object orientation]
+format:
+  html: 
+    toc: true
+---
+
+We are continuing on post series on S3 and interoperability. 
+We have previously discussed [what makes a good S3 class and how to choose a good parent for it, as well as when to write or not write a custom method](../parent-class).
+We have highlighted in particular how classes inheriting from data.frames can simplify user experience, and reduce developer workload.
+
+We have detailed how to improve compatibility with the tidyverse by explaining:
+
+- [how functions taking data.frames or data.frames subclass can easily and should also allow compatibility with tibble](https://hugogruson.fr/posts/compa-tibble/)
+- [how to ensure class attribute is preserved whenever possible while using dplyr functions](../extend-dataframes).
+
+Here, we are going to explore how to actually start adding support in the ecosystem for the newly S3 classes while minimizing user-facing breaking changes.
+We have previously delved into this topic with our previous post ["Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"](../s3-generic) and this is a wider and higher-level view of the same topic.
+
+The strategy presented here is the declination of a common concept in web development and the web ecosystem: [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). This philosophy aims to support browsers with limited range of features, while allowing a slightly richer experience for browsers with extra features.
+It makes sense to think about this philosophy with the prism of introducing new classes to a new software ecosystem as it has the similar constraints of multiple stakeholders with different interests and timelines.
+The application of progressive enhancement in this context means that users or packages that did not (yet) adopt the new classes are not penalized compared to users or packages that did.
+
+## Adding class support to function inputs via progressive enhancement
+
+The goal here is to allow functions to accept the new classes as inputs, while keeping the old behaviour unchanged for unclassed objects (or with a different class than the new one).
+
+This can conveniently be done in an almost transparent way by converting the old function to the S3 generic, and using the default method to handle the old behaviour. The practical steps, and minor caveats, have been previously described in the post ["Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"](../s3-generic).
+
+![A before / after type image showing the conversion of a function to a generic with a default method keeping the exisiting behaviour.](convert_to_generic.svg)
+
+If the function was already a generic, even steps are required: a new method for the new class should be added, leaving everything else unchanged.
+
+## Adding class support to function outputs via progressive enhancement
+
+Adding class support to function outputs is often more challenging.
+A common option is to add a new argument to the function, which would be a boolean indicating whether the output should be of the new class or not.
+But this doesn't fit in the view of progressive enhancement, as it would require users to change their code to benefit from the new classes, or to suffer from breaking changes.
+
+While the new argument approach is sometimes indeed the only possible method, there are some situations where we can have an approach truly following the progressive enhancement philosophy.
+
+In particular, this is the case when the old output was already inheriting from the parent of the new class (hence the importance of carefully choosing the parent class). In this situation, the new attributes from the new class should not interfere with existing code for downstream analysis.
+
+This is however only true if code in downstream analysis follows good practices [^1]. If existing code was testing equality of the class to a certain value, it will break when the new class value is appended. This is described in a [post on the R developer blog, when base R was adding a new `array` class value to `matrix` objects](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html). Class inheritance should never be tested via `class(x) == "some_class"`. Instead, `inherits(x, "some_class")` or `is(x, "some_class")` should be used to future-proof the code and allow appending an additional in the future.
+
+[^1]: This is now [enforced in R packages by R CMD check](https://github.com/r-devel/r-svn/commit/77ebdff5adc200dfe9bc850bc4447088830d2ee0), and via the [`class_equals_linter()`](https://lintr.r-lib.org/reference/class_equals_linter.html)  in the [lintr package](https://lintr.r-lib.org/).
+
+## Conclusion
+
+Object oriented programming and S3 classes offer a convenient way to iteratively add interoperability in the ecosystem in a way that is minimally disruptive to users and developers.
+Newly classed input support can be added via custom methods (after converting the existing function to a generic if necessary).
+Newly classed output support can be added via progressive enhancement, by ensuring that the new class is a subclass of the old one, that downstream code uses good practices.
+
