@@ -10,7 +10,7 @@ format:
     toc: true
 ---
 
-We are continuing on post series on S3 and interoperability. 
+We are continuing on post series on S3 and interoperability.
 We have previously discussed [what makes a good S3 class and how to choose a good parent for it, as well as when to write or not write a custom method](../parent-class).
 We have highlighted in particular how classes inheriting from data.frames can simplify user experience, and reduce developer workload.
 
@@ -55,4 +55,3 @@ This is however only true if code in downstream analysis follows good practices 
 Object oriented programming and S3 classes offer a convenient way to iteratively add interoperability in the ecosystem in a way that is minimally disruptive to users and developers.
 Newly classed input support can be added via custom methods (after converting the existing function to a generic if necessary).
 Newly classed output support can be added via progressive enhancement, by ensuring that the new class is a subclass of the old one, that downstream code uses good practices.
-
