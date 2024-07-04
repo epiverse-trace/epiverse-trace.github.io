@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="James Azam">
+<meta name="author" content="Hugo Gruson">
+<meta name="author" content="Adam Kucharski">
+<meta name="dcterms.date" content="2024-01-04">
+
+<title>2024 mpox outbreak: common analytics tasks and available R tools – Epiverse-TRACE developer space</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../hexlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="2024 mpox outbreak: common analytics tasks and available R tools – Epiverse-TRACE developer space">
+<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta property="og:image" content="https://epiverse-trace.github.io/posts/mpox-preparedness/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:site_name" content="Epiverse-TRACE developer space">
+<meta name="twitter:title" content="2024 mpox outbreak: common analytics tasks and available R tools – Epiverse-TRACE developer space">
+<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
+<meta name="twitter:image" content="https://epiverse-trace.github.io/posts/mpox-preparedness/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:creator" content="@Epiverse_TRACE">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Epiverse-TRACE developer space</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-news" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">News</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
+        <li>
+    <a class="dropdown-item" href="../../blog.html">
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog.html#category=R">
+ <span class="dropdown-text">Blog - Articles</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog.html#category=new-release">
+ <span class="dropdown-text">Blog - Release notes</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../presentations.html">
+ <span class="dropdown-text">Presentations</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Use</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-use">    
+        <li>
+    <a class="dropdown-item" href="../../getting-started.html">
+ <span class="dropdown-text">Getting started</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://epiverse-trace.r-universe.dev/packages">
+ <span class="dropdown-text">Software</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Learn</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">    
+        <li>
+    <a class="dropdown-item" href="../../learn.html">
+ <span class="dropdown-text">Learning materials</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../resources.html">
+ <span class="dropdown-text">Resources</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contribute" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Contribute</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute">    
+        <li>
+    <a class="dropdown-item" href="https://github.com/search?q=org%3Aepiverse-trace++label%3A%22good+first+issue%22+is%3Aopen&amp;type=issues">
+ <span class="dropdown-text">Good first issues</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../get-involved.html">
+ <span class="dropdown-text">Get involved</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../people.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/epiverse-trace" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/Epiverse_TRACE" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">2024 mpox outbreak: common analytics tasks and available R tools</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Epiverse-TRACE</div>
+                <div class="quarto-category">mpox</div>
+                <div class="quarto-category">outbreak</div>
+                <div class="quarto-category">outbreak-analytics</div>
+                <div class="quarto-category">DOI</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+               <p>James Azam <a href="https://orcid.org/0000-0001-5782-7330" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>Hugo Gruson <a href="https://orcid.org/0000-0002-4094-147" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>Adam Kucharski <a href="https://orcid.org/0000-0001-8814-9421" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 4, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#common-outbreak-analytics-tasks" id="toc-common-outbreak-analytics-tasks" class="nav-link active" data-scroll-target="#common-outbreak-analytics-tasks">Common outbreak analytics tasks</a>
+  <ul class="collapse">
+  <li><a href="#cleaning-and-validating-data" id="toc-cleaning-and-validating-data" class="nav-link" data-scroll-target="#cleaning-and-validating-data">Cleaning and validating data</a></li>
+  <li><a href="#estimating-transmission-potential" id="toc-estimating-transmission-potential" class="nav-link" data-scroll-target="#estimating-transmission-potential">Estimating transmission potential</a></li>
+  <li><a href="#forecasting-and-nowcasting-infection-dynamics" id="toc-forecasting-and-nowcasting-infection-dynamics" class="nav-link" data-scroll-target="#forecasting-and-nowcasting-infection-dynamics">Forecasting and nowcasting infection dynamics</a></li>
+  <li><a href="#estimating-disease-severity" id="toc-estimating-disease-severity" class="nav-link" data-scroll-target="#estimating-disease-severity">Estimating disease severity</a></li>
+  <li><a href="#assessing-the-impact-of-interventions" id="toc-assessing-the-impact-of-interventions" class="nav-link" data-scroll-target="#assessing-the-impact-of-interventions">Assessing the impact of interventions</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them <span class="citation" data-cites="laurenson2023description">(<a href="#ref-laurenson2023description" role="doc-biblioref">Laurenson-Schafer et al. 2023</a>)</span>.</p>
+<p>Mpox is transmitted through respiratory droplets and direct contact with infected persons. The disease is characterized by fever, cough, and a rash, with the mean incubation period estimated to be about 7.8 days <span class="citation" data-cites="ward2022transmission">(<a href="#ref-ward2022transmission" role="doc-biblioref">Ward et al. 2022</a>)</span>. Infected individuals may experience severe symptoms leading to hospitalisation or death. There are two genetic clades: clade I and clade II, which also has subclades IIa and IIb <span class="citation" data-cites="laurenson2023description">(<a href="#ref-laurenson2023description" role="doc-biblioref">Laurenson-Schafer et al. 2023</a>)</span>.</p>
+<p>Several analyses of the potential impact of outbreaks at country level have already emerged in 2024. The US CDC, for example, has analysed the potential size of outbreaks resulting from transmission within and between households <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Another group of researchers have estimated the transmissibility of mpox in the DRC from more recent (2010 - 2019) surveillance data to update existing estimates, which are based on old data <span class="citation" data-cites="charniga2024updating">(<a href="#ref-charniga2024updating" role="doc-biblioref">Charniga, McCollum, et al. 2024</a>)</span>. However, tackling ongoing outbreaks around the world will require a coordinated response from the global health community.</p>
+<p>The Epiverse-TRACE team is developing a set of analytical tools that could help support decision-makers during outbreaks. This post provides an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks.</p>
+<section id="common-outbreak-analytics-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="common-outbreak-analytics-tasks">Common outbreak analytics tasks</h2>
+<p>Outbreak analytics in the context of the ongoing mpox outbreak involves several tasks that can be handled by existing and emerging R tools. Some of the tasks include estimating the transmission potential, forecasting infection dynamics, estimating severity, and assessing the impact of interventions.</p>
+<p>Here, we briefly describe some common tasks, data required, and the ready R tools/packages developed by the Epiverse-TRACE team and the wider community.</p>
+<section id="cleaning-and-validating-data" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-and-validating-data">Cleaning and validating data</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Data cleaning is often the first task in outbreak analytics. This usually involves identifying and correcting errors in the data, standardizing the format of key variables, and ensuring that the data is in a format that is fit for analysis. Data validation is also important to ensure that the data is accurate.</p>
+</div>
+</div>
+</div>
+<p><a href="https://epiverse-trace.github.io/cleanepi/"><code>{cleanepi}</code></a> is useful for cleaning individual-level datasets, and <a href="https://epiverse-trace.github.io/linelist/"><code>{listlist}</code></a> can be used to tag and validate key variables in datasets that might change over time. The <a href="https://epiverse-trace.github.io/numberize/"><code>{numberize}</code></a> package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.</p>
+</section>
+<section id="estimating-transmission-potential" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-transmission-potential">Estimating transmission potential</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>A key initial question during emerging outbreaks is the transmission potential of the disease. This is typically quantified using parameters such as: the basic reproduction number, <span class="math inline">\(R_0\)</span>; the time-varying reproduction number, <span class="math inline">\(R_t\)</span>; and <span class="math inline">\(k\)</span>, which captures individual heterogeneity in transmission (i.e.&nbsp;“superspreading” potential). These quantities are useful to assess the potential for further spread of the disease and the impact of interventions.</p>
+</div>
+</div>
+</div>
+<section id="population-level-transmissibility-r_0-and-r_t" class="level4">
+<h4 class="anchored" data-anchor-id="population-level-transmissibility-r_0-and-r_t">Population-level transmissibility (<span class="math inline">\(R_0\)</span> and <span class="math inline">\(R_t\)</span>)</h4>
+<p>The basic reproduction number, <span class="math inline">\(R_0\)</span>, is the average number of secondary cases produced by a single infected individual in a completely susceptible population. The time-varying reproduction number, <span class="math inline">\(R_t\)</span>, on the other hand, is the average number of secondary cases produced by a single infected individual at time <span class="math inline">\(t\)</span> in a partially susceptible population. <span class="math inline">\(R_t\)</span> is a more useful quantity during an outbreak as it accounts for the impact of interventions and changes in population immunity.</p>
+<p>If data is available on the daily number of reported cases, <a href="https://epiforecasts.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://mrc-ide.github.io/EpiEstim/"><code>{EpiEstim}</code></a> can be used to estimate <span class="math inline">\(R_t\)</span>. These packages require data on the time scale of transmission (i.e.&nbsp;the generation time, or the serial interval, which is <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0756">commonly used as a proxy</a> for this). While <code>{EpiEstim}</code> focuses on retrospective estimation of <span class="math inline">\(R_t\)</span>, <code>{EpiNow2}</code> is designed for both retrospective and real-time estimation.</p>
+<p>In estimating <span class="math inline">\(R_t\)</span>, one practical consideration is the impact of various delays (biological and reporting) on the estimates <span class="citation" data-cites="charniga2024best park2024estimating gostic2020practical">(<a href="#ref-charniga2024best" role="doc-biblioref">Charniga, Park, et al. 2024</a>; <a href="#ref-park2024estimating" role="doc-biblioref">Park et al. 2024</a>; <a href="#ref-gostic2020practical" role="doc-biblioref">Katelyn M. Gostic 2020</a>)</span>. <code>{EpiNow2}</code> adjusts for these delays in various ways. For example, it accounts for the symptom onset and reporting delays by taking the incubation period and reporting delay as inputs. Moreover, <code>{EpiNow2}</code> can estimate the reporting delay from the data if data on incidence by date of onset and report are available.</p>
+<p>Furthermore, dedicated packages have emerged for estimating epidemiological delays from data using best practices. <a href="https://epidist.epinowcast.org/articles/epidist.html"><code>{epidist}</code></a> offers the ability to estimate delay distributions, accounting for issues such as truncation (i.e., not all disease outcomes will yet be known in real-time).</p>
+<p>If delay data are not available, published estimates of the incubation period and serial interval can be used. The <a href="https://epiverse-trace.github.io/epiparameter/"><code>{epiparameter}</code></a> package collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. You can view the <a href="https://epiverse-trace.github.io/epiparameter/dev/articles/database">database</a> for currently available parameters (more entries are planned). Additionally, if only summary statistics are available (e.g.&nbsp;range and median), <code>{epiparameter}</code> can be used to extract the distribution parameters.</p>
+</section>
+<section id="individual-level-transmissibility-superspreading" class="level4">
+<h4 class="anchored" data-anchor-id="individual-level-transmissibility-superspreading">Individual-level transmissibility (superspreading)</h4>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The individual-level transmission heterogeneity (superspreading), often denoted as <span class="math inline">\(k\)</span>, is an important measure for tailoring interventions at the individual level.</p>
+</div>
+</div>
+</div>
+<p>If we have data on the distribution of sizes of transmission clusters, the <a href="https://epiverse-trace.github.io/epichains/"><code>{epichains}</code></a> package provides functions to set up the likelihood function to estimate <span class="math inline">\(R_0\)</span> and <span class="math inline">\(k\)</span>. The user inputs the negative binomial offspring, which assumes individuals exhibit heterogeneity in transmission. The parameters of the negative offspring distribution can then be estimated using existing maximum likelihood or bayesian frameworks.</p>
+<p>Furthermore, if we have individual-level transmission chain data, the <a href="https://epiverse-trace.github.io/superspreading/"><code>{superspreading}</code></a> package can be used to estimate <span class="math inline">\(R_0\)</span> and <span class="math inline">\(k\)</span> from the offspring distribution. This package also provides functions to estimate the probability that an outbreak will not go extinct in its early stages because of randomness in transmission (e.g.&nbsp;if the primary spillover case(s) does not infect others).</p>
+<p>If we have data on sexual contacts and the secondary attack rate, then we can also use <code>{superspreading}</code> to <a href="https://epiverse-trace.github.io/superspreading/articles/heterogeneous_network_outbreaks.html">calculate <span class="math inline">\(R_0\)</span> accounting for network effects</a>.</p>
+</section>
+</section>
+<section id="forecasting-and-nowcasting-infection-dynamics" class="level3">
+<h3 class="anchored" data-anchor-id="forecasting-and-nowcasting-infection-dynamics">Forecasting and nowcasting infection dynamics</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Forecasting and nowcasting of infections are crucial for planning and resource allocation during an outbreak. Forecasting is the prediction of future cases, deaths, or other outcomes, while nowcasting is the prediction of the current outbreak situation. These predictions can help public health authorities to anticipate the trajectory of the outbreak and to implement timely interventions.</p>
+</div>
+</div>
+</div>
+<p><a href="https://epiforecasts.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://package.epinowcast.org/"><code>{epinowcast}</code></a> provide functions to forecast and nowcast the number of cases. The data required for <code>{EpiNow2}</code> has already been described in the previous section. The <code>{epinowcast}</code> package similarly requires data on the number of cases reported per date. <code>{epinowcast}</code> does not currently support forecasting but there are plans to add this functionality in future versions.</p>
+</section>
+<section id="estimating-disease-severity" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-disease-severity">Estimating disease severity</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The case fatality risk (CFR) is often used to assess the severity of a disease. CFR here refers to the proportion of deaths among confirmed cases.</p>
+</div>
+</div>
+</div>
+<p>With incidence data on the number of cases reported and the number of deaths reported, the <a href="https://epiverse-trace.github.io/cfr/"><code>{cfr}</code></a> package can be used to estimate the case fatality rate and its uncertainty. Importantly, it accounts for the delay between the onset of symptoms and death, which is crucial for accurate estimation of the case fatality rate.</p>
+<p>Here again, <code>{EpiNow2}</code> can be used to estimate the time-varying case fatality ratio using the same data as for the reproduction number. <code>{EpiNow2}</code> can estimate other severity metrics, such as the case hospitalisation ratio, given data on cases and hospitalisations, and the hospitalisation fatality ratio, if data on hospitalisations and associated deaths are available.</p>
+</section>
+<section id="assessing-the-impact-of-interventions" class="level3">
+<h3 class="anchored" data-anchor-id="assessing-the-impact-of-interventions">Assessing the impact of interventions</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>mpox can be mitigated with behaviour change, treatment, and vaccination. Here, a few tools are available to assess the impact of intervention scenarios.</p>
+</div>
+</div>
+</div>
+<p><a href="https://epiverse-trace.github.io/epidemics/"><code>{epidemics}</code></a> provides ready compartmental models to estimate the impact of vaccination and non-pharmaceutical interventions like behaviour change, which can conceptually be modelled as a reduction in the transmission rate through changes in the population contact structure.</p>
+<p>If we want to explore population-level outbreak dynamics, <code>{epidemics}</code> allows for stratifying the population into arbitrary groups, specifying the contact structure between these groups, and rates of interventions. The data required to run these models include: population structure, contact structure, and timing and magnitude of interventions. Data on social contact matrices can be obtained from the <a href="https://github.com/epiforecasts/socialmixr"><code>{socialmixr}</code></a> package.</p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this post, we have outlined common outbreak analytics tasks relevant to the mpox outbreak, the data required, and R packages/tools that are currently available to facilitate these tasks. The tools described here are being developed by the Epiverse-TRACE team and the wider community, with the aim of ensuring high standards of research software development, and validation from end users, including epidemiologists, clinicians, and policy makers. The tools are designed to be user-friendly and well integrated, enabling one analysis task to easily feed into another. We <a href="https://epiverse-trace.github.io/get-involved.html">would therefore be keen to hear</a> from other groups interested in potentially collaborating or contributing on this growing ecosystem of tools.</p>
+<p><em>Thanks to Karim Mane (<span class="citation" data-cites="Karim-Mane">(<a href="#ref-Karim-Mane" role="doc-biblioref"><strong>Karim-Mane?</strong></a>)</span>) and Chris Hartgerink (<span class="citation" data-cites="chartgerink">(<a href="#ref-chartgerink" role="doc-biblioref"><strong>chartgerink?</strong></a>)</span>) for their valuable comments on earlier drafts of this post.</em></p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-charniga2024updating" class="csl-entry" role="listitem">
+Charniga, Kelly, Andrea M McCollum, Christine M Hughes, Benjamin Monroe, Joelle Kabamba, Robert Shongo Lushima, Toutou Likafi, et al. 2024. <span>“Updating Reproduction Number Estimates for Mpox in the Democratic Republic of Congo Using Surveillance Data.”</span> <em>The American Journal of Tropical Medicine and Hygiene</em> 110 (3): 561. https://doi.org/<a href="https://doi.org/10.4269/ajtmh.23-0215">https://doi.org/10.4269/ajtmh.23-0215</a>.
+</div>
+<div id="ref-charniga2024best" class="csl-entry" role="listitem">
+Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, Anne Cori, Jonathan Dushoff, Sebastian Funk, Katelyn M Gostic, et al. 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> <em>arXiv Preprint arXiv:2405.08841</em>. https://doi.org/<a href="
+https://doi.org/10.48550/arXiv.2405.08841"> https://doi.org/10.48550/arXiv.2405.08841</a>.
+</div>
+<div id="ref-gostic2020practical" class="csl-entry" role="listitem">
+Katelyn M. Gostic, Edward B. Baskerville, Lauren McGough. 2020. <span>“Practical Considerations for Measuring the Effective Reproductive Number, Rt.”</span> <em>PLoS Computational Biology</em> 16 (12): e1008409. https://doi.org/<a href="https://doi.org/10.1371/journal.pcbi.1008409">https://doi.org/10.1371/journal.pcbi.1008409</a>.
+</div>
+<div id="ref-laurenson2023description" class="csl-entry" role="listitem">
+Laurenson-Schafer, Henry, Nikola Sklenovská, Ana Hoxha, Steven M Kerr, Patricia Ndumbi, Julia Fitzner, Maria Almiron, et al. 2023. <span>“Description of the First Global Outbreak of Mpox: An Analysis of Global Surveillance Data.”</span> <em>The Lancet Global Health</em> 11 (7): e1012–23. https://doi.org/<a href="https://doi.org/10.1016/S2214-109X(23)00198-5">https://doi.org/10.1016/S2214-109X(23)00198-5</a>.
+</div>
+<div id="ref-park2024estimating" class="csl-entry" role="listitem">
+Park, Sang Woo, Andrei R Akhmetzhanov, Kelly Charniga, Anne Cori, Nicholas G Davies, Jonathan Dushoff, Sebastian Funk, et al. 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <em>medRxiv</em>, 2024–01. https://doi.org/<a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
+</div>
+<div id="ref-ward2022transmission" class="csl-entry" role="listitem">
+Ward, Thomas, Rachel Christie, Robert S Paton, Fergus Cumming, and Christopher E Overton. 2022. <span>“Transmission Dynamics of Monkeypox in the United Kingdom: Contact Tracing Study.”</span> <em>Bmj</em> 379. https://doi.org/<a href="http://dx.doi.org/10.1136/ bmj-2022-073153">http://dx.doi.org/10.1136/ bmj-2022-073153</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.who.int/emergencies/disease-outbreak-news/item/2024-DON522">WHO Disease Outbreak News</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.cdc.gov/forecast-outbreak-analytics/about/modeling-forecasting/mpox-transmission.html">Modeling Household Transmission of Clade I Mpox in the United States</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a href="https://www.cdc.gov/forecast-outbreak-analytics/about/modeling-forecasting/mpox-gbmsm-technical-brief.html">Risk of Clade 1 Mpox Outbreaks Among Gay, Bisexual, and Other Men Who Have Sex With Men in the United States</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{azam2024,
+  author = {Azam, James and Gruson, Hugo and Kucharski, Adam},
+  title = {2024 Mpox Outbreak: Common Analytics Tasks and Available {R}
+    Tools},
+  date = {2024-01-04},
+  url = {https://epiverse-trace.github.io/posts/mpox-preparedness/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-azam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Azam, James, Hugo Gruson, and Adam Kucharski. 2024. <span>“2024 Mpox
+Outbreak: Common Analytics Tasks and Available R Tools.”</span> January
+4, 2024. <a href="https://epiverse-trace.github.io/posts/mpox-preparedness/">https://epiverse-trace.github.io/posts/mpox-preparedness/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/epiverse-trace\.github\.io");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="epiverse-trace/epiverse-trace.github.io" data-repo-id="R_kgDOIcolPw" data-category="Blog post discussion" data-category-id="DIC_kwDOIcolP84CWOm8" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+</div> <!-- /content -->
+
+
+
+
+</body></html>

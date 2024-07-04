@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.5.52</generator>
+<generator>quarto-1.6.1</generator>
 <lastBuildDate>Wed, 26 Jun 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Choosing the Right Parent for R Object Classes</title>
@@ -1328,6 +1328,180 @@ V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io/pos
   <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>2024 mpox outbreak: common analytics tasks and available R tools</title>
+  <dc:creator>James Azam</dc:creator>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <dc:creator>Adam Kucharski</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/mpox-preparedness/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 <sup>1</sup>. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them <span class="citation" data-cites="laurenson2023description">(Laurenson-Schafer et al. 2023)</span>.</p>
+<p>Mpox is transmitted through respiratory droplets and direct contact with infected persons. The disease is characterized by fever, cough, and a rash, with the mean incubation period estimated to be about 7.8 days <span class="citation" data-cites="ward2022transmission">(Ward et al. 2022)</span>. Infected individuals may experience severe symptoms leading to hospitalisation or death. There are two genetic clades: clade I and clade II, which also has subclades IIa and IIb <span class="citation" data-cites="laurenson2023description">(Laurenson-Schafer et al. 2023)</span>.</p>
+<p>Several analyses of the potential impact of outbreaks at country level have already emerged in 2024. The US CDC, for example, has analysed the potential size of outbreaks resulting from transmission within and between households <sup>2</sup> and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes <sup>3</sup>. Another group of researchers have estimated the transmissibility of mpox in the DRC from more recent (2010 - 2019) surveillance data to update existing estimates, which are based on old data <span class="citation" data-cites="charniga2024updating">(Charniga, McCollum, et al. 2024)</span>. However, tackling ongoing outbreaks around the world will require a coordinated response from the global health community.</p>
+<p>The Epiverse-TRACE team is developing a set of analytical tools that could help support decision-makers during outbreaks. This post provides an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks.</p>
+<section id="common-outbreak-analytics-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="common-outbreak-analytics-tasks">Common outbreak analytics tasks</h2>
+<p>Outbreak analytics in the context of the ongoing mpox outbreak involves several tasks that can be handled by existing and emerging R tools. Some of the tasks include estimating the transmission potential, forecasting infection dynamics, estimating severity, and assessing the impact of interventions.</p>
+<p>Here, we briefly describe some common tasks, data required, and the ready R tools/packages developed by the Epiverse-TRACE team and the wider community.</p>
+<section id="cleaning-and-validating-data" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-and-validating-data">Cleaning and validating data</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Data cleaning is often the first task in outbreak analytics. This usually involves identifying and correcting errors in the data, standardizing the format of key variables, and ensuring that the data is in a format that is fit for analysis. Data validation is also important to ensure that the data is accurate.</p>
+</div>
+</div>
+</div>
+<p><a href="https://epiverse-trace.github.io/cleanepi/"><code>{cleanepi}</code></a> is useful for cleaning individual-level datasets, and <a href="https://epiverse-trace.github.io/linelist/"><code>{listlist}</code></a> can be used to tag and validate key variables in datasets that might change over time. The <a href="https://epiverse-trace.github.io/numberize/"><code>{numberize}</code></a> package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.</p>
+</section>
+<section id="estimating-transmission-potential" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-transmission-potential">Estimating transmission potential</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>A key initial question during emerging outbreaks is the transmission potential of the disease. This is typically quantified using parameters such as: the basic reproduction number, <img src="https://latex.codecogs.com/png.latex?R_0">; the time-varying reproduction number, <img src="https://latex.codecogs.com/png.latex?R_t">; and <img src="https://latex.codecogs.com/png.latex?k">, which captures individual heterogeneity in transmission (i.e.&nbsp;“superspreading” potential). These quantities are useful to assess the potential for further spread of the disease and the impact of interventions.</p>
+</div>
+</div>
+</div>
+<section id="population-level-transmissibility-r_0-and-r_t" class="level4">
+<h4 class="anchored" data-anchor-id="population-level-transmissibility-r_0-and-r_t">Population-level transmissibility (<img src="https://latex.codecogs.com/png.latex?R_0"> and <img src="https://latex.codecogs.com/png.latex?R_t">)</h4>
+<p>The basic reproduction number, <img src="https://latex.codecogs.com/png.latex?R_0">, is the average number of secondary cases produced by a single infected individual in a completely susceptible population. The time-varying reproduction number, <img src="https://latex.codecogs.com/png.latex?R_t">, on the other hand, is the average number of secondary cases produced by a single infected individual at time <img src="https://latex.codecogs.com/png.latex?t"> in a partially susceptible population. <img src="https://latex.codecogs.com/png.latex?R_t"> is a more useful quantity during an outbreak as it accounts for the impact of interventions and changes in population immunity.</p>
+<p>If data is available on the daily number of reported cases, <a href="https://epiforecasts.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://mrc-ide.github.io/EpiEstim/"><code>{EpiEstim}</code></a> can be used to estimate <img src="https://latex.codecogs.com/png.latex?R_t">. These packages require data on the time scale of transmission (i.e.&nbsp;the generation time, or the serial interval, which is <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0756">commonly used as a proxy</a> for this). While <code>{EpiEstim}</code> focuses on retrospective estimation of <img src="https://latex.codecogs.com/png.latex?R_t">, <code>{EpiNow2}</code> is designed for both retrospective and real-time estimation.</p>
+<p>In estimating <img src="https://latex.codecogs.com/png.latex?R_t">, one practical consideration is the impact of various delays (biological and reporting) on the estimates <span class="citation" data-cites="charniga2024best park2024estimating gostic2020practical">(Charniga, Park, et al. 2024; Park et al. 2024; Katelyn M. Gostic 2020)</span>. <code>{EpiNow2}</code> adjusts for these delays in various ways. For example, it accounts for the symptom onset and reporting delays by taking the incubation period and reporting delay as inputs. Moreover, <code>{EpiNow2}</code> can estimate the reporting delay from the data if data on incidence by date of onset and report are available.</p>
+<p>Furthermore, dedicated packages have emerged for estimating epidemiological delays from data using best practices. <a href="https://epidist.epinowcast.org/articles/epidist.html"><code>{epidist}</code></a> offers the ability to estimate delay distributions, accounting for issues such as truncation (i.e., not all disease outcomes will yet be known in real-time).</p>
+<p>If delay data are not available, published estimates of the incubation period and serial interval can be used. The <a href="https://epiverse-trace.github.io/epiparameter/"><code>{epiparameter}</code></a> package collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. You can view the <a href="https://epiverse-trace.github.io/epiparameter/dev/articles/database">database</a> for currently available parameters (more entries are planned). Additionally, if only summary statistics are available (e.g.&nbsp;range and median), <code>{epiparameter}</code> can be used to extract the distribution parameters.</p>
+</section>
+<section id="individual-level-transmissibility-superspreading" class="level4">
+<h4 class="anchored" data-anchor-id="individual-level-transmissibility-superspreading">Individual-level transmissibility (superspreading)</h4>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The individual-level transmission heterogeneity (superspreading), often denoted as <img src="https://latex.codecogs.com/png.latex?k">, is an important measure for tailoring interventions at the individual level.</p>
+</div>
+</div>
+</div>
+<p>If we have data on the distribution of sizes of transmission clusters, the <a href="https://epiverse-trace.github.io/epichains/"><code>{epichains}</code></a> package provides functions to set up the likelihood function to estimate <img src="https://latex.codecogs.com/png.latex?R_0"> and <img src="https://latex.codecogs.com/png.latex?k">. The user inputs the negative binomial offspring, which assumes individuals exhibit heterogeneity in transmission. The parameters of the negative offspring distribution can then be estimated using existing maximum likelihood or bayesian frameworks.</p>
+<p>Furthermore, if we have individual-level transmission chain data, the <a href="https://epiverse-trace.github.io/superspreading/"><code>{superspreading}</code></a> package can be used to estimate <img src="https://latex.codecogs.com/png.latex?R_0"> and <img src="https://latex.codecogs.com/png.latex?k"> from the offspring distribution. This package also provides functions to estimate the probability that an outbreak will not go extinct in its early stages because of randomness in transmission (e.g.&nbsp;if the primary spillover case(s) does not infect others).</p>
+<p>If we have data on sexual contacts and the secondary attack rate, then we can also use <code>{superspreading}</code> to <a href="https://epiverse-trace.github.io/superspreading/articles/heterogeneous_network_outbreaks.html">calculate <img src="https://latex.codecogs.com/png.latex?R_0"> accounting for network effects</a>.</p>
+</section>
+</section>
+<section id="forecasting-and-nowcasting-infection-dynamics" class="level3">
+<h3 class="anchored" data-anchor-id="forecasting-and-nowcasting-infection-dynamics">Forecasting and nowcasting infection dynamics</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Forecasting and nowcasting of infections are crucial for planning and resource allocation during an outbreak. Forecasting is the prediction of future cases, deaths, or other outcomes, while nowcasting is the prediction of the current outbreak situation. These predictions can help public health authorities to anticipate the trajectory of the outbreak and to implement timely interventions.</p>
+</div>
+</div>
+</div>
+<p><a href="https://epiforecasts.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://package.epinowcast.org/"><code>{epinowcast}</code></a> provide functions to forecast and nowcast the number of cases. The data required for <code>{EpiNow2}</code> has already been described in the previous section. The <code>{epinowcast}</code> package similarly requires data on the number of cases reported per date. <code>{epinowcast}</code> does not currently support forecasting but there are plans to add this functionality in future versions.</p>
+</section>
+<section id="estimating-disease-severity" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-disease-severity">Estimating disease severity</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>The case fatality risk (CFR) is often used to assess the severity of a disease. CFR here refers to the proportion of deaths among confirmed cases.</p>
+</div>
+</div>
+</div>
+<p>With incidence data on the number of cases reported and the number of deaths reported, the <a href="https://epiverse-trace.github.io/cfr/"><code>{cfr}</code></a> package can be used to estimate the case fatality rate and its uncertainty. Importantly, it accounts for the delay between the onset of symptoms and death, which is crucial for accurate estimation of the case fatality rate.</p>
+<p>Here again, <code>{EpiNow2}</code> can be used to estimate the time-varying case fatality ratio using the same data as for the reproduction number. <code>{EpiNow2}</code> can estimate other severity metrics, such as the case hospitalisation ratio, given data on cases and hospitalisations, and the hospitalisation fatality ratio, if data on hospitalisations and associated deaths are available.</p>
+</section>
+<section id="assessing-the-impact-of-interventions" class="level3">
+<h3 class="anchored" data-anchor-id="assessing-the-impact-of-interventions">Assessing the impact of interventions</h3>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>mpox can be mitigated with behaviour change, treatment, and vaccination. Here, a few tools are available to assess the impact of intervention scenarios.</p>
+</div>
+</div>
+</div>
+<p><a href="https://epiverse-trace.github.io/epidemics/"><code>{epidemics}</code></a> provides ready compartmental models to estimate the impact of vaccination and non-pharmaceutical interventions like behaviour change, which can conceptually be modelled as a reduction in the transmission rate through changes in the population contact structure.</p>
+<p>If we want to explore population-level outbreak dynamics, <code>{epidemics}</code> allows for stratifying the population into arbitrary groups, specifying the contact structure between these groups, and rates of interventions. The data required to run these models include: population structure, contact structure, and timing and magnitude of interventions. Data on social contact matrices can be obtained from the <a href="https://github.com/epiforecasts/socialmixr"><code>{socialmixr}</code></a> package.</p>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In this post, we have outlined common outbreak analytics tasks relevant to the mpox outbreak, the data required, and R packages/tools that are currently available to facilitate these tasks. The tools described here are being developed by the Epiverse-TRACE team and the wider community, with the aim of ensuring high standards of research software development, and validation from end users, including epidemiologists, clinicians, and policy makers. The tools are designed to be user-friendly and well integrated, enabling one analysis task to easily feed into another. We <a href="https://epiverse-trace.github.io/get-involved.html">would therefore be keen to hear</a> from other groups interested in potentially collaborating or contributing on this growing ecosystem of tools.</p>
+<p><em>Thanks to Karim Mane (<span class="citation" data-cites="Karim-Mane">(<strong>Karim-Mane?</strong>)</span>) and Chris Hartgerink (<span class="citation" data-cites="chartgerink">(<strong>chartgerink?</strong>)</span>) for their valuable comments on earlier drafts of this post.</em></p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-charniga2024updating" class="csl-entry">
+Charniga, Kelly, Andrea M McCollum, Christine M Hughes, Benjamin Monroe, Joelle Kabamba, Robert Shongo Lushima, Toutou Likafi, et al. 2024. <span>“Updating Reproduction Number Estimates for Mpox in the Democratic Republic of Congo Using Surveillance Data.”</span> <em>The American Journal of Tropical Medicine and Hygiene</em> 110 (3): 561. https://doi.org/<a href="https://doi.org/10.4269/ajtmh.23-0215">https://doi.org/10.4269/ajtmh.23-0215</a>.
+</div>
+<div id="ref-charniga2024best" class="csl-entry">
+Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, Anne Cori, Jonathan Dushoff, Sebastian Funk, Katelyn M Gostic, et al. 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> <em>arXiv Preprint arXiv:2405.08841</em>. https://doi.org/<a href="
+https://doi.org/10.48550/arXiv.2405.08841"> https://doi.org/10.48550/arXiv.2405.08841</a>.
+</div>
+<div id="ref-gostic2020practical" class="csl-entry">
+Katelyn M. Gostic, Edward B. Baskerville, Lauren McGough. 2020. <span>“Practical Considerations for Measuring the Effective Reproductive Number, Rt.”</span> <em>PLoS Computational Biology</em> 16 (12): e1008409. https://doi.org/<a href="https://doi.org/10.1371/journal.pcbi.1008409">https://doi.org/10.1371/journal.pcbi.1008409</a>.
+</div>
+<div id="ref-laurenson2023description" class="csl-entry">
+Laurenson-Schafer, Henry, Nikola Sklenovská, Ana Hoxha, Steven M Kerr, Patricia Ndumbi, Julia Fitzner, Maria Almiron, et al. 2023. <span>“Description of the First Global Outbreak of Mpox: An Analysis of Global Surveillance Data.”</span> <em>The Lancet Global Health</em> 11 (7): e1012–23. https://doi.org/<a href="https://doi.org/10.1016/S2214-109X(23)00198-5">https://doi.org/10.1016/S2214-109X(23)00198-5</a>.
+</div>
+<div id="ref-park2024estimating" class="csl-entry">
+Park, Sang Woo, Andrei R Akhmetzhanov, Kelly Charniga, Anne Cori, Nicholas G Davies, Jonathan Dushoff, Sebastian Funk, et al. 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <em>medRxiv</em>, 2024–01. https://doi.org/<a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
+</div>
+<div id="ref-ward2022transmission" class="csl-entry">
+Ward, Thomas, Rachel Christie, Robert S Paton, Fergus Cumming, and Christopher E Overton. 2022. <span>“Transmission Dynamics of Monkeypox in the United Kingdom: Contact Tracing Study.”</span> <em>Bmj</em> 379. https://doi.org/<a href="http://dx.doi.org/10.1136/ bmj-2022-073153">http://dx.doi.org/10.1136/ bmj-2022-073153</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.who.int/emergencies/disease-outbreak-news/item/2024-DON522">WHO Disease Outbreak News</a>↩︎</p></li>
+<li id="fn2"><p><a href="https://www.cdc.gov/forecast-outbreak-analytics/about/modeling-forecasting/mpox-transmission.html">Modeling Household Transmission of Clade I Mpox in the United States</a>↩︎</p></li>
+<li id="fn3"><p><a href="https://www.cdc.gov/forecast-outbreak-analytics/about/modeling-forecasting/mpox-gbmsm-technical-brief.html">Risk of Clade 1 Mpox Outbreaks Among Gay, Bisexual, and Other Men Who Have Sex With Men in the United States</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{azam2024,
+  author = {Azam, James and Gruson, Hugo and Kucharski, Adam},
+  title = {2024 Mpox Outbreak: Common Analytics Tasks and Available {R}
+    Tools},
+  date = {2024-01-04},
+  url = {https://epiverse-trace.github.io/posts/mpox-preparedness/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-azam2024" class="csl-entry quarto-appendix-citeas">
+Azam, James, Hugo Gruson, and Adam Kucharski. 2024. <span>“2024 Mpox
+Outbreak: Common Analytics Tasks and Available R Tools.”</span> January
+4, 2024. <a href="https://epiverse-trace.github.io/posts/mpox-preparedness/">https://epiverse-trace.github.io/posts/mpox-preparedness/</a>.
+</div></div></section></div> ]]></description>
+  <category>Epiverse-TRACE</category>
+  <category>mpox</category>
+  <category>outbreak</category>
+  <category>outbreak-analytics</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/mpox-preparedness/</guid>
+  <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>cfr v0.1.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
   <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
@@ -2508,886 +2682,6 @@ V1.0.0.”</span> October 19, 2023. <a href="https://epiverse-trace.github.io/po
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/linelist_v1.0.0/</guid>
   <pubDate>Thu, 19 Oct 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>System Dependencies in R Packages &amp; Automatic Testing</title>
-  <dc:creator>Hugo Gruson</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/system-dependencies/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p><em>This post has been <a href="https://blog.r-hub.io/2023/09/26/system-dependency/">cross-posted on the R-hub blog</a>, and the R-hub blog maintainers have contributed to the review and improvement of this post.</em></p>
-<p>In a <a href="https://blog.r-hub.io/2022/09/12/r-dependency/">previous R-hub blog post</a>, we discussed a package dependency that goes slightly beyond the normal R package ecosystem dependency: R itself. Today, we step even further and discuss dependencies outside of R: system dependencies. This happens when packages rely on external software, such as how <a href="https://github.com/search?q=org%3Acran+cuda+path%3ADESCRIPTION&amp;type=code">R packages integrating CUDA GPU computation in R</a> require the <a href="https://en.wikipedia.org/wiki/CUDA">CUDA library</a>. In particular, we are going to talk about system dependencies in the context of automated testing: is there anything extra to do when setting continuous integration for your package with system dependencies? In particular, we will focus with the integration with <a href="https://beamilz.com/posts/series-gha/2022-series-gha-1-what-is/en/">GitHub Actions</a>. How does it work behind the scenes? And how to work with edge cases?</p>
-<section id="introduction-specifying-system-dependencies-in-r-packages" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-specifying-system-dependencies-in-r-packages">Introduction: specifying system dependencies in R packages</h2>
-<p>Before jumping right into the topic of continuous integration, let’s take a moment to introduce, or remind you, how system dependencies are specified in R packages.</p>
-<p>The official ‘Writing R Extensions’ guide states <sup>1</sup>:</p>
-<blockquote class="blockquote">
-<p>Dependencies external to the R system should be listed in the ‘SystemRequirements’ field, possibly amplified in a separate README file.</p>
-</blockquote>
-<p>This was initially purely designed for humans. No system within R itself makes use of it. One important thing to note is that this field contains free text :scream:. As such, to refer to the same piece of software, you could write either one of the following in the package <code>DESCRIPTION</code>:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SystemRequirements</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ExternalSoftware</span></span></code></pre></div>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SystemRequirements</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ExternalSoftware 0.1</span></span></code></pre></div>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SystemRequirements</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> lib-externalsoftware</span></span></code></pre></div>
-<p>However, it is probably good practice check what other R packages with similar system dependencies are writing in <code>SystemRequirements</code>, to facilitate the automated identification process we describe below.</p>
-</section>
-<section id="the-general-case-everything-works-automagically" class="level2">
-<h2 class="anchored" data-anchor-id="the-general-case-everything-works-automagically">The general case: everything works automagically</h2>
-<p>If while reading the previous section, you could already sense the problems linked to the fact <code>SystemRequirements</code> is a free-text field, fret not! In the very large majority of cases, setting up continuous integration in an R package with system dependencies is exactly the same as with any other R package.</p>
-<p>Using, as often, the supercharged usethis package, you can automatically create the relevant GitHub Actions workflow file in your project <sup>2</sup>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">usethis<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">use_github_action</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"check-standard"</span>)</span></code></pre></div>
-</div>
-<p>The result is:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Workflow derived from https://github.com/r-lib/actions/tree/v2/examples</span></span>
-<span id="cb5-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help</span></span>
-<span id="cb5-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">on</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-4"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">push</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-5"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">branches</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">main</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> master</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">]</span></span>
-<span id="cb5-6"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">pull_request</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-7"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">branches</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">[</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">main</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> master</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">]</span></span>
-<span id="cb5-8"></span>
-<span id="cb5-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> R-CMD-check</span></span>
-<span id="cb5-10"></span>
-<span id="cb5-11"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">jobs</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-12"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">R-CMD-check</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-13"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">runs-on</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ${{ matrix.config.os }}</span></span>
-<span id="cb5-14"></span>
-<span id="cb5-15"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">name</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ${{ matrix.config.os }} (${{ matrix.config.r }})</span></span>
-<span id="cb5-16"></span>
-<span id="cb5-17"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">strategy</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-18"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fail-fast</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">false</span></span>
-<span id="cb5-19"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">matrix</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-20"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">        </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">config</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-21"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">{</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">os</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> macos-latest</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">   </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">r</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'release'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">}</span></span>
-<span id="cb5-22"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">{</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">os</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> windows-latest</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">r</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'release'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">}</span></span>
-<span id="cb5-23"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">{</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">os</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ubuntu-latest</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">r</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'devel'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">http-user-agent</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'release'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">}</span></span>
-<span id="cb5-24"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">{</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">os</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ubuntu-latest</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">r</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'release'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">}</span></span>
-<span id="cb5-25"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">{</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">os</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ubuntu-latest</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">,</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">  </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">r</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'oldrel-1'</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">}</span></span>
-<span id="cb5-26"></span>
-<span id="cb5-27"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">env</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-28"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">GITHUB_PAT</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ${{ secrets.GITHUB_TOKEN }}</span></span>
-<span id="cb5-29"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">R_KEEP_PKG_SOURCE</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">yes</span></span>
-<span id="cb5-30"></span>
-<span id="cb5-31"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">    </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">steps</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-32"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> actions/checkout@v3</span></span>
-<span id="cb5-33"></span>
-<span id="cb5-34"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> r-lib/actions/setup-pandoc@v2</span></span>
-<span id="cb5-35"></span>
-<span id="cb5-36"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> r-lib/actions/setup-r@v2</span></span>
-<span id="cb5-37"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">        </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">with</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-38"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">r-version</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ${{ matrix.config.r }}</span></span>
-<span id="cb5-39"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">http-user-agent</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> ${{ matrix.config.http-user-agent }}</span></span>
-<span id="cb5-40"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">use-public-rspm</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span>
-<span id="cb5-41"></span>
-<span id="cb5-42"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> r-lib/actions/setup-r-dependencies@v2</span></span>
-<span id="cb5-43"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">        </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">with</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-44"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">extra-packages</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> any::rcmdcheck</span></span>
-<span id="cb5-45"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">needs</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> check</span></span>
-<span id="cb5-46"></span>
-<span id="cb5-47"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">      </span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">-</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">uses</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> r-lib/actions/check-r-package@v2</span></span>
-<span id="cb5-48"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">        </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">with</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span></span>
-<span id="cb5-49"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">          </span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">upload-snapshots</span><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">:</span><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;"> </span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">true</span></span></code></pre></div>
-<p>You may notice there is no explicit mention of system dependencies in this file. Yet, if we use this workflow in an R package with system dependencies, everything will work out-of-the-box in most cases. So, when are system dependencies installed? And how the workflow does even know which dependencies to install since the <code>SystemRequirements</code> is free text that may not correspond to the exact name of a library?</p>
-<p>The magic happens in the <code>r-lib/actions/setup-r-dependencies</code> step. If you want to learn about it, you can read the <a href="https://github.com/r-lib/actions/blob/756399d909bf9c180bbdafe8025f794f51f2da02/setup-r-dependencies/action.yaml">source code of this step</a>. It is mostly written in R but it contains a lot of bells and whistles to handle messaging within the GitHub Actions context and as such, it would be too long to go through it line by line in this post. However, at a glance, you can notice many mentions of the <a href="https://pak.r-lib.org/">pak R package</a>.</p>
-<p>If it’s the first time you’re hearing about the pak package, we strongly recommend we go through the <a href="https://pak.r-lib.org/reference/features.html">list of the most important pak features</a>. It is <del>paked</del> packed with many very powerful features. The specific feature we’re interested in here is the automatic install of system dependencies via <a href="https://pak.r-lib.org/reference/local_system_requirements.html"><code>pak::pkg_sysreqs()</code></a>, which in turn uses <code>pkgdepends::sysreqs_install_plan()</code>.</p>
-<p>We now understand more precisely where the magic happens but it still doesn’t explain how pak is able to know which precise piece of software to install from the free text <code>SystemRequirements</code> field. As often when you want to increase your understanding, it is helpful to <a href="https://blog.r-hub.io/2019/05/14/read-the-source/">read the source</a>. While browsing pkgdepends source code, we see a call to <a href="https://github.com/r-hub/r-system-requirements" class="uri">https://github.com/r-hub/r-system-requirements</a>.</p>
-<p>This repository contains a set of <a href="https://github.com/rstudio/r-system-requirements/tree/main/rules">rules</a> as json files which match unformatted software name via regular expressions to the exact libraries for each major operating system. Let’s walk through an example together:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb6-2">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"patterns"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">bnvcc</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">b"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">,</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">bcuda</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">b"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb6-3">  <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"dependencies"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span></span>
-<span id="cb6-4">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb6-5">      <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"packages"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"nvidia-cuda-dev"</span><span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb6-6">      <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"constraints"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">[</span></span>
-<span id="cb6-7">        <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">{</span></span>
-<span id="cb6-8">          <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"os"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"linux"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">,</span></span>
-<span id="cb6-9">          <span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">"distribution"</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">:</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ubuntu"</span></span>
-<span id="cb6-10">        <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb6-11">      <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb6-12">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span>
-<span id="cb6-13">  <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">]</span></span>
-<span id="cb6-14"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
-<p>The regular expression tells that each time a package lists something as <code>SystemRequirements</code> with the word “nvcc” or “cuda”, the corresponding Ubuntu library to install is <code>nvidia-cuda-dev</code>.</p>
-<p>This interaction between <code>r-system-requirements</code> and pak is also documented in pak’s dev version, with extra information about how the <code>SystemRequirements</code> field is extracted in different situations: <a href="https://pak.r-lib.org/dev/reference/sysreqs.html#how-it-works" class="uri">https://pak.r-lib.org/dev/reference/sysreqs.html#how-it-works</a></p>
-</section>
-<section id="when-its-not-working-out-of-the-box" class="level2">
-<h2 class="anchored" data-anchor-id="when-its-not-working-out-of-the-box">When it’s not working out-of-the-box</h2>
-<p>We are now realizing that this automagical setup we didn’t pay so much attention to until now actually requires a very heavy machinery under the hood. And it happens, very rarely, that this complex machinery is not able to handle your specific use case. But it doesn’t mean that you cannot use continuous integration in your package. It means that some extra steps might be required to do so. Let’s review these possible solutions together in order of complexity.</p>
-<section id="fix-it-for-everybody-by-submitting-a-pull-request" class="level3">
-<h3 class="anchored" data-anchor-id="fix-it-for-everybody-by-submitting-a-pull-request">Fix it for everybody by submitting a pull request</h3>
-<p>One first option might be that the regular expression used by <code>r-system-requirements</code> to convert the free text in <code>SystemRequirements</code> to a library distributed by your operating system does not recognize what is in <code>SystemRequirements</code>.</p>
-<p>To identify if this is the case, you need to find the file containing the specific rule for the system dependency of interest in <code>r-system-requirements</code>, and test the regular expression on the contents of <code>SystemRequirements</code>.</p>
-<p>If we re-use the cuda example from the previous section and we are wondering why it is not automatically installed for a package specifying “cudaa”:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">stringr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">str_match</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cudaa"</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">bnvcc</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">b"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">bcuda</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">\\</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">b"</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     [,1]
-[1,] NA  
-[2,] NA  </code></pre>
-</div>
-</div>
-<p>This test confirms that the <code>SystemRequirements</code> field contents are not recognized by the regular expression. Depending on the case, the best course of action might be to:</p>
-<ul>
-<li>either edit the contents of <code>SystemRequirements</code> so that it’s picked up by the regular expression</li>
-<li>or submit a pull request to <a href="https://github.com/rstudio/r-system-requirements"><code>rstudio/r-system-requirements</code></a> <sup>3</sup> if you believe the regular expression is too restrictive and should be updated (<a href="https://github.com/rstudio/r-system-requirements/pull/93">example</a>)</li>
-</ul>
-<p>Note however that the first option is likely always the simplest as it doesn’t impact all the rest of the ecosystem (which is why <code>r-system-requirements</code> maintainers might be reluctant to relax a regular expression) and it is often something directly in your control, rather than a third-party who might not immediately be available to review your PR.</p>
-</section>
-<section id="install-system-dependencies-manually" class="level3">
-<h3 class="anchored" data-anchor-id="install-system-dependencies-manually">Install system dependencies “manually”</h3>
-<p>However, you might be in a case where you cannot rely on the automated approach. For example, maybe the system dependency to install is not provided by package managers at all. Typically, if you had to compile or install it manually on your local computer, you’re very likely to have to do the same operation in GitHub Actions. There two different, but somewhat equivalent, ways to do so, as detailed below.</p>
-<section id="directly-in-the-github-actions-workflow" class="level4">
-<h4 class="anchored" data-anchor-id="directly-in-the-github-actions-workflow">Directly in the GitHub Actions workflow</h4>
-<p>You can insert the installation steps you used locally in the GitHub Actions workflow file. So, instead of having the usual structure, you have an extra step “Install extra system dependencies manually” that may look something like this:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1">jobs:</span>
-<span id="cb9-2">  R-CMD-check:</span>
-<span id="cb9-3">    runs-on: ubuntu-latest</span>
-<span id="cb9-4">    env:</span>
-<span id="cb9-5">      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}</span>
-<span id="cb9-6">      R_KEEP_PKG_SOURCE: yes</span>
-<span id="cb9-7">    steps:</span>
-<span id="cb9-8">      - uses: actions/checkout@v3</span>
-<span id="cb9-9"></span>
-<span id="cb9-10">      - uses: r-lib/actions/setup-r@v2</span>
-<span id="cb9-11">        with:</span>
-<span id="cb9-12">          use-public-rspm: true</span>
-<span id="cb9-13"></span>
-<span id="cb9-14"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">+      - name: Install extra system dependencies manually</span></span>
-<span id="cb9-15"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">+        run:</span></span>
-<span id="cb9-16"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">+          wget ...</span></span>
-<span id="cb9-17"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">+          make</span></span>
-<span id="cb9-18"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">+          sudo make install</span></span>
-<span id="cb9-19"></span>
-<span id="cb9-20">      - uses: r-lib/actions/setup-r-dependencies@v2</span>
-<span id="cb9-21">        with:</span>
-<span id="cb9-22">          extra-packages: any::rcmdcheck</span>
-<span id="cb9-23">          needs: check</span>
-<span id="cb9-24"></span>
-<span id="cb9-25">      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div>
-<p>You can see <a href="https://github.com/sbfnk/rbi/blob/9b05a24ce42f7b1b53481370f3bde3dcd86bca02/.github/workflows/R-CMD-check.yaml">a real-life example in the rbi R package</a>.</p>
-</section>
-<section id="using-a-docker-image-in-github-actions" class="level4">
-<h4 class="anchored" data-anchor-id="using-a-docker-image-in-github-actions">Using a Docker image in GitHub Actions</h4>
-<p>Alternatively, you can do the manual installation in a Docker image and use this image in your GitHub Actions workflow. This is a particularly good solution if there is already a public Docker image or you already wrote a <code>DOCKERFILE</code> for your own local development purposes. If you use a public image, you can follow <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-running-a-job-within-a-container">the steps in the official documentation</a> to integrate it to your GitHub Actions job. If you use a <code>DOCKERFILE</code>, you can follow <a href="https://stackoverflow.com/q/61154750/4439357">the answers to this stackoverflow question</a> (in a nutshell, use <code>docker compose</code> in your job or publish the image first and then follow the official documentation).</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb10-1">jobs:</span>
-<span id="cb10-2">  R-CMD-check:</span>
-<span id="cb10-3">    runs-on: ubuntu-latest</span>
-<span id="cb10-4"><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">+    container: ghcr.io/org/repo:main</span></span>
-<span id="cb10-5">    env:</span>
-<span id="cb10-6">      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}</span>
-<span id="cb10-7">      R_KEEP_PKG_SOURCE: yes</span>
-<span id="cb10-8">    steps:</span>
-<span id="cb10-9">      - uses: actions/checkout@v3</span>
-<span id="cb10-10"></span>
-<span id="cb10-11">      - uses: r-lib/actions/setup-r@v2</span>
-<span id="cb10-12">        with:</span>
-<span id="cb10-13">          use-public-rspm: true</span>
-<span id="cb10-14"></span>
-<span id="cb10-15">      - uses: r-lib/actions/setup-r-dependencies@v2</span>
-<span id="cb10-16">        with:</span>
-<span id="cb10-17">          extra-packages: any::rcmdcheck</span>
-<span id="cb10-18">          needs: check</span>
-<span id="cb10-19"></span>
-<span id="cb10-20">      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div>
-<p>You can again see <a href="https://github.com/sbfnk/rbi/pull/46/files">a real-life example in the rbi R package</a>.</p>
-</section>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In this post, we have provided an overview of how to specify system requirements for R package, how this seemingly innocent task requires a very complex infrastructure so that it can be understood by automated tools and that your dependencies are smoothly installed in a single command. We also gave some pointers on what to do if you’re in one of the rare cases where the automated tools don’t or can’t work.</p>
-<p>One final note on this topic is that there might be a move from CRAN to start requiring more standardization in the <code>SystemRequirements</code> field. One R package developer has reported being asked to change “Java JRE 8 or higher” to “Java (&gt;= 8)”.</p>
-<p><em>Many thanks to <a href="https://masalmon.eu/">Maëlle Salmon</a> &amp; <a href="https://github.com/gaborcsardi">Gábor Csárdi</a> for their insights into this topic and their valuable feedback on this post.</em></p>
-
-
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>For R history fans, this has been the case <a href="https://github.com/r-devel/r-svn/blob/9c46956fd784c6985867aca069b926d774602928/doc/NEWS.1#L2348-L2350">since R 1.7.0</a>, released in April 2003.↩︎</p></li>
-<li id="fn2"><p>Alternatively, if you’re not using usethis, you can manually copy-paste the relevant GitHub Actions workflow file from the <a href="https://github.com/r-lib/actions/tree/HEAD/examples"><code>examples</code> of the <code>r-lib/actions</code> project</a>.↩︎</p></li>
-<li id="fn3"><p>If you are wondering why we are saying to submit PR to <code>rstudio/r-system-requirements</code> when we were previously talking about <code>r-hub/r-system-requirements</code>, you can check out <a href="https://github.com/r-hub/blog/pull/165#discussion_r1280644182">this comment thread</a>.↩︎</p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
-  author = {Gruson, Hugo},
-  title = {System {Dependencies} in {R} {Packages} \&amp; {Automatic}
-    {Testing}},
-  date = {2023-09-26},
-  url = {https://epiverse-trace.github.io/posts/system-dependencies/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
-Gruson, Hugo. 2023. <span>“System Dependencies in R Packages &amp;
-Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace.github.io/posts/system-dependencies/">https://epiverse-trace.github.io/posts/system-dependencies/</a>.
-</div></div></section></div> ]]></description>
-  <category>package development</category>
-  <category>R</category>
-  <category>R package</category>
-  <category>continuous integration</category>
-  <category>system dependencies</category>
-  <guid>https://epiverse-trace.github.io/posts/system-dependencies/</guid>
-  <pubDate>Tue, 26 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
