@@ -150,3 +150,5 @@ This is however only true if code in downstream analysis follows good practices 
 Object oriented programming and S3 classes offer a convenient way to iteratively add interoperability in the ecosystem in a way that is minimally disruptive to users and developers.
 Newly classed input support can be added via custom methods (after converting the existing function to a generic if necessary).
 Newly classed output support can be added via progressive enhancement, by ensuring that the new class is a subclass of the old one and that downstream code uses good practices to test class inheritance.
+
+**Thanks to James Azam and Tim Taylor for their very valuable feedback on this post.**
