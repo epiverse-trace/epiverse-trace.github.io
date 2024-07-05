@@ -1,0 +1,154 @@
+---
+title: "Improving Ecosystem Interoperability Iteratively via Progressive Enhancement"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-07-05"
+categories: [R, interoperability, S3, progressive enhancement, ecosystem, lifecycle, object orientation, DOI]
+format:
+  html: 
+    toc: true
+---
+
+We are continuing our post series on S3 object orientation and interoperability in R.
+We have previously discussed [what makes a good S3 class and how to choose a good parent for it, as well as when to write or not write a custom method](../parent-class).
+We have highlighted in particular how classes inheriting from data.frames can simplify user experience because of familiarity, and reduce developer workload due to the pre-existing S3 methods.
+
+We have detailed how to improve compatibility with the tidyverse by explaining:
+
+- [how functions taking data.frames or data.frames subclass should also allow compatibility with tibble, which can be done in a few steps](https://hugogruson.fr/posts/compa-tibble/)
+- [how to ensure class attributes are preserved whenever possible while using dplyr functions](../extend-dataframes).
+
+Here, we are going to explore how to start adding support in the ecosystem for the new S3 classes while minimizing user-facing breaking changes.
+We have previously delved into this topic with our post ["Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"](../s3-generic) and this is a wider and higher-level view of the same topic.
+
+The strategy presented here is the variation of a common concept in web development and the web ecosystem: [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). This philosophy aims to support browsers with a common set of essential features, and even richer features for browser with the most recent updates.
+It makes sense to think about this philosophy with the prism of introducing new classes to a new software ecosystem as it has the similar constraints of multiple stakeholders with different interests and timelines.
+The application of progressive enhancement in this context means that users or packages that have not (yet) adopted the new classes are not penalized compared to users or packages that have.
+
+## Adding class support to function inputs via progressive enhancement
+
+The goal here is to allow functions to accept the new classes as inputs, while keeping the old behaviour unchanged for unclassed objects (or with a different class than the new one).
+
+This can conveniently be done in an almost transparent way by converting the old function to the S3 generic, and using the default method to handle the old behaviour. The practical steps, and minor caveats, have been previously described in the post ["Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"](../s3-generic).
+
+![A before / after type image showing the conversion of a function to a generic with a default method keeping the exisiting behaviour.](convert_to_generic.svg)
+
+For a different, additional, example, we can consider a function working on patient-level data, which previously only accepted a `data.frame` as input:
+
+```r
+#' Compute length of stay in hospital on a patient-level dataset
+#'
+#' @param data A data.frame containing patient-level data
+#' @param admission_column The name of the column containing the admission date
+#' @param discharge_column The name of the column containing the discharge date
+#'
+#' @returns A numeric vector of hospitalization durations in days
+compute_hospitalization_duration <- function(data, admission_column, discharge_column) {
+
+  difftime(
+    data[[discharge_column]],
+    data[[admission_column]],
+    units = "days"
+  )
+
+}
+```
+
+We want to add support for `linelist` objects, as defined in the [linelist package](https://epiverse-trace.github.io/linelist). `linelist` objects inherit from `data.frame` and contain an additional `tags` attribute. In particular, `linelist` objects can have a `date_admission` and `date_discharge` tag. This means we can use the tags to automatically detect the columns to use.
+
+But we want the function to keep working for standard `data.frame`s, `tibble`s, etc. We can follow the steps described in the previous post to convert the function to a generic, and add a default method to handle the old behaviour:
+
+```r
+compute_hospitalization_duration <- function(data, ...) {
+
+  UseMethod("compute_hospitalization_duration")
+
+}
+
+compute_hospitalization_duration.default <- function(data, admission_column, discharge_column) {
+
+  difftime(
+    data[[discharge_column]],
+    data[[admission_column]],
+    units = "days"
+  )
+
+}
+
+compute_hospitalization_duration.linelist <- function(data, ...) {
+
+  x <- linelist::tags_df(data)
+
+  compute_hospitalization_duration(
+    data = x,
+    admission_column = "date_admission",
+    discharge_column = "date_discharge"
+  )
+
+}
+```
+
+If the function was already a generic, then a new method for the new class should be added, leaving everything else unchanged.
+
+## Adding class support to function outputs via progressive enhancement
+
+Adding class support to function outputs is often more challenging.
+A common option is to add a new argument to the function, which would be a boolean indicating whether the output should be of the new class or not.
+But this doesn't fit in the view of progressive enhancement, as it would require users to change their code to benefit from the new classes, or to suffer from breaking changes.
+
+While the new argument approach is sometimes indeed the only possible method, there are some situations where we can have an approach truly following the progressive enhancement philosophy.
+
+In particular, this is the case when the old output was already inheriting from the parent of the new class (hence the importance of carefully choosing the parent class). In this situation, the new attributes from the new class should not interfere with existing code for downstream analysis.
+
+In this case, let's consider a function that was previously returning an unclassed `data.frame` with patient-level data:
+
+```r
+create_patient_dataset <- function(n_patients = 10) {
+
+  data <- data.frame(
+    patient_id = seq_len(n_patients),
+    age = sample(18:99, n_patients, replace = TRUE)
+  )
+
+  return(data)
+
+}
+```
+
+We want to start returning a `linelist` object. Because `linelist` objects are `data.frame`s (or `tibble`s) with an extra `attr`, it can be done in a transparent way:
+
+```r
+create_patient_dataset <- function(n_patients = 10) {
+
+  data <- data.frame(
+    patient_id = seq_len(n_patients),
+    age = sample(18:99, n_patients, replace = TRUE)
+  )
+
+  data <- linelist::make_linelist(
+    data,
+    id = "patient_id",
+    age = "age"
+  )
+
+  return(data)
+
+}
+
+inherits(data, "data.frame")
+```
+
+For a more realistic example, you can also see the work in progress to integrate the [new `contactmatrix` standard format](https://github.com/socialcontactdata/contactmatrix) for social contact data to the [contactdata package](https://github.com/Bisaloo/contactdata).
+
+This is however only true if code in downstream analysis follows good practices in checking for the class of an object [^1]. If existing code was testing equality of the class to a certain value, it will break when the new class value is appended. This is described in a [post on the R developer blog, when base R was adding a new `array` class value to `matrix` objects](https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html). Class inheritance should never be tested via `class(x) == "some_class"`. Instead, `inherits(x, "some_class")` or `is(x, "some_class")` should be used to future-proof the code and allow appending an additional in the future.
+
+[^1]: This is now [enforced in R packages by R CMD check](https://github.com/r-devel/r-svn/commit/77ebdff5adc200dfe9bc850bc4447088830d2ee0), and via the [`class_equals_linter()`](https://lintr.r-lib.org/reference/class_equals_linter.html)  in the [lintr package](https://lintr.r-lib.org/).
+
+## Conclusion
+
+Object oriented programming and S3 classes offer a convenient way to iteratively add interoperability in the ecosystem in a way that is minimally disruptive to users and developers.
+Newly classed input support can be added via custom methods (after converting the existing function to a generic if necessary).
+Newly classed output support can be added via progressive enhancement, by ensuring that the new class is a subclass of the old one and that downstream code uses good practices to test class inheritance.
+
+**Thanks to James Azam and Tim Taylor for their very valuable feedback on this post.**
