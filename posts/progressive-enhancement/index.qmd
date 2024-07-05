@@ -3,7 +3,7 @@ title: "Improving Ecosystem Interoperability Iteratively via Progressive Enhance
 author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
-date: "2024-07-04"
+date: "2024-07-05"
 categories: [R, interoperability, S3, progressive enhancement, ecosystem, lifecycle, object orientation, DOI]
 format:
   html: 
