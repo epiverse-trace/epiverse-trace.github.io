@@ -36,7 +36,7 @@ This can conveniently be done in an almost transparent way by converting the old
 
 For a different, additional, example, we can consider a function working on patient-level data, which previously only accepted a `data.frame` as input:
 
-```{r}
+```r
 #' Compute length of stay in hospital on a patient-level dataset
 #'
 #' @param data A data.frame containing patient-level data
@@ -59,7 +59,7 @@ We want to add support for `linelist` objects, as defined in the [linelist packa
 
 But we want the function to keep working for standard `data.frame`s, `tibble`s, etc. We can follow the steps described in the previous post to convert the function to a generic, and add a default method to handle the old behaviour:
 
-```{r}
+```r
 compute_hospitalization_duration <- function(data, ...) {
 
   UseMethod("compute_hospitalization_duration")
@@ -103,7 +103,7 @@ In particular, this is the case when the old output was already inheriting from 
 
 In this case, let's consider a function that was previously returning an unclassed `data.frame` with patient-level data:
 
-```{r}
+```r
 create_patient_dataset <- function(n_patients = 10) {
 
   data <- data.frame(
@@ -118,7 +118,7 @@ create_patient_dataset <- function(n_patients = 10) {
 
 We want to start returning a `linelist` object. Because `linelist` objects are `data.frame`s (or `tibble`s) with an extra `attr`, it can be done in a transparent way:
 
-```{r}
+```r
 create_patient_dataset <- function(n_patients = 10) {
 
   data <- data.frame(
