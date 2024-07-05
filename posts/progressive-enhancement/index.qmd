@@ -10,17 +10,17 @@ format:
     toc: true
 ---
 
-We are continuing on post series on S3 and interoperability.
+We are continuing our post series on S3 and interoperability.
 We have previously discussed [what makes a good S3 class and how to choose a good parent for it, as well as when to write or not write a custom method](../parent-class).
-We have highlighted in particular how classes inheriting from data.frames can simplify user experience, and reduce developer workload.
+We have highlighted in particular how classes inheriting from data.frames can simplify user experience because of familiarity, and reduce developer workload due to the pre-existing S3 methods.
 
 We have detailed how to improve compatibility with the tidyverse by explaining:
 
-- [how functions taking data.frames or data.frames subclass can easily and should also allow compatibility with tibble](https://hugogruson.fr/posts/compa-tibble/)
-- [how to ensure class attribute is preserved whenever possible while using dplyr functions](../extend-dataframes).
+- [how functions taking data.frames or data.frames subclass should also allow compatibility with tibble, which can be done in a few steps](https://hugogruson.fr/posts/compa-tibble/)
+- [how to ensure class attributes are preserved whenever possible while using dplyr functions](../extend-dataframes).
 
-Here, we are going to explore how to actually start adding support in the ecosystem for the newly S3 classes while minimizing user-facing breaking changes.
-We have previously delved into this topic with our previous post ["Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"](../s3-generic) and this is a wider and higher-level view of the same topic.
+Here, we are going to explore how to start adding support in the ecosystem for the new S3 classes while minimizing user-facing breaking changes.
+We have previously delved into this topic with our post ["Convert Your R Function to an S3 Generic: Benefits, Pitfalls & Design Considerations"](../s3-generic) and this is a wider and higher-level view of the same topic.
 
 The strategy presented here is the declination of a common concept in web development and the web ecosystem: [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement). This philosophy aims to support browsers with limited range of features, while allowing a slightly richer experience for browsers with extra features.
 It makes sense to think about this philosophy with the prism of introducing new classes to a new software ecosystem as it has the similar constraints of multiple stakeholders with different interests and timelines.
@@ -34,7 +34,7 @@ This can conveniently be done in an almost transparent way by converting the old
 
 ![A before / after type image showing the conversion of a function to a generic with a default method keeping the exisiting behaviour.](convert_to_generic.svg)
 
-If the function was already a generic, even steps are required: a new method for the new class should be added, leaving everything else unchanged.
+If the function was already a generic, then a new method for the new class should be added, leaving everything else unchanged.
 
 ## Adding class support to function outputs via progressive enhancement
 
