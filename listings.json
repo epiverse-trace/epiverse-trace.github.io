@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/progressive-enhancement/index.html",
       "/posts/mpox-preparedness/index.html",
       "/posts/parent-class/index.html",
       "/posts/epidemics_v0.4.0/index.html",

@@ -10,7 +10,310 @@
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.1</generator>
-<lastBuildDate>Thu, 04 Jul 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 05 Jul 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Improving Ecosystem Interoperability Iteratively via Progressive Enhancement</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/progressive-enhancement/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are continuing our post series on S3 object orientation and interoperability in R. We have previously discussed <a href="../parent-class">what makes a good S3 class and how to choose a good parent for it, as well as when to write or not write a custom method</a>. We have highlighted in particular how classes inheriting from data.frames can simplify user experience because of familiarity, and reduce developer workload due to the pre-existing S3 methods.</p>
+<p>We have detailed how to improve compatibility with the tidyverse by explaining:</p>
+<ul>
+<li><a href="https://hugogruson.fr/posts/compa-tibble/">how functions taking data.frames or data.frames subclass should also allow compatibility with tibble, which can be done in a few steps</a></li>
+<li><a href="../extend-dataframes">how to ensure class attributes are preserved whenever possible while using dplyr functions</a>.</li>
+</ul>
+<p>Here, we are going to explore how to start adding support in the ecosystem for the new S3 classes while minimizing user-facing breaking changes. We have previously delved into this topic with our post <a href="../s3-generic">“Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations”</a> and this is a wider and higher-level view of the same topic.</p>
+<p>The strategy presented here is the variation of a common concept in web development and the web ecosystem: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement">progressive enhancement</a>. This philosophy aims to support browsers with a common set of essential features, and even richer features for browser with the most recent updates. It makes sense to think about this philosophy with the prism of introducing new classes to a new software ecosystem as it has the similar constraints of multiple stakeholders with different interests and timelines. The application of progressive enhancement in this context means that users or packages that have not (yet) adopted the new classes are not penalized compared to users or packages that have.</p>
+<section id="adding-class-support-to-function-inputs-via-progressive-enhancement" class="level2">
+<h2 class="anchored" data-anchor-id="adding-class-support-to-function-inputs-via-progressive-enhancement">Adding class support to function inputs via progressive enhancement</h2>
+<p>The goal here is to allow functions to accept the new classes as inputs, while keeping the old behaviour unchanged for unclassed objects (or with a different class than the new one).</p>
+<p>This can conveniently be done in an almost transparent way by converting the old function to the S3 generic, and using the default method to handle the old behaviour. The practical steps, and minor caveats, have been previously described in the post <a href="../s3-generic">“Convert Your R Function to an S3 Generic: Benefits, Pitfalls &amp; Design Considerations”</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/progressive-enhancement/convert_to_generic.svg" class="img-fluid figure-img"></p>
+<figcaption>A before / after type image showing the conversion of a function to a generic with a default method keeping the exisiting behaviour.</figcaption>
+</figure>
+</div>
+<p>For a different, additional, example, we can consider a function working on patient-level data, which previously only accepted a <code>data.frame</code> as input:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' Compute length of stay in hospital on a patient-level dataset</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'</span></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param data A data.frame containing patient-level data</span></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param admission_column The name of the column containing the admission date</span></span>
+<span id="cb1-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @param discharge_column The name of the column containing the discharge date</span></span>
+<span id="cb1-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#'</span></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#' @returns A numeric vector of hospitalization durations in days</span></span>
+<span id="cb1-8">compute_hospitalization_duration <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(data, admission_column, discharge_column) {</span>
+<span id="cb1-9"></span>
+<span id="cb1-10">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">difftime</span>(</span>
+<span id="cb1-11">    data[[discharge_column]],</span>
+<span id="cb1-12">    data[[admission_column]],</span>
+<span id="cb1-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">units =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"days"</span></span>
+<span id="cb1-14">  )</span>
+<span id="cb1-15"></span>
+<span id="cb1-16">}</span></code></pre></div>
+<p>We want to add support for <code>linelist</code> objects, as defined in the <a href="https://epiverse-trace.github.io/linelist">linelist package</a>. <code>linelist</code> objects inherit from <code>data.frame</code> and contain an additional <code>tags</code> attribute. In particular, <code>linelist</code> objects can have a <code>date_admission</code> and <code>date_discharge</code> tag. This means we can use the tags to automatically detect the columns to use.</p>
+<p>But we want the function to keep working for standard <code>data.frame</code>s, <code>tibble</code>s, etc. We can follow the steps described in the previous post to convert the function to a generic, and add a default method to handle the old behaviour:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">compute_hospitalization_duration <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(data, ...) {</span>
+<span id="cb2-2"></span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">UseMethod</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"compute_hospitalization_duration"</span>)</span>
+<span id="cb2-4"></span>
+<span id="cb2-5">}</span>
+<span id="cb2-6"></span>
+<span id="cb2-7">compute_hospitalization_duration.default <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(data, admission_column, discharge_column) {</span>
+<span id="cb2-8"></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">difftime</span>(</span>
+<span id="cb2-10">    data[[discharge_column]],</span>
+<span id="cb2-11">    data[[admission_column]],</span>
+<span id="cb2-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">units =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"days"</span></span>
+<span id="cb2-13">  )</span>
+<span id="cb2-14"></span>
+<span id="cb2-15">}</span>
+<span id="cb2-16"></span>
+<span id="cb2-17">compute_hospitalization_duration.linelist <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(data, ...) {</span>
+<span id="cb2-18"></span>
+<span id="cb2-19">  x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> linelist<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tags_df</span>(data)</span>
+<span id="cb2-20"></span>
+<span id="cb2-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">compute_hospitalization_duration</span>(</span>
+<span id="cb2-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> x,</span>
+<span id="cb2-23">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">admission_column =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_admission"</span>,</span>
+<span id="cb2-24">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">discharge_column =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"date_discharge"</span></span>
+<span id="cb2-25">  )</span>
+<span id="cb2-26"></span>
+<span id="cb2-27">}</span></code></pre></div>
+<p>If the function was already a generic, then a new method for the new class should be added, leaving everything else unchanged.</p>
+</section>
+<section id="adding-class-support-to-function-outputs-via-progressive-enhancement" class="level2">
+<h2 class="anchored" data-anchor-id="adding-class-support-to-function-outputs-via-progressive-enhancement">Adding class support to function outputs via progressive enhancement</h2>
+<p>Adding class support to function outputs is often more challenging. A common option is to add a new argument to the function, which would be a boolean indicating whether the output should be of the new class or not. But this doesn’t fit in the view of progressive enhancement, as it would require users to change their code to benefit from the new classes, or to suffer from breaking changes.</p>
+<p>While the new argument approach is sometimes indeed the only possible method, there are some situations where we can have an approach truly following the progressive enhancement philosophy.</p>
+<p>In particular, this is the case when the old output was already inheriting from the parent of the new class (hence the importance of carefully choosing the parent class). In this situation, the new attributes from the new class should not interfere with existing code for downstream analysis.</p>
+<p>In this case, let’s consider a function that was previously returning an unclassed <code>data.frame</code> with patient-level data:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">create_patient_dataset <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_patients =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) {</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">  data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb3-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">patient_id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_len</span>(n_patients),</span>
+<span id="cb3-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">99</span>, n_patients, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">replace =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb3-6">  )</span>
+<span id="cb3-7"></span>
+<span id="cb3-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(data)</span>
+<span id="cb3-9"></span>
+<span id="cb3-10">}</span></code></pre></div>
+<p>We want to start returning a <code>linelist</code> object. Because <code>linelist</code> objects are <code>data.frame</code>s (or <code>tibble</code>s) with an extra <code>attr</code>, it can be done in a transparent way:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">create_patient_dataset <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n_patients =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>) {</span>
+<span id="cb4-2"></span>
+<span id="cb4-3">  data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data.frame</span>(</span>
+<span id="cb4-4">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">patient_id =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_len</span>(n_patients),</span>
+<span id="cb4-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sample</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">18</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">99</span>, n_patients, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">replace =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>)</span>
+<span id="cb4-6">  )</span>
+<span id="cb4-7"></span>
+<span id="cb4-8">  data <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> linelist<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">make_linelist</span>(</span>
+<span id="cb4-9">    data,</span>
+<span id="cb4-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"patient_id"</span>,</span>
+<span id="cb4-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"age"</span></span>
+<span id="cb4-12">  )</span>
+<span id="cb4-13"></span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">return</span>(data)</span>
+<span id="cb4-15"></span>
+<span id="cb4-16">}</span>
+<span id="cb4-17"></span>
+<span id="cb4-18"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">inherits</span>(data, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"data.frame"</span>)</span></code></pre></div>
+<p>For a more realistic example, you can also see the work in progress to integrate the <a href="https://github.com/socialcontactdata/contactmatrix">new <code>contactmatrix</code> standard format</a> for social contact data to the <a href="https://github.com/Bisaloo/contactdata">contactdata package</a>.</p>
+<p>This is however only true if code in downstream analysis follows good practices in checking for the class of an object <sup>1</sup>. If existing code was testing equality of the class to a certain value, it will break when the new class value is appended. This is described in a <a href="https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html">post on the R developer blog, when base R was adding a new <code>array</code> class value to <code>matrix</code> objects</a>. Class inheritance should never be tested via <code>class(x) == "some_class"</code>. Instead, <code>inherits(x, "some_class")</code> or <code>is(x, "some_class")</code> should be used to future-proof the code and allow appending an additional in the future.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Object oriented programming and S3 classes offer a convenient way to iteratively add interoperability in the ecosystem in a way that is minimally disruptive to users and developers. Newly classed input support can be added via custom methods (after converting the existing function to a generic if necessary). Newly classed output support can be added via progressive enhancement, by ensuring that the new class is a subclass of the old one and that downstream code uses good practices to test class inheritance.</p>
+<p><strong>Thanks to James Azam and Tim Taylor for their very valuable feedback on this post.</strong></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This is now <a href="https://github.com/r-devel/r-svn/commit/77ebdff5adc200dfe9bc850bc4447088830d2ee0">enforced in R packages by R CMD check</a>, and via the <a href="https://lintr.r-lib.org/reference/class_equals_linter.html"><code>class_equals_linter()</code></a> in the <a href="https://lintr.r-lib.org/">lintr package</a>.↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
+  author = {Gruson, Hugo},
+  title = {Improving {Ecosystem} {Interoperability} {Iteratively} via
+    {Progressive} {Enhancement}},
+  date = {2024-07-05},
+  url = {https://epiverse-trace.github.io/posts/progressive-enhancement/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2024. <span>“Improving Ecosystem Interoperability
+Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https://epiverse-trace.github.io/posts/progressive-enhancement/">https://epiverse-trace.github.io/posts/progressive-enhancement/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>interoperability</category>
+  <category>S3</category>
+  <category>progressive enhancement</category>
+  <category>ecosystem</category>
+  <category>lifecycle</category>
+  <category>object orientation</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/progressive-enhancement/</guid>
+  <pubDate>Fri, 05 Jul 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>2024 mpox outbreak: common analytics tasks and available R tools</title>
   <dc:creator>James Azam</dc:creator>
