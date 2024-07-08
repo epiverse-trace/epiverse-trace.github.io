@@ -47,7 +47,7 @@ function Hero() {
           </div>
           <img
             src="public/render1717079674378.gif"
-            alt="Terminal recording introducing Epiverse"
+            alt="Graphics introducing Epiverse"
             width={2432}
             height={1442}
             className="tw-mt-16 tw-rounded-md tw-bg-white/5 tw-shadow-w-2xl tw-ring-1 tw-ring-white/10 sm:tw-mt-24"
