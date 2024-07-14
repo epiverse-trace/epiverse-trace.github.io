@@ -9,7 +9,7 @@ author:
     orcid: "0000-0001-5294-7819"
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
-date: "2024-06-24"
+date: "2024-07-15"
 categories: [AI, GitHub, Copilot Workspace, R, R package, software development, DOI]
 bibliography: index.bib
 format:
@@ -18,7 +18,7 @@ format:
 ---
 
 
-GitHub recently previewed ‘Copilot Workspace’, which aims to use generative AI to assist software developers. Rather than just giving in-line suggestions, as GitHub copilot does, workspace allows users to map out and execute entire projects. We got early preview access to the tool, so decided to see how well it performed for our needs in Epiverse-TRACE.
+GitHub recently previewed ['Copilot Workspace'](https://github.blog/2024-04-29-github-copilot-workspace/), which aims to use generative AI to assist software developers. Rather than just giving in-line suggestions, as GitHub copilot does, workspace allows users to map out and execute entire projects. We got early preview access to the tool, so decided to see how well it performed for our needs in Epiverse-TRACE.
 
 In the Epiverse-TRACE initiative we aim to develop an ecosystem of epidemic analytics tools as [Digital Public Goods](https://digitalpublicgoods.net/) in the form of R packages. We aim to [follow best-practices](https://epiverse-trace.github.io/blueprints/) given that our tools will be used to inform public health decisions. For efficiency, we use a range of development tools, including integrated development environments (IDE), such as RStudio and Visual Studio Code, other R packages to help check and document our code, for example {lintr} and {roxygen2}, and version control and code sharing tools, git and GitHub.
 
@@ -100,3 +100,5 @@ Here, Copilot provided no analysis of the code base. It regurgitated the changes
 Based on our trials we observe that GitHub copilot Workspace may not provide a significant benefit to research software engineers in domain-specific R package development, where problems are complex and bespoke solutions are common.  The evidence above suggests there’s still a long way to go before AI-powered tools can produce unsupervised code projects equivalent to that of a research software engineer. One observation is that generative AI is better trained for some purposes than others, biased by the amount of training data/information available. This makes it struggle in niche areas with a relatively smaller public code base to train models with (e.g. R functions for epidemic analysis are much rarer than generic JavaScript functions for web design). A second is that AI models don’t seem to understand how different parts of a codebase link together, so they provide solutions that are inconsistent with the requirements of the codebase (design principles, code style, etc). These models may, however, be more useful for more common tasks, such as building dashboard templates.
 
 The test cases we experimented with suggest that this tool will not replace, and at times not even enhance development when the task requires a more integrated development than generating a standalone script. These tools are evolving rapidly and we are sure improvements will continue. In the short term tools like GitHub copilot workspace need to be used responsibly with an awareness of their limitations and not a blind trust that the code it writes is always correct. We would caution against relying on generative AI tools alone to develop software with potentially large-scale impacts - scrutiny by trained developers is still key. Research software engineers will play a key part in this as they will ensure that code and software written with and by AI tools meet required standards, are trustworthy, and are not potentially harmful. Where we see generative AI tools being more immediately useful in research software development is in [tasks that require sifting through or summarising vast amounts of information](https://billyquilty.substack.com/p/llmlinelist-enabling-rapid-outbreak); for example, in querying software documentation, or to help get started with a new programming framework or language.
+
+**All authors thank Hugo Gruson and Chris Hartgerink for their valuable feedback and contributions to this post.**
