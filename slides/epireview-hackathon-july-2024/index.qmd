@@ -1,0 +1,19 @@
+---
+title: "Interoperability between {epireview} & Epiverse-TRACE"
+author:
+  - name: "Joshua W. Lambert"
+    orcid: "0000-0001-5218-3046"
+date: "2024-07-11"
+categories: [R, interoperability, object orientation, ecosystem]
+---
+
+Presentation (15 minutes) at the Epireview hackathon hosted by Imperial College London. The hackathon was attended by the Pathogen Epidemiology Review Group (PERG) at Imperial, Epiverse-TRACE members from the London School of Hygiene and Tropical Medicine, and the World Health Organisation Collaboratory. 
+
+After the presentation, the hackathon focused on enhancing interoperability between the [{epireview} R package](https://mrc-ide.github.io/epireview/) and Epiverse-TRACE R packages.
+
+## Slides
+
+```{=html}
+<iframe width="780" height="500" src="Imperial-hackathon.pdf" title="Slides for presentation at the Imperial Hackathon July 2024"></iframe>
+```
+
