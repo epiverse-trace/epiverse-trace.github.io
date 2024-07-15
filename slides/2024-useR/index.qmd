@@ -1,0 +1,28 @@
+---
+title: "Building Interoperability in Existing Software Ecosystems with S3 Classes"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-07-09"
+categories: [R, S3, object orientation, interoperability, ecosystem, good practices, progressive enhancement, data frame]
+---
+
+Presentation (20min including questions) at the useR!2024 conference, under the "R workflow + deployment + production" category.
+
+## Abstract
+
+It is common for R packages answering the same need to have different input and output formats. This may result in a large amount of spent time to reformat the inputs and outputs whenever a specific part of the data pipeline is swapped out to use a different R package. This time can come at a huge cost whenever results are needed quickly, such as in pandemic response. Using S3 classes providing standard formats that all downstream packages use may be a good solution to this issue, thus improving the interoperability within the global R package ecosystem. However, this approach comes with technical and social challenges. Here, I present the work we are doing to implement and encourage the adoption of standard S3 classes in epidemiology. I highlight key findings and challenges such as how to preserve backward compatibility in existing packages and give recommendation for future similar endeavors.
+
+## Slides
+
+```{=html}
+<iframe width="780" height="500" src="Gruson - Building Interoperability with S3 Classes.pdf" title="Slides for presentation at the useR2024! conference"></iframe>
+```
+
+## Questions
+
+- How much of the tips presented here are applicable to S4?
+
+- In which situations would you recommend S3 over R6?
+
+- What do you think of the upcoming S7 framework?
