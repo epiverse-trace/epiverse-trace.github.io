@@ -10,7 +10,158 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.1</generator>
-<lastBuildDate>Fri, 05 Jul 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 15 Jul 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Some thoughts after a trial run of GitHub’s Copilot Workspace</title>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <dc:creator>James Mba Azam</dc:creator>
+  <dc:creator>Pratik Gupte</dc:creator>
+  <dc:creator>Adam Kucharski</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/copilot-workspace/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>GitHub recently previewed <a href="https://github.blog/2024-04-29-github-copilot-workspace/">‘Copilot Workspace’</a>, which aims to use generative AI to assist software developers. Rather than just giving in-line suggestions, as GitHub copilot does, workspace allows users to map out and execute entire projects. We got early preview access to the tool, so decided to see how well it performed for our needs in Epiverse-TRACE.</p>
+<p>In the Epiverse-TRACE initiative we aim to develop an ecosystem of epidemic analytics tools as <a href="https://digitalpublicgoods.net/">Digital Public Goods</a> in the form of R packages. We aim to <a href="https://epiverse-trace.github.io/blueprints/">follow best-practices</a> given that our tools will be used to inform public health decisions. For efficiency, we use a range of development tools, including integrated development environments (IDE), such as RStudio and Visual Studio Code, other R packages to help check and document our code, for example {lintr} and {roxygen2}, and version control and code sharing tools, git and GitHub.</p>
+<p>Given the rapid development and increasing availability to artificial intelligence (AI) models, specifically large language models, offer the potential to be another development tool to add to the arsenal of researchers and software engineers to enhance productivity and improve the reliability of the code we write and others depend upon <span class="citation" data-cites="vanHoek2024">(Hoek et al. 2024)</span>. Large language models like ChatGPT from OpenAI, Gemini from Google, Claude from Anthropic, as well as many others and new ones frequently appearing, have presented opportunities to quickly generate material – text, code and images – from text prompts.</p>
+<p>A small group of Epiverse-TRACE professors and research software engineers decided to explore the suitability of one such, GitHub Copilot integrated with GitHub Workspaces, for some typical use cases encountered in our day-to-day work. We do note that many other such tools are available, and we chose Copilot in Workspaces as our code is hosted on GitHub, making for easy evaluation of the specific contribution of the AI tool. However, some of our broad conclusions are based on using other tools for similar tasks.</p>
+<p>The aim of this blog post is to summarise our experiences with Copilot and Workspaces, and share our thoughts more generally about how the current feature set of AI-powered development tools could help with our daily development tasks, and with research software development at large. We evaluated Copilot workspace across three tasks of varying difficulty and requirements:</p>
+<ul>
+<li><p>Experiment 1: Exporting an R function by updating the documentation</p></li>
+<li><p>Experiment 2: Adding a basic epidemic model to an existing R package that contains other epidemiological models</p></li>
+<li><p>Experiment 3: Conducting a code review on an R package</p></li>
+</ul>
+<section id="experiment-1-export-an-r-function-by-updating-the-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-1-export-an-r-function-by-updating-the-documentation">Experiment 1: Export an R function by updating the documentation</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Difficulty level: basic</p>
+</div>
+</div>
+<p>The first experiment was on the {EpiNow2} R package. An existing <a href="https://github.com/epiforecasts/EpiNow2/issues/681">Issue #681</a> was chosen. It was a simple task to evaluate Copilot workspace’s ability to interpret requests that require small changes to the codebase of a package (i.e.&nbsp;can be achieved in a single commit by changing less than 5 lines of code). The issue stated that an internal function, <code>epinow2_cmdstan_model()</code> should be exported, with the issue description explaining this would help users specify custom options for running the models.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/copilot-workspace/epinow2_issue.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of EpiNow2 package issue 681 which was used as an example application of GitHub Copilot Workspace.</figcaption>
+</figure>
+</div>
+<!-- markdownlint-disable MD024 -->
+<section id="outcome" class="level3">
+<h3 class="anchored" data-anchor-id="outcome">Outcome</h3>
+<p>The specification provided by Copilot workspace diagnosed the issue requirements, mentioning that the <code>NAMESPACE</code> file, which stores information on functions offered by a package and functions imported from other packages, would have to be updated for the R package to export this currently unexported function. The proposed solution also addressed the desired changes, stating that the function was to be exported and the keyword <code>internal</code> would be removed. The automatically generated plan proposed to edit the file documentation and <code>NAMESPACE</code>, but we edited this to more specifically replace the <code>@keyword internal</code> {roxygen} tag with <code>@export</code>.</p>
+</section>
+<section id="our-thoughts" class="level3">
+<h3 class="anchored" data-anchor-id="our-thoughts">Our thoughts</h3>
+<p>The implementation offered by GitHub copilot workspace was correct and replaced <code>@keywords internal</code> with <code>@export</code> in the correct function documentation <code>epinow2_stan_model()</code>.</p>
+<p>However, it also changed the formatting of one of the function arguments (<code>@param model</code>) by moving some text to the next line and added a comma to the last but one item listed in the sentence. (It seems AI has taken a side on the Oxford comma debate).</p>
+<p>Overall, this test case of GitHub copilot workspace was a partial success. It correctly recognised the links between inline R function documentation, Roxygen tags, and the R-specific documentation files in <code>man/</code>. However, it (naturally) does not have a mechanistic understanding of package development and how changing tags in documentation is used to auto-update doc files using development tools. It correctly modified the part of the file needed to export an internal function. This showcases an example of where this technology can be beneficial: those new to a language or paradigm that have not yet picked up all of the development details that are often second nature to experienced developers. In this example, the time taken to make this change in GitHub copilot workspace was likely ~10x longer than what our RSEs would take. However, if someone was used to developing in say, Python, and was new to the conventions of exporting functions in R using {roxygen} documentation, this test case shows how copilot workspace can reliably assist. On the other hand, because these changes make no reference to standard development tools, they would not help new developers learn how or where to use them.</p>
+<p>The changes made will still require the user to manually run the documentation (using either <code>devtools::document()</code> or <code>roxygen2::roxygenize()</code>) to update the package <code>NAMESPACE</code> for the function to be exported. Our recommendation would be for AI tools to integrate with and call development tools used by developers (analogous to pre-commit hooks running tools before committing) to make sure this is taken care of all in a single generative step.</p>
+</section>
+</section>
+<section id="experiment-2-add-a-simple-epidemic-model-to-an-r-package-that-contains-more-complex-models" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-2-add-a-simple-epidemic-model-to-an-r-package-that-contains-more-complex-models">Experiment 2: Add a simple epidemic model to an R package that contains more complex models</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Difficulty level: moderate to high</p>
+</div>
+</div>
+<p>{epidemics} is an Epiverse-TRACE R package that exports a range of compartmental epidemiological models of varying complexities and applications.</p>
+<p>In the second test case, we created an issue in the {epidemics} R package requesting a basic SIR model, with the issue description requesting the model to have no age structure and to use existing functionality in the package to specify a disease intervention. Additionally, the issue requested that the model be solved with the {deSolve} R package, which is a differential equation solver in R. A basic SIR model would have been new to the package, but one of several other compartmental models, and simpler than the models already implemented.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://epiverse-trace.github.io/posts/copilot-workspace/epidemics_issue.png" class="img-fluid figure-img"></p>
+<figcaption>Screenshot of epidemics package issue 238 which was used as an example application of GitHub Copilot Workspace.</figcaption>
+</figure>
+</div>
+<section id="outcome-1" class="level3">
+<h3 class="anchored" data-anchor-id="outcome-1">Outcome</h3>
+<p>GitHub copilot workspace outlined the existing functionality in the package and proposed changes including adding a new file called <code>R/model_sir.R</code>, which follows the <code>model_*.R</code> naming convention used in {epidemics}. As requested, copilot also proposed that the new SIR model would support the use of interventions that are already been implemented in the package.</p>
+</section>
+<section id="our-thoughts-1" class="level3">
+<h3 class="anchored" data-anchor-id="our-thoughts-1">Our thoughts</h3>
+<p>The code generated was an R function that constructed a basic SIR model, and this was well documented using a {roxygen2} documentation block. However, several aspects of the code generated did not match the proposal generated by copilot workspace, and the code contained inadvisable coding practices in R (i.e.&nbsp;code smells). Firstly the SIR model itself. The model implemented follows the standard set of differential equations that are solved using {deSolve}, as requested in our prompt. However, the model does not have any options to input interventions, which the proposed solution by GitHub copilot workspace suggested it would. The second downside is the use of <code>require(deSolve)</code> in the function body of the generated code. This is bad practice in R package development as functions should namespace any functions that are being called from other packages (e.g.&nbsp;<code>packagename::func_name()</code>).</p>
+<p>This task required copilot workspace to understand the contents and conventions of the {epidemics} R package and generate a simple compartmental model which would integrate with the infrastructure in the package for defining interventions in models. Although it correctly summarised the package contents, its attempt to answer the specific request from our prompt had many inaccuracies. The generated code is likely influenced by the many examples of SIR models written in R on the internet and on GitHub. These might be R scripts or gists and thus coding practises used there are not always appropriate for writing code to be distributed in an R package, resulting in decisions like having <code>require(deSolve)</code> in the function.</p>
+<p>AI-generated code like that seen in this example showcases where users need to be diligent and not assume that the text descriptions from copilot match the code. In the end, this was a test example and was unlikely to be merged into {epidemics} even if the code was correct. However, with the code generated, it presents almost no use; it would require as much time for an RSE to refactor this function as it would to write one from scratch following the design principles and demands of the {epidemics} package.</p>
+</section>
+</section>
+<section id="experiment-3-conducting-a-code-review-on-an-r-package" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-3-conducting-a-code-review-on-an-r-package">Experiment 3: Conducting a code review on an R package</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Difficulty level: moderate to high</p>
+</div>
+</div>
+<p>In the last test case, we requested GitHub copilot workspace to conduct a <a href="https://github.com/epiverse-trace/simulist/pull/117">code review of the entire code base of a package</a>. At Epiverse-TRACE, it is standard practise to conduct a full package review. As any code base develops, including R packages, more commits are added and often the number of lines of code increases. Reviewing all of these changes before releasing a new version of the package is a timely undertaking for package reviewers. If AI tools could review the code base, similar to how static code analysers work, and suggest improvements to, for example, code style, memory efficiency, documentation, unit testing, UX/UI, it would greatly improve efficiency before releasing the code.</p>
+<section id="outcome-2" class="level3">
+<h3 class="anchored" data-anchor-id="outcome-2">Outcome</h3>
+<p>Here, Copilot provided no analysis of the code base. It regurgitated the changes described in the <a href="https://epiverse-trace.github.io/blueprints/code-review.html#full-package-review">package review pull request</a>, likely from a mix of the pull request description and the changelog (<code>NEWS.md</code> file), and did not analyse any of the code. Therefore, it provided no additional use than if the reviewer had just read the <code>NEWS</code>.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Based on our trials we observe that GitHub copilot Workspace may not provide a significant benefit to research software engineers in domain-specific R package development, where problems are complex and bespoke solutions are common. The evidence above suggests there’s still a long way to go before AI-powered tools can produce unsupervised code projects equivalent to that of a research software engineer. One observation is that generative AI is better trained for some purposes than others, biased by the amount of training data/information available. This makes it struggle in niche areas with a relatively smaller public code base to train models with (e.g.&nbsp;R functions for epidemic analysis are much rarer than generic JavaScript functions for web design). A second is that AI models don’t seem to understand how different parts of a codebase link together, so they provide solutions that are inconsistent with the requirements of the codebase (design principles, code style, etc). These models may, however, be more useful for more common tasks, such as building dashboard templates.</p>
+<p>The test cases we experimented with suggest that this tool will not replace, and at times not even enhance development when the task requires a more integrated development than generating a standalone script. These tools are evolving rapidly and we are sure improvements will continue. In the short term tools like GitHub copilot workspace need to be used responsibly with an awareness of their limitations and not a blind trust that the code it writes is always correct. We would caution against relying on generative AI tools alone to develop software with potentially large-scale impacts - scrutiny by trained developers is still key. Research software engineers will play a key part in this as they will ensure that code and software written with and by AI tools meet required standards, are trustworthy, and are not potentially harmful. Where we see generative AI tools being more immediately useful in research software development is in <a href="https://billyquilty.substack.com/p/llmlinelist-enabling-rapid-outbreak">tasks that require sifting through or summarising vast amounts of information</a>; for example, in querying software documentation, or to help get started with a new programming framework or language.</p>
+<p><strong>All authors thank Hugo Gruson and Chris Hartgerink for their valuable feedback and contributions to this post.</strong></p>
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-vanHoek2024" class="csl-entry">
+Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, Billy J Quilty, Esther van Kleef, Anton Camacho, and Adam J Kucharski. 2024. <span>“Importance of Investing Time and Money in Integrating Large Language Model-Based Agents into Outbreak Analytics Pipelines.”</span> <em>The Lancet Microbe</em>, May. <a href="https://doi.org/10.1016/s2666-5247(24)00104-6">https://doi.org/10.1016/s2666-5247(24)00104-6</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w._lambert2024,
+  author = {W. Lambert, Joshua and Mba Azam, James and Gupte, Pratik and
+    Kucharski, Adam},
+  title = {Some Thoughts After a Trial Run of {GitHub’s} {Copilot}
+    {Workspace}},
+  date = {2024-07-15},
+  url = {https://epiverse-trace.github.io/posts/copilot-workspace/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2024" class="csl-entry quarto-appendix-citeas">
+W. Lambert, Joshua, James Mba Azam, Pratik Gupte, and Adam Kucharski.
+2024. <span>“Some Thoughts After a Trial Run of GitHub’s Copilot
+Workspace.”</span> July 15, 2024. <a href="https://epiverse-trace.github.io/posts/copilot-workspace/">https://epiverse-trace.github.io/posts/copilot-workspace/</a>.
+</div></div></section></div> ]]></description>
+  <category>AI</category>
+  <category>GitHub</category>
+  <category>Copilot Workspace</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>software development</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/copilot-workspace/</guid>
+  <pubDate>Mon, 15 Jul 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Improving Ecosystem Interoperability Iteratively via Progressive Enhancement</title>
   <dc:creator>Hugo Gruson</dc:creator>
@@ -2328,501 +2479,6 @@ V0.3.1.”</span> November 6, 2023. <a href="https://epiverse-trace.github.io/po
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/bpmodels_v0.3.1/</guid>
   <pubDate>Mon, 06 Nov 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Lesser-known reasons to prefer apply() over for loops</title>
-  <dc:creator>Hugo Gruson</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/for-vs-apply/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>The debate regarding the use of <code>for</code> loops versus the <code>apply()</code> function family (<code>apply()</code>, <code>lapply()</code>, <code>vapply()</code>, etc., along with their purrr counterparts: <code>map()</code>, <code>map2()</code>, <code>map_lgl()</code>, <code>map_chr()</code>, etc.), has been a longstanding one in the R community.</p>
-<p>While you may occasionally hear that <code>for</code> loops are slower, this notion has already been debunked <a href="https://privefl.github.io/blog/why-loops-are-slow-in-r/">in other posts</a>. When utilized correctly, a <code>for</code> loop can achieve performance on par with <code>apply()</code> functions.</p>
-<p>However, there are still lesser-known reasons to prefer <code>apply()</code> functions over <code>for</code> loops, which we will explore in this post.</p>
-<section id="preamble-for-loops-can-be-used-in-more-cases-than-apply" class="level2">
-<h2 class="anchored" data-anchor-id="preamble-for-loops-can-be-used-in-more-cases-than-apply">Preamble: <code>for</code> loops can be used in more cases than <code>apply()</code></h2>
-<p>It is important to understand that <code>for</code> loops and <code>apply()</code> functions are not always interchangeable. Indeed, <code>for</code> loops can be used in cases where <code>apply</code> functions can’t: when the next step depends on the previous one. This concept is known as <a href="https://en.wikipedia.org/wiki/Recursion"><em>recursion</em></a>.</p>
-<p>Conversely, when each step is independent of the previous one, but you want to perform the same operation on each element of a vector, it is referred to as <a href="https://en.wikipedia.org/wiki/Iteration"><em>iteration</em></a>.</p>
-<p><code>for</code> loops are capable of both <em>recursion</em> and <em>iteration</em>, whereas <code>apply()</code> can only do <em>iteration</em>.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Operator</th>
-<th>Iteration</th>
-<th>Recursion</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>for</code></td>
-<td>✔️</td>
-<td>✔️</td>
-</tr>
-<tr class="even">
-<td><code>apply()</code></td>
-<td>✔️</td>
-<td>❌</td>
-</tr>
-</tbody>
-</table>
-<p>With this distinction in mind, we can now focus on why you should favour <code>apply()</code> for iteration over <code>for</code> loops.</p>
-</section>
-<section id="reason-1-clarity-of-intent" class="level2">
-<h2 class="anchored" data-anchor-id="reason-1-clarity-of-intent">Reason 1: clarity of intent</h2>
-<p>As mentioned earlier, <code>for</code> loops can be used for both iteration and recursion. By consistently employing <code>apply()</code> for iteration<sup>1</sup> and reserving <code>for</code> loops for recursion, we enable readers to immediately discern the underlying concept in the code. This leads to code that is easier to read and understand.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">l <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>), <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>), <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">9</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>))</span>
-<span id="cb1-2"></span>
-<span id="cb1-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># `for` solution -------------------</span></span>
-<span id="cb1-4">res <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">length</span>(l))</span>
-<span id="cb1-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq_along</span>(l)) {</span>
-<span id="cb1-6">  res[[i]] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mean</span>(l[[i]])</span>
-<span id="cb1-7">}</span>
-<span id="cb1-8">res</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># `vapply()` solution ---------------</span></span>
-<span id="cb3-2">res <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">vapply</span>(l, mean, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">numeric</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>))</span>
-<span id="cb3-3">res</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
-</div>
-</div>
-<p>The simplicity of <code>apply()</code> is even more apparent in the case of multiple iterations. For example, if we want to find the median of each matrix row for a list of matrices:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">l <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">replicate</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>, { <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">matrix</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">runif</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">9</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">nrow =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>) }, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">simplify =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span>
-<span id="cb5-2"></span>
-<span id="cb5-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># `for` solution -------------------</span></span>
-<span id="cb5-4">res <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>()</span>
-<span id="cb5-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq_along</span>(l)) {</span>
-<span id="cb5-6">  meds <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">numeric</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(l[[i]]))</span>
-<span id="cb5-7">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (j <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq_len</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">nrow</span>(l[[i]]))) {</span>
-<span id="cb5-8">    meds[[j]] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">median</span>(l[[i]][j, ])</span>
-<span id="cb5-9">  }</span>
-<span id="cb5-10">  res[[i]] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> meds</span>
-<span id="cb5-11">}</span>
-<span id="cb5-12">res</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 0.7807203 0.2448108 0.7407391
-
-[[2]]
-[1] 0.3249898 0.1742138 0.3917644
-
-[[3]]
-[1] 0.2876697 0.8835354 0.5606563
-
-[[4]]
-[1] 0.08360038 0.37515714 0.43738127
-
-[[5]]
-[1] 0.4834298 0.6106350 0.6328951</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># `vapply()` solution ---------------</span></span>
-<span id="cb7-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lapply</span>(l, <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(e) {</span>
-<span id="cb7-3">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">apply</span>(e, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, median)</span>
-<span id="cb7-4">})</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-[1] 0.7807203 0.2448108 0.7407391
-
-[[2]]
-[1] 0.3249898 0.1742138 0.3917644
-
-[[3]]
-[1] 0.2876697 0.8835354 0.5606563
-
-[[4]]
-[1] 0.08360038 0.37515714 0.43738127
-
-[[5]]
-[1] 0.4834298 0.6106350 0.6328951</code></pre>
-</div>
-</div>
-<p>Moreover, this clarity of intent is not limited to human readers alone; automated static analysis tools can also more effectively identify suboptimal patterns. This can be demonstrated using R most popular static analysis tool: the lintr package, suggesting vectorized alternatives:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">lintr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lint</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"vapply(l, length, numeric(1))"</span>)</span>
-<span id="cb9-2"></span>
-<span id="cb9-3">lintr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">lint</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">text =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"apply(m, 1, sum)"</span>)</span></code></pre></div>
-</div>
-</section>
-<section id="reason-2-code-compactness-and-conciseness" class="level2">
-<h2 class="anchored" data-anchor-id="reason-2-code-compactness-and-conciseness">Reason 2: code compactness and conciseness</h2>
-<p>As illustrated in the preceding example, <code>apply()</code> often leads to more compact code, as much of the boilerplate code is handled behind the scenes: you don’t have to initialize your variables, manage indexing, etc.</p>
-<p>This, in turn, impacts code readability since:</p>
-<ul>
-<li>The boilerplate code does not offer meaningful insights into the algorithm or implementation and can be seen as visual noise.</li>
-<li>While compactness should never take precedence over readability, a more compact solution allows for more code to be displayed on the screen without scrolling. This ultimately makes it easier to understand what the code is doing. With all things otherwise equal, the more compact solution should thus be preferred.</li>
-</ul>
-</section>
-<section id="reason-3-variable-leak" class="level2">
-<h2 class="anchored" data-anchor-id="reason-3-variable-leak">Reason 3: variable leak</h2>
-<p>As discussed in the previous sections, you have to manually manage the iteration index in a <code>for</code> loop, whereas they are abstracted in <code>apply()</code>. This can sometimes lead to perplexing errors:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">k <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span>
-<span id="cb10-2"></span>
-<span id="cb10-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (k <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Paul"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Pierre"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Jacques"</span>)) {</span>
-<span id="cb10-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Hello "</span>, k)</span>
-<span id="cb10-5">}</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Hello Paul</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Hello Pierre</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Hello Jacques</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rep</span>(letters, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">times =</span> k)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: NAs introduced by coercion</code></pre>
-</div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in rep(letters, times = k): invalid 'times' argument</code></pre>
-</div>
-</div>
-<p>This is because the loop index variable leaks into the global environment and can overwrite existing variables:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (k <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>) {</span>
-<span id="cb17-2">  <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># do something</span></span>
-<span id="cb17-3">}</span>
-<span id="cb17-4"></span>
-<span id="cb17-5"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">message</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"The value of k is now "</span>, k)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The value of k is now 3</code></pre>
-</div>
-</div>
-</section>
-<section id="reason-4-pipelines" class="level2">
-<h2 class="anchored" data-anchor-id="reason-4-pipelines">Reason 4: pipelines</h2>
-<p>The final reason is that <code>apply()</code> (or more commonly in this situation <code>purrr::map()</code>) can be used in pipelines due to their functional nature:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">l <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>), <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>), <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">6</span>, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">9</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>))</span>
-<span id="cb19-2"></span>
-<span id="cb19-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Without pipe</span></span>
-<span id="cb19-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">vapply</span>(l, mean, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">numeric</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># With pipe</span></span>
-<span id="cb21-2">l <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">vapply</span>(mean, <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">numeric</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">l <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map_dbl</span>(mean)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.0 4.0 6.0 4.8</code></pre>
-</div>
-</div>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This post hopefully convinced you why it’s better to use <code>apply()</code> functions rather than <code>for</code> loops where possible (i.e., for iteration). Contrary to common misconception, the real reason is not performance, but code robustness and readability.</p>
-<p><em>Thanks to Jaime Pavlich-Mariscal, James Azam, Tim Taylor, and Pratik Gupte for their thoughtful comments and suggestions on earlier drafts of this post.</em></p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Beyond R">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Beyond R
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This post focused on R, but the same principles generally apply to other functional languages. In Python for example, you would use <a href="https://www.w3schools.com/python/python_lists_comprehension.asp">list comprehensions</a> or the <a href="https://www.w3schools.com/python/ref_func_map.asp"><code>map()</code> function</a>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Further reading">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Further reading
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you liked the code patterns recommended in this post and want to use functional programming in more situations, including recursion, I recommend you check out the <a href="https://adv-r.hadley.nz/functionals.html#functionals">“Functionals” chapter of the <em>Advanced R</em> book by Hadley Wickham</a></p>
-</div>
-</div>
-
-
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>There are a handful of rare corner cases where <code>apply()</code> is not the best method for iteration. These are cases that make use of <code>match.call()</code> or <code>sys.call()</code>. More details are available in <code>lapply()</code> documentation and in <a href="https://github.com/epiverse-trace/epiverse-trace.github.io/pull/125#issuecomment-1775929451">this GitHub comment by Tim Taylor during the review of this post</a>.↩︎</p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2023,
-  author = {Gruson, Hugo},
-  title = {Lesser-Known Reasons to Prefer `Apply()` over for Loops},
-  date = {2023-11-02},
-  url = {https://epiverse-trace.github.io/posts/for-vs-apply/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
-Gruson, Hugo. 2023. <span>“Lesser-Known Reasons to Prefer `Apply()` over
-for Loops.”</span> November 2, 2023. <a href="https://epiverse-trace.github.io/posts/for-vs-apply/">https://epiverse-trace.github.io/posts/for-vs-apply/</a>.
-</div></div></section></div> ]]></description>
-  <category>R</category>
-  <category>functional programming</category>
-  <category>iteration</category>
-  <category>readability</category>
-  <category>good practices</category>
-  <category>tidyverse</category>
-  <guid>https://epiverse-trace.github.io/posts/for-vs-apply/</guid>
-  <pubDate>Thu, 02 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

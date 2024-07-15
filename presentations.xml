@@ -10,7 +10,60 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.1</generator>
-<lastBuildDate>Sat, 03 Feb 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 09 Jul 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Building Interoperability in Existing Software Ecosystems with S3 Classes</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/2024-useR/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Presentation (20min including questions) at the useR!2024 conference, under the “R workflow + deployment + production” category.</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>It is common for R packages answering the same need to have different input and output formats. This may result in a large amount of spent time to reformat the inputs and outputs whenever a specific part of the data pipeline is swapped out to use a different R package. This time can come at a huge cost whenever results are needed quickly, such as in pandemic response. Using S3 classes providing standard formats that all downstream packages use may be a good solution to this issue, thus improving the interoperability within the global R package ecosystem. However, this approach comes with technical and social challenges. Here, I present the work we are doing to implement and encourage the adoption of standard S3 classes in epidemiology. I highlight key findings and challenges such as how to preserve backward compatibility in existing packages and give recommendation for future similar endeavors.</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="Gruson - Building Interoperability with S3 Classes.pdf" title="Slides for presentation at the useR2024! conference"></iframe>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li><p>How much of the tips presented here are applicable to S4?</p></li>
+<li><p>In which situations would you recommend S3 over R6?</p></li>
+<li><p>What do you think of the upcoming S7 framework?</p></li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
+  author = {Gruson, Hugo},
+  title = {Building {Interoperability} in {Existing} {Software}
+    {Ecosystems} with {S3} {Classes}},
+  date = {2024-07-09},
+  url = {https://epiverse-trace.github.io/slides/2024-useR/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2024. <span>“Building Interoperability in Existing
+Software Ecosystems with S3 Classes.”</span> July 9, 2024. <a href="https://epiverse-trace.github.io/slides/2024-useR/">https://epiverse-trace.github.io/slides/2024-useR/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>S3</category>
+  <category>object orientation</category>
+  <category>interoperability</category>
+  <category>ecosystem</category>
+  <category>good practices</category>
+  <category>progressive enhancement</category>
+  <category>data frame</category>
+  <guid>https://epiverse-trace.github.io/slides/2024-useR/</guid>
+  <pubDate>Tue, 09 Jul 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem</title>
   <dc:creator>Hugo Gruson</dc:creator>
