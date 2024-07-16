@@ -23,7 +23,7 @@ This release benefited from feedback from the participants of an [EpiParameter C
 
 * A new vignette `database.Rmd` is added to the package to provide a web interface to the {epiparameter} library of epidemiological parameters. Contributed by @sbfnk (#311).
 
-* The plotting method for `<epidist>` objects (`plot.epidist()`) has been improved to better differentiate continuous from discrete or discretised distributions (#315). 
+* The plotting method for `<epidist>` objects (`plot.epidist()`) has been improved to better differentiate continuous from discrete or discretised distributions (#315).
 
 * `epidist_db(..., single_epidist = TRUE)` now prioritises parameter entries that account for right truncation (#323).
 
@@ -48,7 +48,6 @@ This release benefited from feedback from the participants of an [EpiParameter C
 ## Deprecated and defunct
 
 * None
-
 
 ## Acknowledgements
 
