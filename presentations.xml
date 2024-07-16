@@ -10,7 +10,44 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.1</generator>
-<lastBuildDate>Tue, 09 Jul 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 11 Jul 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Interoperability between {epireview} &amp; Epiverse-TRACE</title>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/epireview-hackathon-july-2024/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Presentation (15 minutes) at the Epireview hackathon hosted by Imperial College London. The hackathon was attended by the Pathogen Epidemiology Review Group (PERG) at Imperial, Epiverse-TRACE members from the London School of Hygiene and Tropical Medicine, and the World Health Organisation Collaboratory.</p>
+<p>After the presentation, the hackathon focused on enhancing interoperability between the <a href="https://mrc-ide.github.io/epireview/">{epireview} R package</a> and Epiverse-TRACE R packages.</p>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="Imperial-hackathon.pdf" title="Slides for presentation at the Imperial Hackathon July 2024"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w._lambert2024,
+  author = {W. Lambert, Joshua},
+  title = {Interoperability Between \{Epireview\} \&amp; {Epiverse-TRACE}},
+  date = {2024-07-11},
+  url = {https://epiverse-trace.github.io/slides/epireview-hackathon-july-2024/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2024" class="csl-entry quarto-appendix-citeas">
+W. Lambert, Joshua. 2024. <span>“Interoperability Between {Epireview}
+&amp; Epiverse-TRACE.”</span> July 11, 2024. <a href="https://epiverse-trace.github.io/slides/epireview-hackathon-july-2024/">https://epiverse-trace.github.io/slides/epireview-hackathon-july-2024/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>interoperability</category>
+  <category>object orientation</category>
+  <category>ecosystem</category>
+  <guid>https://epiverse-trace.github.io/slides/epireview-hackathon-july-2024/</guid>
+  <pubDate>Thu, 11 Jul 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Building Interoperability in Existing Software Ecosystems with S3 Classes</title>
   <dc:creator>Hugo Gruson</dc:creator>
