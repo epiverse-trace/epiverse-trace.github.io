@@ -2,7 +2,7 @@
 
 ```{r, echo = FALSE}
 ctbs <- nrow(read.csv(file.path("_data", "epiverse_contributors.csv")))
-ctbs_rounded <- round(ctbs / 10) * 10
+ctbs_rounded <- floor(ctbs / 10) * 10
 # Get the list of repositories in the organization
 repos <- gh::gh("GET /orgs/{org}/repos", org = "epiverse-trace")
 
