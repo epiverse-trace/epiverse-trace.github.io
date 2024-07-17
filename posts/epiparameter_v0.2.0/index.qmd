@@ -2,7 +2,7 @@
 title: "epiparameter v0.2.0"
 author:
   - name: "The Epiverse-TRACE development team"
-date: "2024-07-10"
+date: "2024-07-22"
 categories: [new-release]
 ---
 
