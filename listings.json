@@ -43,6 +43,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/epiparameter_v0.2.0/index.html",
       "/posts/copilot-workspace/index.html",
       "/posts/progressive-enhancement/index.html",
       "/posts/mpox-preparedness/index.html",

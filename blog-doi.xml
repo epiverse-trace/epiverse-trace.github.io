@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.1</generator>
+<generator>quarto-1.6.3</generator>
 <lastBuildDate>Mon, 15 Jul 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Some thoughts after a trial run of GitHub’s Copilot Workspace</title>
