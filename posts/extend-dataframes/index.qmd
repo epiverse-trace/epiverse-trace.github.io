@@ -211,7 +211,7 @@ In order to be able to operate on our `<birthdays>` class using functions from t
 package {dplyr}, as would be common for data frames, we need to make our function compatible. This is where the function `dplyr_reconstruct.birthdays()` comes in. `dplyr_reconstruct()` is a generic function exported by {dplyr}. It is called in {dplyr} verbs to make sure that the objects are restored to the input class when not invalidated.
 
 ```{r}
-dplyr_reconstruct.birthdays <- function(data, template) { # nolint
+dplyr_reconstruct.birthdays <- function(data, template) {
   birthdays_reconstruct(data, template)
 }
 ```
