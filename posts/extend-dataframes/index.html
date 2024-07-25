@@ -499,7 +499,7 @@ Note
 </div>
 <p>In order to be able to operate on our <code>&lt;birthdays&gt;</code> class using functions from the package {dplyr}, as would be common for data frames, we need to make our function compatible. This is where the function <code>dplyr_reconstruct.birthdays()</code> comes in. <code>dplyr_reconstruct()</code> is a generic function exported by {dplyr}. It is called in {dplyr} verbs to make sure that the objects are restored to the input class when not invalidated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dplyr_reconstruct.birthdays <span class="ot">&lt;-</span> <span class="cf">function</span>(data, template) { <span class="co"># nolint</span></span>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dplyr_reconstruct.birthdays <span class="ot">&lt;-</span> <span class="cf">function</span>(data, template) {</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">birthdays_reconstruct</span>(data, template)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
