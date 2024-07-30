@@ -1,0 +1,8 @@
+---
+title: "Why I don’t add style options to my ggplot2 functions"
+url: "https://github.com/orgs/epiverse-trace/discussions/307"
+date: "2024-07-29"
+author: Bisaloo
+categories: [Best Practices]
+upvotes: 1
+---
