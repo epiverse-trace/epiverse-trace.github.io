@@ -3,7 +3,7 @@ title: "The twin peaks of the global and the local: worldwide and modest infrast
 author:
   - name: "Miller Díaz Valderrama"
     orcid: "0000-0001-5583-0616"
-  - name: "Natalia Niño"
+  - name: "Natalia Niño-Machado"
     orcid: "0000-0001-7887-9439"
   - name: "Catalina González-Uribe"
     orcid: "0000-0002-3322-5017"
