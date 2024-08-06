@@ -10,7 +10,53 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.4</generator>
-<lastBuildDate>Thu, 11 Jul 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 19 Jul 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>The twin peaks of the global and the local: worldwide and modest infrastructures for global health</title>
+  <dc:creator>Miller Díaz Valderrama</dc:creator>
+  <dc:creator>Natalia Niño-Machado</dc:creator>
+  <dc:creator>Catalina González-Uribe</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/2024-4S-EASST/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Presentation (30min including questions) at the Biannual Conference of the Society for Social Studies of Science (4S) and the European Association for the Study of Science and Technology (EASST) in Amsterdam, under the “Issues of scale: the global and the local in health research projects with a worldwide context” category.</p>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
+<p>Global health projects have long emphasized the digital transformation of Global South countries to align their contexts with global infrastructures. Much of this emphasis is done by pointing at these contexts as flawed: interoperability, standards and classifications, and human capacity as well are seen as insufficient, too local, and disorganized. Consequently, international funding is directed towards enhancing capacity and infrastructure in these regions to facilitate smoother data exchange, with digital transformation promising seamless transitions across different scales. What happens if we conduct an inversion of this narrative? Could we follow global infrastructures in their flaws when meeting “the local”?</p>
+<p>Based on a robust tradition of reflections in Science and Technology Studies, Critical Global Health, and Critical Data Studies about context (De Laet M., 2000; Tsing, A., 2005; Adams, 2016; Biehl 2016; Montgomery, C. M., Kingori, P., Sariola, S., &amp; Engel, N, 2017; Lee, F 2021; 2023; Hepp, A; Jarke J; Kramp L 2022), we propose a symmetrical understanding of local-global relations in Global Health projects and enterprises. For this, we offer some examples in which we can see the operation of this kind of understanding, drawing from our involvement with two global projects on emergency preparedness, targeting the production of technologies for the analysis and control of infectious diseases.</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="4S-EASST_TRACE LAC.pdf" title="Slides for presentation at the 4S-EASST 2024 conference"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{díaz_valderrama2024,
+  author = {Díaz Valderrama, Miller and Niño-Machado, Natalia and
+    González-Uribe, Catalina},
+  title = {The Twin Peaks of the Global and the Local: Worldwide and
+    Modest Infrastructures for Global Health},
+  date = {2024-07-19},
+  url = {https://epiverse-trace.github.io/slides/2024-4S-EASST/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-díaz_valderrama2024" class="csl-entry quarto-appendix-citeas">
+Díaz Valderrama, Miller, Natalia Niño-Machado, and Catalina
+González-Uribe. 2024. <span>“The Twin Peaks of the Global and the Local:
+Worldwide and Modest Infrastructures for Global Health.”</span> July 19,
+2024. <a href="https://epiverse-trace.github.io/slides/2024-4S-EASST/">https://epiverse-trace.github.io/slides/2024-4S-EASST/</a>.
+</div></div></section></div> ]]></description>
+  <category>localism</category>
+  <category>social science</category>
+  <category>TRACE-LAC</category>
+  <guid>https://epiverse-trace.github.io/slides/2024-4S-EASST/</guid>
+  <pubDate>Fri, 19 Jul 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Interoperability between {epireview} &amp; Epiverse-TRACE</title>
   <dc:creator>Joshua W. Lambert</dc:creator>

@@ -24,6 +24,25 @@
     ]
   },
   {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/2024-4S-EASST/index.html",
+      "/slides/epireview-hackathon-july-2024/index.html",
+      "/slides/2024-useR/index.html",
+      "/slides/fosdem-2024/index.html",
+      "/slides/showcase-november-2023/index.html",
+      "/slides/2023-LatinR/index.html",
+      "/slides/interoperability-epiverse/index.html",
+      "/slides/global-health-conference-2023/index.html",
+      "/slides/harmonize-july-2023/index.html",
+      "/slides/rslondon-southeast-july-2023/index.html",
+      "/slides/juniper-may-2023/index.html",
+      "/slides/showcase-april-2023/index.html",
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-january-2023/index.html"
+    ]
+  },
+  {
     "listing": "/blog.html",
     "items": [
       "/posts/epiparameter_v0.2.0/index.html",
@@ -57,24 +76,6 @@
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
-    ]
-  },
-  {
-    "listing": "/presentations.html",
-    "items": [
-      "/slides/epireview-hackathon-july-2024/index.html",
-      "/slides/2024-useR/index.html",
-      "/slides/fosdem-2024/index.html",
-      "/slides/showcase-november-2023/index.html",
-      "/slides/2023-LatinR/index.html",
-      "/slides/interoperability-epiverse/index.html",
-      "/slides/global-health-conference-2023/index.html",
-      "/slides/harmonize-july-2023/index.html",
-      "/slides/rslondon-southeast-july-2023/index.html",
-      "/slides/juniper-may-2023/index.html",
-      "/slides/showcase-april-2023/index.html",
-      "/slides/harmonious-ecosystem/index.html",
-      "/slides/showcase-january-2023/index.html"
     ]
   }
 ]
