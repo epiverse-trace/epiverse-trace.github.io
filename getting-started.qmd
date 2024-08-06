@@ -6,13 +6,36 @@ css: hexwall.css
 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
+## Quickstart
+
+To install and load all the latest stable versions, as released on CRAN, install the **epiverse** meta-package as follows:
+
+```r
+pak::pak('epiverse-trace/epiverse')
+library(epiverse)
+
+# Loading required package: cfr
+# Loading required package: cleanepi
+# Loading required package: finalsize
+# Loading required package: linelist
+```
+
+This will allow you to start using these packages in your analyses. You can then follow the quick starts for the respective packages:
+
+* [cfr - quick start](https://epiverse-trace.github.io/cfr/#quick-start)
+* [cleanepi - quick start](https://epiverse-trace.github.io/cleanepi/#quick-start)
+* [finalsize](https://epiverse-trace.github.io/finalsize/#quick-start)
+* [linelist](https://epiverse-trace.github.io/linelist/#usage)
+
 ## Roadmap
+
+More packages are in development, but not yet with a stable release. our roadmap is to cover early through late tasks :
 
 ![ ](task_pipeline-minimal.svg){fig-alt='A typical epidemiological pipeline presented as a flowchart. Each box corresponds to a specific task (e.g., "reconstruct transmission chains", or "estimate severity"). The tasks are split into three categories based on the position in the data pipeline: early tasks, middle tasks and late tasks.'}
 
-## Epiverse-TRACE packages
+### Epiverse-TRACE packages
 
-These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
+We are developing the following packages. These are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.
 
 ::: {.gradient-rectangle}
 
@@ -38,3 +61,11 @@ file.path("_data", "epiverse_pkgs.csv") |>
 ```
 
 :::
+
+Install development versions using the following command in R:
+
+```r
+pak::pak('epiverse-trace/<package-name>')
+```
+
+This will install the development version for you to try out. Please note that these may change until they have a stable release.
