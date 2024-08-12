@@ -21,7 +21,7 @@ function LogoCloud() {
             <a href="https://www.lshtm.ac.uk/" target="_blank" rel="norefer">
               <img
                 className="tw-max-h-16 tw-w-full tw-object-contain tw-invert"
-                src="https://data.org/wp-content/uploads/2021/10/lshtm-logo-975x468.png"
+                src="public/UKRI_MRC_Unit_the_Gambia_LSHTM_Horizontal_Greyscale.png"
                 alt="London School of Hygiene and Tropical Medicine"
                 width={158}
                 height={48}
