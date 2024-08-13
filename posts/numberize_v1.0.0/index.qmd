@@ -1,0 +1,43 @@
+---
+title: "numberize v1.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-08-13"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new numberize version v1.0.0.
+Here is an automatically generated summary of the changes in this version.
+
+## What's Changed
+* Misc fixes from review by @Bisaloo in https://github.com/epiverse-trace/numberize/pull/2
+* Fix ORCID links by @chartgerink in https://github.com/epiverse-trace/numberize/pull/4
+* Fixes en/fr edge cases highlighted by @Bisaloo by @bahadzie in https://github.com/epiverse-trace/numberize/pull/3
+* Bahadzie/issue5 by @bahadzie in https://github.com/epiverse-trace/numberize/pull/6
+* account for the presence of numeric values in a vector of characters by @Karim-Mane in https://github.com/epiverse-trace/numberize/pull/9
+* Bahadzie/issue7 by @bahadzie in https://github.com/epiverse-trace/numberize/pull/8
+* CRAN accepted by @bahadzie in https://github.com/epiverse-trace/numberize/pull/13
+
+## New Contributors
+* @Bisaloo made their first contribution in https://github.com/epiverse-trace/numberize/pull/2
+* @chartgerink made their first contribution in https://github.com/epiverse-trace/numberize/pull/4
+* @bahadzie made their first contribution in https://github.com/epiverse-trace/numberize/pull/3
+* @Karim-Mane made their first contribution in https://github.com/epiverse-trace/numberize/pull/9
+
+**Full Changelog**: https://github.com/epiverse-trace/numberize/commits/v1.0.0
+
+## Acknowledgements
+
+```{r ctbs, results='asis', echo=FALSE, message = FALSE}
+releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
+               owner = "epiverse-trace",
+               repo = "numberize") |>
+  purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
+
+ctbs <- usethis::use_tidy_thanks(
+  "epiverse-trace/numberize", 
+  from = releases[[2]][["tag_name"]], 
+  to = "v1.0.0")
+ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
+cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
+```
