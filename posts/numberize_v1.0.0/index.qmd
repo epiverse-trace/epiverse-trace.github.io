@@ -36,7 +36,7 @@ releases <- gh::gh("GET /repos/{owner}/{repo}/releases",
 
 ctbs <- usethis::use_tidy_thanks(
   "epiverse-trace/numberize", 
-  from = releases[[2]][["tag_name"]], 
+  from = "2023-01-01", 
   to = "v1.0.0")
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
 cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))

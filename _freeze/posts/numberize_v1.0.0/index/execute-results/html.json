@@ -1,0 +1,15 @@
+{
+  "hash": "6037b0cd16e1e870df82eb058fb75920",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"numberize v1.0.0\"\nauthor:\n  - name: \"The Epiverse-TRACE development team\"\ndate: \"2024-08-13\"\ncategories: [new-release]\n---\n\n\nWe are very excited to announce the release of a new numberize version v1.0.0.\nHere is an automatically generated summary of the changes in this version.\n\n## What's Changed\n* Misc fixes from review by @Bisaloo in https://github.com/epiverse-trace/numberize/pull/2\n* Fix ORCID links by @chartgerink in https://github.com/epiverse-trace/numberize/pull/4\n* Fixes en/fr edge cases highlighted by @Bisaloo by @bahadzie in https://github.com/epiverse-trace/numberize/pull/3\n* Bahadzie/issue5 by @bahadzie in https://github.com/epiverse-trace/numberize/pull/6\n* account for the presence of numeric values in a vector of characters by @Karim-Mane in https://github.com/epiverse-trace/numberize/pull/9\n* Bahadzie/issue7 by @bahadzie in https://github.com/epiverse-trace/numberize/pull/8\n* CRAN accepted by @bahadzie in https://github.com/epiverse-trace/numberize/pull/13\n\n## New Contributors\n* @Bisaloo made their first contribution in https://github.com/epiverse-trace/numberize/pull/2\n* @chartgerink made their first contribution in https://github.com/epiverse-trace/numberize/pull/4\n* @bahadzie made their first contribution in https://github.com/epiverse-trace/numberize/pull/3\n* @Karim-Mane made their first contribution in https://github.com/epiverse-trace/numberize/pull/9\n\n**Full Changelog**: https://github.com/epiverse-trace/numberize/commits/v1.0.0\n\n## Acknowledgements\n\n\n[&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;Karim-Mane](https://github.com/Karim-Mane) [&#x0040;bahadzie](https://github.com/bahadzie) [&#x0040;chartgerink](https://github.com/chartgerink)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
