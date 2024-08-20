@@ -1,0 +1,52 @@
+---
+title: "Documenting stan code with `doxygen`"
+author:
+  - name: "James Azam"
+    orcid: "0000-0001-5782-7330"
+date: "2024-08-20"
+categories: [Epiverse-TRACE, stan, rstan, doxygen, R, DOI]
+format:
+  html:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Outline
+
+Most R users are familiar with the `{Roxygen2}` package that is used for documenting R functions. `{Roxygen2}`, however, only supports R and some of its extensions like Rcpp. `{Stan}` is a probabilistic programming language based on C++ and is widely supported in R. However, it is not easy to document its code using the package development infrastructure. Enters `doxygen`. `doxygen` is a documentation tool that supports a more extensive list of languages, including `C++` on which stan is based. This article will describe the process of documenting stan code using `doxygen`, comparing it to `Roxygen2`. I will share a few gotchas and tips and tricks to provide an experience closer to `{Roxygen}`.
+
+## Installing `doxygen` on macOS
+
+To install `doxygen`, you need an optional package called `qt`, which can be installed using package managers like `brew`.
+
+```bash
+brew install qt
+```
+
+To build `doxygen` from source, you also need the GNU `coreutils` package, which makes sure `doxygen` is installed properly and placed in the right directory.
+
+`coreutils` is built from source as well. Download it from [here](https://www.gnu.org/software/coreutils/), unzip it, and follow the instructions in the README/INSTALL file in the root directory.
+
+Note that to build `doxygen` from source, I had to change the minimum MACOS version to 11.00 in the `CMakeLists.txt` file to bypass the installation errors. Search for `MACOS_VERSION_MIN` in `CMakeLists.txt` and change it to `11.00`. See an explanation [here](https://github.com/CefView/QCefView/issues/341#issuecomment-1814708900).
+
+When building from source, I also had to use `sudo` in many situations to be able to bypass the permission issues due to I/O processes.
+
+## Key `doxygen` tags
+
+Here, I will compare the most commonly used tags in `{Roxygen2}` to those in `doxygen`.
+
+For both tools, we use `@param` to document function, class, and method parameters or arguments.
+
+Sometimes, several functions share the same argument names and definitions and it is not eloquent to duplicate their documentation for several reasons. One key reason is that if a definition changes, you have to change it in several locations. The way around this is to document them in one place and import them when you need them. In `{Roxygen}`, you can inherit sections, details, and parameter definitions. The same goes for `doxygen` but with several differences.
+
+`doxygen` allows you to reuse documentation from one function to another using the `@copydoc` tag. This is similar to Roxygen2's `@inheritparams` tag. However, `doxygen` is not as smart as Roxygen2 in ordering the parameters according to the function signature. If you want the arguments in the order that they appear in the function signature, you end up with two "Parameter" headings, one coming from the documentation of specific params using `@param` and another coming from `@copydoc`. Unfortunately, there is no way to configure `@copydoc` to at least drop its section title. You can get one heading if you document the other parameters after the `@copydoc` call but that means the parameters are not in the order in which they appear in the function signature. This is the option currently implemented here. For this, I defined the common parameters in a separate page and pull them over to the functions that needed them.
+
+In `Roxygen2`, you provide function examples using the `@example` tag but this doesn't exist in `doxygen`. I resorted to using the `@code` tag which prints your example block using the markdown code formater.
+
+# TO DO
+
+- Could follow the style of this [Rcpp vignette](https://gallery.rcpp.org/articles/documenting-rcpp-packages/) by creating a minimal stan R package
+-
