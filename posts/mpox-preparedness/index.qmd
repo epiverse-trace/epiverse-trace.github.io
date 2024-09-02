@@ -13,6 +13,7 @@ bibliography: index.bib
 format:
   html: 
     toc: true
+doi: "10.59350/z78kb-qrz59"
 ---
 
 There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 [^1]. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them [@laurenson2023description].
