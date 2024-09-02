@@ -126,6 +126,8 @@ Once your post is published, we already have some systems in place to try and ad
 You should also get in touch with the current week's curator of our [Epiverse-TRACE twitter account](https://twitter.com/Epiverse_TRACE/), 
 possibly with a short summary of your post they can use.
 
+If you added the DOI category, you can find the DOI using [our Rogue Scholar index](https://rogue-scholar.org/blogs/epiverse_trace). You can add the DOI as metadata to your post by adding `doi: '<doi>'` to your post metadata (see [an example here](https://github.com/epiverse-trace/epiverse-trace.github.io/blob/e63c51b406409eb5e1bf9fc9201606793c3dd7d4/posts/parent-class/index.qmd#L7C1-L8C1).
+
 ## Contributing slides from a presentation
 
 Slides from presentation can be added in the `slides/` folder.
