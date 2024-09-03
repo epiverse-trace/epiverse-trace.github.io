@@ -566,7 +566,7 @@ Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https:
 </div>
 </div>
 </div>
-<p><a href="https://epiverse-trace.github.io/cleanepi/"><code>{cleanepi}</code></a> is useful for cleaning individual-level datasets, and <a href="https://epiverse-trace.github.io/linelist/"><code>{listlist}</code></a> can be used to tag and validate key variables in datasets that might change over time. The <a href="https://epiverse-trace.github.io/numberize/"><code>{numberize}</code></a> package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.</p>
+<p><a href="https://epiverse-trace.github.io/cleanepi/"><code>{cleanepi}</code></a> is useful for cleaning individual-level datasets, and <a href="https://epiverse-trace.github.io/linelist/"><code>{linelist}</code></a> can be used to tag and validate key variables in datasets that might change over time. The <a href="https://epiverse-trace.github.io/numberize/"><code>{numberize}</code></a> package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.</p>
 </section>
 <section id="estimating-transmission-potential" class="level3">
 <h3 class="anchored" data-anchor-id="estimating-transmission-potential">Estimating transmission potential</h3>
@@ -882,36 +882,6 @@ V1.0.0.”</span> June 17, 2024. <a href="https://epiverse-trace.github.io/posts
   <pubDate>Mon, 17 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>readepi v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Readepi V0.1.0},
-  date = {2024-06-10},
-  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Readepi
-V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
-  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
   <title>epichains v0.1.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
   <link>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</link>
@@ -983,6 +953,36 @@ V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</guid>
+  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>readepi v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Readepi V0.1.0},
+  date = {2024-06-10},
+  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Readepi
+V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
   <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2026,49 +2026,6 @@ V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io/pos
   <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>cfr v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
-<p>This release includes:</p>
-<ol type="1">
-<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
-<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
-<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
-<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
-<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
-<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
-<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
-<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
-<li>100% code coverage,</li>
-<li>Workflows to render the vignettes and README as a website.</li>
-</ol>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2023,
-  author = {Epiverse-TRACE development team, The},
-  title = {Cfr V0.1.0},
-  date = {2023-11-22},
-  url = {https://epiverse-trace.github.io/posts/cfr_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2023" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
-November 22, 2023. <a href="https://epiverse-trace.github.io/posts/cfr_v0.1.0/">https://epiverse-trace.github.io/posts/cfr_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
-  <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
-</item>
-<item>
   <title>Using benchmarking to guide the adoption of dependencies in R packages</title>
   <dc:creator>James Mba Azam</dc:creator>
   <link>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</link>
@@ -2507,6 +2464,49 @@ of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epi
   <category>R package</category>
   <category>software architecture</category>
   <guid>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</guid>
+  <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>cfr v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
+<p>This release includes:</p>
+<ol type="1">
+<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
+<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
+<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
+<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
+<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
+<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
+<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
+<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
+<li>100% code coverage,</li>
+<li>Workflows to render the vignettes and README as a website.</li>
+</ol>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Cfr V0.1.0},
+  date = {2023-11-22},
+  url = {https://epiverse-trace.github.io/posts/cfr_v0.1.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2023" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
+November 22, 2023. <a href="https://epiverse-trace.github.io/posts/cfr_v0.1.0/">https://epiverse-trace.github.io/posts/cfr_v0.1.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
   <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>

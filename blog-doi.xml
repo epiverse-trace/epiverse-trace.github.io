@@ -497,7 +497,7 @@ Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https:
 </div>
 </div>
 </div>
-<p><a href="https://epiverse-trace.github.io/cleanepi/"><code>{cleanepi}</code></a> is useful for cleaning individual-level datasets, and <a href="https://epiverse-trace.github.io/linelist/"><code>{listlist}</code></a> can be used to tag and validate key variables in datasets that might change over time. The <a href="https://epiverse-trace.github.io/numberize/"><code>{numberize}</code></a> package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.</p>
+<p><a href="https://epiverse-trace.github.io/cleanepi/"><code>{cleanepi}</code></a> is useful for cleaning individual-level datasets, and <a href="https://epiverse-trace.github.io/linelist/"><code>{linelist}</code></a> can be used to tag and validate key variables in datasets that might change over time. The <a href="https://epiverse-trace.github.io/numberize/"><code>{numberize}</code></a> package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.</p>
 </section>
 <section id="estimating-transmission-potential" class="level3">
 <h3 class="anchored" data-anchor-id="estimating-transmission-potential">Estimating transmission potential</h3>
