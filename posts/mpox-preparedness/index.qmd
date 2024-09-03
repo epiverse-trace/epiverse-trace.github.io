@@ -36,7 +36,7 @@ Here, we briefly describe some common tasks, data required, and the ready R tool
 Data cleaning is often the first task in outbreak analytics. This usually involves identifying and correcting errors in the data, standardizing the format of key variables, and ensuring that the data is in a format that is fit for analysis. Data validation is also important to ensure that the data is accurate.
 :::
 
-[`{cleanepi}`](https://epiverse-trace.github.io/cleanepi/) is useful for cleaning individual-level datasets, and [`{listlist}`](https://epiverse-trace.github.io/linelist/) can be used to tag and validate key variables in datasets that might change over time. The [`{numberize}`](https://epiverse-trace.github.io/numberize/) package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.
+[`{cleanepi}`](https://epiverse-trace.github.io/cleanepi/) is useful for cleaning individual-level datasets, and [`{linelist}`](https://epiverse-trace.github.io/linelist/) can be used to tag and validate key variables in datasets that might change over time. The [`{numberize}`](https://epiverse-trace.github.io/numberize/) package can also be used to convert numbers written as text. It currently has functionality for English, Spanish, and French.
 
 ### Estimating transmission potential
 
