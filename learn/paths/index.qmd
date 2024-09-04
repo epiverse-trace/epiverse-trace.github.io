@@ -50,6 +50,7 @@ We aim to embrace the Epidemiology and Outbreak analytic ecosystem, so we emphas
 
 - **Build your own R packages** <https://r-pkgs.org/>. Read the learning of the Epiverse-TRACE doing this as an organization <https://epiverse-trace.github.io/blueprints/> and follow good practices <https://devguide.ropensci.org/index.html> 
 - **Use Research compendium** for your data analysis project <https://frbcesab.github.io/rcompendium/> 
+- **Use targets** for reproducible workflows <https://carpentries-incubator.github.io/targets-workshop/>
 - **Communicate with Rmarkdown and Quarto** -  <https://quarto.org/docs/guide/> - For your packages use <https://pkgdown.r-lib.org/> 
 :::
 
