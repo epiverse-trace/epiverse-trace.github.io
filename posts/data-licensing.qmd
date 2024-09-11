@@ -1,0 +1,61 @@
+---
+title: Dual licensing R packages with code and data
+date: 2024-09-23
+author:
+  - name: "Joshua Lambert"
+    orcid: "0000-0001-5218-3046"
+  - name: "Chris Hartgerink"
+    orcid: "0000-0003-1050-6809"
+categories: [R, open-source, package development, DOI]
+format:
+  html: 
+    toc: true
+# doi: "10.59350/z78kb-qrz59"
+---
+
+Licenses are an important topic within open source. Without licenses, information or code can be publicly available but not legally available for reuse or redistribution. The open source software community's most common licenses are [the MIT license](https://mit-license.org) or the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html).
+
+When you read the MIT or GNU license, you can see they are rather specific:
+
+> Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”) [MIT License]
+
+and
+
+> The GNU General Public License is a free, copyleft license for software and other kinds of works.
+
+They aim to cover primarily software, not other forms of information such as, for example, data.
+
+### Licensing only code in R packages
+
+Given the importance of a license for redistribution, CRAN requires R packages to contain an [open-source license](https://cran.r-project.org/doc/FAQ/R-exts.html#Licensing).[^1] As one of the most important distributors for R packages historically, this rule has become the de facto standard.
+
+An R package is licensed appropriately when the license is stated in both the metadata `DESCRIPTION` file and the `LICENSE` file. The `LICENSE` file should include the license year and exact copyright holder (for example, an organization or a specific individual). Some R package developers choose to include a copy of the license but this is [not bundled in the R package when it is built](https://r-pkgs.org/license.html#key-files). You can [find an example of a `DESCRIPTION` file here](https://github.com/epiverse-trace/cfr/blob/29ee12aa9b8a49eedb9207d95c25c13d7d4e0ace/DESCRIPTION#L27) and [find an example `LICENSE` here](https://github.com/epiverse-trace/cfr/blob/main/LICENSE).
+
+### Licensing only data in R packages
+
+It can be the case that an R package is primarily used to bundle and share a data set, for example to allow a user to easily download the data and load it into R. For example, [**gapminder**](https://github.com/jennybc/gapminder) and [**palmerpenguins**](https://github.com/allisonhorst/palmerpenguins). As an aside, some in the R developer community[^2] dissuade the use of R packages used primarily for data, often referred to as ["data packages"](https://r-pkgs.org/data.html), and instead advocate to host data online and use the several API packages available in R to access the data.
+<!-- Data packages are often small, openly accessibly data sets that are used to showcase the functionality of a package. In these cases the data is secondary to the code, and as such many of the R packages with these "toy" data sets only state a software license.  -->
+
+Software licenses do not apply to data. One piece of data cannot be copyrighted, as facts cannot be copyrighted, but a collection of data in a database can come with rights. In Europe, UK, and Russia, databases can have rights if they are a substantial and original piece of work.[^3] This is called [the "sui generis" database right](https://en.wikipedia.org/wiki/Database_right). The USA and Brazil do not recognize this database right. Data compiled from various databases that themselves are copyrighted would need to follow the licenses of those respective databases.
+
+Data need licenses such as the Public Domain Dedication or the Creative Commons Attribution to maximize redistribution. Such [general licenses](https://r-pkgs.org/license.html#code-you-write) help minimize differences among countries that do and do not recognize database rights. Given that any copyright limitations (even attribution) mean they only apply when the database right is recognized, we recommend the most minimal option: The Public Domain Dedication. This levels the playing field for reuse and redistribution, no matter the jurisdiction.
+
+### Licensing code and data in one R package
+
+But what to do if your R package has both code and data as primary objects of (roughly) equal importance?
+
+In these cases a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, MIT license)  and another license for the included data (for example, Public Domain Dedication).
+
+After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the [**igraphdata** package](https://github.com/igraph/igraphdata/blob/main/LICENSE), which contains several licenses: One for each dataset included in the package. Similar to igraphdata, in our own [**epiparameter** package](https://github.com/epiverse-trace/epiparameter) we dual licensed the code and data as well. We [licensed the code using the `DESCRIPTION` file](https://github.com/epiverse-trace/epiparameter/blob/4f7008063040fc4a0b436a9e4d2adb9bb7022f6c/DESCRIPTION#L21) and used [the `LICENSE` file](https://github.com/epiverse-trace/epiparameter/blob/main/LICENSE) to license the data under CC0. When including data in your R package from other sources it is important to check that the license of your package and the data is compatible[^4], or that the individual data license is clearly stated, as in igrphdata.
+
+---
+
+This blogpost helps explain a pattern of dual licensing rarely seen in the wild, and how to implement it in a CRAN conformant manner. By sharing this, we hope that those cases where people want to license both code and data, have a resource we wish we had while exploring this topic. Whether or not data packages and combined code + data packages should exist, is a question for another day.
+
+[^1]: For a full list of license accepted by CRAN see: <https://svn.r-project.org/R/trunk/share/licenses/license.db> and they also accept stating the license as ["Unlimited" for unrestricted distribution](https://cran.r-project.org/doc/manuals/R-exts.html#Licensing-1).
+
+[^2]: A discussion of data and R packages can be found here: <https://github.com/ropensci/unconf17/issues/61>. This thread is used as an example of some thoughts on packaging data in R but we acknowledge it is from 2017 so the opinions of the individuals in this thread may have changed.
+
+[^3]: To see the legal definition of the database right in Europe, and what constitutes it, see the [European Union Directive 96/9/EC](https://eur-lex.europa.eu/eli/dir/1996/9/oj/eng)
+
+[^4]: See [this blog post by Julia Silge on including external data sets into an R package and rectifying incompatibilities with license](https://juliasilge.com/blog/sentiment-lexicons/)
