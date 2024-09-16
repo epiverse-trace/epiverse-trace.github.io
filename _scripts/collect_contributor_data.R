@@ -44,11 +44,21 @@ repos <- lapply(repos, function(x) {
     # but keep an eye on https://github.com/ropenscilabs/allcontributors/issues/36 for a potentially
     # better solution.
     Sys.sleep(5)
-    return(one_repo[, c("logins", "avatar")])
+
+    # Add the repo name
+    one_repo$repo <- sprintf('%s/%s', org_name, x$name)
+
+    return(one_repo)
   }
 })
 
 ctbs <- do.call(rbind, repos)
+# Write out raw contributor data
+write.csv(ctbs, file = "_data/raw_epiverse_contributors.csv",
+          row.names = FALSE)
+
+# Retain only relevant info for about page
+ctbs <- ctbs[, c("logins", "avatar")]
 # Remove duplicates
 result <- ctbs[!duplicated(ctbs$logins), ]
 
