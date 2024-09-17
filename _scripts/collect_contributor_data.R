@@ -53,20 +53,22 @@ repos <- lapply(repos, function(x) {
 })
 
 ctbs <- do.call(rbind, repos)
-# Write out raw contributor data
-write.csv(ctbs, file = "_data/raw_epiverse_contributors.csv",
-          row.names = FALSE)
 
-# Retain only relevant info for about page
-ctbs <- ctbs[, c("logins", "avatar")]
-# Remove duplicates
-result <- ctbs[!duplicated(ctbs$logins), ]
+ctbs <- ctbs |>
+  dplyr::summarise(
+    type = toString(type),
+    repo = toString(repo),
+    avatar = toString(avatar),
+    .by = logins
+  )
 
 # Use lapply to get user data and create dataframes
 df_list <- lapply(included_handles, function(x) {
   user <- gh("GET /users/:username", username = x)
   data.frame(
     logins = user$login,
+    type = NA,
+    repo = NA,
     avatar = user$avatar_url
   )
 })
