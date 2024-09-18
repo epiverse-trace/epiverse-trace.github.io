@@ -9,8 +9,57 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.9</generator>
-<lastBuildDate>Fri, 19 Jul 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.10</generator>
+<lastBuildDate>Wed, 18 Sep 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Common analytics tasks and available R tools/packages</title>
+  <dc:creator>James Mba Azam</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/who-mpox-analytics-September-2024/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This presentation (15 min including questions) was given at the <a href="https://www.who.int/initiatives/collaboratory">WHO Mpox Analytics Collaboratory</a> seminar on September 5, 2024.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The epidemiology R package developer community, including Epiverse-TRACE have been developing a set of analytical tools that could help support decision-makers during outbreaks.</p>
+<p>This presentation provided an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks. This presentation is based on its companion blog post, <a href="https://epiverse-trace.github.io/posts/mpox-preparedness/">“2024 mpox outbreak: common analytics tasks and available R tools”</a>.</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="common_analytics_tasks_and_available_tools_JamesAzam.pdf"></iframe>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ul>
+<li>Are there any packages for incorporating phylogenetic data into reconstructing transmission chains?
+<ul>
+<li><strong>Answer</strong>: <a href="https://www.repidemicsconsortium.org/outbreaker2/">outbreaker2</a>, <a href="https://xavierdidelot.github.io/TransPhylo/index.html">TransPhylo</a>, <a href="https://github.com/donkeyshot/phybreak">phybreak</a></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{mba_azam2024,
+  author = {Mba Azam, James},
+  title = {Common Analytics Tasks and Available {R} Tools/Packages},
+  date = {2024-09-18},
+  url = {https://epiverse-trace.github.io/slides/who-mpox-analytics-September-2024/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2024" class="csl-entry quarto-appendix-citeas">
+Mba Azam, James. 2024. <span>“Common Analytics Tasks and Available R
+Tools/Packages.”</span> September 18, 2024. <a href="https://epiverse-trace.github.io/slides/who-mpox-analytics-September-2024/">https://epiverse-trace.github.io/slides/who-mpox-analytics-September-2024/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>R packages</category>
+  <category>outbreak analytics</category>
+  <guid>https://epiverse-trace.github.io/slides/who-mpox-analytics-September-2024/</guid>
+  <pubDate>Wed, 18 Sep 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>The twin peaks of the global and the local: worldwide and modest infrastructures for global health</title>
   <dc:creator>Miller Díaz Valderrama</dc:creator>

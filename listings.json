@@ -1,31 +1,8 @@
 [
   {
-    "listing": "/resources.html",
-    "items": [
-      "/resources/D_kwDOIcolP84AZ1Mt.html",
-      "/resources/D_kwDOIcolP84AZREX.html",
-      "/resources/D_kwDOIcolP84AZRHG.html",
-      "/resources/D_kwDOIcolP84AZREP.html",
-      "/resources/D_kwDOIcolP84AZREB.html",
-      "/resources/D_kwDOIcolP84AaEct.html",
-      "/resources/D_kwDOIcolP84AZPXq.html",
-      "/resources/D_kwDOIcolP84AZRD5.html",
-      "/resources/D_kwDOIcolP84AaEjI.html",
-      "/resources/D_kwDOIcolP84AZREa.html",
-      "/resources/D_kwDOIcolP84AaMJI.html",
-      "/resources/D_kwDOIcolP84AaEih.html",
-      "/resources/D_kwDOIcolP84AZRD1.html",
-      "/resources/D_kwDOIcolP84AZREC.html",
-      "/resources/D_kwDOIcolP84AZRE5.html",
-      "/resources/D_kwDOIcolP84AZRED.html",
-      "/resources/D_kwDOIcolP84AZRRF.html",
-      "/resources/D_kwDOIcolP84Aaqjf.html",
-      "/resources/D_kwDOIcolP84AZREo.html"
-    ]
-  },
-  {
     "listing": "/presentations.html",
     "items": [
+      "/slides/who-mpox-analytics-September-2024/index.html",
       "/slides/2024-4S-EASST/index.html",
       "/slides/epireview-hackathon-july-2024/index.html",
       "/slides/2024-useR/index.html",
@@ -76,6 +53,30 @@
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
+    ]
+  },
+  {
+    "listing": "/resources.html",
+    "items": [
+      "/resources/D_kwDOIcolP84AZ1Mt.html",
+      "/resources/D_kwDOIcolP84AZRHG.html",
+      "/resources/D_kwDOIcolP84AaEct.html",
+      "/resources/D_kwDOIcolP84AZRD5.html",
+      "/resources/D_kwDOIcolP84AZREB.html",
+      "/resources/D_kwDOIcolP84AZREP.html",
+      "/resources/D_kwDOIcolP84AZREX.html",
+      "/resources/D_kwDOIcolP84AZPXq.html",
+      "/resources/D_kwDOIcolP84AZRD1.html",
+      "/resources/D_kwDOIcolP84AZREC.html",
+      "/resources/D_kwDOIcolP84AZRED.html",
+      "/resources/D_kwDOIcolP84AaEjI.html",
+      "/resources/D_kwDOIcolP84AaEih.html",
+      "/resources/D_kwDOIcolP84Aaqjf.html",
+      "/resources/D_kwDOIcolP84AZREa.html",
+      "/resources/D_kwDOIcolP84AaMJI.html",
+      "/resources/D_kwDOIcolP84AZREo.html",
+      "/resources/D_kwDOIcolP84AZRRF.html",
+      "/resources/D_kwDOIcolP84AZRE5.html"
     ]
   }
 ]
