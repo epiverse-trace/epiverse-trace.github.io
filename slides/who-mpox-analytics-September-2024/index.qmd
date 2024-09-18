@@ -1,0 +1,28 @@
+---
+title: "Common analytics tasks and available R tools/packages"
+author:
+  - name: "James Mba Azam"
+    orcid: "0000-0001-5782-7330"
+date: "2024-09-18"
+categories: [R, R packages, outbreak analytics]
+---
+
+This presentation (15 min including questions) was given at the [WHO Mpox Analytics Collaboratory](https://www.who.int/initiatives/collaboratory) seminar on September 5, 2024.
+
+## Overview
+
+The epidemiology R package developer community, including Epiverse-TRACE have been developing a set of analytical tools that could help support decision-makers during outbreaks.
+
+This presentation provided an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks. This presentation is based on its companion blog post, ["2024 mpox outbreak: common analytics tasks and available R tools"](https://epiverse-trace.github.io/posts/mpox-preparedness/).
+
+## Slides
+
+```{=html}
+<iframe width="780" height="500" src="common_analytics_tasks_and_available_tools_JamesAzam"></iframe>
+```
+
+## Questions
+
+- Are there any packages for incorporating phylogenetic data
+into reconstructing transmission chains?
+  - **Answer**: [outbreaker2](https://www.repidemicsconsortium.org/outbreaker2/), [TransPhylo](https://xavierdidelot.github.io/TransPhylo/index.html), [phybreak](https://github.com/donkeyshot/phybreak)
