@@ -9,8 +9,82 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.10</generator>
-<lastBuildDate>Mon, 15 Jul 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.11</generator>
+<lastBuildDate>Mon, 23 Sep 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Dual licensing R packages with code and data</title>
+  <dc:creator>Joshua Lambert</dc:creator>
+  <dc:creator>Chris Hartgerink</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/data-licensing.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Licenses are an important topic within open source. Without licenses, information or code can be publicly available but not legally available for reuse or redistribution. The open source software community’s most common licenses are <a href="https://mit-license.org">the MIT license</a> or the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU GPLv3</a>.</p>
+<p>When you read the MIT or GNU license, you can see they are rather specific:</p>
+<blockquote class="blockquote">
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”) [MIT License]</p>
+</blockquote>
+<p>and</p>
+<blockquote class="blockquote">
+<p>The GNU General Public License is a free, copyleft license for software and other kinds of works.</p>
+</blockquote>
+<p>They aim to cover primarily software, not other forms of information such as, for example, data.</p>
+<section id="licensing-only-code-in-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="licensing-only-code-in-r-packages">Licensing only code in R packages</h3>
+<p>Given the importance of a license for redistribution, CRAN requires R packages to contain an <a href="https://cran.r-project.org/doc/FAQ/R-exts.html#Licensing">open-source license</a>.<sup>1</sup> As one of the most important distributors for R packages historically, this rule has become the de facto standard.</p>
+<p>An R package is licensed appropriately when the license is stated in the metadata <code>DESCRIPTION</code> file and, if necessary, in the <code>LICENSE</code> file. We recommend including the <code>LICENSE</code> file, with the license year and exact copyright holder (for example, an organization or a specific individual). Some R package developers choose to include a copy of the license but this is <a href="https://r-pkgs.org/license.html#key-files">not bundled in the R package when it is built</a>. You can <a href="https://github.com/epiverse-trace/cfr/blob/29ee12aa9b8a49eedb9207d95c25c13d7d4e0ace/DESCRIPTION#L27">find an example of a <code>DESCRIPTION</code> file here</a> and <a href="https://github.com/epiverse-trace/cfr/blob/main/LICENSE">find an example <code>LICENSE</code> here</a>.</p>
+</section>
+<section id="licensing-only-data-in-r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="licensing-only-data-in-r-packages">Licensing only data in R packages</h3>
+<p>It can be the case that an R package is primarily used to bundle and share a data set, for example to allow a user to easily download the data and load it into R. For example, <a href="https://github.com/jennybc/gapminder"><strong>gapminder</strong></a> and <a href="https://github.com/allisonhorst/palmerpenguins"><strong>palmerpenguins</strong></a>. As an aside, some in the R developer community<sup>2</sup> dissuade the use of R packages used primarily for data, often referred to as <a href="https://r-pkgs.org/data.html">“data packages”</a>, and instead advocate to host data online and use the several API packages available in R to access the data. <!-- Data packages are often small, openly accessibly data sets that are used to showcase the functionality of a package. In these cases the data is secondary to the code, and as such many of the R packages with these "toy" data sets only state a software license.  --></p>
+<p>Software licenses do not apply to data. One piece of data cannot be copyrighted, as facts cannot be copyrighted, but a collection of data in a database can come with rights. In Europe, UK, and Russia, databases can have rights if they are a substantial and original piece of work.<sup>3</sup> This is called <a href="https://en.wikipedia.org/wiki/Database_right">the “sui generis” database right</a>. The USA and Brazil do not recognize this database right. Data compiled from various databases that themselves are copyrighted would need to follow the licenses of those respective databases.</p>
+<p>Data need licenses such as the Public Domain Dedication or the Creative Commons Attribution to maximize redistribution. Such <a href="https://r-pkgs.org/license.html#code-you-write">general licenses</a> help minimize differences among countries that do and do not recognize database rights. Given that any copyright limitations (even attribution) mean they only apply when the database right is recognized, we recommend the most minimal option: The Public Domain Dedication. This levels the playing field for reuse and redistribution, no matter the jurisdiction.</p>
+</section>
+<section id="licensing-code-and-data-in-one-r-package" class="level3">
+<h3 class="anchored" data-anchor-id="licensing-code-and-data-in-one-r-package">Licensing code and data in one R package</h3>
+<p>But what to do if your R package has both code and data as primary objects of (roughly) equal importance?</p>
+<p>In these cases a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, MIT license) and another license for the included data (for example, Public Domain Dedication).</p>
+<p>After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the <a href="https://github.com/igraph/igraphdata/blob/main/LICENSE"><strong>igraphdata</strong> package</a>, which contains several licenses: One for each dataset included in the package. Similar to igraphdata, in our own <a href="https://github.com/epiverse-trace/epiparameter"><strong>epiparameter</strong> package</a> we dual licensed the code and data as well. We <a href="https://github.com/epiverse-trace/epiparameter/blob/4f7008063040fc4a0b436a9e4d2adb9bb7022f6c/DESCRIPTION#L21">licensed the code using the <code>DESCRIPTION</code> file</a> and used <a href="https://github.com/epiverse-trace/epiparameter/blob/main/LICENSE">the <code>LICENSE</code> file</a> to license the data under CC0. Concretely, we include this additional text in <code>LICENSE</code> to clarify the dual license and that we recommend citing the original source regardless:</p>
+<blockquote class="blockquote">
+<p>All data included in the epiparameter R package is licensed under CC0 (<a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt" class="uri">https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt</a>). This includes the parameter database (extdata/parameters.json) and data in the data/ folder. Please cite the individual parameter entries in the database when used.</p>
+</blockquote>
+<p>When including data in your R package from other sources it is important to check that the license of your package and the data is compatible<sup>4</sup>, or that the individual data license is clearly stated, as in igraphdata. For epiparameter, we consider model estimates as facts (that is, not copyrightable).</p>
+<hr>
+<p>This blogpost helps explain a pattern of dual licensing rarely seen in the wild, and how to implement it in a CRAN conformant manner. By sharing this, we hope that those cases where people want to license both code and data, have a resource we wish we had while exploring this topic. Whether or not data packages and combined code + data packages should exist, is a question for another day.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For a full list of license accepted by CRAN see: <a href="https://svn.r-project.org/R/trunk/share/licenses/license.db" class="uri">https://svn.r-project.org/R/trunk/share/licenses/license.db</a> and they also accept stating the license as <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Licensing-1">“Unlimited” for unrestricted distribution</a>.↩︎</p></li>
+<li id="fn2"><p>A discussion of data and R packages can be found here: <a href="https://github.com/ropensci/unconf17/issues/61" class="uri">https://github.com/ropensci/unconf17/issues/61</a>. This thread is used as an example of some thoughts on packaging data in R but we acknowledge it is from 2017 so the opinions of the individuals in this thread may have changed.↩︎</p></li>
+<li id="fn3"><p>To see the legal definition of the database right in Europe, and what constitutes it, see the <a href="https://eur-lex.europa.eu/eli/dir/1996/9/oj/eng">European Union Directive 96/9/EC</a>↩︎</p></li>
+<li id="fn4"><p>See <a href="https://juliasilge.com/blog/sentiment-lexicons/">this blog post by Julia Silge on including external data sets into an R package and rectifying incompatibilities with license</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{lambert2024,
+  author = {Lambert, Joshua and Hartgerink, Chris},
+  title = {Dual Licensing {R} Packages with Code and Data},
+  date = {2024-09-23},
+  url = {https://epiverse-trace.github.io/posts/data-licensing.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2024" class="csl-entry quarto-appendix-citeas">
+Lambert, Joshua, and Chris Hartgerink. 2024. <span>“Dual Licensing R
+Packages with Code and Data.”</span> September 23, 2024. <a href="https://epiverse-trace.github.io/posts/data-licensing.html">https://epiverse-trace.github.io/posts/data-licensing.html</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>open-source</category>
+  <category>package development</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/data-licensing.html</guid>
+  <pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Some thoughts after a trial run of GitHub’s Copilot Workspace</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
