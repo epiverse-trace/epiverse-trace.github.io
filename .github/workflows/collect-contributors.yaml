@@ -40,6 +40,7 @@ jobs:
                 path: people.qmd
             - uses: EndBug/add-and-commit@v9
               with:
+                pull: '--rebase'
                 author_name: epiverse-trace-bot
                 author_email: epiverse-trace-bot@users.noreply.github.com
                 message: "Update `_data/epiverse_contributors.csv` and `_freeze/`"
