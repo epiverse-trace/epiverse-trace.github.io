@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.13">
+<meta name="generator" content="quarto-1.6.15">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-25463008f16e6170da21a0e2364c3521.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ba1ed8260e95007902cd397f73748127.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ed5ca83918352a5931b2ed0dd6560034.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -334,59 +334,59 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <li>Advanced modelling through phylodynamic methods, using tools like <a href="https://beast.community">BEAST</a></li>
 </ul></li>
 </ul>
-<table class="caption-top table">
+<table class="caption-top">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 78%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Data analysis step</th>
 <th>Challenges</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Data cleaning</td>
 <td>Not knowing what packages are available for this purpose</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Delay distributions</td>
 <td><p>Dealing with right truncation</p>
 <p>Accounting for multiple infectors</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Population demographics</td>
 <td>Lacking tools that provide information about population by age, gender, etc.</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Risk factors of infection</td>
 <td>Distinguishing between risk factors vs detecting differences in reporting frequencies among groups</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Severity of disease</td>
 <td><p>Knowing the prevalence of disease (denominator)</p>
 <p>Right truncated data</p>
 <p>Varying severity of different strains</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td>Contact matching</td>
 <td><p>Missing data</p>
 <p>Misspellings</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Epicurve and maps</td>
 <td><p>NA dates entries not included</p>
 <p>Reporting levels varying over time</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td>Offspring distribution</td>
 <td><p>Right truncation</p>
 <p>Time varying reporting efforts</p>
 <p>Assumption of a single homogeneous epidemic</p>
 <p>Importation of cases</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Forecasting</td>
 <td>Underlying assumption of a given R distribution, e.g., single trend, homogeneous mixing, no saturation</td>
 </tr>
@@ -446,39 +446,39 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <li>Unable to calculate, given the lack of seroprevalence data</li>
 </ul></li>
 </ul>
-<table class="caption-top table">
+<table class="caption-top">
 <colgroup>
 <col style="width: 31%">
 <col style="width: 68%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Data analysis step</th>
 <th>Challenges</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Data anonymisation</td>
 <td>Dealing with typos and missing data when generating random unique identifiers</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Reproduction number</td>
 <td><p>Right truncation</p>
 <p>Underestimation of cases due to reporting delays</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Projection of hospital bed requirements</td>
 <td><p>Incomplete data (missing discharge date)</p>
 <p>Undocumented functionality in R packages used</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td>Zoonotic transmission</td>
 <td><p>Poor documentation</p>
 <p>Unavailability of packages in R</p>
 <p>Differentiation between zoonotic transmission and risk factors- need for population data</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Attack rate</td>
 <td>Not enough information provided</td>
 </tr>
@@ -561,23 +561,23 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <li><a href="https://ggplot2.tidyverse.org/reference/ggplot.html"><code>ggplot2</code></a></li>
 </ul></li>
 </ul>
-<table class="caption-top table">
+<table class="caption-top">
 <thead>
-<tr class="header">
+<tr>
 <th>Data analysis step</th>
 <th>Challenges</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Detection of outliers</td>
 <td>No known tools to use</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Severity of disease</td>
 <td>Censoring</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Spillover events</td>
 <td>Missing data</td>
 </tr>
@@ -614,31 +614,31 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <li><a href="https://cran.r-project.org/web/packages/epiR/index.html"><code>epiR</code></a> to check for data censoring</li>
 </ul></li>
 </ul>
-<table class="caption-top table">
+<table class="caption-top">
 <colgroup>
 <col style="width: 26%">
 <col style="width: 73%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Data analysis step</th>
 <th>Challenges</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Data cleaning</td>
 <td>No available R packages specific for epidemic data</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Reproduction number</td>
 <td>Difficulty finding parameter estimations in the literature</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Serial interval</td>
 <td>Lack of a tool to check for parameter estimates</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Severity</td>
 <td><p>Missing cases</p>
 <p>Need for an R package for systematic censoring analysis</p></td>
@@ -701,48 +701,48 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <li><a href="https://quarto.org">Quarto</a> and <a href="https://rmarkdown.rstudio.com">R markdown</a> for dashboards</li>
 </ul></li>
 </ul>
-<table class="caption-top table">
+<table class="caption-top">
 <colgroup>
 <col style="width: 19%">
 <col style="width: 80%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Data analysis step</th>
 <th>Challenges</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>Project structure</td>
 <td><p>Working simultaneously on the same script and managing parallel tasks</p>
 <p>Anticipating future incoming data in early pipeline design</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td>Data cleaning</td>
 <td><p>Large amount of code lines used on (reasonably) predictable cleaning (e.g.&nbsp;data sense checks)</p>
 <p>Omitting too many data entries when simply removing <em>NA</em> rows</p>
 <p>Non standardised data formats</p>
 <p>Implementing rapid quality check reports before analysis</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Delay distributions</td>
 <td><p>Identifying the best method to calculate, or compare functionality of tools</p>
 <p>Need to fit multiple parametric distributions and return best, and store as usable objects</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td>Severity of disease</td>
 <td><p>Censoring and truncation</p>
 <p>Underestimation of mild cases</p>
 <p>Need database of age/gender pyramids for comparisons</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Forecasts</td>
 <td><p>Need option for fitting with range of plausible pathogen serial intervals and comparing results</p>
 <p>Changing reporting delays over time</p>
 <p>Matching inputs/outputs between packages</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td>Zoonotic transmisison</td>
 <td><p>Need for specific packages with clear documentation</p>
 <p>How to compare simple trend-based forecasts</p></td>

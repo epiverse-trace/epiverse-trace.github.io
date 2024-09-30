@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.13</generator>
+<generator>quarto-1.6.15</generator>
 <lastBuildDate>Wed, 18 Sep 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Common analytics tasks and available R tools/packages</title>
@@ -251,21 +251,21 @@ Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<table class="caption-top table">
+<table class="caption-top" style="width:99%;">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 38%">
 <col style="width: 38%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Time</th>
 <th>Item</th>
 <th>Presenter</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>12:00 - 12:05</td>
 <td><p>Welcome</p>
 <ul>
@@ -281,12 +281,12 @@ Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
 </ul></td>
 <td>Carmen</td>
 </tr>
-<tr class="even">
+<tr>
 <td>12:05 - 12:06</td>
 <td>One line intro to Karim &amp; readepi &amp; cleanepi</td>
 <td>Carmen</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>12:06 - 12:22</td>
 <td><p>readepi &amp; cleanepi PKGs</p>
 <ul>
@@ -295,17 +295,17 @@ Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
 </ul></td>
 <td>Karim</td>
 </tr>
-<tr class="even">
+<tr>
 <td>12:22 - 12:23</td>
 <td>One line intro to Degoot &amp; demo pipeline</td>
 <td>Carmen</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>12:23 - 12:45</td>
 <td>Pipeline demo:</td>
 <td>Degoot</td>
 </tr>
-<tr class="even">
+<tr>
 <td></td>
 <td><ul>
 <li>overview</li>
@@ -313,12 +313,12 @@ Disconnected Elements to a Harmonious Ecosystem.”</span> February 3,
 </ul></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr>
 <td>12:46 - 12:58</td>
 <td>Questions</td>
 <td>Attendees, all (Carmen moderates)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>12:58 - 13:00</td>
 <td>Closing remarks</td>
 <td>Carmen</td>
@@ -662,21 +662,21 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<table class="caption-top table">
+<table class="caption-top" style="width:99%;">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 38%">
 <col style="width: 38%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Time</th>
 <th>Item</th>
 <th>Presenter</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>00:00 - 00:05</td>
 <td><p>Welcome</p>
 <ul>
@@ -686,12 +686,12 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 </ul></td>
 <td>Anna</td>
 </tr>
-<tr class="even">
+<tr>
 <td>00:05 - 00:06</td>
 <td>One line intro to Geraldine &amp; sivirep</td>
 <td>Anna</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>00:06 - 00:16</td>
 <td><p>sivirep demo</p>
 <ul>
@@ -701,17 +701,17 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 </ul></td>
 <td>Geraldine</td>
 </tr>
-<tr class="even">
+<tr>
 <td>00:16 - 00:20</td>
 <td>Q &amp; A from the floor</td>
 <td>Geraldine, attendees (Anna moderates)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>00:20 - 00:21</td>
 <td>One line intro to Juan &amp; epiCo</td>
 <td>Anna</td>
 </tr>
-<tr class="even">
+<tr>
 <td>00:21 - 00:31</td>
 <td><p>epiCo demo:</p>
 <ul>
@@ -721,17 +721,17 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 </ul></td>
 <td>Juan</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>00:31 - 00:35</td>
 <td>Q &amp; A from the floor</td>
 <td>Juan, attendees (Anna moderates)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>00:35 - 00:36</td>
 <td>One line intro to Nicolás &amp; serofoi</td>
 <td>Anna</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>00:36 - 00:46</td>
 <td><p>serofoi demo:</p>
 <ul>
@@ -741,17 +741,17 @@ Epidemic Response.”</span> May 31, 2023. <a href="https://epiverse-trace.githu
 </ul></td>
 <td>Nicolás</td>
 </tr>
-<tr class="even">
+<tr>
 <td>00:46 - 00:50</td>
 <td>Q &amp; A from the floor</td>
 <td>Nicolás, attendees (Anna moderates)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>00:50 - 00:58</td>
 <td>Open discussion</td>
 <td>Attendees, all (Anna moderates)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>00:58 - 00:00</td>
 <td>Thank you and close</td>
 <td>Anna</td>
@@ -885,21 +885,21 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-body-container">
-<table class="caption-top table">
+<table class="caption-top" style="width:99%;">
 <colgroup>
 <col style="width: 21%">
 <col style="width: 38%">
 <col style="width: 38%">
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Time</th>
 <th>Item</th>
 <th>Presenter</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>16:00 - 16:05</td>
 <td><p>Welcome</p>
 <ul>
@@ -909,12 +909,12 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 </ul></td>
 <td>Anna</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16:05 - 16:06</td>
 <td>One line intro to Pratik &amp; finalsize</td>
 <td>Anna</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>16:06 - 16:16</td>
 <td><p>finalsize demo</p>
 <ul>
@@ -924,17 +924,17 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 </ul></td>
 <td>Pratik</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16:16 - 16:20</td>
 <td>Q &amp; A from the floor</td>
 <td>Pratik, attendees (Anna moderates)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>16:20 - 16:21</td>
 <td>One line intro to Josh &amp; epiparameter</td>
 <td>Anna</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16:21 - 16:31</td>
 <td><p>epiparameter demo:</p>
 <ul>
@@ -944,17 +944,17 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 </ul></td>
 <td>Josh</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>16:31 - 16:35</td>
 <td>Q &amp; A from the floor</td>
 <td>Josh, attendees (Anna moderates)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16:35 - 16:36</td>
 <td>One line intro to Hugo &amp; episoap</td>
 <td>Anna</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>16:36 - 16:46</td>
 <td><p>episoap demo:</p>
 <ul>
@@ -964,17 +964,17 @@ Ecosystem: The Epiverse-TRACE Project.”</span> February 20, 2023. <a href="htt
 </ul></td>
 <td>Hugo</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16:46 - 16:50</td>
 <td>Q &amp; A from the floor</td>
 <td>Hugo, attendees (Anna moderates)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>16:50 - 16:58</td>
 <td>Open discussion</td>
 <td>Attendees, all (Anna moderates)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>16:58 - 17:00</td>
 <td>Thank you and close</td>
 <td>Anna</td>
