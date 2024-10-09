@@ -44,19 +44,31 @@ repos <- lapply(repos, function(x) {
     # but keep an eye on https://github.com/ropenscilabs/allcontributors/issues/36 for a potentially
     # better solution.
     Sys.sleep(5)
-    return(one_repo[, c("logins", "avatar")])
+
+    # Add the repo name
+    one_repo$repo <- sprintf('%s/%s', org_name, x$name)
+
+    return(one_repo)
   }
 })
 
 ctbs <- do.call(rbind, repos)
-# Remove duplicates
-result <- ctbs[!duplicated(ctbs$logins), ]
+
+ctbs <- ctbs |>
+  dplyr::summarise(
+    type = toString(type),
+    repo = toString(repo),
+    avatar = toString(avatar),
+    .by = logins
+  )
 
 # Use lapply to get user data and create dataframes
 df_list <- lapply(included_handles, function(x) {
   user <- gh("GET /users/:username", username = x)
   data.frame(
     logins = user$login,
+    type = NA,
+    repo = NA,
     avatar = user$avatar_url
   )
 })

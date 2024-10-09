@@ -31,6 +31,7 @@ jobs:
                 packages: |
                     gh
                     allcontributors
+                    dplyr
 
             - name: Collect contributor data
               run: Rscript _scripts/collect_contributor_data.R
