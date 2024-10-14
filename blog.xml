@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.15</generator>
+<generator>quarto-1.6.25</generator>
 <lastBuildDate>Mon, 23 Sep 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Dual licensing R packages with code and data</title>
@@ -956,6 +956,36 @@ V1.0.0.”</span> June 17, 2024. <a href="https://epiverse-trace.github.io/posts
   <pubDate>Mon, 17 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>readepi v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Readepi V0.1.0},
+  date = {2024-06-10},
+  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Readepi
+V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
+  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>epichains v0.1.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
   <link>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</link>
@@ -1027,36 +1057,6 @@ V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</guid>
-  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>readepi v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Readepi V0.1.0},
-  date = {2024-06-10},
-  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Readepi
-V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
   <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2100,444 +2100,46 @@ V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io/pos
   <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>Using benchmarking to guide the adoption of dependencies in R packages</title>
-  <dc:creator>James Mba Azam</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</link>
+  <title>cfr v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(bench)</span>
-<span id="cb1-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(cli)</span>
-<span id="cb1-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(dplyr)</span>
-<span id="cb1-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
-</div>
-<p>R package developers often have to take on dependencies for various reasons. Dependencies are external packages that provide extra functionalities or features to another package <span class="citation" data-cites="wickham2023r">(Wickham and Bryan 2023)</span>. Quite often, the goal of taking on a dependency is to utilize its rich features and reduce duplicated coding effort. For example, the <code>ggplot2</code> package is often adopted, instead of R’s inbuilt plotting functions, to make visualizations using its declarative system and implementation of the Grammar of Graphics, and slick automation across the board.</p>
-<p>Sometimes, introducing a dependency might slow down existing processes. Hence, it is important to consider the speed of a dependency’s functions before adopting it. Code optimisation is often reserved for heavy processes like data processing steps. However, here, we will focus on lesser optimised processes, and in particular, printing of texts in R.</p>
-<p>For this demonstration, we will look at a situation where a package developer is considering options for condition signalling beyond the functionalities provided in base R. Condition signalling refers to the process of communicating to a user that an issue has arisen during code execution <span class="citation" data-cites="wickham2019advanced">(Wickham 2019)</span>.</p>
-<p>Base R ships with functionalities for condition signalling. There is <code>base::stop()</code> for signalling errors. Errors refer to cases where something fatal happens during code execution so that it halts, for example, when a function is run without specifying the required arguments.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rnorm</span>()</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in rnorm(): argument "n" is missing, with no default</code></pre>
-</div>
-</div>
-<p>Base R provides <code>base::warning()</code> for throwing warnings. Warnings are used to handle less fatal issues with code execution that do not need to halt the process. For example, when you compare two vectors of different lengths, R will throw a warning but will still return a result.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in c(1:2) &gt; c(1:3): longer object length is not a multiple of shorter
-object length</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE FALSE FALSE</code></pre>
-</div>
-</div>
-<p>Lastly, there is <code>base::message()</code> for throwing messages. Messages are used to provide useful information about processes. For example, packages throw messages about NAMESPACE conflicts when loaded. This is to inform the user so they know what next steps to take.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(data.table)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'data.table'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:dplyr':
-
-    between, first, last</code></pre>
-</div>
-</div>
-<p>These base R functions are, however, not flexible enough for advanced formatting: colour, progress bar, contextual pluralisation, and so forth. The package developer might want to adopt external dependencies for these flexibilities. The <a href="https://cli.r-lib.org/articles/semantic-cli.html">cli</a> package is well designed for this. <code>cli</code> offers many of the advanced formatting features. Here is a quick example (adopted from the help file) using <code>cli::cli_abort()</code>, the equivalent of <code>base::stop()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">n <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"c(1, 2, 3)"</span></span>
-<span id="cb10-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cli_abort</span>(</span>
-<span id="cb10-3">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(</span>
-<span id="cb10-4">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"{.var n} must be a numeric vector"</span>,</span>
-<span id="cb10-5">      <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"x"</span> <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"You've supplied a {.cls {class(n)}} vector."</span></span>
-<span id="cb10-6">    )</span>
-<span id="cb10-7">)</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error:
-! `n` must be a numeric vector
-✖ You've supplied a &lt;character&gt; vector.</code></pre>
-</div>
-</div>
-<p>In this example, we used inline text formatting to print <code>n</code> as a variable and interpolated code to print the class of <code>n</code> in the error message and all in just 6 lines of code.</p>
-<p>If this is enough to excite your interests, check out <code>cli</code>’s <a href="https://cli.r-lib.org/">website</a> and help files, which provide in-depth guides on its myriad features.</p>
-<p>Now, considering all these amazing features that <code>cli</code> offers, what should a package developer consider to adopt it? In this article, we will demonstrate how to use (micro)benchmarking<sup>1</sup> to guide the decision through the lense of speed. Benchmarking can be used to check whether adopting <code>cli</code> as a dependency would slow down existing printing processes in undesirable ways.</p>
-<p>Here, we will benchmark <code>cli::cli_warn()</code> against base R’s <code>base::warning()</code> to see if the former has any speed issues. The results of this exercise will provide us with insights on whether its worth taking on <code>cli</code> for its features as a trade-off for slower printing speed.</p>
-<section id="experiment" class="level2">
-<h2 class="anchored" data-anchor-id="experiment">Experiment</h2>
-<p>We will consider different scenarios of number of warnings thrown to tease out the relationship between speed of the function and number of warnings thrown in a function with and without <code>cli::cli_warn()</code>. We will also check how the benchmark scales with the number of warnings in the function.</p>
-<p>Based on this description, we will need the following packages: <code>cli</code> for its warning function, and <a href="https://cran.r-project.org/web/packages/bench/index.html">bench</a> for measuring the run times, <a href="https://dplyr.tidyverse.org/">dplyr</a> for manipulating the results, and <a href="https://ggplot2.tidyverse.org/">ggplot2</a> for plotting.</p>
-<p>Let’s define a function that takes an argument <code>n</code> for the number of warnings to throw and <code>pkg</code> for the type of package to use.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">warn_Ntimes <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(n, pkg) {</span>
-<span id="cb12-2">  warning_msg <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"x must be an integer"</span></span>
-<span id="cb12-3">  <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">switch</span>(pkg,</span>
-<span id="cb12-4">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">base =</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq_len</span>(n)) {</span>
-<span id="cb12-5">      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warning</span>(warning_msg)</span>
-<span id="cb12-6">    },</span>
-<span id="cb12-7">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cli =</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq_len</span>(n)) {</span>
-<span id="cb12-8">      <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cli_warn</span>(warning_msg)</span>
-<span id="cb12-9">    }</span>
-<span id="cb12-10">  )</span>
-<span id="cb12-11">}</span></code></pre></div>
-</div>
-<p>Let’s test our function to see if it works as expected.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warn_Ntimes</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"base"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in warn_Ntimes(3, "base"): x must be an integer
-
-Warning in warn_Ntimes(3, "base"): x must be an integer
-
-Warning in warn_Ntimes(3, "base"): x must be an integer</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warn_Ntimes</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cli"</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: x must be an integer</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: x must be an integer
-x must be an integer</code></pre>
-</div>
-</div>
-<p>Now, we’ll consider scenarios where a function throws 1, 5, 10, 15, 20, and 100 warnings using base R and <code>cli</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Number of warnings to throw</span></span>
-<span id="cb18-2">warnings <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>)</span></code></pre></div>
-</div>
-<p>Let’s run benchmarks over the different scenarios and store results in a data.frame.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">bnmark_res <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">press</span>(</span>
-<span id="cb19-2">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">warnings =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>),</span>
-<span id="cb19-3">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mark</span>(</span>
-<span id="cb19-4">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">cli =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warn_Ntimes</span>(warnings, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"cli"</span>),</span>
-<span id="cb19-5">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">base =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warn_Ntimes</span>(warnings, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"base"</span>)</span>
-<span id="cb19-6">    )</span>
-<span id="cb19-7">  )</span></code></pre></div>
-</div>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>It’s time to explore the results of the data generated. Let’s first make a boxplot of the run times for the different scenarios.</p>
-<p>Drum roll please…</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">autoplot</span>(</span>
-<span id="cb20-2">  bnmark_res,</span>
-<span id="cb20-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"boxplot"</span></span>
-<span id="cb20-4">  ) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb20-5">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(</span>
-<span id="cb20-6">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Package"</span>,</span>
-<span id="cb20-7">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Functions throwing various numbers of warnings as indicated in the facet label"</span></span>
-<span id="cb20-8">  )</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required namespace: tidyr</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/benchmarking_design_decisions/index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Now, let’s see how the benchmarks scale with the number of warnings thrown.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">bnmark_res<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>pkg <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">attr</span>(bnmark_res<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>expression, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"description"</span>)</span>
-<span id="cb22-2"></span>
-<span id="cb22-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ggplot</span>(bnmark_res) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb22-4">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">geom_line</span>(</span>
-<span id="cb22-5">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">aes</span>(</span>
-<span id="cb22-6">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> warnings,</span>
-<span id="cb22-7">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> median,</span>
-<span id="cb22-8">      <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> pkg</span>
-<span id="cb22-9">    ),</span>
-<span id="cb22-10">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">linewidth =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span></span>
-<span id="cb22-11">  ) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span></span>
-<span id="cb22-12">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">labs</span>(</span>
-<span id="cb22-13">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Number of warnigns"</span>,</span>
-<span id="cb22-14">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Median execution time"</span>,</span>
-<span id="cb22-15">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"Package"</span></span>
-<span id="cb22-16">  )</span></code></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://epiverse-trace.github.io/posts/benchmarking_design_decisions/index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>As we can see, <code>cli</code> is consistently slower than base R for the same number of warnings thrown. The median times also follow a similar non-linear trajectory. Benchmarking experiments with other <code>cli</code> functions have revealed similar non-linear relationships between its speed and the number of times it invokes those functions <sup>2</sup>. However, those exercises were not compared with equivalent functions in base R. The relative comparison here is useful for decision-making.</p>
-<p>The developers of <code>cli</code> have also conducted benchmarks of the <code>ansi_*()</code> family of functions in <code>cli</code> in comparison to base R and the <code>fansi</code> package. They find that <code>cli</code> is consistently slower than base R, which corroborates the results of our experiment here. These benchmarks are available in the <code>cli</code> documentation <sup>3</sup>.</p>
-<p>So, should we be worried about the speed of <code>cli</code>? Well, it depends on the context. The “R Packages” book by Hadley Wickham and Jenny Bryan suggests approaching such a decision from a holistic, balanced, and quantitative approach<span class="citation" data-cites="wickham2023r">(Wickham and Bryan 2023)</span>. We’ll leave the reader to make their own decision based on their use case.</p>
-<p>Most developers might argue that this is an optimisation overkill<sup>4</sup>. However, it is important to consider speed differences in context. In the case of simple printing, the speed difference is negligible yet disruptive and somewhat painful. However, in the grand scheme of things, this might be nothing compared with much slower processes that need more attention. In those cases, the developer might want to consider other optimisation strategies such as profiling <sup>5</sup>. The essence of this experiment is to demonstrate the utility of benchmarking in making quick design decisions.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In designing R package infrastructure with dependencies, it might sometimes be necessary to check if they don’t slow down existing processes. Here, we have demonstrated how benchmarking is one way to achieve this for a process involving condition signalling. We show how a simple decision to use <code>cli::cli_warn()</code> to handle warnings could come at the cost of a tiny loss in speed, which is worth considering in its context.</p>
-<p>The demonstration here can be extended to other dependency adoption decisions for input checking, loops, object manipulations, and so forth. We recommend benchmarking as a way to help developers make quick design decisions. However, we also recommend that developers consider the context of the optimisation in interpreting the results.</p>
-<p><em>I would like to thank <a href="https://github.com/pratikunterwegs">Pratik Gupte</a>, <a href="https://github.com/joshwlambert">Joshua Lambert</a>, and <a href="https://github.com/Bisaloo">Hugo Gruson</a> for their invaluable reviews and suggestions that helped improve this post.</em></p>
-</section>
-<section id="other-r-packages-for-benchmarking" class="level2">
-<h2 class="anchored" data-anchor-id="other-r-packages-for-benchmarking">Other R packages for benchmarking</h2>
-<ul>
-<li><a href="https://github.com/joshuaulrich/microbenchmark">microbenchmark</a>: an R package for comparing the execution time of R expressions.</li>
-<li><a href="https://code.google.com/archive/p/rbenchmark/">rbenchmark</a>: an R package for benchmarking R code.</li>
-<li><a href="https://github.com/collectivemedia/tictoc">tictok</a>: an R package to time R functions</li>
-<li><a href="https://github.com/lorenzwalthert/touchstone/tree/main">touchstone</a>: an R package for benchmarking of pull requests with statistical confidence.</li>
-</ul>
-
-
-
-</section>
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
-<div id="ref-wickham2019advanced" class="csl-entry">
-Wickham, Hadley. 2019. <em>Advanced r</em>. CRC press.
-</div>
-<div id="ref-wickham2023r" class="csl-entry">
-Wickham, Hadley, and Jennifer Bryan. 2023. <em>R Packages</em>. " O’Reilly Media, Inc.".
-</div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Benchmark (Wikipedia): <a href="https://en.wikipedia.org/wiki/Benchmark_(computing)" class="uri">https://en.wikipedia.org/wiki/Benchmark_(computing)</a>↩︎</p></li>
-<li id="fn2"><p>Formating errors can be slow/variable: <a href="https://github.com/r-lib/cli/issues/617" class="uri">https://github.com/r-lib/cli/issues/617</a>↩︎</p></li>
-<li id="fn3"><p>cli benchmarks: <a href="https://cli.r-lib.org/articles/ansi-benchmark.html" class="uri">https://cli.r-lib.org/articles/ansi-benchmark.html</a>↩︎</p></li>
-<li id="fn4"><p>Donald Knuth’s quoted as having said, “The real problem is that programmers have spent far too much time worrying about efficiency in the wrong places and at the wrong times; premature optimization is the root of all evil (or at least most of it) in programming.” (See <a href="https://en.wikiquote.org/wiki/Donald_Knuth" class="uri">https://en.wikiquote.org/wiki/Donald_Knuth</a>)↩︎</p></li>
-<li id="fn5"><p>Profiling (Wikipedia): <a href="https://csgillespie.github.io/efficientR/performance.html" class="uri">https://csgillespie.github.io/efficientR/performance.html</a>↩︎</p></li>
+<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
+<p>This release includes:</p>
+<ol type="1">
+<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
+<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
+<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
+<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
+<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
+<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
+<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
+<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
+<li>100% code coverage,</li>
+<li>Workflows to render the vignettes and README as a website.</li>
 </ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{mba_azam2023,
-  author = {Mba Azam, James},
-  title = {Using Benchmarking to Guide the Adoption of Dependencies in
-    {R} Packages},
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2023,
+  author = {Epiverse-TRACE development team, The},
+  title = {Cfr V0.1.0},
   date = {2023-11-22},
-  url = {https://epiverse-trace.github.io/posts/benchmarking_design_decisions/},
+  url = {https://epiverse-trace.github.io/posts/cfr_v0.1.0/},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2023" class="csl-entry quarto-appendix-citeas">
-Mba Azam, James. 2023. <span>“Using Benchmarking to Guide the Adoption
-of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epiverse-trace.github.io/posts/benchmarking_design_decisions/">https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</a>.
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2023" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
+November 22, 2023. <a href="https://epiverse-trace.github.io/posts/cfr_v0.1.0/">https://epiverse-trace.github.io/posts/cfr_v0.1.0/</a>.
 </div></div></section></div> ]]></description>
-  <category>benchmarking</category>
-  <category>R</category>
-  <category>cli</category>
-  <category>R package</category>
-  <category>software architecture</category>
-  <guid>https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</guid>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
   <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>

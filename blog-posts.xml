@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=posts</link>
 <atom:link href="https://epiverse-trace.github.io/blog-posts.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.15</generator>
-<lastBuildDate>Mon, 30 Sep 2024 11:57:06 GMT</lastBuildDate>
+<generator>quarto-1.6.25</generator>
+<lastBuildDate>Mon, 14 Oct 2024 08:41:03 GMT</lastBuildDate>
 </channel>
 </rss>
