@@ -46,7 +46,7 @@ repos <- lapply(repos, function(x) {
     Sys.sleep(5)
 
     # Add the repo name
-    one_repo$repo <- sprintf('%s/%s', org_name, x$name)
+    one_repo$repo <- x$name
 
     return(one_repo)
   }
