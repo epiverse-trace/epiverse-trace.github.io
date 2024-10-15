@@ -56,8 +56,8 @@ ctbs <- do.call(rbind, repos)
 
 result <- ctbs |>
   dplyr::summarise(
-    type = toString(unique(type)),
-    repo = toString(unique(repo)),
+    type = toString(unique(sort(type))),
+    repo = toString(unique(sort(repo))),
     avatar = dplyr::first(avatar),
     .by = logins
   )
