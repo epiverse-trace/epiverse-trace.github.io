@@ -54,7 +54,7 @@ repos <- lapply(repos, function(x) {
 
 ctbs <- do.call(rbind, repos)
 
-ctbs <- ctbs |>
+result <- ctbs |>
   dplyr::summarise(
     type = toString(type),
     repo = toString(repo),
