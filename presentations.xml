@@ -10,7 +10,43 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.26</generator>
-<lastBuildDate>Wed, 18 Sep 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 09 Oct 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Demo: Comparing vaccination strategies with finalsize</title>
+  <dc:creator>Hugo Gruson</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/2024-10-GPSDD/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This presentation was given for a <a href="https://www.data4sdgs.org/">GPSSD</a> lecture in their “Climate and Health Data in Action” curriculum on October 9, 2024.</p>
+<p>The demo was part of a larger presentation by Maguette Ndong on Epiverse and its implementation in Africa.</p>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="Epiverse_finalsize_demo.pdf"></iframe>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
+  author = {Gruson, Hugo},
+  title = {Demo: {Comparing} Vaccination Strategies with Finalsize},
+  date = {2024-10-09},
+  url = {https://epiverse-trace.github.io/slides/2024-10-GPSDD/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
+Gruson, Hugo. 2024. <span>“Demo: Comparing Vaccination Strategies with
+Finalsize.”</span> October 9, 2024. <a href="https://epiverse-trace.github.io/slides/2024-10-GPSDD/">https://epiverse-trace.github.io/slides/2024-10-GPSDD/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>R packages</category>
+  <category>finalsize</category>
+  <guid>https://epiverse-trace.github.io/slides/2024-10-GPSDD/</guid>
+  <pubDate>Wed, 09 Oct 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Common analytics tasks and available R tools/packages</title>
   <dc:creator>James Mba Azam</dc:creator>
