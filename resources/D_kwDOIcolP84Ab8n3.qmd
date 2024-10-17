@@ -1,0 +1,8 @@
+---
+title: "shinystan - Interactive diagnostics and posterior analysis for Bayesian models"
+url: "https://github.com/orgs/epiverse-trace/discussions/326"
+date: "2024-10-16"
+author: jamesmbaazam
+categories: []
+upvotes: 1
+---
