@@ -1,0 +1,18 @@
+---
+title: "Demo: Comparing vaccination strategies with finalsize"
+author:
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
+date: "2024-10-09"
+categories: [R, R packages, finalsize]
+---
+
+This presentation was given for a [GPSSD](https://www.data4sdgs.org/) lecture in their "Climate and Health Data in Action" curriculum on October 9, 2024.
+
+The demo was part of a larger presentation by Maguette Ndong on Epiverse and its implementation in Africa.
+
+## Slides
+
+```{=html}
+<iframe width="780" height="500" src="Epiverse_finalsize_demo.pdf"></iframe>
+```
