@@ -3,7 +3,7 @@ title: "Using LLM agents to review tutorials 'in character' as learners"
 author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
-date: "2024-05-28"
+date: "2024-11-07"
 categories: [tutorials, R, R package]
 format:
   html:
