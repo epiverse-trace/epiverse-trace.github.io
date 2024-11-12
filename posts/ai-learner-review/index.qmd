@@ -48,8 +48,8 @@ write_lines(output,"output_review.md"))
 
 ## Reviewing transmissibilty training materials as a senior academic
 
-> To illustrate the sort of reviews that can be generated with the above approach, the below is the output produced when we imported the [Vania senior academic persona](https://epiverse-trace.github.io/personas/vania-academica.html) alongside an early pre-Alpha version of the training materials for our transmissibility estimation tutorial:
->
+To illustrate the sort of reviews that can be generated with the above approach, the below is the output produced when we imported the [Vania senior academic persona](https://epiverse-trace.github.io/personas/vania-academica.html) alongside an early pre-Alpha version of the training materials for our transmissibility estimation tutorial:
+
 > Overall, the tutorial is well-structured and provides a comprehensive guide on how to use the `EpiNow2` package to estimate transmission metrics from case data. However, there are several areas that could be improved to enhance clarity and understanding for learners like me.
 >
 > 1. **Prerequisites**: The prerequisites section could be expanded to include specific resources for learners to review the necessary concepts. For instance, links to resources on Bayesian analysis and the effective reproduction number would be helpful.
