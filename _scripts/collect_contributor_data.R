@@ -1,15 +1,15 @@
-
 if (!require(gh)) {
-    install.packages("gh")
+  install.packages("gh")
 }
 if (!require(allcontributors)) {
-    install.packages("allcontributors")
+  install.packages("allcontributors")
 }
 
 library(allcontributors)
 library(gh)
 
 org_name <- "epiverse-trace"
+placeholder_avatar <- "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 repos <- gh(
   "GET /orgs/:org/repos",
   org = org_name,
@@ -24,8 +24,7 @@ excluded_repos <- c(
 # A vector of handles that we do not include
 excluded_handles <- c(
   "abdoelnaser-mahmood-degoot", # Double account
-  "geraldinegm",                # Double account
-  "TimTaylor"                   # Requested
+  "geraldinegm", # Double account
 )
 # A vector of handles of contributors who contributed outside of GitHub
 included_handles <- c(
@@ -82,6 +81,8 @@ sorted <- result[order(tolower(result$logins)), ]
 
 # custom removal rules
 sorted <- sorted[!sorted$logins %in% excluded_handles, ]
+
+sorted$avatar[sorted$logins == "TimTaylor"] <- placeholder_avatar
 
 # write out the data frame
 write.csv(sorted, file = "_data/epiverse_contributors.csv", row.names = FALSE)
