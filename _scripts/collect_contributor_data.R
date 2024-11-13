@@ -24,7 +24,8 @@ excluded_repos <- c(
 # A vector of handles that we do not include
 excluded_handles <- c(
   "abdoelnaser-mahmood-degoot", # Double account
-  "geraldinegm"                 # Double account
+  "geraldinegm",                # Double account
+  "TimTaylor"                   # Requested
 )
 # A vector of handles of contributors who contributed outside of GitHub
 included_handles <- c(
