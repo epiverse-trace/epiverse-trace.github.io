@@ -2,7 +2,7 @@
 title: "How we work: My first full package review"
 author:
   - name: "Chris Hartgerink"
-    orcid: "0000-0001-5294-7819"
+    orcid: "0000-0003-1050-6809"
 date: "2024-12-09"
 categories: [blueprints, "How we work"]
 format:
