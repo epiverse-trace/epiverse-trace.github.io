@@ -3,6 +3,8 @@ title: "Using LLM agents to review tutorials 'in character' as learners"
 author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
+  - name: "Andree Valle Campos"
+    orcid: "0000-0002-7779-481X"
 date: "2024-11-18"
 categories: [tutorials, R, R package]
 format:
@@ -20,7 +22,7 @@ Part of the Epiverse-TRACE initiative involves development of training materials
 - **Vania**, a professor who needs ready-to-use training for her research and to pass on to students.
 - **Danielle**, a Trainer that wants to remix content to create specific training materials for public health practitioners.
 
-As the volume of training materials increases, I have explored automating the generation of initial reviews using large language models (LLMs) that take the form of 'in character' agents with instructions to provide constructive comments. This reflects a wider focus within the field of outbreak analytics on how LLMs agents can be used to increase the efficiency and scalability of common tasks (e.g. [van Hoek et al, Lancet Microbe, 2024](https://www.thelancet.com/journals/lanmic/article/PIIS2666-5247(24)00104-6/fulltext) ).
+As the volume of training materials increases, we have explored automating the generation of initial reviews using large language models (LLMs) that take the form of 'in character' agents with instructions to provide constructive comments. This reflects a wider focus within the field of outbreak analytics on how LLMs agents can be used to increase the efficiency and scalability of common tasks (e.g. [van Hoek et al, Lancet Microbe, 2024](https://www.thelancet.com/journals/lanmic/article/PIIS2666-5247(24)00104-6/fulltext) ).
 
 To generate the AI tutorial reviews, we use the OpenAI GPT-4 API, via the `openai` R package, as described in [this repository](https://github.com/adamkucharski/llm-api-scripts/). We also use the `gh` package to load the `.Rmd` materials from a given repository (e.g. `epiverse-trace/tutorials-middle`). Full illustrative code is [available here](https://github.com/adamkucharski/llm-api-scripts/scripts/content_review_gpt.R), with the GPT-4 API prompts outlined below.
 
