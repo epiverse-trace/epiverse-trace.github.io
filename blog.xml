@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.6.33</generator>
+<generator>quarto-1.6.36</generator>
 <lastBuildDate>Mon, 23 Sep 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Dual licensing R packages with code and data</title>
