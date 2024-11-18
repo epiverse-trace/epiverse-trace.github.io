@@ -10,7 +10,185 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.36</generator>
-<lastBuildDate>Mon, 23 Sep 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 18 Nov 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Using LLM agents to review tutorials ‘in character’ as learners</title>
+  <dc:creator>Adam Kucharski</dc:creator>
+  <dc:creator>Andree Valle Campos</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/ai-learner-review/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="turning-learner-personas-into-llm-agents" class="level2">
+<h2 class="anchored" data-anchor-id="turning-learner-personas-into-llm-agents">Turning learner personas into LLM agents</h2>
+<p>Part of the Epiverse-TRACE initiative involves development of training materials that span early, middle and late stage outbreak analysis and modelling tasks. To ensure that our tutorials are accessible to target audiences, we have developed a series of <a href="https://github.com/epiverse-trace/personas">learner personas</a> to inform the design of learning materials. These personas include the following:</p>
+<ul>
+<li><strong>Lucia</strong>, a Field Epidemiologist that use R for data cleaning, plotting and report for Outbreak response.</li>
+<li><strong>Juan</strong>, a Statistician and R user in a National Health Agency with constant deployment to outbreak response.</li>
+<li><strong>Patricia</strong>, a PhD student learning to use R and analyse Outbreak data for her collaborative project on GitHub.</li>
+<li><strong>Vania</strong>, a professor who needs ready-to-use training for her research and to pass on to students.</li>
+<li><strong>Danielle</strong>, a Trainer that wants to remix content to create specific training materials for public health practitioners.</li>
+</ul>
+<p>As the volume of training materials increases, we have explored automating the generation of initial reviews using large language models (LLMs) that take the form of ‘in character’ agents with instructions to provide constructive comments. This reflects a wider focus within the field of outbreak analytics on how LLMs agents can be used to increase the efficiency and scalability of common tasks (e.g.&nbsp;<a href="https://www.thelancet.com/journals/lanmic/article/PIIS2666-5247(24)00104-6/fulltext">van Hoek et al, Lancet Microbe, 2024</a> ).</p>
+<p>To generate the AI tutorial reviews, we use the OpenAI GPT-4 API, via the <code>openai</code> R package, as described in <a href="https://github.com/adamkucharski/llm-api-scripts/">this repository</a>. We also use the <code>gh</code> package to load the <code>.Rmd</code> materials from a given repository (e.g.&nbsp;<code>epiverse-trace/tutorials-middle</code>). Full illustrative code is <a href="https://github.com/adamkucharski/llm-api-scripts/scripts/content_review_gpt.R">available here</a>, with the GPT-4 API prompts outlined below.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define first prompt</span></span>
+<span id="cb1-2">user_prompt_1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"You are the following person, and give all your answers in character:"</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load Lucia persona</span></span>
+<span id="cb1-5">persona_bio <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">read_file</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://raw.githubusercontent.com/epiverse-trace/personas/master/lucia-outbreaks.qmd"</span>)</span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Define second prompt</span></span>
+<span id="cb1-8">user_prompt_2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Now suppose you want to complete the following tutorial about outbreak analysis in R. The content is in R markdown but would be knitted to HTML in reality, with additional figures where relevant. Provide a critique of the tutorial from your perspective as a learner. What is unclear? What is useful? What is difficult? What could be refined? Support comments with brief quotes. In your feedback be succinct, positive, constructive and specific. State what content to keep and what to improve. Provide clear suggestions for next steps to remove, change or add content. Note that visualisations will be in the tutorial, but are not shown in the Rmd, so do not comment on these. Summarise your review and suggestions for specific improvements in short bullet point paragraphs. If some of the points are similar, amalgamate these into a single bullet point. </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Call OpenAI API (credentials must already be defined - see full illustrative code link above)</span></span>
+<span id="cb1-11">output <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">create_chat_completion</span>(</span>
+<span id="cb1-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">model =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"gpt-4"</span>,</span>
+<span id="cb1-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">messages =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"role"</span><span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"user"</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"content"</span> <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">paste0</span>(user_prompt_1,persona_bio,</span>
+<span id="cb1-14">                                                          user_prompt_2,tutorial_contents))</span>
+<span id="cb1-15">    )</span>
+<span id="cb1-16"></span>
+<span id="cb1-17"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Write review to .md using readr</span></span>
+<span id="cb1-18"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">write_lines</span>(output,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"output_review.md"</span>))</span></code></pre></div>
+</section>
+<section id="reviewing-transmissibilty-training-materials-as-a-senior-academic" class="level2">
+<h2 class="anchored" data-anchor-id="reviewing-transmissibilty-training-materials-as-a-senior-academic">Reviewing transmissibilty training materials as a senior academic</h2>
+<p>To illustrate the sort of reviews that can be generated with the above approach, the below is the output produced when we imported the <a href="https://epiverse-trace.github.io/personas/vania-academica.html">Vania senior academic persona</a> alongside an early pre-Alpha version of the training materials for our transmissibility estimation tutorial:</p>
+<blockquote class="blockquote">
+<p>Overall, the tutorial is well-structured and provides a comprehensive guide on how to use the <code>EpiNow2</code> package to estimate transmission metrics from case data. However, there are several areas that could be improved to enhance clarity and understanding for learners like me.</p>
+<ol type="1">
+<li><p><strong>Prerequisites</strong>: The prerequisites section could be expanded to include specific resources for learners to review the necessary concepts. For instance, links to resources on Bayesian analysis and the effective reproduction number would be helpful.</p></li>
+<li><p><strong>Jargon and Terminology</strong>: The tutorial contains several technical terms and jargon that could be confusing for learners. For example, terms like “Bayesian inference”, “posterior probability”, “likelihood”, and “prior probability” are used without clear explanations. Providing definitions or links to resources for these terms would be beneficial.</p></li>
+<li><p><strong>Code Explanation</strong>: While the tutorial does a good job of explaining what the code does, it could provide more context on why certain functions or packages are used. For instance, it would be helpful to explain why the <code>EpiNow2</code> package is used and how it differs from other packages.</p></li>
+<li><p><strong>Visualizations</strong>: Although visualizations are not shown in the Rmd, it would be beneficial to explain what learners should expect to see in the visualizations and how to interpret them.</p></li>
+<li><p><strong>Exercises</strong>: The tutorial lacks exercises for learners to practice the concepts and skills they have learned. Including exercises with solutions would greatly enhance the learning experience.</p></li>
+</ol>
+<p>Suggestions for improvements:</p>
+<ul>
+<li>Expand the prerequisites section to include specific resources for learners to review necessary concepts.</li>
+<li>Provide definitions or links to resources for technical terms and jargon.</li>
+<li>Provide more context on why certain functions or packages are used.</li>
+<li>Explain what learners should expect to see in the visualizations and how to interpret them.</li>
+<li>Include exercises with solutions for learners to practice the concepts and skills they have learned.</li>
+</ul>
+</blockquote>
+</section>
+<section id="reviewing-forecast-materials-as-a-field-epidemiologist" class="level2">
+<h2 class="anchored" data-anchor-id="reviewing-forecast-materials-as-a-field-epidemiologist">Reviewing forecast materials as a field epidemiologist</h2>
+<p>To further illustrate review outputs, the below is what was produced when we imported the <a href="https://epiverse-trace.github.io/personas/lucia-outbreaks.html">Lucia field epidemiologist persona</a> alongside an early pre-Alpha version of the training materials for our forecasting tutorial:</p>
+<blockquote class="blockquote">
+<p><strong>Positive Feedback:</strong></p>
+<ol type="1">
+<li>The tutorial is well-structured and follows a logical progression, which makes it easier to follow.</li>
+<li>The use of real-world examples and datasets (COVID-19 and Ebola) makes the tutorial more relatable and practical.</li>
+<li>The inclusion of questions, objectives, prerequisites, and key points at the beginning and end of the tutorial respectively, helps to guide the learning process.</li>
+<li>The tutorial provides a good balance between theory and practice, with clear explanations and practical coding examples.</li>
+<li>The use of callouts to highlight important information or provide additional context is very helpful.</li>
+</ol>
+<p><strong>Constructive Feedback:</strong></p>
+<ol type="1">
+<li>The tutorial assumes a certain level of familiarity with R and statistical concepts, which might be challenging for beginners. It would be helpful to provide more explanations or links to resources for beginners.</li>
+<li>The code chunks are quite complex and could be broken down into smaller parts with more explanations.</li>
+<li>The tutorial could benefit from more visualizations to illustrate the concepts and results.</li>
+<li>The challenge section could provide more guidance or hints to help learners complete the task.</li>
+</ol>
+<p><strong>Suggestions for Improvement:</strong></p>
+<ol type="1">
+<li>Provide more explanations or links to resources for beginners to learn R and statistical concepts.</li>
+<li>Break down complex code chunks into smaller parts with more explanations.</li>
+<li>Include more visualizations to illustrate the concepts and results.</li>
+<li>Provide more guidance or hints in the challenge section to help learners complete the task.</li>
+<li>Include a glossary of terms or a list of R packages used in the tutorial for quick reference.</li>
+</ol>
+</blockquote>
+</section>
+<section id="overcoming-feedback-bottlenecks" class="level2">
+<h2 class="anchored" data-anchor-id="overcoming-feedback-bottlenecks">Overcoming feedback bottlenecks</h2>
+<p>A challenge with LLMs trained for general use is finding domain-specific tasks where they can add sufficient value beyond existing human input. Tasks like providing early sense checking and tailored feedback, particularly from differing perspectives, therefore has potential to overcome common bottlenecks in developing training materials (e.g.&nbsp;providing initial comments and flagging obvious issues while waiting for more detailed human feedback).</p>
+<p>As Epiverse-TRACE training materials continue to develop, we plan to explore further uses beyond simple first-pass reviews. For example, LLMs are well suited to synthesising qualitative feedback, increasing the range of insights that can be collected and summarised from learners as we move into beta testing. We also hope to identify opportunities where LLMs can help supplement the learner experience, as demonstrated by emerging tools like <a href="http://rtutor.ai/">RTutor</a> for descriptive plotting functionality in R, which combines generation of code in response to user queries with translation into shiny outputs.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2024,
+  author = {Kucharski, Adam and Valle Campos, Andree},
+  title = {Using {LLM} Agents to Review Tutorials “in Character” as
+    Learners},
+  date = {2024-11-18},
+  url = {https://epiverse-trace.github.io/posts/ai-learner-review/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2024" class="csl-entry quarto-appendix-citeas">
+Kucharski, Adam, and Andree Valle Campos. 2024. <span>“Using LLM Agents
+to Review Tutorials <span>‘in Character’</span> as Learners.”</span>
+November 18, 2024. <a href="https://epiverse-trace.github.io/posts/ai-learner-review/">https://epiverse-trace.github.io/posts/ai-learner-review/</a>.
+</div></div></section></div> ]]></description>
+  <category>tutorials</category>
+  <category>R</category>
+  <category>R package</category>
+  <guid>https://epiverse-trace.github.io/posts/ai-learner-review/</guid>
+  <pubDate>Mon, 18 Nov 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Dual licensing R packages with code and data</title>
   <dc:creator>Joshua Lambert</dc:creator>
@@ -2098,49 +2276,6 @@ V0.1.0.”</span> January 9, 2024. <a href="https://epiverse-trace.github.io/pos
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/simulist_v0.1.0/</guid>
   <pubDate>Tue, 09 Jan 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>cfr v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new cfr version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Initial CRAN submission of <em>cfr</em>, an R package to estimate the severity of a disease and ascertainment of cases while correcting for delays in outcomes of reported cases being known.</p>
-<p>This release includes:</p>
-<ol type="1">
-<li>Functions for the overall severity of an outbreak, the overall severity of an outbreak estimated with an expanding time series of data, and the time-varying severity of an outbreak,</li>
-<li>A function to estimate the number of outcomes to be expected from a given number of cases assuming a user-specified distribution of delays between cases and outcomes being known,</li>
-<li>A function to estimate the overall (static) ascertainment of cases in an outbreak by comparing the relevant severity measures against a user-specified baseline severity (note that functionality for time-varying ascertainment is expected to be included in future versions, and an older implementation of this functionality was removed just prior to release),</li>
-<li>A data preparation generic with an S3 method for the <code>&lt;incidence2&gt;</code> class from the <em>incidence2</em> package,</li>
-<li>Example daily case and death data from the 1976 Ebola Virus Disease outbreak as reported in Camacho et al.&nbsp;(2014). <a href="https://doi.org/10.1016/j.epidem.2014.09.003" class="uri">https://doi.org/10.1016/j.epidem.2014.09.003</a>,</li>
-<li>Example daily case and death data from the Covid-19 pandemic over the range 2020-01-01 to 2022-12-31 from the 19 countries with over 100,00 deaths over this period, as taken from the <em>covidregionaldata</em> package which is no longer on CRAN,</li>
-<li>Vignettes describing how to get started with severity estimation, and more detailed workflows on different kinds of severity estimation,</li>
-<li>A vignette on working with data from the <em>incidence2</em> package, and a vignette on working with delay distributions,</li>
-<li>100% code coverage,</li>
-<li>Workflows to render the vignettes and README as a website.</li>
-</ol>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2023,
-  author = {Epiverse-TRACE development team, The},
-  title = {Cfr V0.1.0},
-  date = {2023-11-22},
-  url = {https://epiverse-trace.github.io/posts/cfr_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2023" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2023. <span>“Cfr V0.1.0.”</span>
-November 22, 2023. <a href="https://epiverse-trace.github.io/posts/cfr_v0.1.0/">https://epiverse-trace.github.io/posts/cfr_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/cfr_v0.1.0/</guid>
-  <pubDate>Wed, 22 Nov 2023 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

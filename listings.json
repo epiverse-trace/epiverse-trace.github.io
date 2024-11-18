@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/ai-learner-review/index.html",
       "/posts/data-licensing.html",
       "/posts/epiparameter_v0.2.0/index.html",
       "/posts/copilot-workspace/index.html",
