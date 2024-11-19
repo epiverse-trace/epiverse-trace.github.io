@@ -10,7 +10,7 @@ format:
     toc: true
 ---
 
-At Epiverse-TRACE, we continuously develop packages, which risks making us (hyper)focused on the everyday changes. Feature here, bug fix there. We can call this "development by Pull Request," where we introduce changes in small batches. Of course, it is a developer's responsibility to also take into consideration the entire codebase. However, to sometimes enforce taking that step back, [our contribution blueprints outline that we do full package reviews](https://epiverse-trace.github.io/blueprints/code-review.html#full-package-review). In this blog post, I highlight what a full package review is, how it is set up, and some of my experiences with this process.
+At Epiverse-TRACE, we continuously develop packages, which risks making us (hyper)focused on the everyday changes. Feature here, bug fix there. We can call this "development by Pull Request," where we introduce changes in relatively small batches, compared to general development without compartmentalization. Of course, it is a developer's responsibility to also take into consideration the entire codebase. However, to sometimes enforce taking that step back, [our contribution blueprints outline that we do full package reviews](https://epiverse-trace.github.io/blueprints/code-review.html#full-package-review). In this blog post, I highlight what a full package review is, how it is set up, and some of my experiences with this process.
 
 :::{.callout-tip}
 In the "How we work" series, Epiverse-TRACE contributors share how they work. This does not necessarily reflect a standardized way of working, and helps highlight how diverse coding practices can be.
@@ -18,11 +18,11 @@ In the "How we work" series, Epiverse-TRACE contributors share how they work. Th
 
 ## What is a full package review?
 
-You may not be surprised to hear that a full package review covers every part of a package ever written. This means everything is in scope, from day one of development. It does not mean reviewing the entire history per se, but the entire codebase as it stands. As a maintainer, that can be scary, because it can include code you did not write yourself.
+You may not be surprised to hear that a full package review covers every part of a package ever written. This means the entire current codebase is in scope, from day one of development. It does not necessitate reviewing the entire commit history per se, focussing on the package as it stands at that time. As a maintainer that can be scary, because it can include code you did not write yourself, and may not know how to justify (at least that is what happens for me).
 
 Our regular code reviews take place on GitHub, using Pull Requests. For full package reviews, we also use Pull Requests in Epiverse-TRACE. This means that all the features from GitHub are available to make suggestions, approve the code, or leave precise comments at a specific line in the code.
 
-What is different, is that all the files are considered new, and part of the review. This includes the files already present in our [package template](https://github.com/epiverse-trace/packagetemplate), but also all test files, documentation, and more.
+What is different, is that all the files are considered new, and part of the review. This includes the files already present in our [package template](https://github.com/epiverse-trace/packagetemplate), but also all test files, documentation, and more. A full package review is usually triggered by an upcoming release, either on GitHub or CRAN.
 
 ## How do I set one up?
 
