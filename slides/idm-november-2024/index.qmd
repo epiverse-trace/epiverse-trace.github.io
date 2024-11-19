@@ -1,0 +1,22 @@
+---
+title: "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling"
+author:
+  - name: "Joshua W. Lambert"
+    orcid: "0000-0001-5218-3046"
+date: "2024-11-08"
+categories: [R, R packages, outbreak analytics, conference, community]
+---
+
+This presentation (18 minutes, plus 5 minutes for questions) was delivered at the inaugural [Infectious Disease Modelling (IDM) Conference](https://idmconference.net/) in Bangkok, Thailand on 8th November 2024.
+
+## Overview
+
+This talk presented an overview of the Epiverse-TRACE ecosystem of R packages, and outlined the need for reliable, easy-to-use tooling for infectious disease outbreak analytics, as well as Epiverse-TRACE training material, community and the role Epiverse-TRACE can play as a co-creator in public health and open-source software development and maintenance. 
+
+## Slides
+
+```{=html}
+<iframe width="780" height="500" src="IDM_Joshua_Lambert.pdf"></iframe>
+```
+
+A recording of the talk may become available in the future and if so a link will be provided to watch the presentation and questions in full.
