@@ -11,7 +11,7 @@ This presentation (18 minutes, plus 5 minutes for questions) was delivered at th
 
 ## Overview
 
-This talk presented an overview of the Epiverse-TRACE ecosystem of R packages, and outlined the need for reliable, easy-to-use tooling for infectious disease outbreak analytics, as well as Epiverse-TRACE training material, community and the role Epiverse-TRACE can play as a co-creator in public health and open-source software development and maintenance. 
+This talk presented an overview of the Epiverse-TRACE ecosystem of R packages, and outlined the need for reliable, easy-to-use tooling for infectious disease outbreak analytics, as well as Epiverse-TRACE training material, community and the role Epiverse-TRACE can play as a co-creator in public health and open-source software development and maintenance.
 
 ## Slides
 
