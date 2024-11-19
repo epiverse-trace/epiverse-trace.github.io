@@ -10,7 +10,51 @@
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.6.36</generator>
-<lastBuildDate>Wed, 09 Oct 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 08 Nov 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling</title>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <link>https://epiverse-trace.github.io/slides/idm-november-2024/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>This presentation (18 minutes, plus 5 minutes for questions) was delivered at the inaugural <a href="https://idmconference.net/">Infectious Disease Modelling (IDM) Conference</a> in Bangkok, Thailand on 8th November 2024.</p>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This talk presented an overview of the Epiverse-TRACE ecosystem of R packages, and outlined the need for reliable, easy-to-use tooling for infectious disease outbreak analytics, as well as Epiverse-TRACE training material, community and the role Epiverse-TRACE can play as a co-creator in public health and open-source software development and maintenance.</p>
+</section>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<iframe width="780" height="500" src="IDM_Joshua_Lambert.pdf"></iframe>
+<p>A recording of the talk may become available in the future and if so a link will be provided to watch the presentation and questions in full.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w._lambert2024,
+  author = {W. Lambert, Joshua},
+  title = {Epiverse-TRACE: {A} Collaborative Software Ecosystem for
+    Outbreak Analysis and Modelling},
+  date = {2024-11-08},
+  url = {https://epiverse-trace.github.io/slides/idm-november-2024/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2024" class="csl-entry quarto-appendix-citeas">
+W. Lambert, Joshua. 2024. <span>“Epiverse-TRACE: A Collaborative
+Software Ecosystem for Outbreak Analysis and Modelling.”</span> November
+8, 2024. <a href="https://epiverse-trace.github.io/slides/idm-november-2024/">https://epiverse-trace.github.io/slides/idm-november-2024/</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>R packages</category>
+  <category>outbreak analytics</category>
+  <category>conference</category>
+  <category>community</category>
+  <guid>https://epiverse-trace.github.io/slides/idm-november-2024/</guid>
+  <pubDate>Fri, 08 Nov 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Demo: Comparing vaccination strategies with finalsize</title>
   <dc:creator>Hugo Gruson</dc:creator>
