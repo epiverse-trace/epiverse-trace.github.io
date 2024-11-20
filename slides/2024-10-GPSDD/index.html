@@ -240,6 +240,46 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <section id="slides" class="level2">
 <h2 class="anchored" data-anchor-id="slides">Slides</h2>
 <iframe width="780" height="500" src="Epiverse_finalsize_demo.pdf"></iframe>
+</section>
+<section id="transcript" class="level2">
+<h2 class="anchored" data-anchor-id="transcript">Transcript</h2>
+<p>In this presentation, I’ll demonstrate what Epiverse tools can do and explain why they need to be accessible to everyone.</p>
+<p>Let’s focus on a fictional situation. Imagine an outbreak is ongoing in Senegal. The good news in this scenario is that we have a vaccine with 80% efficacy, but the problem is that we only have 1 million doses, which isn’t enough to vaccinate the entire population. A key question for public health officials or decision-makers is how to distribute these limited doses.</p>
+<p>To explain why different distribution methods can lead to different outcomes, I need to discuss the concept of herd immunity. In a partially immunized population, even individuals who are not vaccinated can receive indirect protection from those who are vaccinated. For example, in a fictional population of individuals A, B, C, and D, if A is infected, they could infect B, who might then infect C. However, if B is vaccinated, the transmission chain is broken, and C, though unvaccinated, remains protected. This indirect protection is a key element of herd immunity.</p>
+<p>With this understanding, we can ask how to distribute the 1 million doses to maximize the overall impact. Let’s consider three scenarios:</p>
+<ol type="1">
+<li>Scenario A: Give all the doses to the youngest age group</li>
+<li>Scenario B: Give all the doses to the oldest age group</li>
+<li>Scenario C: Distribute the doses across the entire population without prioritizing any specific age group</li>
+</ol>
+<p>To analyze these scenarios, we use the <a href="https://epiverse-trace.github.io/finalsize">finalsize</a> tool in R. This tool requires five inputs:</p>
+<ul>
+<li>The reproduction number, which indicates how contagious the pathogen is. For example, for COVID-19, it was around 2-3.</li>
+<li>The contact matrix, which shows how frequently different age groups interact. For instance, teenagers tend to interact more with their peers.</li>
+<li>The population pyramid, indicating the size of each age group. For example, in Senegal, the pyramid might look like a triangle, with many young individuals and fewer older individuals.</li>
+<li>Vaccine efficacy, describing how well the vaccine protects vaccinated individuals compared to unvaccinated ones.</li>
+<li>The vaccine distribution strategy, representing scenarios A, B, or C.</li>
+</ul>
+<p>Running this tool produces output in the form of tables and visualizations. This table shows:</p>
+<ul>
+<li>Age groups in one column</li>
+<li>Susceptibility groups (vaccinated or unvaccinated) in another column</li>
+<li>The proportion of infected individuals in each group</li>
+</ul>
+<p>While tables are informative, visualizations often make it easier to understand the results. For instance, a plot might show:</p>
+<ul>
+<li>The number of infections on the y-axis</li>
+<li>Age groups on the x-axis, with the youngest on the left and the oldest on the right</li>
+<li>Different colors representing the three scenarios: red for distributing doses evenly without prioritization, green for prioritizing older individuals, and blue for prioritizing younger individuals</li>
+</ul>
+<p>From this visualization, two insights emerge:</p>
+<ol type="1">
+<li><p>Summing the total number of infections across all age groups reveals that distributing doses evenly (Scenario C) results in fewer infections overall than prioritizing either the youngest or oldest groups. This means that in this fictional scenario, it’s better to vaccinate as many people as possible without prioritizing a specific age group.</p></li>
+<li><p>Interestingly, vaccinating everyone provides greater indirect protection to the youngest age group than prioritizing them directly. This result may seem counterintuitive, but it highlights the significant indirect benefits of herd immunity.</p></li>
+</ol>
+<p>The model presented here is simple, assuming uniform vaccine efficacy and single-dose administration. However, the tool can handle much more complex scenarios. For example, we could account for age-specific fatality rates, regional differences in contact patterns, or vaccines requiring multiple doses. While I used a straightforward example, these tools allow for tailored, detailed analyses for any context.</p>
+<p>It’s important to emphasize that these insights are specific to this fictional scenario in Senegal. If we applied the same analysis in another country, like France, the results could be entirely different due to differences in population structure and contact patterns. This variability underscores the importance of tailoring analyses to local contexts.</p>
+<p>This brings me to the idea of localism, which is central to our work at data.org. Insights derived from one region may not be applicable elsewhere due to differences in population pyramids and interaction patterns. This is why it’s critical to make these tools open-source and freely accessible, enabling every country to conduct its own analyses.</p>
 
 
 </section>
