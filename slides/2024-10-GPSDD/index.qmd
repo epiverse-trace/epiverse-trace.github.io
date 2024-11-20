@@ -40,8 +40,8 @@ To analyze these scenarios, we use the [finalsize](https://epiverse-trace.github
 - The vaccine distribution strategy, representing scenarios A, B, or C.
 
 Running this tool produces output in the form of tables and visualizations. This table shows:
-- Age groups in one column
 
+- Age groups in one column
 - Susceptibility groups (vaccinated or unvaccinated) in another column
 - The proportion of infected individuals in each group
 
