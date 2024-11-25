@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="joshwlambert">
-<meta name="dcterms.date" content="2024-05-07">
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2024-11-21">
 
-<title>Tidyverse book on code review – Epiverse-TRACE developer space</title>
+<title>epiparameter v0.3.0 – Epiverse-TRACE developer space</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,23 +25,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../hexlogo.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1c9878323f1efdad1478ad4f07a15c4f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-55d960f03f0784d46392ab88d5320c8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../hexlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-1c9878323f1efdad1478ad4f07a15c4f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-55d960f03f0784d46392ab88d5320c8a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,10 +80,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Tidyverse book on code review – Epiverse-TRACE developer space">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="epiparameter v0.3.0 – Epiverse-TRACE developer space">
+<meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="Tidyverse book on code review – Epiverse-TRACE developer space">
+<meta name="twitter:title" content="epiparameter v0.3.0 – Epiverse-TRACE developer space">
+<meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
 </head>
@@ -91,11 +93,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE developer space</span>
     </a>
   </div>
@@ -111,19 +113,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
         <li>
-    <a class="dropdown-item" href="../blog.html">
+    <a class="dropdown-item" href="../../blog.html">
  <span class="dropdown-text">Blog</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../blog.html#category=R">
+    <a class="dropdown-item" href="../../blog.html#category=R">
  <span class="dropdown-text">Blog - Articles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../blog.html#category=new-release">
+    <a class="dropdown-item" href="../../blog.html#category=new-release">
  <span class="dropdown-text">Blog - Release notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../presentations.html">
+    <a class="dropdown-item" href="../../presentations.html">
  <span class="dropdown-text">Presentations</span></a>
   </li>  
     </ul>
@@ -134,7 +136,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-use">    
         <li>
-    <a class="dropdown-item" href="../getting-started.html">
+    <a class="dropdown-item" href="../../getting-started.html">
  <span class="dropdown-text">Getting started</span></a>
   </li>  
         <li>
@@ -149,11 +151,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">    
         <li>
-    <a class="dropdown-item" href="../learn.html">
+    <a class="dropdown-item" href="../../learn.html">
  <span class="dropdown-text">Learning materials</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../resources.html">
+    <a class="dropdown-item" href="../../resources.html">
  <span class="dropdown-text">Resources</span></a>
   </li>  
     </ul>
@@ -168,13 +170,13 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="dropdown-text">Good first issues</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../get-involved.html">
+    <a class="dropdown-item" href="../../get-involved.html">
  <span class="dropdown-text">Get involved</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../people.html"> 
+    <a class="nav-link" href="../../people.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -187,51 +189,111 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">epiparameter v0.3.0</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">new-release</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>The Epiverse-TRACE development team </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 21, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Tidyverse book on code review</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">GitHub</div>
-  </div>
-  </div>
-
-
-
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>joshwlambert </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">May 7, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-</main> <!-- /main -->
+<p>We are very excited to announce the release of a new epiparameter version v0.3.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>The third minor release of the {epiparameter} R package contains a range of updates and improvements to the package. The principal aim of this release is to simplify, clarify and enhance the classes and class methods when working with epidemiological parameters in R.</p>
+<p>The are a large number of <strong><em>breaking changes</em></strong> in this release, primarily functions and function arguments being renamed or restructured, see the <em>Breaking changes</em> section for an overview.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>The library of epidemiological parameters has been updated to include 3 new Chikungunya parameter entries. The Mpox parameters previously missing from the Guzzetta et al.&nbsp;entry have been added (#346 &amp; #374).</li>
+<li>A <code>c()</code> method has been added for <code>&lt;epiparameter&gt;</code> and <code>&lt;multi_epiparameter&gt;</code> objects (#368).</li>
+<li>An <code>aggregate()</code> method has been added for <code>&lt;multi_epiparameter&gt;</code> to enable consensus distributions to be built utilising the mixture distribution class from <a href="https://CRAN.R-project.org/package=distributional">{distributional}</a> (#388).</li>
+<li>Infrastructure has been added to the package to allow translations of messages/warnings/errors printed to the console. (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #367).</li>
+<li><code>convert_summary_stats_to_params()</code> can now convert from median and dispersion for a lognormal distribution (#378).</li>
+<li>The <code>data_dictionary.json</code> has been enhanced to improve validation of the library of epidemiological parameters (<code>parameters.json</code>) (#379).</li>
+<li>An interactive network showing all of the <code>&lt;epiparameter&gt;</code> S3 methods has been added to the <code>design_principles.Rmd</code> vignette (#383).</li>
+<li>The <code>data_from_epireview.Rmd</code> article has been improved and updated with new changes from {epireview} (<span class="citation" data-cites="CarmenTamayo">@CarmenTamayo</span> &amp; <span class="citation" data-cites="cm401">@cm401</span> &amp; <span class="citation" data-cites="kellymccain28">@kellymccain28</span>, #305 &amp; #373).</li>
+<li>Parameter units have been added to every entry in the {epiparameter} library (<code>parameters.json</code>) and to the <code>$metadata</code> element in <code>&lt;epiparameter&gt;</code> objects. The <code>create_metadata()</code> function now has a <code>units</code> argument to construct metadata lists (#391).</li>
+<li>Improved <code>database.Rmd</code> vignette by adding a short citation to the reference column (<span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span>, #348).</li>
+<li>The <code>family()</code> method for <code>&lt;epiparameter&gt;</code> has been improved to allow access to distribution names for transformed (e.g.&nbsp;<code>mixture</code> and <code>truncated</code> distributions) and untransformed (e.g.&nbsp;<code>gamma</code> and <code>lognormal</code>) distributions with a new argument <code>base_dist</code> and a new internal function <code>.distributional_family()</code> (#398).</li>
+<li><code>as_epiparameter()</code> can now work with the SARS parameters from {epireview} (#407).</li>
+</ul>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>The <code>&lt;epidist&gt;</code> class has been renamed <code>&lt;epiparameter&gt;</code> to avoid confusion with the similar R package <a href="https://github.com/epinowcast/epidist">{epidist}</a> (#360).</li>
+<li>Many functions that used <code>epidist</code> in their names have been renamed to use <code>epiparameter</code> due to the renaming of the class (#360).</li>
+<li>The function signatures of <code>epiparameter()</code> and <code>new_epiparameter()</code> functions (previously <code>epidist()</code> and <code>new_epidist()</code>) have been updated to collapse the <code>prob_dist</code>, <code>prob_dist_params</code>, <code>discretise</code> and <code>truncation</code> arguments into <code>prob_distribution</code>, which accepts the output of <code>create_prob_distribution()</code> (#381).</li>
+<li>The <code>epi_dist</code> argument has been renamed <code>epi_name</code>. This is to clarify that {epiparameter} can work with epidemiological parameters that take a variety of forms (e.g.&nbsp;point estimates, ranges, probability distributions, etc.) (#390).</li>
+<li>The <code>&lt;vb_epidist&gt;</code> class and it’s methods have been removed from the package. It was not being used and was increasing the complexity and maintenance load of the package (#359).</li>
+<li><code>create_prob_dist()</code> has been renamed to <code>create_prob_distribution()</code> (#381).</li>
+<li><code>validate_epiparameter()</code> (previously <code>validate_epidist()</code>) has been renamed <code>assert_epiparameter()</code>, and <code>test_epiparameter()</code> has been added, with the aim to harmonise design with <a href="https://github.com/socialcontactdata/contactmatrix">{contactmatrix}</a> and the messages and errors have been improved (#366 &amp; #402).</li>
+<li>The minimum version of R required by the package is now 4.1.0 due to the use of the base R pipe (<code>|&gt;</code>) in dependencies, and the R-CMD-check workflow on GitHub actions now explicitly runs on the minimum version of R stated in the <code>DESCRIPTION</code> (#384 &amp; #405).</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>Epidemiological parameter entries in the library stored with lognormal distributions, parameterised as median and dispersion are now converted to meanlog and sdlog correctly when creating an <code>&lt;epiparameter&gt;</code> (when <code>auto_calc_params = TRUE</code>) (#381).</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li><code>epidist_db()</code> has been deprecated. It is replaced by <code>epiparameter_db()</code> (#360 &amp; #399).</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/CarmenTamayo">@CarmenTamayo</a> <a href="https://github.com/adamkucharski">@adamkucharski</a> <a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/jamesmbaazam">@jamesmbaazam</a> <a href="https://github.com/joshwlambert">@joshwlambert</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Epiparameter V0.3.0},
+  date = {2024-11-21},
+  url = {https://epiverse-trace.github.io/posts/epiparameter_v0.3.0/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2024. <span>“Epiparameter
+V0.3.0.”</span> November 21, 2024. <a href="https://epiverse-trace.github.io/posts/epiparameter_v0.3.0/">https://epiverse-trace.github.io/posts/epiparameter_v0.3.0/</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
