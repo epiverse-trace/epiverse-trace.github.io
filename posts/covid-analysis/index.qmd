@@ -4,7 +4,7 @@ author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
 date: "2024-11-28"
-categories: [tutorials, R, R package]
+categories: [COVID, R, real-time analysis, pandemic preparedness, H5N1]
 format:
   html:
     toc: true
