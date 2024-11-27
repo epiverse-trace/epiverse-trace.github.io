@@ -1,5 +1,5 @@
 ---
-title: "How well are we prepared to analyse an influenza pandemic? A brief perspective on analysis conducted for UK government advisory groups during COVID-19"
+title: "How well prepared are we to analyse an influenza pandemic? A brief perspective on analysis conducted for UK government advisory groups during COVID-19"
 author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
