@@ -181,4 +181,4 @@ CoMix data are now available as part of the \{socialmixr\} package, with code fo
 
 ## Concluding thoughts
 
-Code was generally made available alongside public reports by LSHTM during COVID-19, except for very simple calculations. Several key functions are now available in R packages developed since the emergence of COVID-19, turning tasks that would have taken days into tasks that require only hours, but there are still some remaining bottlenecks to ensure that the methods would be applicable easily to H5N1, meaning some tailored tasks would take hours when - with some further refinement - they could take minute.
+Code was generally made available alongside public reports by LSHTM during COVID-19, except for very simple calculations. Several key functions are now available in R packages developed since the emergence of COVID-19, turning tasks that would have taken days into tasks that require only hours, but there are still some remaining bottlenecks to ensure that the methods would be applicable easily to H5N1, meaning some customised tasks for pandemic influenza would take hours when - with some further refinement - they could take minutes.
