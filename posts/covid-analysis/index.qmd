@@ -33,23 +33,23 @@ These are either marked as available (✅ ), not available (❌), or partially a
 
 This is not an exclusive list of work performed by myself and colleagues in the Centre for Mathematical Modelling of Infectious Diseases at LSHTM; there is a larger [CMMID repository of real-time work](https://cmmid.github.io/topics/covid19/), as well as a large volume of published papers in academic journals and reports on the gov.uk website. However, I hope this initial post can provide a useful summary of tasks that were performed, and framework for evaluating wider efforts required for a pandemic.
 
-How well the UK response performed, and which areas could be strengthened, are topics currently being examined by the COVID Inquiry, and will not be covered here. If readers are interested, there are some reflections from members of the UK modelling community, and recommendations for improvements, in [Sherratt et al, 2024, Wellcome Open Research](https://wellcomeopenresearch.org/articles/9-12/v1?s3BucketUrl=https%3A%2F%2Fwellcomeopenresearch.s3.eu-west-1.amazonaws.com&gtmKey=GTM-5P673KJ&submissionUrl=%2Ffor-authors%2Fpublish-your-research&otid=23226e40-fdd0-4acd-97a3-d9bad93befed&immUserUrl=https%3A%2F%2Fwor-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F).
+The overall effectiveness of the UK response, and which areas could be strengthened, are topics currently being examined by the COVID Inquiry, and will not be covered here. If readers are interested, there are some broader reflections from members of the UK modelling community, and recommendations for improvements, in [Sherratt et al, 2024, Wellcome Open Research](https://wellcomeopenresearch.org/articles/9-12/v1?s3BucketUrl=https%3A%2F%2Fwellcomeopenresearch.s3.eu-west-1.amazonaws.com&gtmKey=GTM-5P673KJ&submissionUrl=%2Ffor-authors%2Fpublish-your-research&otid=23226e40-fdd0-4acd-97a3-d9bad93befed&immUserUrl=https%3A%2F%2Fwor-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F).
 
 ### 28 Jan 2020: Early estimation of transmissibility and control
 
 [Code](https://github.com/adamkucharski/2020-ncov) ✅  | Package ⏳ | Off-shelf ❌
 
-This analysis focused on early estimation of tranmissiblity and effect of control, and brought together reported cases in China, exported cases identified internationally, and infections detected on evacuation flights. A stochastic SEIR model was fitted with SMC to estimate how $R_t$ varied over time, to distinguish between an epidemic that ended because of control vs immunity. Later published as [Kucharski et al, Lancet Inf Dis, 2020](https://www.thelancet.com/article/S1473-3099(20)30144-4/fulltext).
+This analysis in early 2020 focused on estimation of transmissiblity and subsequent effect of lockdown control measures, and brought together reported cases in China, exported cases identified internationally, and infections detected on evacuation flights. A stochastic SEIR model was fitted with SMC to estimate how $R_t$ varied over time, to distinguish between an epidemic that ended because of control vs immunity. Later published as [Kucharski et al, Lancet Inf Dis, 2020](https://www.thelancet.com/article/S1473-3099(20)30144-4/fulltext).
 
-The code used to generate estimates for the probability of a large outbreak given $R$ are now available in the Epiverse-TRACE [\{superspreading\}](https://epiverse-trace.github.io/superspreading/) package.
+The code used to generate estimates for the probability of a large outbreak given $R_0$ are now available in the Epiverse-TRACE [\{superspreading\}](https://epiverse-trace.github.io/superspreading/) package.
 
-**Suggested or ongoing development:** There are now much more efficient methods for performing the main real-time inference analysis, particularly the [\{dust\}](https://github.com/mrc-ide/dust) toolkit. The [\{seir\} package](https://github.com/LloydChapman/seir) is collating a library of simple model fitting implementations and a [branch](https://github.com/LloydChapman/seir/tree/early-wuhan) has implemented estimation of a fixed $R_0$ value in an SEIR model using early exported COVID cases. The next step would be to implement a time-varying reproduction number.
+**Suggested or ongoing development:** There are now much more efficient methods for performing the main real-time inference analysis, particularly the [\{dust\}](https://github.com/mrc-ide/dust) toolkit. The [\{seir\} package](https://github.com/LloydChapman/seir) is collating a library of simple model fitting implementations and a [branch](https://github.com/LloydChapman/seir/tree/early-wuhan) has implemented estimation of a fixed $R_0$ value in an SEIR model using early exported COVID cases. The next step would be to implement an example with a time-varying reproduction number.
 
 ### 2 Feb 2020: Early analysis of contact tracing effectiveness
 
 [Code](https://github.com/cmmid/ringbp) ✅  | [Package](https://github.com/epiforecasts/ringbp) ✅  | Off-shelf ⏳
 
-This was a paper for SPI-M-O: **Feasibility of controlling 2019-nCoV outbreaks by isolation of cases and contacts**, later published as [Hellewell et al, Lancet Global Health](https://www.thelancet.com/article/S2214-109X(20)30074-7/fulltext). It used a branching process model to explore how transmission (e.g. $R_0$ and % presymptomatic transmission) and control parameters (e.g. % contacts traced) could influence the risk of a large outbreak.
+Another early analysis was a paper for SPI-M-O: **Feasibility of controlling 2019-nCoV outbreaks by isolation of cases and contacts**, later published as [Hellewell et al, Lancet Global Health](https://www.thelancet.com/article/S2214-109X(20)30074-7/fulltext). It used a branching process model to explore how transmission (e.g. $R_0$ and % presymptomatic transmission) and control parameters (e.g. % contacts traced) could influence the risk of a large outbreak.
 
 **Suggested or ongoing development:** There are several issues on the [\{ringbp\}](https://github.com/epiforecasts/ringbp) package repo that, once complete, would allow for faster implementation for new pathogens, especially in combination with [\{epiparameter\}](https://epiverse-trace.github.io/epiparameter/). The [\{epichains\}](https://epiverse-trace.github.io/epichains/) package also allows for estimation of simpler branching processes (i.e. without targeted control like contact tracing).
 
@@ -57,25 +57,25 @@ This was a paper for SPI-M-O: **Feasibility of controlling 2019-nCoV outbreaks b
 
 [Code](https://github.com/thimotei/cCFRDiamondPrincess) ✅  | [Package](https://github.com/epiverse-trace/cfr/) ✅  | Off-shelf ⏳
 
-This analysis estimating the infection and case fatality ratio by age for COVID-19 using age-adjusted data from the outbreak on the Diamond Princess cruise ship. Later published as [Russell et al, Eurosurveillance, 2020](https://www.eurosurveillance.org/content/10.2807/1560-7917.ES.2020.25.12.2000256).
+This analysis estimated the infection and case fatality ratio by age for COVID-19 using age-adjusted data from the outbreak on the Diamond Princess cruise ship. Later published as [Russell et al, Eurosurveillance, 2020](https://www.eurosurveillance.org/content/10.2807/1560-7917.ES.2020.25.12.2000256).
 
-The methods used for this analysis are now implemented as the Epiverse-TRACE [\{cfr\} package](https://github.com/epiverse-trace/cfr/). There is also a ['how to' example for age-specific CFR estimation](https://epiverse-trace.github.io/howto/analyses/estimate_severity/cfr-stratified-severity.html).
+The methods used for this analysis are now implemented as the Epiverse-TRACE [\{cfr\}](https://github.com/epiverse-trace/cfr/) package. There is also a ['how to' example for age-specific CFR estimation](https://epiverse-trace.github.io/howto/analyses/estimate_severity/cfr-stratified-severity.html).
 
-**Suggested or ongoing development:** There are several [issues](https://github.com/epiverse-trace/cfr/issues) that would help strengthen \{cfr\}, especially for edge cases.
+**Suggested or ongoing development:** There are several [issues](https://github.com/epiverse-trace/cfr/issues) open that aim to strengthen \{cfr\}, especially for edge cases (e.g. very high CFR) or uncertainty when estimating underascertainment.
 
 ### 11 Mar 2020: pre-COVID social mixing patterns
 
 [Data](https://www.medrxiv.org/content/10.1101/2020.02.16.20023754v2.supplementary-material) ✅  | Package ❌ |  Off-shelf ❌
 
-This was a paper for SPI-M-O: **Some results from the BBC project on contact rates by context and age**, later expanded into [Klepac et al, MedRxiv, 2020](https://www.medrxiv.org/content/10.1101/2020.02.16.20023754v2). The underlying contact matrices were made available alongside the paper.
+Another early paper for SPI-M-O focused on social mixing patterns in the UK from the 2017/18 BBC public science project: **Some results from the BBC project on contact rates by context and age**, later expanded into [Klepac et al, MedRxiv, 2020](https://www.medrxiv.org/content/10.1101/2020.02.16.20023754v2). The underlying contact matrices were made available alongside the paper.
 
-**Suggested or ongoing development:** It would be useful to incorporate data into [\{socialmixr\}](https://epiforecasts.io/socialmixr/) to enable easy re-use in R. There is also an [issue to add eigenvector calculation](https://github.com/epiverse-trace/finalsize/issues/216), alongside the $R_t$ calculation already implemented in the \{finalsize\} package.
+**Suggested or ongoing development:** It would be useful to incorporate data into [\{socialmixr\}](https://epiforecasts.io/socialmixr/) to enable easy re-use in R. There is also an [issue to add eigenvector calculation](https://github.com/epiverse-trace/finalsize/issues/216), alongside the $R_t$ calculation already implemented in the \{finalsize\} package, to illustrate which age groups drive early epidemic growth. There is also an [incoming training episode](https://github.com/epiverse-trace/tutorials-late/pull/63) on contact matrices.
 
 ### 3 Mar 2020 onwards: Early population-level scenarios
 
 [Code](https://github.com/cmmid/covid-uk) ✅  | Package ✅  | Off-shelf ⏳
 
-This collection of population-level scenario modelling reports was later published as a summary paper, [Davies et al, Lancet Public Health, 2020](https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(20)30133-X/fulltext). The original model, known as `coivdm`, had a code base that would be reused for multiple epidemic waves, including novel variants. However, many the basic scenarios can be now be explored using the Epiverse-TRACE [\{epidemics\}](https://epiverse-trace.github.io/epidemics/). In particular, \{epidemics\} can simulate scenarios with multiple overlapping interventions targeting different age groups, and reflect uncertainty in $R_0$. A version of this package has already been used to [project future outbreak scenarios in Gaza](https://gaza-projections.org/).
+A collection of population-level scenario modelling reports generated between February and April 2020 was later published as a summary paper, [Davies et al, Lancet Public Health, 2020](https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(20)30133-X/fulltext). The original model, known as `coivdm`, had a code base that would be reused for multiple epidemic waves, including novel variants. However, many the basic scenarios can be now be explored using the Epiverse-TRACE [\{epidemics\}](https://epiverse-trace.github.io/epidemics/). In particular, \{epidemics\} can simulate scenarios with multiple overlapping interventions targeting different age groups, and reflect uncertainty in $R_0$. A version of this package has already been used to [project future outbreak scenarios in Gaza](https://gaza-projections.org/).
 
 Some further reflections on specific pieces of COVID analysis for SPI-M-O below:
 
@@ -110,7 +110,7 @@ Some further reflections on specific analysis reports for SPI-M-O are below:
 
 Code ❌ | [Package](https://epiverse-trace.github.io/superspreading/) ✅ |  Off-shelf ✅
 
-This paper for SPI-M-O, [**Analysis of SARS-CoV-2 transmission clusters and superspreading events**](https://www.gov.uk/government/publications/analysis-of-sars-cov-2-transmission-clusters-and-superspreading-events-3-june-2020), showed different metrics to summarise the superspreading features of SARS-CoV-2. These functions are now in the \{superspreading\} package, with [examples](https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html) in the Epiverse-TRACE training.
+This paper for SPI-M-O, [**Analysis of SARS-CoV-2 transmission clusters and superspreading events**](https://www.gov.uk/government/publications/analysis-of-sars-cov-2-transmission-clusters-and-superspreading-events-3-june-2020), provided different metrics to summarise the superspreading features of SARS-CoV-2. These functions are now in the \{superspreading\} package, with [examples](https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html) in the Epiverse-TRACE training.
 
 ### 10 June 2020: Analysis of forwards and backwards tracing
 
@@ -118,9 +118,7 @@ This paper for SPI-M-O, [**Analysis of SARS-CoV-2 transmission clusters and supe
 
 This paper for SPI-M-O, **Branching process modelling of effectiveness of forward and backward tracing for SARS-CoV-2 control** was later published as [Endo et al, Wellcome Open Res, 2020](https://wellcomeopenresearch.org/articles/5-239).
 
-Although the underlying model isn't in a package, the analysis is featured in the [Epiverse-TRACE training](https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html#controlling-superspreading-with-contact-tracing).
-
-**Suggested or ongoing development:** The core insight is also a relatively simple equation, i.e. that backward tracing would be expected to identify $R(1+1/k)$ cases, where $k$ is the dispersion parameter, so should add this to relevant training and/or vignettes.
+**Suggested or ongoing development:** Although the underlying model isn't in a package, the analysis is featured in the [Epiverse-TRACE training](https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html#controlling-superspreading-with-contact-tracing). The core insight is also a relatively simple equation, i.e. that backward tracing would be expected to identify $R(1+1/k)$ cases, where $k$ is the dispersion parameter, so should add this to relevant training and/or vignettes.
 
 ### 14 Oct 2020: Testing and contact tracing in a real-world network
 
@@ -180,3 +178,7 @@ Two papers for SPI-M-O/SAGE looked at social contact dynamics during reopening:
 CoMix data are now available as part of the \{socialmixr\} package, with code for the secondary case distribution released with the [Chapman et al pre-print](https://www.medrxiv.org/content/10.1101/2024.08.15.24311977v2).
 
 **Suggested or ongoing development:** The methods used for 'first principles' reconstruction of $R_t$ could be included in a future social mixing analysis package, but would benefit from a larger database of viral load trajectories for different pathogens (currently available for SARS-CoV-2, but in theory estimatable for a range of acute infectious diseases).
+
+## Concluding thoughts
+
+Code was generally made available alongside public reports by LSHTM during COVID-19, except for very simple calculations. Several key functions are now available in R packages developed since the emergence of COVID-19, turning tasks that would have taken days into tasks that require only hours, but there are still some remaining bottlenecks to ensure that the methods would be applicable easily to H5N1, meaning some tailored tasks would take hours when - with some further refinement - they could take minute.
