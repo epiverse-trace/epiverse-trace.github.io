@@ -110,7 +110,7 @@ Some further reflections on specific analysis reports for SPI-M-O are below:
 
 Code ❌ | [Package](https://epiverse-trace.github.io/superspreading/) ✅ |  Off-shelf ✅
 
-This paper for SPI-M-O, [**Analysis of SARS-CoV-2 transmission clusters and superspreading events**](	https://www.gov.uk/government/publications/analysis-of-sars-cov-2-transmission-clusters-and-superspreading-events-3-june-2020), showed different metrics to summarise the superspreading features of SARS-CoV-2. These functions are now in the \{superspreading\} package, with [examples](https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html) in the Epiverse-TRACE training.
+This paper for SPI-M-O, [**Analysis of SARS-CoV-2 transmission clusters and superspreading events**](https://www.gov.uk/government/publications/analysis-of-sars-cov-2-transmission-clusters-and-superspreading-events-3-june-2020), showed different metrics to summarise the superspreading features of SARS-CoV-2. These functions are now in the \{superspreading\} package, with [examples](https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html) in the Epiverse-TRACE training.
 
 ### 10 June 2020: Analysis of forwards and backwards tracing
 
@@ -134,7 +134,7 @@ This paper for SPI-M-O, **Modelling effectiveness of TTI and physical distancing
 
 The below papers for SPI-M-O used data on PCR and lateral flow performance to investigate different testing strategies.
 
-21 Oct.	**Modelling frequent testing using PCR and lateral flow based on detection probabilities estimated from regular testing of health care workers**. This paper used testing data from UCLH to infer the probability of test positivity post infection. It would later be published as [Hellewell et al, BMC Medicine, 2021](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-021-01982-x).
+21 Oct. **Modelling frequent testing using PCR and lateral flow based on detection probabilities estimated from regular testing of health care workers**. This paper used testing data from UCLH to infer the probability of test positivity post infection. It would later be published as [Hellewell et al, BMC Medicine, 2021](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-021-01982-x).
 
 [Code](https://github.com/cmmid/pcr-profile) ✅  | Package ⏳ | Off-shelf ❌
 
