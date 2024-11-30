@@ -8,7 +8,7 @@ author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
 date: "2024-07-04"
-categories: [Epiverse-TRACE, mpox, outbreak, outbreak-analytics, DOI]
+categories: [mpox, outbreak, outbreak analytics, DOI]
 bibliography: index.bib
 format:
   html: 
