@@ -41,7 +41,7 @@ maintainability.
 
 ## Quick start
 
-To start with `{vaccineff 1.0.0}`, run the following example.
+To start with `{vaccineff}` 1.0.0, run the following example.
 This example estimates VE using the package's example dataset, adjusted
 for confounders (age and sex) via the iterative matching strategy.
 
