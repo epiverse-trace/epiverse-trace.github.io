@@ -8,7 +8,7 @@ categories: [new-release]
 
 We are very excited to announce the release of a new vaccineff version v1.0.0.
 The package offers tools for estimating vaccine effectiveness (VE) and related
-metrics, with features like:
+metrics, with features such as:
 
 * Estimation in a cohort study design via the Cox model for Proportional Hazards  
 * Controlling for confounders through an iterative matching algorithm  
