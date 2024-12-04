@@ -39,6 +39,46 @@ maintainability.
 * **`cohortdata`** has been simplified and reduced to improve examples and
   reduce computation time.
 
+## Quick start
+
+To start with `{vaccineff 1.0.0}`, run the following example.
+This example estimates VE using the package's example dataset, adjusted
+for confounders (age and sex) via the iterative matching strategy.
+
+The `summary()` method for the `vaccineff_data` object provides details
+on cohort balance and composition before and after applying the matching
+strategy, as well as general cohort features.
+
+When called on the `vaccineff` object (`ve`), the `summary()` method
+returns the estimation summary, including results from the Schoenfeld
+test for proportional hazards.
+
+
+```{r}
+library(vaccineff)
+
+# Create `vaccineff_data`
+data(cohortdata)
+vaccineff_data <- make_vaccineff_data(
+  data_set = cohortdata,
+  outcome_date_col = "death_date",
+  censoring_date_col = "death_other_causes",
+  vacc_date_col = "vaccine_date_2",
+  vaccinated_status = "v",
+  unvaccinated_status = "u",
+  immunization_delay = 15,
+  end_cohort = as.Date("2021-12-31"),
+  match = TRUE,
+  exact = "sex",
+  nearest = c(age = 1)
+)
+summary(vaccineff_data)
+
+# Estimate VE
+ve <- estimate_vaccineff(vaccineff_data, at = 180)
+summary(ve)
+```
+
 ## Acknowledgements
 
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
