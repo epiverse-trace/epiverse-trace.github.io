@@ -7,12 +7,28 @@ categories: [new-release]
 ---
 
 We are very excited to announce the release of a new vaccineff version v1.0.0.
-Here is an automatically generated summary of the changes in this version.
+The package offers tools for estimating vaccine effectiveness (VE) and related 
+metrics, with features like:
+
+* Estimation in a cohort study design via the Cox model for Proportional Hazards  
+* Controlling for confounders through an iterative matching algorithm  
+* A detailed vignette with illustrative examples  
+
+Two main functions compose `{vaccineff 1.0.0}`:  
+
+1. `make_vaccineff_data()`: Constructs the `vaccineff_data` class, managing key 
+   features for preparing, visualizing, and organizing cohort data.  
+
+2. `estimate_vaccineff()`: Constructs the `vaccineff` class, enabling estimation 
+   of VE and assessment of results and model performance.  
+
+Both classes support `plot()` and `summary()` methods, providing visualizations 
+and detailed reports.
+
+## Breaking Changes
 
 `{vaccineff 1.0.0}` refactors the package's internal structure for better 
 maintainability.
-
-## Breaking Changes
 
 * **`estimate_vaccineff()`** replaces `effectiveness()`.  
   - It returns an object of class `vaccineff`.  
