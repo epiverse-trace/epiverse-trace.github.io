@@ -81,14 +81,9 @@ summary(ve)
 ## Acknowledgements
 
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
-releases <- gh::gh("GET /repos/{owner}/{repo}/releases",
-                   owner = "epiverse-trace",
-                   repo = "vaccineff") |>
-  purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
-
 ctbs <- usethis::use_tidy_thanks(
   "epiverse-trace/vaccineff",
-  from = releases[[2]][["tag_name"]],
+  from = NULL,
   to = "v1.0.0"
 )
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
