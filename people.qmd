@@ -53,7 +53,7 @@ file.path("_data", "epiverse_contributors.csv") |>
 
 We realize not everyone may want their contribution attributed the way we set it up here.
 
-If you want any adjustments or complete removal, please let us know on <epiverse@data.org> or ][open a GitHub issue directly](https://github.com/epiverse-trace/epiverse-trace.github.io/issues/new).
+If you want any adjustments or complete removal, please let us know on <epiverse@data.org> or [open a GitHub issue directly](https://github.com/epiverse-trace/epiverse-trace.github.io/issues/new).
 :::
 
 :::{.callout-caution collapse="true"}
