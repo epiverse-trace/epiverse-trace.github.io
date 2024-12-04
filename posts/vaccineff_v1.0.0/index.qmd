@@ -12,17 +12,17 @@ metrics, with features like:
 
 * Estimation in a cohort study design via the Cox model for Proportional Hazards  
 * Controlling for confounders through an iterative matching algorithm  
-* A detailed vignette with illustrative examples  
+* A detailed vignette with illustrative examples
 
-Two main functions compose `{vaccineff 1.0.0}`:  
+Two main functions compose `{vaccineff 1.0.0}`:
 
-1. `make_vaccineff_data()`: Constructs the `vaccineff_data` class, managing key 
-   features for preparing, visualizing, and organizing cohort data.  
+1. `make_vaccineff_data()`: Constructs the `vaccineff_data` class, managing key
+features for preparing, visualizing, and organizing cohort data.
 
-2. `estimate_vaccineff()`: Constructs the `vaccineff` class, enabling estimation 
-   of VE and assessment of results and model performance.  
+2. `estimate_vaccineff()`: Constructs the `vaccineff` class, enabling estimation
+of VE and assessment of results and model performance.
 
-Both classes support `plot()` and `summary()` methods, providing visualizations 
+Both classes support `plot()` and `summary()` methods, providing visualizations
 and detailed reports.
 
 ## Breaking Changes
@@ -30,28 +30,28 @@ and detailed reports.
 `{vaccineff 1.0.0}` refactors the package's internal structure for better 
 maintainability.
 
-* **`estimate_vaccineff()`** replaces `effectiveness()`.  
-  - It returns an object of class `vaccineff`.  
+* **`estimate_vaccineff()`** replaces `effectiveness()`.
+  - It returns an object of class `vaccineff`.
   - The `at` parameter must always be provided for accurate results.
 
 * **`plot.vaccineff_data()`** replaces `plot_coverage()`.
 
-* **`cohortdata`** has been simplified and reduced to improve examples and 
+* **`cohortdata`** has been simplified and reduced to improve examples and
   reduce computation time.
-
 
 ## Acknowledgements
 
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
-releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
-               owner = "epiverse-trace",
-               repo = "vaccineff") |>
+releases <- gh::gh("GET /repos/{owner}/{repo}/releases",
+                   owner = "epiverse-trace",
+                   repo = "vaccineff") |>
   purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
 
 ctbs <- usethis::use_tidy_thanks(
-  "epiverse-trace/vaccineff", 
-  from = releases[[2]][["tag_name"]], 
-  to = "v1.0.0")
+  "epiverse-trace/vaccineff",
+  from = releases[[2]][["tag_name"]],
+  to = "v1.0.0"
+)
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
 cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
 ```
