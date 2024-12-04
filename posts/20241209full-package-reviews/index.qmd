@@ -1,0 +1,57 @@
+---
+title: "How we work: My first full package review"
+author:
+  - name: "Chris Hartgerink"
+    orcid: "0000-0003-1050-6809"
+date: "2024-12-09"
+categories: [blueprints, "How we work"]
+format:
+  html:
+    toc: true
+---
+
+At Epiverse-TRACE, we continuously develop packages, which risks making us (hyper)focused on the everyday changes. Feature here, bug fix there. We can call this "development by Pull Request," where we introduce changes in relatively small batches, compared to general development without compartmentalization. Of course, it is a developer's responsibility to also take into consideration the entire codebase. However, to sometimes enforce taking that step back, [our contribution blueprints outline that we do full package reviews](https://epiverse-trace.github.io/blueprints/code-review.html#full-package-review). In this blog post, I highlight what a full package review is, how it is set up, and some of my experiences with this process.
+
+:::{.callout-tip}
+In the "How we work" series, Epiverse-TRACE contributors share how they work. This does not necessarily reflect a standardized way of working, and helps highlight how diverse coding practices can be.
+:::
+
+## What is a full package review?
+
+You may not be surprised to hear that a full package review covers every part of a package ever written. This means the entire current codebase is in scope, from day one of development. It does not necessitate reviewing the entire commit history per se, focussing on the package as it stands at that time. As a maintainer that can be scary, because it can include code you did not write yourself, and may not know how to justify (at least that is what happens for me).
+
+Our regular code reviews take place on GitHub, using Pull Requests. For full package reviews, we also use Pull Requests in Epiverse-TRACE. This means that all the features from GitHub are available to make suggestions, approve the code, or leave precise comments at a specific line in the code.
+
+What is different, is that all the files are considered new, and part of the review. This includes the files already present in our [package template](https://github.com/epiverse-trace/packagetemplate), but also all test files, documentation, and more. A full package review is usually triggered by an upcoming release, either on GitHub or CRAN.
+
+## How do I set one up?
+
+Git and GitHub do not support full package reviews by default. This is because pull requests are usually merged into an existing branch, which already contains existing code. For a full package review, what we want is to merge onto an empty branch.
+
+In order to create a branch that has no code at all, run the following shell command from within your git directory:
+
+```sh
+git branch empty `git rev-list --all | tail -1`
+git push origin empty
+
+git branch review
+git push origin review
+```
+
+These commands are also noted in the blueprints, but I simplified them so that you do not need to copy paste the hash of the first commit. Also, you can use this command for any Git repository and open up the pull request through GitHub (or Gitlab, Forgejo). This means that doing a full package review can be done anywhere, anytime.
+
+## The experience of a full package review
+
+[Since joining Epiverse-TRACE](../chjh-intro-blog/index.qmd), I participated in many full package reviews, but did not until quite recently initiate my own. For the new package **safeframe**, [I recently requested a full package review](https://github.com/epiverse-trace/safeframe/pull/40). This highlighted two quirks I did not realize before.
+
+First, it feels like doing something that can easily go wrong. I have been using Git for over a decade[^1], but this was completely new to me. Given that git operations can sometimes cause issues, I was hesitant to just run the shell commands. Maybe having a demo video showing it works, will help contributors gain confidence in doing this.
+
+[^1]: My GitHub account is from 2011, but at that time I did not understand what GitHub was or did.
+
+Second, reviewer suggestions are great, but getting them on a full package review involves manual work to include them. I try to leave actionable suggestions directly in the code when I review, so they are easy to accept and integrate into the codebase. With full package reviews, receiving suggestions became slightly annoying. Not because of the reviewer, but because the suggestions have to be manually recreated in a separate branch that will actually be merged. It would be great if we had a way to keep the ease of integrating reviewer suggestions in full package reviews.
+
+---
+
+Overall, full package reviews are a helpful way to take a step back and take in the big picture. It is a great moment to get feedback from Epiverse-TRACE developers and discuss how the package fits in to the ecosystem. It also comes with some quirks, as I outlined, which I would like to find ways to address.
+
+I would be interested to hear other developer's experiences with full package reviews in the comments!
