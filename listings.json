@@ -50,6 +50,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/vaccineff_v1.0.0/index.html",
       "/posts/epiparameter_v0.3.0/index.html",
       "/posts/ai-learner-review/index.html",
       "/posts/data-licensing.html",
