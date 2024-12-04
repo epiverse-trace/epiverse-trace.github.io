@@ -26,4 +26,9 @@ create_release_post <- function(release_endpoint_response, pkg) {
   ) |>
     writeLines(file.path(post_folder, "index.qmd"))
 
+  knitr::knit(
+    file.path(post_folder, "index.qmd"),
+    file.path(post_folder, "index.qmd")
+  )
+
 }
