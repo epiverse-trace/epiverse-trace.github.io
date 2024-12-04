@@ -4,7 +4,7 @@ author:
   - name: "Hugo Gruson"
     orcid: "0000-0002-4094-1476"
 date: "2024-07-05"
-categories: [R, interoperability, S3, progressive enhancement, ecosystem, lifecycle, object orientation, DOI]
+categories: [R, interoperability, S3, progressive enhancement, ecosystem, lifecycle, object-oriented programming, DOI]
 format:
   html: 
     toc: true
