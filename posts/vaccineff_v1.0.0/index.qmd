@@ -6,7 +6,7 @@ date: "2024-12-02"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new vaccineff version v1.0.0.
+We are very excited to announce the release of a new [vaccineff](https://epiverse-trace.github.io/vaccineff/) version v1.0.0.
 The package offers tools for estimating vaccine effectiveness (VE) and related
 metrics, with features such as:
 
