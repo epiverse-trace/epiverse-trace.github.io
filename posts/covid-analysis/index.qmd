@@ -29,7 +29,7 @@ If another pandemic were to hit, how easily and quickly could we do these analys
 2. **Package availability**: is the analysis code or underlying method currently packaged up for easy reuse?
 3. **Off-the-shelf readiness in R**: can we put in future transmissible H5N1 characteristics and run almost straight away?
 
-These are either marked as available (✅ ), not available (❌), or partially available (⏳). I also suggest some areas for potential further development, or links to ongoing development that will enable easier completition of tasks in future.
+These are either marked as available (✅), not available (❌), or partially available (⏳). I also suggest some areas for potential further development, or links to ongoing development that will enable easier completition of tasks in future.
 
 This is not an exclusive list of work performed by myself and colleagues in the Centre for Mathematical Modelling of Infectious Diseases at LSHTM; there is a larger [CMMID repository of real-time work](https://cmmid.github.io/topics/covid19/), as well as a large volume of published papers in academic journals and reports on the gov.uk website. However, I hope this initial post can provide a useful summary of tasks that were performed, and framework for evaluating wider efforts required for a pandemic.
 
