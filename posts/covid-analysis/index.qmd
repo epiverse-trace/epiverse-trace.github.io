@@ -61,7 +61,7 @@ This analysis estimated the infection and case fatality ratio by age for COVID-1
 
 The methods used for this analysis are now implemented as the Epiverse-TRACE [\{cfr\}](https://github.com/epiverse-trace/cfr/) package. There is also a ['how to' example for age-specific CFR estimation](https://epiverse-trace.github.io/howto/analyses/estimate_severity/cfr-stratified-severity.html).
 
-**Suggested or ongoing development:** There are several [issues](https://github.com/epiverse-trace/cfr/issues) open that aim to strengthen \{cfr\}, especially for edge cases (e.g. very high CFR) or uncertainty when estimating underascertainment.
+**Suggested or ongoing development:** There are several [GitHub issues](https://github.com/epiverse-trace/cfr/issues) open that aim to strengthen \{cfr\}, especially for edge cases (e.g. very high CFR) or uncertainty when estimating underascertainment.
 
 ### 11 Mar 2020: pre-COVID social mixing patterns
 
