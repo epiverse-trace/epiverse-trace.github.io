@@ -23,7 +23,7 @@ These contributions typically fell into two main categories:
 
 This post focuses on the analysis reports that I made a major contribution to as a member of SPI-M-O in the first 18 months after COVID was identified as a threat, i.e. between Jan 2020 and July 2021 (a full list has [previously been published](https://www.covid19.public-inquiry.uk/documents/inq000056464-rule-9-questionnaire-response-from-prof-adam-kucharski-scientific-advisory-group-for-emergencies-sage-scientific-pandemic-influenza-group-on-modelling-spi-m-o-undated/) by the COVID Inquiry). Narrative reports or analysis that did not involve substantial analytics or modelling (e.g. just direct plots of data) are not included here. I also include some major early piece of analysis that did not form SPI-M-O reports, but were published and informed subsequent analysis and modelling.
 
-If another pandemic were to hit, how easily and quickly could we do this analysis again? To document where we currently are, it is important to understand where potential gaps and bottlenecks are. For each report, I therefore review three main criteria:
+If another pandemic were to hit, how easily and quickly could we do these analyses again? To document where we currently are, it is important to understand where potential gaps and bottlenecks are. For each report, I therefore review three main criteria:
 
 1. **Code availability**: is the original analysis code public? (With link if relevant, or context if not.)
 2. **Package availability**: is the analysis code or underlying method currently packaged up for easy reuse?
