@@ -33,7 +33,7 @@ These are either marked as available (✅ ), not available (❌), or partially a
 
 This is not an exclusive list of work performed by myself and colleagues in the Centre for Mathematical Modelling of Infectious Diseases at LSHTM; there is a larger [CMMID repository of real-time work](https://cmmid.github.io/topics/covid19/), as well as a large volume of published papers in academic journals and reports on the gov.uk website. However, I hope this initial post can provide a useful summary of tasks that were performed, and framework for evaluating wider efforts required for a pandemic.
 
-The overall effectiveness of the UK response, and which areas could be strengthened, are topics currently being examined by the COVID Inquiry, and will not be covered here. If readers are interested, there are some broader reflections from members of the UK modelling community, and recommendations for improvements, in [Sherratt et al, 2024, Wellcome Open Research](https://wellcomeopenresearch.org/articles/9-12/v1?s3BucketUrl=https%3A%2F%2Fwellcomeopenresearch.s3.eu-west-1.amazonaws.com&gtmKey=GTM-5P673KJ&submissionUrl=%2Ffor-authors%2Fpublish-your-research&otid=23226e40-fdd0-4acd-97a3-d9bad93befed&immUserUrl=https%3A%2F%2Fwor-proxy.f1krdev.com%2Feditor%2Fmember%2Fshow%2F).
+The overall effectiveness of the UK response, and which areas could be strengthened, are topics currently being examined by the COVID Inquiry, and will not be covered here. If readers are interested, there are some broader reflections from members of the UK modelling community, and recommendations for improvements, in [Sherratt et al, 2024, Wellcome Open Research](https://doi.org/10.12688/wellcomeopenres.19601.1).
 
 ### 28 Jan 2020: Early estimation of transmissibility and control
 
