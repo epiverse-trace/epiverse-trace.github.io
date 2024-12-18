@@ -1,0 +1,42 @@
+---
+title: "epiparameterDB v0.1.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-12-18"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new epiparameterDB version v0.1.0.
+Here is an automatically generated summary of the changes in this version.
+
+This is the first minor release of the `{epiparameterDB}` R package. It contains the epidemiological parameter database originally part of the `{epiparameter}` R package. 
+
+## New features
+
+* The first release contains the parameter database (`parameters.json`) from the `{epiparameter}` package v0.3.0. 
+* Functionality to read the JSON file (`parameters.json`), render the database as a vignette (`database.Rmd`), and validate the JSON database with a data dictionary (`data_dictionary.json`) using a GitHub actions workflow (`validate-json.yaml`) have been copied from the original `{epiparameter}` implementation.
+
+## Bug fixes
+
+* None
+
+## Deprecated and defunct
+
+* None
+
+
+## Acknowledgements
+
+```{r ctbs, results='asis', echo=FALSE, message = FALSE}
+releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
+               owner = "epiverse-trace",
+               repo = "epiparameterDB") |>
+  purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
+
+ctbs <- usethis::use_tidy_thanks(
+  "epiverse-trace/epiparameterDB", 
+  from = releases[[2]][["tag_name"]], 
+  to = "v0.1.0")
+ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
+cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
+```
