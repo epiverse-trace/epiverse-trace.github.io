@@ -4452,11 +4452,20 @@ background-color: null;
 font-style: inherit;">centroid</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in do.call(rbind, coords): second argument must be a list</code></pre>
 </div>
-<p><img src="https://epiverse-trace.github.io/posts/s3-generic/error_trace.png" class="img-fluid"></p>
+</div>
+<p>The traceback for the chunk above is:</p>
+<blockquote class="blockquote">
+<pre><code>4: stop("second argument must be a list")
+3: do.call(rbind, coords) at #3
+2: centroid.default(3) at #2
+1: centroid(3)</code></pre>
+</blockquote>
 <p>In this example, we see one extra line that did not exist when <code>centroid()</code> was a regular function, rather than a generic:</p>
 <blockquote class="blockquote">
-<p>centroid.default(3) at centroid.R#19</p>
+<pre><code>centroid.default(3) at #2</code></pre>
 </blockquote>
 <p>This line corresponds to the dispatch operation.</p>
 <p>However, this slight difference in behaviour is likely not a big issue as we mostly expect experienced users to interact with the traceback. These users are likely to be familiar with S3 dispatch and understand the traceback in any case.</p>
@@ -4474,25 +4483,25 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <p>The generic should always live in the package implementing the actual computation in the function in the first place. For example, if you defined the original <code>centroid()</code> function in a package called geometryops, the S3 generic should also be defined in that package, not in the package defining the <code>pointset</code> class.</p>
 <p>It is possible in theory to overwrite a function defined by another package with a generic (“overloading”). For example, we could overload base R <code>table()</code> function with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">table <span class="ot" style="color: #003B4F;
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">table <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(...) { </span>
-<span id="cb6-2">  <span class="fu" style="color: #4758AB;
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">UseMethod</span>(...)</span>
-<span id="cb6-3">}</span>
-<span id="cb6-4"></span>
-<span id="cb6-5">table.default <span class="ot" style="color: #003B4F;
+<span id="cb9-3">}</span>
+<span id="cb9-4"></span>
+<span id="cb9-5">table.default <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(</span>
-<span id="cb6-6">  ...,</span>
-<span id="cb6-7">  <span class="at" style="color: #657422;
+<span id="cb9-6">  ...,</span>
+<span id="cb9-7">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">exclude =</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -4508,7 +4517,7 @@ background-color: null;
 font-style: inherit;">NA</span>, <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">NaN</span>),</span>
-<span id="cb6-8">  <span class="at" style="color: #657422;
+<span id="cb9-8">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">useNA =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4519,7 +4528,7 @@ background-color: null;
 font-style: inherit;">"ifany"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"always"</span>),</span>
-<span id="cb6-9">  <span class="at" style="color: #657422;
+<span id="cb9-9">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">dnn =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4528,26 +4537,26 @@ background-color: null;
 font-style: inherit;">deparse.level =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb6-10">) {</span>
-<span id="cb6-11"></span>
-<span id="cb6-12"> base<span class="sc" style="color: #5E5E5E;
+<span id="cb9-10">) {</span>
+<span id="cb9-11"></span>
+<span id="cb9-12"> base<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">table</span>(</span>
-<span id="cb6-13">  ...,</span>
-<span id="cb6-14">  <span class="at" style="color: #657422;
+<span id="cb9-13">  ...,</span>
+<span id="cb9-14">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">exclude =</span> exclude,</span>
-<span id="cb6-15">  <span class="at" style="color: #657422;
+<span id="cb9-15">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">useNA =</span> useNA,</span>
-<span id="cb6-16">  <span class="at" style="color: #657422;
+<span id="cb9-16">  <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">dnn =</span> dnn</span>
-<span id="cb6-17"> )</span>
-<span id="cb6-18"></span>
-<span id="cb6-19">}</span></code></pre></div>
+<span id="cb9-17"> )</span>
+<span id="cb9-18"></span>
+<span id="cb9-19">}</span></code></pre></div>
 </div>
 <p>But this is generally considered bad practice, and possibly rude <sup>2</sup>. As a rule of thumb, you should usually avoid:</p>
 <ul>
@@ -4562,34 +4571,34 @@ font-style: inherit;">dnn =</span> dnn</span>
 <h4 class="anchored" data-anchor-id="method-in-the-class-package">Method in the class package</h4>
 <p>This is the strategy used when you defined a new class and provide it with a <code>print()</code>, a <code>summary()</code>, or a <code>plot()</code> method. The generics for these functions are defined in R base.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
-<span id="cb7-2">plot.myclass <span class="ot" style="color: #003B4F;
+<span id="cb10-2">plot.myclass <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(x, y, ...) {</span>
-<span id="cb7-3">  </span>
-<span id="cb7-4">  <span class="co" style="color: #5E5E5E;
+<span id="cb10-3">  </span>
+<span id="cb10-4">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># code for a beautiful plot for your custom class</span></span>
-<span id="cb7-5">  </span>
-<span id="cb7-6">}</span></code></pre></div>
+<span id="cb10-5">  </span>
+<span id="cb10-6">}</span></code></pre></div>
 </div>
 <p>If you opt for this strategy, you will need to depend on the package providing the method, as <code>Imports</code>. For example, a package defining a <code>fit.myclass()</code> method for the <code>fit()</code> generic defined in the <a href="https://generics.r-lib.org/">generics</a> package would have the following <code>DESCRIPTION</code> and <code>NAMESPACE</code>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb11" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Imports</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span></span>
-<span id="cb8-2"><span class="at" style="color: #657422;
+<span id="cb11-2"><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">  generics</span></span></code></pre></div>
 </div>
@@ -4597,35 +4606,35 @@ font-style: inherit;">  generics</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb12" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
-<span id="cb9-2"><span class="co" style="color: #5E5E5E;
+<span id="cb12-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @importFrom generics fit</span></span>
-<span id="cb9-3">fit.myclass <span class="ot" style="color: #003B4F;
+<span id="cb12-3">fit.myclass <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(x, ...) {</span>
-<span id="cb9-4">  <span class="co" style="color: #5E5E5E;
+<span id="cb12-4">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># your code here</span></span>
-<span id="cb9-5">}</span></code></pre></div>
+<span id="cb12-5">}</span></code></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb13" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
-<span id="cb10-2"></span>
-<span id="cb10-3"><span class="fu" style="color: #4758AB;
+<span id="cb13-2"></span>
+<span id="cb13-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">S3method</span>(fit,myclass)</span>
-<span id="cb10-4"><span class="fu" style="color: #4758AB;
+<span id="cb13-4"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">importFrom</span>(generics,fit)</span></code></pre></div>
 </div>
@@ -4647,13 +4656,13 @@ Importing the generic
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb14" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Suggests</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span></span>
-<span id="cb11-2"><span class="at" style="color: #657422;
+<span id="cb14-2"><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">  generics</span></span></code></pre></div>
 </div>
@@ -4661,29 +4670,29 @@ font-style: inherit;">  generics</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb15" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @exportS3Method generics::fit</span></span>
-<span id="cb12-2">fit.myclass <span class="ot" style="color: #003B4F;
+<span id="cb15-2">fit.myclass <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(x, ...) {</span>
-<span id="cb12-3">  <span class="co" style="color: #5E5E5E;
+<span id="cb15-3">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># your code here</span></span>
-<span id="cb12-4">}</span></code></pre></div>
+<span id="cb15-4">}</span></code></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb16" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
-<span id="cb13-2"></span>
-<span id="cb13-3"><span class="fu" style="color: #4758AB;
+<span id="cb16-2"></span>
+<span id="cb16-3"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">S3method</span>(generics<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -4695,33 +4704,33 @@ font-style: inherit;">::</span>fit,myclass)</span></code></pre></div>
 <p>Alternatively, you can define the method in the package defining the generic. This is the approach taken in the <a href="https://easystats.github.io/report/">report package</a> from example, which defines the <code>report()</code> generic and methods for various model outputs produced by different package.</p>
 <p>In theory, no <code>Imports</code> or <code>Suggests</code> is required here:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
-<span id="cb14-2">mygeneric <span class="ot" style="color: #003B4F;
+<span id="cb17-2">mygeneric <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(x, ...) { </span>
-<span id="cb14-3">  <span class="fu" style="color: #4758AB;
+<span id="cb17-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">UseMethod</span>(x)</span>
-<span id="cb14-4">}</span>
-<span id="cb14-5"></span>
-<span id="cb14-6"><span class="co" style="color: #5E5E5E;
+<span id="cb17-4">}</span>
+<span id="cb17-5"></span>
+<span id="cb17-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
-<span id="cb14-7">mygeneric.externalclass <span class="ot" style="color: #003B4F;
+<span id="cb17-7">mygeneric.externalclass <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>(x, ...) {</span>
-<span id="cb14-8">  <span class="co" style="color: #5E5E5E;
+<span id="cb17-8">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># your code here</span></span>
-<span id="cb14-9">}</span></code></pre></div>
+<span id="cb17-9">}</span></code></pre></div>
 </div>
 <p>However, if you end up providing many methods for a specific class, you could put the package defining it in the uncommon <code>Enhances</code> field. <code>Enhances</code> is defined in ‘<a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a>’ as:</p>
 <blockquote class="blockquote">
@@ -5742,7 +5751,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-49631"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-49631").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-85840"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-85840").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
