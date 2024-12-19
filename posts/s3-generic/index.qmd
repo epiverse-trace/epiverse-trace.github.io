@@ -145,7 +145,7 @@ Another situation where converting to an S3 adds an extra layer of complexity is
 centroid(3)
 ```
 
-> ```
+> ```r
 > 4: stop("second argument must be a list")
 > 3: do.call(rbind, coords) at #3
 > 2: centroid.default(3) at #2
@@ -154,7 +154,7 @@ centroid(3)
 
 In this example, we see one extra line that did not exist when `centroid()` was a regular function, rather than a generic:
 
-> ```
+> ```r
 > centroid.default(3) at #2
 > ```
 
