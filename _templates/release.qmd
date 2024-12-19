@@ -6,7 +6,7 @@ date: "{{ date }}"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new {{ pkgname }} version {{ v }}.
+We are very excited to announce the release of a new [https://epiverse-trace.github.io/{{ pkgname }}]({{ pkgname }}) version {{ v }}.
 Here is an automatically generated summary of the changes in this version.
 
 {{ notes }}
@@ -19,9 +19,15 @@ releases <- gh::gh("GET /repos/{owner}/{repo}/releases",
                repo = "{{ pkgname }}") |>
   purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
 
+if (length(releases) >= 2) {
+  previous_release <- releases[[2]][["tag_name"]]
+} else {
+  previous_release <- NULL
+}
+
 ctbs <- usethis::use_tidy_thanks(
   "epiverse-trace/{{ pkgname }}", 
-  from = releases[[2]][["tag_name"]], 
+  from = previous_release, 
   to = "{{ version }}")
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
 cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))

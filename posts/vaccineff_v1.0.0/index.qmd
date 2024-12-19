@@ -1,0 +1,91 @@
+---
+title: "vaccineff v1.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2024-12-02"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new [vaccineff](https://epiverse-trace.github.io/vaccineff/) version v1.0.0.
+The package offers tools for estimating vaccine effectiveness (VE) and related
+metrics, with features such as:
+
+* Estimation in a cohort study design via the Cox model for Proportional Hazards  
+* Controlling for confounders through an iterative matching algorithm  
+* A detailed vignette with illustrative examples
+
+Two main functions compose `{vaccineff 1.0.0}`:
+
+1. `make_vaccineff_data()`: Constructs the `vaccineff_data` class, managing key
+features for preparing, visualizing, and organizing cohort data.
+
+2. `estimate_vaccineff()`: Constructs the `vaccineff` class, enabling estimation
+of VE and assessment of results and model performance.
+
+Both classes support `plot()` and `summary()` methods, providing visualizations
+and detailed reports.
+
+## Breaking Changes
+
+`{vaccineff 1.0.0}` refactors the package's internal structure for better
+maintainability.
+
+* **`estimate_vaccineff()`** replaces `effectiveness()`.
+  * It returns an object of class `vaccineff`.
+  * The `at` parameter must always be provided for accurate results.
+
+* **`plot.vaccineff_data()`** replaces `plot_coverage()`.
+
+* **`cohortdata`** has been simplified and reduced to improve examples and
+  reduce computation time.
+
+## Quick start
+
+To start with `{vaccineff}` 1.0.0, run the following example.
+This example estimates VE using the package's example dataset, adjusted
+for confounders (age and sex) via the iterative matching strategy.
+
+The `summary()` method for the `vaccineff_data` object provides details
+on cohort balance and composition before and after applying the matching
+strategy, as well as general cohort features.
+
+When called on the `vaccineff` object (`ve`), the `summary()` method
+returns the estimation summary, including results from the Schoenfeld
+test for proportional hazards.
+
+```{r}
+library(vaccineff)
+
+# Create `vaccineff_data`
+data(cohortdata)
+vaccineff_data <- make_vaccineff_data(
+  data_set = cohortdata,
+  outcome_date_col = "death_date",
+  censoring_date_col = "death_other_causes",
+  vacc_date_col = "vaccine_date_2",
+  vaccinated_status = "v",
+  unvaccinated_status = "u",
+  immunization_delay = 15,
+  end_cohort = as.Date("2021-12-31"),
+  match = TRUE,
+  exact = "sex",
+  nearest = c(age = 1)
+)
+summary(vaccineff_data)
+
+# Estimate VE
+ve <- estimate_vaccineff(vaccineff_data, at = 180)
+summary(ve)
+```
+
+## Acknowledgements
+
+```{r ctbs, results='asis', echo=FALSE, message = FALSE}
+ctbs <- usethis::use_tidy_thanks(
+  "epiverse-trace/vaccineff",
+  from = NULL,
+  to = "v1.0.0"
+)
+ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
+cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
+```
