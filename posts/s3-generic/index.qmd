@@ -141,15 +141,22 @@ Arguments for all methods are usually documented together but you should only fo
 
 Another situation where converting to an S3 adds an extra layer of complexity is where you are trying to follow the error [traceback](https://en.wikipedia.org/wiki/Stack_trace):
 
-```{r, eval = FALSE}
+```{r, error = TRUE}
 centroid(3)
 ```
 
-![Screenshot of the error traceback, containing four steps, from the stop down to centroid.](error_trace.png)
+> ```r
+> 4: stop("second argument must be a list")
+> 3: do.call(rbind, coords) at #3
+> 2: centroid.default(3) at #2
+> 1: centroid(3)
+> ```
 
 In this example, we see one extra line that did not exist when `centroid()` was a regular function, rather than a generic:
 
-> centroid.default(3) at centroid.R#19
+> ```r
+> centroid.default(3) at #2
+> ```
 
 This line corresponds to the dispatch operation.
 
