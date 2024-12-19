@@ -3,7 +3,7 @@ title: "How well prepared are we to rapidly analyse a new influenza pandemic? A 
 author:
   - name: "Adam Kucharski"
     orcid: "0000-0001-8814-9421"
-date: "2024-11-28"
+date: "2024-12-23"
 categories: [COVID, R, real-time analysis, pandemic preparedness, H5N1]
 format:
   html:
