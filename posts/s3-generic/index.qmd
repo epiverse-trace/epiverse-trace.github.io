@@ -145,7 +145,7 @@ Another situation where converting to an S3 adds an extra layer of complexity is
 centroid(3)
 ```
 
-![](error_trace.png)
+![Screenshot of the error traceback, containing four steps, from the stop down to centroid.](error_trace.png)
 
 In this example, we see one extra line that did not exist when `centroid()` was a regular function, rather than a generic:
 
