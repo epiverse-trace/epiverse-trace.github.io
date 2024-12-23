@@ -1,0 +1,15 @@
+{
+  "hash": "83b094a7c3367acea1a987bd6136cd46",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"epiparameterDB v0.1.0\"\nauthor:\n  - name: \"The Epiverse-TRACE development team\"\ndate: \"2024-12-18\"\ncategories: [new-release]\n---\n\n\n\nWe are very excited to announce the release of a new epiparameterDB version v0.1.0.\nHere is an automatically generated summary of the changes in this version.\n\nThis is the first minor release of the `{epiparameterDB}` R package. It contains the epidemiological parameter database originally part of the `{epiparameter}` R package.\n\n## New features\n\n* The first release contains the parameter database (`parameters.json`) from the `{epiparameter}` package v0.3.0.\n* Functionality to read the JSON file (`parameters.json`), render the database as a vignette (`database.Rmd`), and validate the JSON database with a data dictionary (`data_dictionary.json`) using a GitHub actions workflow (`validate-json.yaml`) have been copied from the original `{epiparameter}` implementation.\n\n## Bug fixes\n\n* None\n\n## Deprecated and defunct\n\n* None\n\n## Acknowledgements\n\n\n\n[&#x0040;dependabot[bot]](https://github.com/dependabot[bot]) [&#x0040;joshwlambert](https://github.com/joshwlambert)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
