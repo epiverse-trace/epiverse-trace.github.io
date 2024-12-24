@@ -50,6 +50,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/covid-analysis/index.html",
+      "/posts/epiparameterDB_v0.1.0/index.html",
       "/posts/20241209full-package-reviews/index.html",
       "/posts/vaccineff_v1.0.0/index.html",
       "/posts/epiparameter_v0.3.0/index.html",

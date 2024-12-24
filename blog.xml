@@ -10,7 +10,233 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.7.5</generator>
-<lastBuildDate>Mon, 09 Dec 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 23 Dec 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>How well prepared are we to rapidly analyse a new influenza pandemic? A brief perspective on analysis conducted for UK government advisory groups during COVID-19</title>
+  <dc:creator>Adam Kucharski</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/covid-analysis/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>With <a href="https://www.youtube.com/watch?v=i4frpQJMfn8">multiple reports</a> of influenza H5N1 cases that have no clear animal exposure, it is useful to consider what kinds of analysis would be required, and how easily this could be performed. As a starting point, this post reflects on some of the real-time work my colleagues and I contributed to inform the UK response to COVID-19.</p>
+<section id="reflections-on-covid-19-contributions" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-on-covid-19-contributions">Reflections on COVID-19 Contributions</h2>
+<p>During COVID-19, academic participants like myself in the UK contributed analysis to the <a href="https://www.gov.uk/government/publications/scientific-advisory-group-for-emergencies-sage-coronavirus-covid-19-response-membership/list-of-participants-of-sage-and-related-sub-groups">SPI-M-O advisory group</a>, which focused on epidemiology and modelling. This was a subgroup of the <a href="https://www.gov.uk/government/publications/about-sage-and-covid-19/about-sage-and-covid-19">Scientific Advisory Group for Emergencies</a>.</p>
+<p>These contributions typically fell into two main categories:</p>
+<ul>
+<li>Reports in response to specific questions from the Secretariat (e.g.&nbsp;exploring implications of policy options).</li>
+<li>Reports or preliminary results detailing broader epidemiological insights about COVID-19 my colleagues and I thought were noteworthy (e.g.&nbsp;unusual patterns with novel variants).</li>
+</ul>
+<p>This post focuses on the analysis reports that I made a major contribution to as a member of SPI-M-O in the first 18 months after COVID was identified as a threat, i.e.&nbsp;between Jan 2020 and July 2021 (a full list has <a href="https://www.covid19.public-inquiry.uk/documents/inq000056464-rule-9-questionnaire-response-from-prof-adam-kucharski-scientific-advisory-group-for-emergencies-sage-scientific-pandemic-influenza-group-on-modelling-spi-m-o-undated/">previously been published</a>). Narrative reports or analysis that did not involve substantial analytics or modelling (e.g.&nbsp;just direct plots of data) are not included here. I also include some major early piece of analysis that did not form SPI-M-O reports, but were published and informed subsequent analysis and modelling.</p>
+<p>If another pandemic were to hit, how easily and quickly could we do these analyses again? To document where we currently are, it is important to understand where potential gaps and bottlenecks are. For each report, I therefore review three main criteria:</p>
+<ol type="1">
+<li><strong>Code availability</strong>: is the original analysis code public? (With link if relevant, or context if not.)</li>
+<li><strong>Package availability</strong>: is the analysis code or underlying method currently packaged up for easy reuse?</li>
+<li><strong>Task readiness time</strong>: roughly how long would it take to get the code or package into a rough state where it could re-run an equivalent analysis using the characteristics of a future transmissible H5N1 influenza? And how long to do so while also following robust best practice <a href="https://epiverse-trace.github.io/blueprints/">Epiverse-TRACE development principles</a>, so others can easily build on the analysis? Would it take minutes (i.e.&nbsp;possible to run immediately), hours, days or weeks to get the basic functionality working?</li>
+</ol>
+<p>Criteria (1) and (2) are either marked as available (✅), not available (❌), or partially available (⏳). Time taken is also divided into ‘rough’ (rapid, imperfect code to deliver a task) and ‘robust’ (i.e.&nbsp;best practice development for future re-use) to reflect wider discussions about <a href="https://samabbott.co.uk/posts/2022-09-19-80-percent-good-enough/">what constitutes ‘good enough’ work in a pandemic</a>. I also suggest some areas for potential further development, or links to ongoing development that will enable easier completion of tasks in future. The focus of the post tends to be packages that sit on the CMMID, Epiverse-TRACE, Epiforecasts or my GitHub repositories, because these were most directly related to the tasks being discussed, but some wider packages are also signposted.</p>
+<p>This is not an exclusive list of work performed by myself and colleagues in the Centre for Mathematical Modelling of Infectious Diseases at LSHTM; there is a larger <a href="https://cmmid.github.io/topics/covid19/">CMMID repository of real-time work</a>, as well as a large volume of published papers in academic journals and reports on the gov.uk website. However, I hope this initial post can provide a useful summary of tasks that were performed, and framework for evaluating wider efforts required for a pandemic.</p>
+<p>The overall effectiveness of the UK response, and which areas could be strengthened, are topics currently being examined by the COVID Inquiry, and will not be covered here. If readers are interested, there are some broader reflections from members of the UK modelling community, and recommendations for improvements, in <a href="https://doi.org/10.12688/wellcomeopenres.19601.1">Sherratt et al, 2024, Wellcome Open Research</a>.</p>
+<section id="jan-2020-early-estimation-of-transmissibility-and-control" class="level3">
+<h3 class="anchored" data-anchor-id="jan-2020-early-estimation-of-transmissibility-and-control">28 Jan 2020: Early estimation of transmissibility and control</h3>
+<p><a href="https://github.com/adamkucharski/2020-ncov">Code</a> ✅ | Package ⏳ | Days (rough), Weeks (robust)</p>
+<p>This analysis in early 2020 focused on estimation of transmissiblity and subsequent effect of lockdown control measures, and brought together reported cases in China, exported cases identified internationally, and infections detected on evacuation flights. A stochastic SEIR model was fitted with sequential Monte Carlo to estimate how <img src="https://latex.codecogs.com/png.latex?R_t"> varied over time, to distinguish between an epidemic that ended because of control vs immunity. Later published as <a href="https://www.thelancet.com/article/S1473-3099(20)30144-4/fulltext">Kucharski et al, Lancet Inf Dis, 2020</a>.</p>
+<p>The code used to generate estimates for the probability of a large outbreak given <img src="https://latex.codecogs.com/png.latex?R_0"> are now available in the Epiverse-TRACE <a href="https://epiverse-trace.github.io/superspreading/">{superspreading}</a> package.</p>
+<p><strong>Suggested or ongoing development:</strong> There are now much more efficient methods for performing the main real-time inference analysis, particularly the <a href="https://github.com/mrc-ide/dust">{dust}</a> toolkit in combination with <a href="https://mrc-ide.github.io/mcstate/">{mcstate}</a>. As future tools will have to be flexible enough to be applicable in a wide range of modelling scenarios with different data sources, the main ongoing task is to ensure these are well documented and have been tested with relevant examples that can serve as templates for future work. The <a href="https://github.com/LloydChapman/seir">{seir} package</a> is collating a library of simple model fitting implementations and a <a href="https://github.com/LloydChapman/seir/tree/early-wuhan">branch</a> has implemented estimation of a fixed <img src="https://latex.codecogs.com/png.latex?R_0"> value in an SEIR model using early exported COVID cases. The next step would be to implement an example with a time-varying reproduction number.</p>
+</section>
+<section id="feb-2020-early-analysis-of-contact-tracing-effectiveness" class="level3">
+<h3 class="anchored" data-anchor-id="feb-2020-early-analysis-of-contact-tracing-effectiveness">2 Feb 2020: Early analysis of contact tracing effectiveness</h3>
+<p><a href="https://github.com/cmmid/ringbp">Code</a> ✅ | <a href="https://github.com/epiforecasts/ringbp">Package</a> ✅ | Hours (rough), Days (robust)</p>
+<p>Another early analysis was a paper for SPI-M-O: <strong>Feasibility of controlling 2019-nCoV outbreaks by isolation of cases and contacts</strong>, later published as <a href="https://www.thelancet.com/article/S2214-109X(20)30074-7/fulltext">Hellewell et al, Lancet Global Health (2020)</a>. It used a branching process model to explore how transmission (e.g.&nbsp;<img src="https://latex.codecogs.com/png.latex?R_0"> and % presymptomatic transmission) and control parameters (e.g.&nbsp;% contacts traced) could influence the risk of a large outbreak.</p>
+<p><strong>Suggested or ongoing development:</strong> There are several issues on the <a href="https://github.com/epiforecasts/ringbp">{ringbp}</a> package repo that, once complete, would allow for faster implementation for new pathogens, especially in combination with <a href="https://epiverse-trace.github.io/epiparameter/">{epiparameter}</a>. The <a href="https://github.com/bcgov/epi.branch.sim/">{epi.branch.sim}</a> package, which is based on the Hellewell et al paper, also offers an arguably more developed package for plug-and-play analysis in the meantime. The <a href="https://epiverse-trace.github.io/epichains/">{epichains}</a> package also allows for estimation of simpler branching processes (i.e.&nbsp;without targeted control like contact tracing).</p>
+</section>
+<section id="mar-2020-early-estimation-of-severity" class="level3">
+<h3 class="anchored" data-anchor-id="mar-2020-early-estimation-of-severity">3 Mar 2020: Early estimation of severity</h3>
+<p><a href="https://github.com/thimotei/cCFRDiamondPrincess">Code</a> ✅ | <a href="https://github.com/epiverse-trace/cfr/">Package</a> ✅ | Hours (rough), Days (robust)</p>
+<p>This analysis estimated the infection and case fatality ratio by age for COVID-19 using age-adjusted data from the outbreak on the Diamond Princess cruise ship. Later published as <a href="https://www.eurosurveillance.org/content/10.2807/1560-7917.ES.2020.25.12.2000256">Russell et al, Eurosurveillance, 2020</a>.</p>
+<p>The methods used for this analysis are now implemented as the Epiverse-TRACE <a href="https://github.com/epiverse-trace/cfr/">{cfr}</a> package. There is also a <a href="https://epiverse-trace.github.io/howto/analyses/estimate_severity/cfr-stratified-severity.html">‘how to’ example for age-specific CFR estimation</a>.</p>
+<p><strong>Suggested or ongoing development:</strong> There are several <a href="https://github.com/epiverse-trace/cfr/issues">GitHub issues</a> open that aim to strengthen {cfr}, especially for edge cases (e.g.&nbsp;very high CFR) or uncertainty when estimating underascertainment.</p>
+</section>
+<section id="mar-2020-pre-covid-social-mixing-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="mar-2020-pre-covid-social-mixing-patterns">11 Mar 2020: pre-COVID social mixing patterns</h3>
+<p><a href="https://www.medrxiv.org/content/10.1101/2020.02.16.20023754v2.supplementary-material">Data</a> ✅ | Package ❌ | Hours (rough), Days (robust)</p>
+<p>Another early paper for SPI-M-O focused on social mixing patterns in the UK from the 2017/18 BBC public science project: <strong>Some results from the BBC project on contact rates by context and age</strong>, later expanded into <a href="https://www.medrxiv.org/content/10.1101/2020.02.16.20023754v2">Klepac et al, MedRxiv, 2020</a>. The underlying contact matrices were made available alongside the paper.</p>
+<p><strong>Suggested or ongoing development:</strong> It would be useful to incorporate data into <a href="https://epiforecasts.io/socialmixr/">{socialmixr}</a> to enable easy re-use in R. There is also an <a href="https://github.com/epiverse-trace/finalsize/issues/216">issue to add eigenvector calculation</a>, alongside the <img src="https://latex.codecogs.com/png.latex?R_t"> calculation already implemented in the {finalsize} package, to illustrate which age groups drive early epidemic growth. There is also an <a href="https://github.com/epiverse-trace/tutorials-late/pull/63">incoming training episode</a> on contact matrices.</p>
+</section>
+<section id="mar-2020-onwards-early-population-level-scenarios" class="level3">
+<h3 class="anchored" data-anchor-id="mar-2020-onwards-early-population-level-scenarios">3 Mar 2020 onwards: Early population-level scenarios</h3>
+<p><a href="https://github.com/cmmid/covid-uk">Code</a> ✅ | Package ✅ | Hours (rough), Days (robust)</p>
+<p>A collection of population-level scenario modelling reports generated between February and April 2020 was later published as a summary paper, <a href="https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(20)30133-X/fulltext">Davies et al, Lancet Public Health, 2020</a>. The original model, known as <code>covidm</code>, had a code base that would be reused for multiple epidemic waves, including novel variants. However, many the basic scenarios can be now be explored using the Epiverse-TRACE <a href="https://epiverse-trace.github.io/epidemics/">{epidemics}</a>. In particular, {epidemics} can simulate scenarios with multiple overlapping interventions targeting different age groups, and reflect uncertainty in <img src="https://latex.codecogs.com/png.latex?R_0">. A version of this package has already been used to <a href="https://gaza-projections.org/">project future outbreak scenarios in Gaza</a>.</p>
+<p>Some further reflections on specific pieces of COVID analysis for SPI-M-O in 2020 are listed below:</p>
+<ul>
+<li>3 March. <a href="https://www.gov.uk/government/publications/the-effect-of-social-distance-measures-on-deaths-and-peak-demand-for-hospital-services-in-england-3-march-2020"><strong>Effect of social distancing measures on deaths &amp; peak demand for hospitals in England.</strong></a> <strong>Suggested or ongoing development:</strong> Although {epidemics} is set up to simulate infections, there is currently no database for burden to draw on (e.g.&nbsp;easy conversion to hospitalisations and deaths). The WHO Hub <a href="https://github.com/WHO-Collaboratory/simex">simex model</a> has some functions for converting COVID cases to disease outcomes, but this could be a useful feature to include for a wider range of pathogens. Burden estimation is also planned in the <a href="https://github.com/epiverse-trace/tutorials-late/issues/54">Epiverse-TRACE late stage tutorials</a>.</li>
+<li>8 March. <strong>Estimating the impact of regional triggers for COVID-19 non-pharmaceutical interventions.</strong></li>
+<li>11 March. <a href="https://www.gov.uk/government/publications/the-impact-of-aggressively-managing-peak-incidence-11-march-2020"><strong>Impact of agressively managing peak incidence.</strong></a>. <strong>Suggested or ongoing development:</strong> This analysis included epidemic-dependent triggers (e.g.&nbsp;close venues once hospitalisations hit a certain level), which are not yet included in {epidemics}.</li>
+<li>11 March. <a href="https://www.gov.uk/government/publications/the-impact-of-banning-sporting-events-and-other-leisure-activities-on-the-covid-19-epidemic-11-march-2020"><strong>Impact of banning sporting events and other leisure activities on Covid-19 epidemic.</strong></a></li>
+<li>17 March. <a href="https://www.gov.uk/government/publications/the-impact-of-adding-school-closure-to-other-social-distance-measures-17-march-2020"><strong>Impact of adding school closure to other social distance measures.</strong></a></li>
+<li>1 April. <a href="https://www.gov.uk/government/publications/the-impact-of-relaxing-lockdown-measures-2-1-april-2020"><strong>Impact of relaxing lockdown measures.</strong></a></li>
+<li>3 April. <a href="https://www.gov.uk/government/publications/lshtm-modelling-scenarios-for-relaxation-of-lockdown-in-england-3-may-2020"><strong>Modelling scenarios for relaxation of lockdown in England.</strong></a></li>
+</ul>
+<p><strong>Suggested or ongoing development:</strong> There is work in progress with {epidemics} to allow a more flexible and editable <a href="https://github.com/epiverse-trace/epidemics/issues/254">{odin} back end</a>, in case different features are required in future. This will have the advantage of combining the plug-and-play ability to rapidly define age-specific contact structure, demography, parameter uncertainty and overlapping interventions using {epidemics} syntax with a fast and adaptable {odin} simulation model.</p>
+</section>
+<section id="detailed-contact-tracing-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="detailed-contact-tracing-analysis">Detailed contact tracing analysis</h3>
+<p><a href="https://github.com/adamkucharski/2020-cov-tracing">Code</a> ✅ | <a href="https://github.com/rs-delve/tti-explorer">Package</a> ✅ | Days (rough), Weeks (robust)</p>
+<p>This collection of individual-level testing and contact tracing modelling reports, which made use of the BBC social mixing data, was later published as a summary paper, <a href="https://www.thelancet.com/article/S1473-3099(20)30457-6/fulltext">Kucharski et al, Lancet Inf Dis, 2020</a>. The original model was in R, and was later converted into a <a href="https://github.com/rs-delve/tti-explorer">Python library</a> as part of the Royal Society Delve initiative, feeding in to <a href="https://rs-delve.github.io/reports/2020/05/27/test-trace-isolate.html">follow up analysis</a>. This was a rapidly developed bespoke model with multiple types of contact (e.g.&nbsp;home, school, work, other) and an approximated transmission dynamic rather than full simulation (i.e.&nbsp;if 50% of infectious contacts are traced half-way through their likely infectious period, it would cut <img src="https://latex.codecogs.com/png.latex?R"> by 25%).</p>
+<p><strong>Suggested or ongoing development:</strong> For a future epidemic, it may be more useful to merge these concepts into two types of tool, building on succesful outputs for COVID: 1) a <a href="https://royalsocietypublishing.org/doi/10.1098/rstb.2020.0276">‘ready reckoners’</a> method that shows very intuitively how contact changes influence overall <img src="https://latex.codecogs.com/png.latex?R"> (this could make use of <img src="https://latex.codecogs.com/png.latex?R"> functionality in{finalsize}), and 2) a more comprehensive model of isolation and quarantine, like the prospective <a href="https://github.com/epiverse-trace/epinetwork/">{epinetwork}</a> package.</p>
+<p>Some further reflections on specific analysis reports for SPI-M-O are below:</p>
+<ul>
+<li>16 April. <a href="https://www.gov.uk/government/publications/using-bbc-pandemic-data-to-model-the-impact-of-isolation-testing-contact-tracing-and-physical-distancing-on-reducing-transmission-of-covid-19-in-dif"><strong>Using BBC Pandemic data to model the impact of isolation, testing, contact tracing and physical distancing on reducing transmission of COVID-19 in different settings.</strong></a></li>
+<li>20 April. <a href="https://www.gov.uk/government/publications/effectiveness-of-isolation-testing-contact-tracing-and-physical-distancing-on-reducing-transmission-of-covid-19-in-different-settings-draft-for-spi"><strong>Effectiveness of isolation, testing, contact tracing and physical distancing on reducing transmission of COVID-19 in different settings.</strong></a></li>
+<li>21 April. <a href="https://www.gov.uk/government/publications/lshtm-the-possible-impact-of-mask-wearing-outside-the-home-on-the-transmission-of-covid-19-21-april-2020"><strong>The possible impact of mask wearing outside the home on the transmission of COVID-19.</strong></a> <strong>Suggested or ongoing development:</strong> This blanket measure could be explored using {ringbp} or {epichains} in their current form, e.g.&nbsp;this <a href="https://epiverse-trace.github.io/epichains/articles/interventions.html">interventions vignette</a>.</li>
+<li>26 April. <a href="https://www.gov.uk/government/publications/estimated-impact-of-delay-from-isolation-of-symptomatic-case-to-test-result-and-quarantine-of-contacts-26-april-2020"><strong>Estimated impact of delay from isolation of symptomatic case to test result and quarantine of contacts.</strong></a></li>
+<li>30 April. <a href="https://www.gov.uk/government/publications/estimated-impact-of-testing-quarantined-contacts-at-different-points-in-time-30-april-2020"><strong>Estimated impact of testing quarantined contacts at different points in time.</strong></a> <strong>Suggested or ongoing development:</strong> Certain key aspects of this could be explored using {ringbp}, or {epinetwork}, particularly in terms of proportion of population quarantined at a given point in time.</li>
+</ul>
+</section>
+<section id="june-2020-analysis-of-superspreading" class="level3">
+<h3 class="anchored" data-anchor-id="june-2020-analysis-of-superspreading">3 June 2020: Analysis of superspreading</h3>
+<p>Code ❌ | <a href="https://epiverse-trace.github.io/superspreading/">Package</a> ✅ | Minutes (robust)</p>
+<p>This paper for SPI-M-O, <a href="https://www.gov.uk/government/publications/analysis-of-sars-cov-2-transmission-clusters-and-superspreading-events-3-june-2020"><strong>Analysis of SARS-CoV-2 transmission clusters and superspreading events</strong></a>, provided different metrics to summarise the superspreading features of SARS-CoV-2. These functions are now in the {superspreading} package, with <a href="https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html">examples</a> in the Epiverse-TRACE training.</p>
+</section>
+<section id="june-2020-analysis-of-forwards-and-backwards-tracing" class="level3">
+<h3 class="anchored" data-anchor-id="june-2020-analysis-of-forwards-and-backwards-tracing">10 June 2020: Analysis of forwards and backwards tracing</h3>
+<p><a href="https://github.com/akira-endo/COVID19_backwardtracing">Code</a> ✅ | Package ❌ | Hours (rough), Days (robust)</p>
+<p>This paper for SPI-M-O, <strong>Branching process modelling of effectiveness of forward and backward tracing for SARS-CoV-2 control</strong> was later published as <a href="https://wellcomeopenresearch.org/articles/5-239">Endo et al, Wellcome Open Res, 2020</a>.</p>
+<p><strong>Suggested or ongoing development:</strong> Although the underlying model isn’t in a package, the analysis is featured in the <a href="https://epiverse-trace.github.io/tutorials-middle/superspreading-estimate.html#controlling-superspreading-with-contact-tracing">Epiverse-TRACE training</a>. The core insight is also a relatively simple equation, i.e.&nbsp;that backward tracing would be expected to identify <img src="https://latex.codecogs.com/png.latex?R(1+1/k)"> cases, where <img src="https://latex.codecogs.com/png.latex?k"> is the dispersion parameter, so should add this to relevant training and/or vignettes.</p>
+</section>
+<section id="oct-2020-testing-and-contact-tracing-in-a-real-world-network" class="level3">
+<h3 class="anchored" data-anchor-id="oct-2020-testing-and-contact-tracing-in-a-real-world-network">14 Oct 2020: Testing and contact tracing in a real-world network</h3>
+<p><a href="https://github.com/biouea/covidhm">Code</a> ✅ | <a href="https://github.com/biouea/covidhm">Package</a> ✅ | Days (rough), Weeks (robust)</p>
+<p>This paper for SPI-M-O, <strong>Modelling effectiveness of TTI and physical distancing in controlling SARS-CoV-2 in high and low prevalence communities, based on UK contact network data</strong> built on the <a href="https://www.nature.com/articles/s41591-020-1036-8">Firth et al, Nature Med, 2020</a>. This used BBC contact network data from Haslemere to investigate interventions in clustered networks, leading to a package {covidhm} that built on {ringbp}. This package was subsequently also used for analysis of outbreak dynamics on <a href="https://www.nature.com/articles/s41467-022-29522-y">Singapore test cruises</a>.</p>
+<p><strong>Suggested or ongoing development:</strong> Once {ringbp} is stable, there is scope to expand to include the above functionality with the placeholder {epinetwork} package, which is a fork of the more specific {covidhm} implementationn.</p>
+</section>
+<section id="oct-dec-2020-strategies-for-pcr-and-lateral-flow-testing" class="level3">
+<h3 class="anchored" data-anchor-id="oct-dec-2020-strategies-for-pcr-and-lateral-flow-testing">Oct-Dec 2020: Strategies for PCR and lateral flow testing</h3>
+<p>The below papers for SPI-M-O used data on PCR and lateral flow performance to investigate different testing strategies.</p>
+<p>21 Oct.&nbsp;<strong>Modelling frequent testing using PCR and lateral flow based on detection probabilities estimated from regular testing of health care workers</strong>. This paper used testing data from UCLH to infer the probability of test positivity post infection. It would later be published as <a href="https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-021-01982-x">Hellewell et al, BMC Medicine, 2021</a>.</p>
+<p><a href="https://github.com/cmmid/pcr-profile">Code</a> ✅ | Package ⏳ | Days (rough), Weeks (robust)</p>
+<p><strong>Suggested or ongoing development:</strong> This analysis focused on test positivity as an outcome, tailored to data available from the UCLH study (PCR + paired serology) but a more detailed framework could use Ct data as well, such as the <a href="https://github.com/thimotei/legacy_ct_modelling">codebase</a> for LEGACY Ct modelling and <a href="https://github.com/seroanalytics/epikinetics">{epikinetics}</a> package currently in progress for antibody kinetics (which could also be adapted to other biological timescales.</p>
+<p>2 Dec.&nbsp;<a href="https://www.gov.uk/government/publications/lshtm-estimating-detection-of-infection-among-household-gathering-attendees-based-on-one-off-pre-gathering-lateral-flow-tests-2-december-2020"><strong>Estimating detection of infection among household gathering attendees based on one-off pre-gathering lateral flow tests</strong></a>. This paper used posteriors from the above analysis to explore different testing scenarios for family gatherings.</p>
+<p>Code ❌ | Package ❌ | Minutes (rough), Days (robust)</p>
+<p><strong>Suggested or ongoing development:</strong> The underlying equations in this analysis are quite simple (i.e.&nbsp;no more than a few lines of code), but could form a useful helper package. James Hay also built a somewhat related <a href="https://jamesahay.shinyapps.io/screening_accuracy/">Shiny app</a> (code <a href="https://github.com/jameshay218/screening_accuracy">here</a>) linked to an <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8318052/">accompanying paper about intution behind testing performance</a>.</p>
+</section>
+<section id="mar-2021-potential-for-herd-immunity-against-the-alpha-variant" class="level3">
+<h3 class="anchored" data-anchor-id="mar-2021-potential-for-herd-immunity-against-the-alpha-variant">9 Mar 2021: Potential for herd immunity against the Alpha variant</h3>
+<p><a href="https://github.com/adamkucharski/hit-analysis">Code</a> ✅ | Package ❌ | Minutes (rough), Hours (robust)</p>
+<p>This paper for SPI-M-O looked at the potential for vaccination-induced herd immunity against SARS-CoV-2, based on <img src="https://latex.codecogs.com/png.latex?R_0"> and vaccine effectiveness. It would be later published as <a href="https://www.eurosurveillance.org/content/10.2807/1560-7917.ES.2021.26.20.2100428">Hodgson et al, Eurosurveillance, 2021</a>.</p>
+<p><strong>Suggested or ongoing development:</strong> The basic calculation was relatively simple (<img src="https://latex.codecogs.com/png.latex?1-1/R_0">, which holds regardless of age mixing assumptions, as long as the correct <img src="https://latex.codecogs.com/png.latex?R_0"> has been derived for the population of interest). However, {finalsize} has the functionality required to estimate this <img src="https://latex.codecogs.com/png.latex?R_0"> (or <img src="https://latex.codecogs.com/png.latex?R">) for a given population and immunity structure (e.g.&nbsp;from prior infection).</p>
+</section>
+<section id="may-jun-2021-transmission-dynamics-of-the-delta-variant" class="level3">
+<h3 class="anchored" data-anchor-id="may-jun-2021-transmission-dynamics-of-the-delta-variant">May-Jun 2021: Transmission dynamics of the Delta variant</h3>
+<p><a href="https://github.com/adamkucharski/covid-import-model">Code</a> ✅ | Package ❌ | Days (rough), Weeks (robust)</p>
+<p>This collection of reports for SPI-M-O/SAGE analysed the transmission dynamics of the B.1.617.2 (Delta) variant in the UK, untangling imported infections from community transmission. The real-time model was coded in R, with fitting via MLE and then MCMC (as parameter space increased), with a <a href="https://github.com/seabbs/covid-import-model/blob/main/stan/model.stan">stan prototype of the model</a> also developed by Sam Abbott.</p>
+<ul>
+<li>12 May. <a href="https://www.gov.uk/government/publications/cmmid-covid-19-working-group-modelling-importations-and-local-transmission-of-b16172-in-the-uk-12-may-2021"><strong>Modelling importations and local transmission of B.1.617.2 in the UK.</strong></a></li>
+<li>18 May. <strong>Dynamics of B.1.617.2 in the UK from importations, traveller-linked and non-traveller-linked transmission, 18 May 2021.</strong></li>
+<li>25 May. <a href="https://www.gov.uk/government/publications/lshtm-dynamics-of-delta-b16172-in-the-uk-from-importations-traveller-linked-and-non-traveller-linked-transmission-25-may-2021"><strong>Dynamics of B.1.617.2 in the UK from importations, traveller-linked and non-traveller linked transmission, 25 May 2021.</strong></a></li>
+<li>01 Jun.&nbsp;<a href="https://www.gov.uk/government/publications/lshtm-dynamics-of-delta-b16172-in-england-nhs-regions-from-importations-traveller-linked-and-non-traveller-linked-transmission-1-june-2021"><strong>Dynamics of B.1.617.2 in England NHS regions from importations, traveller-linked and non-traveller-linked transmission.</strong></a></li>
+<li>08 Jun.&nbsp;<strong>Dynamics of Delta variant in England NHS regions from importations, traveller-linked and non-traveller-linked transmission.</strong></li>
+</ul>
+<p><strong>Suggested or ongoing development:</strong> The current code base is tailored to COVID-19, but the broader issue of distinguishing external importations (which may be known to some extent, e.g.&nbsp;based on timing of travel ban) from domestic human-to-human transmission also comes up for infections like avian influenza and mpox. If cases can be disaggregated into imported or domestic origin, then {EpiEstim} can calculate domestic transmission based on these data (<a href="https://doi.org/10.1016/j.epidem.2019.100356">Thompson et al, Epidemics, 2019</a>). However, <img src="https://latex.codecogs.com/png.latex?R_t"> estimation packages based on renewal processes, like {EpiEstim} and {EpiNow2} are not structured to infer such dynamics if the exact number of importations are unknown, so in future it may be useful to have a framework that builds on the <a href="https://elifesciences.org/articles/78089">Golding et al two component approach</a> developed for the Australian COVID response (accompanying <a href="https://github.com/goldingn/covid19_australia_interventions">code here</a>).</p>
+</section>
+<section id="jun-2021-analysis-of-social-contact-data-during-reopening" class="level3">
+<h3 class="anchored" data-anchor-id="jun-2021-analysis-of-social-contact-data-during-reopening">1 Jun 2021: Analysis of social contact data during reopening</h3>
+<p><a href="https://github.com/bquilty25/superspreading_testing">Code</a> ✅ | Package ⏳ | Hours (rough), Weeks (robust)</p>
+<p>Two papers for SPI-M-O/SAGE looked at social contact dynamics during reopening:</p>
+<ul>
+<li><a href="https://www.gov.uk/government/publications/cmmid-social-contacts-in-the-uk-from-the-comix-social-contact-survey"><strong>Analysis of individuals with a high number of contacts in the CoMix study</strong>.</a></li>
+<li><a href="https://www.gov.uk/government/publications/lshtm-and-kcl-reconstructing-the-secondary-case-distribution-of-sars-cov-2-from-heterogeneity-in-viral-load-trajectories-and-social-contacts-1-june"><strong>Reconstructing the secondary case distribution of SARS-CoV-2 from heterogeneity in viral load trajectories and social contacts</strong>.</a></li>
+</ul>
+<p>CoMix data are now available as part of the {socialmixr} package, with code for the secondary case distribution released with the <a href="https://www.medrxiv.org/content/10.1101/2024.08.15.24311977v2">Chapman et al pre-print</a>.</p>
+<p><strong>Suggested or ongoing development:</strong> The methods used for ‘first principles’ reconstruction of <img src="https://latex.codecogs.com/png.latex?R_t"> could be included in a future social mixing analysis package, but would benefit from a larger database of viral load trajectories for different pathogens (currently available for SARS-CoV-2, but in theory estimatable for a range of acute infectious diseases).</p>
+</section>
+</section>
+<section id="concluding-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="concluding-thoughts">Concluding thoughts</h2>
+<p>Code was generally made available alongside public reports by LSHTM during COVID-19, except for very simple calculations. Several key functions are now available in R packages developed since the emergence of COVID-19, turning tasks that would have taken days into tasks that require only hours, but there are still some remaining bottlenecks to ensure that the methods would be applicable easily to H5N1, meaning some customised tasks for pandemic influenza would take hours when - with some further refinement - they could take minutes.</p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{kucharski2024,
+  author = {Kucharski, Adam},
+  title = {How Well Prepared Are We to Rapidly Analyse a New Influenza
+    Pandemic? {A} Brief Perspective on Analysis Conducted for {UK}
+    Government Advisory Groups During {COVID-19}},
+  date = {2024-12-23},
+  url = {https://epiverse-trace.github.io/posts/covid-analysis/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2024" class="csl-entry quarto-appendix-citeas">
+Kucharski, Adam. 2024. <span>“How Well Prepared Are We to Rapidly
+Analyse a New Influenza Pandemic? A Brief Perspective on Analysis
+Conducted for UK Government Advisory Groups During COVID-19.”</span>
+December 23, 2024. <a href="https://epiverse-trace.github.io/posts/covid-analysis/">https://epiverse-trace.github.io/posts/covid-analysis/</a>.
+</div></div></section></div> ]]></description>
+  <category>COVID</category>
+  <category>R</category>
+  <category>real-time analysis</category>
+  <category>pandemic preparedness</category>
+  <category>H5N1</category>
+  <guid>https://epiverse-trace.github.io/posts/covid-analysis/</guid>
+  <pubDate>Mon, 23 Dec 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>epiparameterDB v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/epiparameterDB_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new epiparameterDB version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>This is the first minor release of the <code>{epiparameterDB}</code> R package. It contains the epidemiological parameter database originally part of the <code>{epiparameter}</code> R package.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>The first release contains the parameter database (<code>parameters.json</code>) from the <code>{epiparameter}</code> package v0.3.0.</li>
+<li>Functionality to read the JSON file (<code>parameters.json</code>), render the database as a vignette (<code>database.Rmd</code>), and validate the JSON database with a data dictionary (<code>data_dictionary.json</code>) using a GitHub actions workflow (<code>validate-json.yaml</code>) have been copied from the original <code>{epiparameter}</code> implementation.</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/dependabot%5Bbot%5D">@dependabot[bot]</a> <a href="https://github.com/joshwlambert">@joshwlambert</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {epiparameterDB V0.1.0},
+  date = {2024-12-18},
+  url = {https://epiverse-trace.github.io/posts/epiparameterDB_v0.1.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“epiparameterDB
+V0.1.0.”</span> December 18, 2024. <a href="https://epiverse-trace.github.io/posts/epiparameterDB_v0.1.0/">https://epiverse-trace.github.io/posts/epiparameterDB_v0.1.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/epiparameterDB_v0.1.0/</guid>
+  <pubDate>Wed, 18 Dec 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How we work: My first full package review</title>
   <dc:creator>Chris Hartgerink</dc:creator>
@@ -2219,153 +2445,6 @@ V0.1.0.”</span> February 27, 2024. <a href="https://epiverse-trace.github.io/p
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/epidemics_v0.1.0/</guid>
   <pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>simulist v0.2.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/simulist_v0.2.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new simulist version v0.2.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Second release of <em>simulist</em>, updates the core simulation model and, as a result, the arguments for <code>sim_*()</code> functions for simulating line list data and/or contact table data exported from <em>simulist</em> are updated. The internal package architecture is also refactored.</p>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New features</h2>
-<section id="external" class="level3">
-<h3 class="anchored" data-anchor-id="external">External</h3>
-<ul>
-<li><code>create_config()</code> now returns a new element in the list: <code>$network</code>. By default <code>create_config()</code> returns <code>network = "adjusted"</code>, which assumes the simulation is a random network and samples contacts with an excess degree distribution (see Details in <code>?create_config()</code>). The network effect can be changed to <code>"unadjusted"</code> to <em>switch off</em> the network effect. <code>$network</code> is checked internally (in <code>.sim_network_bp()</code>) and will error if not valid (#60).</li>
-<li>Package architecture diagram is added to <code>design-principles.Rmd</code> (#66).</li>
-<li>lintr GitHub action workflow (<code>lint-changed-files.yaml</code>) is added to the suite of continuous integration workflows (#68).</li>
-<li>Transmission chain visualisation is added to <code>vis-linelist.Rmd</code> (#70).</li>
-</ul>
-</section>
-<section id="internal" class="level3">
-<h3 class="anchored" data-anchor-id="internal">Internal</h3>
-<ul>
-<li><code>.sim_network_bp()</code> is added as an internal function and replaces <code>bpmodels::chain_sim()</code> as the core simulation model producing contacted and infected individuals. <code>{bpmodels}</code> is removed as a dependency as a result (#60).</li>
-<li><code>.sample_names()</code> is added as an internal function to utilise <code>randomNames::randomNames()</code> to produce more unique names than <code>randomNames(..., sample.with.replacement = FALSE)</code>.</li>
-<li>Refactor of internal simulation architecture replaced <code>.sim_bp_linelist()</code>, <code>.sim_clinical_linelist()</code> and <code>.sim_contacts_tbl()</code> with <code>.sim_internal()</code> (#66).</li>
-<li>The <code>sim_utils.R</code> file was renamed to <code>utils.R</code> (#66) and the empty <code>create_linelist.R</code> file was removed (#72).</li>
-<li><code>.add_date_contact()</code> argument <code>outbreak_start_date</code> is now <code>NULL</code> by default instead of missing (#82).</li>
-<li>Regression tests of <code>sim_*()</code> functions now use <a href="https://testthat.r-lib.org/articles/snapshotting.html">snapshot testing</a> for more detailed data checking (#65).</li>
-<li>Internal testing data (<code>testdata</code>) files have been updated, as has the <code>testdata/README.md</code> with instructions (#64).</li>
-</ul>
-</section>
-</section>
-<section id="breaking-changes" class="level2">
-<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
-<ul>
-<li><code>R</code> and <code>serial_interval</code> arguments have been removed from <code>sim_linelist()</code>, <code>sim_contacts()</code> and <code>sim_outbreak()</code> functions and instead <code>contact_distribution</code>, <code>contact_interval</code> and <code>prob_infect</code> are used to parameterise the simulation. Documentation, both functions and vignettes, have been updated with these changes (#60).</li>
-<li>The <code>contact_distribution</code> argument in <code>sim_*()</code> functions requires a density function if supplied as an anonymous function. Information is added to <code>simulist.Rmd</code> to explain this.</li>
-<li>The line list output from <code>sim_linelist()</code> now uses column header <code>sex</code> instead of <code>gender</code>. The contacts table output from <code>sim_contacts()</code> and <code>sim_outbreak()</code> now uses column headers <code>age</code> and <code>sex</code> instead of <code>cnt_age</code> and <code>cnt_gender</code> (#60, #79).</li>
-<li><code>contact_distribution</code> is redefined and redocumented as the distribution of contacts per individual, rather than the number of contacts that do not get infected as it was in v0.1.0.</li>
-<li><code>row.names</code> for <code>&lt;data.frame&gt;</code>s output by <code>sim_linelist()</code>, <code>sim_contacts()</code> and <code>sim_outbreak()</code> are now sequential from <code>1:nrows</code> (#63).</li>
-</ul>
-</section>
-<section id="bug-fixes" class="level2">
-<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
-<ul>
-<li><code>sim_contacts()</code> now correctly runs with an age-structured population. In the previous version (v0.1.0), <code>sim_contacts()</code> did not call <code>.check_age_df()</code> and as a result the function errored, this is fixed as of PR #81.</li>
-</ul>
-</section>
-<section id="deprecated-and-defunct" class="level2">
-<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
-<ul>
-<li>None</li>
-</ul>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Many thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):</p>
-<p><a href="https://github.com/adamkucharski"><span class="citation" data-cites="adamkucharski">@adamkucharski</span></a>, <a href="https://github.com/avallecam"><span class="citation" data-cites="avallecam">@avallecam</span></a>, <a href="https://github.com/Bisaloo"><span class="citation" data-cites="Bisaloo">@Bisaloo</span></a>, <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>, <a href="https://github.com/jamesmbaazam"><span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span></a>, <a href="https://github.com/pratikunterwegs"><span class="citation" data-cites="pratikunterwegs">@pratikunterwegs</span></a>, and <a href="https://github.com/sbfnk"><span class="citation" data-cites="sbfnk">@sbfnk</span></a>.</p>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Simulist V0.2.0},
-  date = {2024-02-23},
-  url = {https://epiverse-trace.github.io/posts/simulist_v0.2.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Simulist
-V0.2.0.”</span> February 23, 2024. <a href="https://epiverse-trace.github.io/posts/simulist_v0.2.0/">https://epiverse-trace.github.io/posts/simulist_v0.2.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/simulist_v0.2.0/</guid>
-  <pubDate>Fri, 23 Feb 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>New team member: Chris Hartgerink</title>
-  <dc:creator>Chris Hartgerink</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/chjh-intro-blog/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>In January, I joined Epiverse as part of my new role as Senior Software Engineer at <a href="https://data.org">data.org</a>. In the weeks since, I have been able to already meet a lot of members of the Epiverse community. Talking to you and hearing about what drives you, further excites me to be part of this community! In order to build on that and keep the energy flowing, I wanted to introduce myself here more broadly.</p>
-<p>In this blog post, I share some of my background in R, my interest in open source, and how I look to contribute to this community. I want to already highlight that I love finishing things, from peanut butter jars to pull requests — so if you have anything that you’d like to pull over the finish line, I am more than happy to support in doing that!</p>
-<section id="background-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="background-in-r">Background in R</h2>
-<p>My first real introduction to programming was with R back in 2013, during a course on statistical programming. This was more about scripting than engineering, but it was where I dipped my toes. During my PhD at <a href="https://www.tilburguniversity.edu/about/schools/socialsciences/organization/departments/methodology-statistics">a methodology and statistics department</a>, I ended up becoming the go to person for getting mundane things done faster. I ended up writing R and shell scripts left and right, with most of them ending up being used only once. <a href="https://xkcd.com/1319">I wasted a lot of time</a> and had tons of fun doing this! I ended up writing scripts for my research as well, leading to some legal troubles with big publishers (<a href="https://www.chjh.nl/elsevier-stopped-me-doing-my-research/">see this old blog post</a>). Oops!</p>
-<p>From scripting came contributing to R packages like <a href="https://cran.r-project.org/web/packages/statcheck/index.html"><code>statcheck</code></a>, from which came developing my own packages like <a href="https://cran.r-project.org/web/packages/retractcheck/index.html"><code>retractcheck</code></a>. Before I knew it I was helping others learn R and build their own packages in small workshops. This was back when the <code>devtools</code> experience was pretty decent but in no way as complete as it is today.</p>
-<p>Around 2018, <a href="https://www.chjh.nl/reflections-on-my-phd/">I ended up leaving academia</a> and stopped needing to develop in R. I was not upset because R development is rather quirky and arbitrary at times. Since then, I have designed, built, and maintained production web applications in NodeJS, with my biggest achievement being <a href="https://www.researchequals.com">ResearchEquals</a>. I’m excited to bring the best of different languages together in this new position. Coming from NodeJS engineering, I already see some avenues for building a better developer experience in R. I look forward to not just contribute packages but also more general tooling during my time working on Epiverse.</p>
-</section>
-<section id="working-openly" class="level2">
-<h2 class="anchored" data-anchor-id="working-openly">Working openly</h2>
-<p>I come to open source through open science, which is all about reducing the “insiders” and “outsiders” of research. Can people access publications equitably? Can people contribute to the work that’s happening equitably? Are funds distributed equitably? There are still big barriers to accessing research, its institutions, and as a result there remain inequities in the knowledge that is produced.</p>
-<p>As a natural extension of open science, I started getting involved with open source communities around 2015-2016. I started with smaller open source projects springboarding to bigger projects over time. I documented all my own research projects on GitHub and started building websites (e.g., one about <a href="https://libscie.github.io/libcopy/">copyright in research publishing</a>). All this practice developed my philosophy of working openly, which culminated in my time as a Mozilla Open Science Fellow in 2017.</p>
-<p>With over a decade of practice, I approach <a href="https://wiki.mozilla.org/Working_open#Open_vs._Transparent">working openly</a> as community work. Open source is not just making information public - it requires making that information accessible and actionable. It has to be public <strong>and</strong> participatory. It needs to be informed by the needs of those participating, and participation needs to be encouraged, enabled, and scaffolded. This also means that the community needs to define what it desires. Are we working on a static piece of information that we want to enable reuse of (e.g., a finalized dataset) or do we want to co-create with people who we still need to invite in? People come and go, and so this community culture has to evolve.</p>
-<p>Working openly, to me, also means that considerate and empathetic communication is key. It requires articulating our own needs, wants, and uncertainty with honesty. It requires accepting that our personal wants are not always aligned with what the community wants. How do we deal with those situations? Do we seek consensus or majorities? These discussions need humility and not getting entitled to things. It means actually listening to each other. There is no room for peacockery or posturing, but lots of room for caring and celebrating each other.</p>
-</section>
-<section id="contributing-to-epiverse" class="level2">
-<h2 class="anchored" data-anchor-id="contributing-to-epiverse">Contributing to Epiverse</h2>
-<p>I am excited to bring this philosophy of working open to Epiverse and vice versa, learn how this community is open in its own unique way. With an international community across three continents there are important questions around what it means to be participatory. After talking to various community members, it is clear this community raises important and practical questions. I am also intrigued to see what is preventing people from joining this community - what barriers are we unconsciously putting up?</p>
-<p>I see my role within Epiverse as a <a href="https://en.wikipedia.org/wiki/Rush_goalie">“rush goalie”</a> (also known as a fly goalie). I will own the development and maintainance of specific pieces of software, yet I can leave those to actively support work throughout Epiverse. In short: I go where I am needed, in whatever form that may be. That can be software development, community engagement, and so much more.</p>
-<p>To that end: Get in touch with me anytime you think I might be of support. Tag me on GitHub liberally (<code>@chartgerink</code>). Send me emails on <a href="mailto:chris@data.org" class="email">chris@data.org</a>. DM me wherever. I am here to support Epiverse and all its various packages in whatever shape they may need. This includes code reviews, making fixes, and being part of discussions. I would rather be tagged once too often than once too little.</p>
-<p>Epiverse is also not a standalone community within the R space, so when practical, I will also contribute back to the packages that we use in our work. I already started making pull requests elsewhere, and it is great to see the R community be so welcoming to outside contributions. My hope is that Epiverse will be just as welcoming and a part of that wider ecosystem.</p>
-<hr>
-<p>At the moment, I am still finding my way throughout the various repositories. It takes time to understand new code and start identifying areas to contribute (and it’s not always as easy as can be). I will be checking in on the repositories (and there are a lot!) and may ask around to see whether PRs or issues are still relevant. Nonetheless, after several weeks, I am starting to feel more like a part of the community than a newbie.</p>
-<p>Thanks for reading along and feel free to leave a comment if you have anything else you’d like to know.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Getting in touch
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can reach me on <a href="mailto:chris@data.org" class="email">chris@data.org</a> or on GitHub under <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>. I am also on Mastodon under <a href="https://akademienl.social/@chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span><span class="citation" data-cites="akademienl.social">@akademienl.social</span></a>.</p>
-</div>
-</div>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{hartgerink2024,
-  author = {Hartgerink, Chris},
-  title = {New Team Member: {Chris} {Hartgerink}},
-  date = {2024-02-15},
-  url = {https://epiverse-trace.github.io/posts/chjh-intro-blog/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-hartgerink2024" class="csl-entry quarto-appendix-citeas">
-Hartgerink, Chris. 2024. <span>“New Team Member: Chris
-Hartgerink.”</span> February 15, 2024. <a href="https://epiverse-trace.github.io/posts/chjh-intro-blog/">https://epiverse-trace.github.io/posts/chjh-intro-blog/</a>.
-</div></div></section></div> ]]></description>
-  <category>Team</category>
-  <guid>https://epiverse-trace.github.io/posts/chjh-intro-blog/</guid>
-  <pubDate>Thu, 15 Feb 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
