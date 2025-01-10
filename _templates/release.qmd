@@ -6,7 +6,7 @@ date: "{{ date }}"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new [{{ pkgname }}](https://epiverse-trace.github.io/{{ pkgname }}) version {{ v }}.
+We are very excited to announce the release of a new [{{ pkgname }}](<https://epiverse-trace.github.io/{{ pkgname }}>) version {{ v }}.
 Here is an automatically generated summary of the changes in this version.
 
 {{ notes }}
