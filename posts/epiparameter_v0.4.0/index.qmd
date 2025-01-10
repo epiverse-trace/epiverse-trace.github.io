@@ -6,7 +6,7 @@ date: "2025-01-08"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new [https://epiverse-trace.github.io/epiparameter](epiparameter) version v0.4.0.
+We are very excited to announce the release of a new [epiparameter](https://epiverse-trace.github.io/epiparameter) version v0.4.0. This is the first version of epiparameter to be on [CRAN](https://cran.r-project.org/package=epiparameter) (the package can now be installed with `install.packages()`).
 Here is an automatically generated summary of the changes in this version.
 
 The fourth minor release of the {epiparameter} focuses on splitting the code and data, with the data being moved into a separate R package: [{epiparameterDB}](https://CRAN.R-project.org/package=epiparameterDB). There are also some minor additional improvements focusing on printing and plotting.
