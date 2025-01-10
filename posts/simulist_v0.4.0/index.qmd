@@ -1,0 +1,46 @@
+---
+title: "simulist v0.4.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2025-01-10"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new [https://epiverse-trace.github.io/simulist](simulist) version v0.4.0.
+Here is an automatically generated summary of the changes in this version.
+
+A minor version release of _simulist_ containing various minor improvements to the functions and documentation, as well as removing some triggers for warning users. There are also a few bug fixes and internal enhancements.
+
+## New features
+
+### External
+
+* Defaults have been added to all `sim_*()` arguments that previously did not have one. Allowing functions to be run without specifying any arguments (e.g. `linelist <- sim_linelist()`) (#149).
+* Documentation for `sim_*()` function arguments that accept either a `function` or an `<epiparameter>` object has been improved (#149).
+* `sim_*()` functions no longer warn if the user has not specified `*_risk` arguments and have set `onset_to_*` arguments to `NULL` (#149).
+* All vignettes now use `rmarkdown::html_vignette` for to correctly render the website and for maximum compatibility with {pkgdown} >= 2.1.0. This removes figure numbering and code folding (#153).
+
+### Internal
+
+* `.add_hospitalisation()` has been vectorised following `.add_outcome()` in PR #101 (#150). 
+
+## Breaking changes
+
+* The function arguments `infect_period` and `prob_infect` have been renamed `infectious_period` and `prob_infection` (#143).
+* `sim_*()` functions now use `NULL` instead of `NA` to turn off processes (e.g. `onset_to_death = NULL` for no deaths) (#148).
+
+## Bug fixes
+
+* A new function, `.sample_infect_period()` is added that errors if the infectious period function generates a negative number (#142).
+* `sim_linelist()` no longer errors when `hosp_death_risk` is `NULL` and `onset_to_death` is parameterised as a delay distribution (#144). 
+* `.add_ct()` generates the correct number of values and does not duplicate Ct values due to vector recycling (#158). 
+* Update {epiparameter} usage (#159).
+
+## Deprecated and defunct
+
+* None
+
+
+## Acknowledgements
+
+[&#x0040;avallecam](https://github.com/avallecam) [&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;joshwlambert](https://github.com/joshwlambert) [&#x0040;Karim-Mane](https://github.com/Karim-Mane) [&#x0040;sbfnk](https://github.com/sbfnk)
