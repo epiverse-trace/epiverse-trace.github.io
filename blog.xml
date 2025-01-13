@@ -9,8 +9,72 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.7.5</generator>
-<lastBuildDate>Mon, 23 Dec 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.9</generator>
+<lastBuildDate>Wed, 08 Jan 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>epiparameter v0.4.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/epiparameter">epiparameter</a> version v0.4.0. This is the first version of epiparameter to be on <a href="https://cran.r-project.org/package=epiparameter">CRAN</a> (the package can now be installed with <code>install.packages()</code>). Here is an automatically generated summary of the changes in this version.</p>
+<p>The fourth minor release of the {epiparameter} focuses on splitting the code and data, with the data being moved into a separate R package: <a href="https://CRAN.R-project.org/package=epiparameterDB">{epiparameterDB}</a>. There are also some minor additional improvements focusing on printing and plotting.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>The library of epidemiological parameters (<code>parameters.json</code>) has been removed from the {epiparameter} package and moved to the {epiparameterDB} R package which is taken on as a dependency. The {epiparameter} package is licensed solely as MIT with dual licensing with CC0 removed (#415).</li>
+<li>The data dictionary (<code>data_dictionary.json</code>) and JSON validation workflow (<code>validate-json.yaml</code>) have been removed from the package (#415).</li>
+<li>The library of epidemiological parameters is cached (using <a href="https://CRAN.R-project.org/package=cachem">{cachem}</a>) on loading the package to reduce the runtime of <code>epiparameter_db()</code> (#417).</li>
+<li>The <code>print()</code> and <code>format()</code> methods for the <code>&lt;epiparameter&gt;</code> class have been improved to show the units of parameter estimates, as well as summary statistics, if available, for unparameterised <code>&lt;epiparameter&gt;</code> objects (#419).</li>
+<li><code>on.exit()</code> is no longer called in plotting functions to allow user-specified graphical parameters to not be overwritten (#420).</li>
+<li>A <code>plot()</code> method for the <code>&lt;multi_epiparameter&gt;</code> class is added. This enables a list of <code>&lt;epiparameter&gt;</code> objects with continuous distributions to be compared on a single plot (#425).</li>
+<li>A <code>lines()</code> method for the <code>&lt;epiparameter&gt;</code> class is added (#425).</li>
+</ul>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>A bug in <code>is_continuous()</code> causing it to incorrectly returning <code>FALSE</code> for <code>&lt;epiparameter&gt;</code> objects with normal distributions is fixed (#422).</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/joshwlambert">@joshwlambert</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Epiparameter V0.4.0},
+  date = {2025-01-08},
+  url = {https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2025. <span>“Epiparameter
+V0.4.0.”</span> January 8, 2025. <a href="https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/">https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/</guid>
+  <pubDate>Wed, 08 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How well prepared are we to rapidly analyse a new influenza pandemic? A brief perspective on analysis conducted for UK government advisory groups during COVID-19</title>
   <dc:creator>Adam Kucharski</dc:creator>
@@ -1732,36 +1796,6 @@ V1.0.0.”</span> June 17, 2024. <a href="https://epiverse-trace.github.io/posts
   <pubDate>Mon, 17 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>readepi v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Readepi V0.1.0},
-  date = {2024-06-10},
-  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Readepi
-V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
-  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
   <title>epichains v0.1.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
   <link>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</link>
@@ -1833,6 +1867,36 @@ V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</guid>
+  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>readepi v0.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
+
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+  author = {Epiverse-TRACE development team, The},
+  title = {Readepi V0.1.0},
+  date = {2024-06-10},
+  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2024. <span>“Readepi
+V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
   <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
@@ -2344,107 +2408,6 @@ V1.1.0.”</span> February 28, 2024. <a href="https://epiverse-trace.github.io/p
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/linelist_v1.1.0/</guid>
   <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>epidemics v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/epidemics_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We would like to announce the realease on GitHub of version 0.1.0 of <em>epidemics</em>.</p>
-<p>This release is aimed at supporting the reproducibility of <a href="https://gaza-projections.org/">analyses in this report</a>, which would be subject to breaking changes due to planned package development.</p>
-<p>Please note that this version has not been released to CRAN. <em>epidemics</em> is still being actively developed, with major changes planned for the near future, which will soon supersede this version.</p>
-<p><em>epidemics</em> v0.1.0 can be installed using the {pak} package from GitHub using <code>pak::pak("epiverse-trace/epidemics@v0.1.0")</code>.</p>
-<p>Here is an automatically generated summary of the changes in this version.</p>
-<p>This is an initial GitHub release of <em>epidemics</em>, an R package that ships a library of compartmental epidemic model structures that can be used, along with supplied classes that help define population characteristics and epidemic response interventions including vaccinations, to compose and model epidemic scenarios.</p>
-<p>The sections below describe the contents of this release.</p>
-<section id="model-structures" class="level2">
-<h2 class="anchored" data-anchor-id="model-structures">Model structures</h2>
-<p>This release of <em>epidemics</em> includes four model structures supporting a range of composable elements to modify epidemic trajectories.</p>
-<ol type="1">
-<li><p>“Default” model: A deterministic SEIR-V model allowing heterogeneity in social contacts between demographic groups, with optional, single-dose non-leaky vaccination;</p></li>
-<li><p>“Vacamole” model: A deterministic SEI-HRD-V2 implementation of a model allowing heterogeneity in social contacts between demographic groups, with two-dose leaky vaccination (V2), supporting different infection trajectories through the infectious and hospitalised (H) compartments for doubly vaccinated individuals, which tracks deaths (D), and which was initially developed by the Dutch public health agency RIVM for vaccine impact modelling during the Covid-19 pandemic, and published as Ainslie et al.&nbsp;2022 <a href="https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090" class="uri">https://doi.org/10.2807/1560-7917.ES.2022.27.44.2101090</a>;</p></li>
-<li><p>“Diphtheria” model: A deterministic SEIHR model tracking outcomes for different demographic groups, but not including heterogeneity in social contacts, adapted from Finger et al.&nbsp;2019 <a href="https://doi.org/10.1186/s12916-019-1288-7" class="uri">https://doi.org/10.1186/s12916-019-1288-7</a> and intended for application to disease outbreaks in a humanitarian camp setting;</p></li>
-<li><p>“Ebola” model: A discrete time stochastic SEIHFR model suitable for modelling Ebola virus disease and other haemorrhagic fevers, and which allows varying the efficacy of isolation in a hospital setting (H), and allows modelling transmission in a funeral context (F), as adapted from a consensus Ebola virus disease model in Li et al.&nbsp;2019 <a href="https://doi.org/10.1098/rspb.2019.0774" class="uri">https://doi.org/10.1098/rspb.2019.0774</a> and using simulation methods from Getz and Dougherty 2018 <a href="https://doi.org/10.1080/17513758.2017.1401677" class="uri">https://doi.org/10.1080/17513758.2017.1401677</a>.</p></li>
-</ol>
-</section>
-<section id="solving-ode-systems-using-boost-odeint" class="level2">
-<h2 class="anchored" data-anchor-id="solving-ode-systems-using-boost-odeint">Solving ODE systems using Boost <em>odeint</em></h2>
-<p><em>epidemics</em> uses Boost’s <em>odeint</em> <a href="https://www.boost.org/doc/libs/1_84_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html" class="uri">https://www.boost.org/doc/libs/1_84_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/getting_started/overview.html</a> to treat the deterministic models’ ordinary differential equations (ODEs) as initial value problems and solve them.</p>
-<p>Model ODEs are defined as <code>structs</code> with operators in the package headers, and exposed to R as internal Rcpp functions. The ‘default’, ‘Vacamole’, and ‘diphtheria’ models are ODE models defined in this way. This is intended to help reduce overheads associated with passing ODE systems written in R back and forth from a solver (such as those provided by {deSolve}), and is an easier way to define feature-rich models than writing C code for solvers provided by {deSolve} that accept compiled code.</p>
-<p><em>epidemics</em> headers include tools for handling the C++ representations of R objects used in the package (see below), and can be imported by other Rcpp packages.</p>
-<p>The ‘default’ and ‘Vacamole’ models have equivalent R-only implementations as well which use the {deSolve} package; these are intended to be made unavailable in future releases.</p>
-</section>
-<section id="composable-elements-as-classes" class="level2">
-<h2 class="anchored" data-anchor-id="composable-elements-as-classes">Composable elements as classes</h2>
-<p><em>epidemics</em> provides classes that help to organise the components of an epidemic scenario model.</p>
-<ol type="1">
-<li><p><code>&lt;population&gt;</code>: An S3 class to store population characteristics including the size of demographic groups, a social contacts matrix, and initial conditions for a model;</p></li>
-<li><p><code>&lt;intervention&gt;</code>: An S3 abstract class and super-class that allows the definition of events that modify the epidemic trajectory:</p>
-<ol type="a">
-<li><p><code>&lt;rate_intervention&gt;</code>: A sub-class of <code>&lt;intervention&gt;</code> that allows the reduction of transition rates between model compartments to simulate the effect of policy interventions over a specific period;</p></li>
-<li><p><code>&lt;contacts_intervention&gt;</code>: A sub-class of <code>&lt;intervention&gt;</code> that allows the reduction of social contacts to simulate the effect of policy interventions over a specific period;</p></li>
-</ol></li>
-<li><p><code>&lt;vaccination&gt;</code>: An S3 class that holds the intervals and group-specific rates at which individuals transition into the ‘vaccinated’ compartment(s) of a model, if available;</p></li>
-</ol>
-</section>
-<section id="other-composable-elements" class="level2">
-<h2 class="anchored" data-anchor-id="other-composable-elements">Other composable elements</h2>
-<p><em>epidemics</em> allows models to include elements that affect an epidemic trajectory, but which are not custom classes.</p>
-<ol type="1">
-<li><p>Time-dependence: All models can be passed a list of functions with two arguments, <code>time</code> and <code>x</code> which are expected to return <code>x</code> as a function of <code>time</code>, and which may be used to model the effect of seasonality in model parameters;</p></li>
-<li><p>Population changes: Applicable only to the diphtheria model, a two element list of <code>time</code> and <code>values</code>, which allow the definition of changes to the number of susceptible individuals in the model, and which may be used to model influxes and evacuations of individuals from humanitarian camps.</p></li>
-</ol>
-</section>
-<section id="output-processing-functions" class="level2">
-<h2 class="anchored" data-anchor-id="output-processing-functions">Output processing functions</h2>
-<p><em>epidemics</em> provides functions to help process the output of an epidemic model run, to calculate the size of the epidemic in each demographic group at any stage (<code>epidemic_size()</code>), and to calculate the number of new infections in each demographic group at each timepoint in the model (<code>new_infections()</code>).</p>
-</section>
-<section id="usage-vignettes" class="level2">
-<h2 class="anchored" data-anchor-id="usage-vignettes">Usage vignettes</h2>
-<p><em>epidemics</em> includes a range of usage vignettes that demonstrate how to:</p>
-<ol type="1">
-<li><p>Get started with the package;</p></li>
-<li><p>Get started with modelling interventions on social contacts to control outbreaks;</p></li>
-<li><p>Model overlapping and sequential interventions on social contacts;</p></li>
-<li><p>Model interventions that modify transition rates between model compartments;</p></li>
-<li><p>Get started with modelling a vaccination campaign;</p></li>
-<li><p>Model time-dependence and seasonality in disease transmission dynamics;</p></li>
-<li><p>Generate and model uncertainty in model parameters;</p></li>
-<li><p>Reduce the number of parameters required for final size estimation;</p></li>
-<li><p>Use the ‘Vacamole’ model for scenarios of leaky vaccination and vaccine impact on hospitalisation;</p></li>
-<li><p>Use the ‘Ebola’ model for scenarios of responses to an Ebola virus disease outbreak;</p></li>
-<li><p>Use the ‘diphtheria’ model for scenarios of outbreaks in a humanitarian camp setting.</p></li>
-</ol>
-</section>
-<section id="miscellaneous" class="level2">
-<h2 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h2>
-<ol type="1">
-<li><p>Workflows to render the vignettes and README as a website;</p></li>
-<li><p>Test code coverage of 93%.</p></li>
-</ol>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Epidemics V0.1.0},
-  date = {2024-02-27},
-  url = {https://epiverse-trace.github.io/posts/epidemics_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Epidemics
-V0.1.0.”</span> February 27, 2024. <a href="https://epiverse-trace.github.io/posts/epidemics_v0.1.0/">https://epiverse-trace.github.io/posts/epidemics_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/epidemics_v0.1.0/</guid>
-  <pubDate>Tue, 27 Feb 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

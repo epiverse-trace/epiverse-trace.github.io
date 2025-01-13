@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="The Epiverse-TRACE development team">
-<meta name="dcterms.date" content="2024-06-24">
+<meta name="dcterms.date" content="2025-01-08">
 
-<title>epidemics v0.4.0 – Epiverse-TRACE developer space</title>
+<title>epiparameter v0.4.0 – Epiverse-TRACE developer space</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,10 +82,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="epidemics v0.4.0 – Epiverse-TRACE developer space">
+<meta property="og:title" content="epiparameter v0.4.0 – Epiverse-TRACE developer space">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="epidemics v0.4.0 – Epiverse-TRACE developer space">
+<meta name="twitter:title" content="epiparameter v0.4.0 – Epiverse-TRACE developer space">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">epidemics v0.4.0</h1>
+      <h1 class="title">epiparameter v0.4.0</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">new-release</div>
               </div>
@@ -213,7 +213,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 24, 2024</p>
+        <p class="date">January 8, 2025</p>
       </div>
     </div>
     
@@ -232,54 +232,55 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 
-<p>We are very excited to announce the release of a new epidemics version v0.4.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Maintainer is changing to <span class="citation" data-cites="rozeggo">@rozeggo</span>.</p>
-<section id="model-functions" class="level2">
-<h2 class="anchored" data-anchor-id="model-functions">Model functions</h2>
-<ol type="1">
-<li>Internal model functions for the models which allow vaccination have been corrected to prevent vaccination introducing negative values of susceptibles; tests added to check for this (#235, initially reported by <span class="citation" data-cites="avallecam">@avallecam</span>).</li>
-</ol>
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/epiparameter">epiparameter</a> version v0.4.0. This is the first version of epiparameter to be on <a href="https://cran.r-project.org/package=epiparameter">CRAN</a> (the package can now be installed with <code>install.packages()</code>). Here is an automatically generated summary of the changes in this version.</p>
+<p>The fourth minor release of the {epiparameter} focuses on splitting the code and data, with the data being moved into a separate R package: <a href="https://CRAN.R-project.org/package=epiparameterDB">{epiparameterDB}</a>. There are also some minor additional improvements focusing on printing and plotting.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>The library of epidemiological parameters (<code>parameters.json</code>) has been removed from the {epiparameter} package and moved to the {epiparameterDB} R package which is taken on as a dependency. The {epiparameter} package is licensed solely as MIT with dual licensing with CC0 removed (#415).</li>
+<li>The data dictionary (<code>data_dictionary.json</code>) and JSON validation workflow (<code>validate-json.yaml</code>) have been removed from the package (#415).</li>
+<li>The library of epidemiological parameters is cached (using <a href="https://CRAN.R-project.org/package=cachem">{cachem}</a>) on loading the package to reduce the runtime of <code>epiparameter_db()</code> (#417).</li>
+<li>The <code>print()</code> and <code>format()</code> methods for the <code>&lt;epiparameter&gt;</code> class have been improved to show the units of parameter estimates, as well as summary statistics, if available, for unparameterised <code>&lt;epiparameter&gt;</code> objects (#419).</li>
+<li><code>on.exit()</code> is no longer called in plotting functions to allow user-specified graphical parameters to not be overwritten (#420).</li>
+<li>A <code>plot()</code> method for the <code>&lt;multi_epiparameter&gt;</code> class is added. This enables a list of <code>&lt;epiparameter&gt;</code> objects with continuous distributions to be compared on a single plot (#425).</li>
+<li>A <code>lines()</code> method for the <code>&lt;epiparameter&gt;</code> class is added (#425).</li>
+</ul>
 </section>
-<section id="helper-functions" class="level2">
-<h2 class="anchored" data-anchor-id="helper-functions">Helper functions</h2>
-<ol type="1">
-<li><p>Added the <code>epidemic_peak()</code> function to calculate the timing and size of the largest peak in each compartment in an scenario model (#240) by <span class="citation" data-cites="bahadzie">@bahadzie</span>.</p></li>
-<li><p>Added the <code>outcomes_averted()</code> function to compare epidemic scenarios (e.g.&nbsp;with and without interventions or vaccination) (#225, #230).</p></li>
-</ol>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>None</li>
+</ul>
 </section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<ol type="1">
-<li><p>Adds a developer-focused vignette on how to modify epidemics and model structures to address potential modelling requests or tasks (#210).</p></li>
-<li><p>Splits up the ‘Modelling uncertainty and scenarios’ vignette into separate vignettes on uncertainty and scenario comparisons (#225).</p></li>
-<li><p>Removed unnecessary plots from the vignette on modelling vaccination (#235).</p></li>
-<li><p>Fixed link to <em>socialmixr</em> package in the ‘Get started’ and ‘Modelling interventions’ vignettes.</p></li>
-<li><p>Updated and added documentation for all new or modified functions.</p></li>
-<li><p>Updated references JSON file.</p></li>
-</ol>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>A bug in <code>is_continuous()</code> causing it to incorrectly returning <code>FALSE</code> for <code>&lt;epiparameter&gt;</code> objects with normal distributions is fixed (#422).</li>
+</ul>
 </section>
-<section id="package" class="level2">
-<h2 class="anchored" data-anchor-id="package">Package</h2>
-<ol type="1">
-<li><p>Updated Codecov GitHub Actions workflow to restore code coverage reporting.</p></li>
-<li><p>Updated package title and citation file.</p></li>
-<li><p>Updated <code>_pkgdown.yaml</code> with new vignette and updated section titles.</p></li>
-<li><p>Updated WORDLIST.</p></li>
-</ol>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/joshwlambert">@joshwlambert</a></p>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
   author = {Epiverse-TRACE development team, The},
-  title = {Epidemics V0.4.0},
-  date = {2024-06-24},
-  url = {https://epiverse-trace.github.io/posts/epidemics_v0.4.0/},
+  title = {Epiparameter V0.4.0},
+  date = {2025-01-08},
+  url = {https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Epiverse-TRACE development team, The. 2024. <span>“Epidemics
-V0.4.0.”</span> June 24, 2024. <a href="https://epiverse-trace.github.io/posts/epidemics_v0.4.0/">https://epiverse-trace.github.io/posts/epidemics_v0.4.0/</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2025. <span>“Epiparameter
+V0.4.0.”</span> January 8, 2025. <a href="https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/">https://epiverse-trace.github.io/posts/epiparameter_v0.4.0/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
