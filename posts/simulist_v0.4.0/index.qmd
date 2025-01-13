@@ -6,7 +6,7 @@ date: "2025-01-10"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new [https://epiverse-trace.github.io/simulist](simulist) version v0.4.0.
+We are very excited to announce the release of a new [simulist](https://epiverse-trace.github.io/simulist) version v0.4.0.
 Here is an automatically generated summary of the changes in this version.
 
 A minor version release of _simulist_ containing various minor improvements to the functions and documentation, as well as removing some triggers for warning users. There are also a few bug fixes and internal enhancements.
