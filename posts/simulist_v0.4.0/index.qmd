@@ -22,7 +22,7 @@ A minor version release of _simulist_ containing various minor improvements to t
 
 ### Internal
 
-* `.add_hospitalisation()` has been vectorised following `.add_outcome()` in PR #101 (#150). 
+* `.add_hospitalisation()` has been vectorised following `.add_outcome()` in PR #101 (#150).
 
 ## Breaking changes
 
@@ -32,14 +32,13 @@ A minor version release of _simulist_ containing various minor improvements to t
 ## Bug fixes
 
 * A new function, `.sample_infect_period()` is added that errors if the infectious period function generates a negative number (#142).
-* `sim_linelist()` no longer errors when `hosp_death_risk` is `NULL` and `onset_to_death` is parameterised as a delay distribution (#144). 
-* `.add_ct()` generates the correct number of values and does not duplicate Ct values due to vector recycling (#158). 
+* `sim_linelist()` no longer errors when `hosp_death_risk` is `NULL` and `onset_to_death` is parameterised as a delay distribution (#144).
+* `.add_ct()` generates the correct number of values and does not duplicate Ct values due to vector recycling (#158).
 * Update {epiparameter} usage (#159).
 
 ## Deprecated and defunct
 
 * None
-
 
 ## Acknowledgements
 
