@@ -54,11 +54,11 @@ After conducting an online search, dual licensing for R packages seems rare. An 
 
 > All data included in the epiparameter R package is licensed under CC0 (<https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt>). This includes the parameter database (extdata/parameters.json) and data in the data/ folder. Please cite the individual parameter entries in the database when used.
 
-However, upon submission of epiparameter to CRAN, we were rejected due to the dual licensing. The CRAN package reviewer stated: 
+However, upon submission of epiparameter to CRAN, we were rejected due to the dual licensing. The CRAN package reviewer stated:
 
-> A package can only be licensed as a whole. It can have a single license or a set of *alternative* licenes. If the data have to be licensed differently then the code, you have to provide the data in a separate data package with the other license.
+> A package can only be licensed as a whole. It can have a single license or a set of _alternative_ licenes. If the data have to be licensed differently then the code, you have to provide the data in a separate data package with the other license.
 
-Therefore, we decided to separate the data, originally stored in epiparameter, into a package called [**epiparameterDB**](https://github.com/epiverse-trace/epiparameterDB). This package is solely [licensed under CC0](https://github.com/epiverse-trace/epiparameterDB/blob/main/DESCRIPTION#L15), and epiparameter can then also be solely [licensed under MIT](https://github.com/epiverse-trace/epiparameter/blob/main/DESCRIPTION#L28). Both packages are now hosted on CRAN using a single license dedicated to code or data. 
+Therefore, we decided to separate the data, originally stored in epiparameter, into a package called [**epiparameterDB**](https://github.com/epiverse-trace/epiparameterDB). This package is solely [licensed under CC0](https://github.com/epiverse-trace/epiparameterDB/blob/main/DESCRIPTION#L15), and epiparameter can then also be solely [licensed under MIT](https://github.com/epiverse-trace/epiparameter/blob/main/DESCRIPTION#L28). Both packages are now hosted on CRAN using a single license dedicated to code or data.
 
 ::: {.callout-tip}
 It is often desirable to host an R package on CRAN as it enables it to be easily installed (from binary if on Mac or Windows), it gives the package some validity as a non-trivial and secure piece of software to install and use.
