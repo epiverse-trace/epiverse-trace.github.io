@@ -1,5 +1,5 @@
 ---
-title: Dual licensing R packages with code and data
+title: Updated insights on dual licensing R packages with code and data
 date: 2025-01-20
 author:
   - name: "Joshua Lambert"
