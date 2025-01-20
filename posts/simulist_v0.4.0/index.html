@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="The Epiverse-TRACE development team">
-<meta name="dcterms.date" content="2024-07-10">
+<meta name="dcterms.date" content="2025-01-10">
 
-<title>epiparameter v0.2.0 – Epiverse-TRACE developer space</title>
+<title>simulist v0.4.0 – Epiverse-TRACE developer space</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,10 +82,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="epiparameter v0.2.0 – Epiverse-TRACE developer space">
+<meta property="og:title" content="simulist v0.4.0 – Epiverse-TRACE developer space">
 <meta property="og:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta property="og:site_name" content="Epiverse-TRACE developer space">
-<meta name="twitter:title" content="epiparameter v0.2.0 – Epiverse-TRACE developer space">
+<meta name="twitter:title" content="simulist v0.4.0 – Epiverse-TRACE developer space">
 <meta name="twitter:description" content="A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">epiparameter v0.2.0</h1>
+      <h1 class="title">simulist v0.4.0</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">new-release</div>
               </div>
@@ -213,7 +213,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 10, 2024</p>
+        <p class="date">January 10, 2025</p>
       </div>
     </div>
     
@@ -232,35 +232,40 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 
-<p>We are very excited to announce the release of a new epiparameter version v0.2.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>The second release of the {epiparameter} R package focuses on interoperability with the <a href="https://mrc-ide.github.io/epireview/">{epireview} R package</a>. Several functions have been refactored and enhanced.</p>
-<p>This release benefited from feedback from the participants of an <a href="https://who-collaboratory.github.io/collaboratory-epiparameter-community/#/pages/news">EpiParameter Community workshop hosted by the World Health Organisation</a>.</p>
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/simulist">simulist</a> version v0.4.0. This is the first version of simulist to be on <a href="https://cran.r-project.org/package=simulist">CRAN</a> (the package can now be installed with <code>install.packages()</code>). Here is an automatically generated summary of the changes in this version.</p>
+<p>A minor version release of <em>simulist</em> containing various minor improvements to the functions and documentation, as well as removing some triggers for warning users. There are also a few bug fixes and internal enhancements.</p>
 <section id="new-features" class="level2">
 <h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<section id="external" class="level3">
+<h3 class="anchored" data-anchor-id="external">External</h3>
 <ul>
-<li><p>The <code>as_epidist()</code> S3 generic has been added to the package for the coercion of other R objects into <code>&lt;epidist&gt;</code> objects. The <code>as_epidist.data.frame()</code> method is added, as well as the internal functions <code>is_epireview()</code> which determines if a <code>&lt;data.frame&gt;</code> is from {epireview}, and <code>epireview_to_epidist()</code> performs the conversion (#298, #334 &amp; #335)</p></li>
-<li><p>The <code>epireview_core_cols.rda</code> data is added to the package. This is used to determine whether the input to <code>as_epidist.data.frame()</code> is a parameter table from {epireview} as these objects do not have a recognisable class attribute (#298).</p></li>
-<li><p>A new website only vignette (i.e.&nbsp;<a href="https://r-pkgs.org/vignettes.html#sec-vignettes-article">article</a>) <code>data_from_epireview.Rmd</code> is added that explains how to use <code>as_epidist()</code> with data from {epireview} (#298 &amp; #335).</p></li>
-<li><p>A new vignette <code>database.Rmd</code> is added to the package to provide a web interface to the {epiparameter} library of epidemiological parameters. Contributed by <span class="citation" data-cites="sbfnk">@sbfnk</span> (#311).</p></li>
-<li><p>The plotting method for <code>&lt;epidist&gt;</code> objects (<code>plot.epidist()</code>) has been improved to better differentiate continuous from discrete or discretised distributions (#315).</p></li>
-<li><p><code>epidist_db(..., single_epidist = TRUE)</code> now prioritises parameter entries that account for right truncation (#323).</p></li>
-<li><p><code>create_epidist_prob_dist()</code> (previously named <code>create_prob_dist()</code>) is now exported and enables more control of discretisation settings by allowing arguments to be passed to <code>distcrete::distcrete()</code> via <code>...</code> (#324).</p></li>
-<li><p>The <code>&lt;multi_epidist&gt;</code> print method (<code>print.multi_epidist()</code>) has been improved to provides object information in the print header, the first few elements of the list or all elements if list is short, and some extra links and advice in the print footer. The design of the print method follows the design pattern of <a href="https://pillar.r-lib.org/index.html">{pillar}</a> (#326).</p></li>
-<li><p><code>&lt;epidist&gt;</code> objects and functions that work with <code>&lt;epidist&gt;</code> objects now work with exponential distributions (#333).</p></li>
-<li><p>The package now has an explicit data license: <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt">CC0</a> in the <code>LICENSE</code> file.</p></li>
+<li>Defaults have been added to all <code>sim_*()</code> arguments that previously did not have one. Allowing functions to be run without specifying any arguments (e.g.&nbsp;<code>linelist &lt;- sim_linelist()</code>) (#149).</li>
+<li>Documentation for <code>sim_*()</code> function arguments that accept either a <code>function</code> or an <code>&lt;epiparameter&gt;</code> object has been improved (#149).</li>
+<li><code>sim_*()</code> functions no longer warn if the user has not specified <code>*_risk</code> arguments and have set <code>onset_to_*</code> arguments to <code>NULL</code> (#149).</li>
+<li>All vignettes now use <code>rmarkdown::html_vignette</code> for to correctly render the website and for maximum compatibility with {pkgdown} &gt;= 2.1.0. This removes figure numbering and code folding (#153).</li>
 </ul>
+</section>
+<section id="internal" class="level3">
+<h3 class="anchored" data-anchor-id="internal">Internal</h3>
+<ul>
+<li><code>.add_hospitalisation()</code> has been vectorised following <code>.add_outcome()</code> in PR #101 (#150).</li>
+</ul>
+</section>
 </section>
 <section id="breaking-changes" class="level2">
 <h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
 <ul>
-<li><p><code>list_distributions()</code> has been replaced by <code>parameter_tbl()</code> which enhances the printing by leveraging {pillar} (#321).</p></li>
-<li><p>The <code>&lt;vb_epidist&gt;</code> plotting method (<code>plot.vb_epidist()</code>) has been removed from the package. This provided minimal functionality and was unnecessarily complicating the function signature of <code>plot.epidist()</code> (#315).</p></li>
+<li>The function arguments <code>infect_period</code> and <code>prob_infect</code> have been renamed <code>infectious_period</code> and <code>prob_infection</code> (#143).</li>
+<li><code>sim_*()</code> functions now use <code>NULL</code> instead of <code>NA</code> to turn off processes (e.g.&nbsp;<code>onset_to_death = NULL</code> for no deaths) (#148).</li>
 </ul>
 </section>
 <section id="bug-fixes" class="level2">
 <h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
 <ul>
-<li>DOI and PMID are lowercase throughout the package to resolve issues with older versions of R (see issue #301) (#317).</li>
+<li>A new function, <code>.sample_infect_period()</code> is added that errors if the infectious period function generates a negative number (#142).</li>
+<li><code>sim_linelist()</code> no longer errors when <code>hosp_death_risk</code> is <code>NULL</code> and <code>onset_to_death</code> is parameterised as a delay distribution (#144).</li>
+<li><code>.add_ct()</code> generates the correct number of values and does not duplicate Ct values due to vector recycling (#158).</li>
+<li>Update {epiparameter} usage (#159).</li>
 </ul>
 </section>
 <section id="deprecated-and-defunct" class="level2">
@@ -271,21 +276,21 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p><a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/CarmenTamayo">@CarmenTamayo</a> <a href="https://github.com/DxChen0126">@DxChen0126</a> <a href="https://github.com/adamkucharski">@adamkucharski</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/chloerice48">@chloerice48</a> <a href="https://github.com/cm401">@cm401</a> <a href="https://github.com/jamesmbaazam">@jamesmbaazam</a> <a href="https://github.com/jlessler">@jlessler</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/papsti">@papsti</a> <a href="https://github.com/prabasaj">@prabasaj</a> <a href="https://github.com/sbfnk">@sbfnk</a> <a href="https://github.com/wzmli">@wzmli</a></p>
+<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a> <a href="https://github.com/sbfnk">@sbfnk</a></p>
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
   author = {Epiverse-TRACE development team, The},
-  title = {Epiparameter V0.2.0},
-  date = {2024-07-22},
-  url = {https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/},
+  title = {Simulist V0.4.0},
+  date = {2025-01-10},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.4.0/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Epiverse-TRACE development team, The. 2024. <span>“Epiparameter
-V0.2.0.”</span> July 22, 2024. <a href="https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/">https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2025. <span>“Simulist
+V0.4.0.”</span> January 10, 2025. <a href="https://epiverse-trace.github.io/posts/simulist_v0.4.0/">https://epiverse-trace.github.io/posts/simulist_v0.4.0/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

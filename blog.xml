@@ -9,8 +9,82 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.7.9</generator>
-<lastBuildDate>Wed, 08 Jan 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.13</generator>
+<lastBuildDate>Fri, 10 Jan 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>simulist v0.4.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/simulist_v0.4.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/simulist">simulist</a> version v0.4.0. This is the first version of simulist to be on <a href="https://cran.r-project.org/package=simulist">CRAN</a> (the package can now be installed with <code>install.packages()</code>). Here is an automatically generated summary of the changes in this version.</p>
+<p>A minor version release of <em>simulist</em> containing various minor improvements to the functions and documentation, as well as removing some triggers for warning users. There are also a few bug fixes and internal enhancements.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<section id="external" class="level3">
+<h3 class="anchored" data-anchor-id="external">External</h3>
+<ul>
+<li>Defaults have been added to all <code>sim_*()</code> arguments that previously did not have one. Allowing functions to be run without specifying any arguments (e.g.&nbsp;<code>linelist &lt;- sim_linelist()</code>) (#149).</li>
+<li>Documentation for <code>sim_*()</code> function arguments that accept either a <code>function</code> or an <code>&lt;epiparameter&gt;</code> object has been improved (#149).</li>
+<li><code>sim_*()</code> functions no longer warn if the user has not specified <code>*_risk</code> arguments and have set <code>onset_to_*</code> arguments to <code>NULL</code> (#149).</li>
+<li>All vignettes now use <code>rmarkdown::html_vignette</code> for to correctly render the website and for maximum compatibility with {pkgdown} &gt;= 2.1.0. This removes figure numbering and code folding (#153).</li>
+</ul>
+</section>
+<section id="internal" class="level3">
+<h3 class="anchored" data-anchor-id="internal">Internal</h3>
+<ul>
+<li><code>.add_hospitalisation()</code> has been vectorised following <code>.add_outcome()</code> in PR #101 (#150).</li>
+</ul>
+</section>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>The function arguments <code>infect_period</code> and <code>prob_infect</code> have been renamed <code>infectious_period</code> and <code>prob_infection</code> (#143).</li>
+<li><code>sim_*()</code> functions now use <code>NULL</code> instead of <code>NA</code> to turn off processes (e.g.&nbsp;<code>onset_to_death = NULL</code> for no deaths) (#148).</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>A new function, <code>.sample_infect_period()</code> is added that errors if the infectious period function generates a negative number (#142).</li>
+<li><code>sim_linelist()</code> no longer errors when <code>hosp_death_risk</code> is <code>NULL</code> and <code>onset_to_death</code> is parameterised as a delay distribution (#144).</li>
+<li><code>.add_ct()</code> generates the correct number of values and does not duplicate Ct values due to vector recycling (#158).</li>
+<li>Update {epiparameter} usage (#159).</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a> <a href="https://github.com/sbfnk">@sbfnk</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.4.0},
+  date = {2025-01-10},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.4.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2025. <span>“Simulist
+V0.4.0.”</span> January 10, 2025. <a href="https://epiverse-trace.github.io/posts/simulist_v0.4.0/">https://epiverse-trace.github.io/posts/simulist_v0.4.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/simulist_v0.4.0/</guid>
+  <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>epiparameter v0.4.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
@@ -2055,359 +2129,6 @@ V0.1.0.”</span> May 30, 2024. <a href="https://epiverse-trace.github.io/posts/
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/epiparameter_v0.1.0/</guid>
   <pubDate>Thu, 30 May 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>linelist v1.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/linelist_v1.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new linelist version v1.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<section id="breaking-changes" class="level2">
-<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
-<ul>
-<li><p><code>make_linelist()</code> and <code>set_tags()</code> no longer accept a named list of characters as input. Instead, <code>make_linelist()</code>, <code>set_tags()</code> and <code>tags_types()</code> now use <a href="https://rlang.r-lib.org/reference/dyn-dots.html">rlang’s dynamic dots</a>, which means that you can splice list arguments. This implementation is more robust, better tested, and makes it explicit that users want to splice the list (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #96).</p>
-<ul>
-<li>Before:</li>
-</ul>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">my_tags <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>(</span>
-<span id="cb1-2">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"case_ID"</span>,</span>
-<span id="cb1-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"date_of_prodrome"</span>,</span>
-<span id="cb1-4">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"age"</span>,</span>
-<span id="cb1-5">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gender"</span></span>
-<span id="cb1-6">)</span>
-<span id="cb1-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(obj, my_tags)</span>
-<span id="cb1-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># OR</span></span>
-<span id="cb1-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(</span>
-<span id="cb1-10">  obj,</span>
-<span id="cb1-11">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"case_ID"</span>,</span>
-<span id="cb1-12">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"date_of_prodrome"</span>,</span>
-<span id="cb1-13">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"age"</span>,</span>
-<span id="cb1-14">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gender"</span></span>
-<span id="cb1-15">)</span></code></pre></div>
-<ul>
-<li>Now:</li>
-</ul>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">my_tags <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">list</span>(</span>
-<span id="cb2-2">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"case_ID"</span>,</span>
-<span id="cb2-3">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"date_of_prodrome"</span>,</span>
-<span id="cb2-4">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"age"</span>,</span>
-<span id="cb2-5">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gender"</span></span>
-<span id="cb2-6">)</span>
-<span id="cb2-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(obj, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!!!</span>my_tags)</span>
-<span id="cb2-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># OR</span></span>
-<span id="cb2-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(</span>
-<span id="cb2-10">  obj,</span>
-<span id="cb2-11">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">id =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"case_ID"</span>,</span>
-<span id="cb2-12">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"date_of_prodrome"</span>,</span>
-<span id="cb2-13">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"age"</span>,</span>
-<span id="cb2-14">  <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"gender"</span></span>
-<span id="cb2-15">)</span></code></pre></div></li>
-</ul>
-</section>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New features</h2>
-<ul>
-<li><p>linelist warnings and errors in the case of a tag loss now have a custom class (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #109), which means it is easier to silence them specifically, or to catch them programmatically for advanced error handling. One example of a new advanced condition handling that was before not possible is:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">warning_counter <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb3-2"></span>
-<span id="cb3-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">withCallingHandlers</span>({</span>
-<span id="cb3-4">  x <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> linelist<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(cars, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">date_onset =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dist"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"speed"</span>)</span>
-<span id="cb3-5">  x <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> x[, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]</span>
-<span id="cb3-6">  x <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> x[, <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>]</span>
-<span id="cb3-7">  <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warning</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"This is not a linelist warning"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">call. =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">FALSE</span>)</span>
-<span id="cb3-8">}, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">linelist_warning =</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(w) {</span>
-<span id="cb3-9">  warning_counter <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;&lt;-</span> warning_counter <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb3-10">})</span>
-<span id="cb3-11"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Warning: The following tags have lost their variable:</span></span>
-<span id="cb3-12"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt;  age:speed</span></span>
-<span id="cb3-13"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Warning: The following tags have lost their variable:</span></span>
-<span id="cb3-14"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt;  date_onset:dist</span></span>
-<span id="cb3-15"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Warning: This is not a linelist warning</span></span>
-<span id="cb3-16"></span>
-<span id="cb3-17"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">warning</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"This pipeline generated "</span>, warning_counter, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">" linelist warnings."</span>)</span>
-<span id="cb3-18"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Warning: This pipeline generated 2 linelist warnings.</span></span></code></pre></div></li>
-<li><p>linelist objects now have a new custom <code>$&lt;-.linelist()</code> to prevent tag loss when subsetting a linelist object (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #86). This completes the functionality already provided by the <code>[&lt;-.linelist()</code> and <code>[[&lt;-.linelist()</code> methods.</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">x<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>tagged_column <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">NULL</span></span>
-<span id="cb4-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Warning in prune_tags(out, lost_action): The following tags have lost their variable:</span></span>
-<span id="cb4-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt;  tag:tagged_column</span></span></code></pre></div></li>
-<li><p>Validation failures in <code>validate_types()</code> now integrate a delayed error mechanism (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #106). This ensures that the error message will return all the invalid tag types at once rather than having to go through multiple trials and runs.</p>
-<ul>
-<li>Before: only the first invalid tag type is returned.</li>
-</ul>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># No warning about age, even though it also has an invalid type</span></span>
-<span id="cb5-2">x <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(cars, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"speed"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dist"</span>)</span>
-<span id="cb5-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">validate_types</span>(x, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ref_types =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tags_types</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"factor"</span>))</span>
-<span id="cb5-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Error in validate_types(x, ref_types = tags_types(age = "factor")) : </span></span>
-<span id="cb5-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt;   Issue when checking class of tag `gender`:</span></span>
-<span id="cb5-6"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Must inherit from class 'character'/'factor', but has class 'numeric'</span></span></code></pre></div>
-<ul>
-<li>Now: the error message returns all the invalid tag types at once.</li>
-</ul>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1">x <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">make_linelist</span>(cars, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"speed"</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">gender =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"dist"</span>)</span>
-<span id="cb6-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">validate_types</span>(x, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">ref_types =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">tags_types</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">age =</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"factor"</span>))</span>
-<span id="cb6-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt; Some tags have the wrong class:</span></span>
-<span id="cb6-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt;   - gender: Must inherit from class 'character'/'factor', but has class 'numeric'</span></span>
-<span id="cb6-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#&gt;   - age: Must inherit from class 'factor', but has class 'numeric'</span></span></code></pre></div></li>
-</ul>
-</section>
-<section id="internal-changes" class="level2">
-<h2 class="anchored" data-anchor-id="internal-changes">Internal changes</h2>
-<ul>
-<li>Internal duplication in the specification of the tags supported by linelist by default has been removed. This makes it easier to add or remove tags in the future, and reduces the risk of inconsistencies between the different parts of the package (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #111).</li>
-<li>The internal <code>tag_variable()</code> function has been replace by a vectorized alternative <code>tag_variable</code>, thus improving performance in <code>make_linelist()</code> and <code>set_tags()</code> about twofold. The error message when tags are specified by position with a number larger than the number of columns in the dataset to tag has also been clarified (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #110).</li>
-</ul>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<ul>
-<li>linelist now provides a design vignette for future contributors or maintainers (<span class="citation" data-cites="Bisaloo">@Bisaloo</span>, #112).</li>
-</ul>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Linelist V1.1.0},
-  date = {2024-02-28},
-  url = {https://epiverse-trace.github.io/posts/linelist_v1.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Linelist
-V1.1.0.”</span> February 28, 2024. <a href="https://epiverse-trace.github.io/posts/linelist_v1.1.0/">https://epiverse-trace.github.io/posts/linelist_v1.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/linelist_v1.1.0/</guid>
-  <pubDate>Wed, 28 Feb 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

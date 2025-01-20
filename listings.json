@@ -22,34 +22,9 @@
     ]
   },
   {
-    "listing": "/resources.html",
-    "items": [
-      "/resources/D_kwDOIcolP84AZ1Mt.html",
-      "/resources/D_kwDOIcolP84AZREP.html",
-      "/resources/D_kwDOIcolP84AZREX.html",
-      "/resources/D_kwDOIcolP84AZPXq.html",
-      "/resources/D_kwDOIcolP84AaEct.html",
-      "/resources/D_kwDOIcolP84AZREB.html",
-      "/resources/D_kwDOIcolP84AZRHG.html",
-      "/resources/D_kwDOIcolP84AZRD5.html",
-      "/resources/D_kwDOIcolP84AZRE5.html",
-      "/resources/D_kwDOIcolP84AZREa.html",
-      "/resources/D_kwDOIcolP84Aaqjf.html",
-      "/resources/D_kwDOIcolP84AaEih.html",
-      "/resources/D_kwDOIcolP84AaEjI.html",
-      "/resources/D_kwDOIcolP84AZRRF.html",
-      "/resources/D_kwDOIcolP84Ab8n3.html",
-      "/resources/D_kwDOIcolP84AaMJI.html",
-      "/resources/D_kwDOIcolP84Ab8nb.html",
-      "/resources/D_kwDOIcolP84AZREC.html",
-      "/resources/D_kwDOIcolP84AZRD1.html",
-      "/resources/D_kwDOIcolP84AZREo.html",
-      "/resources/D_kwDOIcolP84AZRED.html"
-    ]
-  },
-  {
     "listing": "/blog.html",
     "items": [
+      "/posts/simulist_v0.4.0/index.html",
       "/posts/epiparameter_v0.4.0/index.html",
       "/posts/covid-analysis/index.html",
       "/posts/epiparameterDB_v0.1.0/index.html",
@@ -89,6 +64,32 @@
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
+    ]
+  },
+  {
+    "listing": "/resources.html",
+    "items": [
+      "/resources/D_kwDOIcolP84AZ1Mt.html",
+      "/resources/D_kwDOIcolP84AZREP.html",
+      "/resources/D_kwDOIcolP84AZREX.html",
+      "/resources/D_kwDOIcolP84AZPXq.html",
+      "/resources/D_kwDOIcolP84AaEct.html",
+      "/resources/D_kwDOIcolP84AZREB.html",
+      "/resources/D_kwDOIcolP84AZRHG.html",
+      "/resources/D_kwDOIcolP84AZRD5.html",
+      "/resources/D_kwDOIcolP84AZRE5.html",
+      "/resources/D_kwDOIcolP84AZREa.html",
+      "/resources/D_kwDOIcolP84Aaqjf.html",
+      "/resources/D_kwDOIcolP84AaEih.html",
+      "/resources/D_kwDOIcolP84AaEjI.html",
+      "/resources/D_kwDOIcolP84AZRRF.html",
+      "/resources/D_kwDOIcolP84Ab8n3.html",
+      "/resources/D_kwDOIcolP84AaMJI.html",
+      "/resources/D_kwDOIcolP84Ab8nb.html",
+      "/resources/D_kwDOIcolP84AZREC.html",
+      "/resources/D_kwDOIcolP84AZRD1.html",
+      "/resources/D_kwDOIcolP84AZREo.html",
+      "/resources/D_kwDOIcolP84AZRED.html"
     ]
   }
 ]

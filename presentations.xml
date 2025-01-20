@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/presentations.html</link>
 <atom:link href="https://epiverse-trace.github.io/presentations.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
-<generator>quarto-1.7.9</generator>
+<generator>quarto-1.7.13</generator>
 <lastBuildDate>Fri, 08 Nov 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling</title>
