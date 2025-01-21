@@ -31,7 +31,7 @@ After conducting an online search, dual licensing for R packages seems rare. An 
 
 > All data included in the epiparameter R package is licensed under CC0 (<https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt>). This includes the parameter database (extdata/parameters.json) and data in the data/ folder. Please cite the individual parameter entries in the database when used.
 
-However, upon submission of epiparameter to CRAN, we were rejected due to the dual licensing. The CRAN package reviewer stated:
+However, upon submission of epiparameter to CRAN, the dual licensing approach was rejected. The CRAN package reviewer stated:
 
 > A package can only be licensed as a whole. It can have a single license or a set of _alternative_ licenes. If the data have to be licensed differently then the code, you have to provide the data in a separate data package with the other license.
 
