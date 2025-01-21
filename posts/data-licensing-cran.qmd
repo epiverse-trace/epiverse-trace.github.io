@@ -19,9 +19,7 @@ This is a follow-up blog post to the [_Dual licensing R packages with code and d
 
 ### Overview of previous blog post on R package licensing
 
-We previously published a [post on the Epiverse-TRACE blog discussing the importance of licensing code and data for open source](data-licensing.html). It covered the differences between open source licenses for code and those that are required for other forms of information, in our case, data. R packages most commonly distribute code, and therefore require an [appropriate open source license](https://cran.r-project.org/doc/FAQ/R-exts.html#Licensing). Less frequently, R packages are used to bundle and share data, so-called ["data packages"](https://r-pkgs.org/data.html), and require an applicable license for reuse and redistribution.
-
-We recommend reading the original blog post for a more in-depth explanation of each of these points.
+We previously published a [post on the Epiverse-TRACE blog discussing the importance of licensing code and data for open source](data-licensing.html). It covered the differences between open source licenses for code and those that are required for other forms of information, in our case, data. R packages most commonly distribute code, and therefore require an [appropriate open source license](https://cran.r-project.org/doc/FAQ/R-exts.html#Licensing). Less frequently, R packages are used to bundle and share data, so-called ["data packages"](https://r-pkgs.org/data.html), and require an applicable license for reuse and redistribution. We recommend reading [the original blog post](data.licensing.html) for a more in-depth explanation of each of these points.
 
 However, since publishing the original post, the last section, _Licensing code and data in one R package_, has become outdated given our experience submitting the epiparameter package to CRAN with a dual-license. This blog post provides an updated _Licensing code and data in one R package_ section with learnings from epiparameter package development and CRAN submission.
 
