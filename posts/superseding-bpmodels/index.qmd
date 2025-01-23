@@ -1,0 +1,41 @@
+---
+title: "Key considerations for superseding an R package"
+subtitle: "The example of epichains and bpmodels"
+author:
+  - name: "James Mba Azam"
+    orcid: "https://orcid.org/0000-0001-5782-7330"
+date: "2023-11-22"
+categories: [lifecycles, R, R package, software design]
+format:
+  html:
+    toc: true
+execute: 
+  cache: true
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  cache = TRUE,
+  message = FALSE
+)
+```
+
+Most of our work in Epiverse TRACE involves either writing a package from scratch or adopting an existing package that has its own capacity for maintenance. In such cases, decision-making during development is guided by internal policies, blueprints, and established workflows. However, a less common scenario for us has been taking over the maintenance of an existing package—a situation we recently encountered with {bpmodels}.
+
+In this post, I want to share some considerations and lessons learned from maintaining {bpmodels}, originally developed by @sbfnk, and the decision to supersede it with {epichains}. The aim is not to prescribe rigid rules but to spark a conversation about best practices and alternative approaches.
+
+One of the first considerations was the scope of the package. When maintaining or reimagining a package, it’s crucial to assess its scope and identify opportunities for refinement. For example, in the R ecosystem, some packages have evolved significantly over time to better align with user needs. {plyr} was split into {dplyr} for data frames and {purrr} for lists, reflecting more specialized functionality. Similarly, {reshape} evolved into {reshape2} and later into {tidyr}, with each iteration simplifying and improving upon its predecessor. Another example is the migration of {ggmissing} into the more generalized tool {naniar}. For {bpmodels}, we redefined the scope by introducing {epichains} as a more specialized tool for epidemic chain modeling, incorporating improved features and workflows.
+
+Another important decision was whether to rebrand the package with a new name and API. A new name and API can signal a fresh approach and address limitations of the original package. Examples of such transitions include {ggplot} to {ggplot2}, {reshape} to {reshape2} and {tidyr}, and the evolution of Epiforecasts’ {EpiNow} into {EpiNow2}. In our case, we decided to fork the original {bpmodels} repository under Epiverse and maintain the old package to avoid breaking scripts that rely on it. At the same time, we introduced {epichains} as a next-generation tool with an improved API and updated features.
+
+We also had to consider whether to deprecate {bpmodels} immediately or allow it to coexist with {epichains}. We decided to keep {bpmodels} accessible to ensure compatibility with existing workflows while signaling its future retirement through lifecycle badges. These badges help communicate the package’s status and plans for transition, moving from “experimental” to “retired” over time.
+
+Another technical consideration was how to handle version control and commit histories. When forking a package, it’s important to decide whether to retain the commit history. Options include squashing the history to start with a clean slate, which risks losing visibility of past contributions, or tagging the HEAD commit of the original repository and building from there. For {bpmodels}, we chose to keep the history intact to acknowledge the contributions of its original authors.
+
+Semantic versioning was another key decision point. We adopted semantic versioning for {epichains}, starting at version 0.0.0.9999 to signal an experimental phase while iterating on features.
+
+Throughout this process, we drew inspiration from various sources. Hadley Wickham’s reasoning for {reshape2} as a reboot of {reshape} provided valuable insights. Discussions on Stack Overflow about the definition of "legacy code" also helped shape our approach. Additionally, a talk at UseR! 2024 on retiring packages with extensive reverse dependencies offered practical advice.
+
+This transition has raised several questions for the community. How do you decide whether to supersede or deprecate a package? What strategies have worked for maintaining backward compatibility while introducing new tools? How do you document and communicate major changes to users?
+
+We’d love to hear your thoughts and experiences. Let’s start a conversation about maintaining and evolving open-source tools in a sustainable way.
