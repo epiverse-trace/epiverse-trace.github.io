@@ -4,7 +4,7 @@ subtitle: "The example of epichains and bpmodels"
 author:
   - name: "James Mba Azam"
     orcid: "https://orcid.org/0000-0001-5782-7330"
-date: "2023-11-22"
+date: "2025-01-24"
 categories: [lifecycles, R, R package, software design]
 format:
   html:
