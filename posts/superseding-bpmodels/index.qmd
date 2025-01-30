@@ -6,7 +6,7 @@ author:
     orcid: "0000-0001-5782-7330"
   - name: "Sebastian Funk"
     orcid: "0000-0002-2842-3406"
-date: "2025-01-24"
+date: "2025-02-03"
 categories: [software lifecycles, R, R package, software design, DOI]
 format:
   html:
@@ -14,13 +14,6 @@ format:
 execute: 
   cache: true
 ---
-
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  cache = TRUE,
-  message = FALSE
-)
-```
 
 Most of our work in Epiverse TRACE involves either developing an R package from scratch or adopting and maintaining an existing R package. In the former case, decision-making during development is guided by internal policies documented in the [Epiverse-TRACE blueprints](https://epiverse-trace.github.io/blueprints/). However, a less common scenario for us has been taking on the maintenance of an existing package — a situation we recently encountered with the [`{bpmodels}`](https://epiforecasts.github.io/bpmodels/) R package.
 
