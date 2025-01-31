@@ -6,7 +6,7 @@ date: "2025-01-28"
 categories: [new-release]
 ---
 
-We are very excited to announce the release of a new [superspreading](<https://epiverse-trace.github.io/superspreading>) version v0.3.0.
+We are very excited to announce the release of a new [superspreading](<https://epiverse-trace.github.io/superspreading>) version v0.3.0. This is the first version of superspreading to be on [CRAN](https://cran.r-project.org/package=superspreading) (the package can now be installed with `install.packages()`).
 Here is an automatically generated summary of the changes in this version.
 
 The third minor release of the _superspreading_ package contains enhancements to several functions and a new vignette. 
