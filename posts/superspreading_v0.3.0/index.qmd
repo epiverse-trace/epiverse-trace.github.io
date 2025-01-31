@@ -11,7 +11,7 @@ Here is an automatically generated summary of the changes in this version.
 
 The third minor release of the _superspreading_ package contains enhancements to several functions and a new vignette. 
 
-We are also pleased to welcome Dillon Adam (@dcadam) as a new package author for his contributions towards this version.
+We are also pleased to welcome Dillon Adam ([@dcadam](https://github.com/dcadam)) as a new package author for his contributions towards this version.
 
 ## New features
 
