@@ -9,14 +9,14 @@ categories: [new-release]
 We are very excited to announce the release of a new [superspreading](<https://epiverse-trace.github.io/superspreading>) version v0.3.0. This is the first version of superspreading to be on [CRAN](https://cran.r-project.org/package=superspreading) (the package can now be installed with `install.packages()`).
 Here is an automatically generated summary of the changes in this version.
 
-The third minor release of the _superspreading_ package contains enhancements to several functions and a new vignette. 
+The third minor release of the _superspreading_ package contains enhancements to several functions and a new vignette.
 
 We are also pleased to welcome Dillon Adam ([@dcadam](https://github.com/dcadam)) as a new package author for his contributions towards this version.
 
 ## New features
 
 * The `proportion_transmission()` function has been expanded to incorporate a new method. The new method calculates the proportion of transmission from X% the most infectious individuals, corresponding to the [Lloyd-Smith et al. (2005)](https://doi.org/10.1038%2Fnature04153) calculation. The `proportion_transmission()` has a new `method` argument to toggle between the two calculations (@dcadam, #99).
-* A new vignette explaining the methods in the `proportion_transmission()` function (#101). 
+* A new vignette explaining the methods in the `proportion_transmission()` function (#101).
 * {bpmodels} is removed as a package dependency and a branching process simulation function, modified from `bpmodels::chain_sim()`, is added to the {superspreading} package (#103). @sbfnk is added as copyright holder and @jamesmbaazam as a contributor.
 * `probability_contain()` is enhanced to enable to probability of containment within a certain amount of time since the outbreak started. This adds `outbreak_time` and `generation_time` arguments to `probability_contain()`. This addition is backwards compatible as by default the time is unlimited, `outbreak_time = Inf`, and no generation time is required.
 
@@ -30,7 +30,7 @@ We are also pleased to welcome Dillon Adam ([@dcadam](https://github.com/dcadam)
 * Improve input checking, error messages and edge case handling for functions (#102).
 * Vignettes now use `rmarkdown::html_vignette` instead of `bookdown::html_vignette2` and `as_is: true` has been removed due to changes to {pkgdown} in v2.1.0. {bookdown} has been removed as a suggested package and code folding is removed from vignettes. KaTeX headers have been added to `_pkgdown.yml` for correct math rendering (#104 & #109).
 * The `get_epidist_params()` internal function has been renamed `get_epiparameter_params()` since {epiparameter} renamed the `<epidist>` class to `<epiparameter>` (#100).
-* Internal constants have been added to the package and used by functions (#111). 
+* Internal constants have been added to the package and used by functions (#111).
 * Checking if the user specifies individual parameters (`R` and `k`) or provides an `<epiparameter>` object is now in `.check_input_params()` (#111).
 
 ## Bug fixes
@@ -41,7 +41,6 @@ We are also pleased to welcome Dillon Adam ([@dcadam](https://github.com/dcadam)
 ## Deprecated and defunct
 
 * None
-
 
 ## Acknowledgements
 
