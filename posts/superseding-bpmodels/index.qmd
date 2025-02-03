@@ -4,6 +4,8 @@ subtitle: "A reflection on the example of epichains and bpmodels"
 author:
   - name: "James Mba Azam"
     orcid: "0000-0001-5782-7330"
+  - name: "Hugo Gruson"
+    orcid: "0000-0002-4094-1476"
   - name: "Sebastian Funk"
     orcid: "0000-0002-2842-3406"
 date: "2025-02-03"
