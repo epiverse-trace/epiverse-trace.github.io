@@ -10,7 +10,148 @@
 <atom:link href="https://epiverse-trace.github.io/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.7.13</generator>
-<lastBuildDate>Mon, 23 Dec 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Key considerations for retiring/superseding an R package</title>
+  <dc:creator>James Mba Azam</dc:creator>
+  <dc:creator>Sebastian Funk</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/superseding-bpmodels/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Most of our work in Epiverse TRACE involves either developing an R package from scratch or adopting and maintaining an existing R package. In the former case, decision-making during development is guided by internal policies documented in the <a href="https://epiverse-trace.github.io/blueprints/">Epiverse-TRACE blueprints</a>. However, a less common scenario for us has been taking on the maintenance of an existing package — a situation we recently encountered with the <a href="https://epiforecasts.github.io/bpmodels/"><code>{bpmodels}</code></a> R package.</p>
+<p>In this post, I want to share some considerations and lessons learned from maintaining {bpmodels}, originally developed by Sebastian Funk at the London School of Hygiene &amp; Tropical Medicine (with contributions by Zhian Kamvar and Flavio Finger), and the decision to retire/supersede it with {epichains}. The aim is not to define strict rules but to spark a conversation about good enough practices and alternative approaches that the R developer community has used or would like to be used more widely.</p>
+<p>One of the first considerations was the scope of the package. When maintaining or re-imagining an R package, assessing its scope and identifying opportunities for refinement is crucial. For example, some packages have evolved significantly in the broader R ecosystem to better align with user needs. We will highlight a few examples.<a href="https://github.com/hadley/plyr"><code>{plyr}</code></a> was split into <a href="https://dplyr.tidyverse.org/index.html"><code>{dplyr}</code></a> and <a href="https://purrr.tidyverse.org/index.html"><code>{purrr}</code></a> for manipulating data frame and list objects respectively, reflecting more specialized functionality based on object types. Similarly, <code>{reshape}</code> evolved into <a href="https://github.com/hadley/reshape"><code>{reshape2}</code></a><sup>1</sup> and currently into <a href="https://tidyr.tidyverse.org/index.html"><code>{tidyr}</code></a>, with each iteration simplifying and improving upon its predecessor. Another example is the renaming<sup>2</sup> of <code>{ggmissing}</code> into the more generalized <a href="https://naniar.njtierney.com/"><code>{naniar}</code></a>. In the epidemiology ecosystem, two examples include the evolution of the <a href="https://epiforecasts.github.io/EpiNow/"><code>{EpiNow}</code></a> into <a href="https://epiforecasts.github.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://www.repidemicsconsortium.org/incidence/"><code>{incidence}</code></a> to <a href="https://www.reconverse.org/incidence2/index.html"><code>{incidence2}</code></a>.</p>
+<p>For {bpmodels}, we wanted to unify the simulation functions (existing as two functions previously) and improve the function signature by renaming several of the arguments for readability. We also wanted to introduce an object-oriented workflow to aid in interoperability with existing tools such as <a href="https://www.repidemicsconsortium.org/epicontacts/">epicontacts</a> and <a href="https://epiverse-trace.github.io/epiparameter/">epiparameter</a>. The object-oriented backend would also allow us to implement better methods for printing, summarising and aggregating the simulation output. Some of these considerations would have been less disruptive than others but the change in function name and signature would have led to a lot of disruptions including deprecating the existing functions and arguments.</p>
+<p>One thing is clear from the examples on scope changes - they often lead to name changes. Another important decision was whether to rebrand the package with a new name. A new name can signal a fresh approach and address limitations of the original package. The most popular example is the renaming of <code>{ggplot}</code> to <a href="https://ggplot2.tidyverse.org/index.html"><code>{ggplot2}</code></a>. Other examples include renaming {reshape} to {reshape2} and {tidyr}. In our case, we decided to fork the original <a href="https://epiforecasts.github.io/bpmodels/"><code>{bpmodels}</code></a> repository under Epiverse-TRACE and maintain the old package to avoid breaking scripts that rely on it. At the same time, we introduced {epichains} as the successor. The name reflects the fact that it is a package for analysing <em>epidemiological transmission chains</em>.</p>
+<p>A second key consideration is the plans that the original package author(s) may have had and their views on any future changes. In our case, this was fairly straightforward because the maintainer of the original package was fully involved in the refactoring. Another package author who had made substantial contributions could be reached and gave their approval. More generally, however, bringing all package authors on board with, for example, changes in scope and name is an important step in taking on maintenance of a package and one that should not be neglected.</p>
+<p>We also had to consider whether to archive {bpmodels} or allow it to coexist with {epichains}. We decided to keep {bpmodels} accessible to sustain the reproducibility of existing code using the package. The package was moved back to the <a href="https://epiforecasts.github.io/bpmodels/">epiforecasts GitHub organisation</a> where it originated from. We, however, added a <a href="https://lifecycle.r-lib.org/reference/badge.html">lifecycle badge</a> to communicate the package’s retired status and text in the README about our plans for low maintenance.</p>
+<p>Another technical consideration was how to handle version control and commit histories. When forking a package, it’s important to decide whether to retain the commit history. Options include squashing the history to start with a clean slate, which risks losing visibility of past contributions, or tagging the HEAD commit of the original repository and building from there. For {bpmodels}, we chose to keep the history intact to retain the contributions of its original authors.</p>
+<p><a href="https://semver.org/">Semantic versioning</a> was another key decision point. Since <code>{epichains}</code> was not going to be available immediately but would be developed in the open (on GitHub), we needed to consider how to communicate that to potential users. We decided to start at version <code>0.0.0.9999</code> to signal an experimental and unstable phase<sup>3</sup> while iterating on features.</p>
+<p>Throughout this process, we drew inspiration from various sources. Hadley Wickham’s reasoning for {reshape2} as a reboot of {reshape} and Nicholas Tierney’s reason for renaming <code>{ggmissing}</code> to <code>{naniar}</code> were helpful. Additionally, a talk at UseR! 2024 entitled <a href="https://userconf2024.sched.com/event/1c90V/r-evolution-the-retirement-of-r-packages-with-many-reverse-dependencies-edzer-pebesma-university-of-muenster-roger-bivand-norwegian-school-of-economics">“retiring packages with extensive reverse dependencies”</a> offered practical advice.</p>
+<p>This transition has raised several questions for the community. How do you decide whether to supersede or deprecate a package? What strategies have worked for maintaining backward compatibility while introducing new tools? How do you document and communicate major changes to users? How is all of this done while appropriately crediting past contributions and retain discoverability and citation/use tracking?</p>
+<p>We’d love to hear your thoughts and experiences. Let’s start a conversation about maintaining and evolving open-source tools in a sustainable way.</p>
+
+
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Notice the URL points to <a href="https://github.com/hadley/reshape"><code>{reshape}</code></a> instead of <code>{reshape2}</code> although the README mentions the latter. The README however lays out the reasons for the evolution.↩︎</p></li>
+<li id="fn2"><p>See the reasons given in the changelog <a href="https://naniar.njtierney.com/news/index.html#id_-naniar-0039901-20161218">here</a> and in the <a href="https://github.com/njtierney/naniar/#a-note-on-the-name">README</a>.↩︎</p></li>
+<li id="fn3"><p>See more details on R package versioning and what they communicate in the <a href="https://r-pkgs.org/lifecycle.html#sec-lifecycle-evolution">R packages book</a>.↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{mba_azam2025,
+  author = {Mba Azam, James and Funk, Sebastian},
+  title = {Key Considerations for Retiring/Superseding an {R} Package},
+  date = {2025-02-03},
+  url = {https://epiverse-trace.github.io/posts/superseding-bpmodels/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2025" class="csl-entry quarto-appendix-citeas">
+Mba Azam, James, and Sebastian Funk. 2025. <span>“Key Considerations for
+Retiring/Superseding an R Package.”</span> February 3, 2025. <a href="https://epiverse-trace.github.io/posts/superseding-bpmodels/">https://epiverse-trace.github.io/posts/superseding-bpmodels/</a>.
+</div></div></section></div> ]]></description>
+  <category>software lifecycles</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>software design</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/superseding-bpmodels/</guid>
+  <pubDate>Mon, 03 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Licensing R packages with code and data: learnings from submitting to CRAN</title>
+  <dc:creator>Joshua Lambert</dc:creator>
+  <dc:creator>Chris Hartgerink</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/data-licensing-cran.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a follow-up blog post to the <a href="data-licensing.html"><em>Dual licensing R packages with code and data</em></a> post published in September 2024. It contains learnings from submitting <strong>epiparameter</strong> to CRAN with a dual license.</p>
+</div>
+</div>
+<section id="overview-of-previous-blog-post-on-r-package-licensing" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-previous-blog-post-on-r-package-licensing">Overview of previous blog post on R package licensing</h3>
+<p>We previously published a <a href="data-licensing.html">post on the Epiverse-TRACE blog discussing the importance of licensing code and data for open source</a>. It covered the differences between open source licenses for code and those that are required for other forms of information, in our case, data. R packages most commonly distribute code, and therefore require an <a href="https://cran.r-project.org/doc/FAQ/R-exts.html#Licensing">appropriate open source license</a>. Less frequently, R packages are used to bundle and share data, so-called <a href="https://r-pkgs.org/data.html">“data packages”</a>, and require an applicable license for reuse and redistribution. We recommend reading <a href="data.licensing.html">the original blog post</a> for a more in-depth explanation of each of these points.</p>
+<p>However, since publishing the original post, the last section, <em>Licensing code and data in one R package</em>, has become outdated given our experience submitting the epiparameter package to CRAN with a dual-license. This blog post provides an updated <em>Licensing code and data in one R package</em> section with learnings from epiparameter package development and CRAN submission.</p>
+</section>
+<section id="licensing-code-and-data-in-one-r-package" class="level3">
+<h3 class="anchored" data-anchor-id="licensing-code-and-data-in-one-r-package">Licensing code and data in one R package</h3>
+<p>If you are developing an R package that has both code and data as primary objects of (roughly) equal importance, a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, <a href="https://mit-license.org">MIT license</a>) and another license for the included data (for example, <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt">Public Domain Dedication</a>).</p>
+<p>After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the <a href="https://github.com/igraph/igraphdata/blob/main/LICENSE"><strong>igraphdata</strong> package</a>, which contains several licenses: One for each dataset included in the package. Similar to igraphdata, we dual licensed the <a href="https://github.com/epiverse-trace/epiparameter"><strong>epiparameter</strong> package</a>, which until versus v0.4.0 contained both code and data. We <a href="https://github.com/epiverse-trace/epiparameter/blob/v0.3.0/DESCRIPTION#L28">licensed the code using the <code>DESCRIPTION</code> file</a> and used <a href="https://github.com/epiverse-trace/epiparameter/blob/v0.3.0/LICENSE">the <code>LICENSE</code> file</a> to license the data under CC0. Concretely, we included this additional text in <code>LICENSE</code> to clarify the dual license and that we recommend citing the original source regardless:</p>
+<blockquote class="blockquote">
+<p>All data included in the epiparameter R package is licensed under CC0 (<a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt" class="uri">https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt</a>). This includes the parameter database (extdata/parameters.json) and data in the data/ folder. Please cite the individual parameter entries in the database when used.</p>
+</blockquote>
+<p>However, upon submission of epiparameter to CRAN, the dual licensing approach was rejected. The CRAN package reviewer stated:</p>
+<blockquote class="blockquote">
+<p>A package can only be licensed as a whole. It can have a single license or a set of <em>alternative</em> licenes. If the data have to be licensed differently then the code, you have to provide the data in a separate data package with the other license.</p>
+</blockquote>
+<p>Therefore, we decided to separate the data, originally stored in epiparameter, into a package called <a href="https://github.com/epiverse-trace/epiparameterDB"><strong>epiparameterDB</strong></a>. This package is solely <a href="https://github.com/epiverse-trace/epiparameterDB/blob/main/DESCRIPTION#L15">licensed under CC0</a>, and epiparameter can then also be solely <a href="https://github.com/epiverse-trace/epiparameter/blob/main/DESCRIPTION#L28">licensed under MIT</a>. Both packages are now hosted on CRAN using a single license dedicated to code or data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is often desirable to host an R package on CRAN as it enables it to be easily installed (from binary if on Mac or Windows), it gives the package some validity as a non-trivial and secure piece of software to install and use.</p>
+<p>It is not necessary nor beneficial for all R packages to be hosted on CRAN, and it does come with some drawbacks, such as the dual licensing restriction of code and data, but for our case with the epiparameter package, we deemed it better to host on CRAN and split the code and data into epiparameter and epiparameterDB, respectively.</p>
+</div>
+</div>
+<p>When including data in your R package from other sources it is important to check that the license of your package and the data is compatible<sup>1</sup>, or that the individual data license is clearly stated, as in igraphdata. For epiparameterDB, we consider model estimates as facts (that is, not copyrightable).</p>
+<hr>
+<p>This blogpost provides an addendum to our original post <a href="data-licensing.html">Dual licensing R packages with code and data</a>, providing our experience and outcomes from submitting epiparameter – and the resulting epiparmeterDB package – to CRAN in a conformant manner. In addition to the requirements and benefits of open source licensing of open software and data in the first post, we hope this follow-up post provides practical information that will be of use to other R package developers, or software developers and open data curators more broadly.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See <a href="https://juliasilge.com/blog/sentiment-lexicons/">this blog post by Julia Silge on including external data sets into an R package and rectifying incompatibilities with license</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{lambert2025,
+  author = {Lambert, Joshua and Hartgerink, Chris},
+  title = {Licensing {R} Packages with Code and Data: Learnings from
+    Submitting to {CRAN}},
+  date = {2025-01-20},
+  url = {https://epiverse-trace.github.io/posts/data-licensing-cran.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2025" class="csl-entry quarto-appendix-citeas">
+Lambert, Joshua, and Chris Hartgerink. 2025. <span>“Licensing R Packages
+with Code and Data: Learnings from Submitting to CRAN.”</span> January
+20, 2025. <a href="https://epiverse-trace.github.io/posts/data-licensing-cran.html">https://epiverse-trace.github.io/posts/data-licensing-cran.html</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>open-source</category>
+  <category>package development</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/data-licensing-cran.html</guid>
+  <pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>How well prepared are we to rapidly analyse a new influenza pandemic? A brief perspective on analysis conducted for UK government advisory groups during COVID-19</title>
   <dc:creator>Adam Kucharski</dc:creator>
@@ -396,6 +537,20 @@ November 18, 2024. <a href="https://epiverse-trace.github.io/posts/ai-learner-re
 </section>
 <section id="licensing-code-and-data-in-one-r-package" class="level3">
 <h3 class="anchored" data-anchor-id="licensing-code-and-data-in-one-r-package">Licensing code and data in one R package</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section on dual licensing was first published in September 2024. Since publishing, the <strong>epiparameter</strong> package is no longer dual licensed due to CRAN requirements.</p>
+<p>Please <a href="data-licensing-cran.html#licensing-code-and-data-in-one-r-package">click here to see the updated version of the this section in a new post</a>, which updates the <em>Licensing code and data in one R package</em> section in light of our experience dual licensing an R package and CRAN.</p>
+</div>
+</div>
 <p>But what to do if your R package has both code and data as primary objects of (roughly) equal importance?</p>
 <p>In these cases a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, MIT license) and another license for the included data (for example, Public Domain Dedication).</p>
 <p>After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the <a href="https://github.com/igraph/igraphdata/blob/main/LICENSE"><strong>igraphdata</strong> package</a>, which contains several licenses: One for each dataset included in the package. Similar to igraphdata, in our own <a href="https://github.com/epiverse-trace/epiparameter"><strong>epiparameter</strong> package</a> we dual licensed the code and data as well. We <a href="https://github.com/epiverse-trace/epiparameter/blob/4f7008063040fc4a0b436a9e4d2adb9bb7022f6c/DESCRIPTION#L21">licensed the code using the <code>DESCRIPTION</code> file</a> and used <a href="https://github.com/epiverse-trace/epiparameter/blob/main/LICENSE">the <code>LICENSE</code> file</a> to license the data under CC0. Concretely, we include this additional text in <code>LICENSE</code> to clarify the dual license and that we recommend citing the original source regardless:</p>
@@ -5924,7 +6079,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-89372"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-89372").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-98310"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-98310").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

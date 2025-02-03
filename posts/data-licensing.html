@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-3db922717fc23bdac5b2c8f560002823.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9f09e78450b7b745c302d0f81a9a4f4f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-3ef1d48e5b872fca1bf37963acd4a13f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -272,6 +272,20 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </section>
 <section id="licensing-code-and-data-in-one-r-package" class="level3">
 <h3 class="anchored" data-anchor-id="licensing-code-and-data-in-one-r-package">Licensing code and data in one R package</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section on dual licensing was first published in September 2024. Since publishing, the <strong>epiparameter</strong> package is no longer dual licensed due to CRAN requirements.</p>
+<p>Please <a href="data-licensing-cran.html#licensing-code-and-data-in-one-r-package">click here to see the updated version of the this section in a new post</a>, which updates the <em>Licensing code and data in one R package</em> section in light of our experience dual licensing an R package and CRAN.</p>
+</div>
+</div>
 <p>But what to do if your R package has both code and data as primary objects of (roughly) equal importance?</p>
 <p>In these cases a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, MIT license) and another license for the included data (for example, Public Domain Dedication).</p>
 <p>After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the <a href="https://github.com/igraph/igraphdata/blob/main/LICENSE"><strong>igraphdata</strong> package</a>, which contains several licenses: One for each dataset included in the package. Similar to igraphdata, in our own <a href="https://github.com/epiverse-trace/epiparameter"><strong>epiparameter</strong> package</a> we dual licensed the code and data as well. We <a href="https://github.com/epiverse-trace/epiparameter/blob/4f7008063040fc4a0b436a9e4d2adb9bb7022f6c/DESCRIPTION#L21">licensed the code using the <code>DESCRIPTION</code> file</a> and used <a href="https://github.com/epiverse-trace/epiparameter/blob/main/LICENSE">the <code>LICENSE</code> file</a> to license the data under CC0. Concretely, we include this additional text in <code>LICENSE</code> to clarify the dual license and that we recommend citing the original source regardless:</p>

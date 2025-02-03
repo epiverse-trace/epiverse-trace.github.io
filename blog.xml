@@ -10,7 +10,148 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
 <generator>quarto-1.7.13</generator>
-<lastBuildDate>Fri, 10 Jan 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Key considerations for retiring/superseding an R package</title>
+  <dc:creator>James Mba Azam</dc:creator>
+  <dc:creator>Sebastian Funk</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/superseding-bpmodels/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Most of our work in Epiverse TRACE involves either developing an R package from scratch or adopting and maintaining an existing R package. In the former case, decision-making during development is guided by internal policies documented in the <a href="https://epiverse-trace.github.io/blueprints/">Epiverse-TRACE blueprints</a>. However, a less common scenario for us has been taking on the maintenance of an existing package — a situation we recently encountered with the <a href="https://epiforecasts.github.io/bpmodels/"><code>{bpmodels}</code></a> R package.</p>
+<p>In this post, I want to share some considerations and lessons learned from maintaining {bpmodels}, originally developed by Sebastian Funk at the London School of Hygiene &amp; Tropical Medicine (with contributions by Zhian Kamvar and Flavio Finger), and the decision to retire/supersede it with {epichains}. The aim is not to define strict rules but to spark a conversation about good enough practices and alternative approaches that the R developer community has used or would like to be used more widely.</p>
+<p>One of the first considerations was the scope of the package. When maintaining or re-imagining an R package, assessing its scope and identifying opportunities for refinement is crucial. For example, some packages have evolved significantly in the broader R ecosystem to better align with user needs. We will highlight a few examples.<a href="https://github.com/hadley/plyr"><code>{plyr}</code></a> was split into <a href="https://dplyr.tidyverse.org/index.html"><code>{dplyr}</code></a> and <a href="https://purrr.tidyverse.org/index.html"><code>{purrr}</code></a> for manipulating data frame and list objects respectively, reflecting more specialized functionality based on object types. Similarly, <code>{reshape}</code> evolved into <a href="https://github.com/hadley/reshape"><code>{reshape2}</code></a><sup>1</sup> and currently into <a href="https://tidyr.tidyverse.org/index.html"><code>{tidyr}</code></a>, with each iteration simplifying and improving upon its predecessor. Another example is the renaming<sup>2</sup> of <code>{ggmissing}</code> into the more generalized <a href="https://naniar.njtierney.com/"><code>{naniar}</code></a>. In the epidemiology ecosystem, two examples include the evolution of the <a href="https://epiforecasts.github.io/EpiNow/"><code>{EpiNow}</code></a> into <a href="https://epiforecasts.github.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://www.repidemicsconsortium.org/incidence/"><code>{incidence}</code></a> to <a href="https://www.reconverse.org/incidence2/index.html"><code>{incidence2}</code></a>.</p>
+<p>For {bpmodels}, we wanted to unify the simulation functions (existing as two functions previously) and improve the function signature by renaming several of the arguments for readability. We also wanted to introduce an object-oriented workflow to aid in interoperability with existing tools such as <a href="https://www.repidemicsconsortium.org/epicontacts/">epicontacts</a> and <a href="https://epiverse-trace.github.io/epiparameter/">epiparameter</a>. The object-oriented backend would also allow us to implement better methods for printing, summarising and aggregating the simulation output. Some of these considerations would have been less disruptive than others but the change in function name and signature would have led to a lot of disruptions including deprecating the existing functions and arguments.</p>
+<p>One thing is clear from the examples on scope changes - they often lead to name changes. Another important decision was whether to rebrand the package with a new name. A new name can signal a fresh approach and address limitations of the original package. The most popular example is the renaming of <code>{ggplot}</code> to <a href="https://ggplot2.tidyverse.org/index.html"><code>{ggplot2}</code></a>. Other examples include renaming {reshape} to {reshape2} and {tidyr}. In our case, we decided to fork the original <a href="https://epiforecasts.github.io/bpmodels/"><code>{bpmodels}</code></a> repository under Epiverse-TRACE and maintain the old package to avoid breaking scripts that rely on it. At the same time, we introduced {epichains} as the successor. The name reflects the fact that it is a package for analysing <em>epidemiological transmission chains</em>.</p>
+<p>A second key consideration is the plans that the original package author(s) may have had and their views on any future changes. In our case, this was fairly straightforward because the maintainer of the original package was fully involved in the refactoring. Another package author who had made substantial contributions could be reached and gave their approval. More generally, however, bringing all package authors on board with, for example, changes in scope and name is an important step in taking on maintenance of a package and one that should not be neglected.</p>
+<p>We also had to consider whether to archive {bpmodels} or allow it to coexist with {epichains}. We decided to keep {bpmodels} accessible to sustain the reproducibility of existing code using the package. The package was moved back to the <a href="https://epiforecasts.github.io/bpmodels/">epiforecasts GitHub organisation</a> where it originated from. We, however, added a <a href="https://lifecycle.r-lib.org/reference/badge.html">lifecycle badge</a> to communicate the package’s retired status and text in the README about our plans for low maintenance.</p>
+<p>Another technical consideration was how to handle version control and commit histories. When forking a package, it’s important to decide whether to retain the commit history. Options include squashing the history to start with a clean slate, which risks losing visibility of past contributions, or tagging the HEAD commit of the original repository and building from there. For {bpmodels}, we chose to keep the history intact to retain the contributions of its original authors.</p>
+<p><a href="https://semver.org/">Semantic versioning</a> was another key decision point. Since <code>{epichains}</code> was not going to be available immediately but would be developed in the open (on GitHub), we needed to consider how to communicate that to potential users. We decided to start at version <code>0.0.0.9999</code> to signal an experimental and unstable phase<sup>3</sup> while iterating on features.</p>
+<p>Throughout this process, we drew inspiration from various sources. Hadley Wickham’s reasoning for {reshape2} as a reboot of {reshape} and Nicholas Tierney’s reason for renaming <code>{ggmissing}</code> to <code>{naniar}</code> were helpful. Additionally, a talk at UseR! 2024 entitled <a href="https://userconf2024.sched.com/event/1c90V/r-evolution-the-retirement-of-r-packages-with-many-reverse-dependencies-edzer-pebesma-university-of-muenster-roger-bivand-norwegian-school-of-economics">“retiring packages with extensive reverse dependencies”</a> offered practical advice.</p>
+<p>This transition has raised several questions for the community. How do you decide whether to supersede or deprecate a package? What strategies have worked for maintaining backward compatibility while introducing new tools? How do you document and communicate major changes to users? How is all of this done while appropriately crediting past contributions and retain discoverability and citation/use tracking?</p>
+<p>We’d love to hear your thoughts and experiences. Let’s start a conversation about maintaining and evolving open-source tools in a sustainable way.</p>
+
+
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Notice the URL points to <a href="https://github.com/hadley/reshape"><code>{reshape}</code></a> instead of <code>{reshape2}</code> although the README mentions the latter. The README however lays out the reasons for the evolution.↩︎</p></li>
+<li id="fn2"><p>See the reasons given in the changelog <a href="https://naniar.njtierney.com/news/index.html#id_-naniar-0039901-20161218">here</a> and in the <a href="https://github.com/njtierney/naniar/#a-note-on-the-name">README</a>.↩︎</p></li>
+<li id="fn3"><p>See more details on R package versioning and what they communicate in the <a href="https://r-pkgs.org/lifecycle.html#sec-lifecycle-evolution">R packages book</a>.↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{mba_azam2025,
+  author = {Mba Azam, James and Funk, Sebastian},
+  title = {Key Considerations for Retiring/Superseding an {R} Package},
+  date = {2025-02-03},
+  url = {https://epiverse-trace.github.io/posts/superseding-bpmodels/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2025" class="csl-entry quarto-appendix-citeas">
+Mba Azam, James, and Sebastian Funk. 2025. <span>“Key Considerations for
+Retiring/Superseding an R Package.”</span> February 3, 2025. <a href="https://epiverse-trace.github.io/posts/superseding-bpmodels/">https://epiverse-trace.github.io/posts/superseding-bpmodels/</a>.
+</div></div></section></div> ]]></description>
+  <category>software lifecycles</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>software design</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/superseding-bpmodels/</guid>
+  <pubDate>Mon, 03 Feb 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Licensing R packages with code and data: learnings from submitting to CRAN</title>
+  <dc:creator>Joshua Lambert</dc:creator>
+  <dc:creator>Chris Hartgerink</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/data-licensing-cran.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a follow-up blog post to the <a href="data-licensing.html"><em>Dual licensing R packages with code and data</em></a> post published in September 2024. It contains learnings from submitting <strong>epiparameter</strong> to CRAN with a dual license.</p>
+</div>
+</div>
+<section id="overview-of-previous-blog-post-on-r-package-licensing" class="level3">
+<h3 class="anchored" data-anchor-id="overview-of-previous-blog-post-on-r-package-licensing">Overview of previous blog post on R package licensing</h3>
+<p>We previously published a <a href="data-licensing.html">post on the Epiverse-TRACE blog discussing the importance of licensing code and data for open source</a>. It covered the differences between open source licenses for code and those that are required for other forms of information, in our case, data. R packages most commonly distribute code, and therefore require an <a href="https://cran.r-project.org/doc/FAQ/R-exts.html#Licensing">appropriate open source license</a>. Less frequently, R packages are used to bundle and share data, so-called <a href="https://r-pkgs.org/data.html">“data packages”</a>, and require an applicable license for reuse and redistribution. We recommend reading <a href="data.licensing.html">the original blog post</a> for a more in-depth explanation of each of these points.</p>
+<p>However, since publishing the original post, the last section, <em>Licensing code and data in one R package</em>, has become outdated given our experience submitting the epiparameter package to CRAN with a dual-license. This blog post provides an updated <em>Licensing code and data in one R package</em> section with learnings from epiparameter package development and CRAN submission.</p>
+</section>
+<section id="licensing-code-and-data-in-one-r-package" class="level3">
+<h3 class="anchored" data-anchor-id="licensing-code-and-data-in-one-r-package">Licensing code and data in one R package</h3>
+<p>If you are developing an R package that has both code and data as primary objects of (roughly) equal importance, a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, <a href="https://mit-license.org">MIT license</a>) and another license for the included data (for example, <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt">Public Domain Dedication</a>).</p>
+<p>After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the <a href="https://github.com/igraph/igraphdata/blob/main/LICENSE"><strong>igraphdata</strong> package</a>, which contains several licenses: One for each dataset included in the package. Similar to igraphdata, we dual licensed the <a href="https://github.com/epiverse-trace/epiparameter"><strong>epiparameter</strong> package</a>, which until versus v0.4.0 contained both code and data. We <a href="https://github.com/epiverse-trace/epiparameter/blob/v0.3.0/DESCRIPTION#L28">licensed the code using the <code>DESCRIPTION</code> file</a> and used <a href="https://github.com/epiverse-trace/epiparameter/blob/v0.3.0/LICENSE">the <code>LICENSE</code> file</a> to license the data under CC0. Concretely, we included this additional text in <code>LICENSE</code> to clarify the dual license and that we recommend citing the original source regardless:</p>
+<blockquote class="blockquote">
+<p>All data included in the epiparameter R package is licensed under CC0 (<a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt" class="uri">https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt</a>). This includes the parameter database (extdata/parameters.json) and data in the data/ folder. Please cite the individual parameter entries in the database when used.</p>
+</blockquote>
+<p>However, upon submission of epiparameter to CRAN, the dual licensing approach was rejected. The CRAN package reviewer stated:</p>
+<blockquote class="blockquote">
+<p>A package can only be licensed as a whole. It can have a single license or a set of <em>alternative</em> licenes. If the data have to be licensed differently then the code, you have to provide the data in a separate data package with the other license.</p>
+</blockquote>
+<p>Therefore, we decided to separate the data, originally stored in epiparameter, into a package called <a href="https://github.com/epiverse-trace/epiparameterDB"><strong>epiparameterDB</strong></a>. This package is solely <a href="https://github.com/epiverse-trace/epiparameterDB/blob/main/DESCRIPTION#L15">licensed under CC0</a>, and epiparameter can then also be solely <a href="https://github.com/epiverse-trace/epiparameter/blob/main/DESCRIPTION#L28">licensed under MIT</a>. Both packages are now hosted on CRAN using a single license dedicated to code or data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is often desirable to host an R package on CRAN as it enables it to be easily installed (from binary if on Mac or Windows), it gives the package some validity as a non-trivial and secure piece of software to install and use.</p>
+<p>It is not necessary nor beneficial for all R packages to be hosted on CRAN, and it does come with some drawbacks, such as the dual licensing restriction of code and data, but for our case with the epiparameter package, we deemed it better to host on CRAN and split the code and data into epiparameter and epiparameterDB, respectively.</p>
+</div>
+</div>
+<p>When including data in your R package from other sources it is important to check that the license of your package and the data is compatible<sup>1</sup>, or that the individual data license is clearly stated, as in igraphdata. For epiparameterDB, we consider model estimates as facts (that is, not copyrightable).</p>
+<hr>
+<p>This blogpost provides an addendum to our original post <a href="data-licensing.html">Dual licensing R packages with code and data</a>, providing our experience and outcomes from submitting epiparameter – and the resulting epiparmeterDB package – to CRAN in a conformant manner. In addition to the requirements and benefits of open source licensing of open software and data in the first post, we hope this follow-up post provides practical information that will be of use to other R package developers, or software developers and open data curators more broadly.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See <a href="https://juliasilge.com/blog/sentiment-lexicons/">this blog post by Julia Silge on including external data sets into an R package and rectifying incompatibilities with license</a>↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{lambert2025,
+  author = {Lambert, Joshua and Hartgerink, Chris},
+  title = {Licensing {R} Packages with Code and Data: Learnings from
+    Submitting to {CRAN}},
+  date = {2025-01-20},
+  url = {https://epiverse-trace.github.io/posts/data-licensing-cran.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2025" class="csl-entry quarto-appendix-citeas">
+Lambert, Joshua, and Chris Hartgerink. 2025. <span>“Licensing R Packages
+with Code and Data: Learnings from Submitting to CRAN.”</span> January
+20, 2025. <a href="https://epiverse-trace.github.io/posts/data-licensing-cran.html">https://epiverse-trace.github.io/posts/data-licensing-cran.html</a>.
+</div></div></section></div> ]]></description>
+  <category>R</category>
+  <category>open-source</category>
+  <category>package development</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/data-licensing-cran.html</guid>
+  <pubDate>Mon, 20 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>simulist v0.4.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
@@ -960,6 +1101,20 @@ November 18, 2024. <a href="https://epiverse-trace.github.io/posts/ai-learner-re
 </section>
 <section id="licensing-code-and-data-in-one-r-package" class="level3">
 <h3 class="anchored" data-anchor-id="licensing-code-and-data-in-one-r-package">Licensing code and data in one R package</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section on dual licensing was first published in September 2024. Since publishing, the <strong>epiparameter</strong> package is no longer dual licensed due to CRAN requirements.</p>
+<p>Please <a href="data-licensing-cran.html#licensing-code-and-data-in-one-r-package">click here to see the updated version of the this section in a new post</a>, which updates the <em>Licensing code and data in one R package</em> section in light of our experience dual licensing an R package and CRAN.</p>
+</div>
+</div>
 <p>But what to do if your R package has both code and data as primary objects of (roughly) equal importance?</p>
 <p>In these cases a software license inadequately covers the data, and a data license inadequately covers the code. Dual licensing can help resolve this issue. This means there is one license for code (for example, MIT license) and another license for the included data (for example, Public Domain Dedication).</p>
 <p>After conducting an online search, dual licensing for R packages seems rare. An interesting example of dual licensing is the <a href="https://github.com/igraph/igraphdata/blob/main/LICENSE"><strong>igraphdata</strong> package</a>, which contains several licenses: One for each dataset included in the package. Similar to igraphdata, in our own <a href="https://github.com/epiverse-trace/epiparameter"><strong>epiparameter</strong> package</a> we dual licensed the code and data as well. We <a href="https://github.com/epiverse-trace/epiparameter/blob/4f7008063040fc4a0b436a9e4d2adb9bb7022f6c/DESCRIPTION#L21">licensed the code using the <code>DESCRIPTION</code> file</a> and used <a href="https://github.com/epiverse-trace/epiparameter/blob/main/LICENSE">the <code>LICENSE</code> file</a> to license the data under CC0. Concretely, we include this additional text in <code>LICENSE</code> to clarify the dual license and that we recommend citing the original source regardless:</p>
@@ -1972,163 +2127,6 @@ V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
   <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>simulist v0.3.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/simulist_v0.3.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new simulist version v0.3.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>The third release of the <em>simulist</em> R package contains a range of new features, enhancements, documentation and unit tests.</p>
-<p>The headline changes to the package are:</p>
-<ul>
-<li>The simulation is now parameterised with an infectious period rather than a contact interval.</li>
-<li>Line list data now has <code>date_outcome</code> and <code>outcome</code> columns which can be parameterised with <code>onset_to_death</code> and <code>onset_to_recovery</code>.</li>
-<li>Case fatality risk can vary through time with a customisable user-defined function.</li>
-<li>Two new vignettes on time-varying case fatality risk, and wrangling line list and contact tracing data.</li>
-</ul>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New features</h2>
-<section id="external" class="level3">
-<h3 class="anchored" data-anchor-id="external">External</h3>
-<ul>
-<li><p><code>onset_to_hosp</code> and <code>onset_to_death</code> arguments can now take <code>NA</code> as input and will return a column of <code>NA</code>s in the line list columns <code>date_admission</code> and <code>date_outcome</code> (#98).</p></li>
-<li><p>An <code>onset_to_recovery</code> argument has been added to the simulation functions, <code>sim_linelist()</code> and <code>sim_outbreak()</code>, and so the recovery date can be explicitly given in the line list data (#99).</p></li>
-<li><p>The line list simulation can now use a time-varying case fatality risk. The <code>create_config()</code> function now returns a <code>$time_varying_death_risk</code> list element, which is <code>NULL</code> by default but can take an R function to enable the fatality risk of cases to change over the epidemic (#101).</p></li>
-<li><p>A new vignette, <code>time-varying-cfr.Rmd</code>, has been added to the package to describe how to use the time-varying case fatality risk functionality and describe a few different time-varying functions that can be used (#101).</p></li>
-<li><p>A new vignette, <code>wrangling-linelist.Rmd</code>, has been added to go over some of the common post-processing steps that might be required after simulating line list or contact tracing data. This vignette is short and currently only contains a single post-processing example, more examples will be added over time (#104).</p></li>
-<li><p>The <code>README</code> now has a section on related projects to provide an overview of packages that simulate line list data, or are related to <em>simulist</em>. This section contains a disclosure widget containing a feature table providing a high-level description of the features and development status of each related package (#110).</p></li>
-<li><p>A Key features section and Complimentary R packages section has been added to the <code>README</code> (#134).</p></li>
-<li><p>Updated package architecture diagram in the <code>design-principles.Rmd</code> vignette (#113).</p></li>
-</ul>
-</section>
-<section id="internal" class="level3">
-<h3 class="anchored" data-anchor-id="internal">Internal</h3>
-<ul>
-<li><p>The <code>.add_deaths()</code> function has been replaced by the <code>.add_outcome()</code> function which can simulate death and recovery times (#99).</p></li>
-<li><p><code>.cross_check_sim_input()</code> function has been added to the package to ensure user input is coherent across arguments (#98).</p></li>
-<li><p><code>.anonymise()</code> function has been added to convert individual’s names into alphanumeric codes to anonymise individuals in line list and contact tracing data (#106).</p></li>
-</ul>
-</section>
-</section>
-<section id="breaking-changes" class="level2">
-<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
-<ul>
-<li><p>The simulation functions are now parameterised with an infectious period (<code>infect_period</code> argument) instead of a contact interval (<code>contact_interval</code> argument). This moves away from parameterising the simulation with the time delay between a person becoming infected and having contact with a susceptible individual, and instead uses an infectious period distribution within which contacts are uniformly distributed in time (#96).</p></li>
-<li><p>The simulation functions can now set a maximum as well as a minimum outbreak size. The <code>min_outbreak_size</code> argument in the exported <code>sim_*()</code> functions has been renamed <code>outbreak_size</code> and takes a <code>numeric</code> vector of two elements, the minimum and maximum outbreak size. The maximum outbreak size is a soft limit due to the stochastic nature of the branching process model, so epidemiological data returned can contain more cases and/or contacts that the maximum in <code>outbreak_size</code> but in these case a warning is returned explaining to the user how many cases/contacts are being returned (#93).</p></li>
-<li><p>The <code>add_ct</code> argument in <code>sim_linelist()</code> and <code>sim_outbreak()</code> has been removed. The functionality is now equivalent to <code>add_ct = TRUE</code> in the previous <em>simulist</em> version. The <code>add_ct</code> argument was removed to move the package to always returning <code>&lt;data.frame&gt;</code>s with the same number of columns, for consistency and predictability (#104).</p></li>
-<li><p>The <code>add_names</code> argument in the simulation functions has been renamed to <code>anonymise</code>. The new argument controls whether names are given to each case (<code>anonymise = FALSE</code>, default behaviour) or whether fixed length hexadecimal codes are given to each case (<code>anonymise = TRUE</code>), this ensures the returned <code>&lt;data.frame&gt;</code> has the same number of columns (#106).</p></li>
-</ul>
-</section>
-<section id="bug-fixes" class="level2">
-<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
-<ul>
-<li><code>.sim_network_bp()</code> now indexes the time vector correctly. Previously a vector indexing bug meant the epidemic would not progress through time (#95).</li>
-</ul>
-</section>
-<section id="deprecated-and-defunct" class="level2">
-<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
-<ul>
-<li>None</li>
-</ul>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Many thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):</p>
-<p><a href="https://github.com/adamkucharski"><span class="citation" data-cites="adamkucharski">@adamkucharski</span></a>, <a href="https://github.com/avallecam"><span class="citation" data-cites="avallecam">@avallecam</span></a>, <a href="https://github.com/Bisaloo"><span class="citation" data-cites="Bisaloo">@Bisaloo</span></a>, <a href="https://github.com/CarmenTamayo"><span class="citation" data-cites="CarmenTamayo">@CarmenTamayo</span></a>, <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>, <a href="https://github.com/jamesmbaazam"><span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span></a>, <a href="https://github.com/ntncmch"><span class="citation" data-cites="ntncmch">@ntncmch</span></a>, <a href="https://github.com/PaulC91"><span class="citation" data-cites="PaulC91">@PaulC91</span></a>, <a href="https://github.com/pratikunterwegs"><span class="citation" data-cites="pratikunterwegs">@pratikunterwegs</span></a>, and <a href="https://github.com/sbfnk"><span class="citation" data-cites="sbfnk">@sbfnk</span></a>.</p>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Simulist V0.3.0},
-  date = {2024-06-03},
-  url = {https://epiverse-trace.github.io/posts/simulist_v0.3.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Simulist
-V0.3.0.”</span> June 3, 2024. <a href="https://epiverse-trace.github.io/posts/simulist_v0.3.0/">https://epiverse-trace.github.io/posts/simulist_v0.3.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/simulist_v0.3.0/</guid>
-  <pubDate>Mon, 03 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>epiparameter v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/epiparameter_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new epiparameter version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Initial release of the {epiparameter} R package. {epiparameter} provides:</p>
-<ol type="1">
-<li><p>A library of epidemiological parameters extracted from the literature for a range of diseases.</p></li>
-<li><p>Functions and classes (with class methods) to work with epidemiological parameters and distributions.</p></li>
-</ol>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New features</h2>
-<ul>
-<li>A library of 122 epidemiological parameter set from the epidemiological literature. This is accessible from the package as system data (<code>sysdata.rda</code>, as <code>epiparameter::multi_epidist</code>) or as internal data (<code>inst/extdata/parameters.json</code>).</li>
-<li>The <code>epidist_db()</code> function loads epidemiological parameters from the library.</li>
-<li>Distribution parameter conversion and extraction functions (<code>convert_params_to_summary_stats()</code> &amp; <code>convert_summary_stats_to_params()</code>, and <code>extract_param()</code>).</li>
-<li>An S3 class to work with epidemiological parameters <code>&lt;epidist&gt;</code>. This class has S3 methods to aid users easily work with these data structures. These include printing, plotting, and distribution functions for PDF/PMF, CDF, random number generation and distribution quantiles. The <code>&lt;epidist&gt;</code> class has a constructor function, a validator function, accessors (<code>get_*()</code>), checkers (<code>is_*()</code>). There is also a <code>&lt;vb_epidist&gt;</code> S3 class for vector-borne parameters, and an internal <code>&lt;multi_epidist&gt;</code> class for improved printing of lists of <code>&lt;epidist&gt;</code> objects.</li>
-<li>The package contains a few utility functions. <code>list_distributions()</code> is a helper function to provide information from a list of <code>&lt;epidist&gt;</code> objects in tabular form. <code>calc_disc_dist_quantile()</code> calculates the quantiles of a probability distribution based on the vector of probabilities and time data.</li>
-<li>Five vignettes are included in this initial release. One as an introduction to the package (<code>epiparameter.Rmd</code>), one as an tutorial on converting and extracting parameters (<code>extract_convert.Rmd</code>), one on the protocol used to collect entries for the library of epidemiological parameters (<code>data_protocol.Rmd</code>), a design vignette (<code>design_principles.Rmd</code>), and a supplementary vignette which quantifies the bias from using the parameter extraction (<code>extract_param()</code>) from {epiparameter} (<code>extract-bias.Rmd</code>).</li>
-<li>Unit tests (98% coverage) and documentation files.</li>
-<li>Continuous integration workflows for R package checks, rendering the README.md, calculating test coverage, deploying the pkgdown website, updates the package citation, linting package code, checking package or system dependency changes, updating copyright year, and validating the parameter library JSON file.</li>
-</ul>
-</section>
-<section id="breaking-changes" class="level2">
-<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
-<ul>
-<li>None</li>
-</ul>
-</section>
-<section id="bug-fixes" class="level2">
-<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
-<ul>
-<li>None</li>
-</ul>
-</section>
-<section id="deprecated-and-defunct" class="level2">
-<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
-<ul>
-<li>None</li>
-</ul>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Many thanks to the contributors to this release, either from issues, code contributions, reviews or discussions (listed in alphabetical order):</p>
-<p><a href="https://github.com/adamkucharski"><span class="citation" data-cites="adamkucharski">@adamkucharski</span></a>, <a href="https://github.com/avallecam"><span class="citation" data-cites="avallecam">@avallecam</span></a>, <a href="https://github.com/Bisaloo"><span class="citation" data-cites="Bisaloo">@Bisaloo</span></a>, <a href="https://github.com/CarmenTamayo"><span class="citation" data-cites="CarmenTamayo">@CarmenTamayo</span></a>, <a href="https://github.com/chartgerink"><span class="citation" data-cites="chartgerink">@chartgerink</span></a>, <a href="https://github.com/jamesmbaazam"><span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span></a>, <a href="https://github.com/maelle"><span class="citation" data-cites="maelle">@maelle</span></a>, <a href="https://github.com/pratikunterwegs"><span class="citation" data-cites="pratikunterwegs">@pratikunterwegs</span></a>, <a href="https://github.com/pitmonticone"><span class="citation" data-cites="pitmonticone">@pitmonticone</span></a>, <a href="https://github.com/sbfnk"><span class="citation" data-cites="sbfnk">@sbfnk</span></a>, and <a href="https://github.com/TimTaylor"><span class="citation" data-cites="TimTaylor">@TimTaylor</span></a>.</p>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Epiparameter V0.1.0},
-  date = {2024-05-30},
-  url = {https://epiverse-trace.github.io/posts/epiparameter_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Epiparameter
-V0.1.0.”</span> May 30, 2024. <a href="https://epiverse-trace.github.io/posts/epiparameter_v0.1.0/">https://epiverse-trace.github.io/posts/epiparameter_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/epiparameter_v0.1.0/</guid>
-  <pubDate>Thu, 30 May 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
