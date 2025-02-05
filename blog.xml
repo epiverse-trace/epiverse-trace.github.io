@@ -66,6 +66,80 @@ Considerations for Retiring/Superseding an R Package.”</span> February
   <pubDate>Mon, 03 Feb 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>superspreading v0.3.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/superspreading_v0.3.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/superspreading">superspreading</a> version v0.3.0. This is the first version of superspreading to be on <a href="https://cran.r-project.org/package=superspreading">CRAN</a> (the package can now be installed with <code>install.packages()</code>). Here is an automatically generated summary of the changes in this version.</p>
+<p>The third minor release of the <em>superspreading</em> package contains enhancements to several functions and a new vignette.</p>
+<p>We are also pleased to welcome Dillon Adam (<a href="https://github.com/dcadam"><span class="citation" data-cites="dcadam">@dcadam</span></a>) as a new package author for his contributions towards this version.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li>The <code>proportion_transmission()</code> function has been expanded to incorporate a new method. The new method calculates the proportion of transmission from X% the most infectious individuals, corresponding to the <a href="https://doi.org/10.1038%2Fnature04153">Lloyd-Smith et al.&nbsp;(2005)</a> calculation. The <code>proportion_transmission()</code> has a new <code>method</code> argument to toggle between the two calculations (<span class="citation" data-cites="dcadam">@dcadam</span>, #99).</li>
+<li>A new vignette explaining the methods in the <code>proportion_transmission()</code> function (#101).</li>
+<li>{bpmodels} is removed as a package dependency and a branching process simulation function, modified from <code>bpmodels::chain_sim()</code>, is added to the {superspreading} package (#103). <span class="citation" data-cites="sbfnk">@sbfnk</span> is added as copyright holder and <span class="citation" data-cites="jamesmbaazam">@jamesmbaazam</span> as a contributor.</li>
+<li><code>probability_contain()</code> is enhanced to enable to probability of containment within a certain amount of time since the outbreak started. This adds <code>outbreak_time</code> and <code>generation_time</code> arguments to <code>probability_contain()</code>. This addition is backwards compatible as by default the time is unlimited, <code>outbreak_time = Inf</code>, and no generation time is required.</li>
+</ul>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>The <code>stochastic</code> argument in <code>probability_contain()</code> has been renamed <code>simulate</code> to be consistent with other functions (#103).</li>
+</ul>
+</section>
+<section id="minor-changes" class="level2">
+<h2 class="anchored" data-anchor-id="minor-changes">Minor changes</h2>
+<ul>
+<li>The proportions output of <code>proportion_*()</code> functions are now formatted to significant figures rather than rounding to prevent small values being rounded to zero (#102).</li>
+<li>Improve input checking, error messages and edge case handling for functions (#102).</li>
+<li>Vignettes now use <code>rmarkdown::html_vignette</code> instead of <code>bookdown::html_vignette2</code> and <code>as_is: true</code> has been removed due to changes to {pkgdown} in v2.1.0. {bookdown} has been removed as a suggested package and code folding is removed from vignettes. KaTeX headers have been added to <code>_pkgdown.yml</code> for correct math rendering (#104 &amp; #109).</li>
+<li>The <code>get_epidist_params()</code> internal function has been renamed <code>get_epiparameter_params()</code> since {epiparameter} renamed the <code>&lt;epidist&gt;</code> class to <code>&lt;epiparameter&gt;</code> (#100).</li>
+<li>Internal constants have been added to the package and used by functions (#111).</li>
+<li>Checking if the user specifies individual parameters (<code>R</code> and <code>k</code>) or provides an <code>&lt;epiparameter&gt;</code> object is now in <code>.check_input_params()</code> (#111).</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>None to {superspreading} functions.</li>
+<li>Update {epiparameter} use in vignette and tests (#106).</li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/dcadam">@dcadam</a> <a href="https://github.com/joshwlambert">@joshwlambert</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Superspreading V0.3.0},
+  date = {2025-01-28},
+  url = {https://epiverse-trace.github.io/posts/superspreading_v0.3.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2025. <span>“Superspreading
+V0.3.0.”</span> January 28, 2025. <a href="https://epiverse-trace.github.io/posts/superspreading_v0.3.0/">https://epiverse-trace.github.io/posts/superspreading_v0.3.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/superspreading_v0.3.0/</guid>
+  <pubDate>Tue, 28 Jan 2025 00:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Licensing R packages with code and data: learnings from submitting to CRAN</title>
   <dc:creator>Joshua Lambert</dc:creator>
   <dc:creator>Chris Hartgerink</dc:creator>
@@ -2097,36 +2171,6 @@ V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts
 </div></div></section></div> ]]></description>
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</guid>
-  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>readepi v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Readepi V0.1.0},
-  date = {2024-06-10},
-  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Readepi
-V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
   <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
