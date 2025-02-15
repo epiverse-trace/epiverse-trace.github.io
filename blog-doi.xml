@@ -50,12 +50,13 @@
   title = {Key Considerations for Retiring/Superseding an {R} Package},
   date = {2025-02-03},
   url = {https://epiverse-trace.github.io/posts/superseding-bpmodels/},
+  doi = {10.59350/zabx5-3x070},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2025" class="csl-entry quarto-appendix-citeas">
 Mba Azam, James, Hugo Gruson, and Sebastian Funk. 2025. <span>“Key
 Considerations for Retiring/Superseding an R Package.”</span> February
-3, 2025. <a href="https://epiverse-trace.github.io/posts/superseding-bpmodels/">https://epiverse-trace.github.io/posts/superseding-bpmodels/</a>.
+3, 2025. <a href="https://doi.org/10.59350/zabx5-3x070">https://doi.org/10.59350/zabx5-3x070</a>.
 </div></div></section></div> ]]></description>
   <category>software lifecycles</category>
   <category>R</category>

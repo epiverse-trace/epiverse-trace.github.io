@@ -50,12 +50,13 @@
   title = {Key Considerations for Retiring/Superseding an {R} Package},
   date = {2025-02-03},
   url = {https://epiverse-trace.github.io/posts/superseding-bpmodels/},
+  doi = {10.59350/zabx5-3x070},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2025" class="csl-entry quarto-appendix-citeas">
 Mba Azam, James, Hugo Gruson, and Sebastian Funk. 2025. <span>“Key
 Considerations for Retiring/Superseding an R Package.”</span> February
-3, 2025. <a href="https://epiverse-trace.github.io/posts/superseding-bpmodels/">https://epiverse-trace.github.io/posts/superseding-bpmodels/</a>.
+3, 2025. <a href="https://doi.org/10.59350/zabx5-3x070">https://doi.org/10.59350/zabx5-3x070</a>.
 </div></div></section></div> ]]></description>
   <category>software lifecycles</category>
   <category>R</category>
@@ -2100,77 +2101,33 @@ V1.0.0.”</span> June 17, 2024. <a href="https://epiverse-trace.github.io/posts
   <pubDate>Mon, 17 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 <item>
-  <title>epichains v0.1.0</title>
+  <title>readepi v0.1.0</title>
   <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</link>
+  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p>We are very excited to announce the release of a new epichains version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<section id="epichains-0.1.0" class="level2">
-<h2 class="anchored" data-anchor-id="epichains-0.1.0">epichains 0.1.0</h2>
-<p>We are excited to announce the first minor release of <code>{epichains}</code>.</p>
-<p><code>{epichains}</code> re-implements <a href="https://github.com/epiverse-trace/bpmodels">{bpmodels}</a>, focusing on a unified simulation framework using branching processes to simulate transmission chains data. The framework incorporates susceptible depletion and pre-existing immunity and provides dedicated data structures for handling and analysing transmission chains in both tabular and vector formats. The goal is to provide seamless interoperability with other packages within the Epiverse-TRACE Initiative and the broader epidemiological tool ecosystem.</p>
-</section>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New Features</h2>
-<section id="documentation" class="level3">
-<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
-<ul>
-<li><strong>Dedicated Website:</strong> Explore all features and documentation on the <a href="https://epiverse-trace.github.io/epichains/">epichains website</a>.</li>
-<li><strong>Help:</strong> Each function comes with extensive documentation. We welcome your feedback and suggestions for improvements.</li>
-<li><strong>Vignettes:</strong> This release comes with five detailed vignettes:
-<ul>
-<li><strong>Getting Started:</strong> A quick guide to the key functions.</li>
-<li><strong>Modelling Disease Control Interventions:</strong> Learn how to model various intervention strategies.</li>
-<li><strong>Projecting Infectious Disease Incidence:</strong> A case study on projecting COVID-19 incidence.</li>
-<li><strong>Literature:</strong> A curation of literature on branching process applications in epidemiology.</li>
-<li><strong>Theoretical Background:</strong> A deep dive into the theoretical background of the functions in the package (Contributor documentation).</li>
-<li><strong>Design principles</strong>: The design principles of <code>{epichains}</code> (Contributor documentation).</li>
-</ul></li>
-</ul>
-</section>
-<section id="simulation" class="level3">
-<h3 class="anchored" data-anchor-id="simulation">Simulation</h3>
-<ul>
-<li><strong><code>simulate_chains()</code></strong>: Simulate independent transmission chains from a specified number of initial cases, incorporating susceptible depletion and pre-existing immunity.</li>
-<li><strong><code>simulate_chain_stats()</code></strong>: Generate a vector of chain sizes or lengths from a specified number of initial cases, incorporating susceptible depletion and pre-existing immunity.</li>
-</ul>
-</section>
-<section id="inference" class="level3">
-<h3 class="anchored" data-anchor-id="inference">Inference</h3>
-<ul>
-<li><strong><code>likelihood()</code></strong>: Estimate the (log)likelihood of transmission chain sizes or lengths, with support for numeric vectors or <code>&lt;epichains&gt;</code> and <code>&lt;epichains_summary&gt;</code> objects.</li>
-</ul>
-</section>
-<section id="transmission-chain-data-manipulation" class="level3">
-<h3 class="anchored" data-anchor-id="transmission-chain-data-manipulation">Transmission Chain Data Manipulation</h3>
-<ul>
-<li><strong><code>summary()</code></strong>: Extract vectors of chain sizes or lengths from <code>&lt;epichains&gt;</code> objects.</li>
-<li><strong><code>aggregate()</code></strong>: Generate case time series by aggregating by generation or time of infection.</li>
-<li><strong><code>plot()</code></strong>: Visualize individual transmission chains filtered by their id.</li>
-</ul>
+<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
 
 
-</section>
-</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
   author = {Epiverse-TRACE development team, The},
-  title = {Epichains V0.1.0},
+  title = {Readepi V0.1.0},
   date = {2024-06-10},
-  url = {https://epiverse-trace.github.io/posts/epichains_v0.1.0/},
+  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Epichains
-V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/epichains_v0.1.0/">https://epiverse-trace.github.io/posts/epichains_v0.1.0/</a>.
+Epiverse-TRACE development team, The. 2024. <span>“Readepi
+V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
 </div></div></section></div> ]]></description>
   <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/epichains_v0.1.0/</guid>
+  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
   <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
