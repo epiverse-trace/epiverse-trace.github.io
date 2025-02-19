@@ -35,8 +35,9 @@ function Usp() {
                   Better prepared, together
                 </h2>
                 <p className="tw-mt-6 tw-text-lg tw-leading-8 ">
-                  We are building robust, validated, and reliable tools that we
-                  know we will need in an epidemic. This is a direct response to
+                  We are building robust, validated, and reliable tools that we know we will need in an epidemic - 
+	  			  and collaborating with other teams who are working on complementary software. 
+	  			  This is a direct response to
                   not having them during the COVID-19 pandemic. This way we can
                   address a next epidemic with a head start.
                 </p>
