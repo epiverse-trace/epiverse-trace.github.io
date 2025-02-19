@@ -24,11 +24,11 @@ function Hero() {
               <a href="https://epiverse.org" className="tw-underline">
                 Epiverse
               </a>{" "}
-              project, and is a suite of innovative software and tools for
-              global infectious disease analysis and response. From reading and
-              cleaning your data to estimating vaccine efficacy and policy
-              impact, Epiverse-TRACE provides robust tools so you can focus on
-              the results.
+              project, and is helping to grow an ecosystem for global 
+			  infectious disease analysis and response. From reading and 
+			  cleaning your data to estimating vaccine efficacy and policy impact, 
+			  Epiverse-TRACE aims to make common tasks easier and faster so you 
+			  can focus on the results.
             </p>
             <div className="tw-mt-10 tw-flex tw-items-center tw-justify-center tw-gap-x-6">
               <a
