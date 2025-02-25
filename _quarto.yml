@@ -4,8 +4,8 @@ project:
 website:
   site-url: "https://epiverse-trace.github.io"
   favicon: hexlogo.png
-  title: "Epiverse-TRACE developer space"
-  description: "A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work."
+  title: "Epiverse-TRACE: tools for outbreak analytics"
+  description: "A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools."
   navbar:
     left:
       - text: News
