@@ -5,10 +5,10 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Epiverse-TRACE developer space</title>
+<title>Epiverse-TRACE: tools for outbreak analytics</title>
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
-<description>A place for Epiverse-TRACE developers to share their reflections, learnings, and showcase their work.</description>
+<description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
 <generator>quarto-1.7.13</generator>
 <lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
 <item>

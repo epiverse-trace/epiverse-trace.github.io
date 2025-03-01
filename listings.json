@@ -48,32 +48,6 @@
     ]
   },
   {
-    "listing": "/resources.html",
-    "items": [
-      "/resources/D_kwDOIcolP84AZ1Mt.html",
-      "/resources/D_kwDOIcolP84AZPXq.html",
-      "/resources/D_kwDOIcolP84AZREP.html",
-      "/resources/D_kwDOIcolP84AZRD5.html",
-      "/resources/D_kwDOIcolP84AZREB.html",
-      "/resources/D_kwDOIcolP84AZREX.html",
-      "/resources/D_kwDOIcolP84AZRHG.html",
-      "/resources/D_kwDOIcolP84AaEct.html",
-      "/resources/D_kwDOIcolP84AZREC.html",
-      "/resources/D_kwDOIcolP84AZRE5.html",
-      "/resources/D_kwDOIcolP84AZRED.html",
-      "/resources/D_kwDOIcolP84AaMJI.html",
-      "/resources/D_kwDOIcolP84Ab8n3.html",
-      "/resources/D_kwDOIcolP84AZRRF.html",
-      "/resources/D_kwDOIcolP84AZREa.html",
-      "/resources/D_kwDOIcolP84AZRD1.html",
-      "/resources/D_kwDOIcolP84Ab8nb.html",
-      "/resources/D_kwDOIcolP84AZREo.html",
-      "/resources/D_kwDOIcolP84Aaqjf.html",
-      "/resources/D_kwDOIcolP84AaEih.html",
-      "/resources/D_kwDOIcolP84AaEjI.html"
-    ]
-  },
-  {
     "listing": "/presentations.html",
     "items": [
       "/slides/idm-november-2024/index.html",
@@ -93,6 +67,32 @@
       "/slides/showcase-april-2023/index.html",
       "/slides/harmonious-ecosystem/index.html",
       "/slides/showcase-january-2023/index.html"
+    ]
+  },
+  {
+    "listing": "/resources.html",
+    "items": [
+      "/resources/D_kwDOIcolP84AZ1Mt.html",
+      "/resources/D_kwDOIcolP84AZREP.html",
+      "/resources/D_kwDOIcolP84AZRD5.html",
+      "/resources/D_kwDOIcolP84AZPXq.html",
+      "/resources/D_kwDOIcolP84AZRHG.html",
+      "/resources/D_kwDOIcolP84AaEct.html",
+      "/resources/D_kwDOIcolP84AZREX.html",
+      "/resources/D_kwDOIcolP84AZREB.html",
+      "/resources/D_kwDOIcolP84AaEih.html",
+      "/resources/D_kwDOIcolP84Aaqjf.html",
+      "/resources/D_kwDOIcolP84AZRD1.html",
+      "/resources/D_kwDOIcolP84AZRE5.html",
+      "/resources/D_kwDOIcolP84AZREC.html",
+      "/resources/D_kwDOIcolP84AaMJI.html",
+      "/resources/D_kwDOIcolP84Ab8n3.html",
+      "/resources/D_kwDOIcolP84Ab8nb.html",
+      "/resources/D_kwDOIcolP84AZREa.html",
+      "/resources/D_kwDOIcolP84AZRRF.html",
+      "/resources/D_kwDOIcolP84AaEjI.html",
+      "/resources/D_kwDOIcolP84AZRED.html",
+      "/resources/D_kwDOIcolP84AZREo.html"
     ]
   }
 ]
