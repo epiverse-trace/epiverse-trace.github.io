@@ -5,6 +5,7 @@ author:
     orcid: "0000-0002-4094-1476"
 date: "2024-07-05"
 categories: [R, interoperability, S3, progressive enhancement, ecosystem, lifecycle, object-oriented programming, DOI]
+doi: "10.59350/tdkxg-nd950"
 format:
   html: 
     toc: true
