@@ -1,3 +1,7 @@
+---
+title: Get involved
+---
+
 ## How to collaborate with Epiverse on software development?
 
 Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:
