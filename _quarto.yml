@@ -34,6 +34,8 @@ website:
             href: "https://github.com/search?q=org%3Aepiverse-trace++label%3A%22good+first+issue%22+is%3Aopen&type=issues"
           - text: Get involved
             href: get-involved.qmd
+          - text: Blueprints
+            href: "https://epiverse-trace.github.io/blueprints/"
       - text: About
         href: people.qmd
     tools:
