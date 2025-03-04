@@ -10,7 +10,7 @@ categories: [R, open-source, package development, DOI]
 format:
   html: 
     toc: true
-# doi: "10.59350/z78kb-qrz59"
+doi: "10.59350/afsfa-bx908"
 ---
 
 ::: {.callout-note}

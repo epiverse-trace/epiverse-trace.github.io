@@ -11,6 +11,7 @@ author:
     orcid: "0000-0001-8814-9421"
 date: "2024-07-15"
 categories: [AI, GitHub, Copilot Workspace, R, R package, software development, DOI]
+doi: "10.59350/ncsre-v2w98"
 bibliography: index.bib
 format:
   html: 

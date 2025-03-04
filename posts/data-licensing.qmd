@@ -10,7 +10,7 @@ categories: [R, open-source, package development, DOI]
 format:
   html: 
     toc: true
-# doi: "10.59350/z78kb-qrz59"
+doi: "10.59350/4c9r0-71526"
 ---
 
 Licenses are an important topic within open source. Without licenses, information or code can be publicly available but not legally available for reuse or redistribution. The open source software community's most common licenses are [the MIT license](https://mit-license.org) or the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html).

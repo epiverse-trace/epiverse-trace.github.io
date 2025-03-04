@@ -15,7 +15,7 @@ format:
     toc: true
 execute: 
   cache: true
-doi: 10.59350/zabx5-3x070
+doi: "10.59350/zabx5-3x070"
 ---
 
 Most of our work at Epiverse TRACE involves either developing an R package from scratch or adopting and maintaining an existing R package. In the former case, decision-making during development is guided by internal policies documented in the [Epiverse-TRACE blueprints](https://epiverse-trace.github.io/blueprints/). However, a less common scenario for us has been taking on the maintenance of an existing package — a situation we recently encountered with the [bpmodels](https://epiforecasts.github.io/bpmodels/) R package.
