@@ -1,0 +1,99 @@
+name: Query API for New Posts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # Runs at midnight every day
+  push:
+    paths:
+      - "posts/**" # Trigger only if there are changes in the posts/ folder
+
+jobs:
+  query_api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get changed files
+        id: changed-files
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const changedFiles = await github.paginate(
+              github.rest.repos.compareCommits,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                base: context.payload.before,
+                head: context.sha,
+              },
+              (response) => response.data.files
+            );
+            const postFiles = changedFiles
+              .filter(file => file.filename.startsWith('posts/') && file.status !== 'removed')
+              .map(file => file.filename);
+            return postFiles.join(' ');
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("yaml", "httr"))
+
+      - name: Find new posts and query API
+        env:
+          CHANGED_FILES: ${{ steps.changed-files.outputs.result }}
+        run: |
+          Rscript -e '
+          library(yaml)
+          library(httr)
+
+          posts_dir <- "posts/"
+          base_api_url <- "https://rogue-scholar.org/api/communities/epiverse_trace/records?q="
+          changed_files <- strsplit(Sys.getenv("CHANGED_FILES"), " ")[[1]]
+
+          for (file_path in changed_files) {
+            if (grepl("\\.qmd$", file_path)) {
+              content <- readLines(file_path)
+              yaml_start <- grep("^---$", content)[1]
+              yaml_end <- grep("^---$", content)[2]
+              metadata <- yaml.load(paste(content[(yaml_start + 1):(yaml_end - 1)], collapse = "\n"))
+              if ("DOI" %in% metadata$categories) {
+                api_url <- paste0(base_api_url, URLencode(metadata$title, reserved = TRUE))
+                response <- GET(api_url)
+                result <- content(response, "parsed")
+                doi <- result$hits$hits[[1]]$pids$doi$identifier
+                # Add DOI to metadata
+                metadata$doi <- doi
+                # Reconstruct the file content with updated metadata
+                new_yaml <- c("---", as.yaml(metadata, handlers = list(
+                    logical = verbatim_logical)), "---")
+                new_content <- c(new_yaml, content[(yaml_end + 1):length(content)])
+                writeLines(new_content, file_path)
+                cat("Updated", file_path, "with DOI:", doi, "\n")
+              }
+            }
+          }
+          '
+
+      - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
+        id: cpr
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: Add DOIs to blog posts
+          committer: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
+          author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
+          branch: automated-update-dois
+          branch-suffix: timestamp
+          add-paths: posts
+          title: Automated update of DOI posts
+          delete-branch: true
+          body: |
+            This PR updates the blog posts with DOIs.
+            It is generated automatically by a GitHub Actions workflow.
+            Please review the DOIs for accuracy and merge if things look fine.
+
+            The original workflow can be found under `.github/workflows/add-doi.yaml`.
