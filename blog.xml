@@ -214,12 +214,13 @@ Tip
     Submitting to {CRAN}},
   date = {2025-01-20},
   url = {https://epiverse-trace.github.io/posts/data-licensing-cran.html},
+  doi = {10.59350/afsfa-bx908},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2025" class="csl-entry quarto-appendix-citeas">
 Lambert, Joshua, and Chris Hartgerink. 2025. <span>“Licensing R Packages
 with Code and Data: Learnings from Submitting to CRAN.”</span> January
-20, 2025. <a href="https://epiverse-trace.github.io/posts/data-licensing-cran.html">https://epiverse-trace.github.io/posts/data-licensing-cran.html</a>.
+20, 2025. <a href="https://doi.org/10.59350/afsfa-bx908">https://doi.org/10.59350/afsfa-bx908</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>open-source</category>
@@ -1218,11 +1219,12 @@ Warning
   title = {Dual Licensing {R} Packages with Code and Data},
   date = {2024-09-23},
   url = {https://epiverse-trace.github.io/posts/data-licensing.html},
+  doi = {10.59350/4c9r0-71526},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2024" class="csl-entry quarto-appendix-citeas">
 Lambert, Joshua, and Chris Hartgerink. 2024. <span>“Dual Licensing R
-Packages with Code and Data.”</span> September 23, 2024. <a href="https://epiverse-trace.github.io/posts/data-licensing.html">https://epiverse-trace.github.io/posts/data-licensing.html</a>.
+Packages with Code and Data.”</span> September 23, 2024. <a href="https://doi.org/10.59350/4c9r0-71526">https://doi.org/10.59350/4c9r0-71526</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>open-source</category>
@@ -1434,12 +1436,13 @@ Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, Billy J Quilty, Esther van
     {Workspace}},
   date = {2024-07-15},
   url = {https://epiverse-trace.github.io/posts/copilot-workspace/},
+  doi = {10.59350/ncsre-v2w98},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2024" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua, James Mba Azam, Pratik Gupte, and Adam Kucharski.
 2024. <span>“Some Thoughts After a Trial Run of GitHub’s Copilot
-Workspace.”</span> July 15, 2024. <a href="https://epiverse-trace.github.io/posts/copilot-workspace/">https://epiverse-trace.github.io/posts/copilot-workspace/</a>.
+Workspace.”</span> July 15, 2024. <a href="https://doi.org/10.59350/ncsre-v2w98">https://doi.org/10.59350/ncsre-v2w98</a>.
 </div></div></section></div> ]]></description>
   <category>AI</category>
   <category>GitHub</category>
@@ -1737,11 +1740,12 @@ font-style: inherit;">"data.frame"</span>)</span></code></pre></div>
     {Progressive} {Enhancement}},
   date = {2024-07-05},
   url = {https://epiverse-trace.github.io/posts/progressive-enhancement/},
+  doi = {10.59350/tdkxg-nd950},
   langid = {en}
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Improving Ecosystem Interoperability
-Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https://epiverse-trace.github.io/posts/progressive-enhancement/">https://epiverse-trace.github.io/posts/progressive-enhancement/</a>.
+Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https://doi.org/10.59350/tdkxg-nd950">https://doi.org/10.59350/tdkxg-nd950</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>interoperability</category>
