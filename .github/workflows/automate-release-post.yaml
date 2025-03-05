@@ -29,6 +29,8 @@ jobs:
             purrr
             lubridate
             knitr
+            pak
+            renv
             usethis
 
       - name: Check for new releases
