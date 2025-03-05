@@ -4,6 +4,7 @@ author:
   - name: "The Epiverse-TRACE development team"
 date: "{{ date }}"
 categories: [new-release]
+code-link: true
 ---
 
 We are very excited to announce the release of a new [{{ pkgname }}](<https://epiverse-trace.github.io/{{ pkgname }}>) version {{ v }}.
