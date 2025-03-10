@@ -28,4 +28,4 @@ jobs:
           # `automerge-fail`.
           automerge_fail_label: 'merge-schedule-failed'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SUDO_GITHUB_TOKEN }}
