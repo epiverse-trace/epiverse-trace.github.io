@@ -1,0 +1,84 @@
+---
+title: "Integration testing in Epiverse-TRACE"
+subtitle: "Robust interoperability of R packages"
+author:
+  - name: "Joshua W. Lambert"
+    orcid: "0000-0001-5218-3046"
+date: "2025-03-20"
+categories: [open-source, R, R package, testing, interoperability, ecosystem]
+format:
+  html:
+    toc: true
+---
+
+In Epiverse-TRACE we develop a suite of R packages that tackle predictable tasks in infectious disease outbreak response. One of the [guiding software design principles](https://epiverse-trace.github.io/blueprints/principles.html) we have worked towards is _interoperability_ of tooling, both between Epiverse software, but also integrating with the [wider ecosystem of R packages in epidemiology](https://epiverse-trace.github.io/slides/epireview-hackathon-july-2024/). 
+
+This principle stems from the needs of those responding to, quantifying, and understanding outbreaks, to create epidemiological pipelines. These pipelines combine a series of tasks, where the output of one task is input into the next, forming an analysis chain. By building interoperability into our R packages we try to reduce the friction of connecting different blocks in the pipeline. The [three interoperability principles in our strategy](https://epiverse-trace.github.io/slides/interoperability-epiverse/) are: 1) _consistency_, 2) _composability_, and 3) _modularity_.
+
+To ensure interoperability between Epiverse-TRACE R packages is developed and maintained, we utilise _integration testing_. This post explains our use of integration testing with a case study looking at the complementary design and interoperability of the [{simulist}](https://epiverse-trace.github.io/simulist/) and [{cleanepi}](https://epiverse-trace.github.io/cleanepi/) R packages. 
+
+::: {.callout-tip title="Different types of testing"}
+In comparison to commonly used _unit testing_, which looks to isolate and test specific parts of a software package, e.g. a function; _integration testing_ is the testing of several components of software, both within and between packages. Therefore, integration testing can be used to ensure interoperability is maintained while one or multiple components in pipelines are being developed. [Continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) provides a way to run these tests before merging, releasing, or deploying code. 
+:::
+
+## How we setup integration testing in Epiverse
+
+The Epiverse-TRACE collection of packages has a meta-package, [{epiverse}](https://epiverse-trace.github.io/epiverse/), analogous to the [tidyverse meta-package](https://www.tidyverse.org/blog/2023/03/tidyverse-2-0-0/) (loaded with `library(tidyverse)`). By default, {epiverse} has dependencies on all released and stable Epiverse-TRACE packages, therefore it is a good home for integration testing. This avoids burdening individual Epiverse packages with taking on potentially extra dependencies purely to test interoperability. 
+
+Just as with unit testing within the individual Epiverse packages, we use the [{testthat}](https://testthat.r-lib.org/) framework for integration testing (although integration testing can be achieved using other testing frameworks).
+
+## Case study of interoperable functionality using {simulist} and {cleanepi}
+
+The aim of {simulist} is to simulate outbreak data, such as line lists or contact tracing data. By default it generates complete and accurate data, but can also augment this data to emulate empirical data via post-processing functionality. One such post-processing function is `simulist::messy_linelist()`, which introduces a range of irregularities, missingness, and type coercions to simulated line list data. Complementary to this, the {cleanepi} package has a set of cleaning functions that standardised tabular epidemiological data, recording the set of cleaning operations run by compiling a [report and appending it to the cleaned data](https://epiverse-trace.github.io/cleanepi/articles/design_principle.html#output). 
+
+### Example of an integration test
+
+The integration tests can be thought of as compound unit tests. Line list data is generated using `simulist::sim_linelist()`. In each testing block, a messy copy of the line list is made using `simulist::messy_linelist()` with arguments set to specifically target particular aspects of messyness; then a cleaning operation from {cleanepi} is applied targeting the messy element of the data; lastly, the cleaned line list is compared to the original complete and accurate simulated data. In other words, is the ideal data perfectly recovered when messied and cleaned?
+
+An example of an integration test is shown below:
+
+```r
+set.seed(1)
+ll <- sim_linelist()
+
+test_that("convert_to_numeric corrects prop_int_as_word", {
+  messy_ll <- messy_linelist(
+    linelist = ll,
+    prop_missing = 0,
+    prop_spelling_mistakes = 0,
+    inconsistent_sex = FALSE,
+    numeric_as_char = FALSE,
+    date_as_char = FALSE,
+    prop_int_as_word = 0.5,
+    prop_duplicate_row = 0
+  )
+  
+  clean_ll <- cleanepi::convert_to_numeric(
+    data = messy_ll, 
+    target_columns = c("id", "age")
+  )
+  
+  expect_false(identical(ll, clean_ll))
+  clean_ll[, c("id", "age")] <- apply(
+    clean_ll[, c("id", "age")], 
+    MARGIN = 2, 
+    FUN = as.integer
+  )
+  
+  # check report is created as expected
+  report <- attr(clean_ll, "report")
+  expect_identical(names(report), "converted_into_numeric")
+  expect_identical(report$converted_into_numeric, "id, age")
+  
+  # remove report to check identical line list <data.frame>
+  attr(clean_ll, "report") <- NULL
+  
+  expect_identical(ll, clean_ll)
+})
+```
+
+## Conclusion
+
+When developing multiple software tools that are explicitly designed to work together it is critical that they are routinely tested to ensure interoperability is maximised and maintained. These tests can be implementations of a data standard, or in the case of Epiverse-TRACE a more informal set of design principles. We have showcased integration testing with the compatibility of the {simulist} and {cleanepi} R packages, but there are other integration tests available in the {epiverse} meta-package. We hope that by regularly running these expectations of functioning pipelines, includes those as simple as two steps, like the case study show in this post, that maintainers and contributors will be aware of any interoperability breakages. 
+
+If you've worked on a suite of tools, R packages or otherwise, and have found useful methods or frameworks for integration tests please share in the comments. 
