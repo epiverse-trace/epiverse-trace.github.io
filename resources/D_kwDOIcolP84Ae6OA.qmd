@@ -1,0 +1,8 @@
+---
+title: "Big Book of R"
+url: "https://github.com/orgs/epiverse-trace/discussions/377"
+date: "2025-03-19"
+author: chartgerink
+categories: []
+upvotes: 1
+---
