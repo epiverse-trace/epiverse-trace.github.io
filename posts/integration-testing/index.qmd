@@ -39,10 +39,11 @@ An example of an integration test is shown below:
 
 ```r
 set.seed(1)
-ll <- sim_linelist()
+ll <- simulist::sim_linelist()
 
 test_that("convert_to_numeric corrects prop_int_as_word", {
-  messy_ll <- messy_linelist(
+  # create messy data with 50% of integers converted to words
+  messy_ll <- simulist::messy_linelist(
     linelist = ll,
     prop_missing = 0,
     prop_spelling_mistakes = 0,
@@ -53,23 +54,30 @@ test_that("convert_to_numeric corrects prop_int_as_word", {
     prop_duplicate_row = 0
   )
   
+  # convert columns with numbers as words into numbers as numeric
   clean_ll <- cleanepi::convert_to_numeric(
     data = messy_ll, 
     target_columns = c("id", "age")
   )
   
+  # the below is not TRUE because
+  # 1. `clean_ll` has an attribute used to store the report from the performed
+  # cleaning operation
+  # 2. the converted "id" and "age" columns are numeric not integer
   expect_false(identical(ll, clean_ll))
+
+  # check whether report is created as expected
+  report <- attr(clean_ll, "report")
+  expect_identical(names(report), "converted_into_numeric")
+  expect_identical(report$converted_into_numeric, "id, age")
+
+  # convert the 2 converted numeric columns into integer
   clean_ll[, c("id", "age")] <- apply(
     clean_ll[, c("id", "age")], 
     MARGIN = 2, 
     FUN = as.integer
   )
-  
-  # check report is created as expected
-  report <- attr(clean_ll, "report")
-  expect_identical(names(report), "converted_into_numeric")
-  expect_identical(report$converted_into_numeric, "id, age")
-  
+
   # remove report to check identical line list <data.frame>
   attr(clean_ll, "report") <- NULL
   
