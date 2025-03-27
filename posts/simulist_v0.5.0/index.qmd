@@ -69,9 +69,8 @@ This release has also focused on making the package interface more consistent an
 
 * None
 
-
 ## Acknowledgements
 
-Thanks to those that contributed towards this release, either through opening issues, reviewing pull requests or discussing package developments. 
+Thanks to those that contributed towards this release, either through opening issues, reviewing pull requests or discussing package developments.
 
 [&#x0040;avallecam](https://github.com/avallecam) [&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;CarmenTamayo](https://github.com/CarmenTamayo) [&#x0040;Degoot-AM](https://github.com/Degoot-AM) [&#x0040;jamesmbaazam](https://github.com/jamesmbaazam) [&#x0040;joshwlambert](https://github.com/joshwlambert) [&#x0040;Karim-Mane](https://github.com/Karim-Mane) [&#x0040;sbfnk](https://github.com/sbfnk)
