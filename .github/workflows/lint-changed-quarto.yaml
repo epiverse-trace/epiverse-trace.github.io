@@ -19,7 +19,11 @@ jobs:
       - name: Get changed quarto files
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         id: changed-qmd
-        run: echo "CHANGED=$(gh pr diff ${{ github.event.pull_request.number }} --name-only | grep '\.qmd$' | tr '\n' ' ')" >> $GITHUB_OUTPUT
+        run: echo "CHANGED=$(gh pr diff $PR_NUMBER --name-only | grep '\.qmd$' | tr '\n' ' ')" >> $GITHUB_OUTPUT
 
-      - run: npx markdownlint-cli ${{ steps.changed-qmd.outputs.CHANGED }} --dot --disable line_length first-line-h1 link-image-reference-definitions
+      - name: Lint changed quarto files
+        env:
+          CHANGED_QMD_FILES: ${{ steps.changed-qmd.outputs.CHANGED }}
+        run: npx markdownlint-cli $CHANGED_QMD_FILES --dot --disable line_length first-line-h1 link-image-reference-definitions
