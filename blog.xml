@@ -10,7 +10,97 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
 <generator>quarto-1.7.20</generator>
-<lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 26 Mar 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>simulist v0.5.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/simulist_v0.5.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/simulist">simulist</a> version v0.5.0. Here is an automatically generated summary of the changes in this version.</p>
+<p>This minor version release expands the scope of <em>simulist</em> to include two new post-processing functions: <code>truncate_linelist()</code> and <code>messy_linelist()</code>. Both of these functions modify a line list <code>&lt;data.frame&gt;</code> from <code>sim_linelist()</code> or <code>sim_outbreak()</code>, the line list now also includes a <code>$date_reporting</code> column.</p>
+<p>This release has also focused on making the package interface more consistent and contains bugs fixes.</p>
+<section id="new-features" class="level2">
+<h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<section id="external" class="level3">
+<h3 class="anchored" data-anchor-id="external">External</h3>
+<ul>
+<li><p>The <code>messy_linelist()</code> function is added. This takes a simulated line list and creates a <em>“messy”</em> line list with inconsistencies, irregularities and missingness found in empirical outbreak data (#187 &amp; #196 &amp; #199)</p></li>
+<li><p>A reporting delay argument (<code>reporting_delay</code>) is now included in <code>sim_linelist()</code> and <code>sim_outbreak()</code> to simulate reporting delays from the date of symptom onset (<code>$date_onset</code>) to date of reporting (<code>$date_reporting</code>) (#179).</p></li>
+<li><p>The <code>truncate_linelist()</code> function is added. This takes a simulated line list and can create outbreak snapshots and right-truncation of real-time outbreak data (#179 &amp; #193 &amp; #201 &amp; #211).</p></li>
+<li><p>A new vignette, <code>reporting_delays-truncation.Rmd</code>, on reporting delays and right-truncation for line list data has been added (#179 &amp; #201).</p></li>
+<li><p>Alt text is added to all vignette figures (#214).</p></li>
+</ul>
+</section>
+<section id="internal" class="level3">
+<h3 class="anchored" data-anchor-id="internal">Internal</h3>
+<ul>
+<li><p><code>{english}</code> is added as a package dependency for <code>messy_linelist()</code> (#187).</p></li>
+<li><p>R CMD check CI is now run on R v4.1, the minimum required R version for the package (#180).</p></li>
+<li><p><code>{epiparameter}</code> is no longer used in testing (#177).</p></li>
+<li><p><code>.check_linelist()</code> is added for input checking in post-processing functions (#179).</p></li>
+<li><p><code>.check_age_df()</code> and <code>.check_risk_df()</code> have been merged into <code>.check_df()</code> thanks to the standardisation of the structure of <code>&lt;data.frame&gt;</code> objects required by <code>sim_*()</code> function arguments (#200).</p></li>
+</ul>
+</section>
+</section>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><p><code>create_config()</code> has been updated to accepted <code>function</code>s instead of a distribution name and a vector of parameters. This now matches the design of arguments that accept a <code>function</code> in <code>sim_*()</code> functions (#202).</p></li>
+<li><p>The structure of the age-structured population <code>&lt;data.frame&gt;</code> input into <code>sim_*()</code> functions has been standardised with the age-stratified risk <code>&lt;data.frame&gt;</code>s by using an <code>$age_limit</code> column instead of an <code>$age_range</code> <code>character</code> column (#200).</p></li>
+<li><p>The line list <code>&lt;data.frame&gt;</code> output by <code>sim_linelist()</code> and <code>sim_outbreak()</code> now contains a <code>$date_reporting</code> column (#179).</p></li>
+<li><p>Outcome date (<code>$date_outcome</code>) is now conditioned to be after hospitalisation date (<code>$date_admission</code>) using the new internal <code>.sample_outcome_time()</code> function. This is a breaking change as previously hospitalisation times could be before outcome times, <code>sim_linelist()</code> can now through an error if an outcome time cannot be sampled to be after the hospitalisation time (#178).</p></li>
+<li><p>The date of first contact is now sampled as the number of days before infection time (equal to symptom onset in the model) rather than days before date of last contact, as this could lead to the infection time before the first contact (#206).</p></li>
+<li><p>The minimum required R version for <em>simulist</em> is increased to v4.1.0 from v3.6.0 due to package dependencies (#180).</p></li>
+<li><p>The minimum required version of <code>{incidence2}</code> (suggested dependency) is now v2.3.0 (#214).</p></li>
+</ul>
+</section>
+<section id="minor-changes" class="level2">
+<h2 class="anchored" data-anchor-id="minor-changes">Minor changes</h2>
+<ul>
+<li>Explicitly state function output breaking changes policy in <code>design-principles.Rmd</code> vignette (#208).</li>
+</ul>
+</section>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li><p>Date of symptom onset can no longer occur before date of first contact (#206).</p></li>
+<li><p>Outcome date can no longer occur before hospitalisation date (#178).</p></li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to those that contributed towards this release, either through opening issues, reviewing pull requests or discussing package developments.</p>
+<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/CarmenTamayo">@CarmenTamayo</a> <a href="https://github.com/Degoot-AM">@Degoot-AM</a> <a href="https://github.com/jamesmbaazam">@jamesmbaazam</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a> <a href="https://github.com/sbfnk">@sbfnk</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.5.0},
+  date = {2025-03-26},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.5.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2025. <span>“Simulist
+V0.5.0.”</span> March 26, 2025. <a href="https://epiverse-trace.github.io/posts/simulist_v0.5.0/">https://epiverse-trace.github.io/posts/simulist_v0.5.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/simulist_v0.5.0/</guid>
+  <pubDate>Wed, 26 Mar 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Key considerations for retiring/superseding an R package</title>
   <dc:creator>James Mba Azam</dc:creator>
@@ -2103,36 +2193,6 @@ V1.0.0.”</span> June 17, 2024. <a href="https://epiverse-trace.github.io/posts
   <category>new-release</category>
   <guid>https://epiverse-trace.github.io/posts/cleanepi_v1.0.0/</guid>
   <pubDate>Mon, 17 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>readepi v0.1.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new readepi version v0.1.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>This release contains the initial implementation of the package where data import from health information systems (HIS) depends on existing R packages designed specifically to retrieve data from a given HIS.</p>
-
-
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Readepi V0.1.0},
-  date = {2024-06-10},
-  url = {https://epiverse-trace.github.io/posts/readepi_v0.1.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Readepi
-V0.1.0.”</span> June 10, 2024. <a href="https://epiverse-trace.github.io/posts/readepi_v0.1.0/">https://epiverse-trace.github.io/posts/readepi_v0.1.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/readepi_v0.1.0/</guid>
-  <pubDate>Mon, 10 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
