@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.7.20</generator>
+<generator>quarto-1.7.21</generator>
 <lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Key considerations for retiring/superseding an R package</title>
