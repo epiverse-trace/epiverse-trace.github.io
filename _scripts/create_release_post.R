@@ -17,6 +17,10 @@ create_release_post <- function(release_endpoint_response, pkg) {
   post_folder <- file.path("posts", paste(package, version, sep = "_"))
   dir.create(post_folder)
 
+  pak::pak(sprintf('epiverse-trace/%s@%s', package, version))
+  options(renv.lockfile.version = 1)
+  renv::snapshot(prompt = FALSE, type = 'all')
+
   knitr::knit_expand(
     file.path("_templates", "release.qmd"),
     date = release_date,
