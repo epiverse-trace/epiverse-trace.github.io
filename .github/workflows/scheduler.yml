@@ -27,5 +27,7 @@ jobs:
           # Label to apply to the pull request if the merge fails. Default is
           # `automerge-fail`.
           automerge_fail_label: 'merge-schedule-failed'
+      - name: Trigger re-render
         env:
-          GITHUB_TOKEN: ${{ secrets.SUDO_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run quarto-publish.yaml
