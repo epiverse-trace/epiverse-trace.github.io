@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
     schedule:
       - cron: '0 8 * * *'
-  
+
 jobs:
     run-r-script:
         runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
             pull-requests: write
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                 # This helps override the branch protection later
                 token: ${{ secrets.SUDO_GITHUB_TOKEN }}
