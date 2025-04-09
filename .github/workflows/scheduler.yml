@@ -29,5 +29,8 @@ jobs:
           # Label to apply to the pull request if the merge fails. Default is
           # `automerge-fail`.
           automerge_fail_label: 'merge-schedule-failed'
+
+      - uses: actions/checkout@v4
+
       - name: Trigger re-render
         run: gh workflow run quarto-publish.yaml
