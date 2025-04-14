@@ -2023,6 +2023,13 @@
     "text": "Conclusion\nWhen developing multiple software tools that are explicitly designed to work together it is critical that they are routinely tested to ensure interoperability is maximised and maintained. These tests can be implementations of a data standard, or in the case of Epiverse-TRACE a more informal set of design principles. We have showcased integration testing with the compatibility of the {simulist} and {cleanepi} R packages, but there are other integration tests available in the {epiverse} meta-package. We hope that by regularly running these expectations of functioning pipelines, includes those as simple as two steps, like the case study show in this post, that maintainers and contributors will be aware of any interoperability breakages.\nIf you’ve worked on a suite of tools, R packages or otherwise, and have found useful methods or frameworks for integration tests please share in the comments."
   },
   {
+    "objectID": "posts/integration-testing/index.html#acknowledgements",
+    "href": "posts/integration-testing/index.html#acknowledgements",
+    "title": "Integration testing in Epiverse-TRACE",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThanks to Karim Mané, Hugo Gruson and Chris Hartgerink for helpful feedback when drafting this post."
+  },
+  {
     "objectID": "get-involved.html",
     "href": "get-involved.html",
     "title": "Get involved",
