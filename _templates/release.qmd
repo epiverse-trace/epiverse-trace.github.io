@@ -15,7 +15,6 @@ cat(paste("```{r}", "library({{ pkgname }})", "```", sep = "\n"))
 ```
 
 {{ notes }}
-
 ## Acknowledgements
 
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
