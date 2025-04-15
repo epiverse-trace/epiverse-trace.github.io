@@ -21,6 +21,9 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Setup renv
+        uses: r-lib/actions/setup-renv@v2
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
@@ -66,6 +69,11 @@ jobs:
           }
         shell: Rscript {0}
 
+      - name: Render Quarto Project
+        uses: quarto-dev/quarto-actions/render@v2
+        with:
+          path: posts/
+
       - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
         id: cpr
         with:
@@ -75,6 +83,8 @@ jobs:
           author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
           branch: automated-release-post
           branch-suffix: timestamp
-          add-paths: posts
+          add-paths: |
+            posts
+            _freeze
           title: Automated release blog post `${{ env.PACKAGE }}` - `${{ env.PACKAGE_VERSION }}`
           delete-branch: true
