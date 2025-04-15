@@ -69,11 +69,6 @@ jobs:
           }
         shell: Rscript {0}
 
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          path: posts/
-
       - uses: peter-evans/create-pull-request@10db75894f6d53fc01c3bb0995e95bd03e583a62
         id: cpr
         with:

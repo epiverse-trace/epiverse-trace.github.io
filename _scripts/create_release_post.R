@@ -34,4 +34,5 @@ create_release_post <- function(release_endpoint_response, pkg) {
     file.path(post_folder, "index.qmd")
   )
 
+  quarto::quarto_render(file.path(post_folder, "index.qmd"))
 }
