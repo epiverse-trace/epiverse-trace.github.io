@@ -7,7 +7,7 @@ categories: [new-release]
 code-link: true
 ---
 
-```{r ctbs, results='asis', echo=FALSE, message = FALSE}
+```{r deps, results='asis', echo=FALSE, message = FALSE}
 library("{{ pkgname }}")
 ```
 
@@ -19,7 +19,7 @@ Here is an automatically generated summary of the changes in this version.
 ## Acknowledgements
 
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
-releases <- gh::gh("GET /repos/{owner}/{repo}/releases", 
+releases <- gh::gh("GET /repos/{owner}/{repo}/releases",
                owner = "epiverse-trace",
                repo = "{{ pkgname }}") |>
   purrr::discard(~ grepl("\\d+\\.\\d+\\.[1-9]\\d*$", .x$tag_name))
@@ -31,8 +31,8 @@ if (length(releases) >= 2) {
 }
 
 ctbs <- usethis::use_tidy_thanks(
-  "epiverse-trace/{{ pkgname }}", 
-  from = previous_release, 
+  "epiverse-trace/{{ pkgname }}",
+  from = previous_release,
   to = "{{ version }}")
 ctbs <- ctbs[grep("github-actions\\[bot\\]", ctbs, invert = TRUE)]
 cat(glue::glue("[&#x0040;{ctbs}](https://github.com/{ctbs})"))
