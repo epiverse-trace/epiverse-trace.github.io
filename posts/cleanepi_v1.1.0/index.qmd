@@ -80,7 +80,6 @@ different pull requests (#194, Karim-Mane).
 the `params` argument. Instead, it takes many other arguments that are described
 in the function documentation and the package vignettes (#184, Karim-Mane).
 
-
 ## Acknowledgements
 
 [&#x0040;avallecam](https://github.com/avallecam) [&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;chartgerink](https://github.com/chartgerink) [&#x0040;Degoot-AM](https://github.com/Degoot-AM) [&#x0040;joshwlambert](https://github.com/joshwlambert) [&#x0040;Karim-Mane](https://github.com/Karim-Mane) [&#x0040;LloydChapman](https://github.com/LloydChapman)
