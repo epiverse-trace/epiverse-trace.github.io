@@ -7,6 +7,7 @@ categories: [new-release]
 code-link: true
 ---
 
+<!-- markdownlint-disable-next-line -->
 We are very excited to announce the release of a new [{{ pkgname }}](https://epiverse-trace.github.io/{{ pkgname }}) version {{ v }}.
 Here is an automatically generated summary of the changes in this version.
 
@@ -15,6 +16,7 @@ cat(paste("```{r}", "library({{ pkgname }})", "```", sep = "\n"))
 ```
 
 {{ notes }}
+
 ## Acknowledgements
 
 ```{r ctbs, results='asis', echo=FALSE, message = FALSE}
