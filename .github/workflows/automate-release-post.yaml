@@ -21,17 +21,8 @@ jobs:
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            gh
-            glue
-            purrr
-            lubridate
-            knitr
-            pak
-            renv
-            usethis
+      - name: Setup renv
+      - uses: r-lib/actions/setup-renv@v2
 
       - name: Check for new releases
         run: |
