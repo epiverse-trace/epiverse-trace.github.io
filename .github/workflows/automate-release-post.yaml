@@ -21,6 +21,9 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Setup renv
+        uses: r-lib/actions/setup-renv@v2
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           packages: |
@@ -75,6 +78,8 @@ jobs:
           author: epiverse-trace-bot <epiverse-trace-bot@users.noreply.github.com>
           branch: automated-release-post
           branch-suffix: timestamp
-          add-paths: posts
+          add-paths: |
+            posts
+            _freeze
           title: Automated release blog post `${{ env.PACKAGE }}` - `${{ env.PACKAGE_VERSION }}`
           delete-branch: true
