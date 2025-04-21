@@ -9,8 +9,79 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.7.23</generator>
-<lastBuildDate>Mon, 14 Apr 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.27</generator>
+<lastBuildDate>Mon, 21 Apr 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>cleanepi v1.1.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/cleanepi">cleanepi</a> version v1.1.0. Here is an automatically generated summary of the changes in this version.</p>
+<section id="bug-fixes" class="level2">
+<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li><p>Fixed a bug in the index for empty rows returned by <code>print_report()</code> after <code>remove_constants()</code>. This function was incorrectly returning the number of rows in the original data frame, instead of the index of empty rows (#173, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Fixed a bug in the date guesser used by the <code>standardize_dates()</code> function. The followings updates were made (#175, <span class="citation" data-cites="Karim-Mane">@Karim-Mane</span>):</p>
+<ul>
+<li>allow for quarter and partial dates, and</li>
+<li>account for odd cases before parsing using the {lubridate} package.</li>
+</ul></li>
+</ul>
+</section>
+<section id="enhancements" class="level2">
+<h2 class="anchored" data-anchor-id="enhancements">Enhancements</h2>
+<ul>
+<li><p>Rendering the report no longer requires the use of the {withr} package. Files generated during this process will be stored in the R temporary directory (#165, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Simplification and improvement of code performance across several functions (#154, #156, #162, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Make R version dependency explicit (#156, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Replace base R pipe operator with the {tidyverse} package pipe operator (#155, <span class="citation" data-cites="Karim-Mane">@Karim-Mane</span>).</p></li>
+<li><p>Stop automatic conversion of numeric values into Date due to unexpected results from <code>date_guess()</code> function (#151, <span class="citation" data-cites="Karim-Mane">@Karim-Mane</span>).</p></li>
+<li><p>Allow for a vector of character for <code>na_strings</code> argument in <code>replace_missing_values()</code> (#180, Karim-Mane).</p></li>
+<li><p>Improved messaging to differentiate between duplicates found in the subject IDs column and duplicates across multiple columns (#180, Karim-Mane).</p></li>
+<li><p>Allow for iterative constant data removal (#180, Karim-Mane).</p></li>
+<li><p>The <code>remove_constants()</code> now works correctly when the <code>cutoff</code> is different from 1. More importantly, the function no longer depends on the {janitor} package (#177, Karim-Mane).</p></li>
+<li><p>The <code>scan_data()</code> now makes use of <code>date_guess()</code> to parse date from characters and <code>lubridate::as_date()</code> to parse dates from numeric. This function now operates only on character columns (#181, Karim-Mane).</p></li>
+<li><p>Replace <code>snakecase::to_snake_case()</code> with <code>janitor::clean_names()</code> and make sure variable names specified in <code>keep</code> and <code>rename</code> are preserved after applying <code>janitor::clean_names()</code> (#180, Karim-Mane).</p></li>
+<li><p>Use the {cli} package for formatting messages in the package (#196, Karim-Mane).</p></li>
+<li><p>Translate messages in the package into French using the {potools} package (#196, Karim-Mane).</p></li>
+<li><p>An additional column (<strong>row_id</strong>) with the row indices where the incorrect date sequences are found is now added to the report made from the <code>check_date_sequence()</code> function (#196, Karim-Mane).</p></li>
+<li><p>The <code>date_guess()</code> and related functions now returns a list of two elements: the converted values and a boolean that informs about the presence of numeric values that can also be of type Date (#181, Karim-Mane).</p></li>
+<li><p>Update the package vignette to account for the improvements made in the different pull requests (#194, Karim-Mane).</p></li>
+</ul>
+</section>
+<section id="deprecated-and-defunct" class="level2">
+<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>Function documentations have been updated. The <code>clean_data()</code> no longer takes the <code>params</code> argument. Instead, it takes many other arguments that are described in the function documentation and the package vignettes (#184, Karim-Mane).</li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/Degoot-AM">@Degoot-AM</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a> <a href="https://github.com/LloydChapman">@LloydChapman</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Cleanepi V1.1.0},
+  date = {2025-04-21},
+  url = {https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2025. <span>“Cleanepi
+V1.1.0.”</span> April 21, 2025. <a href="https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/">https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/</guid>
+  <pubDate>Mon, 21 Apr 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Integration testing in Epiverse-TRACE</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
@@ -2342,69 +2413,6 @@ Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973"
   <category>DOI</category>
   <guid>https://epiverse-trace.github.io/posts/parent-class/</guid>
   <pubDate>Wed, 26 Jun 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>epidemics v0.4.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/epidemics_v0.4.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new epidemics version v0.4.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>Maintainer is changing to <span class="citation" data-cites="rozeggo">@rozeggo</span>.</p>
-<section id="model-functions" class="level2">
-<h2 class="anchored" data-anchor-id="model-functions">Model functions</h2>
-<ol type="1">
-<li>Internal model functions for the models which allow vaccination have been corrected to prevent vaccination introducing negative values of susceptibles; tests added to check for this (#235, initially reported by <span class="citation" data-cites="avallecam">@avallecam</span>).</li>
-</ol>
-</section>
-<section id="helper-functions" class="level2">
-<h2 class="anchored" data-anchor-id="helper-functions">Helper functions</h2>
-<ol type="1">
-<li><p>Added the <code>epidemic_peak()</code> function to calculate the timing and size of the largest peak in each compartment in an scenario model (#240) by <span class="citation" data-cites="bahadzie">@bahadzie</span>.</p></li>
-<li><p>Added the <code>outcomes_averted()</code> function to compare epidemic scenarios (e.g.&nbsp;with and without interventions or vaccination) (#225, #230).</p></li>
-</ol>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<ol type="1">
-<li><p>Adds a developer-focused vignette on how to modify epidemics and model structures to address potential modelling requests or tasks (#210).</p></li>
-<li><p>Splits up the ‘Modelling uncertainty and scenarios’ vignette into separate vignettes on uncertainty and scenario comparisons (#225).</p></li>
-<li><p>Removed unnecessary plots from the vignette on modelling vaccination (#235).</p></li>
-<li><p>Fixed link to <em>socialmixr</em> package in the ‘Get started’ and ‘Modelling interventions’ vignettes.</p></li>
-<li><p>Updated and added documentation for all new or modified functions.</p></li>
-<li><p>Updated references JSON file.</p></li>
-</ol>
-</section>
-<section id="package" class="level2">
-<h2 class="anchored" data-anchor-id="package">Package</h2>
-<ol type="1">
-<li><p>Updated Codecov GitHub Actions workflow to restore code coverage reporting.</p></li>
-<li><p>Updated package title and citation file.</p></li>
-<li><p>Updated <code>_pkgdown.yaml</code> with new vignette and updated section titles.</p></li>
-<li><p>Updated WORDLIST.</p></li>
-</ol>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Epidemics V0.4.0},
-  date = {2024-06-24},
-  url = {https://epiverse-trace.github.io/posts/epidemics_v0.4.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Epidemics
-V0.4.0.”</span> June 24, 2024. <a href="https://epiverse-trace.github.io/posts/epidemics_v0.4.0/">https://epiverse-trace.github.io/posts/epidemics_v0.4.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/epidemics_v0.4.0/</guid>
-  <pubDate>Mon, 24 Jun 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

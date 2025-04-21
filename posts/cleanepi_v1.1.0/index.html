@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="The Epiverse-TRACE development team">
-<meta name="dcterms.date" content="2025-01-10">
+<meta name="dcterms.date" content="2025-04-21">
 
-<title>simulist v0.4.0 – Epiverse-TRACE: tools for outbreak analytics</title>
+<title>cleanepi v1.1.0 – Epiverse-TRACE: tools for outbreak analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,10 +82,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="simulist v0.4.0 – Epiverse-TRACE: tools for outbreak analytics">
+<meta property="og:title" content="cleanepi v1.1.0 – Epiverse-TRACE: tools for outbreak analytics">
 <meta property="og:description" content="A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.">
 <meta property="og:site_name" content="Epiverse-TRACE: tools for outbreak analytics">
-<meta name="twitter:title" content="simulist v0.4.0 – Epiverse-TRACE: tools for outbreak analytics">
+<meta name="twitter:title" content="cleanepi v1.1.0 – Epiverse-TRACE: tools for outbreak analytics">
 <meta name="twitter:description" content="A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
 <meta name="twitter:card" content="summary">
@@ -197,7 +197,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">simulist v0.4.0</h1>
+      <h1 class="title">cleanepi v1.1.0</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">new-release</div>
               </div>
@@ -217,7 +217,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 10, 2025</p>
+        <p class="date">April 21, 2025</p>
       </div>
     </div>
     
@@ -236,65 +236,62 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 
 
 
-<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/simulist">simulist</a> version v0.4.0. This is the first version of simulist to be on <a href="https://cran.r-project.org/package=simulist">CRAN</a> (the package can now be installed with <code>install.packages()</code>). Here is an automatically generated summary of the changes in this version.</p>
-<p>A minor version release of <em>simulist</em> containing various minor improvements to the functions and documentation, as well as removing some triggers for warning users. There are also a few bug fixes and internal enhancements.</p>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New features</h2>
-<section id="external" class="level3">
-<h3 class="anchored" data-anchor-id="external">External</h3>
-<ul>
-<li>Defaults have been added to all <code>sim_*()</code> arguments that previously did not have one. Allowing functions to be run without specifying any arguments (e.g.&nbsp;<code>linelist &lt;- sim_linelist()</code>) (#149).</li>
-<li>Documentation for <code>sim_*()</code> function arguments that accept either a <code>function</code> or an <code>&lt;epiparameter&gt;</code> object has been improved (#149).</li>
-<li><code>sim_*()</code> functions no longer warn if the user has not specified <code>*_risk</code> arguments and have set <code>onset_to_*</code> arguments to <code>NULL</code> (#149).</li>
-<li>All vignettes now use <code>rmarkdown::html_vignette</code> for to correctly render the website and for maximum compatibility with {pkgdown} &gt;= 2.1.0. This removes figure numbering and code folding (#153).</li>
-</ul>
-</section>
-<section id="internal" class="level3">
-<h3 class="anchored" data-anchor-id="internal">Internal</h3>
-<ul>
-<li><code>.add_hospitalisation()</code> has been vectorised following <code>.add_outcome()</code> in PR #101 (#150).</li>
-</ul>
-</section>
-</section>
-<section id="breaking-changes" class="level2">
-<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
-<ul>
-<li>The function arguments <code>infect_period</code> and <code>prob_infect</code> have been renamed <code>infectious_period</code> and <code>prob_infection</code> (#143).</li>
-<li><code>sim_*()</code> functions now use <code>NULL</code> instead of <code>NA</code> to turn off processes (e.g.&nbsp;<code>onset_to_death = NULL</code> for no deaths) (#148).</li>
-</ul>
-</section>
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/cleanepi">cleanepi</a> version v1.1.0. Here is an automatically generated summary of the changes in this version.</p>
 <section id="bug-fixes" class="level2">
 <h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
 <ul>
-<li>A new function, <code>.sample_infect_period()</code> is added that errors if the infectious period function generates a negative number (#142).</li>
-<li><code>sim_linelist()</code> no longer errors when <code>hosp_death_risk</code> is <code>NULL</code> and <code>onset_to_death</code> is parameterised as a delay distribution (#144).</li>
-<li><code>.add_ct()</code> generates the correct number of values and does not duplicate Ct values due to vector recycling (#158).</li>
-<li>Update {epiparameter} usage (#159).</li>
+<li><p>Fixed a bug in the index for empty rows returned by <code>print_report()</code> after <code>remove_constants()</code>. This function was incorrectly returning the number of rows in the original data frame, instead of the index of empty rows (#173, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Fixed a bug in the date guesser used by the <code>standardize_dates()</code> function. The followings updates were made (#175, <span class="citation" data-cites="Karim-Mane">@Karim-Mane</span>):</p>
+<ul>
+<li>allow for quarter and partial dates, and</li>
+<li>account for odd cases before parsing using the {lubridate} package.</li>
+</ul></li>
+</ul>
+</section>
+<section id="enhancements" class="level2">
+<h2 class="anchored" data-anchor-id="enhancements">Enhancements</h2>
+<ul>
+<li><p>Rendering the report no longer requires the use of the {withr} package. Files generated during this process will be stored in the R temporary directory (#165, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Simplification and improvement of code performance across several functions (#154, #156, #162, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Make R version dependency explicit (#156, <span class="citation" data-cites="Bisaloo">@Bisaloo</span>).</p></li>
+<li><p>Replace base R pipe operator with the {tidyverse} package pipe operator (#155, <span class="citation" data-cites="Karim-Mane">@Karim-Mane</span>).</p></li>
+<li><p>Stop automatic conversion of numeric values into Date due to unexpected results from <code>date_guess()</code> function (#151, <span class="citation" data-cites="Karim-Mane">@Karim-Mane</span>).</p></li>
+<li><p>Allow for a vector of character for <code>na_strings</code> argument in <code>replace_missing_values()</code> (#180, Karim-Mane).</p></li>
+<li><p>Improved messaging to differentiate between duplicates found in the subject IDs column and duplicates across multiple columns (#180, Karim-Mane).</p></li>
+<li><p>Allow for iterative constant data removal (#180, Karim-Mane).</p></li>
+<li><p>The <code>remove_constants()</code> now works correctly when the <code>cutoff</code> is different from 1. More importantly, the function no longer depends on the {janitor} package (#177, Karim-Mane).</p></li>
+<li><p>The <code>scan_data()</code> now makes use of <code>date_guess()</code> to parse date from characters and <code>lubridate::as_date()</code> to parse dates from numeric. This function now operates only on character columns (#181, Karim-Mane).</p></li>
+<li><p>Replace <code>snakecase::to_snake_case()</code> with <code>janitor::clean_names()</code> and make sure variable names specified in <code>keep</code> and <code>rename</code> are preserved after applying <code>janitor::clean_names()</code> (#180, Karim-Mane).</p></li>
+<li><p>Use the {cli} package for formatting messages in the package (#196, Karim-Mane).</p></li>
+<li><p>Translate messages in the package into French using the {potools} package (#196, Karim-Mane).</p></li>
+<li><p>An additional column (<strong>row_id</strong>) with the row indices where the incorrect date sequences are found is now added to the report made from the <code>check_date_sequence()</code> function (#196, Karim-Mane).</p></li>
+<li><p>The <code>date_guess()</code> and related functions now returns a list of two elements: the converted values and a boolean that informs about the presence of numeric values that can also be of type Date (#181, Karim-Mane).</p></li>
+<li><p>Update the package vignette to account for the improvements made in the different pull requests (#194, Karim-Mane).</p></li>
 </ul>
 </section>
 <section id="deprecated-and-defunct" class="level2">
 <h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
 <ul>
-<li>None</li>
+<li>Function documentations have been updated. The <code>clean_data()</code> no longer takes the <code>params</code> argument. Instead, it takes many other arguments that are described in the function documentation and the package vignettes (#184, Karim-Mane).</li>
 </ul>
 </section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a> <a href="https://github.com/sbfnk">@sbfnk</a></p>
+<p><a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/Degoot-AM">@Degoot-AM</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a> <a href="https://github.com/LloydChapman">@LloydChapman</a></p>
 
 
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
   author = {Epiverse-TRACE development team, The},
-  title = {Simulist V0.4.0},
-  date = {2025-01-10},
-  url = {https://epiverse-trace.github.io/posts/simulist_v0.4.0/},
+  title = {Cleanepi V1.1.0},
+  date = {2025-04-21},
+  url = {https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Epiverse-TRACE development team, The. 2025. <span>“Simulist
-V0.4.0.”</span> January 10, 2025. <a href="https://epiverse-trace.github.io/posts/simulist_v0.4.0/">https://epiverse-trace.github.io/posts/simulist_v0.4.0/</a>.
+Epiverse-TRACE development team, The. 2025. <span>“Cleanepi
+V1.1.0.”</span> April 21, 2025. <a href="https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/">https://epiverse-trace.github.io/posts/cleanepi_v1.1.0/</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
