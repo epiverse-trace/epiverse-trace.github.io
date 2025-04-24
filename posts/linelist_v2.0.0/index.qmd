@@ -19,6 +19,7 @@ Here is an automatically generated summary of the changes in this version.
   operations are no longer possible:
 
   * List of tags now needs to be spliced in `make_linelist()`:
+
     ```r
     my_tags <- list(
       id = "case_ID",
@@ -35,6 +36,7 @@ Here is an automatically generated summary of the changes in this version.
     ```
 
   * `select_tags()`:
+
     ```r
     # No longer possible
     x %>%
@@ -50,6 +52,7 @@ Here is an automatically generated summary of the changes in this version.
     parent method `select.data.frame()` will be used with the same effect.
 
   * `lost_tags_action()` as part of a pipeline is no longer possible:
+
     ```r
     # No longer possible
     make_linelist(cars, date_onset = "dist", date_outcome = "speed") |>
