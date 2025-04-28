@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2025-04-28">
 
-<title>Get involved – Epiverse-TRACE: tools for outbreak analytics</title>
+<title>linelist v2.0.0 – Epiverse-TRACE: tools for outbreak analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./hexlogo.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e8eebf84c96cff914b780a8aa6cb249b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b4d4a8e1c56593f79fac6d7a4b7c99b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../hexlogo.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e8eebf84c96cff914b780a8aa6cb249b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5b4d4a8e1c56593f79fac6d7a4b7c99b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,32 +116,24 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Get involved – Epiverse-TRACE: tools for outbreak analytics">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="linelist v2.0.0 – Epiverse-TRACE: tools for outbreak analytics">
 <meta property="og:description" content="A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.">
-<meta property="og:image" content="https://epiverse-trace.github.io/contribution_figure.png">
 <meta property="og:site_name" content="Epiverse-TRACE: tools for outbreak analytics">
-<meta property="og:image:alt" content="Figure summarizing the models of contributions presented above, alongside an arrow indicating increasing level of involvement: standardise, integrate, co-create, consult, participate. Inspired by [CSCCE community participation model](https://doi.org/10.5281/zenodo.3997802) (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)">
-<meta property="og:image:height" content="676">
-<meta property="og:image:width" content="2194">
-<meta name="twitter:title" content="Get involved – Epiverse-TRACE: tools for outbreak analytics">
+<meta name="twitter:title" content="linelist v2.0.0 – Epiverse-TRACE: tools for outbreak analytics">
 <meta name="twitter:description" content="A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/contribution_figure.png">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:image:alt" content="Figure summarizing the models of contributions presented above, alongside an arrow indicating increasing level of involvement: standardise, integrate, co-create, consult, participate. Inspired by [CSCCE community participation model](https://doi.org/10.5281/zenodo.3997802) (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)">
-<meta name="twitter:image-height" content="676">
-<meta name="twitter:image-width" content="2194">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE: tools for outbreak analytics</span>
     </a>
   </div>
@@ -120,19 +149,19 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
         <li>
-    <a class="dropdown-item" href="./blog.html">
+    <a class="dropdown-item" href="../../blog.html">
  <span class="dropdown-text">Blog</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./blog.html#category=R">
+    <a class="dropdown-item" href="../../blog.html#category=R">
  <span class="dropdown-text">Blog - Articles</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./blog.html#category=new-release">
+    <a class="dropdown-item" href="../../blog.html#category=new-release">
  <span class="dropdown-text">Blog - Release notes</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./presentations.html">
+    <a class="dropdown-item" href="../../presentations.html">
  <span class="dropdown-text">Presentations</span></a>
   </li>  
     </ul>
@@ -143,7 +172,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-use">    
         <li>
-    <a class="dropdown-item" href="./getting-started.html">
+    <a class="dropdown-item" href="../../getting-started.html">
  <span class="dropdown-text">Getting started</span></a>
   </li>  
         <li>
@@ -158,11 +187,11 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">    
         <li>
-    <a class="dropdown-item" href="./learn.html">
+    <a class="dropdown-item" href="../../learn.html">
  <span class="dropdown-text">Learning materials</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./resources.html">
+    <a class="dropdown-item" href="../../resources.html">
  <span class="dropdown-text">Resources</span></a>
   </li>  
     </ul>
@@ -177,7 +206,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="dropdown-text">Good first issues</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./get-involved.html">
+    <a class="dropdown-item" href="../../get-involved.html">
  <span class="dropdown-text">Get involved</span></a>
   </li>  
         <li>
@@ -187,7 +216,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./people.html"> 
+    <a class="nav-link" href="../../people.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -200,70 +229,109 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">linelist v2.0.0</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">new-release</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>The Epiverse-TRACE development team </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 28, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Get involved</h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="how-to-collaborate-with-epiverse-on-software-development" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-collaborate-with-epiverse-on-software-development">How to collaborate with Epiverse on software development?</h2>
-<p>Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:</p>
+<p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/linelist">linelist</a> version v2.0.0. Here is an automatically generated summary of the changes in this version.</p>
+<section id="breaking-changes" class="level2">
+<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
 <ul>
-<li><strong>Standardise</strong>: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">our blueprint</a> for more.</li>
-<li><strong>Consult us</strong>: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g.&nbsp;our team currently contributes to the development of <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.
+<li><p>The linelist package is now dependent on R 4.1.0, in line with Epiverse-TRACE policy regarding minimum R version dependency (#159, <a href="https://github.com/Bisaloo">@Bisaloo</a>).</p></li>
+<li><p>Deprecated functions and arguments have been completely removed. The following operations are no longer possible:</p>
 <ul>
-<li>In the first instance, we encourage you to post general questions on <a href="https://github.com/orgs/epiverse-trace/discussions">our discussion board</a> so that other community members can contribute.</li>
-<li>For questions related to a specific package, please contact the maintainer (see the <a href="https://github.com/orgs/epiverse-trace/repositories">repositories of packages</a> and their authors).</li>
-<li>For all other questions which fall outside the above categories, please contact <a href="mailto:epiverse@data.org">epiverse@data.org</a>. You can also sign up to <a href="https://data.org/initiatives/epiverse/our-community/">our mailing list</a>, or follow us on Twitter at <a href="https://twitter.com/Epiverse_TRACE">Epiverse_TRACE</a>.</li>
+<li><p>List of tags now needs to be spliced in <code>make_linelist()</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_tags <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"case_ID"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">date_onset =</span> <span class="st">"date_of_prodrome"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="st">"age"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">gender =</span> <span class="st">"gender"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># No longer possible</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(obj, my_tags)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead slice list in dynamic dots</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(obj, <span class="sc">!!!</span>my_tags)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>select_tags()</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No longer possible</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_tags</span>(<span class="st">"age"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead use</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">has_tag</span>(<span class="st">"age"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tags_df</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>select.linelist()</code>. This change should be invisible to users since the parent method <code>select.data.frame()</code> will be used with the same effect.</p></li>
+<li><p><code>lost_tags_action()</code> as part of a pipeline is no longer possible:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No longer possible</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(cars, <span class="at">date_onset =</span> <span class="st">"dist"</span>, <span class="at">date_outcome =</span> <span class="st">"speed"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lost_tags_action</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>dist)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Instead do</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lost_tags_action</span>(<span class="st">"none"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">make_linelist</span>(cars, <span class="at">date_onset =</span> <span class="st">"dist"</span>, <span class="at">date_outcome =</span> <span class="st">"speed"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul></li>
-<li><strong>Co-create</strong>: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">WHO collaborative epidemiological parameters initiative</a>.</li>
-<li><strong>Integrate your tools</strong>: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g.&nbsp;<a href="https://github.com/epiverse-trace/episoap">estimating the transmissibility of an infectious disease</a> during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.</li>
-<li><strong>Participate</strong>: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our <a href="https://github.com/epiverse-trace">GitHub repository</a>, with your contributions credited, e.g.&nbsp;by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board.</li>
 </ul>
 </section>
-<section id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace" class="level2">
-<h2 class="anchored" data-anchor-id="cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace">¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?</h2>
-<p>El objetivo de Epiverse-TRACE es promover el desarrollo de software para análisis epidemiológico que sea generalizable, escalable y dirigido por la comunidad de usuarios, y que se integre con otras herramientas para crear un ecosistema sostenible. Existen diferentes vías que grupos de investigación y desarrolladores externos pueden utilizar para colaborar con Epiverse, ordenadas de menor a mayor nivel de contacto con el equipo:</p>
-<ul>
-<li><strong>Estandarización</strong>: desarrollando herramientas independientemente que cumplan con <a href="https://epiverse-trace.github.io/blueprints/principles.html#community-health">los principios establecidos por Epiverse</a>, y que sean interoperables con sus herramientas.</li>
-<li><strong>Consulta</strong>: poniéndose en contacto con miembros del equipo de Epiverse, que pueden contribuir al desarrollo de herramientas externas. Esto garantiza que esas herramientas sean compatibles con paquetes desarrollados por Epiverse, por ejemplo, nuestro equipo actualmente colabora con el desarrollo de <a href="https://github.com/WorldHealthOrganization/godataR/">GoDataR</a>.</li>
-<li><strong>Co-desarrollo</strong>: desarrollando herramientas junto con miembros de Epiverse, que despues se quedarán en plataformas externas, por ejemplo, <a href="https://github.com/WorldHealthOrganization/collaboratory-epiparameter-community">la iniciativa de la OMS para parámetros epidemiológicos</a>.<br>
-</li>
-<li><strong>Integración</strong>: Epiverse proporciona sistemas para integrar herramientas, o pipelines, que ayudan a los usuarios a optimizar el análisis de problemas epidemiológicos concretos, por ejemplo, para <a href="https://github.com/epiverse-trace/episoap">estimar la transmisión de enfermedades</a>. Incorporar tus herramientas a estos sistemas integrados contribuirá a su visibilidad en la comunidad de usuarios de Epiverse.</li>
-<li><strong>Participación</strong>: contribuyendo al desarrollo de herramientas de Epiverse, en las que aparecerás como coautor en nuestra <a href="https://github.com/epiverse-trace">página web</a>. Para ello, contribuye a issues abiertos en los repositorios de Epiverse, o añade sugerencias, ideas y feedback comentando en nuestro panel de discusión.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="contribution_figure.png" class="img-fluid figure-img" alt="Figure summarizing the models of contributions presented above, alongside an arrow indicating increasing level of involvement: standardise, integrate, co-create, consult, participate. Inspired by [CSCCE community participation model](https://doi.org/10.5281/zenodo.3997802) (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)"></p>
-<figcaption>Figure of contributions, inspired by <a href="https://doi.org/10.5281/zenodo.3997802">CSCCE community participation model</a> (Woodley, Lou, &amp; Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)</figcaption>
-</figure>
-</div>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/Karim-Mane">@Karim-Mane</a></p>
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Linelist V2.0.0},
+  date = {2025-04-28},
+  url = {https://epiverse-trace.github.io/posts/linelist_v2.0.0/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2025. <span>“Linelist
+V2.0.0.”</span> April 28, 2025. <a href="https://epiverse-trace.github.io/posts/linelist_v2.0.0/">https://epiverse-trace.github.io/posts/linelist_v2.0.0/</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
