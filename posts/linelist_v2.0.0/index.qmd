@@ -1,0 +1,70 @@
+---
+title: "linelist v2.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2025-04-28"
+categories: [new-release]
+---
+
+We are very excited to announce the release of a new [linelist](https://epiverse-trace.github.io/linelist) version v2.0.0.
+Here is an automatically generated summary of the changes in this version.
+
+## Breaking changes
+
+* The linelist package is now dependent on R 4.1.0, in line with Epiverse-TRACE
+  policy regarding minimum R version dependency
+  (#159, [&#x0040;Bisaloo](https://github.com/Bisaloo)).
+
+* Deprecated functions and arguments have been completely removed. The following
+  operations are no longer possible:
+
+  * List of tags now needs to be spliced in `make_linelist()`:
+
+    ```r
+    my_tags <- list(
+      id = "case_ID",
+      date_onset = "date_of_prodrome",
+      age = "age",
+      gender = "gender"
+    )
+
+    # No longer possible
+    make_linelist(obj, my_tags)
+
+    # Instead slice list in dynamic dots
+    make_linelist(obj, !!!my_tags)
+    ```
+
+  * `select_tags()`:
+
+    ```r
+    # No longer possible
+    x %>%
+      select_tags("age")
+
+    # Instead use
+    x %>%
+      select(has_tag("age")) %>%
+      tags_df()
+    ```
+
+  * `select.linelist()`. This change should be invisible to users since the
+    parent method `select.data.frame()` will be used with the same effect.
+
+  * `lost_tags_action()` as part of a pipeline is no longer possible:
+
+    ```r
+    # No longer possible
+    make_linelist(cars, date_onset = "dist", date_outcome = "speed") |>
+      lost_tags_action("none") |>
+      dplyr::select(-dist)
+
+    # Instead do
+    lost_tags_action("none")
+    make_linelist(cars, date_onset = "dist", date_outcome = "speed") |>
+      dplyr::select(-dist)
+    ```
+
+## Acknowledgements
+
+[&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;chartgerink](https://github.com/chartgerink) [&#x0040;Karim-Mane](https://github.com/Karim-Mane)
