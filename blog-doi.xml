@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.8.1</generator>
+<generator>quarto-1.8.7</generator>
 <lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Key considerations for retiring/superseding an R package</title>
@@ -968,7 +968,7 @@ Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973"
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-gfortran issues on Apple Silicon computers
+<span class="screen-reader-only">Tip</span>gfortran issues on Apple Silicon computers
 </div>
 </div>
 <div class="callout-body-container callout-body">
