@@ -1320,14 +1320,14 @@
     "href": "posts/superspreading_v0.2.0/index.html#new-features",
     "title": "superspreading v0.2.0",
     "section": "New features",
-    "text": "New features\n\nA new function (calc_network_R()) to estimate the reproduction number for heterogeneous networks and a vignette outlining use cases for the function from existing epidemiological literature is added (#71).\nprobability_epidemic() and probability_extinct() now have individual-level and population-level control in a joint framework (#70).\nproportion_*() functions can now return proportion columns of the output &lt;data.frame&gt; as numeric when the new argument format_prop is set to FALSE (#72).\nA new design principles vignette to document package development is added (#68).\nAdded a helper function (ic_tbl()) to improve model comparison tables (#65).\nprobability_*() functions now accept dynamic dots ({rlang} is added as a dependency) (#82)."
+    "text": "New features\n\nA new function (calc_network_R()) to estimate the reproduction number for heterogeneous networks and a vignette outlining use cases for the function from existing epidemiological literature is added (#71).\n\nprobability_epidemic() and probability_extinct() now have individual-level and population-level control in a joint framework (#70).\n\nproportion_*() functions can now return proportion columns of the output &lt;data.frame&gt; as numeric when the new argument format_prop is set to FALSE (#72).\nA new design principles vignette to document package development is added (#68).\nAdded a helper function (ic_tbl()) to improve model comparison tables (#65).\n\nprobability_*() functions now accept dynamic dots ({rlang} is added as a dependency) (#82)."
   },
   {
     "objectID": "posts/superspreading_v0.2.0/index.html#breaking-changes",
     "href": "posts/superspreading_v0.2.0/index.html#breaking-changes",
     "title": "superspreading v0.2.0",
     "section": "Breaking changes",
-    "text": "Breaking changes\n\nind_control and pop_control arguments replace control and control_type arguments in probability_contain(); and the argument default for num_init_infect is removed (#70).\nChanged epidist argument to offspring_dist to follow Epiverse style (affects several functions) (#64).\nArgument in proportion_transmission() has been renamed from sim to simulate (#81)."
+    "text": "Breaking changes\n\n\nind_control and pop_control arguments replace control and control_type arguments in probability_contain(); and the argument default for num_init_infect is removed (#70).\nChanged epidist argument to offspring_dist to follow Epiverse style (affects several functions) (#64).\nArgument in proportion_transmission() has been renamed from sim to simulate (#81)."
   },
   {
     "objectID": "posts/superspreading_v0.2.0/index.html#minor-changes",
