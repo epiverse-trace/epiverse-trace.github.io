@@ -16,3 +16,7 @@ title-block-banner: true
 This blog is available via [RSS](./blog.xml)[^1] and on [R-bloggers](https://www.r-bloggers.com/).
 
 [^1]: What is RSS? You can [learn more about it with this great introductory post](https://www.businessinsider.com/guides/tech/what-is-rss-feed).
+
+```{r renv, echo = FALSE}
+library(downlit)
+```
