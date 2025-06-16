@@ -1,0 +1,15 @@
+{
+  "hash": "327939f5672a5092d7ee6881ec7dfbad",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Blog\"\nlisting:\n  contents: posts\n  sort: \"date desc\"\n  type: default\n  categories: true\n  sort-ui: false\n  filter-ui: false\n  feed:\n    categories: [R package, R, posts, DOI]\npage-layout: full\ntitle-block-banner: true\n---\n\n\n\n\nThis blog is available via [RSS](./blog.xml)[^1] and on [R-bloggers](https://www.r-bloggers.com/).\n\n[^1]: What is RSS? You can [learn more about it with this great introductory post](https://www.businessinsider.com/guides/tech/what-is-rss-feed).\n\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
