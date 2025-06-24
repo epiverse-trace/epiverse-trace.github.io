@@ -91,7 +91,7 @@ Supported by the **Wellcome Trust**, **Rockefeller Foundation**, and **IDRC Cana
 
 ### Connect With Us
 
-- **Bluesky**: [‪@epiverse-trace.bsky.social‬](https://bsky.app/profile/epiverse-trace.bsky.social)
+- **Bluesky**: [@epiverse-trace.bsky.social](https://bsky.app/profile/epiverse-trace.bsky.social)
 - **GitHub**: [@epiverse-trace](https://github.com/epiverse-trace)
 - **R Universe**: [epiverse-trace.r-universe.dev](https://epiverse-trace.r-universe.dev/packages)
 - **Twitter**: [@Epiverse_TRACE](https://twitter.com/Epiverse_TRACE)
