@@ -38,11 +38,11 @@ jobs:
 
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
-
-      - name: Install dependencies
-        run: |
-          install.packages(c("yaml", "httr"))
-
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+              yaml
+              httr
       - name: Find new posts and query API
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.result }}
