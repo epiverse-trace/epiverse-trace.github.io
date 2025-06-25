@@ -1,17 +1,17 @@
 ---
 title: "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas"
 subtitle: "Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases"
-author: 
+author:
   - name: "Catalina González-Uribe"
     orcid: "0000-0002-3322-5017"
 date: "2023-09-15"
 image: map.png
-categories: [co-design, Colombia, Latin America]
+categories: [co-design, Colombia, Latin America, TRACE-LAC]
 format:
-  html: 
+  html:
     toc: true
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 80
 ---
 
