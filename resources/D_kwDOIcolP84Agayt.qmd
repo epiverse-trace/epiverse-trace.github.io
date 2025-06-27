@@ -1,0 +1,8 @@
+---
+title: "The Carpentries Maintainers Handbook"
+url: "https://github.com/orgs/epiverse-trace/discussions/390"
+date: "2025-06-26"
+author: Bisaloo
+categories: []
+upvotes: 1
+---
