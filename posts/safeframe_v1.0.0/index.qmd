@@ -14,7 +14,7 @@ We are very excited to announce the first stable release of [safeframe](https://
 library(safeframe)
 ```
 
-# safeframe 1.0.0
+## safeframe 1.0.0
 
 * First release of **safeframe**.
 * Factors out the core functionality of **linelist** to make it more viable for alternative domains
@@ -31,7 +31,6 @@ validate_safeframe(x,
   distance = type('numeric')    # dist should be numeric, integer
 )
 ```
-
 
 ## Acknowledgements
 
