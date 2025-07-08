@@ -1,0 +1,38 @@
+---
+title: "safeframe v1.0.0"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2025-06-30"
+categories: [new-release]
+code-link: true
+---
+
+<!-- markdownlint-disable-next-line -->
+We are very excited to announce the first stable release of [safeframe](https://epiverse-trace.github.io/safeframe) (version v1.0.0).
+
+```{r}
+library(safeframe)
+```
+
+# safeframe 1.0.0
+
+* First release of **safeframe**.
+* Factors out the core functionality of **linelist** to make it more viable for alternative domains
+* General usage remains the same:
+
+```r
+# Create a safeframe object
+x <- make_safeframe(cars, mph = "speed", distance = "dist")
+
+# Validate the tagged data are of a specific type
+validate_safeframe(x,
+  mph = 'numeric',        # speed should be numeric
+  # type() is a helper function of related classes
+  distance = type('numeric')    # dist should be numeric, integer
+)
+```
+
+
+## Acknowledgements
+
+[&#x0040;avallecam](https://github.com/avallecam) [&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;chartgerink](https://github.com/chartgerink) [&#x0040;dependabot[bot]](https://github.com/dependabot[bot]) [&#x0040;joshwlambert](https://github.com/joshwlambert) [&#x0040;thibautjombart](https://github.com/thibautjombart) [&#x0040;TimTaylor](https://github.com/TimTaylor)

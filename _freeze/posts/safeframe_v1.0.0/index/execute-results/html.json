@@ -1,0 +1,15 @@
+{
+  "hash": "6a0e27c0c2901a3542c3ac0065a2710d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"safeframe v1.0.0\"\nauthor:\n  - name: \"The Epiverse-TRACE development team\"\ndate: \"2025-06-30\"\ncategories: [new-release]\ncode-link: true\n---\n\n\n\n<!-- markdownlint-disable-next-line -->\nWe are very excited to announce the first stable release of [safeframe](https://epiverse-trace.github.io/safeframe) (version v1.0.0).\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(safeframe)\n```\n:::\n\n\n\n# safeframe 1.0.0\n\n* First release of **safeframe**.\n* Factors out the core functionality of **linelist** to make it more viable for alternative domains\n* General usage remains the same:\n\n```r\n# Create a safeframe object\nx <- make_safeframe(cars, mph = \"speed\", distance = \"dist\")\n\n# Validate the tagged data are of a specific type\nvalidate_safeframe(x,\n  mph = 'numeric',        # speed should be numeric\n  # type() is a helper function of related classes\n  distance = type('numeric')    # dist should be numeric, integer\n)\n```\n\n\n## Acknowledgements\n\n[&#x0040;avallecam](https://github.com/avallecam) [&#x0040;Bisaloo](https://github.com/Bisaloo) [&#x0040;chartgerink](https://github.com/chartgerink) [&#x0040;dependabot[bot]](https://github.com/dependabot[bot]) [&#x0040;joshwlambert](https://github.com/joshwlambert) [&#x0040;thibautjombart](https://github.com/thibautjombart) [&#x0040;TimTaylor](https://github.com/TimTaylor)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
