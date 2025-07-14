@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R%20package</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r package.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.8.14</generator>
+<generator>quarto-1.8.16</generator>
 <lastBuildDate>Mon, 14 Apr 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Integration testing in Epiverse-TRACE</title>
@@ -49,7 +49,7 @@
 <h3 class="anchored" data-anchor-id="example-of-an-integration-test">Example of an integration test</h3>
 <p>The integration tests can be thought of as compound unit tests. Line list data is generated using <code>simulist::sim_linelist()</code>. In each testing block, a messy copy of the line list is made using <code>simulist::messy_linelist()</code> with arguments set to specifically target particular aspects of messyness; then a cleaning operation from {cleanepi} is applied targeting the messy element of the data; lastly, the cleaned line list is compared to the original complete and accurate simulated data. In other words, is the ideal data perfectly recovered when messied and cleaned?</p>
 <p>An example of an integration test is shown below:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -231,7 +231,7 @@ font-style: inherit;">NULL</span></span>
 <span id="cb1-44">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">expect_identical</span>(ll, clean_ll)</span>
-<span id="cb1-45">})</span></code></pre></div>
+<span id="cb1-45">})</span></code></pre></div></div>
 </section>
 </section>
 <section id="conclusion" class="level2">
@@ -344,7 +344,7 @@ Considerations for Retiring/Superseding an R Package.”</span> February
 </ul>
 <p>As the volume of training materials increases, we have explored automating the generation of initial reviews using large language models (LLMs) that take the form of ‘in character’ agents with instructions to provide constructive comments. This reflects a wider focus within the field of outbreak analytics on how LLMs agents can be used to increase the efficiency and scalability of common tasks (e.g.&nbsp;<a href="https://www.thelancet.com/journals/lanmic/article/PIIS2666-5247(24)00104-6/fulltext">van Hoek et al, Lancet Microbe, 2024</a> ).</p>
 <p>To generate the AI tutorial reviews, we use the OpenAI GPT-4 API, via the <code>openai</code> R package, as described in <a href="https://github.com/adamkucharski/llm-api-scripts/">this repository</a>. We also use the <code>gh</code> package to load the <code>.Rmd</code> materials from a given repository (e.g.&nbsp;<code>epiverse-trace/tutorials-middle</code>). Full illustrative code is <a href="https://github.com/adamkucharski/llm-api-scripts/blob/main/scripts/content_review_gpt.R">available here</a>, with the GPT-4 API prompts outlined below.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define first prompt</span></span>
 <span id="cb1-2">user_prompt_1 <span class="ot" style="color: #003B4F;
@@ -419,7 +419,7 @@ font-style: inherit;"># Write review to .md using readr</span></span>
 background-color: null;
 font-style: inherit;">write_lines</span>(output,<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"output_review.md"</span>))</span></code></pre></div>
+font-style: inherit;">"output_review.md"</span>))</span></code></pre></div></div>
 </section>
 <section id="reviewing-transmissibilty-training-materials-as-a-senior-academic" class="level2">
 <h2 class="anchored" data-anchor-id="reviewing-transmissibilty-training-materials-as-a-senior-academic">Reviewing transmissibilty training materials as a senior academic</h2>
@@ -728,7 +728,7 @@ Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973"
 
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(bench)</span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -739,23 +739,23 @@ background-color: null;
 font-style: inherit;">library</span>(dplyr)</span>
 <span id="cb1-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(ggplot2)</span></code></pre></div>
+font-style: inherit;">library</span>(ggplot2)</span></code></pre></div></div>
 </div>
 <p>R package developers often have to take on dependencies for various reasons. Dependencies are external packages that provide extra functionalities or features to another package <span class="citation" data-cites="wickham2023r">(Wickham and Bryan 2023)</span>. Quite often, the goal of taking on a dependency is to utilize its rich features and reduce duplicated coding effort. For example, the <code>ggplot2</code> package is often adopted, instead of R’s inbuilt plotting functions, to make visualizations using its declarative system and implementation of the Grammar of Graphics, and slick automation across the board.</p>
 <p>Sometimes, introducing a dependency might slow down existing processes. Hence, it is important to consider the speed of a dependency’s functions before adopting it. Code optimisation is often reserved for heavy processes like data processing steps. However, here, we will focus on lesser optimised processes, and in particular, printing of texts in R.</p>
 <p>For this demonstration, we will look at a situation where a package developer is considering options for condition signalling beyond the functionalities provided in base R. Condition signalling refers to the process of communicating to a user that an issue has arisen during code execution <span class="citation" data-cites="wickham2019advanced">(Wickham 2019)</span>.</p>
 <p>Base R ships with functionalities for condition signalling. There is <code>base::stop()</code> for signalling errors. Errors refer to cases where something fatal happens during code execution so that it halts, for example, when a function is run without specifying the required arguments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">rnorm</span>()</span></code></pre></div>
+font-style: inherit;">rnorm</span>()</span></code></pre></div></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in rnorm(): argument "n" is missing, with no default</code></pre>
 </div>
 </div>
 <p>Base R provides <code>base::warning()</code> for throwing warnings. Warnings are used to handle less fatal issues with code execution that do not need to halt the process. For example, when you compare two vectors of different lengths, R will throw a warning but will still return a result.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -773,7 +773,7 @@ font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>)</span></code></pre></div>
+font-style: inherit;">3</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in c(1:2) &gt; c(1:3): longer object length is not a multiple of shorter
 object length</code></pre>
@@ -784,9 +784,9 @@ object length</code></pre>
 </div>
 <p>Lastly, there is <code>base::message()</code> for throwing messages. Messages are used to provide useful information about processes. For example, packages throw messages about NAMESPACE conflicts when loaded. This is to inform the user so they know what next steps to take.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(data.table)</span></code></pre></div>
+font-style: inherit;">library</span>(data.table)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'data.table'</code></pre>
@@ -799,7 +799,7 @@ Attaching package: 'data.table'</code></pre>
 </div>
 <p>These base R functions are, however, not flexible enough for advanced formatting: colour, progress bar, contextual pluralisation, and so forth. The package developer might want to adopt external dependencies for these flexibilities. The <a href="https://cli.r-lib.org/articles/semantic-cli.html">cli</a> package is well designed for this. <code>cli</code> offers many of the advanced formatting features. Here is a quick example (adopted from the help file) using <code>cli::cli_abort()</code>, the equivalent of <code>base::stop()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">n <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">n <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -821,7 +821,7 @@ font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"You've supplied a {.cls {class(n)}} vector."</span></span>
 <span id="cb10-6">    )</span>
-<span id="cb10-7">)</span></code></pre></div>
+<span id="cb10-7">)</span></code></pre></div></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error:
 ! `n` must be a numeric vector
@@ -838,7 +838,7 @@ font-style: inherit;">"You've supplied a {.cls {class(n)}} vector."</span></span
 <p>Based on this description, we will need the following packages: <code>cli</code> for its warning function, and <a href="https://cran.r-project.org/web/packages/bench/index.html">bench</a> for measuring the run times, <a href="https://dplyr.tidyverse.org/">dplyr</a> for manipulating the results, and <a href="https://ggplot2.tidyverse.org/">ggplot2</a> for plotting.</p>
 <p>Let’s define a function that takes an argument <code>n</code> for the number of warnings to throw and <code>pkg</code> for the type of package to use.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">warn_Ntimes <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">warn_Ntimes <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -884,17 +884,17 @@ background-color: null;
 font-style: inherit;">cli_warn</span>(warning_msg)</span>
 <span id="cb12-9">    }</span>
 <span id="cb12-10">  )</span>
-<span id="cb12-11">}</span></code></pre></div>
+<span id="cb12-11">}</span></code></pre></div></div>
 </div>
 <p>Let’s test our function to see if it works as expected.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warn_Ntimes</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"base"</span>)</span></code></pre></div>
+font-style: inherit;">"base"</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in warn_Ntimes(3, "base"): x must be an integer
 
@@ -902,13 +902,13 @@ Warning in warn_Ntimes(3, "base"): x must be an integer
 
 Warning in warn_Ntimes(3, "base"): x must be an integer</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">warn_Ntimes</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"cli"</span>)</span></code></pre></div>
+font-style: inherit;">"cli"</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: x must be an integer</code></pre>
 </div>
@@ -919,7 +919,7 @@ x must be an integer</code></pre>
 </div>
 <p>Now, we’ll consider scenarios where a function throws 1, 5, 10, 15, 20, and 100 warnings using base R and <code>cli</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Number of warnings to throw</span></span>
 <span id="cb18-2">warnings <span class="ot" style="color: #003B4F;
@@ -938,11 +938,11 @@ font-style: inherit;">15</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">20</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100</span>)</span></code></pre></div>
+font-style: inherit;">100</span>)</span></code></pre></div></div>
 </div>
 <p>Let’s run benchmarks over the different scenarios and store results in a data.frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">bnmark_res <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">bnmark_res <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -982,7 +982,7 @@ font-style: inherit;">warn_Ntimes</span>(warnings, <span class="st" style="color
 background-color: null;
 font-style: inherit;">"base"</span>)</span>
 <span id="cb19-6">    )</span>
-<span id="cb19-7">  )</span></code></pre></div>
+<span id="cb19-7">  )</span></code></pre></div></div>
 </div>
 </section>
 <section id="results" class="level2">
@@ -990,7 +990,7 @@ font-style: inherit;">"base"</span>)</span>
 <p>It’s time to explore the results of the data generated. Let’s first make a boxplot of the run times for the different scenarios.</p>
 <p>Drum roll please…</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">autoplot</span>(</span>
 <span id="cb20-2">  bnmark_res,</span>
@@ -1015,7 +1015,7 @@ background-color: null;
 font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Functions throwing various numbers of warnings as indicated in the facet label"</span></span>
-<span id="cb20-8">  )</span></code></pre></div>
+<span id="cb20-8">  )</span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required namespace: tidyr</code></pre>
 </div>
@@ -1029,7 +1029,7 @@ font-style: inherit;">"Functions throwing various numbers of warnings as indicat
 </div>
 <p>Now, let’s see how the benchmarks scale with the number of warnings thrown.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">bnmark_res<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">bnmark_res<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">$</span>pkg <span class="ot" style="color: #003B4F;
 background-color: null;
@@ -1088,7 +1088,7 @@ background-color: null;
 font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Package"</span></span>
-<span id="cb22-16">  )</span></code></pre></div>
+<span id="cb22-16">  )</span></code></pre></div></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1178,30 +1178,30 @@ of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epi
 <p>Dependencies external to the R system should be listed in the ‘SystemRequirements’ field, possibly amplified in a separate README file.</p>
 </blockquote>
 <p>This was initially purely designed for humans. No system within R itself makes use of it. One important thing to note is that this field contains free text :scream:. As such, to refer to the same piece of software, you could write either one of the following in the package <code>DESCRIPTION</code>:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">SystemRequirements</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> ExternalSoftware</span></span></code></pre></div>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+font-style: inherit;"> ExternalSoftware</span></span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">SystemRequirements</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> ExternalSoftware 0.1</span></span></code></pre></div>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+font-style: inherit;"> ExternalSoftware 0.1</span></span></code></pre></div></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">SystemRequirements</span><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> lib-externalsoftware</span></span></code></pre></div>
+font-style: inherit;"> lib-externalsoftware</span></span></code></pre></div></div>
 <p>However, it is probably good practice check what other R packages with similar system dependencies are writing in <code>SystemRequirements</code>, to facilitate the automated identification process we describe below.</p>
 </section>
 <section id="the-general-case-everything-works-automagically" class="level2">
@@ -1209,16 +1209,16 @@ font-style: inherit;"> lib-externalsoftware</span></span></code></pre></div>
 <p>If while reading the previous section, you could already sense the problems linked to the fact <code>SystemRequirements</code> is a free-text field, fret not! In the very large majority of cases, setting up continuous integration in an R package with system dependencies is exactly the same as with any other R package.</p>
 <p>Using, as often, the supercharged usethis package, you can automatically create the relevant GitHub Actions workflow file in your project <sup>2</sup>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">usethis<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">usethis<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">use_github_action</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"check-standard"</span>)</span></code></pre></div>
+font-style: inherit;">"check-standard"</span>)</span></code></pre></div></div>
 </div>
 <p>The result is:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Workflow derived from https://github.com/r-lib/actions/tree/v2/examples</span></span>
 <span id="cb5-2"><span class="co" style="color: #5E5E5E;
@@ -1769,13 +1769,13 @@ font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;"> </span><span class="ch" style="color: #20794D;
 background-color: null;
-font-style: inherit;">true</span></span></code></pre></div>
+font-style: inherit;">true</span></span></code></pre></div></div>
 <p>You may notice there is no explicit mention of system dependencies in this file. Yet, if we use this workflow in an R package with system dependencies, everything will work out-of-the-box in most cases. So, when are system dependencies installed? And how the workflow does even know which dependencies to install since the <code>SystemRequirements</code> is free text that may not correspond to the exact name of a library?</p>
 <p>The magic happens in the <code>r-lib/actions/setup-r-dependencies</code> step. If you want to learn about it, you can read the <a href="https://github.com/r-lib/actions/blob/756399d909bf9c180bbdafe8025f794f51f2da02/setup-r-dependencies/action.yaml">source code of this step</a>. It is mostly written in R but it contains a lot of bells and whistles to handle messaging within the GitHub Actions context and as such, it would be too long to go through it line by line in this post. However, at a glance, you can notice many mentions of the <a href="https://pak.r-lib.org/">pak R package</a>.</p>
 <p>If it’s the first time you’re hearing about the pak package, we strongly recommend we go through the <a href="https://pak.r-lib.org/reference/features.html">list of the most important pak features</a>. It is <del>paked</del> packed with many very powerful features. The specific feature we’re interested in here is the automatic install of system dependencies via <a href="https://pak.r-lib.org/reference/local_system_requirements.html"><code>pak::pkg_sysreqs()</code></a>, which in turn uses <code>pkgdepends::sysreqs_install_plan()</code>.</p>
 <p>We now understand more precisely where the magic happens but it still doesn’t explain how pak is able to know which precise piece of software to install from the free text <code>SystemRequirements</code> field. As often when you want to increase your understanding, it is helpful to <a href="https://blog.r-hub.io/2019/05/14/read-the-source/">read the source</a>. While browsing pkgdepends source code, we see a call to <a href="https://github.com/r-hub/r-system-requirements" class="uri">https://github.com/r-hub/r-system-requirements</a>.</p>
 <p>This repository contains a set of <a href="https://github.com/rstudio/r-system-requirements/tree/main/rules">rules</a> as json files which match unformatted software name via regular expressions to the exact libraries for each major operating system. Let’s walk through an example together:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb6-2">  <span class="dt" style="color: #AD0000;
@@ -1874,7 +1874,7 @@ background-color: null;
 font-style: inherit;">]</span></span>
 <span id="cb6-14"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>The regular expression tells that each time a package lists something as <code>SystemRequirements</code> with the word “nvcc” or “cuda”, the corresponding Ubuntu library to install is <code>nvidia-cuda-dev</code>.</p>
 <p>This interaction between <code>r-system-requirements</code> and pak is also documented in pak’s dev version, with extra information about how the <code>SystemRequirements</code> field is extracted in different situations: <a href="https://pak.r-lib.org/dev/reference/sysreqs.html#how-it-works" class="uri">https://pak.r-lib.org/dev/reference/sysreqs.html#how-it-works</a></p>
 </section>
@@ -1887,7 +1887,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <p>To identify if this is the case, you need to find the file containing the specific rule for the system dependency of interest in <code>r-system-requirements</code>, and test the regular expression on the contents of <code>SystemRequirements</code>.</p>
 <p>If we re-use the cuda example from the previous section and we are wondering why it is not automatically installed for a package specifying “cudaa”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">stringr<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">stringr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1915,7 +1915,7 @@ font-style: inherit;">bcuda</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">\\</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">b"</span>))</span></code></pre></div>
+font-style: inherit;">b"</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]
 [1,] NA  
@@ -1935,7 +1935,7 @@ font-style: inherit;">b"</span>))</span></code></pre></div>
 <section id="directly-in-the-github-actions-workflow" class="level4">
 <h4 class="anchored" data-anchor-id="directly-in-the-github-actions-workflow">Directly in the GitHub Actions workflow</h4>
 <p>You can insert the installation steps you used locally in the GitHub Actions workflow file. So, instead of having the usual structure, you have an extra step “Install extra system dependencies manually” that may look something like this:</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1">jobs:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1">jobs:</span>
 <span id="cb9-2">  R-CMD-check:</span>
 <span id="cb9-3">    runs-on: ubuntu-latest</span>
 <span id="cb9-4">    env:</span>
@@ -1969,13 +1969,13 @@ font-style: inherit;">+          sudo make install</span></span>
 <span id="cb9-22">          extra-packages: any::rcmdcheck</span>
 <span id="cb9-23">          needs: check</span>
 <span id="cb9-24"></span>
-<span id="cb9-25">      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div>
+<span id="cb9-25">      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div></div>
 <p>You can see <a href="https://github.com/sbfnk/rbi/blob/9b05a24ce42f7b1b53481370f3bde3dcd86bca02/.github/workflows/R-CMD-check.yaml">a real-life example in the rbi R package</a>.</p>
 </section>
 <section id="using-a-docker-image-in-github-actions" class="level4">
 <h4 class="anchored" data-anchor-id="using-a-docker-image-in-github-actions">Using a Docker image in GitHub Actions</h4>
 <p>Alternatively, you can do the manual installation in a Docker image and use this image in your GitHub Actions workflow. This is a particularly good solution if there is already a public Docker image or you already wrote a <code>DOCKERFILE</code> for your own local development purposes. If you use a public image, you can follow <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-running-a-job-within-a-container">the steps in the official documentation</a> to integrate it to your GitHub Actions job. If you use a <code>DOCKERFILE</code>, you can follow <a href="https://stackoverflow.com/q/61154750/4439357">the answers to this stackoverflow question</a> (in a nutshell, use <code>docker compose</code> in your job or publish the image first and then follow the official documentation).</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb10-1">jobs:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb10-1">jobs:</span>
 <span id="cb10-2">  R-CMD-check:</span>
 <span id="cb10-3">    runs-on: ubuntu-latest</span>
 <span id="cb10-4"><span class="va" style="color: #111111;
@@ -1996,7 +1996,7 @@ font-style: inherit;">+    container: ghcr.io/org/repo:main</span></span>
 <span id="cb10-17">          extra-packages: any::rcmdcheck</span>
 <span id="cb10-18">          needs: check</span>
 <span id="cb10-19"></span>
-<span id="cb10-20">      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div>
+<span id="cb10-20">      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div></div>
 <p>You can again see <a href="https://github.com/sbfnk/rbi/pull/46/files">a real-life example in the rbi R package</a>.</p>
 </section>
 </section>
@@ -2205,7 +2205,7 @@ Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.g
 <section id="the-package-header" class="level2">
 <h2 class="anchored" data-anchor-id="the-package-header">The package header</h2>
 <p>The package header of the package <code>{mypackage}</code> is a file of the name <code>mypackage.h</code> under <code>inst/include</code>. Defining this header is the key step in making (R)C++ code shareable.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># conceptual organisation of an Rcpp package with a package header</span></span>
 <span id="cb1-2"><span class="bu" style="color: null;
@@ -2244,7 +2244,7 @@ font-style: inherit;">├──</span> RcppExports.cpp</span>
 background-color: null;
 font-style: inherit;">└──</span> rcpp_hello.cpp        <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># &lt;= code from which RcppExports.cpp generates</span></span></code></pre></div>
+font-style: inherit;"># &lt;= code from which RcppExports.cpp generates</span></span></code></pre></div></div>
 <section id="autogenerating-the-package-header" class="level3">
 <h3 class="anchored" data-anchor-id="autogenerating-the-package-header">Autogenerating the package header</h3>
 <p>The package header is autogenerated when the attributes of an Rcpp function are edited to also generate a C++ interface.</p>
@@ -2257,7 +2257,7 @@ font-style: inherit;"># &lt;= code from which RcppExports.cpp generates</span></
 <div class="code-with-filename-file">
 <pre><strong>src/rcpp_hello.cpp</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="src/rcpp_hello.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="src/rcpp_hello.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb2-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">#include </span><span class="im" style="color: #00769E;
 background-color: null;
@@ -2301,7 +2301,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb2-11"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 </section>
 <section id="manually-creating-the-package-header" class="level3">
@@ -2352,7 +2352,7 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>inst/include/mypackage.h</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="inst/include/mypackage.h" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="inst/include/mypackage.h" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// Manually created package header with manual code inclusion</span></span>
 <span id="cb3-2"><span class="pp" style="color: #AD0000;
@@ -2380,7 +2380,7 @@ font-style: inherit;">"header_02.h"</span></span>
 background-color: null;
 font-style: inherit;">#endif  </span><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">// mypackage_mypackage_H</span></span></code></pre></div>
+font-style: inherit;">// mypackage_mypackage_H</span></span></code></pre></div></div>
 </div>
 <p>Here, the header files might contain code that you wish to make available to other packages, such as a C++ function, struct, or class, and indeed in the current package as well — more on how to do this below.</p>
 </section>
@@ -2392,7 +2392,7 @@ font-style: inherit;">// mypackage_mypackage_H</span></span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>inst/include/header_01.h</strong></pre>
 </div>
-<div class="sourceCode" id="cb4" data-filename="inst/include/header_01.h" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="inst/include/header_01.h" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// In a manually created header file, say, header_01.h</span></span>
 <span id="cb4-2"><span class="co" style="color: #5E5E5E;
@@ -2436,7 +2436,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb4-10"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>The appropriate headers are automatically included in autogenerated package headers’ helper files, and the developer need not do anything more.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -2465,7 +2465,7 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>mypackage/src/hello_world.cpp</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="mypackage/src/hello_world.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="mypackage/src/hello_world.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// #include &lt;Rcpp.h&gt;       // include Rcpp if necessary</span></span>
 <span id="cb5-2"><span class="pp" style="color: #AD0000;
@@ -2509,7 +2509,7 @@ background-color: null;
 font-style: inherit;">// note the namespacing</span></span>
 <span id="cb5-11"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -2533,7 +2533,7 @@ Tip
 <div class="code-with-filename-file">
 <pre><strong>yourpackage/src/hello_world.cpp</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="yourpackage/src/hello_world.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="yourpackage/src/hello_world.cpp" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// [[Rcpp::depends(mypackage)]]   /// specify dependency</span></span>
 <span id="cb6-2"><span class="pp" style="color: #AD0000;
@@ -2559,7 +2559,7 @@ background-color: null;
 font-style: inherit;">();</span></span>
 <span id="cb6-7"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 </div>
 <p>Be sure to add <code>LinkingTo: mypackage</code> in the <code>DESCRIPTION</code> of the second package {yourpackage}.</p>
 </section>
@@ -2582,7 +2582,7 @@ Our header code is organised into C++ namespaces, which makes it easier to under
 <h2 class="anchored" data-anchor-id="ensuring-the-quality-of-header-code">Ensuring the quality of header code</h2>
 <p>You can lint and statically check code in a package header using <a href="../lint-rcpp/">tools for linting C++ code such as Cpplint and Cppcheck</a>. When doing so, it may be important to specify minimum C++ standards, or even the language (C or C++) to avoid linter errors. This is because tools — such as Cppcheck — assume that headers with the extension <code>.h</code> are C headers, which throws errors when encountering C++ features such as the use of namespaces.</p>
 <p>Cppcheck’s language and C++ standard can be set using:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">cppcheck</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -2602,7 +2602,7 @@ font-style: inherit;">--error-exitcode</span><span class="op" style="color: #5E5
 background-color: null;
 font-style: inherit;">=</span>1 inst/include/<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">*</span>.h</span></code></pre></div>
+font-style: inherit;">*</span>.h</span></code></pre></div></div>
 <p>Furthermore, header code can also be tested independently of the R(cpp) code that eventually wraps it. This can be done using the <a href="https://github.com/catchorg/Catch2">Catch2 testing framework</a>, which is <a href="https://testthat.r-lib.org/reference/use_catch.html">conveniently available using {testthat}</a> — this is an extensive topic for another post.</p>
 </section>
 <section id="conclusion" class="level2">
@@ -2646,7 +2646,7 @@ Package.”</span> June 5, 2023. <a href="https://epiverse-trace.github.io/posts
 <h2 class="anchored" data-anchor-id="extending-data-frames-in-r">Extending Data Frames in R</h2>
 <p>R is a commonly used language for data science and statistical computing. Foundational to this is having data structures that allow manipulation of data with minimal effort and cognitive load. One of the most commonly required data structures is tabular data. This can be represented in R in a few ways, for example a matrix or a data frame. The data frame (class <code>data.frame</code>) is a flexible tabular data structure, as it can hold different data types (e.g.&nbsp;numbers, character strings, etc.) across different columns. This is in contrast to matrices – which are arrays with dimensions – and thus can only hold a single data type.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># data frame can hold heterogeneous data types across different columns</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -2681,14 +2681,14 @@ font-style: inherit;">"a"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"b"</span>, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"c"</span>))</span></code></pre></div>
+font-style: inherit;">"c"</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  a b c
 1 1 4 a
 2 2 5 b
 3 3 6 c</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># each column must be of the same type</span></span>
 <span id="cb3-2">df <span class="ot" style="color: #003B4F;
@@ -2721,17 +2721,17 @@ background-color: null;
 font-style: inherit;"># be careful of the silent type conversion</span></span>
 <span id="cb3-4">df<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>a</span></code></pre></div>
+font-style: inherit;">$</span>a</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 2 3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">df<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>b</span></code></pre></div>
+font-style: inherit;">$</span>b</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "4" "5" "6"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">mat <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1">mat <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2750,14 +2750,14 @@ background-color: null;
 font-style: inherit;">ncol =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>)</span>
-<span id="cb7-2">mat</span></code></pre></div>
+<span id="cb7-2">mat</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,]    1    4    7
 [2,]    2    5    8
 [3,]    3    6    9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">mat[<span class="dv" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">mat[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
@@ -2769,7 +2769,7 @@ font-style: inherit;">"1"</span></span>
 <span id="cb9-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># be careful of the silent type conversion</span></span>
-<span id="cb9-3">mat</span></code></pre></div>
+<span id="cb9-3">mat</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3]
 [1,] "1"  "4"  "7" 
@@ -2779,7 +2779,7 @@ font-style: inherit;"># be careful of the silent type conversion</span></span>
 </div>
 <p>Data frames can even be nested, cells can be data frames or lists.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">df <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1">df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2811,12 +2811,12 @@ background-color: null;
 font-style: inherit;">"y"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"z"</span>))</span>
-<span id="cb11-3">df</span></code></pre></div>
+<span id="cb11-3">df</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     a b
 1 y, z x</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">df <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1">df <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -2850,7 +2850,7 @@ background-color: null;
 font-style: inherit;">d =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"z"</span>))</span>
-<span id="cb13-3">df</span></code></pre></div>
+<span id="cb13-3">df</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     a b
 1 y, z x</code></pre>
@@ -2866,7 +2866,7 @@ font-style: inherit;">"z"</span>))</span>
 <section id="writing-a-custom-data-class" class="level3">
 <h3 class="anchored" data-anchor-id="writing-a-custom-data-class">Writing a custom data class</h3>
 <p>It is useful to write a class constructor function that can be called to create an object of your new class. The functions defined below are a redacted version (for readability) of functions available in the <a href="https://github.com/joshwlambert/ExtendDataFrames">{ExtendDataFrames} R package</a>, which contains example functions and files discussed in this post. When assigning the class name ensure that it is a vector containing <code>"data.frame"</code> as the last element to correctly inherit properties and methods from the <code>data.frame</code> class.</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">birthdays <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">birthdays <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -2886,10 +2886,10 @@ background-color: null;
 font-style: inherit;">"birthdays"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"data.frame"</span>))</span>
-<span id="cb15-4">}</span></code></pre></div>
+<span id="cb15-4">}</span></code></pre></div></div>
 <p>That’s all that’s needed to create a subclass of a data frame. However, although we’ve created the class we haven’t given it any functionality and thus it will be identical to a data frame due to inheritance.</p>
 <p>We can now write as many methods as we want. Here we will show two methods, one of which does not require writing a generic (<code>print.birthdays</code>) and the second that does (<code>birthdays_per_month</code>). The <code>print()</code> generic function is provided by R, which is why we do not need to add one ourselves. See <a href="https://adv-r.hadley.nz/s3.html#s3-methods">Adv R</a> and this <a href="https://epiverse-trace.github.io/posts/s3-generic/">Epiverse blog post</a> to find out more about S3 generics.</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">print.birthdays <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">print.birthdays <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -2994,7 +2994,7 @@ font-style: inherit;">names</span>(out))]</span>
 <span id="cb16-22">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">return</span>(out)</span>
-<span id="cb16-23">}</span></code></pre></div>
+<span id="cb16-23">}</span></code></pre></div></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3015,7 +3015,7 @@ Tip
 <p>For our example class, <code>&lt;birthdays&gt;</code>, the invariants are a column called <code>name</code> which must contain characters, and a column called <code>birthday</code> which must contain dates. The order of the rows and columns is not considered an invariant property, and having extra columns with other names and data types is also allowed. The number of rows is also not an invariant as we can have as many birthdays as we like in the data object.</p>
 <p>Here we present both cases as well as considerations and technical details of both options. We’ll demonstrate both of these cases with the subset function in R (subsetting uses a single square bracket for tabular data, <code>[</code>). First the fail-on-subsetting. Before we write the subsetting function it is useful to have a function that checks that an object of our class is valid, a so-called validator function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">validate_birthdays <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1">validate_birthdays <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3068,12 +3068,12 @@ font-style: inherit;">$</span>birthday)</span>
 <span id="cb17-10">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">invisible</span>(x)</span>
-<span id="cb17-11">}</span></code></pre></div>
+<span id="cb17-11">}</span></code></pre></div></div>
 </div>
 <p>This will return an error if the class is not valid (defined in terms of the class’ invariants).</p>
 <p>Now we can show how to error if one of the invariants are removed during subsetting. See <code>?NextMethod()</code> for information on method dispatch.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="st" style="color: #20794D;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span><span class="at" style="color: #657422;
 background-color: null;
@@ -3102,7 +3102,7 @@ background-color: null;
 font-style: inherit;">#  Error in validate_birthdays(NextMethod()) :</span></span>
 <span id="cb18-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#  input must contain 'name' and 'birthday' columns</span></span></code></pre></div>
+font-style: inherit;">#  input must contain 'name' and 'birthday' columns</span></span></code></pre></div></div>
 </div>
 <p>The second design option is the reconstruct-on-subsetting. This checks whether the class is valid, and if not downgrade the class to the superclass, in our case a data frame. This is done by not only validating the object during subsetting but to check whether it is a valid class object, and then either ensuring all of the attributes of the subclass – in our case <code>&lt;birthdays&gt;</code> – are maintained, or attributes are stripped and only the attributes of the base superclass – in our case <code>data.frame</code> – are kept.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -3128,7 +3128,7 @@ Note
 <p>We’ll tackle the first three first, and then move onto to the last one as this requires some extra steps.</p>
 <p><code>birthdays_reconstruct()</code> is a function that contains an if-else statement to determine whether the returned object is a <code>&lt;birthdays&gt;</code> or <code>data.frame</code> object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">birthdays_reconstruct <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1">birthdays_reconstruct <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3159,11 +3159,11 @@ background-color: null;
 font-style: inherit;">"Removing crucial column in `&lt;birthdays&gt;` returning `&lt;data.frame&gt;`"</span>)</span>
 <span id="cb19-7">    x</span>
 <span id="cb19-8">  }</span>
-<span id="cb19-9">}</span></code></pre></div>
+<span id="cb19-9">}</span></code></pre></div></div>
 </div>
 <p>The if-else evaluation is controlled by <code>birthdays_can_reconstruct()</code>. This function determines whether after subsetting the object is a valid <code>&lt;birthdays&gt;</code> class. It checks whether the validator fails, in which case it returns <code>FALSE</code>, otherwise the function will return <code>TRUE</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">birthdays_can_reconstruct <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1">birthdays_can_reconstruct <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3198,11 +3198,11 @@ background-color: null;
 font-style: inherit;">!</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">isFALSE</span>(valid)</span>
-<span id="cb20-10">}</span></code></pre></div>
+<span id="cb20-10">}</span></code></pre></div></div>
 </div>
 <p>The next function required is <code>df_reconstruct()</code>. This is called when the object is judged to be a valid <code>&lt;birthdays&gt;</code> object and simply copies the attributes over from the <code>&lt;birthdays&gt;</code> class to the object being subset.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">df_reconstruct <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">df_reconstruct <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3237,11 +3237,11 @@ font-style: inherit;">attributes</span>(x) <span class="ot" style="color: #003B4
 background-color: null;
 font-style: inherit;">&lt;-</span> attrs</span>
 <span id="cb21-6">  x</span>
-<span id="cb21-7">}</span></code></pre></div>
+<span id="cb21-7">}</span></code></pre></div></div>
 </div>
 <p>The three functions defined for reconstruction can be added to a package with the subsetting function in order to subset <code>&lt;birthdays&gt;</code> objects and returning either <code>&lt;birthdays&gt;</code> objects if still valid, or data frames when invalidated. This design has the benefit that when conducting data exploration a user is not faced with an error, but can continue with a data frame, while being informed by the message printed to console in <code>birthdays_reconstruct()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="st" style="color: #20794D;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span><span class="at" style="color: #657422;
 background-color: null;
@@ -3261,19 +3261,19 @@ font-style: inherit;">NextMethod</span>()</span>
 <span id="cb22-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
-<span id="cb22-4">}</span></code></pre></div>
+<span id="cb22-4">}</span></code></pre></div></div>
 </div>
 </section>
 <section id="compatibility-with-dplyr" class="level3">
 <h3 class="anchored" data-anchor-id="compatibility-with-dplyr">Compatibility with {dplyr}</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">library</span>(dplyr)</span></code></pre></div>
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div></div>
 </div>
 <p>In order to be able to operate on our <code>&lt;birthdays&gt;</code> class using functions from the package {dplyr}, as would be common for data frames, we need to make our function compatible. This is where the function <code>dplyr_reconstruct.birthdays()</code> comes in. <code>dplyr_reconstruct()</code> is a generic function exported by {dplyr}. It is called in {dplyr} verbs to make sure that the objects are restored to the input class when not invalidated.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">dplyr_reconstruct.birthdays <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1">dplyr_reconstruct.birthdays <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3282,20 +3282,20 @@ font-style: inherit;">function</span>(data, template) {</span>
 <span id="cb24-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">birthdays_reconstruct</span>(data, template)</span>
-<span id="cb24-3">}</span></code></pre></div>
+<span id="cb24-3">}</span></code></pre></div></div>
 </div>
 <p>Information about the generic can be found through the {dplyr} help documentation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">?dplyr<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1">?dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span>dplyr_extending</span>
 <span id="cb25-2">?dplyr<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">::</span>dplyr_reconstruct</span></code></pre></div>
+font-style: inherit;">::</span>dplyr_reconstruct</span></code></pre></div></div>
 </div>
 <p>As explained in the help documentation, {dplyr} also uses two base R functions to perform data manipulation. <code>names&lt;-</code> (i.e the names setter function) and <code>[</code> the one-dimensional subsetting function. We therefore define these methods for our custom class in order for <code>dplyr_reconstruct()</code> to work as intended.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="st" style="color: #20794D;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">`</span><span class="at" style="color: #657422;
 background-color: null;
@@ -3337,7 +3337,7 @@ font-style: inherit;">NextMethod</span>()</span>
 <span id="cb26-8">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
-<span id="cb26-9">}</span></code></pre></div>
+<span id="cb26-9">}</span></code></pre></div></div>
 </div>
 <p>This wraps up the need for adding function to perform data manipulation using the reconstruction design outlined above.</p>
 <p>However, there is some final housekeeping to do. In cases when {dplyr} is not a package dependency (either imported or suggested), then the S3 generic <code>dplyr_reconstruct()</code> is required to be loaded. In R versions before 3.6.0 – this also works for R versions later than 3.6.0 – the generic function needs to be registered. This is done by writing an <code>.onLoad()</code> function, typically in a file called <code>zzz.R</code>. This is included in the {ExtendDataFrames} package for illustrative purposes.</p>
@@ -3349,7 +3349,7 @@ font-style: inherit;">birthdays_reconstruct</span>(out, x)</span>
 <div class="code-with-filename-file">
 <pre><strong>zzz.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb27" data-filename="zzz.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">.onLoad <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-filename="zzz.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1">.onLoad <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3365,13 +3365,13 @@ font-style: inherit;">"birthdays"</span>)</span>
 <span id="cb27-3">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">invisible</span>()</span>
-<span id="cb27-4">}</span></code></pre></div>
+<span id="cb27-4">}</span></code></pre></div></div>
 </div>
 <p>The <code>s3_register()</code> function used in <code>.onLoad()</code> also needs to be added to the package and this function is kindly supplied by both {vctrs} and {rlang} unlicensed and thus can be copied into another package. See the <a href="https://r-pkgs.org/dependencies-mindset-background.html#sec-dependencies-attach-vs-load">R packages book</a> for information about <code>.onLoad()</code> and attaching and loading in general.</p>
 <p>Since R version 3.6.0 this <a href="https://blog.r-project.org/2019/08/19/s3-method-lookup/index.html">S3 generic registration</a> happens automatically with <code>S3Method()</code> in the package namespace using the {roxygen2} documentation <code>#' @exportS3Method dplyr::dplyr_reconstruct</code>.</p>
 <p>There is one last option which prevents the hard dependency on a relatively recent R version. Since {roxygen2} version 6.1.0, there is the <code>@rawNamespace</code> tag which allows insertion of text into the NAMESPACE file. Using this tag the following code will check the local R version and register the S3 method if equal to or above 3.6.0.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @rawNamespace if (getRversion() &gt;= "3.6.0") {</span></span>
 <span id="cb28-2"><span class="co" style="color: #5E5E5E;
@@ -3379,7 +3379,7 @@ background-color: null;
 font-style: inherit;">#'   S3method(pkg::fun, class)</span></span>
 <span id="cb28-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">#' }</span></span></code></pre></div>
+font-style: inherit;">#' }</span></span></code></pre></div></div>
 </div>
 <p>Each of the three options for registering S3 methods has different benefits and downsides, so the choice depends on the specific use-case. Over time it may be best to use the most up-to-date methods as packages are usually only maintained for a handful of recent R releases<sup>1</sup>.</p>
 <p>The topics discussed in this post have been implemented in the <a href="https://github.com/epiverse-trace/epiparameter">{epiparameter} R package</a> within <a href="https://github.com/epiverse-trace">Epiverse-TRACE</a>.</p>
@@ -3442,7 +3442,7 @@ W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
 <h2 class="anchored" data-anchor-id="benefits">Benefits</h2>
 <p>Let’s reuse the example function from <a href="../statistical-correctness/">one of our previous posts</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
 <span id="cb1-2">centroid <span class="ot" style="color: #003B4F;
@@ -3456,11 +3456,11 @@ font-style: inherit;">function</span>(coords, weights) {</span>
 background-color: null;
 font-style: inherit;"># ...</span></span>
 <span id="cb1-5"></span>
-<span id="cb1-6">}</span></code></pre></div>
+<span id="cb1-6">}</span></code></pre></div></div>
 </div>
 <p>Since we wrote and released this function, someone may have designed a clever data class to store coordinates of a set of points and their weights. Let’s imagine they use the following class that they call <code>pointset</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">example_pointset <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">example_pointset <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -3522,12 +3522,12 @@ background-color: null;
 font-style: inherit;">class =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"pointset"</span></span>
-<span id="cb2-7">)</span></code></pre></div>
+<span id="cb2-7">)</span></code></pre></div></div>
 </div>
 <p>They may also have developed nice utilities for this class so there is a clear motivation for you to integrate with their class since it’s less work you’ll have to do. Plus, you immediately become compatible with any package that uses the same class.</p>
 <p>We will not spend too much time on the practical steps to operate this conversion since this is already covered in details in <a href="https://adv-r.hadley.nz/s3.html">the dedicated chapter of Advanced R, by Hadley Wickham</a>, as well as <a href="https://njtierney.github.io/r/missing%20data/rbloggers/2016/11/06/simple-s3-methods/">this blog post from Nick Tierney</a> <sup>1</sup>. But the final result would be:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Compute the centroid of a set of points</span></span>
 <span id="cb3-2"><span class="co" style="color: #5E5E5E;
@@ -3640,7 +3640,7 @@ font-style: inherit;">$</span>coords, coords<span class="sc" style="color: #5E5E
 background-color: null;
 font-style: inherit;">$</span>weights)</span>
 <span id="cb3-38"></span>
-<span id="cb3-39">}</span></code></pre></div>
+<span id="cb3-39">}</span></code></pre></div></div>
 </div>
 </section>
 <section id="what-subtle-changes-should-you-be-looking-out-for" class="level2">
@@ -3651,7 +3651,7 @@ font-style: inherit;">$</span>weights)</span>
 <p>You can see that the method for <code>pointset</code> class, <code>centroid.pointset()</code> has a <code>weights</code> argument, even though it is not used because weights are already contained in the <code>coords</code> object. This seems clunky and potentially confusing for users. But this is mandatory because all methods must have the same arguments as the generic.</p>
 <p>Another option here could have been to remove <code>weights</code> from the generic, and add <code>...</code> instead, thus allowing to pass <code>weights</code> as an extra argument only in selected methods. This is more idiomatic in R, and in line with the <a href="https://cran.r-project.org/doc/manuals/R-exts.html#Generic-functions-and-methods">recommendation from the official ‘Writing R Extensions’ document (“always keep generics simple”)</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
 <span id="cb4-2">centroid <span class="ot" style="color: #003B4F;
@@ -3699,7 +3699,7 @@ font-style: inherit;">2</span>, weighted.mean, <span class="at" style="color: #6
 background-color: null;
 font-style: inherit;">w =</span> weights))</span>
 <span id="cb4-14">  </span>
-<span id="cb4-15">}</span></code></pre></div>
+<span id="cb4-15">}</span></code></pre></div></div>
 </div>
 <p>But this extra <code>...</code> argument, which is documented as “ignored”, may be confusing as well.</p>
 </section>
@@ -3732,11 +3732,11 @@ font-style: inherit;">w =</span> weights))</span>
 <h3 class="anchored" data-anchor-id="more-complicated-error-traceback">More complicated error traceback</h3>
 <p>Another situation where converting to an S3 adds an extra layer of complexity is where you are trying to follow the error <a href="https://en.wikipedia.org/wiki/Stack_trace">traceback</a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">centroid</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>)</span></code></pre></div>
+font-style: inherit;">3</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in do.call(rbind, coords): second argument must be a list</code></pre>
 </div>
@@ -3768,7 +3768,7 @@ font-style: inherit;">3</span>)</span></code></pre></div>
 <p>The generic should always live in the package implementing the actual computation in the function in the first place. For example, if you defined the original <code>centroid()</code> function in a package called geometryops, the S3 generic should also be defined in that package, not in the package defining the <code>pointset</code> class.</p>
 <p>It is possible in theory to overwrite a function defined by another package with a generic (“overloading”). For example, we could overload base R <code>table()</code> function with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">table <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1">table <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -3841,7 +3841,7 @@ background-color: null;
 font-style: inherit;">dnn =</span> dnn</span>
 <span id="cb9-17"> )</span>
 <span id="cb9-18"></span>
-<span id="cb9-19">}</span></code></pre></div>
+<span id="cb9-19">}</span></code></pre></div></div>
 </div>
 <p>But this is generally considered bad practice, and possibly rude <sup>2</sup>. As a rule of thumb, you should usually avoid:</p>
 <ul>
@@ -3856,7 +3856,7 @@ font-style: inherit;">dnn =</span> dnn</span>
 <h4 class="anchored" data-anchor-id="method-in-the-class-package">Method in the class package</h4>
 <p>This is the strategy used when you defined a new class and provide it with a <code>print()</code>, a <code>summary()</code>, or a <code>plot()</code> method. The generics for these functions are defined in R base.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
 <span id="cb10-2">plot.myclass <span class="ot" style="color: #003B4F;
@@ -3870,14 +3870,14 @@ font-style: inherit;">function</span>(x, y, ...) {</span>
 background-color: null;
 font-style: inherit;"># code for a beautiful plot for your custom class</span></span>
 <span id="cb10-5">  </span>
-<span id="cb10-6">}</span></code></pre></div>
+<span id="cb10-6">}</span></code></pre></div></div>
 </div>
 <p>If you opt for this strategy, you will need to depend on the package providing the method, as <code>Imports</code>. For example, a package defining a <code>fit.myclass()</code> method for the <code>fit()</code> generic defined in the <a href="https://generics.r-lib.org/">generics</a> package would have the following <code>DESCRIPTION</code> and <code>NAMESPACE</code>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Imports</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -3885,13 +3885,13 @@ font-weight: bold;
 font-style: inherit;">:</span></span>
 <span id="cb11-2"><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  generics</span></span></code></pre></div>
+font-style: inherit;">  generics</span></span></code></pre></div></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
 <span id="cb12-2"><span class="co" style="color: #5E5E5E;
@@ -3906,13 +3906,13 @@ font-style: inherit;">function</span>(x, ...) {</span>
 <span id="cb12-4">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># your code here</span></span>
-<span id="cb12-5">}</span></code></pre></div>
+<span id="cb12-5">}</span></code></pre></div></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 <span id="cb13-2"></span>
@@ -3921,7 +3921,7 @@ background-color: null;
 font-style: inherit;">S3method</span>(fit,myclass)</span>
 <span id="cb13-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">importFrom</span>(generics,fit)</span></code></pre></div>
+font-style: inherit;">importFrom</span>(generics,fit)</span></code></pre></div></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -3941,7 +3941,7 @@ font-style: inherit;">importFrom</span>(generics,fit)</span></code></pre></div>
 <div class="code-with-filename-file">
 <pre><strong>DESCRIPTION</strong></pre>
 </div>
-<div class="sourceCode" id="cb14" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="DESCRIPTION" style="background: #f1f3f5;"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Suggests</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -3949,13 +3949,13 @@ font-weight: bold;
 font-style: inherit;">:</span></span>
 <span id="cb14-2"><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">  generics</span></span></code></pre></div>
+font-style: inherit;">  generics</span></span></code></pre></div></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>fit.myclass.R</strong></pre>
 </div>
-<div class="sourceCode" id="cb15" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="fit.myclass.R" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @exportS3Method generics::fit</span></span>
 <span id="cb15-2">fit.myclass <span class="ot" style="color: #003B4F;
@@ -3967,13 +3967,13 @@ font-style: inherit;">function</span>(x, ...) {</span>
 <span id="cb15-3">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># your code here</span></span>
-<span id="cb15-4">}</span></code></pre></div>
+<span id="cb15-4">}</span></code></pre></div></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>NAMESPACE</strong></pre>
 </div>
-<div class="sourceCode" id="cb16" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-filename="NAMESPACE" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 <span id="cb16-2"></span>
@@ -3981,7 +3981,7 @@ font-style: inherit;"># Generated by roxygen2: do not edit by hand</span></span>
 background-color: null;
 font-style: inherit;">S3method</span>(generics<span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">::</span>fit,myclass)</span></code></pre></div>
+font-style: inherit;">::</span>fit,myclass)</span></code></pre></div></div>
 </div>
 </section>
 <section id="method-in-the-generic-package" class="level4">
@@ -3989,7 +3989,7 @@ font-style: inherit;">::</span>fit,myclass)</span></code></pre></div>
 <p>Alternatively, you can define the method in the package defining the generic. This is the approach taken in the <a href="https://easystats.github.io/report/">report package</a> from example, which defines the <code>report()</code> generic and methods for various model outputs produced by different package.</p>
 <p>In theory, no <code>Imports</code> or <code>Suggests</code> is required here:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' @export</span></span>
 <span id="cb17-2">mygeneric <span class="ot" style="color: #003B4F;
@@ -4015,7 +4015,7 @@ font-style: inherit;">function</span>(x, ...) {</span>
 <span id="cb17-8">  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># your code here</span></span>
-<span id="cb17-9">}</span></code></pre></div>
+<span id="cb17-9">}</span></code></pre></div></div>
 </div>
 <p>However, if you end up providing many methods for a specific class, you could put the package defining it in the uncommon <code>Enhances</code> field. <code>Enhances</code> is defined in ‘<a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html">Writing R Extensions</a>’ as:</p>
 <blockquote class="blockquote">
@@ -4105,7 +4105,7 @@ Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
 <p><a href="https://github.com/cpplint/cpplint"><em>cpplint</em></a> is a tool that checks whether C/C++ files follow <a href="http://google.github.io/styleguide/cppguide.html">Google’s C++ style guide</a>. <em>cpplint</em> is easy to install across platforms, and does not error when it cannot find <code>Rcpp.h</code>.</p>
 <p>Importantly, <em>cpplint</em> can be instructed to not lint the autogenerated <code>RcppExports.cpp</code> file, which follows a different style.</p>
 <p>To lint all other <code>.cpp</code> files, we simply run <code>cpplint</code> from the terminal.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">cpplint</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -4115,13 +4115,13 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"src/RcppExports.cpp"</span> src/<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">*</span>.cpp</span></code></pre></div>
+font-style: inherit;">*</span>.cpp</span></code></pre></div></div>
 </section>
 <section id="cppcheck" class="level3">
 <h3 class="anchored" data-anchor-id="cppcheck">Cppcheck</h3>
 <p><a href="https://cppcheck.sourceforge.io/"><em>cppcheck</em></a> is a static code analysis tool, that aims to “have very few false positives”. This is especially useful for the non-standard organisation of Rcpp projects compared to C++ projects.</p>
 <p><em>cppcheck</em> can also be run locally and instructed to ignore the autogenerated <code>RcppExports.cpp</code> file, while throwing up issues with style.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">cppcheck</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -4133,7 +4133,7 @@ font-style: inherit;">=</span>style <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">--error-exitcode</span><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>1 src</span></code></pre></div>
+font-style: inherit;">=</span>1 src</span></code></pre></div></div>
 <p>Here, the <code>--enable=style</code> option lets <em>cppcheck</em> flag issues with style, acting as a second linter. This enables the <code>performance</code> and <code>portability</code> flags as well. (We have not found any difference when using <code>--enable=warning</code> instead.)</p>
 <p>Enabling all checks (<code>--enable=all</code>) would flag two specific issues for {Rcpp} packages: (1) the <code>Rcpp*.h</code> headers not being found (of the class <code>missingIncludeSystem</code>), and (2) the solver functions not being used by any other C++ function (<code>unusedFunction</code>).</p>
 <p>These extra options should be avoided in {Rcpp} packages, as the linking is handled for us, and the functions are indeed used later — just not by other C++ functions.</p>
@@ -4143,7 +4143,7 @@ font-style: inherit;">=</span>1 src</span></code></pre></div>
 <section id="adding-c-linting-to-ci-workflows" class="level2">
 <h2 class="anchored" data-anchor-id="adding-c-linting-to-ci-workflows">Adding C++ linting to CI workflows</h2>
 <p>Both <em>cpplint</em> and <em>cppcheck</em> can be easily added to continuous integration workflows. In Epiverse-TRACE, we use Github Actions. The C++ lint workflow we have implemented looks like this:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">on</span><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -4368,13 +4368,13 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">:</span><span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"> cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .</span></span></code></pre></div>
+font-style: inherit;"> cppcheck -i src/RcppExports.cpp --quiet --enable=warning --error-exitcode=1 .</span></span></code></pre></div></div>
 <p>The workflow is triggered when there are changes to files in <code>src/</code>, and on all pull requests.</p>
 </section>
 <section id="formatting-c-code" class="level2">
 <h2 class="anchored" data-anchor-id="formatting-c-code">Formatting C++ code</h2>
 <p>C++ code can be automatically formatted to avoid linter errors. An especially useful tool is <a href="https://clang.llvm.org/docs/ClangFormat.html"><em>clang-format</em></a>. Our code is styled to follow the <a href="https://google.github.io/styleguide/cppguide.html">Google C++ style guide</a> using:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># replace .cpp with .h to format headers</span></span>
 <span id="cb4-2"><span class="ex" style="color: null;
@@ -4387,10 +4387,10 @@ font-style: inherit;">-style</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>google src/<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">*</span>.cpp</span></code></pre></div>
+font-style: inherit;">*</span>.cpp</span></code></pre></div></div>
 <p>However, this also formats the autogenerated <code>RcppExports.cpp</code> file. It can be extra work to repeatedly undo this change and keep the original formatting, but <em>clang-format</em> does not provide an easy inline way to ignore this file.</p>
 <p>Instead, <em>clang-format</em> can be passed all files except <code>RcppExports.cpp</code> to style using some simple shell commands. In smaller projects, it might be worth</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">find</span> src <span class="at" style="color: #657422;
 background-color: null;
@@ -4410,7 +4410,7 @@ font-style: inherit;">=</span>google <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-i</span> {} <span class="dt" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">\;</span></span></code></pre></div>
+font-style: inherit;">\;</span></span></code></pre></div></div>
 </section>
 <section id="turning-off-linting-and-formatting" class="level2">
 <h2 class="anchored" data-anchor-id="turning-off-linting-and-formatting">Turning off linting and formatting</h2>
@@ -4418,7 +4418,7 @@ font-style: inherit;">\;</span></span></code></pre></div>
 <section id="linter-enforced-paradigms" class="level3">
 <h3 class="anchored" data-anchor-id="linter-enforced-paradigms">Linter-enforced paradigms</h3>
 <p>Sometimes, the linter or styler developer enforces both a style <em>and</em> the use of certain programming paradigms. An example from <em>cpplint</em> is when it warns against passing function arguments by reference, and prefers for these to be passed as pointers, or as constant references (<code>const int &amp;value</code>).</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb6-1"><span class="dt" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">int</span> some_function<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4442,7 +4442,7 @@ background-color: null;
 font-style: inherit;">;</span></span>
 <span id="cb6-4"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>Passing the argument as a <code>const</code> reference would not serve the needs of this function, and passing by value is a valid strategy when we don’t want to get into the details of using pointers. (Note that this is typically an issue when large objects such as custom classes or structs are passed to a function multiple times.)</p>
 <p>Similarly, <em>cpplint</em> will throw a warning about accessing variables using <code>std::move</code>, which is something we encounter in the Newton solver in {finalsize}. While not technically wrong for such a simple use case, the linter is correct to cautiously throw a warning nonetheless.</p>
 </section>
@@ -4454,7 +4454,7 @@ font-style: inherit;">}</span></span></code></pre></div>
 <section id="disabling-checks-on-code-chunks" class="level3">
 <h3 class="anchored" data-anchor-id="disabling-checks-on-code-chunks">Disabling checks on code chunks</h3>
 <p>Either of these cases could require disabling linting or formatting on some part of the code. It is possible to turn off linting using <em>cpplint</em> at particular lines using the comment <code>// NOLINT</code>. Multiple lines can be protected from linting as well.</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// NOLINTBEGIN</span></span>
 <span id="cb7-2"><span class="op" style="color: #5E5E5E;
@@ -4466,9 +4466,9 @@ background-color: null;
 font-style: inherit;">&gt;</span></span>
 <span id="cb7-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">// NOLINTEND</span></span></code></pre></div>
+font-style: inherit;">// NOLINTEND</span></span></code></pre></div></div>
 <p>Alternatively, <em>clang-format</em> can be instructed to ignore chunks of code using comment messages too.</p>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb8-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">// clang-format off</span></span>
 <span id="cb8-2"><span class="op" style="color: #5E5E5E;
@@ -4480,7 +4480,7 @@ background-color: null;
 font-style: inherit;">&gt;</span></span>
 <span id="cb8-3"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">// clang-format on</span></span></code></pre></div>
+font-style: inherit;">// clang-format on</span></span></code></pre></div></div>
 </section>
 </section>
 <section id="linter-options-for-future-packages" class="level2">
@@ -4488,7 +4488,7 @@ font-style: inherit;">// clang-format on</span></span></code></pre></div>
 <p>{finalsize} is a relatively simple {Rcpp} package, with no C/C++ headers, and no C++ tests. However, future Epiverse-TRACE packages could be more similar to {fluEvidenceSynthesis}, and will have header files, and could also have <a href="https://github.com/catchorg/Catch2">C++ unit tests via the <em>catch</em> framework</a>.</p>
 <p><em>cpplint</em> will demand that all local headers be prefixed with their directory (<code>src/</code>), but this would cause the code to break as {Rcpp} looks for a subdirectory called <code>src/src/</code>. This can be turned off by passing the filter option <code>--filter="-build/include_subdir"</code> to <em>cpplint</em>. Alternatively, we could place headers in a subdirectory such as <code>inst/include</code>.</p>
 <p>Both <em>cpplint</em> and <em>cppcheck</em> can be instructed to ignore C++ test files using the <em>catch</em> testing framework provided by {testthat}. This prevents errors due to the specialised syntax provided by {testthat} in <code>testthat.h</code>, such as <code>context</code>.</p>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># for cpplint, add an extra exclude statement</span></span>
 <span id="cb9-2"><span class="ex" style="color: null;
@@ -4516,7 +4516,7 @@ font-style: inherit;">&gt;</span> --suppress=<span class="pp" style="color: #AD0
 background-color: null;
 font-style: inherit;">*</span>:src/test_<span class="pp" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">*</span>.cpp src</span></code></pre></div>
+font-style: inherit;">*</span>.cpp src</span></code></pre></div></div>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
@@ -4565,7 +4565,7 @@ Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/
 <p>In this blog post, we explore various methods to ensure the statistical correctness of your software. We argue that these tests should be part of your continuous integration system, to ensure your tools remains valid throughout its life, and to let users verify how you validate your package. Finally, we show how these principles are implemented in the Epiverse TRACE tools.</p>
 <p>The approaches presented here are non-exclusive and should ideally all be added to your tests. However, they are presented in order of stringency and priority to implement. We also take a example of a function computing the centroid of a list of points to demonstrate how you would integrate the recommendations from this post with the <a href="https://testthat.r-lib.org/"><code>{testthat}</code> R package</a>, often used from unit testing:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Compute the centroid of a set of points</span></span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;
@@ -4627,13 +4627,13 @@ font-style: inherit;">return</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">colMeans</span>(coords_mat))</span>
 <span id="cb1-21">  </span>
-<span id="cb1-22">}</span></code></pre></div>
+<span id="cb1-22">}</span></code></pre></div></div>
 </div>
 <section id="compare-your-results-to-the-reference-implementation" class="level2">
 <h2 class="anchored" data-anchor-id="compare-your-results-to-the-reference-implementation">Compare your results to the reference implementation</h2>
 <p>The most straightforward and most solid way to ensure your implementation is valid is to compare your results to the results of the reference implementation. The reference implementation can be a package in another language, an example with toy data in the scientific article introducing the method, etc.</p>
 <p>For example, the <a href="https://github.com/fboehm/gemma2"><code>{gemma2}</code> R package</a>, which re-implements the methods from <a href="https://github.com/genetics-statistics/GEMMA">the GEMMA tool written in C++</a>, <a href="https://github.com/fboehm/gemma2/blob/ea3052f8609622f17224fb8ec5fd83bd1bceb33e/tests/testthat/test_calc_sigma.R#L34-L37">verifies that values produced by both tools match</a>:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -4668,7 +4668,7 @@ background-color: null;
 font-style: inherit;">tolerance =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.0001</span>)</span>
-<span id="cb2-4">})</span></code></pre></div>
+<span id="cb2-4">})</span></code></pre></div></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Example with `centroid()`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -4680,7 +4680,7 @@ font-style: inherit;">0.0001</span>)</span>
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(testthat)</span>
 <span id="cb3-2"></span>
@@ -4716,7 +4716,7 @@ font-style: inherit;">mean</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">unlist</span>(x)))</span>
 <span id="cb3-8">  </span>
-<span id="cb3-9">})</span></code></pre></div>
+<span id="cb3-9">})</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed 🎊</code></pre>
 </div>
@@ -4740,7 +4740,7 @@ font-style: inherit;">unlist</span>(x)))</span>
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -4805,7 +4805,7 @@ font-style: inherit;">&gt;=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">Reduce</span>(pmin, x)))</span>
 <span id="cb5-7">  </span>
-<span id="cb5-8">})</span></code></pre></div>
+<span id="cb5-8">})</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed 😀</code></pre>
 </div>
@@ -4813,7 +4813,7 @@ font-style: inherit;">Reduce</span>(pmin, x)))</span>
 </div>
 </div>
 <p>You can see a <a href="https://github.com/epiverse-trace/finalsize/blob/a710767b38a9242f15ab4dcf18b02fb5b0bcf24f/tests/testthat/test-newton_solver_vary_r0.R#L1-L13">real-life example of this kind of test in the <code>{finalsize}</code> R package</a>. <code>{finalsize}</code> computes the final proportion of infected in a heterogeneous population according to an SIR model. Theory predicts that the number of infections is maximal in a well-mixed population:</p>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Calculates the upper limit of final size given the r0</span></span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -4879,7 +4879,7 @@ background-color: null;
 font-style: inherit;">"Brent"</span></span>
 <span id="cb7-11">  )</span>
 <span id="cb7-12">  opt</span>
-<span id="cb7-13">}</span></code></pre></div>
+<span id="cb7-13">}</span></code></pre></div></div>
 </section>
 <section id="verify-that-output-is-changing-as-expected-when-a-single-parameter-varies" class="level2">
 <h2 class="anchored" data-anchor-id="verify-that-output-is-changing-as-expected-when-a-single-parameter-varies">Verify that output is changing as expected when a single parameter varies</h2>
@@ -4895,7 +4895,7 @@ font-style: inherit;">"Brent"</span></span>
 </div>
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">test_that</span>(<span class="st" style="color: #20794D;
 background-color: null;
@@ -4964,7 +4964,7 @@ font-style: inherit;">&lt;</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">centroid</span>(y)))</span>
 <span id="cb8-9">  </span>
-<span id="cb8-10">})</span></code></pre></div>
+<span id="cb8-10">})</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Test passed 😀</code></pre>
 </div>
@@ -4972,7 +4972,7 @@ font-style: inherit;">centroid</span>(y)))</span>
 </div>
 </div>
 <p>An example of this test in an actual R package can again be found <a href="https://github.com/epiverse-trace/finalsize/blob/787de9a8fa430d63d06d2bc052c7134c43d1ca69/tests/testthat/test-newton_solver.R#L76-L102">in the finalsize package</a>:</p>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">r0_low <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">r0_low <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fl" style="color: #AD0000;
 background-color: null;
@@ -5030,13 +5030,13 @@ font-style: inherit;">&gt;</span> epi_outcome_low<span class="sc" style="color: 
 background-color: null;
 font-style: inherit;">$</span>p_infected)</span>
 <span id="cb10-16">  )</span>
-<span id="cb10-17">})</span></code></pre></div>
+<span id="cb10-17">})</span></code></pre></div></div>
 </section>
 <section id="conclusion-automated-validation-vs-peer-review" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-79140"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-79140").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-85066"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-85066").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>

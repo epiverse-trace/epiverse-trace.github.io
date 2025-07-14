@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8e17ed8e5de428aaa8e66cd202acbe2b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c5746b2e9eb7cd6a185aaed986852436.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d3b4b762f0150ce6ed3a6c24a45241f6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3d46d9fceadf673092c8fa15d310743f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -136,6 +136,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE: tools for outbreak analytics</span>
     </a>
@@ -318,7 +320,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </figure>
 </div>
 <p>For a different, additional, example, we can consider a function working on patient-level data, which previously only accepted a <code>data.frame</code> as input:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Compute length of stay in hospital on a patient-level dataset</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Compute length of stay in hospital on a patient-level dataset</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param data A data.frame containing patient-level data</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param admission_column The name of the column containing the admission date</span></span>
@@ -333,10 +335,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">units =</span> <span class="st">"days"</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We want to add support for <code>linelist</code> objects, as defined in the <a href="https://epiverse-trace.github.io/linelist">linelist package</a>. <code>linelist</code> objects inherit from <code>data.frame</code> and contain an additional <code>tags</code> attribute. In particular, <code>linelist</code> objects can have a <code>date_admission</code> and <code>date_discharge</code> tag. This means we can use the tags to automatically detect the columns to use.</p>
 <p>But we want the function to keep working for standard <code>data.frame</code>s, <code>tibble</code>s, etc. We can follow the steps described in the previous post to convert the function to a generic, and add a default method to handle the old behaviour:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>compute_hospitalization_duration <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ...) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>compute_hospitalization_duration <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ...) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">UseMethod</span>(<span class="st">"compute_hospitalization_duration"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -362,7 +364,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">discharge_column =</span> <span class="st">"date_discharge"</span></span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If the function was already a generic, then a new method for the new class should be added, leaving everything else unchanged.</p>
 </section>
 <section id="adding-class-support-to-function-outputs-via-progressive-enhancement" class="level2">
@@ -371,7 +373,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <p>While the new argument approach is sometimes indeed the only possible method, there are some situations where we can have an approach truly following the progressive enhancement philosophy.</p>
 <p>In particular, this is the case when the old output was already inheriting from the parent of the new class (hence the importance of carefully choosing the parent class). In this situation, the new attributes from the new class should not interfere with existing code for downstream analysis.</p>
 <p>In this case, let’s consider a function that was previously returning an unclassed <code>data.frame</code> with patient-level data:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>create_patient_dataset <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_patients =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>create_patient_dataset <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_patients =</span> <span class="dv">10</span>) {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_id =</span> <span class="fu">seq_len</span>(n_patients),</span>
@@ -380,9 +382,9 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(data)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We want to start returning a <code>linelist</code> object. Because <code>linelist</code> objects are <code>data.frame</code>s (or <code>tibble</code>s) with an extra <code>attr</code>, it can be done in a transparent way:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>create_patient_dataset <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_patients =</span> <span class="dv">10</span>) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>create_patient_dataset <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n_patients =</span> <span class="dv">10</span>) {</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">patient_id =</span> <span class="fu">seq_len</span>(n_patients),</span>
@@ -399,7 +401,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">inherits</span>(data, <span class="st">"data.frame"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">inherits</span>(data, <span class="st">"data.frame"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For a more realistic example, you can also see the work in progress to integrate the <a href="https://github.com/socialcontactdata/contactmatrix">new <code>contactmatrix</code> standard format</a> for social contact data to the <a href="https://github.com/Bisaloo/contactdata">contactdata package</a>.</p>
 <p>This is however only true if code in downstream analysis follows good practices in checking for the class of an object <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. If existing code was testing equality of the class to a certain value, it will break when the new class value is appended. This is described in a <a href="https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html">post on the R developer blog, when base R was adding a new <code>array</code> class value to <code>matrix</code> objects</a>. Class inheritance should never be tested via <code>class(x) == "some_class"</code>. Instead, <code>inherits(x, "some_class")</code> or <code>is(x, "some_class")</code> should be used to future-proof the code and allow appending an additional in the future.</p>
 </section>

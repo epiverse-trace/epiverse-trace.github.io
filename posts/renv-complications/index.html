@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8e17ed8e5de428aaa8e66cd202acbe2b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c5746b2e9eb7cd6a185aaed986852436.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d3b4b762f0150ce6ed3a6c24a45241f6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3d46d9fceadf673092c8fa15d310743f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -136,6 +136,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE: tools for outbreak analytics</span>
     </a>
@@ -307,8 +309,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="binaries-vs-building-from-source">Binaries vs building from source</h2>
 <p>Software, including R packages, can generally be delivered in two forms: as binaries or as source code. If you are building from the source code, you may in some case need a compilation toolchain on your computer. If that toolchain is missing, it can lead to errors such as:</p>
 <blockquote class="blockquote">
-<div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ld: warning: search path '/opt/gfortran/lib' not found</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ld: library 'gfortran' not found</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ld: warning: search path '/opt/gfortran/lib' not found</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>ld: library 'gfortran' not found</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </blockquote>
 <p>Most of the time, regular users of R will not see these errors because they are installing binaries. Indeed, CRAN provides pre-compiled binaries for Windows and macOS for the last version of the package and R.</p>
 <p>With renv, you often want to install older versions of the packages, which won’t be available as binaries from CRAN. This means you are more likely to have to compile the package yourself and see this kind of errors, even though renv is not causing them.</p>
@@ -340,7 +342,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <summary>
 Click to see the full error message
 </summary>
-<div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>! Error installing package 'matrixStats':</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>! Error installing package 'matrixStats':</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>=======================================</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>* installing *source* package ‘matrixStats’ ...</span>
@@ -376,7 +378,7 @@ Click to see the full error message
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>      |             ^~~~~~~~~~~</span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>      |             DBL_MAX</span>
 <span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>make: *** [/usr/lib/R/etc/Makeconf:191: mean2.o] Error 1</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>ERROR: compilation failed for package ‘matrixStats’</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>ERROR: compilation failed for package ‘matrixStats’</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <p>The explanation for this error can be found in <a href="https://github.com/HenrikBengtsson/matrixStats/blob/799669fc6de6f55a74cab06cc6a97634aa24ab0e/NEWS.md?plain=1#L111-L113">the <code>matrixStats</code> release notes</a>, specifically the section for matrixStats 0.63.0:</p>
 <blockquote class="blockquote">

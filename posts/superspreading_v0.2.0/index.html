@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="The Epiverse-TRACE development team">
 <meta name="dcterms.date" content="2024-01-29">
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8e17ed8e5de428aaa8e66cd202acbe2b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c5746b2e9eb7cd6a185aaed986852436.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d3b4b762f0150ce6ed3a6c24a45241f6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-3d46d9fceadf673092c8fa15d310743f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -120,6 +120,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE: tools for outbreak analytics</span>
     </a>
@@ -251,25 +253,25 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <main class="content quarto-banner-title-block" id="quarto-document-content"><p>We are very excited to announce the release of a new superspreading version v0.2.0. Here is an automatically generated summary of the changes in this version.</p>
 <p>Second minor release of <em>superspreading</em>. This release enhances functions added in v0.1.0 and adds two new exported functions, and two new vignettes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/superspreading">superspreading</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/superspreading">superspreading</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="new-features" class="level2"><h2 class="anchored" data-anchor-id="new-features">New features</h2>
 <ul>
-<li>A new function (<code>calc_network_R()</code>) to estimate the reproduction number for heterogeneous networks and a vignette outlining use cases for the function from existing epidemiological literature is added (#71).</li>
+<li>A new function (<code><a href="https://epiverse-trace.github.io/superspreading/reference/calc_network_R.html">calc_network_R()</a></code>) to estimate the reproduction number for heterogeneous networks and a vignette outlining use cases for the function from existing epidemiological literature is added (#71).</li>
 <li>
-<code>probability_epidemic()</code> and <code>probability_extinct()</code> now have individual-level and population-level control in a joint framework (#70).</li>
+<code><a href="https://epiverse-trace.github.io/superspreading/reference/probability_epidemic.html">probability_epidemic()</a></code> and <code><a href="https://epiverse-trace.github.io/superspreading/reference/probability_extinct.html">probability_extinct()</a></code> now have individual-level and population-level control in a joint framework (#70).</li>
 <li>
 <code>proportion_*()</code> functions can now return proportion columns of the output <code>&lt;data.frame&gt;</code> as <code>numeric</code> when the new argument <code>format_prop</code> is set to <code>FALSE</code> (#72).</li>
 <li>A new design principles vignette to document package development is added (#68).</li>
-<li>Added a helper function (<code>ic_tbl()</code>) to improve model comparison tables (#65).</li>
+<li>Added a helper function (<code><a href="https://epiverse-trace.github.io/superspreading/reference/ic_tbl.html">ic_tbl()</a></code>) to improve model comparison tables (#65).</li>
 <li>
 <code>probability_*()</code> functions now accept <a href="https://rlang.r-lib.org/reference/dyn-dots.html">dynamic dots</a> (<a href="https://CRAN.R-project.org/package=rlang">{rlang}</a> is added as a dependency) (#82).</li>
 </ul></section><section id="breaking-changes" class="level2"><h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
 <ul>
 <li>
-<code>ind_control</code> and <code>pop_control</code> arguments replace <code>control</code> and <code>control_type</code> arguments in <code>probability_contain()</code>; and the argument default for <code>num_init_infect</code> is removed (#70).</li>
+<code>ind_control</code> and <code>pop_control</code> arguments replace <code>control</code> and <code>control_type</code> arguments in <code><a href="https://epiverse-trace.github.io/superspreading/reference/probability_contain.html">probability_contain()</a></code>; and the argument default for <code>num_init_infect</code> is removed (#70).</li>
 <li>Changed <code>epidist</code> argument to <code>offspring_dist</code> to follow Epiverse style (affects several functions) (#64).</li>
-<li>Argument in <code>proportion_transmission()</code> has been renamed from <code>sim</code> to <code>simulate</code> (#81).</li>
+<li>Argument in <code><a href="https://epiverse-trace.github.io/superspreading/reference/proportion_transmission.html">proportion_transmission()</a></code> has been renamed from <code>sim</code> to <code>simulate</code> (#81).</li>
 </ul></section><section id="minor-changes" class="level2"><h2 class="anchored" data-anchor-id="minor-changes">Minor changes</h2>
 <ul>
 <li>New package hex logo (#73).</li>

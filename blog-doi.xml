@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.8.14</generator>
+<generator>quarto-1.8.16</generator>
 <lastBuildDate>Mon, 03 Feb 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Key considerations for retiring/superseding an R package</title>
@@ -425,7 +425,7 @@ Workspace.”</span> July 15, 2024. <a href="https://doi.org/10.59350/ncsre-v2w9
 </figure>
 </div>
 <p>For a different, additional, example, we can consider a function working on patient-level data, which previously only accepted a <code>data.frame</code> as input:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#' Compute length of stay in hospital on a patient-level dataset</span></span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;
@@ -465,10 +465,10 @@ background-color: null;
 font-style: inherit;">"days"</span></span>
 <span id="cb1-14">  )</span>
 <span id="cb1-15"></span>
-<span id="cb1-16">}</span></code></pre></div>
+<span id="cb1-16">}</span></code></pre></div></div>
 <p>We want to add support for <code>linelist</code> objects, as defined in the <a href="https://epiverse-trace.github.io/linelist">linelist package</a>. <code>linelist</code> objects inherit from <code>data.frame</code> and contain an additional <code>tags</code> attribute. In particular, <code>linelist</code> objects can have a <code>date_admission</code> and <code>date_discharge</code> tag. This means we can use the tags to automatically detect the columns to use.</p>
 <p>But we want the function to keep working for standard <code>data.frame</code>s, <code>tibble</code>s, etc. We can follow the steps described in the previous post to convert the function to a generic, and add a default method to handle the old behaviour:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">compute_hospitalization_duration <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">compute_hospitalization_duration <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -537,7 +537,7 @@ background-color: null;
 font-style: inherit;">"date_discharge"</span></span>
 <span id="cb2-25">  )</span>
 <span id="cb2-26"></span>
-<span id="cb2-27">}</span></code></pre></div>
+<span id="cb2-27">}</span></code></pre></div></div>
 <p>If the function was already a generic, then a new method for the new class should be added, leaving everything else unchanged.</p>
 </section>
 <section id="adding-class-support-to-function-outputs-via-progressive-enhancement" class="level2">
@@ -546,7 +546,7 @@ font-style: inherit;">"date_discharge"</span></span>
 <p>While the new argument approach is sometimes indeed the only possible method, there are some situations where we can have an approach truly following the progressive enhancement philosophy.</p>
 <p>In particular, this is the case when the old output was already inheriting from the parent of the new class (hence the importance of carefully choosing the parent class). In this situation, the new attributes from the new class should not interfere with existing code for downstream analysis.</p>
 <p>In this case, let’s consider a function that was previously returning an unclassed <code>data.frame</code> with patient-level data:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">create_patient_dataset <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">create_patient_dataset <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -588,9 +588,9 @@ font-style: inherit;">TRUE</span>)</span>
 background-color: null;
 font-style: inherit;">return</span>(data)</span>
 <span id="cb3-9"></span>
-<span id="cb3-10">}</span></code></pre></div>
+<span id="cb3-10">}</span></code></pre></div></div>
 <p>We want to start returning a <code>linelist</code> object. Because <code>linelist</code> objects are <code>data.frame</code>s (or <code>tibble</code>s) with an extra <code>attr</code>, it can be done in a transparent way:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">create_patient_dataset <span class="ot" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">create_patient_dataset <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
@@ -658,7 +658,7 @@ font-style: inherit;">return</span>(data)</span>
 background-color: null;
 font-style: inherit;">inherits</span>(data, <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"data.frame"</span>)</span></code></pre></div>
+font-style: inherit;">"data.frame"</span>)</span></code></pre></div></div>
 <p>For a more realistic example, you can also see the work in progress to integrate the <a href="https://github.com/socialcontactdata/contactmatrix">new <code>contactmatrix</code> standard format</a> for social contact data to the <a href="https://github.com/Bisaloo/contactdata">contactdata package</a>.</p>
 <p>This is however only true if code in downstream analysis follows good practices in checking for the class of an object <sup>1</sup>. If existing code was testing equality of the class to a certain value, it will break when the new class value is appended. This is described in a <a href="https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html">post on the R developer blog, when base R was adding a new <code>array</code> class value to <code>matrix</code> objects</a>. Class inheritance should never be tested via <code>class(x) == "some_class"</code>. Instead, <code>inherits(x, "some_class")</code> or <code>is(x, "some_class")</code> should be used to future-proof the code and allow appending an additional in the future.</p>
 </section>
@@ -957,8 +957,8 @@ Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973"
 <h2 class="anchored" data-anchor-id="binaries-vs-building-from-source">Binaries vs building from source</h2>
 <p>Software, including R packages, can generally be delivered in two forms: as binaries or as source code. If you are building from the source code, you may in some case need a compilation toolchain on your computer. If that toolchain is missing, it can lead to errors such as:</p>
 <blockquote class="blockquote">
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1">ld: warning: search path '/opt/gfortran/lib' not found</span>
-<span id="cb1-2">ld: library 'gfortran' not found</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb1-1">ld: warning: search path '/opt/gfortran/lib' not found</span>
+<span id="cb1-2">ld: library 'gfortran' not found</span></code></pre></div></div>
 </blockquote>
 <p>Most of the time, regular users of R will not see these errors because they are installing binaries. Indeed, CRAN provides pre-compiled binaries for Windows and macOS for the last version of the package and R.</p>
 <p>With renv, you often want to install older versions of the packages, which won’t be available as binaries from CRAN. This means you are more likely to have to compile the package yourself and see this kind of errors, even though renv is not causing them.</p>
@@ -990,7 +990,7 @@ Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973"
 <summary>
 Click to see the full error message
 </summary>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1">! Error installing package 'matrixStats':</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode txt code-with-copy"><code class="sourceCode default"><span id="cb2-1">! Error installing package 'matrixStats':</span>
 <span id="cb2-2">=======================================</span>
 <span id="cb2-3"></span>
 <span id="cb2-4">* installing *source* package ‘matrixStats’ ...</span>
@@ -1026,7 +1026,7 @@ Click to see the full error message
 <span id="cb2-34">      |             ^~~~~~~~~~~</span>
 <span id="cb2-35">      |             DBL_MAX</span>
 <span id="cb2-36">make: *** [/usr/lib/R/etc/Makeconf:191: mean2.o] Error 1</span>
-<span id="cb2-37">ERROR: compilation failed for package ‘matrixStats’</span></code></pre></div>
+<span id="cb2-37">ERROR: compilation failed for package ‘matrixStats’</span></code></pre></div></div>
 </details>
 <p>The explanation for this error can be found in <a href="https://github.com/HenrikBengtsson/matrixStats/blob/799669fc6de6f55a74cab06cc6a97634aa24ab0e/NEWS.md?plain=1#L111-L113">the <code>matrixStats</code> release notes</a>, specifically the section for matrixStats 0.63.0:</p>
 <blockquote class="blockquote">

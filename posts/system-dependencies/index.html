@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.14">
+<meta name="generator" content="quarto-1.8.16">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8e17ed8e5de428aaa8e66cd202acbe2b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c5746b2e9eb7cd6a185aaed986852436.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-d3b4b762f0150ce6ed3a6c24a45241f6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-3d46d9fceadf673092c8fa15d310743f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -136,6 +136,8 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE: tools for outbreak analytics</span>
     </a>
@@ -303,9 +305,9 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <p>Dependencies external to the R system should be listed in the ‘SystemRequirements’ field, possibly amplified in a separate README file.</p>
 </blockquote>
 <p>This was initially purely designed for humans. No system within R itself makes use of it. One important thing to note is that this field contains free text :scream:. As such, to refer to the same piece of software, you could write either one of the following in the package <code>DESCRIPTION</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> ExternalSoftware</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> ExternalSoftware 0.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> lib-externalsoftware</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> ExternalSoftware</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> ExternalSoftware 0.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SystemRequirements</span><span class="kw">:</span><span class="at"> lib-externalsoftware</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>However, it is probably good practice check what other R packages with similar system dependencies are writing in <code>SystemRequirements</code>, to facilitate the automated identification process we describe below.</p>
 </section>
 <section id="the-general-case-everything-works-automagically" class="level2">
@@ -313,10 +315,10 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <p>If while reading the previous section, you could already sense the problems linked to the fact <code>SystemRequirements</code> is a free-text field, fret not! In the very large majority of cases, setting up continuous integration in an R package with system dependencies is exactly the same as with any other R package.</p>
 <p>Using, as often, the supercharged usethis package, you can automatically create the relevant GitHub Actions workflow file in your project <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action</span>(<span class="st">"check-standard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action</span>(<span class="st">"check-standard"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The result is:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow derived from https://github.com/r-lib/actions/tree/v2/examples</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow derived from https://github.com/r-lib/actions/tree/v2/examples</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
@@ -364,13 +366,13 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> r-lib/actions/check-r-package@v2</span></span>
 <span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">upload-snapshots</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">upload-snapshots</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You may notice there is no explicit mention of system dependencies in this file. Yet, if we use this workflow in an R package with system dependencies, everything will work out-of-the-box in most cases. So, when are system dependencies installed? And how the workflow does even know which dependencies to install since the <code>SystemRequirements</code> is free text that may not correspond to the exact name of a library?</p>
 <p>The magic happens in the <code>r-lib/actions/setup-r-dependencies</code> step. If you want to learn about it, you can read the <a href="https://github.com/r-lib/actions/blob/756399d909bf9c180bbdafe8025f794f51f2da02/setup-r-dependencies/action.yaml">source code of this step</a>. It is mostly written in R but it contains a lot of bells and whistles to handle messaging within the GitHub Actions context and as such, it would be too long to go through it line by line in this post. However, at a glance, you can notice many mentions of the <a href="https://pak.r-lib.org/">pak R package</a>.</p>
 <p>If it’s the first time you’re hearing about the pak package, we strongly recommend we go through the <a href="https://pak.r-lib.org/reference/features.html">list of the most important pak features</a>. It is <del>paked</del> packed with many very powerful features. The specific feature we’re interested in here is the automatic install of system dependencies via <a href="https://pak.r-lib.org/reference/local_system_requirements.html"><code>pak::pkg_sysreqs()</code></a>, which in turn uses <code>pkgdepends::sysreqs_install_plan()</code>.</p>
 <p>We now understand more precisely where the magic happens but it still doesn’t explain how pak is able to know which precise piece of software to install from the free text <code>SystemRequirements</code> field. As often when you want to increase your understanding, it is helpful to <a href="https://blog.r-hub.io/2019/05/14/read-the-source/">read the source</a>. While browsing pkgdepends source code, we see a call to <a href="https://github.com/r-hub/r-system-requirements" class="uri">https://github.com/r-hub/r-system-requirements</a>.</p>
 <p>This repository contains a set of <a href="https://github.com/rstudio/r-system-requirements/tree/main/rules">rules</a> as json files which match unformatted software name via regular expressions to the exact libraries for each major operating system. Let’s walk through an example together:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"patterns"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"</span><span class="ch">\\</span><span class="st">bnvcc</span><span class="ch">\\</span><span class="st">b"</span><span class="ot">,</span> <span class="st">"</span><span class="ch">\\</span><span class="st">bcuda</span><span class="ch">\\</span><span class="st">b"</span><span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"dependencies"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
@@ -383,7 +385,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="ot">]</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The regular expression tells that each time a package lists something as <code>SystemRequirements</code> with the word “nvcc” or “cuda”, the corresponding Ubuntu library to install is <code>nvidia-cuda-dev</code>.</p>
 <p>This interaction between <code>r-system-requirements</code> and pak is also documented in pak’s dev version, with extra information about how the <code>SystemRequirements</code> field is extracted in different situations: <a href="https://pak.r-lib.org/dev/reference/sysreqs.html#how-it-works" class="uri">https://pak.r-lib.org/dev/reference/sysreqs.html#how-it-works</a></p>
 </section>
@@ -396,7 +398,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <p>To identify if this is the case, you need to find the file containing the specific rule for the system dependency of interest in <code>r-system-requirements</code>, and test the regular expression on the contents of <code>SystemRequirements</code>.</p>
 <p>If we re-use the cuda example from the previous section and we are wondering why it is not automatically installed for a package specifying “cudaa”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_match</span>(<span class="st">"cudaa"</span>, <span class="fu">c</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">bnvcc</span><span class="sc">\\</span><span class="st">b"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">bcuda</span><span class="sc">\\</span><span class="st">b"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stringr<span class="sc">::</span><span class="fu">str_match</span>(<span class="st">"cudaa"</span>, <span class="fu">c</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">bnvcc</span><span class="sc">\\</span><span class="st">b"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">bcuda</span><span class="sc">\\</span><span class="st">b"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1]
 [1,] NA  
@@ -416,7 +418,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <section id="directly-in-the-github-actions-workflow" class="level4">
 <h4 class="anchored" data-anchor-id="directly-in-the-github-actions-workflow">Directly in the GitHub Actions workflow</h4>
 <p>You can insert the installation steps you used locally in the GitHub Actions workflow file. So, instead of having the usual structure, you have an extra step “Install extra system dependencies manually” that may look something like this:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobs:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobs:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  R-CMD-check:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    runs-on: ubuntu-latest</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    env:</span>
@@ -440,13 +442,13 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>          extra-packages: any::rcmdcheck</span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>          needs: check</span>
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>      - uses: r-lib/actions/check-r-package@v2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can see <a href="https://github.com/sbfnk/rbi/blob/9b05a24ce42f7b1b53481370f3bde3dcd86bca02/.github/workflows/R-CMD-check.yaml">a real-life example in the rbi R package</a>.</p>
 </section>
 <section id="using-a-docker-image-in-github-actions" class="level4">
 <h4 class="anchored" data-anchor-id="using-a-docker-image-in-github-actions">Using a Docker image in GitHub Actions</h4>
 <p>Alternatively, you can do the manual installation in a Docker image and use this image in your GitHub Actions workflow. This is a particularly good solution if there is already a public Docker image or you already wrote a <code>DOCKERFILE</code> for your own local development purposes. If you use a public image, you can follow <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-running-a-job-within-a-container">the steps in the official documentation</a> to integrate it to your GitHub Actions job. If you use a <code>DOCKERFILE</code>, you can follow <a href="https://stackoverflow.com/q/61154750/4439357">the answers to this stackoverflow question</a> (in a nutshell, use <code>docker compose</code> in your job or publish the image first and then follow the official documentation).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>jobs:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode diff code-with-copy"><code class="sourceCode diff"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>jobs:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  R-CMD-check:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    runs-on: ubuntu-latest</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="va">+    container: ghcr.io/org/repo:main</span></span>
@@ -465,7 +467,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>          extra-packages: any::rcmdcheck</span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>          needs: check</span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      - uses: r-lib/actions/check-r-package@v2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      - uses: r-lib/actions/check-r-package@v2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can again see <a href="https://github.com/sbfnk/rbi/pull/46/files">a real-life example in the rbi R package</a>.</p>
 </section>
 </section>
