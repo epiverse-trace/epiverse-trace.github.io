@@ -1,0 +1,15 @@
+{
+  "hash": "72ae3b7079ead8e908a280d082fbbaf2",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"superspreading v0.4.0\"\nauthor:\n  - name: \"The Epiverse-TRACE development team\"\ndate: \"2025-07-16\"\ncategories: [new-release]\ncode-link: true\n---\n\n<!-- markdownlint-disable-next-line -->\nWe are very excited to announce the release of a new [superspreading](https://epiverse-trace.github.io/superspreading) version v0.4.0.\nHere is an automatically generated summary of the changes in this version.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(superspreading)\n```\n:::\n\n\nThe fourth minor release of the _superspreading_ package contains new functionality, a new vignette and various minor improvements to documentation.\n\nWith this release the development status of the package has been updated from _experimental_ to _stable_. \n\n## New features\n\n* The `probability_emergence()` function has been added to calculate the probability that a pathogen introduced to humans can evolve and emerge to cause a sustained human-to-human outbreak, implementing and extending the framework of [Antia et al. (2003)](https://doi.org/10.1038/nature02104) (#124, #133).\n\n* A new vignette, `emergence.Rmd`, has been added that covers the functionality of `probability_emergence()` and reproduces the two figures from [Antia et al. (2003)](https://doi.org/10.1038/nature02104) as well as a figure using the multiple introductions extension (#124, #133).\n\n* Alt-text has been added to all plots across all vignettes (#129).\n\n## Breaking changes\n\n* The `percent_transmission` argument in `proportion_transmission()` has been renamed to `prop_transmission` (#130).\n\n## Minor changes\n\n* An `.aspell/` folder is added to the package including `defaults.R` and `superspreading.rds` to supply a wordlist to the CRAN spell checking to avoid quoting names in the `DESCRIPTION` (#127). \n\n* Package and function documentation has been updated. Vignette changes include minor reworking of text, updating any information or links that were outdated; function documentation is styled more consistently and follows the [Tidyverse style guide](https://style.tidyverse.org/documentation.html) (#131, #134).\n\n* Internal code style has been updated to adhere to current best practice (#125).\n\n* The package lifecycle badge has been updated from _experimental_ to _stable_. CRAN status, CRAN downloads, repo status and Zenodo DOI badges have been added to the `README` (#119, #132).\n\n* The {pkgdown} `development: mode` has been set to `auto` now the package is hosted on CRAN (#118).\n\n## Bug fixes\n\n* None\n\n## Deprecated and defunct\n\n* None\n\n\n## Acknowledgements\n\n[&#x0040;chartgerink](https://github.com/chartgerink) [&#x0040;joshwlambert](https://github.com/joshwlambert)\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
