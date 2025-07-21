@@ -24,6 +24,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/superspreading_v0.4.0/index.html",
       "/posts/safeframe_v1.0.0/index.html",
       "/posts/linelist_v2.0.0/index.html",
       "/posts/cleanepi_v1.1.0/index.html",
