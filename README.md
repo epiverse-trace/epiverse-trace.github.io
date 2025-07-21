@@ -73,7 +73,9 @@ This website is built with [Quarto](https://quarto.org/) and features:
 
 ## Contributing
 
-We welcome contributions! Feel encouraged to open up pull requests for small changes or existing issues. If you want to discuss a new package, [please use our discussion board first](https://github.com/orgs/epiverse-trace/discussions).
+We welcome contributions! Feel encouraged to open up pull requests for small changes or existing issues, and refer to our [Contributing guide](https://github.com/epiverse-trace/.github/blob/main/CONTRIBUTING.md) for further guidance.
+
+If you want to discuss a new package, [please use our discussion board first](https://github.com/orgs/epiverse-trace/discussions).
 
 ### Scheduling Pull Requests
 For time-sensitive content (e.g., blog posts), you can schedule merges by adding `/schedule <datetime>` at the end of your PR description using ISO8601 format (e.g., `/schedule 2024-12-25T10:00:00Z`).
