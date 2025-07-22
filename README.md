@@ -12,8 +12,7 @@ We maintain R packages covering the complete epidemiological analysis pipeline:
 
 - **Data Management**: Import ([`readepi`](https://epiverse-trace.github.io/readepi)), clean ([`cleanepi`](https://epiverse-trace.github.io/cleanepi)), simulate ([`simulist`](https://epiverse-trace.github.io/simulist)), and validate ([`linelist`](https://epiverse-trace.github.io/linelist)) epidemiological data
 - **Parameter Estimation**: Access epidemiological parameters ([`epiparameter`](https://epiverse-trace.github.io/epiparameter)), estimate case fatality ratios ([`cfr`](https://epiverse-trace.github.io/cfr)), and analyze seroprevalence ([`serofoi`](https://epiverse-trace.github.io/serofoi))
-- **Modeling & Analysis**: Simulate epidemic dynamics ([`epidemics`](https://epiverse-trace.github.io/epidemics)), calculate final outbreak size ([`finalsize`](https://epiverse-trace.github.io/finalsize)), and assess vaccine efficacy ([`vaccineff`](https://epiverse-trace.github.io/vaccineff))
-- **Specialized Tools**: Analyze transmission chains ([`epichains`](https://epiverse-trace.github.io/epichains)), superspreading events ([`superspreading`](https://epiverse-trace.github.io/superspreading)), and vector-borne diseases ([`epiCo`](https://epiverse-trace.github.io/epiCo))
+- **Modeling & Analysis**: Simulate epidemic dynamics ([`epidemics`](https://epiverse-trace.github.io/epidemics)), calculate final outbreak size ([`finalsize`](https://epiverse-trace.github.io/finalsize)), and assess vaccine efficacy ([`vaccineff`](https://epiverse-trace.github.io/vaccineff)), analyze transmission chains ([`epichains`](https://epiverse-trace.github.io/epichains)), superspreading events ([`superspreading`](https://epiverse-trace.github.io/superspreading)), and vector-borne diseases ([`epiCo`](https://epiverse-trace.github.io/epiCo))
 
 All packages are built on methods validated through real epidemic responses including cholera, COVID-19, dengue, Ebola, and Zika outbreaks.
 
@@ -21,11 +20,11 @@ All packages are built on methods validated through real epidemic responses incl
 
 This website is built with [Quarto](https://quarto.org/) and features:
 
-- **Blog**: Technical articles, package releases, and community updates
-- **Documentation**: Getting started guides and learning materials
-- **Resources**: How-to guides and tutorials
-- **Community**: Contributor profiles and team information
-- **Presentations**: Conference talks and workshop materials
+- [**Blog**](https://epiverse-trace.github.io/blog.html): Technical articles, package releases, and community updates
+- **Documentation**: [Getting started](https://epiverse-trace.github.io/getting-started.html) guides and [learning materials](https://epiverse-trace.github.io/learn.html)
+- [**Resources**](https://epiverse-trace.github.io/resources.html): How-to guides and tutorials
+- [**Community**](https://epiverse-trace.github.io/people.html): Contributor profiles and team information
+- [**Presentations**](https://epiverse-trace.github.io/presentations.html): Conference talks and workshop materials
 
 ```
 ├── _components/          # React components for interactive elements
