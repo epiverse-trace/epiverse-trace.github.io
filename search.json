@@ -917,312 +917,81 @@
     "text": "Epiverse-TRACE packages\nThese are built on methods and analysis that have informed epidemic response to infections including cholera, COVID, dengue, diphtheria, Ebola, influenza, and Zika.\n\nEarly tasks\nMiddle tasks\nLate tasks\n\n\n\n\n\nTools for reading data\n\n\n\n\n\nOpen data for Colombia\n\n\n\n\n\nTools for cleaning data\n\n\n\n\n\nSimulate outbreak data\n\n\n\n\n\nTagging and validating individual data\n\n\n\n\n\nTools for epidemiological parameters\n\n\n\n\n\nAutomated report for SIVIGILA data\n\n\n\n\n\nPipelines for common tasks\n\n\n\n\n\nSeverity estimation\n\n\n\n\n\nEstimate force of infection from serology\n\n\n\n\n\nTools for vector-borne infections\n\n\n\n\n\nSimulate vector-borne outbreaks\n\n\n\n\n\nSimulation and analysis of transmission chains\n\n\n\n\n\nAnalysis of transmission variation\n\n\n\n\n\nCalculate epidemic final size\n\n\n\n\n\nSimulate epidemic dynamics\n\n\n\n\n\nAnalyze vaccine efficacy"
   },
   {
-    "objectID": "get-involved.html",
-    "href": "get-involved.html",
-    "title": "Get involved",
+    "objectID": "slides/interoperability-epiverse/index.html",
+    "href": "slides/interoperability-epiverse/index.html",
+    "title": "Interoperability strategy for the Epiverse",
     "section": "",
-    "text": "Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:\n\nStandardise: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See our blueprint for more.\nConsult us: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g. our team currently contributes to the development of GoDataR.\n\nIn the first instance, we encourage you to post general questions on our discussion board so that other community members can contribute.\nFor questions related to a specific package, please contact the maintainer (see the repositories of packages and their authors).\nFor all other questions which fall outside the above categories, please contact epiverse@data.org. You can also sign up to our mailing list, or follow us on Twitter at Epiverse_TRACE.\n\nCo-create: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the WHO collaborative epidemiological parameters initiative.\nIntegrate your tools: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g. estimating the transmissibility of an infectious disease during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.\nParticipate: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our GitHub repository, with your contributions credited, e.g. by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board."
+    "text": "This presentation was done internally to the Epiverse-TRACE team, and to the Epiverse-TRACE funders.\n\n\n\n\nReuseCC BY 4.0CitationBibTeX citation:@online{gruson2023,\n  author = {Gruson, Hugo},\n  title = {Interoperability Strategy for the {Epiverse}},\n  date = {2023-10-01},\n  url = {https://epiverse-trace.github.io/slides/interoperability-epiverse/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGruson, Hugo. 2023. “Interoperability Strategy for the\nEpiverse.” October 1, 2023. https://epiverse-trace.github.io/slides/interoperability-epiverse/."
   },
   {
-    "objectID": "get-involved.html#how-to-collaborate-with-epiverse-on-software-development",
-    "href": "get-involved.html#how-to-collaborate-with-epiverse-on-software-development",
-    "title": "Get involved",
+    "objectID": "slides/2024-4S-EASST/index.html",
+    "href": "slides/2024-4S-EASST/index.html",
+    "title": "The twin peaks of the global and the local: worldwide and modest infrastructures for global health",
     "section": "",
-    "text": "Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:\n\nStandardise: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See our blueprint for more.\nConsult us: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g. our team currently contributes to the development of GoDataR.\n\nIn the first instance, we encourage you to post general questions on our discussion board so that other community members can contribute.\nFor questions related to a specific package, please contact the maintainer (see the repositories of packages and their authors).\nFor all other questions which fall outside the above categories, please contact epiverse@data.org. You can also sign up to our mailing list, or follow us on Twitter at Epiverse_TRACE.\n\nCo-create: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the WHO collaborative epidemiological parameters initiative.\nIntegrate your tools: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g. estimating the transmissibility of an infectious disease during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.\nParticipate: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our GitHub repository, with your contributions credited, e.g. by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board."
+    "text": "Presentation (30min including questions) at the Biannual Conference of the Society for Social Studies of Science (4S) and the European Association for the Study of Science and Technology (EASST) in Amsterdam, under the “Issues of scale: the global and the local in health research projects with a worldwide context” category."
   },
   {
-    "objectID": "get-involved.html#cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace",
-    "href": "get-involved.html#cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace",
-    "title": "Get involved",
-    "section": "¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?",
-    "text": "¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?\nEl objetivo de Epiverse-TRACE es promover el desarrollo de software para análisis epidemiológico que sea generalizable, escalable y dirigido por la comunidad de usuarios, y que se integre con otras herramientas para crear un ecosistema sostenible. Existen diferentes vías que grupos de investigación y desarrolladores externos pueden utilizar para colaborar con Epiverse, ordenadas de menor a mayor nivel de contacto con el equipo:\n\nEstandarización: desarrollando herramientas independientemente que cumplan con los principios establecidos por Epiverse, y que sean interoperables con sus herramientas.\nConsulta: poniéndose en contacto con miembros del equipo de Epiverse, que pueden contribuir al desarrollo de herramientas externas. Esto garantiza que esas herramientas sean compatibles con paquetes desarrollados por Epiverse, por ejemplo, nuestro equipo actualmente colabora con el desarrollo de GoDataR.\nCo-desarrollo: desarrollando herramientas junto con miembros de Epiverse, que despues se quedarán en plataformas externas, por ejemplo, la iniciativa de la OMS para parámetros epidemiológicos.\n\nIntegración: Epiverse proporciona sistemas para integrar herramientas, o pipelines, que ayudan a los usuarios a optimizar el análisis de problemas epidemiológicos concretos, por ejemplo, para estimar la transmisión de enfermedades. Incorporar tus herramientas a estos sistemas integrados contribuirá a su visibilidad en la comunidad de usuarios de Epiverse.\nParticipación: contribuyendo al desarrollo de herramientas de Epiverse, en las que aparecerás como coautor en nuestra página web. Para ello, contribuye a issues abiertos en los repositorios de Epiverse, o añade sugerencias, ideas y feedback comentando en nuestro panel de discusión.\n\n\n\n\nFigure of contributions, inspired by CSCCE community participation model (Woodley, Lou, & Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)"
-  },
-  {
-    "objectID": "slides/2024-useR/index.html",
-    "href": "slides/2024-useR/index.html",
-    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
-    "section": "",
-    "text": "Presentation (20min including questions) at the useR!2024 conference, under the “R workflow + deployment + production” category."
-  },
-  {
-    "objectID": "slides/2024-useR/index.html#abstract",
-    "href": "slides/2024-useR/index.html#abstract",
-    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
+    "objectID": "slides/2024-4S-EASST/index.html#abstract",
+    "href": "slides/2024-4S-EASST/index.html#abstract",
+    "title": "The twin peaks of the global and the local: worldwide and modest infrastructures for global health",
     "section": "Abstract",
-    "text": "Abstract\nIt is common for R packages answering the same need to have different input and output formats. This may result in a large amount of spent time to reformat the inputs and outputs whenever a specific part of the data pipeline is swapped out to use a different R package. This time can come at a huge cost whenever results are needed quickly, such as in pandemic response. Using S3 classes providing standard formats that all downstream packages use may be a good solution to this issue, thus improving the interoperability within the global R package ecosystem. However, this approach comes with technical and social challenges. Here, I present the work we are doing to implement and encourage the adoption of standard S3 classes in epidemiology. I highlight key findings and challenges such as how to preserve backward compatibility in existing packages and give recommendation for future similar endeavors."
+    "text": "Abstract\nGlobal health projects have long emphasized the digital transformation of Global South countries to align their contexts with global infrastructures. Much of this emphasis is done by pointing at these contexts as flawed: interoperability, standards and classifications, and human capacity as well are seen as insufficient, too local, and disorganized. Consequently, international funding is directed towards enhancing capacity and infrastructure in these regions to facilitate smoother data exchange, with digital transformation promising seamless transitions across different scales. What happens if we conduct an inversion of this narrative? Could we follow global infrastructures in their flaws when meeting “the local”?\nBased on a robust tradition of reflections in Science and Technology Studies, Critical Global Health, and Critical Data Studies about context (De Laet M., 2000; Tsing, A., 2005; Adams, 2016; Biehl 2016; Montgomery, C. M., Kingori, P., Sariola, S., & Engel, N, 2017; Lee, F 2021; 2023; Hepp, A; Jarke J; Kramp L 2022), we propose a symmetrical understanding of local-global relations in Global Health projects and enterprises. For this, we offer some examples in which we can see the operation of this kind of understanding, drawing from our involvement with two global projects on emergency preparedness, targeting the production of technologies for the analysis and control of infectious diseases."
   },
   {
-    "objectID": "slides/2024-useR/index.html#slides",
-    "href": "slides/2024-useR/index.html#slides",
-    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
+    "objectID": "slides/2024-4S-EASST/index.html#slides",
+    "href": "slides/2024-4S-EASST/index.html#slides",
+    "title": "The twin peaks of the global and the local: worldwide and modest infrastructures for global health",
     "section": "Slides",
     "text": "Slides"
   },
   {
-    "objectID": "slides/2024-useR/index.html#questions",
-    "href": "slides/2024-useR/index.html#questions",
-    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
-    "section": "Questions",
-    "text": "Questions\n\nHow much of the tips presented here are applicable to S4?\nIn which situations would you recommend S3 over R6?\nWhat do you think of the upcoming S7 framework?"
-  },
-  {
-    "objectID": "slides/showcase-january-2023/index.html",
-    "href": "slides/showcase-january-2023/index.html",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "objectID": "slides/harmonize-july-2023/index.html",
+    "href": "slides/harmonize-july-2023/index.html",
+    "title": "Global Health Resilience Research Visit",
     "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+    "text": "Three talks at a workshop at the Barcelona Supercomputing Center titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics."
   },
   {
-    "objectID": "slides/showcase-january-2023/index.html#finalsize-slides",
-    "href": "slides/showcase-january-2023/index.html#finalsize-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "finalsize slides",
-    "text": "finalsize slides"
-  },
-  {
-    "objectID": "slides/showcase-january-2023/index.html#epiparameter-slides",
-    "href": "slides/showcase-january-2023/index.html#epiparameter-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "epiparameter slides",
-    "text": "epiparameter slides"
-  },
-  {
-    "objectID": "slides/showcase-january-2023/index.html#episoap-slides",
-    "href": "slides/showcase-january-2023/index.html#episoap-slides",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "episoap slides",
-    "text": "episoap slides"
-  },
-  {
-    "objectID": "slides/showcase-january-2023/index.html#recording",
-    "href": "slides/showcase-january-2023/index.html#recording",
-    "title": "Epiverse-TRACE Winter 2023 showcase",
-    "section": "Recording",
-    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
-  },
-  {
-    "objectID": "slides/2024-10-GPSDD/index.html",
-    "href": "slides/2024-10-GPSDD/index.html",
-    "title": "Demo: Comparing vaccination strategies with finalsize",
-    "section": "",
-    "text": "This presentation was given for a GPSSD lecture in their “Climate and Health Data in Action” curriculum on October 9, 2024.\nThe demo was part of a larger presentation by Maguette Ndong on Epiverse and its implementation in Africa."
-  },
-  {
-    "objectID": "slides/2024-10-GPSDD/index.html#slides",
-    "href": "slides/2024-10-GPSDD/index.html#slides",
-    "title": "Demo: Comparing vaccination strategies with finalsize",
-    "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/2024-10-GPSDD/index.html#transcript",
-    "href": "slides/2024-10-GPSDD/index.html#transcript",
-    "title": "Demo: Comparing vaccination strategies with finalsize",
-    "section": "Transcript",
-    "text": "Transcript\nIn this presentation, I’ll demonstrate what Epiverse tools can do and explain why they need to be accessible to everyone.\nLet’s focus on a fictional situation. Imagine an outbreak is ongoing in Senegal. The good news in this scenario is that we have a vaccine with 80% efficacy, but the problem is that we only have 1 million doses, which isn’t enough to vaccinate the entire population. A key question for public health officials or decision-makers is how to distribute these limited doses.\nTo explain why different distribution methods can lead to different outcomes, I need to discuss the concept of herd immunity. In a partially immunized population, even individuals who are not vaccinated can receive indirect protection from those who are vaccinated. For example, in a fictional population of individuals A, B, C, and D, if A is infected, they could infect B, who might then infect C. However, if B is vaccinated, the transmission chain is broken, and C, though unvaccinated, remains protected. This indirect protection is a key element of herd immunity.\nWith this understanding, we can ask how to distribute the 1 million doses to maximize the overall impact. Let’s consider three scenarios:\n\nScenario A: Give all the doses to the youngest age group\nScenario B: Give all the doses to the oldest age group\nScenario C: Distribute the doses across the entire population without prioritizing any specific age group\n\nTo analyze these scenarios, we use the finalsize tool in R. This tool requires five inputs:\n\nThe reproduction number, which indicates how contagious the pathogen is. For example, for COVID-19, it was around 2-3.\nThe contact matrix, which shows how frequently different age groups interact. For instance, teenagers tend to interact more with their peers.\nThe population pyramid, indicating the size of each age group. For example, in Senegal, the pyramid might look like a triangle, with many young individuals and fewer older individuals.\nVaccine efficacy, describing how well the vaccine protects vaccinated individuals compared to unvaccinated ones.\nThe vaccine distribution strategy, representing scenarios A, B, or C.\n\nRunning this tool produces output in the form of tables and visualizations. This table shows:\n\nAge groups in one column\nSusceptibility groups (vaccinated or unvaccinated) in another column\nThe proportion of infected individuals in each group\n\nWhile tables are informative, visualizations often make it easier to understand the results. For instance, a plot might show:\n\nThe number of infections on the y-axis\nAge groups on the x-axis, with the youngest on the left and the oldest on the right\nDifferent colors representing the three scenarios: red for distributing doses evenly without prioritization, green for prioritizing older individuals, and blue for prioritizing younger individuals\n\nFrom this visualization, two insights emerge:\n\nSumming the total number of infections across all age groups reveals that distributing doses evenly (Scenario C) results in fewer infections overall than prioritizing either the youngest or oldest groups. This means that in this fictional scenario, it’s better to vaccinate as many people as possible without prioritizing a specific age group.\nInterestingly, vaccinating everyone provides greater indirect protection to the youngest age group than prioritizing them directly. This result may seem counterintuitive, but it highlights the significant indirect benefits of herd immunity.\n\nThe model presented here is simple, assuming uniform vaccine efficacy and single-dose administration. However, the tool can handle much more complex scenarios. For example, we could account for age-specific fatality rates, regional differences in contact patterns, or vaccines requiring multiple doses. While I used a straightforward example, these tools allow for tailored, detailed analyses for any context.\nIt’s important to emphasize that these insights are specific to this fictional scenario in Senegal. If we applied the same analysis in another country, like France, the results could be entirely different due to differences in population structure and contact patterns. This variability underscores the importance of tailoring analyses to local contexts.\nThis brings me to the idea of localism, which is central to our work at data.org. Insights derived from one region may not be applicable elsewhere due to differences in population pyramids and interaction patterns. This is why it’s critical to make these tools open-source and freely accessible, enabling every country to conduct its own analyses."
-  },
-  {
-    "objectID": "slides/epireview-hackathon-july-2024/index.html",
-    "href": "slides/epireview-hackathon-july-2024/index.html",
-    "title": "Interoperability between {epireview} & Epiverse-TRACE",
-    "section": "",
-    "text": "Presentation (15 minutes) at the Epireview hackathon hosted by Imperial College London. The hackathon was attended by the Pathogen Epidemiology Review Group (PERG) at Imperial, Epiverse-TRACE members from the London School of Hygiene and Tropical Medicine, and the World Health Organisation Collaboratory.\nAfter the presentation, the hackathon focused on enhancing interoperability between the {epireview} R package and Epiverse-TRACE R packages."
-  },
-  {
-    "objectID": "slides/epireview-hackathon-july-2024/index.html#slides",
-    "href": "slides/epireview-hackathon-july-2024/index.html#slides",
-    "title": "Interoperability between {epireview} & Epiverse-TRACE",
-    "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/fosdem-2024/index.html",
-    "href": "slides/fosdem-2024/index.html",
-    "title": "Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem",
-    "section": "",
-    "text": "These slides were prepared for a lightning talk at FOSDEM 2024, in the “Public Code and Digital Public Goods” devroom, organized by the Foundation for Public Code and the Digital Public Goods Alliance."
-  },
-  {
-    "objectID": "slides/fosdem-2024/index.html#transcript",
-    "href": "slides/fosdem-2024/index.html#transcript",
-    "title": "Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem",
-    "section": "Transcript",
-    "text": "Transcript\nHi, my name is Hugo. I’m the lead software architect at data.org. Today, I’d like to discuss the work we’re doing to build a harmonious ecosystem for epidemiology as part of the Epiverse-TRACE Project.\nScientific research increasingly relies on data science and computational tools across fields like epidemiology, climate science, and econometrics. However, maintaining and updating data pipelines has become complex. Changing a single step or using different software can require hours of data wrangling just to format inputs and outputs correctly. This maintenance is especially challenging during crises when rapid results are essential. When the next pandemic hits, we need to focus on actual science, not basic data wrangling.\nCurrently, we have some good isolated free software tools, but a robust ecosystem as a whole is what we truly need. This is precisely the goal of the Epiverse-TRACE project: to harmonize the epidemiology tooling ecosystem in R. We do this by making existing tools interoperable, supporting tools to adopt global standards (like those from the Digital Public Goods Alliance or organizations like rOpenSci), and fostering a sustainable community around these ideals.\nOur goal isn’t to erase established communities. We recognize the value of diverse solutions within a rich ecosystem. However, interoperability within this ecosystem is essential. To achieve this, we involve the community, working with both user groups such as public health institutes and NGOs and developer communities.\nOur approach has already shown success. We’ve packaged and released many unmaintained, non-portable codebases and more tools than I can cover here. Notably, two of these tools are already registered Digital Public Goods, and one is in the process of submission.\nBuilding a sustainable network of collaborators is exciting and ambitious, but it also comes with challenges. Research and academia are competitive spaces, which can make collaboration difficult. Additionally, communication in a multi-stakeholder network with numerous collaborators can lead to delays and miscommunication. Sustaining this effort is challenging, especially with uncertain funding in this space.\nTo conclude, responding effectively to the next crisis, whether it’s the climate crisis or the next pandemic, will require interoperable tools built through collaborative, multi-stakeholder projects. While necessary, these complex communities bring challenges in communication, collaboration, and sustainability. Ultimately, what may appear to be a technical challenge often becomes a communication and social challenge as well.\nWith that, I’ll end with a picture of our core project team. Please feel free to talk with me if you’re interested in learning more. Thank you."
-  },
-  {
-    "objectID": "slides/rslondon-southeast-july-2023/index.html",
-    "href": "slides/rslondon-southeast-july-2023/index.html",
-    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
-    "section": "",
-    "text": "This was a lightning talk at a workshop at the RSLondonSouthEast2023 workshop held at the Imperial College London’s South Kensington Campus. The talk was entitled: “Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}”. The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles."
-  },
-  {
-    "objectID": "slides/rslondon-southeast-july-2023/index.html#abstract",
-    "href": "slides/rslondon-southeast-july-2023/index.html#abstract",
-    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
-    "section": "Abstract",
-    "text": "Abstract\nOccasionally, R package developers might decide to supersede their packages with a new implementation to reflect their evolved thinking and experiences in package design. Examples include {ggplot2} and {reshape2}. In multiple contributor projects, this often comes with non-trivial decisions, including name changes, deprecations, and the preservation of git histories. These decisions are non-trivial, especially in epidemiology and public health where reproducibility is a key consideration. {bpmodels}, an R package for analyzing infectious disease data, is currently in the same situation. {bpmodels} was independently developed in 2019, but the Epiverse-TRACE Initiative, which aims to develop an interoperable ecosystem for outbreak analytics, now provides the capacity to maintain it. This involves a re-imagination of the package, including a name change to {epichains}, planned integration of existing and new functionalities, and object-oriented programming. This talk will highlight some conundrums faced during this process, which is ongoing, and provide the opportunity for mutual learning."
-  },
-  {
-    "objectID": "slides/rslondon-southeast-july-2023/index.html#talk-slides",
-    "href": "slides/rslondon-southeast-july-2023/index.html#talk-slides",
-    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
+    "objectID": "slides/harmonize-july-2023/index.html#talk-slides",
+    "href": "slides/harmonize-july-2023/index.html#talk-slides",
+    "title": "Global Health Resilience Research Visit",
     "section": "Talk slides",
     "text": "Talk slides"
   },
   {
-    "objectID": "slides/showcase-april-2023/index.html",
-    "href": "slides/showcase-april-2023/index.html",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "objectID": "slides/juniper-may-2023/index.html",
+    "href": "slides/juniper-may-2023/index.html",
+    "title": "Juniper seminar on improving software for epidemic response",
     "section": "",
-    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
   },
   {
-    "objectID": "slides/showcase-april-2023/index.html#sivirep-slides",
-    "href": "slides/showcase-april-2023/index.html#sivirep-slides",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "sivirep slides",
-    "text": "sivirep slides"
+    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
+    "href": "slides/juniper-may-2023/index.html#talk-slides",
+    "title": "Juniper seminar on improving software for epidemic response",
+    "section": "Talk slides",
+    "text": "Talk slides"
   },
   {
-    "objectID": "slides/showcase-april-2023/index.html#epico-slides",
-    "href": "slides/showcase-april-2023/index.html#epico-slides",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "epiCo slides",
-    "text": "epiCo slides"
-  },
-  {
-    "objectID": "slides/showcase-april-2023/index.html#serofoi-slides",
-    "href": "slides/showcase-april-2023/index.html#serofoi-slides",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "serofoi slides",
-    "text": "serofoi slides"
-  },
-  {
-    "objectID": "slides/showcase-april-2023/index.html#recording",
-    "href": "slides/showcase-april-2023/index.html#recording",
-    "title": "Epiverse-TRACE Spring 2023 showcase",
-    "section": "Recording",
-    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html",
-    "href": "slides/harmonious-ecosystem/index.html",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "objectID": "slides/idm-november-2024/index.html",
+    "href": "slides/idm-november-2024/index.html",
+    "title": "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling",
     "section": "",
-    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
+    "text": "This presentation (18 minutes, plus 5 minutes for questions) was delivered at the inaugural Infectious Disease Modelling (IDM) Conference in Bangkok, Thailand on 8th November 2024."
   },
   {
-    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
-    "href": "slides/harmonious-ecosystem/index.html#abstract",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Abstract",
-    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#slides",
-    "href": "slides/harmonious-ecosystem/index.html#slides",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "Questions from the audience",
-    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
-  },
-  {
-    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
-    "href": "slides/harmonious-ecosystem/index.html#see-also",
-    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
-    "section": "See also",
-    "text": "See also\n\nThe companion post on our blog"
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "This blog is available via RSS1 and on R-bloggers."
-  },
-  {
-    "objectID": "blog.html#footnotes",
-    "href": "blog.html#footnotes",
-    "title": "Blog",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nWhat is RSS? You can learn more about it with this great introductory post.↩︎"
-  },
-  {
-    "objectID": "slides/who-mpox-analytics-September-2024/index.html",
-    "href": "slides/who-mpox-analytics-September-2024/index.html",
-    "title": "Common analytics tasks and available R tools/packages",
-    "section": "",
-    "text": "This presentation (15 min including questions) was given at the WHO Mpox Analytics Collaboratory seminar on September 5, 2024."
-  },
-  {
-    "objectID": "slides/who-mpox-analytics-September-2024/index.html#overview",
-    "href": "slides/who-mpox-analytics-September-2024/index.html#overview",
-    "title": "Common analytics tasks and available R tools/packages",
+    "objectID": "slides/idm-november-2024/index.html#overview",
+    "href": "slides/idm-november-2024/index.html#overview",
+    "title": "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling",
     "section": "Overview",
-    "text": "Overview\nThe epidemiology R package developer community, including Epiverse-TRACE have been developing a set of analytical tools that could help support decision-makers during outbreaks.\nThis presentation provided an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks. This presentation is based on its companion blog post, “2024 mpox outbreak: common analytics tasks and available R tools”."
+    "text": "Overview\nThis talk presented an overview of the Epiverse-TRACE ecosystem of R packages, and outlined the need for reliable, easy-to-use tooling for infectious disease outbreak analytics, as well as Epiverse-TRACE training material, community and the role Epiverse-TRACE can play as a co-creator in public health and open-source software development and maintenance."
   },
   {
-    "objectID": "slides/who-mpox-analytics-September-2024/index.html#slides",
-    "href": "slides/who-mpox-analytics-September-2024/index.html#slides",
-    "title": "Common analytics tasks and available R tools/packages",
+    "objectID": "slides/idm-november-2024/index.html#slides",
+    "href": "slides/idm-november-2024/index.html#slides",
+    "title": "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling",
     "section": "Slides",
-    "text": "Slides"
-  },
-  {
-    "objectID": "slides/who-mpox-analytics-September-2024/index.html#questions",
-    "href": "slides/who-mpox-analytics-September-2024/index.html#questions",
-    "title": "Common analytics tasks and available R tools/packages",
-    "section": "Questions",
-    "text": "Questions\n\nAre there any packages for incorporating phylogenetic data into reconstructing transmission chains?\n\nAnswer: outbreaker2, TransPhylo, phybreak"
-  },
-  {
-    "objectID": "slides/global-health-conference-2023/index.html",
-    "href": "slides/global-health-conference-2023/index.html",
-    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
-    "section": "",
-    "text": "The lead researcher Catalina González-Uribe, from UniAndes Team, along with other members of Epiverse-TRACE in Latin America, presented the work “Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases” during the review of the Integrated Management Strategy for the Prevention and Control of Arboviral Diseases in the Americas, held as part of the Global Health Conference 2023 organized by FIU Public Health & Social Work in Cartagena."
-  },
-  {
-    "objectID": "slides/global-health-conference-2023/index.html#diapositivas-español",
-    "href": "slides/global-health-conference-2023/index.html#diapositivas-español",
-    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
-    "section": "Diapositivas (Español)",
-    "text": "Diapositivas (Español)"
-  },
-  {
-    "objectID": "slides/global-health-conference-2023/index.html#slides-english",
-    "href": "slides/global-health-conference-2023/index.html#slides-english",
-    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
-    "section": "Slides (English)",
-    "text": "Slides (English)"
-  },
-  {
-    "objectID": "slides/2023-LatinR/index.html",
-    "href": "slides/2023-LatinR/index.html",
-    "title": "Epiverse-TRACE LAC @ LatinR",
-    "section": "",
-    "text": "Presentaciones de Epiverse-TRACE LAC en la conferencia LatinR 2023, en Montevideo, Uruguay."
-  },
-  {
-    "objectID": "slides/2023-LatinR/index.html#epi-training-kit",
-    "href": "slides/2023-LatinR/index.html#epi-training-kit",
-    "title": "Epiverse-TRACE LAC @ LatinR",
-    "section": "Epi-training kit",
-    "text": "Epi-training kit"
-  },
-  {
-    "objectID": "slides/2023-LatinR/index.html#serofoi",
-    "href": "slides/2023-LatinR/index.html#serofoi",
-    "title": "Epiverse-TRACE LAC @ LatinR",
-    "section": "serofoi",
-    "text": "serofoi"
+    "text": "Slides\n\nA recording of the talk may become available in the future and if so a link will be provided to watch the presentation and questions in full."
   },
   {
     "objectID": "slides/showcase-november-2023/index.html",
@@ -1267,81 +1036,312 @@
     "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
   },
   {
-    "objectID": "slides/idm-november-2024/index.html",
-    "href": "slides/idm-november-2024/index.html",
-    "title": "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling",
+    "objectID": "slides/2023-LatinR/index.html",
+    "href": "slides/2023-LatinR/index.html",
+    "title": "Epiverse-TRACE LAC @ LatinR",
     "section": "",
-    "text": "This presentation (18 minutes, plus 5 minutes for questions) was delivered at the inaugural Infectious Disease Modelling (IDM) Conference in Bangkok, Thailand on 8th November 2024."
+    "text": "Presentaciones de Epiverse-TRACE LAC en la conferencia LatinR 2023, en Montevideo, Uruguay."
   },
   {
-    "objectID": "slides/idm-november-2024/index.html#overview",
-    "href": "slides/idm-november-2024/index.html#overview",
-    "title": "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling",
+    "objectID": "slides/2023-LatinR/index.html#epi-training-kit",
+    "href": "slides/2023-LatinR/index.html#epi-training-kit",
+    "title": "Epiverse-TRACE LAC @ LatinR",
+    "section": "Epi-training kit",
+    "text": "Epi-training kit"
+  },
+  {
+    "objectID": "slides/2023-LatinR/index.html#serofoi",
+    "href": "slides/2023-LatinR/index.html#serofoi",
+    "title": "Epiverse-TRACE LAC @ LatinR",
+    "section": "serofoi",
+    "text": "serofoi"
+  },
+  {
+    "objectID": "slides/global-health-conference-2023/index.html",
+    "href": "slides/global-health-conference-2023/index.html",
+    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
+    "section": "",
+    "text": "The lead researcher Catalina González-Uribe, from UniAndes Team, along with other members of Epiverse-TRACE in Latin America, presented the work “Co-designing software solutions for the challenges of Latin America and the Caribbean in infectious diseases” during the review of the Integrated Management Strategy for the Prevention and Control of Arboviral Diseases in the Americas, held as part of the Global Health Conference 2023 organized by FIU Public Health & Social Work in Cartagena."
+  },
+  {
+    "objectID": "slides/global-health-conference-2023/index.html#diapositivas-español",
+    "href": "slides/global-health-conference-2023/index.html#diapositivas-español",
+    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
+    "section": "Diapositivas (Español)",
+    "text": "Diapositivas (Español)"
+  },
+  {
+    "objectID": "slides/global-health-conference-2023/index.html#slides-english",
+    "href": "slides/global-health-conference-2023/index.html#slides-english",
+    "title": "Co-diseño de soluciones de software para los desafíos de América Latina y el Caribe en enfermedades infecciosas",
+    "section": "Slides (English)",
+    "text": "Slides (English)"
+  },
+  {
+    "objectID": "slides/who-mpox-analytics-September-2024/index.html",
+    "href": "slides/who-mpox-analytics-September-2024/index.html",
+    "title": "Common analytics tasks and available R tools/packages",
+    "section": "",
+    "text": "This presentation (15 min including questions) was given at the WHO Mpox Analytics Collaboratory seminar on September 5, 2024."
+  },
+  {
+    "objectID": "slides/who-mpox-analytics-September-2024/index.html#overview",
+    "href": "slides/who-mpox-analytics-September-2024/index.html#overview",
+    "title": "Common analytics tasks and available R tools/packages",
     "section": "Overview",
-    "text": "Overview\nThis talk presented an overview of the Epiverse-TRACE ecosystem of R packages, and outlined the need for reliable, easy-to-use tooling for infectious disease outbreak analytics, as well as Epiverse-TRACE training material, community and the role Epiverse-TRACE can play as a co-creator in public health and open-source software development and maintenance."
+    "text": "Overview\nThe epidemiology R package developer community, including Epiverse-TRACE have been developing a set of analytical tools that could help support decision-makers during outbreaks.\nThis presentation provided an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks. This presentation is based on its companion blog post, “2024 mpox outbreak: common analytics tasks and available R tools”."
   },
   {
-    "objectID": "slides/idm-november-2024/index.html#slides",
-    "href": "slides/idm-november-2024/index.html#slides",
-    "title": "Epiverse-TRACE: A collaborative software ecosystem for outbreak analysis and modelling",
-    "section": "Slides",
-    "text": "Slides\n\nA recording of the talk may become available in the future and if so a link will be provided to watch the presentation and questions in full."
-  },
-  {
-    "objectID": "slides/juniper-may-2023/index.html",
-    "href": "slides/juniper-may-2023/index.html",
-    "title": "Juniper seminar on improving software for epidemic response",
-    "section": "",
-    "text": "Talk at the Juniper seminar series that included a large section on our efforts to improve the sustainability and interoperability of outbreaks analysis tools, covering lessons from the real-time response to COVID-19, as well as recent work in Epiverse-TRACE."
-  },
-  {
-    "objectID": "slides/juniper-may-2023/index.html#talk-slides",
-    "href": "slides/juniper-may-2023/index.html#talk-slides",
-    "title": "Juniper seminar on improving software for epidemic response",
-    "section": "Talk slides",
-    "text": "Talk slides"
-  },
-  {
-    "objectID": "slides/harmonize-july-2023/index.html",
-    "href": "slides/harmonize-july-2023/index.html",
-    "title": "Global Health Resilience Research Visit",
-    "section": "",
-    "text": "Three talks at a workshop at the Barcelona Supercomputing Center titled: Global Health Resilience Research Visit. The workshop established a collaboration between Epiverse-TRACE and HARMONIZE projects. The workshop consisted of talks from Epiverse-TRACE and LSHTM, as well as talks from members of BSC on their HARMONIZE and IDExtremes projects. The talks from Epiverse were aimed to present our work on development modular and interoperable pipelines for outbreak analytics."
-  },
-  {
-    "objectID": "slides/harmonize-july-2023/index.html#talk-slides",
-    "href": "slides/harmonize-july-2023/index.html#talk-slides",
-    "title": "Global Health Resilience Research Visit",
-    "section": "Talk slides",
-    "text": "Talk slides"
-  },
-  {
-    "objectID": "slides/2024-4S-EASST/index.html",
-    "href": "slides/2024-4S-EASST/index.html",
-    "title": "The twin peaks of the global and the local: worldwide and modest infrastructures for global health",
-    "section": "",
-    "text": "Presentation (30min including questions) at the Biannual Conference of the Society for Social Studies of Science (4S) and the European Association for the Study of Science and Technology (EASST) in Amsterdam, under the “Issues of scale: the global and the local in health research projects with a worldwide context” category."
-  },
-  {
-    "objectID": "slides/2024-4S-EASST/index.html#abstract",
-    "href": "slides/2024-4S-EASST/index.html#abstract",
-    "title": "The twin peaks of the global and the local: worldwide and modest infrastructures for global health",
-    "section": "Abstract",
-    "text": "Abstract\nGlobal health projects have long emphasized the digital transformation of Global South countries to align their contexts with global infrastructures. Much of this emphasis is done by pointing at these contexts as flawed: interoperability, standards and classifications, and human capacity as well are seen as insufficient, too local, and disorganized. Consequently, international funding is directed towards enhancing capacity and infrastructure in these regions to facilitate smoother data exchange, with digital transformation promising seamless transitions across different scales. What happens if we conduct an inversion of this narrative? Could we follow global infrastructures in their flaws when meeting “the local”?\nBased on a robust tradition of reflections in Science and Technology Studies, Critical Global Health, and Critical Data Studies about context (De Laet M., 2000; Tsing, A., 2005; Adams, 2016; Biehl 2016; Montgomery, C. M., Kingori, P., Sariola, S., & Engel, N, 2017; Lee, F 2021; 2023; Hepp, A; Jarke J; Kramp L 2022), we propose a symmetrical understanding of local-global relations in Global Health projects and enterprises. For this, we offer some examples in which we can see the operation of this kind of understanding, drawing from our involvement with two global projects on emergency preparedness, targeting the production of technologies for the analysis and control of infectious diseases."
-  },
-  {
-    "objectID": "slides/2024-4S-EASST/index.html#slides",
-    "href": "slides/2024-4S-EASST/index.html#slides",
-    "title": "The twin peaks of the global and the local: worldwide and modest infrastructures for global health",
+    "objectID": "slides/who-mpox-analytics-September-2024/index.html#slides",
+    "href": "slides/who-mpox-analytics-September-2024/index.html#slides",
+    "title": "Common analytics tasks and available R tools/packages",
     "section": "Slides",
     "text": "Slides"
   },
   {
-    "objectID": "slides/interoperability-epiverse/index.html",
-    "href": "slides/interoperability-epiverse/index.html",
-    "title": "Interoperability strategy for the Epiverse",
+    "objectID": "slides/who-mpox-analytics-September-2024/index.html#questions",
+    "href": "slides/who-mpox-analytics-September-2024/index.html#questions",
+    "title": "Common analytics tasks and available R tools/packages",
+    "section": "Questions",
+    "text": "Questions\n\nAre there any packages for incorporating phylogenetic data into reconstructing transmission chains?\n\nAnswer: outbreaker2, TransPhylo, phybreak"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "This presentation was done internally to the Epiverse-TRACE team, and to the Epiverse-TRACE funders.\n\n\n\n\nReuseCC BY 4.0CitationBibTeX citation:@online{gruson2023,\n  author = {Gruson, Hugo},\n  title = {Interoperability Strategy for the {Epiverse}},\n  date = {2023-10-01},\n  url = {https://epiverse-trace.github.io/slides/interoperability-epiverse/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nGruson, Hugo. 2023. “Interoperability Strategy for the\nEpiverse.” October 1, 2023. https://epiverse-trace.github.io/slides/interoperability-epiverse/."
+    "text": "This blog is available via RSS1 and on R-bloggers."
+  },
+  {
+    "objectID": "blog.html#footnotes",
+    "href": "blog.html#footnotes",
+    "title": "Blog",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nWhat is RSS? You can learn more about it with this great introductory post.↩︎"
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html",
+    "href": "slides/harmonious-ecosystem/index.html",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "",
+    "text": "This presentation was given as part of deRSE23 - Conference for Research Software Engineering in Germany, in the Integration vs. Modularity session."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#abstract",
+    "href": "slides/harmonious-ecosystem/index.html#abstract",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Abstract",
+    "text": "Abstract\nThere is an increasing trend of packaging and sharing tools in the epidemiology research community. But these tools remain difficult to use and to integrate in a data analysis pipeline. There is a need for a more integrated approach, ensuring that the various tools work well with one another. For example, minimal data wrangling should be needed to transform the output of one tool before passing it to the next tool down the data analysis pipeline. Similarly, various alternatives for a single step of the pipeline should as much as possible use the same inputs and return the same outputs. In this talk, I will present the Epiverse-TRACE project, which collaborates with many R package developers in epidemiology to integrate their tools in a unified universe. Indeed, the unique and challenging feature of Epiverse is that it doesn’t intend to create a unified universe from scratch, but instead aims at updating existing external pieces of software to better work together. This talk will explain how we identify the key parts that should be updated, and how we make these updates with minimal disruption to the individual package developers and established community of users."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#slides",
+    "href": "slides/harmonious-ecosystem/index.html#slides",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "href": "slides/harmonious-ecosystem/index.html#questions-from-the-audience",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "Questions from the audience",
+    "text": "Questions from the audience\n\nHow do you incentivize developers to collaborate with you?\n\nAs mentioned in the presentation, we argue that collaboration results in a lower maintenance load for each developer by externalising and sharing the maintenance load of common elements.\nWe also think this is the logical continuation of releasing an open-source piece of software. If the goal is to provide a service to the community, then this service is surely greater if we collaborate to make the various pieces interoperable.\nAs an anecdotal piece of evidence, Nick Tierney, the maintainer of the conmat R package, has been very keen to participate in this project and was immediately convinced of the relevance and benefit for users and the ecosystem as a whole.\n\nHow do you ensure the long-term sustainability of this project?\n\nThis is an important question in the domain of open-source and research software but this is not the specific focus of this project and we don’t provide specific solutions, besides conforming to best practices.\nHowever, if anything, our projects should be more sustainable by construction since they result from a collaborative work and include multiple maintainers. This is also encoded in our projects by creating dedicated GitHub organisations, where all developers can participate on an equal footing, thereby also increasing the lottery factor."
+  },
+  {
+    "objectID": "slides/harmonious-ecosystem/index.html#see-also",
+    "href": "slides/harmonious-ecosystem/index.html#see-also",
+    "title": "From disconnected elements to a harmonious ecosystem: The Epiverse-TRACE project",
+    "section": "See also",
+    "text": "See also\n\nThe companion post on our blog"
+  },
+  {
+    "objectID": "slides/showcase-april-2023/index.html",
+    "href": "slides/showcase-april-2023/index.html",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "",
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+  },
+  {
+    "objectID": "slides/showcase-april-2023/index.html#sivirep-slides",
+    "href": "slides/showcase-april-2023/index.html#sivirep-slides",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "sivirep slides",
+    "text": "sivirep slides"
+  },
+  {
+    "objectID": "slides/showcase-april-2023/index.html#epico-slides",
+    "href": "slides/showcase-april-2023/index.html#epico-slides",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "epiCo slides",
+    "text": "epiCo slides"
+  },
+  {
+    "objectID": "slides/showcase-april-2023/index.html#serofoi-slides",
+    "href": "slides/showcase-april-2023/index.html#serofoi-slides",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "serofoi slides",
+    "text": "serofoi slides"
+  },
+  {
+    "objectID": "slides/showcase-april-2023/index.html#recording",
+    "href": "slides/showcase-april-2023/index.html#recording",
+    "title": "Epiverse-TRACE Spring 2023 showcase",
+    "section": "Recording",
+    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
+  },
+  {
+    "objectID": "slides/rslondon-southeast-july-2023/index.html",
+    "href": "slides/rslondon-southeast-july-2023/index.html",
+    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
+    "section": "",
+    "text": "This was a lightning talk at a workshop at the RSLondonSouthEast2023 workshop held at the Imperial College London’s South Kensington Campus. The talk was entitled: “Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}”. The workshop brought together stakeholders who work with or are interested in research software including Research Software Engineers (RSEs), researchers, academics and individuals in a variety of related roles."
+  },
+  {
+    "objectID": "slides/rslondon-southeast-july-2023/index.html#abstract",
+    "href": "slides/rslondon-southeast-july-2023/index.html#abstract",
+    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
+    "section": "Abstract",
+    "text": "Abstract\nOccasionally, R package developers might decide to supersede their packages with a new implementation to reflect their evolved thinking and experiences in package design. Examples include {ggplot2} and {reshape2}. In multiple contributor projects, this often comes with non-trivial decisions, including name changes, deprecations, and the preservation of git histories. These decisions are non-trivial, especially in epidemiology and public health where reproducibility is a key consideration. {bpmodels}, an R package for analyzing infectious disease data, is currently in the same situation. {bpmodels} was independently developed in 2019, but the Epiverse-TRACE Initiative, which aims to develop an interoperable ecosystem for outbreak analytics, now provides the capacity to maintain it. This involves a re-imagination of the package, including a name change to {epichains}, planned integration of existing and new functionalities, and object-oriented programming. This talk will highlight some conundrums faced during this process, which is ongoing, and provide the opportunity for mutual learning."
+  },
+  {
+    "objectID": "slides/rslondon-southeast-july-2023/index.html#talk-slides",
+    "href": "slides/rslondon-southeast-july-2023/index.html#talk-slides",
+    "title": "Superseding R packages - lessons learned from transitioning to {epichains} from {bpmodels}",
+    "section": "Talk slides",
+    "text": "Talk slides"
+  },
+  {
+    "objectID": "slides/fosdem-2024/index.html",
+    "href": "slides/fosdem-2024/index.html",
+    "title": "Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem",
+    "section": "",
+    "text": "These slides were prepared for a lightning talk at FOSDEM 2024, in the “Public Code and Digital Public Goods” devroom, organized by the Foundation for Public Code and the Digital Public Goods Alliance."
+  },
+  {
+    "objectID": "slides/fosdem-2024/index.html#transcript",
+    "href": "slides/fosdem-2024/index.html#transcript",
+    "title": "Epiverse-TRACE @ FOSDEM 2024: From disconnected elements to a harmonious ecosystem",
+    "section": "Transcript",
+    "text": "Transcript\nHi, my name is Hugo. I’m the lead software architect at data.org. Today, I’d like to discuss the work we’re doing to build a harmonious ecosystem for epidemiology as part of the Epiverse-TRACE Project.\nScientific research increasingly relies on data science and computational tools across fields like epidemiology, climate science, and econometrics. However, maintaining and updating data pipelines has become complex. Changing a single step or using different software can require hours of data wrangling just to format inputs and outputs correctly. This maintenance is especially challenging during crises when rapid results are essential. When the next pandemic hits, we need to focus on actual science, not basic data wrangling.\nCurrently, we have some good isolated free software tools, but a robust ecosystem as a whole is what we truly need. This is precisely the goal of the Epiverse-TRACE project: to harmonize the epidemiology tooling ecosystem in R. We do this by making existing tools interoperable, supporting tools to adopt global standards (like those from the Digital Public Goods Alliance or organizations like rOpenSci), and fostering a sustainable community around these ideals.\nOur goal isn’t to erase established communities. We recognize the value of diverse solutions within a rich ecosystem. However, interoperability within this ecosystem is essential. To achieve this, we involve the community, working with both user groups such as public health institutes and NGOs and developer communities.\nOur approach has already shown success. We’ve packaged and released many unmaintained, non-portable codebases and more tools than I can cover here. Notably, two of these tools are already registered Digital Public Goods, and one is in the process of submission.\nBuilding a sustainable network of collaborators is exciting and ambitious, but it also comes with challenges. Research and academia are competitive spaces, which can make collaboration difficult. Additionally, communication in a multi-stakeholder network with numerous collaborators can lead to delays and miscommunication. Sustaining this effort is challenging, especially with uncertain funding in this space.\nTo conclude, responding effectively to the next crisis, whether it’s the climate crisis or the next pandemic, will require interoperable tools built through collaborative, multi-stakeholder projects. While necessary, these complex communities bring challenges in communication, collaboration, and sustainability. Ultimately, what may appear to be a technical challenge often becomes a communication and social challenge as well.\nWith that, I’ll end with a picture of our core project team. Please feel free to talk with me if you’re interested in learning more. Thank you."
+  },
+  {
+    "objectID": "slides/epireview-hackathon-july-2024/index.html",
+    "href": "slides/epireview-hackathon-july-2024/index.html",
+    "title": "Interoperability between {epireview} & Epiverse-TRACE",
+    "section": "",
+    "text": "Presentation (15 minutes) at the Epireview hackathon hosted by Imperial College London. The hackathon was attended by the Pathogen Epidemiology Review Group (PERG) at Imperial, Epiverse-TRACE members from the London School of Hygiene and Tropical Medicine, and the World Health Organisation Collaboratory.\nAfter the presentation, the hackathon focused on enhancing interoperability between the {epireview} R package and Epiverse-TRACE R packages."
+  },
+  {
+    "objectID": "slides/epireview-hackathon-july-2024/index.html#slides",
+    "href": "slides/epireview-hackathon-july-2024/index.html#slides",
+    "title": "Interoperability between {epireview} & Epiverse-TRACE",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/2024-10-GPSDD/index.html",
+    "href": "slides/2024-10-GPSDD/index.html",
+    "title": "Demo: Comparing vaccination strategies with finalsize",
+    "section": "",
+    "text": "This presentation was given for a GPSSD lecture in their “Climate and Health Data in Action” curriculum on October 9, 2024.\nThe demo was part of a larger presentation by Maguette Ndong on Epiverse and its implementation in Africa."
+  },
+  {
+    "objectID": "slides/2024-10-GPSDD/index.html#slides",
+    "href": "slides/2024-10-GPSDD/index.html#slides",
+    "title": "Demo: Comparing vaccination strategies with finalsize",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/2024-10-GPSDD/index.html#transcript",
+    "href": "slides/2024-10-GPSDD/index.html#transcript",
+    "title": "Demo: Comparing vaccination strategies with finalsize",
+    "section": "Transcript",
+    "text": "Transcript\nIn this presentation, I’ll demonstrate what Epiverse tools can do and explain why they need to be accessible to everyone.\nLet’s focus on a fictional situation. Imagine an outbreak is ongoing in Senegal. The good news in this scenario is that we have a vaccine with 80% efficacy, but the problem is that we only have 1 million doses, which isn’t enough to vaccinate the entire population. A key question for public health officials or decision-makers is how to distribute these limited doses.\nTo explain why different distribution methods can lead to different outcomes, I need to discuss the concept of herd immunity. In a partially immunized population, even individuals who are not vaccinated can receive indirect protection from those who are vaccinated. For example, in a fictional population of individuals A, B, C, and D, if A is infected, they could infect B, who might then infect C. However, if B is vaccinated, the transmission chain is broken, and C, though unvaccinated, remains protected. This indirect protection is a key element of herd immunity.\nWith this understanding, we can ask how to distribute the 1 million doses to maximize the overall impact. Let’s consider three scenarios:\n\nScenario A: Give all the doses to the youngest age group\nScenario B: Give all the doses to the oldest age group\nScenario C: Distribute the doses across the entire population without prioritizing any specific age group\n\nTo analyze these scenarios, we use the finalsize tool in R. This tool requires five inputs:\n\nThe reproduction number, which indicates how contagious the pathogen is. For example, for COVID-19, it was around 2-3.\nThe contact matrix, which shows how frequently different age groups interact. For instance, teenagers tend to interact more with their peers.\nThe population pyramid, indicating the size of each age group. For example, in Senegal, the pyramid might look like a triangle, with many young individuals and fewer older individuals.\nVaccine efficacy, describing how well the vaccine protects vaccinated individuals compared to unvaccinated ones.\nThe vaccine distribution strategy, representing scenarios A, B, or C.\n\nRunning this tool produces output in the form of tables and visualizations. This table shows:\n\nAge groups in one column\nSusceptibility groups (vaccinated or unvaccinated) in another column\nThe proportion of infected individuals in each group\n\nWhile tables are informative, visualizations often make it easier to understand the results. For instance, a plot might show:\n\nThe number of infections on the y-axis\nAge groups on the x-axis, with the youngest on the left and the oldest on the right\nDifferent colors representing the three scenarios: red for distributing doses evenly without prioritization, green for prioritizing older individuals, and blue for prioritizing younger individuals\n\nFrom this visualization, two insights emerge:\n\nSumming the total number of infections across all age groups reveals that distributing doses evenly (Scenario C) results in fewer infections overall than prioritizing either the youngest or oldest groups. This means that in this fictional scenario, it’s better to vaccinate as many people as possible without prioritizing a specific age group.\nInterestingly, vaccinating everyone provides greater indirect protection to the youngest age group than prioritizing them directly. This result may seem counterintuitive, but it highlights the significant indirect benefits of herd immunity.\n\nThe model presented here is simple, assuming uniform vaccine efficacy and single-dose administration. However, the tool can handle much more complex scenarios. For example, we could account for age-specific fatality rates, regional differences in contact patterns, or vaccines requiring multiple doses. While I used a straightforward example, these tools allow for tailored, detailed analyses for any context.\nIt’s important to emphasize that these insights are specific to this fictional scenario in Senegal. If we applied the same analysis in another country, like France, the results could be entirely different due to differences in population structure and contact patterns. This variability underscores the importance of tailoring analyses to local contexts.\nThis brings me to the idea of localism, which is central to our work at data.org. Insights derived from one region may not be applicable elsewhere due to differences in population pyramids and interaction patterns. This is why it’s critical to make these tools open-source and freely accessible, enabling every country to conduct its own analyses."
+  },
+  {
+    "objectID": "slides/showcase-january-2023/index.html",
+    "href": "slides/showcase-january-2023/index.html",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "",
+    "text": "This showcase is part of a regular cycle of online meetings to present tools for epidemiology."
+  },
+  {
+    "objectID": "slides/showcase-january-2023/index.html#finalsize-slides",
+    "href": "slides/showcase-january-2023/index.html#finalsize-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "finalsize slides",
+    "text": "finalsize slides"
+  },
+  {
+    "objectID": "slides/showcase-january-2023/index.html#epiparameter-slides",
+    "href": "slides/showcase-january-2023/index.html#epiparameter-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "epiparameter slides",
+    "text": "epiparameter slides"
+  },
+  {
+    "objectID": "slides/showcase-january-2023/index.html#episoap-slides",
+    "href": "slides/showcase-january-2023/index.html#episoap-slides",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "episoap slides",
+    "text": "episoap slides"
+  },
+  {
+    "objectID": "slides/showcase-january-2023/index.html#recording",
+    "href": "slides/showcase-january-2023/index.html#recording",
+    "title": "Epiverse-TRACE Winter 2023 showcase",
+    "section": "Recording",
+    "text": "Recording\nGo to the “Watch the recording” button on the event website to watch back this showcase."
+  },
+  {
+    "objectID": "slides/2024-useR/index.html",
+    "href": "slides/2024-useR/index.html",
+    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
+    "section": "",
+    "text": "Presentation (20min including questions) at the useR!2024 conference, under the “R workflow + deployment + production” category."
+  },
+  {
+    "objectID": "slides/2024-useR/index.html#abstract",
+    "href": "slides/2024-useR/index.html#abstract",
+    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
+    "section": "Abstract",
+    "text": "Abstract\nIt is common for R packages answering the same need to have different input and output formats. This may result in a large amount of spent time to reformat the inputs and outputs whenever a specific part of the data pipeline is swapped out to use a different R package. This time can come at a huge cost whenever results are needed quickly, such as in pandemic response. Using S3 classes providing standard formats that all downstream packages use may be a good solution to this issue, thus improving the interoperability within the global R package ecosystem. However, this approach comes with technical and social challenges. Here, I present the work we are doing to implement and encourage the adoption of standard S3 classes in epidemiology. I highlight key findings and challenges such as how to preserve backward compatibility in existing packages and give recommendation for future similar endeavors."
+  },
+  {
+    "objectID": "slides/2024-useR/index.html#slides",
+    "href": "slides/2024-useR/index.html#slides",
+    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
+    "section": "Slides",
+    "text": "Slides"
+  },
+  {
+    "objectID": "slides/2024-useR/index.html#questions",
+    "href": "slides/2024-useR/index.html#questions",
+    "title": "Building Interoperability in Existing Software Ecosystems with S3 Classes",
+    "section": "Questions",
+    "text": "Questions\n\nHow much of the tips presented here are applicable to S4?\nIn which situations would you recommend S3 over R6?\nWhat do you think of the upcoming S7 framework?"
+  },
+  {
+    "objectID": "get-involved.html",
+    "href": "get-involved.html",
+    "title": "Get involved",
+    "section": "",
+    "text": "Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:\n\nStandardise: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See our blueprint for more.\nConsult us: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g. our team currently contributes to the development of GoDataR.\n\nIn the first instance, we encourage you to post general questions on our discussion board so that other community members can contribute.\nFor questions related to a specific package, please contact the maintainer (see the repositories of packages and their authors).\nFor all other questions which fall outside the above categories, please contact epiverse@data.org. You can also sign up to our mailing list, or follow us on Twitter at Epiverse_TRACE.\n\nCo-create: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the WHO collaborative epidemiological parameters initiative.\nIntegrate your tools: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g. estimating the transmissibility of an infectious disease during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.\nParticipate: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our GitHub repository, with your contributions credited, e.g. by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board."
+  },
+  {
+    "objectID": "get-involved.html#how-to-collaborate-with-epiverse-on-software-development",
+    "href": "get-involved.html#how-to-collaborate-with-epiverse-on-software-development",
+    "title": "Get involved",
+    "section": "",
+    "text": "Epiverse-TRACE aims to support the development of integrated, generalisable and scalable community-driven software for epidemic analytics, and contribute to a sustainable ecosystem of existing and new tools. There are several ways for external developers and research groups to join us in contributing to these aims. From less to more involvement, you can get involved by following these strategies:\n\nStandardise: by independently developing tools that are consistent with Epiverse principles and interoperable with Epiverse tools. See our blueprint for more.\nConsult us: you can seek help and contributions from Epiverse members to your existing packages/tools, which will also ensure their interoperability with Epiverse’s own packages, e.g. our team currently contributes to the development of GoDataR.\n\nIn the first instance, we encourage you to post general questions on our discussion board so that other community members can contribute.\nFor questions related to a specific package, please contact the maintainer (see the repositories of packages and their authors).\nFor all other questions which fall outside the above categories, please contact epiverse@data.org. You can also sign up to our mailing list, or follow us on Twitter at Epiverse_TRACE.\n\nCo-create: develop tools together with Epiverse members, that will then be hosted on independent websites/platforms, such as the WHO collaborative epidemiological parameters initiative.\nIntegrate your tools: Epiverse data analytic pipelines aim to help users optimise their analysis of specific epidemiological problems, e.g. estimating the transmissibility of an infectious disease during an epidemic from line list data. Integration with such pipelines will allow your methods to reach a wider audience and benefit from upstream and downstream tools within Epiverse.\nParticipate: get involved with the Epiverse team and contribute to the development of Epiverse’s existing tools, see our GitHub repository, with your contributions credited, e.g. by looking at the issues raised within Epiverse repositories, adding your own ideas or providing feedback by commenting on our discussion board."
+  },
+  {
+    "objectID": "get-involved.html#cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace",
+    "href": "get-involved.html#cómo-colaborar-en-el-desarrollo-de-software-con-epiverse-trace",
+    "title": "Get involved",
+    "section": "¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?",
+    "text": "¿Cómo colaborar en el desarrollo de software con Epiverse-TRACE?\nEl objetivo de Epiverse-TRACE es promover el desarrollo de software para análisis epidemiológico que sea generalizable, escalable y dirigido por la comunidad de usuarios, y que se integre con otras herramientas para crear un ecosistema sostenible. Existen diferentes vías que grupos de investigación y desarrolladores externos pueden utilizar para colaborar con Epiverse, ordenadas de menor a mayor nivel de contacto con el equipo:\n\nEstandarización: desarrollando herramientas independientemente que cumplan con los principios establecidos por Epiverse, y que sean interoperables con sus herramientas.\nConsulta: poniéndose en contacto con miembros del equipo de Epiverse, que pueden contribuir al desarrollo de herramientas externas. Esto garantiza que esas herramientas sean compatibles con paquetes desarrollados por Epiverse, por ejemplo, nuestro equipo actualmente colabora con el desarrollo de GoDataR.\nCo-desarrollo: desarrollando herramientas junto con miembros de Epiverse, que despues se quedarán en plataformas externas, por ejemplo, la iniciativa de la OMS para parámetros epidemiológicos.\n\nIntegración: Epiverse proporciona sistemas para integrar herramientas, o pipelines, que ayudan a los usuarios a optimizar el análisis de problemas epidemiológicos concretos, por ejemplo, para estimar la transmisión de enfermedades. Incorporar tus herramientas a estos sistemas integrados contribuirá a su visibilidad en la comunidad de usuarios de Epiverse.\nParticipación: contribuyendo al desarrollo de herramientas de Epiverse, en las que aparecerás como coautor en nuestra página web. Para ello, contribuye a issues abiertos en los repositorios de Epiverse, o añade sugerencias, ideas y feedback comentando en nuestro panel de discusión.\n\n\n\n\nFigure of contributions, inspired by CSCCE community participation model (Woodley, Lou, & Pratt, Katie. (2020). The CSCCE Community Participation Model – A framework to describe member engagement and information flow in STEM communities. Zenodo.)"
   },
   {
     "objectID": "posts/epiparameter_v0.4.0/index.html",
@@ -2195,6 +2195,6 @@
     "href": "resources.html",
     "title": "Resources",
     "section": "",
-    "text": "On this page, you can find resources shared on our discussion forum. Submit your own and upvote the ones you like on GtiHub!\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        upvotes (Low to High)\n      \n      \n        upvotes (High to Low)\n      \n    \n  \n    \n      \n      \n    \n\n\n    \n    \n        \n            The True ROI of Doing It Right the First Time in Software Projects\n            \n        \n        \n            \n                👍 3\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    Jun 3, 2024\n                \n            \n        \n    \n    \n    \n        \n            Tidyverse book on code review\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            GitHub\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Using data.table\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Painless introduction to object-oriented programming using S3 classes\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            documentation\n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Deep R Programming\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            Advanced R\n                \n            \n            \n            \n                \n                    Jun 18, 2024\n                \n            \n        \n    \n    \n    \n        \n            How to Run GitHub Actions Locally Using the act CLI Tool\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            GitHub\n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 6, 2024\n                \n            \n        \n    \n    \n    \n        \n            Rcpp for everyone\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Quick example of how to use `tryCatch()`\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            Advanced R\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Request and handle API response from R\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Big Book of R\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Mar 19, 2025\n                \n            \n        \n    \n    \n    \n        \n            Epimodelac2023 - Outbreak Analysis and Modeling in Public Health\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Why I don’t add style options to my ggplot2 functions\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    Jul 29, 2024\n                \n            \n        \n    \n    \n    \n        \n            Tutorial on the types of tests to write for an R function\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    Jun 18, 2024\n                \n            \n        \n    \n    \n    \n        \n            Epirecipes cookbook\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            CVE-2024-27322 Should Never Have Been Assigned And R Data Files Are Still Super Risky Even In R 4.4.0\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Stan Playground - A web-based platform for writing and compiling stan programs\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Oct 16, 2024\n                \n            \n        \n    \n    \n    \n        \n            Why You Should (or Shouldn’t) Build an API Client?\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jun 26, 2024\n                \n            \n        \n    \n    \n    \n        \n            Checks and automation early feedback via local commit hooks and the precommit package\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Difference between the `apply()` family of functions in R\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Advanced R\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Rcpp gallery\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            documentation\n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Explore about 2728 R color palettes\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jun 18, 2024\n                \n            \n        \n    \n    \n    \n        \n            shinystan - Interactive diagnostics and posterior analysis for Bayesian models\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Oct 16, 2024\n                \n            \n        \n    \n    \n    \n        \n            The Carpentries Maintainers Handbook\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jun 26, 2025\n                \n            \n        \n    \n    \n\nNo matching items"
+    "text": "On this page, you can find resources shared on our discussion forum. Submit your own and upvote the ones you like on GtiHub!\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        upvotes (Low to High)\n      \n      \n        upvotes (High to Low)\n      \n    \n  \n    \n      \n      \n    \n\n\n    \n    \n        \n            The True ROI of Doing It Right the First Time in Software Projects\n            \n        \n        \n            \n                👍 3\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    Jun 3, 2024\n                \n            \n        \n    \n    \n    \n        \n            Tidyverse book on code review\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            GitHub\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Using data.table\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Painless introduction to object-oriented programming using S3 classes\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            documentation\n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Deep R Programming\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            Advanced R\n                \n            \n            \n            \n                \n                    Jun 18, 2024\n                \n            \n        \n    \n    \n    \n        \n            How to Run GitHub Actions Locally Using the act CLI Tool\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            GitHub\n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 6, 2024\n                \n            \n        \n    \n    \n    \n        \n            Rcpp for everyone\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Quick example of how to use `tryCatch()`\n            \n        \n        \n            \n                👍 2\n            \n            \n            \n                \n            Advanced R\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Request and handle API response from R\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Big Book of R\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Mar 19, 2025\n                \n            \n        \n    \n    \n    \n        \n            Epimodelac2023 - Outbreak Analysis and Modeling in Public Health\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Why I don’t add style options to my ggplot2 functions\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    Jul 29, 2024\n                \n            \n        \n    \n    \n    \n        \n            Tutorial on the types of tests to write for an R function\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    Jun 18, 2024\n                \n            \n        \n    \n    \n    \n        \n            Epirecipes cookbook\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            CVE-2024-27322 Should Never Have Been Assigned And R Data Files Are Still Super Risky Even In R 4.4.0\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Stan Playground - A web-based platform for writing and compiling stan programs\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Oct 16, 2024\n                \n            \n        \n    \n    \n    \n        \n            Why You Should (or Shouldn’t) Build an API Client?\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jun 26, 2024\n                \n            \n        \n    \n    \n    \n        \n            Checks and automation early feedback via local commit hooks and the precommit package\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Best Practices\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Difference between the `apply()` family of functions in R\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            Advanced R\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Rcpp gallery\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            documentation\n                \n            Tutorial\n                \n            \n            \n            \n                \n                    May 7, 2024\n                \n            \n        \n    \n    \n    \n        \n            Explore about 2728 R color palettes\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jun 18, 2024\n                \n            \n        \n    \n    \n    \n        \n            Responsible modelling: Unit testing for infectious disease epidemiology\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jul 23, 2025\n                \n            \n        \n    \n    \n    \n        \n            shinystan - Interactive diagnostics and posterior analysis for Bayesian models\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Oct 16, 2024\n                \n            \n        \n    \n    \n    \n        \n            The Carpentries Maintainers Handbook\n            \n        \n        \n            \n                👍 1\n            \n            \n            \n                \n            \n            \n            \n                \n                    Jun 26, 2025\n                \n            \n        \n    \n    \n\nNo matching items"
   }
 ]
