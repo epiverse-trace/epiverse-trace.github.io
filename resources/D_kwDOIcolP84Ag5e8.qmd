@@ -1,0 +1,8 @@
+---
+title: "Responsible modelling: Unit testing for infectious disease epidemiology"
+url: "https://github.com/orgs/epiverse-trace/discussions/394"
+date: "2025-07-23"
+author: jamesmbaazam
+categories: []
+upvotes: 1
+---
