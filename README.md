@@ -69,6 +69,7 @@ This website is built with [Quarto](https://quarto.org/) and features:
 - **Release posts**: Automatically upon release on GitHub
 - **Contributor data**: Automatically updated via `_scripts/collect_contributor_data.R`
 - **Package information**: Pulled from `_data/epiverse_pkgs.csv`
+- **React Components**: These are primarily used in the homepage and live under `_components/`. Edit the copy in those directly. If styling is to be updated, please note TailwindCSS is used and all classes must be prefixed with `tw-` for compatibility.
 
 ## Contributing
 
