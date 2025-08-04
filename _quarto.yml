@@ -20,9 +20,9 @@ website:
             href: presentations.qmd
       - text: Use
         menu:
-        - href: getting-started.qmd
-        - text: Software
-          href: https://epiverse-trace.r-universe.dev/packages
+          - href: getting-started.qmd
+          - text: Software
+            href: https://epiverse-trace.r-universe.dev/packages
       - text: Learn
         menu:
           - text: Learning materials
@@ -41,8 +41,8 @@ website:
     tools:
       - icon: github
         href: https://github.com/epiverse-trace
-      - icon: twitter
-        href: https://twitter.com/Epiverse_TRACE
+      - icon: bluesky
+        href: https://bsky.app/profile/epiverse-trace.bsky.social
   google-analytics: "G-XZ471458FQ"
   twitter-card:
     creator: "@Epiverse_TRACE"

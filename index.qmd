@@ -12,10 +12,10 @@ about:
     - icon: github
       text: Github
       href: https://github.com/epiverse-trace
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/Epiverse_TRACE
-format: 
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/epiverse-trace.bsky.social
+format:
   html:
     css: styles/stylesheet-homepage.css
 include-in-header:
@@ -29,7 +29,7 @@ include-in-header:
             prefix: 'tw-',
         }
     </script>
-resources: 
+resources:
   - public/*
 ---
 
@@ -45,7 +45,7 @@ resources:
 
 {{< react Cta >}}
 
-<!-- 
+<!--
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 
 ## Roadmap
