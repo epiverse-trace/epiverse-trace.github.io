@@ -136,6 +136,8 @@ The {ringbp} R package implements a simple but informative model for infectious 
 
 Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future.
 
+Enhancing the accessibility of software for users and developers by improving its documentation and user interface will hopefully provide a gateway for more external contributors to engage with the project. In the public health landscape of temporal surges in capacity and priorities, better enabling community contributions to open-source software should aid software sustainability.
+
 All of the changes discussed in this blog post can be found in the [{ringbp} news](https://epiforecasts.io/ringbp/news/index.html). For details of developments see the [pull request history of {ringbp} on GitHub](https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed).
 
 [^1]: [Defined by Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/abandonware) as: "software that is no longer produced or supported by the company that originally made it".
