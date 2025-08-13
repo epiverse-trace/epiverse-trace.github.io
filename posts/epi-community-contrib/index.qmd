@@ -19,7 +19,7 @@ This blog post highlights some recent work by Epiverse software engineers to col
 
 ## The R package
 
-The R package in question is [{ringbp}](https://github.com/epiforecasts/ringbp). The package has two pieces of functionality: 1) to simulate an infectious disease outbreak using a branching process model with non-pharmaceutical interventions; and 2) to calculate the proportion of simulated outbreaks that are contained (i.e. do not cause a large sustained human-to-human epidemic). The utility of the package's general model framework has been shown by serving as a template for other epidemiological research such as [post-exposure prophylaxis](https://sophiemeakin.github.io/pepbp/).
+The R package in question is [{ringbp}](https://github.com/epiforecasts/ringbp). The package has two pieces of functionality: 1) to simulate an infectious disease outbreak using a branching process model with non-pharmaceutical interventions; and 2) to calculate the proportion of simulated outbreaks that are contained (i.e. do not cause a large sustained human-to-human epidemic). The utility of the package's general model framework has been shown by serving as a template for other epidemiological research such as [post-exposure prophylaxis](https://sophiemeakin.github.io/pepbp/), [network effects on control](https://github.com/lgs85/covidhm) [@firthUsingRealworldNetwork2020] and the [impact of self-reporting and isolation adherence](https://github.com/timcdlucas/ringbp) [@davisImperfectToolContact2020].
 
 ## The problem
 
