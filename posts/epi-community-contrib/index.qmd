@@ -33,6 +33,67 @@ In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk
 
 The user experience (API) of the package has been refactored. The main simulation function `scenario_sim()` remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.
 
+:::: {.columns}
+
+::: {.column width="47.5%"}
+**Old**
+
+``` r
+scenario_sim(
+  n.sim = 5,
+  num.initial.cases = 5,
+  cap_max_days = 365,
+  cap_cases = 2000,
+  r0isolated = 0,
+  r0community = 2.5,
+  disp.iso = 1,
+  disp.com = 0.16,
+  k = 0.7,
+  delay_shape = 2.5,
+  delay_scale = 5,
+  prop.asym = 0,
+  prop.ascertain = 0
+)
+```
+:::
+
+::: {.column width="5%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="47.5%"}
+
+**New**
+
+``` r
+scenario_sim(
+ n = 5,
+ initial_cases = 5,
+ offspring = offspring_opts(
+   community = \(n) rnbinom(n = n, mu = 2.5, size = 0.16),
+   isolated = \(n) rnbinom(n = n, mu = 0, size = 1),
+   asymptomatic = \(n) rnbinom(n = n, mu = 2.5, size = 0.16)
+  ),
+ delays = delay_opts(
+   incubation_period = \(n) rweibull(n = n, shape = 2.32, scale = 6.49),
+   onset_to_isolation = \(n) rweibull(n = n, shape = 2.5, scale = 5)
+  ),
+ event_probs = event_prob_opts(
+   asymptomatic = 0,
+   presymptomatic_transmission = 0.3,
+   symptomatic_ascertained = 0
+  ),
+ interventions = intervention_opts(quarantine = TRUE),
+ sim = sim_opts(
+   cap_max_days = 365,
+   cap_cases = 2000
+  )
+)
+```
+:::
+
+::::
+
 The new API gives the user more control over the model's parameterisation. The incubation period is now specified by the user instead of being set to an estimate for COVID-19. The way offspring and delay distribution functions are specified also means that any distributional or non-parametric form can be supplied, relaxing the assumption that the onset-to-isolation has to be a Weibull distribution.
 
 Users can now specify the proportion of presymptomatic transmission rather than having to understand the skew normal parameterisation used by the simulation model, making it easier to get started with the package for new users.
