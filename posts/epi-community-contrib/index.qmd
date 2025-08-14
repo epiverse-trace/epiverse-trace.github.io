@@ -3,7 +3,7 @@ title: "Epiverse community engagement and software sustainability for research s
 author:
   - name: "Joshua W. Lambert"
     orcid: "0000-0001-5218-3046"
-date: "2025-07-22"
+date: "2025-08-25"
 categories: [open-source, R, R package, epidemiology, community, Epiverse, DOI]
 bibliography: index.bib
 format:
@@ -139,5 +139,9 @@ Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic 
 Enhancing the accessibility of software for users and developers by improving its documentation and user interface will hopefully provide a gateway for more external contributors to engage with the project. In the public health landscape of temporal surges in capacity and priorities, better enabling community contributions to open-source software should aid software sustainability.
 
 All of the changes discussed in this blog post can be found in the [{ringbp} news](https://epiforecasts.io/ringbp/news/index.html). For details of developments see the [pull request history of {ringbp} on GitHub](https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed).
+
+## Acknowledgements
+
+Thanks to Seb Funk and Carl Pearson for helpful feedback when drafting this post and for their collaboration on the {ringbp} project.
 
 [^1]: [Defined by Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/abandonware) as: "software that is no longer produced or supported by the company that originally made it".
