@@ -36,7 +36,6 @@ The user experience (API) of the package has been refactored. The main simulatio
 :::: {.columns}
 
 ::: {.column width="47.5%"}
-
 ### Old
 
 ``` r
