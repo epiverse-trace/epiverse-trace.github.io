@@ -9,8 +9,373 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.8.20</generator>
-<lastBuildDate>Mon, 14 Apr 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.8.21</generator>
+<lastBuildDate>Mon, 25 Aug 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Epiverse community engagement and software sustainability for research software</title>
+  <dc:creator>Joshua W. Lambert</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/epi-community-contrib/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Software that is developed for research or by researchers can be difficult to maintain given the incentive and funding structures in academia. This remains true for epidemiology, with a large volume of software written during the COVID-19 pandemic, much of which is now abandonware<sup>1</sup>. This does not mean that the software developed to understand the COVID-19 pandemic was bad or does not have utility in understanding future epidemics and pandemics, but just that the capacity to maintain and further develop these tools is not available now the pandemic is no <a href="https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic">longer considered an acute public health emergency</a>.</p>
+<p>These issues around software sustainability and the academic structures that hinder software longevity were raised by <span class="citation" data-cites="kucharskiCOVID19ResponseIllustrates2020">Kucharski, Funk, and Eggo (2020)</span> and were one of the leading reasons for the <a href="https://epiverse-trace.github.io/">Epiverse-TRACE initiative</a>. Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. The initiative also tries to improve community collaboration and contribution friendliness of open-source software.</p>
+<p>This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help improve an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) to assess the effectiveness of isolation and contact tracing effectiveness <span class="citation" data-cites="hellewellFeasibilityControllingCOVID192020">(Hellewell et al. 2020)</span>. It built on code written for the 2014-2016 West Africa Ebola outbreak to provide insights into ring vaccination <span class="citation" data-cites="kucharskiEffectivenessRingVaccination2016">(Kucharski et al. 2016)</span>. These applications and the general nature of the questions the package addresses suggest that it could be of great help in future infectious disease outbreaks, but has lacked developer resources without pandemic-related priorities.</p>
+<section id="the-r-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-r-package">The R package</h2>
+<p>The R package in question is <a href="https://github.com/epiforecasts/ringbp">{ringbp}</a>. The package has two pieces of functionality: 1) to simulate an infectious disease outbreak using a branching process model with non-pharmaceutical interventions; and 2) to calculate the proportion of simulated outbreaks that are contained (i.e.&nbsp;do not cause a large sustained human-to-human epidemic). The utility of the package’s general model framework has been shown by serving as a template for other epidemiological research such as <a href="https://sophiemeakin.github.io/pepbp/">post-exposure prophylaxis</a>, <a href="https://github.com/lgs85/covidhm">network effects on control</a> <span class="citation" data-cites="firthUsingRealworldNetwork2020">(Firth et al. 2020)</span> and the <a href="https://github.com/timcdlucas/ringbp">impact of self-reporting and isolation adherence</a> <span class="citation" data-cites="davisImperfectToolContact2020">(Davis et al. 2020)</span>.</p>
+</section>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
+<p>It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Usability, documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were hard-coded, not providing users the full flexibility that the model could allow.</p>
+</section>
+<section id="epiverse-contribution" class="level2">
+<h2 class="anchored" data-anchor-id="epiverse-contribution">Epiverse contribution</h2>
+<p>In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk (also a member of Epiverse) and Carl Pearson (external collaborator), based at the London School of Hygiene and Tropical Medicine and University of North Carolina, respectively, to try and improve the R package, both internally and from the user-experience. The following sections will give brief summaries of some of the collaborative developments.</p>
+<section id="user-interface" class="level3">
+<h3 class="anchored" data-anchor-id="user-interface">User interface</h3>
+<p>The user experience (API) of the package has been refactored. The main simulation function <code>scenario_sim()</code> remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.</p>
+</section>
+<div class="columns">
+<div class="column" style="width:47.5%;">
+<section id="old" class="level3">
+<h3 class="anchored" data-anchor-id="old">Old</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scenario_sim</span>(</span>
+<span id="cb1-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n.sim =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb1-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">num.initial.cases =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb1-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cap_max_days =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">365</span>,</span>
+<span id="cb1-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cap_cases =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span>,</span>
+<span id="cb1-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">r0isolated =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb1-7">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">r0community =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>,</span>
+<span id="cb1-8">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">disp.iso =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>,</span>
+<span id="cb1-9">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">disp.com =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.16</span>,</span>
+<span id="cb1-10">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">k =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.7</span>,</span>
+<span id="cb1-11">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delay_shape =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>,</span>
+<span id="cb1-12">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delay_scale =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb1-13">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prop.asym =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb1-14">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">prop.ascertain =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb1-15">)</span></code></pre></div></div>
+</section>
+</div><div class="column" style="width:5%;">
+<!-- empty column to create gap -->
+</div><div class="column" style="width:47.5%;">
+<section id="new" class="level3">
+<h3 class="anchored" data-anchor-id="new">New</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scenario_sim</span>(</span>
+<span id="cb2-2"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb2-3"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">initial_cases =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>,</span>
+<span id="cb2-4"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">offspring =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">offspring_opts</span>(</span>
+<span id="cb2-5">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">community =</span> \(n) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnbinom</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mu =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.16</span>),</span>
+<span id="cb2-6">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">isolated =</span> \(n) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnbinom</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mu =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb2-7">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">asymptomatic =</span> \(n) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnbinom</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mu =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.16</span>)</span>
+<span id="cb2-8">  ),</span>
+<span id="cb2-9"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">delays =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">delay_opts</span>(</span>
+<span id="cb2-10">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">incubation_period =</span> \(n) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rweibull</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.32</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6.49</span>),</span>
+<span id="cb2-11">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">onset_to_isolation =</span> \(n) <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rweibull</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">n =</span> n, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">shape =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">scale =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb2-12">  ),</span>
+<span id="cb2-13"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">event_probs =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">event_prob_opts</span>(</span>
+<span id="cb2-14">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">asymptomatic =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>,</span>
+<span id="cb2-15">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">presymptomatic_transmission =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.3</span>,</span>
+<span id="cb2-16">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">symptomatic_ascertained =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb2-17">  ),</span>
+<span id="cb2-18"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">interventions =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">intervention_opts</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quarantine =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span>),</span>
+<span id="cb2-19"> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sim =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sim_opts</span>(</span>
+<span id="cb2-20">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cap_max_days =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">365</span>,</span>
+<span id="cb2-21">   <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">cap_cases =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2000</span></span>
+<span id="cb2-22">  )</span>
+<span id="cb2-23">)</span></code></pre></div></div>
+</section>
+</div>
+</div>
+<p>The new API gives the user more control over the model’s parameterisation. The incubation period is now specified by the user instead of being set to an estimate for COVID-19. The way offspring and delay distribution functions are specified also means that any distributional or non-parametric form can be supplied, relaxing the assumption that the onset-to-isolation has to be a Weibull distribution.</p>
+<p>Users can now specify the proportion of presymptomatic transmission rather than having to understand the skew normal parameterisation used by the simulation model, making it easier to get started with the package for new users.</p>
+<p>Lastly on user-facing changes, the naming and style of function arguments has been standardised for consistent use of <a href="https://en.wikipedia.org/wiki/Snake_case">snakecase</a> style and abbreviations.</p>
+<section id="documentation" class="level3">
+<h3 class="anchored" data-anchor-id="documentation">Documentation</h3>
+<p>Function documentation already used {roxygen2}, but did not make use of inheritance or comprehensively document the function output or usage. We used <code>@inheritParams</code> from {roxygen2} to deduplicate, added <code>@return</code> documentation to all functions. We also improved the function argument documentation by following a structure of: <code>&lt;type&gt;: description</code>, for example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@</span>param sim a <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">list</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span> with class <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">&lt;ringbp_sim_opts&gt;</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">`</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> the simulation control</span>
+<span id="cb3-2">  options <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> the \pkg{ringbp} model, returned by [<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sim_opts</span>()]</span></code></pre></div></div>
+<p>Exported functions now have informative examples (<code>@examples</code>) to showcase how the functions should be used. Function examples now always run (removing <code>\dontrun{}</code>) to catch any errors.</p>
+<p>The <a href="https://github.com/anthonynorth/roxyglobals">{roxyglobals}</a> package has been added to automate the management of global variables with the use of the <code>@autoglobal</code> tag.</p>
+<p>Vignettes are useful long-form package documentation. Thus far we’ve added one vignette to the package and plan to add more where relevant.</p>
+</section>
+<section id="bug-fixes" class="level3">
+<h3 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h3>
+<p>Perhaps more important that any of the software best practices and user interface is the correctness of the code. In our developments we’ve uncovered a few bugs in the previous version of {ringbp}. Errors in the timing of quarantining infected individuals, sampling from the onset-to-isolation distribution, and calculating the generation time from the incubation period have all been identified and fixed.</p>
+</section>
+<section id="testing" class="level3">
+<h3 class="anchored" data-anchor-id="testing">Testing</h3>
+<ul>
+<li>simulation correctness regression (snapshot) testing</li>
+</ul>
+</section>
+<section id="miscellaneous" class="level3">
+<h3 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h3>
+<p>There are various other changes in {ringbp} from our work. Examples include: input checking, not specifying erroneous function defaults, updating the package website, and functions that return <code>data.table</code> objects no longer <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-faq.html#sec:why-do-i-have-to-type-dt-sometimes-twice-after-using-to-print-the-result-to-console">returning silently</a>. Mentioned in the introduction, model performance has been incrementally improved, but we’ve not focused on this aspect, and the package will benefit from time spent focusing on this in the future; especially if the set and complexity of non-pharmaceutical interventions in the model expands.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The {ringbp} R package implements a simple but informative model for infectious disease transmission and interventions. When originally written it included many well-developed aspects, but the time constraints of real-time outbreak response meant several improvements were possible.</p>
+<p>Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future.</p>
+<p>Enhancing the accessibility of software for users and developers by improving its documentation and user interface will hopefully provide a gateway for more external contributors to engage with the project. In the public health landscape of temporal surges in capacity and priorities, better enabling community contributions to open-source software should aid software sustainability.</p>
+<p>All of the changes discussed in this blog post can be found in the <a href="https://epiforecasts.io/ringbp/news/index.html">{ringbp} news</a>. For details of developments see the <a href="https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed">pull request history of {ringbp} on GitHub</a>.</p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to Seb Funk and Carl Pearson for helpful feedback when drafting this post and for their collaboration on the {ringbp} project.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="ref-davisImperfectToolContact2020" class="csl-entry">
+Davis, Emma L., Tim C. D. Lucas, Anna Borlase, Timothy M. Pollington, Sam Abbott, Diepreye Ayabina, Thomas Crellen, et al. 2020. <span>“An Imperfect Tool: Contact Tracing Could Provide Valuable Reductions in <span>COVID-19</span> Transmission If Good Adherence Can Be Achieved and Maintained.”</span> <a href="https://doi.org/10.1101/2020.06.09.20124008">https://doi.org/10.1101/2020.06.09.20124008</a>.
+</div>
+<div id="ref-firthUsingRealworldNetwork2020" class="csl-entry">
+Firth, Josh A., Joel Hellewell, Petra Klepac, Stephen Kissler, CMMID COVID-19 Working Group, Mark Jit, Katherine E. Atkins, et al. 2020. <span>“Using a Real-World Network to Model Localized <span>COVID-19</span> Control Strategies.”</span> <em>Nature Medicine</em> 26 (10): 1616–22. <a href="https://doi.org/10.1038/s41591-020-1036-8">https://doi.org/10.1038/s41591-020-1036-8</a>.
+</div>
+<div id="ref-hellewellFeasibilityControllingCOVID192020" class="csl-entry">
+Hellewell, Joel, Sam Abbott, Amy Gimma, Nikos I Bosse, Christopher I Jarvis, Timothy W Russell, James D Munday, et al. 2020. <span>“Feasibility of Controlling <span>COVID-19</span> Outbreaks by Isolation of Cases and Contacts.”</span> <em>The Lancet Global Health</em> 8 (4): e488–96. <a href="https://doi.org/10.1016/S2214-109X(20)30074-7">https://doi.org/10.1016/S2214-109X(20)30074-7</a>.
+</div>
+<div id="ref-kucharskiEffectivenessRingVaccination2016" class="csl-entry">
+Kucharski, Adam J., Rosalind M. Eggo, Conall H. Watson, Anton Camacho, Sebastian Funk, and W. John Edmunds. 2016. <span>“Effectiveness of <span>Ring Vaccination</span> as <span>Control Strategy</span> for <span>Ebola Virus Disease</span>.”</span> <em>Emerging Infectious Diseases</em> 22 (1): 105–8. <a href="https://doi.org/10.3201/eid2201.151410">https://doi.org/10.3201/eid2201.151410</a>.
+</div>
+<div id="ref-kucharskiCOVID19ResponseIllustrates2020" class="csl-entry">
+Kucharski, Adam J., Sebastian Funk, and Rosalind M. Eggo. 2020. <span>“The <span>COVID-19</span> Response Illustrates That Traditional Academic Reward Structures and Metrics Do Not Reflect Crucial Contributions to Modern Science.”</span> <em>PLOS Biology</em> 18 (10): e3000913. <a href="https://doi.org/10.1371/journal.pbio.3000913">https://doi.org/10.1371/journal.pbio.3000913</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://dictionary.cambridge.org/dictionary/english/abandonware">Defined by Cambridge Dictionary</a> as: “software that is no longer produced or supported by the company that originally made it”.↩︎</p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w._lambert2025,
+  author = {W. Lambert, Joshua},
+  title = {Epiverse Community Engagement and Software Sustainability for
+    Research Software},
+  date = {2025-08-25},
+  url = {https://epiverse-trace.github.io/posts/epi-community-contrib/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2025" class="csl-entry quarto-appendix-citeas">
+W. Lambert, Joshua. 2025. <span>“Epiverse Community Engagement and
+Software Sustainability for Research Software.”</span> August 25, 2025.
+<a href="https://epiverse-trace.github.io/posts/epi-community-contrib/">https://epiverse-trace.github.io/posts/epi-community-contrib/</a>.
+</div></div></section></div> ]]></description>
+  <category>open-source</category>
+  <category>R</category>
+  <category>R package</category>
+  <category>epidemiology</category>
+  <category>community</category>
+  <category>Epiverse</category>
+  <category>DOI</category>
+  <guid>https://epiverse-trace.github.io/posts/epi-community-contrib/</guid>
+  <pubDate>Mon, 25 Aug 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Integration testing in Epiverse-TRACE</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
@@ -6337,7 +6702,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-84893"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-84893").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-47628"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-47628").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
