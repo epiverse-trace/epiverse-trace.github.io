@@ -11,9 +11,9 @@ format:
     toc: true
 ---
 
-Software that is developed for research or by researchers can be difficult to maintain given the incentive and funding structures in academia. This remains true for epidemiology, with a large volume of software written during the COVID-19 pandemic, much of which is now abandonware[^1]. This does not mean that the software developed to understand the COVID-19 pandemic was bad or does not have utility in understanding future epidemics and pandemics, but just that the capacity to maintain and further develop these tools is not available now the pandemic is no [longer considered an acute public health emergency](https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic).
+Software that is developed for research or by researchers can be difficult to maintain given the incentive and funding structures in academia. This remains true for epidemiology, with a large volume of software written during the COVID-19 pandemic, much of which is now abandonware[^1]. This does not mean that the software developed to understand the COVID-19 pandemic was bad or does not have utility in understanding future epidemics and pandemics, but just that the capacity to maintain and further develop these tools is not available now the pandemic is no [longer considered an acute public health emergency](https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic). 
 
-These issues around software sustainability and the academic structures that hinder software longevity were raised by @kucharskiCOVID19ResponseIllustrates2020 and were one of the leading reasons for the [Epiverse-TRACE initiative](https://epiverse-trace.github.io/). Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics.
+These issues around software sustainability and the academic structures that hinder software longevity were raised by @kucharskiCOVID19ResponseIllustrates2020 and were one of the leading reasons for the [Epiverse-TRACE initiative](https://epiverse-trace.github.io/). Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. 
 
 This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help develop an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) and built on code written for the 2014-2016 West Africa Ebola outbreak. Code that has provided insights into ring vaccination [@kucharskiEffectivenessRingVaccination2016] and isolation and contact tracing effectiveness [@hellewellFeasibilityControllingCOVID192020]. Thus it could be of great help in future infectious disease outbreaks, but has been dormant for the past few years.
 
@@ -23,7 +23,7 @@ The R package in question is [{ringbp}](https://github.com/epiforecasts/ringbp).
 
 ## The problem
 
-It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were fixed internally, not providing users the full flexibility that the model could allow.
+It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were fixed internally, not providing users the full flexibility that the model could allow. 
 
 ## Epiverse contribution
 
@@ -35,7 +35,7 @@ The user experience (API) of the package has been refactored. The main simulatio
 
 The new API gives the user more control over the model's parameterisation. The incubation period is now specified by the user instead of being fixed to an estimate for COVID-19. The way offspring and delay distribution functions are specified also means that any distributional or non-parameteric form can be supplied, relaxing the assumption that the onset-to-isolation has to be a Weibull distribution.
 
-Users can now specify the proportion of presymptomatic transmission rather than having to understand the skew normal parameterisation used by the simulation model, making it easier to get started with the package for new users.
+Users can now specify the proportion of presymptomatic transmission rather than having to understand the skew normal parameterisation used by the simulation model, making it easier to get started with the package for new users. 
 
 Lastly on user-facing changes, the naming and style of function arguments has been standardised for consistent use of [snakecase](https://en.wikipedia.org/wiki/Snake_case) style and abbreviations.  
 
@@ -52,7 +52,7 @@ Exported functions now have informative examples (`@examples`) to showcase how t
 
 The [{roxyglobals}](https://github.com/anthonynorth/roxyglobals) package has been added to automate the management of global variables with the use of the `@autoglobal` tag.
 
-Vignettes are useful long-form package documentation. Thus far we've added one vignette to the package and plan to add more where relevant.
+Vignettes are useful long-form package documentation. Thus far we've added one vignette to the package and plan to add more where relevant. 
 
 ### Bug fixes
 
@@ -68,10 +68,10 @@ There are various other changes in {ringbp} from our work. Examples include: inp
 
 ## Conclusion
 
-The {ringbp} R package implements a simple but informative model for infectious disease transmission and interventions. When written it included many well-developed aspects, but the time constraints of real-time outbreak response meant several improvements were possible.
+The {ringbp} R package implements a simple but informative model for infectious disease transmission and interventions. When written it included many well-developed aspects, but the time constraints of real-time outbreak response meant several improvements were possible. 
 
-Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future.
+Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future. 
 
-All of the changes discussed in this blog post can be found in the [{ringbp} news](https://epiforecasts.io/ringbp/news/index.html). For details of developments see the [pull request history of {ringbp} on GitHub](https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed).
+All of the changes discussed in this blog post can be found in the [{ringbp} news](https://epiforecasts.io/ringbp/news/index.html). For details of developments see the [pull request history of {ringbp} on GitHub](https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed). 
 
 [^1]: [Defined by Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/abandonware) as: "software that is no longer produced or supported by the company that originally made it".
