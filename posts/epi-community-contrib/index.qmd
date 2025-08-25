@@ -15,7 +15,7 @@ Software that is developed for research or by researchers can be difficult to ma
 
 These issues around software sustainability and the academic structures that hinder software longevity were raised by @kucharskiCOVID19ResponseIllustrates2020 and were one of the leading reasons for the [Epiverse-TRACE initiative](https://epiverse-trace.github.io/). Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics.
 
-This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help develop an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) to assess the effectiveness of isolation and contact tracing effectiveness [@hellewellFeasibilityControllingCOVID192020]. It built on code written for the 2014-2016 West Africa Ebola outbreak to provide insights into ring vaccination [@kucharskiEffectivenessRingVaccination2016]. These applications and the general nature of the questions the package addresses suggest that it could be of great help in future infectious disease outbreaks, but has been dormant for the past few years.
+This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help develop an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) and built on code written for the 2014-2016 West Africa Ebola outbreak. Code that has provided insights into ring vaccination [@kucharskiEffectivenessRingVaccination2016] and isolation and contact tracing effectiveness [@hellewellFeasibilityControllingCOVID192020]. Thus it could be of great help in future infectious disease outbreaks, but has been dormant for the past few years.
 
 ## The R package
 
@@ -23,7 +23,7 @@ The R package in question is [{ringbp}](https://github.com/epiforecasts/ringbp).
 
 ## The problem
 
-It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were hard-coded, not providing users the full flexibility that the model could allow.
+It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were fixed internally, not providing users the full flexibility that the model could allow.
 
 ## Epiverse contribution
 
@@ -33,7 +33,7 @@ In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk
 
 The user experience (API) of the package has been refactored. The main simulation function `scenario_sim()` remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.
 
-The new API gives the user more control over the model's parameterisation. The incubation period is now specified by the user instead of being set to an estimate for COVID-19. The way offspring and delay distribution functions are specified also means that any distributional or non-parametric form can be supplied, relaxing the assumption that the onset-to-isolation has to be a Weibull distribution.
+The new API gives the user more control over the model's parameterisation. The incubation period is now specified by the user instead of being fixed to an estimate for COVID-19. The way offspring and delay distribution functions are specified also means that any distributional or non-parameteric form can be supplied, relaxing the assumption that the onset-to-isolation has to be a Weibull distribution.
 
 Users can now specify the proportion of presymptomatic transmission rather than having to understand the skew normal parameterisation used by the simulation model, making it easier to get started with the package for new users.
 
@@ -56,7 +56,7 @@ Vignettes are useful long-form package documentation. Thus far we've added one v
 
 ### Bug fixes
 
-Perhaps more important that any of the software best practices and user interface is the correctness of the code. In our developments we've uncovered a few bugs in the previous version of {ringbp}. Errors in the timing of quarantining infected individuals, sampling from the onset-to-isolation distribution, and calculating the generation time from the incubation period have all been identified and fixed.
+Perhaps more important that any of the software best practices and user interface is the correctness of the code. In our developments we've uncovered a few bugs in the previous version of {ringbp}. The timing of quarantining infected individuals, sampling from the onset-to-isolation distribution, and calculating the generation time from the incubation period have all been identified and fixed.
 
 ### Testing
 
@@ -64,11 +64,11 @@ Perhaps more important that any of the software best practices and user interfac
 
 ### Miscellaneous
 
-There are various other changes in {ringbp} from our work. Examples include: input checking, not specifying erroneous function defaults, updating the package website, and functions that return `data.table` objects no longer [returning silently](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-faq.html#sec:why-do-i-have-to-type-dt-sometimes-twice-after-using-to-print-the-result-to-console). Mentioned in the introduction, model performance has been incrementally improved, but we've not focused on this aspect, and the package will benefit from time spent focusing on this in the future; especially if the set and complexity of non-pharmaceutical interventions in the model expands.
+There are various other changes in {ringbp} from our work. Examples include: input checking, not specifying erroneous function defaults, updating the package website, and functions that return `data.table` objects no longer [return silently](https://cran.r-project.org/web/packages/data.table/vignettes/datatable-faq.html#sec:why-do-i-have-to-type-dt-sometimes-twice-after-using-to-print-the-result-to-console). Mentioned in the introduction, model performance has been incrementally improved, but we've not focused on this aspect, and the package will benefit from time spent focusing on this in the future; especially if the set and complexity of non-pharmaceutical interventions in the model expands.
 
 ## Conclusion
 
-The {ringbp} R package implements a simple but informative model for infectious disease transmission and interventions. When originally written it included many well-developed aspects, but the time constraints of real-time outbreak response meant several improvements were possible.
+The {ringbp} R package implements a simple but informative model for infectious disease transmission and interventions. When written it included many well-developed aspects, but the time constraints of real-time outbreak response meant several improvements were possible.
 
 Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future.
 
