@@ -27,7 +27,7 @@ It is understandable that because {ringbp} was written in haste to produce insig
 
 ## Epiverse contribution
 
-In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk (also a member of Epiverse) and Carl Pearson (external collaborator), based at the London School of Hygiene and Tropical Medicine and University of North Carolina, respectively, to try and improve the R package, both internally and from the user-experience. The following sections will give brief summaries of some of the collaborative developments.
+In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk and Carl Pearson, based at the London School of Hygiene and Tropical Medicine and University of North Carolina, respectively, to try and improve the R package, both internally and from the user-experience. The following sections will give brief summaries of some of the collaborative developments.
 
 ### User interface
 
