@@ -15,7 +15,7 @@ Software that is developed for research or by researchers can be difficult to ma
 
 These issues around software sustainability and the academic structures that hinder software longevity were raised by @kucharskiCOVID19ResponseIllustrates2020 and were one of the leading reasons for the [Epiverse-TRACE initiative](https://epiverse-trace.github.io/). Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. The initiative also tries to improve community collaboration and contribution friendliness of open-source software.
 
-This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help improve an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) to assess the effectiveness of isolation and contact tracing effectiveness [@hellewellFeasibilityControllingCOVID192020]. It built on code written for the 2014-2016 West Africa Ebola outbreak to provide insights into ring vaccination [@kucharskiEffectivenessRingVaccination2016]. These applications and the general nature of the questions the package addresses suggest that it could be of great help in future infectious disease outbreaks, but has been dormant for the past few years.
+This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help develop an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) to assess the effectiveness of isolation and contact tracing effectiveness [@hellewellFeasibilityControllingCOVID192020]. It built on code written for the 2014-2016 West Africa Ebola outbreak to provide insights into ring vaccination [@kucharskiEffectivenessRingVaccination2016]. These applications and the general nature of the questions the package addresses suggest that it could be of great help in future infectious disease outbreaks, but has been dormant for the past few years.
 
 ## The R package
 
@@ -36,7 +36,7 @@ The user experience (API) of the package has been refactored. The main simulatio
 :::: {.columns}
 
 ::: {.column width="47.5%"}
-### Old
+**Old**
 
 ``` r
 scenario_sim(
@@ -55,7 +55,6 @@ scenario_sim(
   prop.ascertain = 0
 )
 ```
-
 :::
 
 ::: {.column width="5%"}
@@ -64,7 +63,7 @@ scenario_sim(
 
 ::: {.column width="47.5%"}
 
-### New
+**New**
 
 ``` r
 scenario_sim(
@@ -91,7 +90,6 @@ scenario_sim(
   )
 )
 ```
-
 :::
 
 ::::
