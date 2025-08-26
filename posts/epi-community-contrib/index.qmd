@@ -23,7 +23,7 @@ The R package in question is [{ringbp}](https://github.com/epiforecasts/ringbp).
 
 ## The problem
 
-It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Usability, documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were hard-coded, not providing users the full flexibility that the model could allow.
+It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Usability, documentation, testing, code style, and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were hard-coded, not providing users the full flexibility that the model could allow.
 
 ## Epiverse contribution
 
@@ -31,7 +31,7 @@ In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk
 
 ### User interface
 
-The user experience (API) of the package has been refactored. The main simulation function `scenario_sim()` remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.
+The user experience of the package has been refactored. The main simulation function `scenario_sim()` remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.
 
 :::: {.columns}
 
@@ -124,7 +124,7 @@ Perhaps more important that any of the software best practices and user interfac
 
 ### Testing
 
-- simulation correctness regression (snapshot) testing
+To ensure the correctness of the code is maintained with continued package development we have added regression ([snapshot](https://testthat.r-lib.org/articles/snapshotting.html)) unit tests. These tests automatically detect if updates to the code cause breaking changes to the output of the exported functions. In combination with continuous integration these regression tests aid developers in finding and fixing bugs.
 
 ### Miscellaneous
 
@@ -136,12 +136,14 @@ The {ringbp} R package implements a simple but informative model for infectious 
 
 Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future.
 
+These efforts are not limited to {ringbp}. Similar contributions have been made to other packages, including [EpiNow2](https://epiforecasts.io/EpiNow2/), and open source communities such as the [epinowcast](https://github.com/epinowcast/) community, where documentation, testing, and code enhancements have helped strengthen the forecasting and nowcasting software ecosystem in the last couple of years.
+
 Enhancing the accessibility of software for users and developers by improving its documentation and user interface will hopefully provide a gateway for more external contributors to engage with the project. In the public health landscape of temporal surges in capacity and priorities, better enabling community contributions to open-source software should aid software sustainability.
 
 All of the changes discussed in this blog post can be found in the [{ringbp} news](https://epiforecasts.io/ringbp/news/index.html). For details of developments see the [pull request history of {ringbp} on GitHub](https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed).
 
 ## Acknowledgements
 
-Thanks to Seb Funk and Carl Pearson for helpful feedback when drafting this post and for their collaboration on the {ringbp} project.
+Thanks to Seb Funk, Carl Pearson and James Azam for helpful feedback when drafting this post and for their collaboration on the {ringbp} project.
 
 [^1]: [Defined by Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/abandonware) as: "software that is no longer produced or supported by the company that originally made it".
