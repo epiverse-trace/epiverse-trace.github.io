@@ -30,14 +30,14 @@
 </section>
 <section id="the-problem" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem">The problem</h2>
-<p>It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Usability, documentation, testing, code style and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were hard-coded, not providing users the full flexibility that the model could allow.</p>
+<p>It is understandable that because {ringbp} was written in haste to produce insights to inform pandemic response it did not adhere to all software best practices. Usability, documentation, testing, code style, and (computational) performance could be improved. Certain aspects of model code, like parameterisations, were hard-coded, not providing users the full flexibility that the model could allow.</p>
 </section>
 <section id="epiverse-contribution" class="level2">
 <h2 class="anchored" data-anchor-id="epiverse-contribution">Epiverse contribution</h2>
 <p>In the recent months Epiverse has collaborated with {ringbp} developers Seb Funk (also a member of Epiverse) and Carl Pearson (external collaborator), based at the London School of Hygiene and Tropical Medicine and University of North Carolina, respectively, to try and improve the R package, both internally and from the user-experience. The following sections will give brief summaries of some of the collaborative developments.</p>
 <section id="user-interface" class="level3">
 <h3 class="anchored" data-anchor-id="user-interface">User interface</h3>
-<p>The user experience (API) of the package has been refactored. The main simulation function <code>scenario_sim()</code> remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.</p>
+<p>The user experience of the package has been refactored. The main simulation function <code>scenario_sim()</code> remains, but its arguments have been modularised to better group model parameters and control arguments. This also makes the package easier to develop further without necessarily introducing many breaking changes and prevents the number of top-level function arguments from expanding.</p>
 </section>
 <div class="columns">
 <div class="column" style="width:47.5%;">
@@ -307,9 +307,7 @@ font-style: inherit;">sim_opts</span>()]</span></code></pre></div></div>
 </section>
 <section id="testing" class="level3">
 <h3 class="anchored" data-anchor-id="testing">Testing</h3>
-<ul>
-<li>simulation correctness regression (snapshot) testing</li>
-</ul>
+<p>To ensure the correctness of the code is maintained with continued package development we have added regression (<a href="https://testthat.r-lib.org/articles/snapshotting.html">snapshot</a>) unit tests. These tests automatically detect if updates to the code cause breaking changes to the output of the exported functions. In combination with continuous integration these regression tests aid developers in finding and fixing bugs.</p>
 </section>
 <section id="miscellaneous" class="level3">
 <h3 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h3>
@@ -320,12 +318,13 @@ font-style: inherit;">sim_opts</span>()]</span></code></pre></div></div>
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>The {ringbp} R package implements a simple but informative model for infectious disease transmission and interventions. When originally written it included many well-developed aspects, but the time constraints of real-time outbreak response meant several improvements were possible.</p>
 <p>Epiverse-TRACE has the opportunity to not only develop new tooling for pandemic preparedness and response, but to contribute to the ecosystem of open-source software in infectious disease epidemiology. We hope that by covering the collaborative developments of {ringbp}, it can illustrate the benefits of bringing software up to date with best practices, and make tools available, accessible and robust when a new epidemic or pandemic occurs, in turn hopefully removing the need for redeveloping similar software in the future.</p>
+<p>These efforts are not limited to {ringbp}. Similar contributions have been made to other packages, including <a href="https://epiforecasts.io/EpiNow2/">EpiNow2</a>, and open source communities such as the <a href="https://github.com/epinowcast/">epinowcast</a> community, where documentation, testing, and code enhancements have helped strengthen the forecasting and nowcasting software ecosystem in the last couple of years.</p>
 <p>Enhancing the accessibility of software for users and developers by improving its documentation and user interface will hopefully provide a gateway for more external contributors to engage with the project. In the public health landscape of temporal surges in capacity and priorities, better enabling community contributions to open-source software should aid software sustainability.</p>
 <p>All of the changes discussed in this blog post can be found in the <a href="https://epiforecasts.io/ringbp/news/index.html">{ringbp} news</a>. For details of developments see the <a href="https://github.com/epiforecasts/ringbp/pulls?q=is%3Apr+is%3Aclosed">pull request history of {ringbp} on GitHub</a>.</p>
 </section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Thanks to Seb Funk and Carl Pearson for helpful feedback when drafting this post and for their collaboration on the {ringbp} project.</p>
+<p>Thanks to Seb Funk, Carl Pearson and James Azam for helpful feedback when drafting this post and for their collaboration on the {ringbp} project.</p>
 
 
 
@@ -5401,7 +5400,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-47628"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-47628").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-82341"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-82341").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
