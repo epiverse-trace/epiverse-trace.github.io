@@ -17,7 +17,7 @@ library(simulist)
 
 In this minor version release we have continued to make a range of improvements across the package. A new line list post-processing function, `censor_linelist()`, makes it easy to group dates into various intervals, `messy_linelist()` introduced in v0.5.0 is enhanced, and the package documentation is expanded to cover under-reporting in outbreak data and censoring dates. There are also a couple of minor bug fixes.
 
-The development status of the package is updated to _stable_ from _experimental_ to reflect the long term stability and low probability of major changes.   
+The development status of the package is updated to _stable_ from _experimental_ to reflect the long term stability and low probability of major changes.
 
 ## New features
 
@@ -35,7 +35,7 @@ The development status of the package is updated to _stable_ from _experimental_
 
 ## Minor changes
 
-* Documentation on censoring dates is added to `wrangling-linelist.Rmd` (#240). 
+* Documentation on censoring dates is added to `wrangling-linelist.Rmd` (#240).
 
 * Documentation on interoperability between {simulist} and {incidence2} for double precision `<Date>`s and warning for not specifying `interval` in `incidence2::incidence()` is added to `vis-linelist.Rmd` (#232).
 
@@ -52,7 +52,6 @@ The development status of the package is updated to _stable_ from _experimental_
 ## Deprecated and defunct
 
 * None
-
 
 ## Acknowledgements
 
