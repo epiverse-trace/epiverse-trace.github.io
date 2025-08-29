@@ -56,4 +56,4 @@ The development status of the package is updated to _stable_ from _experimental_
 
 ## Acknowledgements
 
-[&#x0040;joshwlambert](https://github.com/joshwlambert)
+[&#x0040;joshwlambert](https://github.com/joshwlambert) [&#x0040;avallecam](https://github.com/avallecam) [&#x0040;TimTaylor](https://github.com/TimTaylor) [&#x0040;sbfnk](https://github.com/sbfnk) [&#x0040;seabbs](https://github.com/seabbs)
