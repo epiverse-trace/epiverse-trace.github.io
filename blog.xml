@@ -10,7 +10,67 @@
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
 <generator>quarto-1.8.21</generator>
-<lastBuildDate>Mon, 25 Aug 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 28 Aug 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>simulist v0.6.0</title>
+  <dc:creator>The Epiverse-TRACE development team</dc:creator>
+  <link>https://epiverse-trace.github.io/posts/simulist_v0.6.0/</link>
+  <description><![CDATA[ <!-- markdownlint-disable-next-line --><p>We are very excited to announce the release of a new <a href="https://epiverse-trace.github.io/simulist">simulist</a> version v0.6.0. Here is an automatically generated summary of the changes in this version.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">(</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;"><a href="https://github.com/epiverse-trace/simulist">simulist</a></span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">)</span></span></code></pre></div></div>
+</div>
+<p>In this minor version release we have continued to make a range of improvements across the package. A new line list post-processing function, <code>censor_linelist()</code>, makes it easy to group dates into various intervals, <code>messy_linelist()</code> introduced in v0.5.0 is enhanced, and the package documentation is expanded to cover under-reporting in outbreak data and censoring dates. There are also a couple of minor bug fixes.</p>
+<p>The development status of the package is updated to <em>stable</em> from <em>experimental</em> to reflect the long term stability and low probability of major changes.</p>
+<section id="new-features" class="level2"><h2 class="anchored" data-anchor-id="new-features">New features</h2>
+<ul>
+<li><p>A new <code>censor_linelist()</code> function is added to the package. This is a new post-processing function for line list data to censor <code>&lt;Date&gt;</code> to daily, weekly and other user-defined time periods. The <code>censor_linelist()</code> also has a weekend-effect option to replicate the low reporting over weekends. This new feature also adds the {grates} package as a dependency (#240).</p></li>
+<li><p><code>messy_linelist()</code> can now accept a vector with multiple <code>missing_value</code>s to allow different values to represent missing data (#241).</p></li>
+<li><p>A demonstration of how to replicate under-reporting of line list and contact tracing data is added to the <code>wrangling-linelist.Rmd</code> vignette. The demo contains examples for multiple types of under-reporting data found in real-world outbreaks (#244).</p></li>
+</ul></section><section id="breaking-changes" class="level2"><h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
+<ul>
+<li><p>The <code>$was_case</code> column in contact tracing data simulated by <code>sim_contacts()</code> now contains <code>logical</code> boolean values instead of <code>"Y"</code> and <code>"N"</code> <code>character</code> strings (#243).</p></li>
+<li><p>The minimum R version required by the package is incremented to v4.2.0 due to a recursive dependency on {fastymd} (#235).</p></li>
+</ul></section><section id="minor-changes" class="level2"><h2 class="anchored" data-anchor-id="minor-changes">Minor changes</h2>
+<ul>
+<li><p>Documentation on censoring dates is added to <code>wrangling-linelist.Rmd</code> (#240).</p></li>
+<li><p>Documentation on interoperability between {simulist} and {incidence2} for double precision <code>&lt;Date&gt;</code>s and warning for not specifying <code>interval</code> in <code>incidence2::incidence()</code> is added to <code>vis-linelist.Rmd</code> (#232).</p></li>
+<li><p>The lifecycle of the package has been updated from <em>experimental</em> to <em>stable</em> (#229).</p></li>
+<li><p><code>@return</code> function documentation for exported functions is improved (#235).</p></li>
+</ul></section><section id="bug-fixes" class="level2"><h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
+<ul>
+<li><p><code>truncate_linelist()</code> sets <code>$outcome</code> to <code>NA</code> if they are more recent than truncation time. This matches the way <code>$date_outcome</code> was handled in <code>truncate_linelist()</code> in v0.5.0 (#228).</p></li>
+<li><p>Alt-text in vignettes is fixed to render correctly on pkgdown website (#230).</p></li>
+</ul></section><section id="deprecated-and-defunct" class="level2"><h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
+<ul>
+<li>None</li>
+</ul></section><section id="acknowledgements" class="level2"><h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://github.com/joshwlambert">@joshwlambert</a></p>
+
+
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.6.0},
+  date = {2025-08-28},
+  url = {https://epiverse-trace.github.io/posts/simulist_v0.6.0/},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2025" class="csl-entry quarto-appendix-citeas">
+Epiverse-TRACE development team, The. 2025. <span>“Simulist
+V0.6.0.”</span> August 28, 2025. <a href="https://epiverse-trace.github.io/posts/simulist_v0.6.0/">https://epiverse-trace.github.io/posts/simulist_v0.6.0/</a>.
+</div></div></section></div> ]]></description>
+  <category>new-release</category>
+  <guid>https://epiverse-trace.github.io/posts/simulist_v0.6.0/</guid>
+  <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Epiverse community engagement and software sustainability for research software</title>
   <dc:creator>Joshua W. Lambert</dc:creator>
@@ -2351,75 +2411,6 @@ Packages with Code and Data.”</span> September 23, 2024. <a href="https://doi.
   <category>DOI</category>
   <guid>https://epiverse-trace.github.io/posts/data-licensing.html</guid>
   <pubDate>Mon, 23 Sep 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>epiparameter v0.2.0</title>
-  <dc:creator>The Epiverse-TRACE development team</dc:creator>
-  <link>https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>We are very excited to announce the release of a new epiparameter version v0.2.0. Here is an automatically generated summary of the changes in this version.</p>
-<p>The second release of the {epiparameter} R package focuses on interoperability with the <a href="https://mrc-ide.github.io/epireview/">{epireview} R package</a>. Several functions have been refactored and enhanced.</p>
-<p>This release benefited from feedback from the participants of an <a href="https://who-collaboratory.github.io/collaboratory-epiparameter-community/#/pages/news">EpiParameter Community workshop hosted by the World Health Organisation</a>.</p>
-<section id="new-features" class="level2">
-<h2 class="anchored" data-anchor-id="new-features">New features</h2>
-<ul>
-<li><p>The <code>as_epidist()</code> S3 generic has been added to the package for the coercion of other R objects into <code>&lt;epidist&gt;</code> objects. The <code>as_epidist.data.frame()</code> method is added, as well as the internal functions <code>is_epireview()</code> which determines if a <code>&lt;data.frame&gt;</code> is from {epireview}, and <code>epireview_to_epidist()</code> performs the conversion (#298, #334 &amp; #335)</p></li>
-<li><p>The <code>epireview_core_cols.rda</code> data is added to the package. This is used to determine whether the input to <code>as_epidist.data.frame()</code> is a parameter table from {epireview} as these objects do not have a recognisable class attribute (#298).</p></li>
-<li><p>A new website only vignette (i.e.&nbsp;<a href="https://r-pkgs.org/vignettes.html#sec-vignettes-article">article</a>) <code>data_from_epireview.Rmd</code> is added that explains how to use <code>as_epidist()</code> with data from {epireview} (#298 &amp; #335).</p></li>
-<li><p>A new vignette <code>database.Rmd</code> is added to the package to provide a web interface to the {epiparameter} library of epidemiological parameters. Contributed by <span class="citation" data-cites="sbfnk">@sbfnk</span> (#311).</p></li>
-<li><p>The plotting method for <code>&lt;epidist&gt;</code> objects (<code>plot.epidist()</code>) has been improved to better differentiate continuous from discrete or discretised distributions (#315).</p></li>
-<li><p><code>epidist_db(..., single_epidist = TRUE)</code> now prioritises parameter entries that account for right truncation (#323).</p></li>
-<li><p><code>create_epidist_prob_dist()</code> (previously named <code>create_prob_dist()</code>) is now exported and enables more control of discretisation settings by allowing arguments to be passed to <code>distcrete::distcrete()</code> via <code>...</code> (#324).</p></li>
-<li><p>The <code>&lt;multi_epidist&gt;</code> print method (<code>print.multi_epidist()</code>) has been improved to provides object information in the print header, the first few elements of the list or all elements if list is short, and some extra links and advice in the print footer. The design of the print method follows the design pattern of <a href="https://pillar.r-lib.org/index.html">{pillar}</a> (#326).</p></li>
-<li><p><code>&lt;epidist&gt;</code> objects and functions that work with <code>&lt;epidist&gt;</code> objects now work with exponential distributions (#333).</p></li>
-<li><p>The package now has an explicit data license: <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt">CC0</a> in the <code>LICENSE</code> file.</p></li>
-</ul>
-</section>
-<section id="breaking-changes" class="level2">
-<h2 class="anchored" data-anchor-id="breaking-changes">Breaking changes</h2>
-<ul>
-<li><p><code>list_distributions()</code> has been replaced by <code>parameter_tbl()</code> which enhances the printing by leveraging {pillar} (#321).</p></li>
-<li><p>The <code>&lt;vb_epidist&gt;</code> plotting method (<code>plot.vb_epidist()</code>) has been removed from the package. This provided minimal functionality and was unnecessarily complicating the function signature of <code>plot.epidist()</code> (#315).</p></li>
-</ul>
-</section>
-<section id="bug-fixes" class="level2">
-<h2 class="anchored" data-anchor-id="bug-fixes">Bug fixes</h2>
-<ul>
-<li>DOI and PMID are lowercase throughout the package to resolve issues with older versions of R (see issue #301) (#317).</li>
-</ul>
-</section>
-<section id="deprecated-and-defunct" class="level2">
-<h2 class="anchored" data-anchor-id="deprecated-and-defunct">Deprecated and defunct</h2>
-<ul>
-<li>None</li>
-</ul>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p><a href="https://github.com/Bisaloo">@Bisaloo</a> <a href="https://github.com/CarmenTamayo">@CarmenTamayo</a> <a href="https://github.com/DxChen0126">@DxChen0126</a> <a href="https://github.com/adamkucharski">@adamkucharski</a> <a href="https://github.com/chartgerink">@chartgerink</a> <a href="https://github.com/chloerice48">@chloerice48</a> <a href="https://github.com/cm401">@cm401</a> <a href="https://github.com/jamesmbaazam">@jamesmbaazam</a> <a href="https://github.com/jlessler">@jlessler</a> <a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/papsti">@papsti</a> <a href="https://github.com/prabasaj">@prabasaj</a> <a href="https://github.com/sbfnk">@sbfnk</a> <a href="https://github.com/wzmli">@wzmli</a></p>
-
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2024,
-  author = {Epiverse-TRACE development team, The},
-  title = {Epiparameter V0.2.0},
-  date = {2024-07-22},
-  url = {https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/},
-  langid = {en}
-}
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2024" class="csl-entry quarto-appendix-citeas">
-Epiverse-TRACE development team, The. 2024. <span>“Epiparameter
-V0.2.0.”</span> July 22, 2024. <a href="https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/">https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/</a>.
-</div></div></section></div> ]]></description>
-  <category>new-release</category>
-  <guid>https://epiverse-trace.github.io/posts/epiparameter_v0.2.0/</guid>
-  <pubDate>Mon, 22 Jul 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

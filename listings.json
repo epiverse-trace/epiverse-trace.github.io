@@ -53,6 +53,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/simulist_v0.6.0/index.html",
       "/posts/epi-community-contrib/index.html",
       "/posts/superspreading_v0.4.0/index.html",
       "/posts/safeframe_v1.0.0/index.html",
