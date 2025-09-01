@@ -1,31 +1,53 @@
 [
   {
+    "listing": "/presentations.html",
+    "items": [
+      "/slides/idm-november-2024/index.html",
+      "/slides/2024-10-GPSDD/index.html",
+      "/slides/who-mpox-analytics-September-2024/index.html",
+      "/slides/2024-4S-EASST/index.html",
+      "/slides/epireview-hackathon-july-2024/index.html",
+      "/slides/2024-useR/index.html",
+      "/slides/fosdem-2024/index.html",
+      "/slides/showcase-november-2023/index.html",
+      "/slides/2023-LatinR/index.html",
+      "/slides/interoperability-epiverse/index.html",
+      "/slides/global-health-conference-2023/index.html",
+      "/slides/harmonize-july-2023/index.html",
+      "/slides/rslondon-southeast-july-2023/index.html",
+      "/slides/juniper-may-2023/index.html",
+      "/slides/showcase-april-2023/index.html",
+      "/slides/harmonious-ecosystem/index.html",
+      "/slides/showcase-january-2023/index.html"
+    ]
+  },
+  {
     "listing": "/resources.html",
     "items": [
       "/resources/D_kwDOIcolP84AZ1Mt.html",
-      "/resources/D_kwDOIcolP84AZREB.html",
-      "/resources/D_kwDOIcolP84AZPXq.html",
-      "/resources/D_kwDOIcolP84AZRD5.html",
       "/resources/D_kwDOIcolP84AZREX.html",
       "/resources/D_kwDOIcolP84AZRHG.html",
       "/resources/D_kwDOIcolP84AZREP.html",
+      "/resources/D_kwDOIcolP84AZREB.html",
       "/resources/D_kwDOIcolP84AaEct.html",
-      "/resources/D_kwDOIcolP84Ab8nb.html",
-      "/resources/D_kwDOIcolP84AZREo.html",
-      "/resources/D_kwDOIcolP84Ae6OA.html",
-      "/resources/D_kwDOIcolP84AaMJI.html",
-      "/resources/D_kwDOIcolP84AZRE5.html",
-      "/resources/D_kwDOIcolP84Agayt.html",
-      "/resources/D_kwDOIcolP84AZREa.html",
+      "/resources/D_kwDOIcolP84AZRD5.html",
+      "/resources/D_kwDOIcolP84AZPXq.html",
       "/resources/D_kwDOIcolP84AZRD1.html",
       "/resources/D_kwDOIcolP84Aaqjf.html",
+      "/resources/D_kwDOIcolP84AaMJI.html",
+      "/resources/D_kwDOIcolP84Ab8nb.html",
+      "/resources/D_kwDOIcolP84AZREa.html",
+      "/resources/D_kwDOIcolP84Ab8n3.html",
+      "/resources/D_kwDOIcolP84AZREo.html",
+      "/resources/D_kwDOIcolP84AaEjI.html",
+      "/resources/D_kwDOIcolP84AZRRF.html",
       "/resources/D_kwDOIcolP84AZREC.html",
       "/resources/D_kwDOIcolP84Ag5e8.html",
-      "/resources/D_kwDOIcolP84AaEjI.html",
+      "/resources/D_kwDOIcolP84Ae6OA.html",
+      "/resources/D_kwDOIcolP84AZRED.html",
+      "/resources/D_kwDOIcolP84Agayt.html",
       "/resources/D_kwDOIcolP84AaEih.html",
-      "/resources/D_kwDOIcolP84Ab8n3.html",
-      "/resources/D_kwDOIcolP84AZRRF.html",
-      "/resources/D_kwDOIcolP84AZRED.html"
+      "/resources/D_kwDOIcolP84AZRE5.html"
     ]
   },
   {
@@ -57,8 +79,8 @@
       "/posts/parent-class/index.html",
       "/posts/epidemics_v0.4.0/index.html",
       "/posts/cleanepi_v1.0.0/index.html",
-      "/posts/epichains_v0.1.0/index.html",
       "/posts/readepi_v0.1.0/index.html",
+      "/posts/epichains_v0.1.0/index.html",
       "/posts/simulist_v0.3.0/index.html",
       "/posts/epiparameter_v0.1.0/index.html",
       "/posts/linelist_v1.1.0/index.html",
@@ -68,8 +90,8 @@
       "/posts/renv-complications/index.html",
       "/posts/superspreading_v0.2.0/index.html",
       "/posts/simulist_v0.1.0/index.html",
-      "/posts/cfr_v0.1.0/index.html",
       "/posts/benchmarking_design_decisions/index.html",
+      "/posts/cfr_v0.1.0/index.html",
       "/posts/bpmodels_v0.3.1/index.html",
       "/posts/for-vs-apply/index.html",
       "/posts/linelist_v1.0.0/index.html",
@@ -81,28 +103,6 @@
       "/posts/s3-generic/index.html",
       "/posts/lint-rcpp/index.html",
       "/posts/statistical-correctness/index.html"
-    ]
-  },
-  {
-    "listing": "/presentations.html",
-    "items": [
-      "/slides/idm-november-2024/index.html",
-      "/slides/2024-10-GPSDD/index.html",
-      "/slides/who-mpox-analytics-September-2024/index.html",
-      "/slides/2024-4S-EASST/index.html",
-      "/slides/epireview-hackathon-july-2024/index.html",
-      "/slides/2024-useR/index.html",
-      "/slides/fosdem-2024/index.html",
-      "/slides/showcase-november-2023/index.html",
-      "/slides/2023-LatinR/index.html",
-      "/slides/interoperability-epiverse/index.html",
-      "/slides/global-health-conference-2023/index.html",
-      "/slides/harmonize-july-2023/index.html",
-      "/slides/rslondon-southeast-july-2023/index.html",
-      "/slides/juniper-may-2023/index.html",
-      "/slides/showcase-april-2023/index.html",
-      "/slides/harmonious-ecosystem/index.html",
-      "/slides/showcase-january-2023/index.html"
     ]
   }
 ]
