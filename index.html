@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.21">
+<meta name="generator" content="quarto-1.8.23">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-f4d4bec0c104f05bea62570b28d596d6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2b11b5db33908b72329068c77d23c7eb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-20b096eb43445c498b4d11de339f25e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -218,12 +218,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block"></header> <main class="content" id="quarto-document-content">
 <!-- markdownlint-disable MD041 -->
-<p></p><div id="react-Hero-ugHPhWGv"></div><p></p>
+<p></p><div id="react-Hero-MQ0E8yPC"></div><p></p>
 <!-- markdownlint-enable MD041 -->
-<p></p><div id="react-LogoCloud-AkApTL9E"></div><p></p>
-<p></p><div id="react-Usp-vxzEcgF2"></div><p></p>
-<p></p><div id="react-Benefits-oW8IIr4x"></div><p></p>
-<p></p><div id="react-Cta-09VmQGj3"></div><p></p>
+<p></p><div id="react-LogoCloud-sfZU1sYx"></div><p></p>
+<p></p><div id="react-Usp-lkuVCvwE"></div><p></p>
+<p></p><div id="react-Benefits-WB9hvtpa"></div><p></p>
+<p></p><div id="react-Cta-sIOi61BZ"></div><p></p>
 <!-- 
 Our aim is to help change how analytics are used in the global infectious disease response, moving towards integrated, generalisable and scalable community-driven software.
 ## Roadmap
@@ -401,13 +401,14 @@ You want to get involved? Read more about the different ways you can contribute 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -821,7 +822,7 @@ You want to get involved? Read more about the different ways you can contribute 
     </div>
   );
 }
-ReactDOM.render( <React.StrictMode>    <Hero/>  </React.StrictMode>,  document.getElementById("react-Hero-ugHPhWGv") );</script>
+ReactDOM.render( <React.StrictMode>    <Hero/>  </React.StrictMode>,  document.getElementById("react-Hero-MQ0E8yPC") );</script>
 <script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function LogoCloud() {
   return (
     <div className="tw-pb-24 sm:tw-pb-32">
@@ -883,7 +884,7 @@ ReactDOM.render( <React.StrictMode>    <Hero/>  </React.StrictMode>,  document.g
     </div>
   );
 }
-ReactDOM.render( <React.StrictMode>    <LogoCloud/>  </React.StrictMode>,  document.getElementById("react-LogoCloud-AkApTL9E") );</script>
+ReactDOM.render( <React.StrictMode>    <LogoCloud/>  </React.StrictMode>,  document.getElementById("react-LogoCloud-sfZU1sYx") );</script>
 <script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function RocketIcon() {
   return (
     <svg
@@ -1014,7 +1015,7 @@ function Usp() {
     </>
   );
 }
-ReactDOM.render( <React.StrictMode>    <Usp/>  </React.StrictMode>,  document.getElementById("react-Usp-vxzEcgF2") );</script>
+ReactDOM.render( <React.StrictMode>    <Usp/>  </React.StrictMode>,  document.getElementById("react-Usp-lkuVCvwE") );</script>
 <script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function ShellIcon() {
   return (
     <svg
@@ -1202,7 +1203,7 @@ function Benefits() {
     </>
   );
 }
-ReactDOM.render( <React.StrictMode>    <Benefits/>  </React.StrictMode>,  document.getElementById("react-Benefits-oW8IIr4x") );</script>
+ReactDOM.render( <React.StrictMode>    <Benefits/>  </React.StrictMode>,  document.getElementById("react-Benefits-WB9hvtpa") );</script>
 <script type="text/babel" data-type="module" data-presets="env-plus,react,typescript">function Cta() {
   return (
     <div className="tw-relative tw-isolate tw-pt-14">
@@ -1263,7 +1264,7 @@ ReactDOM.render( <React.StrictMode>    <Benefits/>  </React.StrictMode>,  docume
     </div>
   );
 }
-ReactDOM.render( <React.StrictMode>    <Cta/>  </React.StrictMode>,  document.getElementById("react-Cta-09VmQGj3") );</script>
+ReactDOM.render( <React.StrictMode>    <Cta/>  </React.StrictMode>,  document.getElementById("react-Cta-sIOi61BZ") );</script>
 
 
 

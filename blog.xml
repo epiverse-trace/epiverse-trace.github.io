@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html</link>
 <atom:link href="https://epiverse-trace.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.8.21</generator>
+<generator>quarto-1.8.23</generator>
 <lastBuildDate>Thu, 28 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>simulist v0.6.0</title>
@@ -53,7 +53,7 @@ font-style: inherit;">)</span></span></code></pre></div></div>
 <ul>
 <li>None</li>
 </ul></section><section id="acknowledgements" class="level2"><h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p><a href="https://github.com/joshwlambert">@joshwlambert</a></p>
+<p><a href="https://github.com/joshwlambert">@joshwlambert</a> <a href="https://github.com/avallecam">@avallecam</a> <a href="https://github.com/TimTaylor">@TimTaylor</a> <a href="https://github.com/sbfnk">@sbfnk</a> <a href="https://github.com/seabbs">@seabbs</a></p>
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2025,
