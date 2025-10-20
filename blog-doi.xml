@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.9.4</generator>
+<generator>quarto-1.9.8</generator>
 <lastBuildDate>Mon, 25 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse community engagement and software sustainability for research software</title>
