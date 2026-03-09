@@ -18,7 +18,7 @@ jobs:
 
       - name: Get changed files
         id: changed-files
-        uses: actions/github-script@v6
+        uses: actions/github-script@v8
         with:
           script: |
             const changedFiles = await github.paginate(
