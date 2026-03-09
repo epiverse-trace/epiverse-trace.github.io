@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=R</link>
 <atom:link href="https://epiverse-trace.github.io/blog-r.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.9.12</generator>
+<generator>quarto-1.9.30</generator>
 <lastBuildDate>Mon, 25 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse community engagement and software sustainability for research software</title>
@@ -22,7 +22,7 @@
 
 
 <p>Software that is developed for research or by researchers can be difficult to maintain given the incentive and funding structures in academia. This remains true for epidemiology, with a large volume of software written during the COVID-19 pandemic, much of which is now abandonware<sup>1</sup>. This does not mean that the software developed to understand the COVID-19 pandemic was bad or does not have utility in understanding future epidemics and pandemics, but just that the capacity to maintain and further develop these tools is not available now the pandemic is no <a href="https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic">longer considered an acute public health emergency</a>.</p>
-<p>These issues around software sustainability and the academic structures that hinder software longevity were raised by <span class="citation" data-cites="kucharskiCOVID19ResponseIllustrates2020">Kucharski, Funk, and Eggo (2020)</span> and were one of the leading reasons for the <a href="https://epiverse-trace.github.io/">Epiverse-TRACE initiative</a>. Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. The initiative also tries to improve community collaboration and contribution friendliness of open-source software.</p>
+<p>These issues around software sustainability and the academic structures that hinder software longevity were raised by <span class="citation" data-cites="kucharskiCOVID19ResponseIllustrates2020">Kucharski et al. (2020)</span> and were one of the leading reasons for the <a href="https://epiverse-trace.github.io/">Epiverse-TRACE initiative</a>. Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. The initiative also tries to improve community collaboration and contribution friendliness of open-source software.</p>
 <p>This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help improve an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) to assess the effectiveness of isolation and contact tracing effectiveness <span class="citation" data-cites="hellewellFeasibilityControllingCOVID192020">(Hellewell et al. 2020)</span>. It built on code written for the 2014-2016 West Africa Ebola outbreak to provide insights into ring vaccination <span class="citation" data-cites="kucharskiEffectivenessRingVaccination2016">(Kucharski et al. 2016)</span>. These applications and the general nature of the questions the package addresses suggest that it could be of great help in future infectious disease outbreaks, but has lacked developer resources without pandemic-related priorities.</p>
 <section id="the-r-package" class="level2">
 <h2 class="anchored" data-anchor-id="the-r-package">The R package</h2>
@@ -331,15 +331,15 @@ font-style: inherit;">sim_opts</span>()]</span></code></pre></div></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-davisImperfectToolContact2020" class="csl-entry">
-Davis, Emma L., Tim C. D. Lucas, Anna Borlase, Timothy M. Pollington, Sam Abbott, Diepreye Ayabina, Thomas Crellen, et al. 2020. <span>“An Imperfect Tool: Contact Tracing Could Provide Valuable Reductions in <span>COVID-19</span> Transmission If Good Adherence Can Be Achieved and Maintained.”</span> <a href="https://doi.org/10.1101/2020.06.09.20124008">https://doi.org/10.1101/2020.06.09.20124008</a>.
+Davis, Emma L., Tim C. D. Lucas, Anna Borlase, et al. 2020. <em>An Imperfect Tool: Contact Tracing Could Provide Valuable Reductions in <span>COVID-19</span> Transmission If Good Adherence Can Be Achieved and Maintained</em>. <a href="https://doi.org/10.1101/2020.06.09.20124008">https://doi.org/10.1101/2020.06.09.20124008</a>.
 </div>
 <div id="ref-firthUsingRealworldNetwork2020" class="csl-entry">
-Firth, Josh A., Joel Hellewell, Petra Klepac, Stephen Kissler, CMMID COVID-19 Working Group, Mark Jit, Katherine E. Atkins, et al. 2020. <span>“Using a Real-World Network to Model Localized <span>COVID-19</span> Control Strategies.”</span> <em>Nature Medicine</em> 26 (10): 1616–22. <a href="https://doi.org/10.1038/s41591-020-1036-8">https://doi.org/10.1038/s41591-020-1036-8</a>.
+Firth, Josh A., Joel Hellewell, Petra Klepac, et al. 2020. <span>“Using a Real-World Network to Model Localized <span>COVID-19</span> Control Strategies.”</span> <em>Nature Medicine</em> 26 (10): 1616–22. <a href="https://doi.org/10.1038/s41591-020-1036-8">https://doi.org/10.1038/s41591-020-1036-8</a>.
 </div>
 <div id="ref-hellewellFeasibilityControllingCOVID192020" class="csl-entry">
-Hellewell, Joel, Sam Abbott, Amy Gimma, Nikos I Bosse, Christopher I Jarvis, Timothy W Russell, James D Munday, et al. 2020. <span>“Feasibility of Controlling <span>COVID-19</span> Outbreaks by Isolation of Cases and Contacts.”</span> <em>The Lancet Global Health</em> 8 (4): e488–96. <a href="https://doi.org/10.1016/S2214-109X(20)30074-7">https://doi.org/10.1016/S2214-109X(20)30074-7</a>.
+Hellewell, Joel, Sam Abbott, Amy Gimma, et al. 2020. <span>“Feasibility of Controlling <span>COVID-19</span> Outbreaks by Isolation of Cases and Contacts.”</span> <em>The Lancet Global Health</em> 8 (4): e488–96. <a href="https://doi.org/10.1016/S2214-109X(20)30074-7">https://doi.org/10.1016/S2214-109X(20)30074-7</a>.
 </div>
 <div id="ref-kucharskiEffectivenessRingVaccination2016" class="csl-entry">
 Kucharski, Adam J., Rosalind M. Eggo, Conall H. Watson, Anton Camacho, Sebastian Funk, and W. John Edmunds. 2016. <span>“Effectiveness of <span>Ring Vaccination</span> as <span>Control Strategy</span> for <span>Ebola Virus Disease</span>.”</span> <em>Emerging Infectious Diseases</em> 22 (1): 105–8. <a href="https://doi.org/10.3201/eid2201.151410">https://doi.org/10.3201/eid2201.151410</a>.
@@ -362,8 +362,7 @@ Kucharski, Adam J., Sebastian Funk, and Rosalind M. Eggo. 2020. <span>“The <sp
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2025" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2025. <span>“Epiverse Community Engagement and
-Software Sustainability for Research Software.”</span> August 25, 2025.
-<a href="https://epiverse-trace.github.io/posts/epi-community-contrib/">https://epiverse-trace.github.io/posts/epi-community-contrib/</a>.
+Software Sustainability for Research Software.”</span> August 25. <a href="https://epiverse-trace.github.io/posts/epi-community-contrib/">https://epiverse-trace.github.io/posts/epi-community-contrib/</a>.
 </div></div></section></div> ]]></description>
   <category>open-source</category>
   <category>R</category>
@@ -619,7 +618,7 @@ font-style: inherit;">expect_identical</span>(ll, clean_ll)</span>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2025" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2025. <span>“Integration Testing in
-Epiverse-TRACE.”</span> April 14, 2025. <a href="https://epiverse-trace.github.io/posts/integration-testing/">https://epiverse-trace.github.io/posts/integration-testing/</a>.
+Epiverse-TRACE.”</span> April 14. <a href="https://epiverse-trace.github.io/posts/integration-testing/">https://epiverse-trace.github.io/posts/integration-testing/</a>.
 </div></div></section></div> ]]></description>
   <category>open-source</category>
   <category>R</category>
@@ -675,7 +674,7 @@ Epiverse-TRACE.”</span> April 14, 2025. <a href="https://epiverse-trace.github
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2025" class="csl-entry quarto-appendix-citeas">
 Mba Azam, James, Hugo Gruson, and Sebastian Funk. 2025. <span>“Key
 Considerations for Retiring/Superseding an R Package.”</span> February
-3, 2025. <a href="https://doi.org/10.59350/zabx5-3x070">https://doi.org/10.59350/zabx5-3x070</a>.
+3. <a href="https://doi.org/10.59350/zabx5-3x070">https://doi.org/10.59350/zabx5-3x070</a>.
 </div></div></section></div> ]]></description>
   <category>software lifecycles</category>
   <category>R</category>
@@ -765,7 +764,7 @@ Tip
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2025" class="csl-entry quarto-appendix-citeas">
 Lambert, Joshua, and Chris Hartgerink. 2025. <span>“Licensing R Packages
 with Code and Data: Learnings from Submitting to CRAN.”</span> January
-20, 2025. <a href="https://doi.org/10.59350/afsfa-bx908">https://doi.org/10.59350/afsfa-bx908</a>.
+20. <a href="https://doi.org/10.59350/afsfa-bx908">https://doi.org/10.59350/afsfa-bx908</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>open-source</category>
@@ -937,7 +936,7 @@ with Code and Data: Learnings from Submitting to CRAN.”</span> January
 Kucharski, Adam. 2024. <span>“How Well Prepared Are We to Rapidly
 Analyse a New Influenza Pandemic? A Brief Perspective on Analysis
 Conducted for UK Government Advisory Groups During COVID-19.”</span>
-December 23, 2024. <a href="https://epiverse-trace.github.io/posts/covid-analysis/">https://epiverse-trace.github.io/posts/covid-analysis/</a>.
+December 23. <a href="https://epiverse-trace.github.io/posts/covid-analysis/">https://epiverse-trace.github.io/posts/covid-analysis/</a>.
 </div></div></section></div> ]]></description>
   <category>COVID</category>
   <category>R</category>
@@ -1117,7 +1116,7 @@ font-style: inherit;">"output_review.md"</span>))</span></code></pre></div></div
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-kucharski2024" class="csl-entry quarto-appendix-citeas">
 Kucharski, Adam, and Andree Valle Campos. 2024. <span>“Using LLM Agents
 to Review Tutorials <span>‘in Character’</span> as Learners.”</span>
-November 18, 2024. <a href="https://epiverse-trace.github.io/posts/ai-learner-review/">https://epiverse-trace.github.io/posts/ai-learner-review/</a>.
+November 18. <a href="https://epiverse-trace.github.io/posts/ai-learner-review/">https://epiverse-trace.github.io/posts/ai-learner-review/</a>.
 </div></div></section></div> ]]></description>
   <category>tutorials</category>
   <category>R</category>
@@ -1205,7 +1204,7 @@ Warning
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2024" class="csl-entry quarto-appendix-citeas">
 Lambert, Joshua, and Chris Hartgerink. 2024. <span>“Dual Licensing R
-Packages with Code and Data.”</span> September 23, 2024. <a href="https://doi.org/10.59350/4c9r0-71526">https://doi.org/10.59350/4c9r0-71526</a>.
+Packages with Code and Data.”</span> September 23. <a href="https://doi.org/10.59350/4c9r0-71526">https://doi.org/10.59350/4c9r0-71526</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>open-source</category>
@@ -1337,9 +1336,9 @@ Note
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-vanHoek2024" class="csl-entry">
-Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, Billy J Quilty, Esther van Kleef, Anton Camacho, and Adam J Kucharski. 2024. <span>“Importance of Investing Time and Money in Integrating Large Language Model-Based Agents into Outbreak Analytics Pipelines.”</span> <em>The Lancet Microbe</em>, May. <a href="https://doi.org/10.1016/s2666-5247(24)00104-6">https://doi.org/10.1016/s2666-5247(24)00104-6</a>.
+Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, et al. 2024. <span>“Importance of Investing Time and Money in Integrating Large Language Model-Based Agents into Outbreak Analytics Pipelines.”</span> <em>The Lancet Microbe</em>, ahead of print, May. <a href="https://doi.org/10.1016/s2666-5247(24)00104-6">https://doi.org/10.1016/s2666-5247(24)00104-6</a>.
 </div>
 </div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w._lambert2024,
   author = {W. Lambert, Joshua and Mba Azam, James and Gupte, Pratik and
@@ -1354,7 +1353,7 @@ Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, Billy J Quilty, Esther van
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2024" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua, James Mba Azam, Pratik Gupte, and Adam Kucharski.
 2024. <span>“Some Thoughts After a Trial Run of GitHub’s Copilot
-Workspace.”</span> July 15, 2024. <a href="https://doi.org/10.59350/ncsre-v2w98">https://doi.org/10.59350/ncsre-v2w98</a>.
+Workspace.”</span> July 15. <a href="https://doi.org/10.59350/ncsre-v2w98">https://doi.org/10.59350/ncsre-v2w98</a>.
 </div></div></section></div> ]]></description>
   <category>AI</category>
   <category>GitHub</category>
@@ -1657,7 +1656,7 @@ font-style: inherit;">"data.frame"</span>)</span></code></pre></div></div>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Improving Ecosystem Interoperability
-Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https://doi.org/10.59350/tdkxg-nd950">https://doi.org/10.59350/tdkxg-nd950</a>.
+Iteratively via Progressive Enhancement.”</span> July 5. <a href="https://doi.org/10.59350/tdkxg-nd950">https://doi.org/10.59350/tdkxg-nd950</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>interoperability</category>
@@ -1725,7 +1724,7 @@ Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https:
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Choosing the Right Parent for R Object
-Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973">https://doi.org/10.59350/fk6nv-1k973</a>.
+Classes.”</span> June 26. <a href="https://doi.org/10.59350/fk6nv-1k973">https://doi.org/10.59350/fk6nv-1k973</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>R package</category>
@@ -1878,7 +1877,7 @@ Click to see the full error message
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Things That Can Go Wrong When Using
-Renv.”</span> January 31, 2024. <a href="https://doi.org/10.59350/hsy4m-6se90">https://doi.org/10.59350/hsy4m-6se90</a>.
+Renv.”</span> January 31. <a href="https://doi.org/10.59350/hsy4m-6se90">https://doi.org/10.59350/hsy4m-6se90</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>reproducibility</category>
@@ -2292,7 +2291,7 @@ font-style: inherit;">"Package"</span></span>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-wickham2019advanced" class="csl-entry">
 Wickham, Hadley. 2019. <em>Advanced r</em>. CRC press.
 </div>
@@ -2318,7 +2317,7 @@ Wickham, Hadley, and Jennifer Bryan. 2023. <em>R Packages</em>. " O’Reilly Med
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2023" class="csl-entry quarto-appendix-citeas">
 Mba Azam, James. 2023. <span>“Using Benchmarking to Guide the Adoption
-of Dependencies in R Packages.”</span> November 22, 2023. <a href="https://epiverse-trace.github.io/posts/benchmarking_design_decisions/">https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</a>.
+of Dependencies in R Packages.”</span> November 22. <a href="https://epiverse-trace.github.io/posts/benchmarking_design_decisions/">https://epiverse-trace.github.io/posts/benchmarking_design_decisions/</a>.
 </div></div></section></div> ]]></description>
   <category>benchmarking</category>
   <category>R</category>
@@ -2812,7 +2811,7 @@ font-style: inherit;">map_dbl</span>(mean)</span></code></pre></div></div>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Lesser-Known Reasons to Prefer `Apply()` over
-for Loops.”</span> November 2, 2023. <a href="https://epiverse-trace.github.io/posts/for-vs-apply/">https://epiverse-trace.github.io/posts/for-vs-apply/</a>.
+for Loops.”</span> November 2. <a href="https://epiverse-trace.github.io/posts/for-vs-apply/">https://epiverse-trace.github.io/posts/for-vs-apply/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>functional programming</category>
@@ -3693,7 +3692,7 @@ font-style: inherit;">+    container: ghcr.io/org/repo:main</span></span>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“System Dependencies in R Packages &amp;
-Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace.github.io/posts/system-dependencies/">https://epiverse-trace.github.io/posts/system-dependencies/</a>.
+Automatic Testing.”</span> September 26. <a href="https://epiverse-trace.github.io/posts/system-dependencies/">https://epiverse-trace.github.io/posts/system-dependencies/</a>.
 </div></div></section></div> ]]></description>
   <category>package development</category>
   <category>R</category>
@@ -3829,7 +3828,7 @@ Automatic Testing.”</span> September 26, 2023. <a href="https://epiverse-trace
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2023" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2023. <span>“Communicating Development Stages of
-Open-Source Software.”</span> July 18, 2023. <a href="https://epiverse-trace.github.io/posts/comm-software-devel/">https://epiverse-trace.github.io/posts/comm-software-devel/</a>.
+Open-Source Software.”</span> July 18. <a href="https://epiverse-trace.github.io/posts/comm-software-devel/">https://epiverse-trace.github.io/posts/comm-software-devel/</a>.
 </div></div></section></div> ]]></description>
   <category>open-source</category>
   <category>R</category>
@@ -4286,7 +4285,7 @@ font-style: inherit;">*</span>.h</span></code></pre></div></div>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
 Gupte, Pratik. 2023. <span>“Sharing the C++ Code of an Rcpp
-Package.”</span> June 5, 2023. <a href="https://epiverse-trace.github.io/posts/share-cpp/">https://epiverse-trace.github.io/posts/share-cpp/</a>.
+Package.”</span> June 5. <a href="https://epiverse-trace.github.io/posts/share-cpp/">https://epiverse-trace.github.io/posts/share-cpp/</a>.
 </div></div></section></div> ]]></description>
   <category>code sharing</category>
   <category>R</category>
@@ -5077,7 +5076,7 @@ font-style: inherit;">#' }</span></span></code></pre></div></div>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2023" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2023. <span>“Extending Data Frames.”</span> April
-12, 2023. <a href="https://epiverse-trace.github.io/posts/extend-dataframes/">https://epiverse-trace.github.io/posts/extend-dataframes/</a>.
+12. <a href="https://epiverse-trace.github.io/posts/extend-dataframes/">https://epiverse-trace.github.io/posts/extend-dataframes/</a>.
 </div></div></section></div> ]]></description>
   <category>data frame</category>
   <category>R</category>
@@ -5732,8 +5731,7 @@ font-style: inherit;"># your code here</span></span>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Convert Your R Function to an S3 Generic:
-Benefits, Pitfalls &amp; Design Considerations.”</span> February 20,
-2023. <a href="https://epiverse-trace.github.io/posts/s3-generic/">https://epiverse-trace.github.io/posts/s3-generic/</a>.
+Benefits, Pitfalls &amp; Design Considerations.”</span> February 20. <a href="https://epiverse-trace.github.io/posts/s3-generic/">https://epiverse-trace.github.io/posts/s3-generic/</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>R package</category>
@@ -6199,7 +6197,7 @@ font-style: inherit;">*</span>.cpp src</span></code></pre></div></div>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gupte2023" class="csl-entry quarto-appendix-citeas">
 Gupte, Pratik. 2023. <span>“Improving the C++ Code Quality of an Rcpp
-Package.”</span> February 16, 2023. <a href="https://epiverse-trace.github.io/posts/lint-rcpp/">https://epiverse-trace.github.io/posts/lint-rcpp/</a>.
+Package.”</span> February 16. <a href="https://epiverse-trace.github.io/posts/lint-rcpp/">https://epiverse-trace.github.io/posts/lint-rcpp/</a>.
 </div></div></section></div> ]]></description>
   <category>code quality</category>
   <category>R</category>
@@ -6701,7 +6699,7 @@ font-style: inherit;">$</span>p_infected)</span>
 <h2 class="anchored" data-anchor-id="conclusion-automated-validation-vs-peer-review">Conclusion: automated validation vs peer-review</h2>
 <p>In this post, we’ve presented different methods to automatically verify the statistical correctness of your statistical software. We would like to highlight one more time that it’s important to run these tests are part of your regular integration system, instead of running them just once at the start of the development. This will prevent the addition of possible errors in the code and show users what specific checks you are doing. By doing so, you are transparently committing to the highest quality.</p>
 <p><a href="https://notstatschat.rbind.io/2019/02/04/how-do-you-tell-what-packages-to-trust/">Multiple voices</a> <a href="https://twitter.com/hadleywickham/status/1092129977540231168">in the community</a> are pushing more towards peer-review as a proxy for quality and validity:</p>
-<p></p><div id="tweet-55225"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-55225").innerHTML = tweet["html"];</script><p></p>
+<p></p><div id="tweet-41157"></div><script>tweet={"url":"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168","author_name":"Hadley Wickham","author_url":"https:\/\/twitter.com\/hadleywickham","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EI don’t think we’d ever validate statistical methods. I’d look for other proxies like peer reviewed publications about the package. I generally prefer to trust _people_ rather than packages.\u003C\/p\u003E&mdash; Hadley Wickham (@hadleywickham) \u003Ca href=\"https:\/\/twitter.com\/hadleywickham\/status\/1092129977540231168?ref_src=twsrc%5Etfw\"\u003EFebruary 3, 2019\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-41157").innerHTML = tweet["html"];</script><p></p>
 <p>We would like to highlight that automated validation and peer review are not mutually exclusive and answer slightly different purposes.</p>
 <p>On the one hand, automated validation fails to catch more obscure bugs and edge cases. For example, a bug that would be difficult to detect via automated approach is the use of <a href="https://www.jottr.org/2020/09/22/push-for-statistical-sound-rng/">bad Random Number Generators when running in parallel</a>.</p>
 <p>But on the other hand, peer-review is less scalable, and journals usually have some editorial policy that might not make your package a good fit. Additionally, peer-review usually happens at one point in time while automated validation can, and should, be part of the continuous integration system.</p>
@@ -6727,7 +6725,7 @@ font-style: inherit;">$</span>p_infected)</span>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2023" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2023. <span>“Ensuring &amp; Showcasing the Statistical
-Correctness of Your R Package.”</span> February 13, 2023. <a href="https://epiverse-trace.github.io/posts/statistical-correctness/">https://epiverse-trace.github.io/posts/statistical-correctness/</a>.
+Correctness of Your R Package.”</span> February 13. <a href="https://epiverse-trace.github.io/posts/statistical-correctness/">https://epiverse-trace.github.io/posts/statistical-correctness/</a>.
 </div></div></section></div> ]]></description>
   <category>code quality</category>
   <category>R</category>

@@ -9,7 +9,7 @@
 <link>https://epiverse-trace.github.io/blog.html#category=DOI</link>
 <atom:link href="https://epiverse-trace.github.io/blog-doi.xml" rel="self" type="application/rss+xml"/>
 <description>A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.</description>
-<generator>quarto-1.9.12</generator>
+<generator>quarto-1.9.30</generator>
 <lastBuildDate>Mon, 25 Aug 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Epiverse community engagement and software sustainability for research software</title>
@@ -22,7 +22,7 @@
 
 
 <p>Software that is developed for research or by researchers can be difficult to maintain given the incentive and funding structures in academia. This remains true for epidemiology, with a large volume of software written during the COVID-19 pandemic, much of which is now abandonware<sup>1</sup>. This does not mean that the software developed to understand the COVID-19 pandemic was bad or does not have utility in understanding future epidemics and pandemics, but just that the capacity to maintain and further develop these tools is not available now the pandemic is no <a href="https://www.who.int/news/item/05-05-2023-statement-on-the-fifteenth-meeting-of-the-international-health-regulations-(2005)-emergency-committee-regarding-the-coronavirus-disease-(covid-19)-pandemic">longer considered an acute public health emergency</a>.</p>
-<p>These issues around software sustainability and the academic structures that hinder software longevity were raised by <span class="citation" data-cites="kucharskiCOVID19ResponseIllustrates2020">Kucharski, Funk, and Eggo (2020)</span> and were one of the leading reasons for the <a href="https://epiverse-trace.github.io/">Epiverse-TRACE initiative</a>. Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. The initiative also tries to improve community collaboration and contribution friendliness of open-source software.</p>
+<p>These issues around software sustainability and the academic structures that hinder software longevity were raised by <span class="citation" data-cites="kucharskiCOVID19ResponseIllustrates2020">Kucharski et al. (2020)</span> and were one of the leading reasons for the <a href="https://epiverse-trace.github.io/">Epiverse-TRACE initiative</a>. Alongside the developing novel software (R packages), Epiverse also has a commitment to support the community of package developers in epidemiology and outbreak analytics. The initiative also tries to improve community collaboration and contribution friendliness of open-source software.</p>
 <p>This blog post highlights some recent work by Epiverse software engineers to collaborate on research software, or researchware, to help improve an R package that was initially written in the early days of the COVID-19 pandemic (January 2020 - May 2020) to assess the effectiveness of isolation and contact tracing effectiveness <span class="citation" data-cites="hellewellFeasibilityControllingCOVID192020">(Hellewell et al. 2020)</span>. It built on code written for the 2014-2016 West Africa Ebola outbreak to provide insights into ring vaccination <span class="citation" data-cites="kucharskiEffectivenessRingVaccination2016">(Kucharski et al. 2016)</span>. These applications and the general nature of the questions the package addresses suggest that it could be of great help in future infectious disease outbreaks, but has lacked developer resources without pandemic-related priorities.</p>
 <section id="the-r-package" class="level2">
 <h2 class="anchored" data-anchor-id="the-r-package">The R package</h2>
@@ -331,15 +331,15 @@ font-style: inherit;">sim_opts</span>()]</span></code></pre></div></div>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-davisImperfectToolContact2020" class="csl-entry">
-Davis, Emma L., Tim C. D. Lucas, Anna Borlase, Timothy M. Pollington, Sam Abbott, Diepreye Ayabina, Thomas Crellen, et al. 2020. <span>“An Imperfect Tool: Contact Tracing Could Provide Valuable Reductions in <span>COVID-19</span> Transmission If Good Adherence Can Be Achieved and Maintained.”</span> <a href="https://doi.org/10.1101/2020.06.09.20124008">https://doi.org/10.1101/2020.06.09.20124008</a>.
+Davis, Emma L., Tim C. D. Lucas, Anna Borlase, et al. 2020. <em>An Imperfect Tool: Contact Tracing Could Provide Valuable Reductions in <span>COVID-19</span> Transmission If Good Adherence Can Be Achieved and Maintained</em>. <a href="https://doi.org/10.1101/2020.06.09.20124008">https://doi.org/10.1101/2020.06.09.20124008</a>.
 </div>
 <div id="ref-firthUsingRealworldNetwork2020" class="csl-entry">
-Firth, Josh A., Joel Hellewell, Petra Klepac, Stephen Kissler, CMMID COVID-19 Working Group, Mark Jit, Katherine E. Atkins, et al. 2020. <span>“Using a Real-World Network to Model Localized <span>COVID-19</span> Control Strategies.”</span> <em>Nature Medicine</em> 26 (10): 1616–22. <a href="https://doi.org/10.1038/s41591-020-1036-8">https://doi.org/10.1038/s41591-020-1036-8</a>.
+Firth, Josh A., Joel Hellewell, Petra Klepac, et al. 2020. <span>“Using a Real-World Network to Model Localized <span>COVID-19</span> Control Strategies.”</span> <em>Nature Medicine</em> 26 (10): 1616–22. <a href="https://doi.org/10.1038/s41591-020-1036-8">https://doi.org/10.1038/s41591-020-1036-8</a>.
 </div>
 <div id="ref-hellewellFeasibilityControllingCOVID192020" class="csl-entry">
-Hellewell, Joel, Sam Abbott, Amy Gimma, Nikos I Bosse, Christopher I Jarvis, Timothy W Russell, James D Munday, et al. 2020. <span>“Feasibility of Controlling <span>COVID-19</span> Outbreaks by Isolation of Cases and Contacts.”</span> <em>The Lancet Global Health</em> 8 (4): e488–96. <a href="https://doi.org/10.1016/S2214-109X(20)30074-7">https://doi.org/10.1016/S2214-109X(20)30074-7</a>.
+Hellewell, Joel, Sam Abbott, Amy Gimma, et al. 2020. <span>“Feasibility of Controlling <span>COVID-19</span> Outbreaks by Isolation of Cases and Contacts.”</span> <em>The Lancet Global Health</em> 8 (4): e488–96. <a href="https://doi.org/10.1016/S2214-109X(20)30074-7">https://doi.org/10.1016/S2214-109X(20)30074-7</a>.
 </div>
 <div id="ref-kucharskiEffectivenessRingVaccination2016" class="csl-entry">
 Kucharski, Adam J., Rosalind M. Eggo, Conall H. Watson, Anton Camacho, Sebastian Funk, and W. John Edmunds. 2016. <span>“Effectiveness of <span>Ring Vaccination</span> as <span>Control Strategy</span> for <span>Ebola Virus Disease</span>.”</span> <em>Emerging Infectious Diseases</em> 22 (1): 105–8. <a href="https://doi.org/10.3201/eid2201.151410">https://doi.org/10.3201/eid2201.151410</a>.
@@ -362,8 +362,7 @@ Kucharski, Adam J., Sebastian Funk, and Rosalind M. Eggo. 2020. <span>“The <sp
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2025" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua. 2025. <span>“Epiverse Community Engagement and
-Software Sustainability for Research Software.”</span> August 25, 2025.
-<a href="https://epiverse-trace.github.io/posts/epi-community-contrib/">https://epiverse-trace.github.io/posts/epi-community-contrib/</a>.
+Software Sustainability for Research Software.”</span> August 25. <a href="https://epiverse-trace.github.io/posts/epi-community-contrib/">https://epiverse-trace.github.io/posts/epi-community-contrib/</a>.
 </div></div></section></div> ]]></description>
   <category>open-source</category>
   <category>R</category>
@@ -420,7 +419,7 @@ Software Sustainability for Research Software.”</span> August 25, 2025.
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-mba_azam2025" class="csl-entry quarto-appendix-citeas">
 Mba Azam, James, Hugo Gruson, and Sebastian Funk. 2025. <span>“Key
 Considerations for Retiring/Superseding an R Package.”</span> February
-3, 2025. <a href="https://doi.org/10.59350/zabx5-3x070">https://doi.org/10.59350/zabx5-3x070</a>.
+3. <a href="https://doi.org/10.59350/zabx5-3x070">https://doi.org/10.59350/zabx5-3x070</a>.
 </div></div></section></div> ]]></description>
   <category>software lifecycles</category>
   <category>R</category>
@@ -510,7 +509,7 @@ Tip
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2025" class="csl-entry quarto-appendix-citeas">
 Lambert, Joshua, and Chris Hartgerink. 2025. <span>“Licensing R Packages
 with Code and Data: Learnings from Submitting to CRAN.”</span> January
-20, 2025. <a href="https://doi.org/10.59350/afsfa-bx908">https://doi.org/10.59350/afsfa-bx908</a>.
+20. <a href="https://doi.org/10.59350/afsfa-bx908">https://doi.org/10.59350/afsfa-bx908</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>open-source</category>
@@ -599,7 +598,7 @@ Warning
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-lambert2024" class="csl-entry quarto-appendix-citeas">
 Lambert, Joshua, and Chris Hartgerink. 2024. <span>“Dual Licensing R
-Packages with Code and Data.”</span> September 23, 2024. <a href="https://doi.org/10.59350/4c9r0-71526">https://doi.org/10.59350/4c9r0-71526</a>.
+Packages with Code and Data.”</span> September 23. <a href="https://doi.org/10.59350/4c9r0-71526">https://doi.org/10.59350/4c9r0-71526</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>open-source</category>
@@ -731,9 +730,9 @@ Note
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-vanHoek2024" class="csl-entry">
-Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, Billy J Quilty, Esther van Kleef, Anton Camacho, and Adam J Kucharski. 2024. <span>“Importance of Investing Time and Money in Integrating Large Language Model-Based Agents into Outbreak Analytics Pipelines.”</span> <em>The Lancet Microbe</em>, May. <a href="https://doi.org/10.1016/s2666-5247(24)00104-6">https://doi.org/10.1016/s2666-5247(24)00104-6</a>.
+Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, et al. 2024. <span>“Importance of Investing Time and Money in Integrating Large Language Model-Based Agents into Outbreak Analytics Pipelines.”</span> <em>The Lancet Microbe</em>, ahead of print, May. <a href="https://doi.org/10.1016/s2666-5247(24)00104-6">https://doi.org/10.1016/s2666-5247(24)00104-6</a>.
 </div>
 </div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{w._lambert2024,
   author = {W. Lambert, Joshua and Mba Azam, James and Gupte, Pratik and
@@ -748,7 +747,7 @@ Hoek, Albert Jan van, Sebastian Funk, Stefan Flasche, Billy J Quilty, Esther van
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-w._lambert2024" class="csl-entry quarto-appendix-citeas">
 W. Lambert, Joshua, James Mba Azam, Pratik Gupte, and Adam Kucharski.
 2024. <span>“Some Thoughts After a Trial Run of GitHub’s Copilot
-Workspace.”</span> July 15, 2024. <a href="https://doi.org/10.59350/ncsre-v2w98">https://doi.org/10.59350/ncsre-v2w98</a>.
+Workspace.”</span> July 15. <a href="https://doi.org/10.59350/ncsre-v2w98">https://doi.org/10.59350/ncsre-v2w98</a>.
 </div></div></section></div> ]]></description>
   <category>AI</category>
   <category>GitHub</category>
@@ -1051,7 +1050,7 @@ font-style: inherit;">"data.frame"</span>)</span></code></pre></div></div>
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Improving Ecosystem Interoperability
-Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https://doi.org/10.59350/tdkxg-nd950">https://doi.org/10.59350/tdkxg-nd950</a>.
+Iteratively via Progressive Enhancement.”</span> July 5. <a href="https://doi.org/10.59350/tdkxg-nd950">https://doi.org/10.59350/tdkxg-nd950</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>interoperability</category>
@@ -1076,9 +1075,9 @@ Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https:
 
 
 
-<p>There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 <sup>1</sup>. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them <span class="citation" data-cites="laurenson2023description">(Laurenson-Schafer et al. 2023)</span>.</p>
-<p>Mpox is transmitted through respiratory droplets and direct contact with infected persons. The disease is characterized by fever, cough, and a rash, with the mean incubation period estimated to be about 7.8 days <span class="citation" data-cites="ward2022transmission">(Ward et al. 2022)</span>. Infected individuals may experience severe symptoms leading to hospitalisation or death. There are two genetic clades: clade I and clade II, which also has subclades IIa and IIb <span class="citation" data-cites="laurenson2023description">(Laurenson-Schafer et al. 2023)</span>.</p>
-<p>Several analyses of the potential impact of outbreaks at country level have already emerged in 2024. The US CDC, for example, has analysed the potential size of outbreaks resulting from transmission within and between households <sup>2</sup> and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes <sup>3</sup>. Another group of researchers have estimated the transmissibility of mpox in the DRC from more recent (2010 - 2019) surveillance data to update existing estimates, which are based on old data <span class="citation" data-cites="charniga2024updating">(Charniga, McCollum, et al. 2024)</span>. However, tackling ongoing outbreaks around the world will require a coordinated response from the global health community.</p>
+<p>There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 <sup>1</sup>. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them <span class="citation" data-cites="laurenson2023description">(<span class="nocase">Laurenson-Schafer et al.</span> 2023)</span>.</p>
+<p>Mpox is transmitted through respiratory droplets and direct contact with infected persons. The disease is characterized by fever, cough, and a rash, with the mean incubation period estimated to be about 7.8 days <span class="citation" data-cites="ward2022transmission">(Ward et al. 2022)</span>. Infected individuals may experience severe symptoms leading to hospitalisation or death. There are two genetic clades: clade I and clade II, which also has subclades IIa and IIb <span class="citation" data-cites="laurenson2023description">(<span class="nocase">Laurenson-Schafer et al.</span> 2023)</span>.</p>
+<p>Several analyses of the potential impact of outbreaks at country level have already emerged in 2024. The US CDC, for example, has analysed the potential size of outbreaks resulting from transmission within and between households <sup>2</sup> and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes <sup>3</sup>. Another group of researchers have estimated the transmissibility of mpox in the DRC from more recent (2010 - 2019) surveillance data to update existing estimates, which are based on old data <span class="citation" data-cites="charniga2024updating">(<span class="nocase">Charniga, McCollum, et al.</span> 2024)</span>. However, tackling ongoing outbreaks around the world will require a coordinated response from the global health community.</p>
 <p>The Epiverse-TRACE team is developing a set of analytical tools that could help support decision-makers during outbreaks. This post provides an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks.</p>
 <section id="common-outbreak-analytics-tasks" class="level2">
 <h2 class="anchored" data-anchor-id="common-outbreak-analytics-tasks">Common outbreak analytics tasks</h2>
@@ -1114,7 +1113,7 @@ Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https:
 <h4 class="anchored" data-anchor-id="population-level-transmissibility-r_0-and-r_t">Population-level transmissibility (<img src="https://latex.codecogs.com/png.latex?R_0"> and <img src="https://latex.codecogs.com/png.latex?R_t">)</h4>
 <p>The basic reproduction number, <img src="https://latex.codecogs.com/png.latex?R_0">, is the average number of secondary cases produced by a single infected individual in a completely susceptible population. The time-varying reproduction number, <img src="https://latex.codecogs.com/png.latex?R_t">, on the other hand, is the average number of secondary cases produced by a single infected individual at time <img src="https://latex.codecogs.com/png.latex?t"> in a partially susceptible population. <img src="https://latex.codecogs.com/png.latex?R_t"> is a more useful quantity during an outbreak as it accounts for the impact of interventions and changes in population immunity.</p>
 <p>If data is available on the daily number of reported cases, <a href="https://epiforecasts.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://mrc-ide.github.io/EpiEstim/"><code>{EpiEstim}</code></a> can be used to estimate <img src="https://latex.codecogs.com/png.latex?R_t">. These packages require data on the time scale of transmission (i.e.&nbsp;the generation time, or the serial interval, which is <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0756">commonly used as a proxy</a> for this). While <code>{EpiEstim}</code> focuses on retrospective estimation of <img src="https://latex.codecogs.com/png.latex?R_t">, <code>{EpiNow2}</code> is designed for both retrospective and real-time estimation.</p>
-<p>In estimating <img src="https://latex.codecogs.com/png.latex?R_t">, one practical consideration is the impact of various delays (biological and reporting) on the estimates <span class="citation" data-cites="charniga2024best park2024estimating gostic2020practical">(Charniga, Park, et al. 2024; Park et al. 2024; Katelyn M. Gostic 2020)</span>. <code>{EpiNow2}</code> adjusts for these delays in various ways. For example, it accounts for the symptom onset and reporting delays by taking the incubation period and reporting delay as inputs. Moreover, <code>{EpiNow2}</code> can estimate the reporting delay from the data if data on incidence by date of onset and report are available.</p>
+<p>In estimating <img src="https://latex.codecogs.com/png.latex?R_t">, one practical consideration is the impact of various delays (biological and reporting) on the estimates <span class="citation" data-cites="charniga2024best park2024estimating gostic2020practical">(<span class="nocase">Charniga, Park, et al.</span> 2024; <span class="nocase">Park et al.</span> 2024; Katelyn M. Gostic 2020)</span>. <code>{EpiNow2}</code> adjusts for these delays in various ways. For example, it accounts for the symptom onset and reporting delays by taking the incubation period and reporting delay as inputs. Moreover, <code>{EpiNow2}</code> can estimate the reporting delay from the data if data on incidence by date of onset and report are available.</p>
 <p>Furthermore, dedicated packages have emerged for estimating epidemiological delays from data using best practices. <a href="https://epidist.epinowcast.org/articles/epidist.html"><code>{epidist}</code></a> offers the ability to estimate delay distributions, accounting for issues such as truncation (i.e., not all disease outcomes will yet be known in real-time).</p>
 <p>If delay data are not available, published estimates of the incubation period and serial interval can be used. The <a href="https://epiverse-trace.github.io/epiparameter/"><code>{epiparameter}</code></a> package collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. You can view the <a href="https://epiverse-trace.github.io/epiparameter/dev/articles/database">database</a> for currently available parameters (more entries are planned). Additionally, if only summary statistics are available (e.g.&nbsp;range and median), <code>{epiparameter}</code> can be used to extract the distribution parameters.</p>
 </section>
@@ -1190,22 +1189,22 @@ Iteratively via Progressive Enhancement.”</span> July 5, 2024. <a href="https:
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-charniga2024updating" class="csl-entry">
-Charniga, Kelly, Andrea M McCollum, Christine M Hughes, Benjamin Monroe, Joelle Kabamba, Robert Shongo Lushima, Toutou Likafi, et al. 2024. <span>“Updating Reproduction Number Estimates for Mpox in the Democratic Republic of Congo Using Surveillance Data.”</span> <em>The American Journal of Tropical Medicine and Hygiene</em> 110 (3): 561. https://doi.org/<a href="https://doi.org/10.4269/ajtmh.23-0215">https://doi.org/10.4269/ajtmh.23-0215</a>.
+<span class="nocase">Charniga, Kelly, Andrea M McCollum, Christine M Hughes, et al.</span> 2024. <span>“Updating Reproduction Number Estimates for Mpox in the Democratic Republic of Congo Using Surveillance Data.”</span> <em>The American Journal of Tropical Medicine and Hygiene</em> 110 (3): 561. https://doi.org/<a href="https://doi.org/10.4269/ajtmh.23-0215">https://doi.org/10.4269/ajtmh.23-0215</a>.
 </div>
 <div id="ref-charniga2024best" class="csl-entry">
-Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, Anne Cori, Jonathan Dushoff, Sebastian Funk, Katelyn M Gostic, et al. 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> <em>arXiv Preprint arXiv:2405.08841</em>. https://doi.org/<a href="
+<span class="nocase">Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, et al.</span> 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> <em>arXiv Preprint arXiv:2405.08841</em>, ahead of print. https://doi.org/<a href="
 https://doi.org/10.48550/arXiv.2405.08841"> https://doi.org/10.48550/arXiv.2405.08841</a>.
 </div>
 <div id="ref-gostic2020practical" class="csl-entry">
 Katelyn M. Gostic, Edward B. Baskerville, Lauren McGough. 2020. <span>“Practical Considerations for Measuring the Effective Reproductive Number, Rt.”</span> <em>PLoS Computational Biology</em> 16 (12): e1008409. https://doi.org/<a href="https://doi.org/10.1371/journal.pcbi.1008409">https://doi.org/10.1371/journal.pcbi.1008409</a>.
 </div>
 <div id="ref-laurenson2023description" class="csl-entry">
-Laurenson-Schafer, Henry, Nikola Sklenovská, Ana Hoxha, Steven M Kerr, Patricia Ndumbi, Julia Fitzner, Maria Almiron, et al. 2023. <span>“Description of the First Global Outbreak of Mpox: An Analysis of Global Surveillance Data.”</span> <em>The Lancet Global Health</em> 11 (7): e1012–23. https://doi.org/<a href="https://doi.org/10.1016/S2214-109X(23)00198-5">https://doi.org/10.1016/S2214-109X(23)00198-5</a>.
+<span class="nocase">Laurenson-Schafer, Henry, Nikola Sklenovská, Ana Hoxha, et al.</span> 2023. <span>“Description of the First Global Outbreak of Mpox: An Analysis of Global Surveillance Data.”</span> <em>The Lancet Global Health</em> 11 (7): e1012–23. https://doi.org/<a href="https://doi.org/10.1016/S2214-109X(23)00198-5">https://doi.org/10.1016/S2214-109X(23)00198-5</a>.
 </div>
 <div id="ref-park2024estimating" class="csl-entry">
-Park, Sang Woo, Andrei R Akhmetzhanov, Kelly Charniga, Anne Cori, Nicholas G Davies, Jonathan Dushoff, Sebastian Funk, et al. 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <em>medRxiv</em>, 2024–01. https://doi.org/<a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
+<span class="nocase">Park, Sang Woo, Andrei R Akhmetzhanov, Kelly Charniga, et al.</span> 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <em>medRxiv</em>, 2024–01. https://doi.org/<a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
 </div>
 <div id="ref-ward2022transmission" class="csl-entry">
 Ward, Thomas, Rachel Christie, Robert S Paton, Fergus Cumming, and Christopher E Overton. 2022. <span>“Transmission Dynamics of Monkeypox in the United Kingdom: Contact Tracing Study.”</span> <em>Bmj</em> 379. https://doi.org/<a href="http://dx.doi.org/10.1136/ bmj-2022-073153">http://dx.doi.org/10.1136/ bmj-2022-073153</a>.
@@ -1228,8 +1227,8 @@ Ward, Thomas, Rachel Christie, Robert S Paton, Fergus Cumming, and Christopher E
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-azam2024" class="csl-entry quarto-appendix-citeas">
 Azam, James, Hugo Gruson, and Adam Kucharski. 2024. <span>“2024 Mpox
-Outbreak: Common Analytics Tasks and Available R Tools.”</span> July 4,
-2024. <a href="https://doi.org/10.59350/z78kb-qrz59">https://doi.org/10.59350/z78kb-qrz59</a>.
+Outbreak: Common Analytics Tasks and Available R Tools.”</span> July 4.
+<a href="https://doi.org/10.59350/z78kb-qrz59">https://doi.org/10.59350/z78kb-qrz59</a>.
 </div></div></section></div> ]]></description>
   <category>mpox</category>
   <category>outbreak</category>
@@ -1293,7 +1292,7 @@ Outbreak: Common Analytics Tasks and Available R Tools.”</span> July 4,
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Choosing the Right Parent for R Object
-Classes.”</span> June 26, 2024. <a href="https://doi.org/10.59350/fk6nv-1k973">https://doi.org/10.59350/fk6nv-1k973</a>.
+Classes.”</span> June 26. <a href="https://doi.org/10.59350/fk6nv-1k973">https://doi.org/10.59350/fk6nv-1k973</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>R package</category>
@@ -1446,7 +1445,7 @@ Click to see the full error message
 }
 </code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas">
 Gruson, Hugo. 2024. <span>“Things That Can Go Wrong When Using
-Renv.”</span> January 31, 2024. <a href="https://doi.org/10.59350/hsy4m-6se90">https://doi.org/10.59350/hsy4m-6se90</a>.
+Renv.”</span> January 31. <a href="https://doi.org/10.59350/hsy4m-6se90">https://doi.org/10.59350/hsy4m-6se90</a>.
 </div></div></section></div> ]]></description>
   <category>R</category>
   <category>reproducibility</category>

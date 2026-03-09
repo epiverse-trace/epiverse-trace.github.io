@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.12">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -13,6 +13,9 @@
 
 <title>2024 mpox outbreak: common analytics tasks and available R tools – Epiverse-TRACE: tools for outbreak analytics</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -28,7 +31,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -57,15 +59,14 @@ div.csl-indent {
 <link href="../../hexlogo.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2caf4dac753ea666248a14186ad6e4da.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9d4a076d2a14ce4ca40a3f3a34101cf7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f61d6ebbd853b56cf665b9b54d13b1cf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a0191054204dbbae09c2dd9a901ad07d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,7 +105,7 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -319,9 +320,9 @@ window.Quarto = {
 
 
 
-<p>There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them <span class="citation" data-cites="laurenson2023description">(<a href="#ref-laurenson2023description" role="doc-biblioref">Laurenson-Schafer et al. 2023</a>)</span>.</p>
-<p>Mpox is transmitted through respiratory droplets and direct contact with infected persons. The disease is characterized by fever, cough, and a rash, with the mean incubation period estimated to be about 7.8 days <span class="citation" data-cites="ward2022transmission">(<a href="#ref-ward2022transmission" role="doc-biblioref">Ward et al. 2022</a>)</span>. Infected individuals may experience severe symptoms leading to hospitalisation or death. There are two genetic clades: clade I and clade II, which also has subclades IIa and IIb <span class="citation" data-cites="laurenson2023description">(<a href="#ref-laurenson2023description" role="doc-biblioref">Laurenson-Schafer et al. 2023</a>)</span>.</p>
-<p>Several analyses of the potential impact of outbreaks at country level have already emerged in 2024. The US CDC, for example, has analysed the potential size of outbreaks resulting from transmission within and between households <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Another group of researchers have estimated the transmissibility of mpox in the DRC from more recent (2010 - 2019) surveillance data to update existing estimates, which are based on old data <span class="citation" data-cites="charniga2024updating">(<a href="#ref-charniga2024updating" role="doc-biblioref">Charniga, McCollum, et al. 2024</a>)</span>. However, tackling ongoing outbreaks around the world will require a coordinated response from the global health community.</p>
+<p>There are ongoing outbreaks of mpox globally. The Democratic Republic of Congo (DRC) is so far the worst hit with a total of 7,851 cases and 384 deaths reported between January 1 and May 26, 2024 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Before 2022, there were few reports of sustained mpox transmission globally. However, during the following year (Jan 1, 2022, and Jan 29, 2023), 110 countries in all six WHO Regions had reported a total of 85,473 confirmed cases and 89 deaths between them <span class="citation" data-cites="laurenson2023description">(<a href="#ref-laurenson2023description" role="doc-biblioref"><span class="nocase">Laurenson-Schafer et al.</span> 2023</a>)</span>.</p>
+<p>Mpox is transmitted through respiratory droplets and direct contact with infected persons. The disease is characterized by fever, cough, and a rash, with the mean incubation period estimated to be about 7.8 days <span class="citation" data-cites="ward2022transmission">(<a href="#ref-ward2022transmission" role="doc-biblioref">Ward et al. 2022</a>)</span>. Infected individuals may experience severe symptoms leading to hospitalisation or death. There are two genetic clades: clade I and clade II, which also has subclades IIa and IIb <span class="citation" data-cites="laurenson2023description">(<a href="#ref-laurenson2023description" role="doc-biblioref"><span class="nocase">Laurenson-Schafer et al.</span> 2023</a>)</span>.</p>
+<p>Several analyses of the potential impact of outbreaks at country level have already emerged in 2024. The US CDC, for example, has analysed the potential size of outbreaks resulting from transmission within and between households <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> and the risk of Clade 1 mpox outbreaks among some key populations associated with key transmission routes <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Another group of researchers have estimated the transmissibility of mpox in the DRC from more recent (2010 - 2019) surveillance data to update existing estimates, which are based on old data <span class="citation" data-cites="charniga2024updating">(<a href="#ref-charniga2024updating" role="doc-biblioref"><span class="nocase">Charniga, McCollum, et al.</span> 2024</a>)</span>. However, tackling ongoing outbreaks around the world will require a coordinated response from the global health community.</p>
 <p>The Epiverse-TRACE team is developing a set of analytical tools that could help support decision-makers during outbreaks. This post provides an overview of the tasks that such tools can be applied to in the context of the ongoing mpox outbreaks.</p>
 <section id="common-outbreak-analytics-tasks" class="level2">
 <h2 class="anchored" data-anchor-id="common-outbreak-analytics-tasks">Common outbreak analytics tasks</h2>
@@ -357,7 +358,7 @@ window.Quarto = {
 <h4 class="anchored" data-anchor-id="population-level-transmissibility-r_0-and-r_t">Population-level transmissibility (<span class="math inline">\(R_0\)</span> and <span class="math inline">\(R_t\)</span>)</h4>
 <p>The basic reproduction number, <span class="math inline">\(R_0\)</span>, is the average number of secondary cases produced by a single infected individual in a completely susceptible population. The time-varying reproduction number, <span class="math inline">\(R_t\)</span>, on the other hand, is the average number of secondary cases produced by a single infected individual at time <span class="math inline">\(t\)</span> in a partially susceptible population. <span class="math inline">\(R_t\)</span> is a more useful quantity during an outbreak as it accounts for the impact of interventions and changes in population immunity.</p>
 <p>If data is available on the daily number of reported cases, <a href="https://epiforecasts.io/EpiNow2/"><code>{EpiNow2}</code></a> and <a href="https://mrc-ide.github.io/EpiEstim/"><code>{EpiEstim}</code></a> can be used to estimate <span class="math inline">\(R_t\)</span>. These packages require data on the time scale of transmission (i.e.&nbsp;the generation time, or the serial interval, which is <a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2020.0756">commonly used as a proxy</a> for this). While <code>{EpiEstim}</code> focuses on retrospective estimation of <span class="math inline">\(R_t\)</span>, <code>{EpiNow2}</code> is designed for both retrospective and real-time estimation.</p>
-<p>In estimating <span class="math inline">\(R_t\)</span>, one practical consideration is the impact of various delays (biological and reporting) on the estimates <span class="citation" data-cites="charniga2024best park2024estimating gostic2020practical">(<a href="#ref-charniga2024best" role="doc-biblioref">Charniga, Park, et al. 2024</a>; <a href="#ref-park2024estimating" role="doc-biblioref">Park et al. 2024</a>; <a href="#ref-gostic2020practical" role="doc-biblioref">Katelyn M. Gostic 2020</a>)</span>. <code>{EpiNow2}</code> adjusts for these delays in various ways. For example, it accounts for the symptom onset and reporting delays by taking the incubation period and reporting delay as inputs. Moreover, <code>{EpiNow2}</code> can estimate the reporting delay from the data if data on incidence by date of onset and report are available.</p>
+<p>In estimating <span class="math inline">\(R_t\)</span>, one practical consideration is the impact of various delays (biological and reporting) on the estimates <span class="citation" data-cites="charniga2024best park2024estimating gostic2020practical">(<a href="#ref-charniga2024best" role="doc-biblioref"><span class="nocase">Charniga, Park, et al.</span> 2024</a>; <a href="#ref-park2024estimating" role="doc-biblioref"><span class="nocase">Park et al.</span> 2024</a>; <a href="#ref-gostic2020practical" role="doc-biblioref">Katelyn M. Gostic 2020</a>)</span>. <code>{EpiNow2}</code> adjusts for these delays in various ways. For example, it accounts for the symptom onset and reporting delays by taking the incubation period and reporting delay as inputs. Moreover, <code>{EpiNow2}</code> can estimate the reporting delay from the data if data on incidence by date of onset and report are available.</p>
 <p>Furthermore, dedicated packages have emerged for estimating epidemiological delays from data using best practices. <a href="https://epidist.epinowcast.org/articles/epidist.html"><code>{epidist}</code></a> offers the ability to estimate delay distributions, accounting for issues such as truncation (i.e., not all disease outcomes will yet be known in real-time).</p>
 <p>If delay data are not available, published estimates of the incubation period and serial interval can be used. The <a href="https://epiverse-trace.github.io/epiparameter/"><code>{epiparameter}</code></a> package collates a database of epidemiological distributions from the literature and provides functions for interacting with the database. You can view the <a href="https://epiverse-trace.github.io/epiparameter/dev/articles/database">database</a> for currently available parameters (more entries are planned). Additionally, if only summary statistics are available (e.g.&nbsp;range and median), <code>{epiparameter}</code> can be used to extract the distribution parameters.</p>
 </section>
@@ -433,22 +434,22 @@ window.Quarto = {
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-charniga2024updating" class="csl-entry" role="listitem">
-Charniga, Kelly, Andrea M McCollum, Christine M Hughes, Benjamin Monroe, Joelle Kabamba, Robert Shongo Lushima, Toutou Likafi, et al. 2024. <span>“Updating Reproduction Number Estimates for Mpox in the Democratic Republic of Congo Using Surveillance Data.”</span> <em>The American Journal of Tropical Medicine and Hygiene</em> 110 (3): 561. https://doi.org/<a href="https://doi.org/10.4269/ajtmh.23-0215">https://doi.org/10.4269/ajtmh.23-0215</a>.
+<span class="nocase">Charniga, Kelly, Andrea M McCollum, Christine M Hughes, et al.</span> 2024. <span>“Updating Reproduction Number Estimates for Mpox in the Democratic Republic of Congo Using Surveillance Data.”</span> <em>The American Journal of Tropical Medicine and Hygiene</em> 110 (3): 561. https://doi.org/<a href="https://doi.org/10.4269/ajtmh.23-0215">https://doi.org/10.4269/ajtmh.23-0215</a>.
 </div>
 <div id="ref-charniga2024best" class="csl-entry" role="listitem">
-Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, Anne Cori, Jonathan Dushoff, Sebastian Funk, Katelyn M Gostic, et al. 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> <em>arXiv Preprint arXiv:2405.08841</em>. https://doi.org/<a href="
+<span class="nocase">Charniga, Kelly, Sang Woo Park, Andrei R Akhmetzhanov, et al.</span> 2024. <span>“Best Practices for Estimating and Reporting Epidemiological Delay Distributions of Infectious Diseases Using Public Health Surveillance and Healthcare Data.”</span> <em>arXiv Preprint arXiv:2405.08841</em>, ahead of print. https://doi.org/<a href="
 https://doi.org/10.48550/arXiv.2405.08841"> https://doi.org/10.48550/arXiv.2405.08841</a>.
 </div>
 <div id="ref-gostic2020practical" class="csl-entry" role="listitem">
 Katelyn M. Gostic, Edward B. Baskerville, Lauren McGough. 2020. <span>“Practical Considerations for Measuring the Effective Reproductive Number, Rt.”</span> <em>PLoS Computational Biology</em> 16 (12): e1008409. https://doi.org/<a href="https://doi.org/10.1371/journal.pcbi.1008409">https://doi.org/10.1371/journal.pcbi.1008409</a>.
 </div>
 <div id="ref-laurenson2023description" class="csl-entry" role="listitem">
-Laurenson-Schafer, Henry, Nikola Sklenovská, Ana Hoxha, Steven M Kerr, Patricia Ndumbi, Julia Fitzner, Maria Almiron, et al. 2023. <span>“Description of the First Global Outbreak of Mpox: An Analysis of Global Surveillance Data.”</span> <em>The Lancet Global Health</em> 11 (7): e1012–23. https://doi.org/<a href="https://doi.org/10.1016/S2214-109X(23)00198-5">https://doi.org/10.1016/S2214-109X(23)00198-5</a>.
+<span class="nocase">Laurenson-Schafer, Henry, Nikola Sklenovská, Ana Hoxha, et al.</span> 2023. <span>“Description of the First Global Outbreak of Mpox: An Analysis of Global Surveillance Data.”</span> <em>The Lancet Global Health</em> 11 (7): e1012–23. https://doi.org/<a href="https://doi.org/10.1016/S2214-109X(23)00198-5">https://doi.org/10.1016/S2214-109X(23)00198-5</a>.
 </div>
 <div id="ref-park2024estimating" class="csl-entry" role="listitem">
-Park, Sang Woo, Andrei R Akhmetzhanov, Kelly Charniga, Anne Cori, Nicholas G Davies, Jonathan Dushoff, Sebastian Funk, et al. 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <em>medRxiv</em>, 2024–01. https://doi.org/<a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
+<span class="nocase">Park, Sang Woo, Andrei R Akhmetzhanov, Kelly Charniga, et al.</span> 2024. <span>“Estimating Epidemiological Delay Distributions for Infectious Diseases.”</span> <em>medRxiv</em>, 2024–01. https://doi.org/<a href="https://doi.org/10.1101/2024.01.12.24301247">https://doi.org/10.1101/2024.01.12.24301247</a>.
 </div>
 <div id="ref-ward2022transmission" class="csl-entry" role="listitem">
 Ward, Thomas, Rachel Christie, Robert S Paton, Fergus Cumming, and Christopher E Overton. 2022. <span>“Transmission Dynamics of Monkeypox in the United Kingdom: Contact Tracing Study.”</span> <em>Bmj</em> 379. https://doi.org/<a href="http://dx.doi.org/10.1136/ bmj-2022-073153">http://dx.doi.org/10.1136/ bmj-2022-073153</a>.
@@ -471,8 +472,8 @@ Ward, Thomas, Rachel Christie, Robert S Paton, Fergus Cumming, and Christopher E
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-azam2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Azam, James, Hugo Gruson, and Adam Kucharski. 2024. <span>“2024 Mpox
-Outbreak: Common Analytics Tasks and Available R Tools.”</span> July 4,
-2024. <a href="https://doi.org/10.59350/z78kb-qrz59">https://doi.org/10.59350/z78kb-qrz59</a>.
+Outbreak: Common Analytics Tasks and Available R Tools.”</span> July 4.
+<a href="https://doi.org/10.59350/z78kb-qrz59">https://doi.org/10.59350/z78kb-qrz59</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
