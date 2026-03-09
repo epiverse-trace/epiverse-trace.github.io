@@ -15,7 +15,7 @@ jobs:
             pull-requests: write
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v6
               with:
                 # This helps override the branch protection later
                 token: ${{ secrets.SUDO_GITHUB_TOKEN }}

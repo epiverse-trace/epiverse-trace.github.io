@@ -9,7 +9,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
       - uses: reviewdog/action-alex@ee2bd61307cf0eb11f6ce460d58352e10bf4b8b7
         with:
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
