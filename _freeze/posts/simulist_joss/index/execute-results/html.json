@@ -1,0 +1,15 @@
+{
+  "hash": "f3b7c0417d1afab251bef44bbbc9bfae",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"simulist v0.7.0 (& v0.7.1) and publication in JOSS\"\nauthor:\n  - name: \"The Epiverse-TRACE development team\"\ndate: \"2026-03-10\"\ncategories: [new-release]\ncode-link: true\n---\n\n\n\n<!-- markdownlint-disable-next-line -->\nWe are very excited to announce that a publication accompanying the [simulist](https://epiverse-trace.github.io/simulist) package has now been published in the [Journal of Open Source Software (JOSS)](https://joss.theoj.org/): <https://joss.theoj.org/papers/10.21105/joss.08781>.\n\nThe simulist version coupled to the publication is v0.7.1, however most changes since v0.6.0 were released in v0.7.0 which is [available on CRAN](https://CRAN.R-project.org/package=simulist).\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(simulist)\n```\n:::\n\n\n\nThe updates in the v0.7.0 release contain the JOSS paper (including `.md`, `.bib` and figures) and a range of small updates to simulation code and documentation: \n\n## New features\n\n* The sampling of sex for line list and contacts data can now be weighted instead of assuming a uniform probability via `prob_male` in `config` (#255).\n\n* The `reporting_delay` argument in `sim_linelist()` and `sim_outbreak()` now supports `<epiparameter>` objects, matching the functionality of the other delay distribution arguments (#262).\n\n* A new line list events plot has been added to the `vis-linelist.Rmd` vignette (#278).\n\n## Minor changes\n\n* Added `dependabot` (#258).\n\n* GitHub actions versions are updated (multiple PRs).\n\n* `.lintr` is updated to include more linters (#279) and the `# nolint` flag syntax is fixed (#263).\n\n---\n\nThe changes in v0.7.1 are minor edits to the JOSS paper for publication.\n\n## Acknowledgements\n\nThanks to the whole Epiverse community for their input on the development of the simulist R package.\n\nThanks to the team at JOSS for rewarding open source software, and the editors and reviewers for their helpful comments that improved the publication ([open review found here](https://github.com/openjournals/joss-reviews/issues/8781)).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
