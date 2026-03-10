@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.31">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Hugo Gruson">
-<meta name="dcterms.date" content="2024-06-26">
-
-<title>Choosing the Right Parent for R Object Classes – Epiverse-TRACE: tools for outbreak analytics</title>
+<meta name="author" content="The Epiverse-TRACE development team">
+<meta name="dcterms.date" content="2026-03-10">
+<title>simulist v0.7.0 (&amp; v0.7.1) and publication in JOSS – Epiverse-TRACE: tools for outbreak analytics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,8 +22,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -45,8 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4f2b5d4355f285cc6b36e6d82ea9ca21.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a0191054204dbbae09c2dd9a901ad07d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-a0191054204dbbae09c2dd9a901ad07d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -72,36 +102,25 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script>
-
-<script type="text/javascript">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-XZ471458FQ"></script><script type="text/javascript">
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
-</script>
-
-
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Choosing the Right Parent for R Object Classes – Epiverse-TRACE: tools for outbreak analytics">
+</script><link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="simulist v0.7.0 (&amp; v0.7.1) and publication in JOSS – Epiverse-TRACE: tools for outbreak analytics">
 <meta property="og:description" content="A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.">
-<meta property="og:image" content="https://epiverse-trace.github.io/posts/parent-class/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta property="og:site_name" content="Epiverse-TRACE: tools for outbreak analytics">
-<meta name="twitter:title" content="Choosing the Right Parent for R Object Classes – Epiverse-TRACE: tools for outbreak analytics">
+<meta name="twitter:title" content="simulist v0.7.0 (&amp; v0.7.1) and publication in JOSS – Epiverse-TRACE: tools for outbreak analytics">
 <meta name="twitter:description" content="A place for Epiverse-TRACE to share their reflections, learnings, and showcase available tools.">
-<meta name="twitter:image" content="https://epiverse-trace.github.io/posts/parent-class/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:creator" content="@Epiverse_TRACE">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
-
 <body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Epiverse-TRACE: tools for outbreak analytics</span>
@@ -113,12 +132,12 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item dropdown ">
+<li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-news" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">News</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-news">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-news">
+<li>
     <a class="dropdown-item" href="../../blog.html">
  <span class="dropdown-text">Blog</span></a>
   </li>  
@@ -135,13 +154,13 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="dropdown-text">Presentations</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-use" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Use</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-use">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-use">
+<li>
     <a class="dropdown-item" href="../../getting-started.html">
  <span class="dropdown-text">Getting started</span></a>
   </li>  
@@ -150,13 +169,13 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="dropdown-text">Software</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-learn" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Learn</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-learn">
+<li>
     <a class="dropdown-item" href="../../learn.html">
  <span class="dropdown-text">Learning materials</span></a>
   </li>  
@@ -165,13 +184,13 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="dropdown-text">Resources</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-contribute" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Contribute</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-contribute">
+<li>
     <a class="dropdown-item" href="https://github.com/search?q=org%3Aepiverse-trace++label%3A%22good+first+issue%22+is%3Aopen&amp;type=issues">
  <span class="dropdown-text">Good first issues</span></a>
   </li>  
@@ -184,32 +203,23 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
  <span class="dropdown-text">Blueprints</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item">
     <a class="nav-link" href="../../people.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/epiverse-trace" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
     <a href="https://twitter.com/Epiverse_TRACE" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Choosing the Right Parent for R Object Classes</h1>
+      <h1 class="title">simulist v0.7.0 (&amp; v0.7.1) and publication in JOSS</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-                <div class="quarto-category">R package</div>
-                <div class="quarto-category">object-oriented programming</div>
-                <div class="quarto-category">S3</div>
-                <div class="quarto-category">interoperability</div>
-                <div class="quarto-category">DOI</div>
+                <div class="quarto-category">new-release</div>
               </div>
                   </div>
   </div>
@@ -220,26 +230,18 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Hugo Gruson <a href="https://orcid.org/0000-0002-4094-1476" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+               <p>The Epiverse-TRACE development team </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 26, 2024</p>
+        <p class="date">March 10, 2026</p>
       </div>
     </div>
     
       
-      <div>
-      <div class="quarto-title-meta-heading">Doi</div>
-      <div class="quarto-title-meta-contents">
-        <p class="doi">
-          <a href="https://doi.org/10.59350/fk6nv-1k973">10.59350/fk6nv-1k973</a>
-        </p>
-      </div>
-    </div>
     </div>
     
   
@@ -248,60 +250,41 @@ gtag('config', 'G-XZ471458FQ', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-
-<p><a href="https://hugogruson.fr/posts/compa-tibble/">I have recently published</a> a <a href="https://epiverse-trace.github.io/posts/s3-generic/">series of blog posts</a> on the reasons why one may want to start using object-oriented programming (and more specifically R S3 classes) to improve interoperability with other tools from the ecosystem.</p>
-<p>But there are still questions I have not addressed directly, even if they may have been implicitly included sometimes: what makes a good object class? What good practices in class &amp; function design can improve interoperability?</p>
-<p>As you can expect from these questions, this post will present a subjective view on S3 class and method design. I will argue that it is often a good strategy to inherit from existing standards classes, and to leverage this inheritance relationship as much as possible.</p>
-<section id="inherit-from-standard-classes" class="level2">
-<h2 class="anchored" data-anchor-id="inherit-from-standard-classes">Inherit from standard classes</h2>
-<p>A unique feature of R is the availability and centrality of <code>data.frame</code>s in the base language, whereas you need extra libraries for a similar functionality in most other languages (e.g., <a href="https://pandas.pydata.org/">pandas</a> in Python).</p>
-<p><code>data.frame</code> is one of the first “complex” (in the sense of <a href="https://adv-r.hadley.nz/vectors-chap.html#atomic-vectors">non-atomic</a>) object most R learners will be exposed to and will develop a familiarity with. A good way to leverage this familiarity is to <a href="https://epiverse-trace.github.io/posts/extend-dataframes/">make your subclass a thin wrapper around <code>data.frame</code>s</a>.</p>
-<p>This means that not only will users be able to get started with your package faster because of this familiarity, but you will also immediately benefit from the huge ecosystem of functions and packages working on <code>data.frame</code>s, such as the <a href="https://tidyverse.org">tidyverse</a>. If you want some examples, this is what collaborators and I did in the <a href="https://github.com/epiverse-trace/linelist">linelist</a>, <a href="https://github.com/rmaia/pavo">pavo</a>, <a href="https://github.com/epiforecasts/scoringutils">scoringutils</a>, <a href="https://github.com/epiverse-trace/epichains">epichains</a>, and <a href="https://github.com/epiverse-trace/vaccineff">vaccineff</a> R packages.</p>
-<p>In some cases, the output is too complex to fit into a <code>data.frame</code>. Even in this situation, I would recommend inheriting from existing, well-established, classes for the same two reasons: familiarity and ecosystem. For example, for the <a href="https://github.com/epiverse-trace/serofoi">serofoi</a> R package, <a href="https://github.com/epiverse-trace/serofoi/pull/117">we have made the decision to inherit from <code>stanfit</code> objects, rather than a custom structure</a>.</p>
-</section>
-<section id="rely-on-parent-methods-as-much-as-possible" class="level2">
-<h2 class="anchored" data-anchor-id="rely-on-parent-methods-as-much-as-possible">Rely on parent methods as much as possible</h2>
-<p>A follow up recommendation from inheriting from standard classes is to leverage their methods wherever possible.</p>
-<p><a href="https://github.com/epiverse-trace/linelist/pull/60">One of the first</a> <a href="https://github.com/epiverse-trace/linelist/pull/61">changes I made</a> when becoming maintainer of the <a href="https://github.com/epiverse-trace/linelist">linelist</a> package was to remove the <code>rename.linelist()</code> and <code>select.linelist()</code> methods. Indeed, they were, or could easily be, behaving identically as the parent <code>rename.data.frame()</code> and <code>select.data.frame()</code> methods. Rather than burdening the codebase and maintenance with an extra unnecessary method, it is much simpler and more robust to rely on the well-tested parent method. In fact, the <a href="https://dplyr.tidyverse.org/reference/dplyr_extending.html">dplyr documentation</a> explicitly recommends only writing methods for a couple of standard functions (including <code>[.subclass()</code> and <code>names&lt;-.subclass()</code>), which will enable the use of parent methods directly, rather than writing custom methods for each dplyr function.</p>
-<p>Similarly, many developers have the reflex to write a custom <code>print.subclass()</code> method as part of the method implementation. While it may be justified in some cases, it is sometimes unnecessary. My recommendation would be to evaluate carefully what benefits the custom method brings over the default parent method.</p>
-</section>
-<section id="enable-conversion-to-standard-classes" class="level2">
-<h2 class="anchored" data-anchor-id="enable-conversion-to-standard-classes">Enable conversion to standard classes</h2>
-<p>If after careful consideration, extra metadata makes it too difficult to fit your new class into an existing class, you may sometimes have to define your own class from “scratch” (i.e., often <code>list()</code> in R).</p>
-<p>But even in this case, you can still apply some of the ideas proposed earlier. As much as possible, you should provide helpers or methods to enable the streamlined conversion of your method to a standard class.</p>
-<p>A good example here is the <a href="https://github.com/epiverse-trace/epiparameter">epiparameter</a> package, which provides a complex S3 class built on lists, including extensive metadata about probability distribution of epidemiological parameters. As such, this custom class cannot be used out of the box in most functions from other packages. <a href="https://github.com/epiverse-trace/epiparameter/blob/0f805b90f984def4851a78148f1cf44c3d480845/R/coercion.R#L18-L41">But an <code>as.function()</code> method is conveniently provided to enable the conversion of this probability distribution parameters into a density distribution</a>, which can then be used in functions which expect a <code>function</code> object.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In summary, I recommend relying on well-established parent classes such as <code>data.frame</code>s or at least providing direct conversion functions to these standard classes, and using parent methods wherever possible rather than writing custom dedicated methods. This should help produce a package:</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><!-- markdownlint-disable-next-line --><p>We are very excited to announce that a publication accompanying the <a href="https://epiverse-trace.github.io/simulist">simulist</a> package has now been published in the <a href="https://joss.theoj.org/">Journal of Open Source Software (JOSS)</a>: <a href="https://joss.theoj.org/papers/10.21105/joss.08781" class="uri">https://joss.theoj.org/papers/10.21105/joss.08781</a>.</p>
+<p>The simulist version coupled to the publication is v0.7.1, however most changes since v0.6.0 were released in v0.7.0 which is <a href="https://CRAN.R-project.org/package=simulist">available on CRAN</a>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiverse-trace/simulist">simulist</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The updates in the v0.7.0 release contain the JOSS paper (including <code>.md</code>, <code>.bib</code> and figures) and a range of small updates to simulation code and documentation:</p>
+<section id="new-features" class="level2"><h2 class="anchored" data-anchor-id="new-features">New features</h2>
 <ul>
-<li>more easily accessible for users because it uses objects that feel familiar</li>
-<li>more maintainable because a lot of method writing is offloaded to the parent class</li>
-<li>more likely to be interoperable because standard classes are a good way to pass data between functions or packages</li>
+<li><p>The sampling of sex for line list and contacts data can now be weighted instead of assuming a uniform probability via <code>prob_male</code> in <code>config</code> (#255).</p></li>
+<li><p>The <code>reporting_delay</code> argument in <code>sim_linelist()</code> and <code>sim_outbreak()</code> now supports <code>&lt;epiparameter&gt;</code> objects, matching the functionality of the other delay distribution arguments (#262).</p></li>
+<li><p>A new line list events plot has been added to the <code>vis-linelist.Rmd</code> vignette (#278).</p></li>
+</ul></section><section id="minor-changes" class="level2"><h2 class="anchored" data-anchor-id="minor-changes">Minor changes</h2>
+<ul>
+<li><p>Added <code>dependabot</code> (#258).</p></li>
+<li><p>GitHub actions versions are updated (multiple PRs).</p></li>
+<li><p><code>.lintr</code> is updated to include more linters (#279) and the <code># nolint</code> flag syntax is fixed (#263).</p></li>
 </ul>
-<p><strong>Thanks to Chris Hartgerink, James Azam and Josh Lambert, for their very valuable feedback on this post.</strong></p>
+<hr>
+<p>The changes in v0.7.1 are minor edits to the JOSS paper for publication.</p>
+</section><section id="acknowledgements" class="level2"><h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to the whole Epiverse community for their input on the development of the simulist R package.</p>
+<p>Thanks to the team at JOSS for rewarding open source software, and the editors and reviewers for their helpful comments that improved the publication (<a href="https://github.com/openjournals/joss-reviews/issues/8781">open review found here</a>).</p>
 
 
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{gruson2024,
-  author = {Gruson, Hugo},
-  title = {Choosing the {Right} {Parent} for {R} {Object} {Classes}},
-  date = {2024-06-26},
-  url = {https://epiverse-trace.github.io/posts/parent-class/},
-  doi = {10.59350/fk6nv-1k973},
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{epiverse-trace_development_team2026,
+  author = {Epiverse-TRACE development team, The},
+  title = {Simulist V0.7.0 (\&amp; V0.7.1) and Publication in {JOSS}},
+  date = {2026-03-10},
+  url = {https://epiverse-trace.github.io/posts/simulist_joss/},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-gruson2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Gruson, Hugo. 2024. <span>“Choosing the Right Parent for R Object
-Classes.”</span> June 26. <a href="https://doi.org/10.59350/fk6nv-1k973">https://doi.org/10.59350/fk6nv-1k973</a>.
-</div></div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-epiverse-trace_development_team2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Epiverse-TRACE development team, The. 2026. <span>“Simulist V0.7.0
+(&amp; V0.7.1) and Publication in JOSS.”</span> March 10. <a href="https://epiverse-trace.github.io/posts/simulist_joss/">https://epiverse-trace.github.io/posts/simulist_joss/</a>.
+</div></div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -700,10 +683,7 @@ Classes.”</span> June 26. <a href="https://doi.org/10.59350/fk6nv-1k973">https
       }
     }
   });
-  </script>
-<input type="hidden" id="giscus-base-theme" value="light">
-<input type="hidden" id="giscus-alt-theme" value="dark">
-<script>
+  </script><input type="hidden" id="giscus-base-theme" value="light"><input type="hidden" id="giscus-alt-theme" value="dark"><script>
   function loadGiscus() {
     // Function to get the theme based on body class
     const getTheme = () => {
@@ -731,7 +711,6 @@ Classes.”</span> June 26. <a href="https://doi.org/10.59350/fk6nv-1k973">https
   loadGiscus();
 </script>
 </div> <!-- /content -->
-
 
 
 
