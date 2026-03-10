@@ -16,7 +16,7 @@ The simulist version coupled to the publication is v0.7.1, however most changes 
 library(simulist)
 ```
 
-The updates in the v0.7.0 release contain the JOSS paper (including `.md`, `.bib` and figures) and a range of small updates to simulation code and documentation: 
+The updates in the v0.7.0 release contain the JOSS paper (including `.md`, `.bib` and figures) and a range of small updates to simulation code and documentation:
 
 ## New features
 
