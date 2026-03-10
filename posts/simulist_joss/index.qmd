@@ -1,0 +1,45 @@
+---
+title: "simulist v0.7.0 (& v0.7.1) and publication in JOSS"
+author:
+  - name: "The Epiverse-TRACE development team"
+date: "2026-03-10"
+categories: [new-release]
+code-link: true
+---
+
+<!-- markdownlint-disable-next-line -->
+We are very excited to announce that a publication accompanying the [simulist](https://epiverse-trace.github.io/simulist) package has now been published in the [Journal of Open Source Software (JOSS)](https://joss.theoj.org/): <https://joss.theoj.org/papers/10.21105/joss.08781>.
+
+The simulist version coupled to the publication is v0.7.1, however most changes since v0.6.0 were released in v0.7.0 which is [available on CRAN](https://CRAN.R-project.org/package=simulist).
+
+```{r}
+library(simulist)
+```
+
+The updates in the v0.7.0 release contain the JOSS paper (including `.md`, `.bib` and figures) and a range of small updates to simulation code and documentation: 
+
+## New features
+
+* The sampling of sex for line list and contacts data can now be weighted instead of assuming a uniform probability via `prob_male` in `config` (#255).
+
+* The `reporting_delay` argument in `sim_linelist()` and `sim_outbreak()` now supports `<epiparameter>` objects, matching the functionality of the other delay distribution arguments (#262).
+
+* A new line list events plot has been added to the `vis-linelist.Rmd` vignette (#278).
+
+## Minor changes
+
+* Added `dependabot` (#258).
+
+* GitHub actions versions are updated (multiple PRs).
+
+* `.lintr` is updated to include more linters (#279) and the `# nolint` flag syntax is fixed (#263).
+
+---
+
+The changes in v0.7.1 are minor edits to the JOSS paper for publication.
+
+## Acknowledgements
+
+Thanks to the whole Epiverse community for their input on the development of the simulist R package.
+
+Thanks to the team at JOSS for rewarding open source software, and the editors and reviewers for their helpful comments that improved the publication ([open review found here](https://github.com/openjournals/joss-reviews/issues/8781)).
