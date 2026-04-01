@@ -26,7 +26,7 @@ jobs:
                 version: pre-release
             - name: Re-render resource page
               run: quarto render resources.qmd
-            - uses: EndBug/add-and-commit@v9
+            - uses: EndBug/add-and-commit@v10
               with:
                 author_name: epiverse-trace-bot
                 author_email: epiverse-trace-bot@users.noreply.github.com

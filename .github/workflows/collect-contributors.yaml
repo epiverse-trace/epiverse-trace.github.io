@@ -39,7 +39,7 @@ jobs:
               uses: quarto-dev/quarto-actions/render@v2
               with:
                 path: people.qmd
-            - uses: EndBug/add-and-commit@v9
+            - uses: EndBug/add-and-commit@v10
               with:
                 author_name: epiverse-trace-bot
                 author_email: epiverse-trace-bot@users.noreply.github.com
