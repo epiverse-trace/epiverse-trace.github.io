@@ -10,7 +10,7 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
-      - uses: reviewdog/action-alex@ee2bd61307cf0eb11f6ce460d58352e10bf4b8b7
+      - uses: reviewdog/action-alex@34e96da4642d8048defaeedb3391ed81fcb175cd
         with:
           # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
           reporter: github-pr-review
