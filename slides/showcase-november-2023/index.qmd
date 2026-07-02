@@ -113,4 +113,4 @@ Yes. We intend to create a package for reading and integrating genomic data with
 
 ## Recording
 
-Go to the "Watch the recording" button on the [event website](https://lshtm.zoom.us/rec/play/S6i7MKxp2k0ckU2nX9f5UICQaJ_HLinvx1s0H9cZtTDmtXazoCUgZzXHGcYxo9f98yB4_Xf4WPh-psO-.uniNUhCAWRzom1Ov) to watch back this showcase.
+Go to the "Watch the recording" button on the [event website](https://www.lshtm.ac.uk/newsevents/events/epiverse-trace-mrcg-showcase) to watch back this showcase.
